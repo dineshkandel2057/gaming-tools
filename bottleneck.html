@@ -471,15 +471,14 @@ function gameDemand(type){
 function clamp(value,min=0,max=100){return Math.max(min,Math.min(max,value));}
 function modelScenario(cpuScore,gpuScore,resolution,gameType,target){
   const demand=gameDemand(gameType);
-  const cpuLoad=42*Math.pow(target/60,0.82)*demand.cpu*100/cpuScore;
-  const gpuLoad=42*Math.pow(target/60,0.68)*demand.gpu*resolutionGpuMultiplier(resolution)*100/gpuScore;
+  const targetFactor=Math.pow(target/60,0.72);
+  const cpuLoad=(100*targetFactor*demand.cpu)/Math.max(cpuScore,1);
+  const gpuLoad=(100*targetFactor*demand.gpu*resolutionGpuMultiplier(resolution))/Math.max(gpuScore,1);
   const cpuSafe=Math.max(cpuLoad,0.01),gpuSafe=Math.max(gpuLoad,0.01);
   const ratio=cpuSafe/gpuSafe;
-  const limiting=ratio>1.20?"CPU":ratio<1/1.20?"GPU":"Balanced";
+  const limiting=ratio>1.25?"CPU":ratio<0.80?"GPU":"Balanced";
+  const balance=clamp(100-Math.abs(Math.log(ratio))*45);
   const overload=Math.max(cpuLoad,gpuLoad);
-  const matchScore=100*Math.exp(-Math.abs(Math.log(ratio)));
-  const targetFeasibility=Math.min(1,100/Math.max(overload,100));
-  const balance=clamp(matchScore*targetFeasibility);
   return {cpuLoad,gpuLoad,balance,limiting,overload};
 }
 
