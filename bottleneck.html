@@ -127,7 +127,7 @@ a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255
 @media(max-width:800px){.tool-dropdown{width:max-content}.tool-dropdown summary{padding:8px 11px}.tool-menu{left:auto;right:-60px;transform:none}@keyframes menu-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}}
 @media(prefers-reduced-motion:reduce){.tool-menu{animation:none}.tool-dropdown summary:after{transition:none}}
 
-</style>
+@keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}@media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}</style>
 </head>
 <body>
 <header class="site-header">
@@ -543,5 +543,7 @@ function setBar(id,val,textId,num){
 document.addEventListener("click",event=>document.querySelectorAll(".tool-dropdown[open]").forEach(menu=>{if(!menu.contains(event.target))menu.removeAttribute("open")}));
 document.addEventListener("keydown",event=>{if(event.key==="Escape")document.querySelectorAll(".tool-dropdown[open]").forEach(menu=>{menu.removeAttribute("open");menu.querySelector("summary").focus()})});
 </script>
-</body>
+<script>
+(()=>{const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduce)return;document.addEventListener("click",event=>{const link=event.target.closest("a[href]");if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target||link.hasAttribute("download"))return;const url=new URL(link.href,location.href);if(url.origin!==location.origin||url.pathname===location.pathname||!["/index.html","/bottleneck.html","/build-planner.html"].some(path=>url.pathname.endsWith(path)))return;event.preventDefault();document.body.classList.add("page-leave");setTimeout(()=>location.assign(url.href),145)})})();
+</script></body>
 </html>
