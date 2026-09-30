@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CPU & GPU Bottleneck Calculator</title>
+<title>CPU & GPU Bottleneck Calculator | PCPilot</title>
 
 <style>
 * {
@@ -16,6 +16,57 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: #0d0f15;
     color: #f5f5f7;
+}
+
+/* ================= PCPILOT HEADER ================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(13, 15, 21, 0.96);
+    border-bottom: 1px solid #2d3240;
+    backdrop-filter: blur(10px);
+}
+
+.nav {
+    max-width: 1180px;
+    min-height: 72px;
+    margin: auto;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    color: inherit;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #806fff;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+}
+
+nav a {
+    color: #a9b0c0;
+    padding: 9px 13px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+nav a:hover,
+nav a.active {
+    color: white;
+    background: #1d202b;
 }
 
 .container {
@@ -308,10 +359,46 @@ button:hover {
         padding: 20px;
     }
 }
+
+/* ================= PCPILOT HEADER ================= */
+.site-header{position:sticky;top:0;z-index:1000;background:rgba(13,15,21,.96);border-bottom:1px solid #2d3240;backdrop-filter:blur(10px)}
+.site-nav{max-width:1180px;min-height:72px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between}
+.site-logo{font-size:23px;font-weight:800;text-decoration:none;color:#f5f5f7}.site-logo span{color:#806fff}
+.site-links{display:flex;gap:8px}.site-links a{color:#a9b0c0;text-decoration:none;padding:9px 13px;border-radius:8px;font-size:14px}.site-links a:hover,.site-links a.active{color:white;background:#1d202b}
+@media(max-width:750px){.site-nav{min-height:auto;padding:15px;flex-direction:column;gap:10px}.site-links{flex-wrap:wrap;justify-content:center}}
+
+@media (max-width: 800px) {
+    .nav { min-height: auto; padding: 15px; flex-direction: column; gap: 10px; }
+    nav { flex-wrap: wrap; justify-content: center; }
+}
 </style>
 </head>
 
 <body>
+
+<header>
+    <div class="nav">
+        <a href="index.html" class="logo">PC<span>Pilot</span></a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#tools">Tools</a>
+            <a href="bottleneck.html" class="active">Calculator</a>
+            <a href="index.html#about">About</a>
+        </nav>
+    </div>
+</header>
+<header class="site-header">
+<div class="site-nav">
+<a href="index.html" class="site-logo">PC<span>Pilot</span></a>
+<nav class="site-links">
+<a href="index.html">Home</a>
+<a href="index.html#tools">Tools</a>
+<a href="bottleneck.html" class="active">Calculator</a>
+<a href="index.html#about">About</a>
+</nav>
+</div>
+</header>
+
 
 <div class="container">
 
