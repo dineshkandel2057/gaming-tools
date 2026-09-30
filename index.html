@@ -1,16 +1,341 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Gaming Tools</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gaming Tools - Free PC Gaming Tools & Calculators</title>
+
+    <meta name="description" content="Free PC gaming tools and calculators for FPS, hardware, bottlenecks, PSU, RAM and OBS.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f1117;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        header {
+            border-bottom: 1px solid #252936;
+            background: #11141c;
+        }
+
+        .nav {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #6c63ff;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 90px 20px 70px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #6c63ff;
+        }
+
+        .hero p {
+            color: #aaa;
+            font-size: 19px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .section h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        .tools {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .tool-card {
+            background: #171a23;
+            border: 1px solid #292d39;
+            border-radius: 12px;
+            padding: 25px;
+            transition: 0.2s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            border-color: #6c63ff;
+        }
+
+        .tool-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .tool-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            color: #999;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #6c63ff;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #574fff;
+        }
+
+        .coming {
+            opacity: 0.65;
+        }
+
+        footer {
+            margin-top: 60px;
+            border-top: 1px solid #252936;
+            padding: 30px 20px;
+            text-align: center;
+            color: #777;
+        }
+
+        @media (max-width: 800px) {
+            .tools {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .tools {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 60px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Welcome to Gaming Tools</h1>
+<header>
+    <div class="nav">
 
-    <p>Free tools for PC gamers.</p>
+        <div class="logo">
+            Gaming<span>Tools</span>
+        </div>
 
-    <button>Test Button</button>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#tools">Tools</a>
+            <a href="#guides">Guides</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<section class="hero">
+
+    <h1>Free Tools for <span>PC Gamers</span></h1>
+
+    <p>
+        Calculate, optimize and understand your gaming PC.
+        Simple tools for FPS, hardware, performance and recording.
+    </p>
+
+</section>
+
+
+<section class="section" id="tools">
+
+    <h2>Gaming Tools</h2>
+
+    <p class="section-description">
+        Free tools designed to help you get more from your gaming PC.
+    </p>
+
+
+    <div class="tools">
+
+        <div class="tool-card">
+            <div class="tool-icon">⚡</div>
+
+            <h3>CPU & GPU Bottleneck Calculator</h3>
+
+            <p>
+                Estimate whether your CPU or GPU may limit gaming performance.
+            </p>
+
+            <a class="button" href="#">
+                Coming Soon
+            </a>
+        </div>
+
+
+        <div class="tool-card coming">
+            <div class="tool-icon">🎮</div>
+
+            <h3>FPS Calculator</h3>
+
+            <p>
+                Estimate gaming performance based on your PC hardware.
+            </p>
+
+            <a class="button" href="#">
+                Coming Soon
+            </a>
+        </div>
+
+
+        <div class="tool-card coming">
+            <div class="tool-icon">🔌</div>
+
+            <h3>PSU Calculator</h3>
+
+            <p>
+                Calculate the recommended power supply for your gaming PC.
+            </p>
+
+            <a class="button" href="#">
+                Coming Soon
+            </a>
+        </div>
+
+
+        <div class="tool-card coming">
+            <div class="tool-icon">🧠</div>
+
+            <h3>RAM Calculator</h3>
+
+            <p>
+                Estimate how much RAM your gaming PC actually needs.
+            </p>
+
+            <a class="button" href="#">
+                Coming Soon
+            </a>
+        </div>
+
+
+        <div class="tool-card coming">
+            <div class="tool-icon">🎥</div>
+
+            <h3>OBS Bitrate Calculator</h3>
+
+            <p>
+                Find suitable recording and streaming bitrate settings.
+            </p>
+
+            <a class="button" href="#">
+                Coming Soon
+            </a>
+        </div>
+
+
+        <div class="tool-card coming">
+            <div class="tool-icon">🖥️</div>
+
+            <h3>PC Upgrade Calculator</h3>
+
+            <p>
+                Find which component could make the biggest difference.
+            </p>
+
+            <a class="button" href="#">
+                Coming Soon
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="guides">
+
+    <h2>Gaming Guides</h2>
+
+    <p class="section-description">
+        Practical guides for improving gaming performance and PC setup.
+    </p>
+
+</section>
+
+
+<footer>
+
+    <p>© 2026 GamingTools. Free tools for PC gamers.</p>
+
+</footer>
 
 </body>
 </html>
