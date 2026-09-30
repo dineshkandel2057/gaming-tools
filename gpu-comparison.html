@@ -68,6 +68,7 @@
 </div>
 <div class="footnote"><strong>How to read these estimates:</strong> The score is a directional relative index anchored to the RX 580, not measured FPS or a promise of performance. The source does not publish the full test suite or setup behind its aggregate index. Results vary by game, resolution, settings, ray tracing, CPU, drivers, cooling and exact card model. Some model variants are not listed in the source and show “Not listed in source.” Specifications are typical/reference values; partner cards and variants may differ. Entered-price value is a rough score-per-price ratio, not a measured performance-per-dollar result. Confirm exact specifications and PSU guidance with the card maker before buying.</div>
 </section>
+<div class="compare-dock" id="compareDock" aria-live="polite" aria-hidden="true"><div class="compare-dock-copy"><strong id="dockCount">0 GPUs selected</strong><span>Ready to compare side by side</span></div><button class="btn primary" id="dockCompareBtn" type="button" disabled>Compare now <span aria-hidden="true">→</span></button></div>
 </main>
 <script>
 const gpus=[
@@ -180,6 +181,5 @@ $("#search").addEventListener("input",renderGrid);$("#brandFilter").addEventList
 renderGrid();updateSelection();
 </script>
 <script>(()=>{const menu=document.getElementById("toolsMenu");if(!menu)return;const summary=menu.querySelector("summary");let pinned=false,hovered=false;menu.addEventListener("pointerenter",()=>{hovered=true;if(!pinned)menu.open=true});menu.addEventListener("pointerleave",()=>{hovered=false;if(!pinned)menu.open=false});summary.addEventListener("click",event=>{event.preventDefault();pinned=!pinned;menu.open=pinned||hovered});document.addEventListener("click",event=>{if(!menu.contains(event.target)){pinned=false;hovered=false;menu.open=false}});document.addEventListener("keydown",event=>{if(event.key==="Escape"){pinned=false;hovered=false;menu.open=false;summary.focus()}})})();</script>
-<div class="compare-dock" id="compareDock" aria-live="polite" aria-hidden="true"><div class="compare-dock-copy"><strong id="dockCount">0 GPUs selected</strong><span>Ready to compare side by side</span></div><button class="btn primary" id="dockCompareBtn" type="button" disabled>Compare now <span aria-hidden="true">→</span></button></div>
 </body>
 </html>
