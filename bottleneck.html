@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-<title>PCPilot — CPU & GPU Bottleneck Calculator</title>
+<title>SystemFit PC — CPU & GPU Bottleneck Calculator</title>
 <style>
 :root{
   --bg:#0b0d12;--panel:#171a22;--panel2:#111319;--border:#2b3040;
@@ -49,7 +49,7 @@ input:focus,select:focus{border-color:#6370ff}
 .hidden{display:none}
 @media(max-width:800px){.grid2,.stats,.scenario-grid,.info-grid{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.vs{display:none}.site-header{padding:0 18px}.nav a{padding:8px}.wrap{padding:18px 12px}.result-head{align-items:flex-start;flex-direction:column}}
 
-/* PCPilot visual refresh */
+/* SystemFit PC visual refresh */
 :root{--bg:#090c14;--panel:rgba(20,26,40,.78);--panel2:rgba(13,18,29,.9);--border:rgba(157,174,204,.17);--text:#f5f7fc;--muted:#aab5c8;--purple:#765fff;--cpu:#a78bfa;--gpu:#63c7ff;--good:#5ce0a2;--warn:#ffc06b;--bad:#ff7d86}
 body{font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 12% 0%,rgba(110,78,255,.19),transparent 34%),radial-gradient(ellipse at 90% 18%,rgba(28,157,218,.13),transparent 32%),var(--bg)}
 body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 65% 75%,rgba(59,105,180,.08),transparent 36%);filter:blur(35px)}
@@ -127,11 +127,25 @@ a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255
 @media(max-width:800px){.tool-dropdown{width:max-content}.tool-dropdown summary{padding:8px 11px}.tool-menu{left:auto;right:-60px;transform:none}@keyframes menu-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}}
 @media(prefers-reduced-motion:reduce){.tool-menu{animation:none}.tool-dropdown summary:after{transition:none}}
 
-@keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}@media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}</style>
+@keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}@media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}
+/* SystemFit PC wordmark */
+#brand-logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap}
+#brand-logo .brand-monogram{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(159,142,255,.38);border-radius:12px;background:linear-gradient(145deg,rgba(119,94,255,.3),rgba(63,179,231,.15));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 18px rgba(73,62,170,.16);font:800 12px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.09em;color:#f8f7ff}
+#brand-logo .brand-monogram span{color:#86dcff}
+#brand-logo .brand-wordmark{display:inline-flex;align-items:center;font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.055em;color:#f5f7fc}
+#brand-logo .brand-system{color:#f5f7fc}
+#brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+#brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
+@media(max-width:800px){#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}}
+</style>
 </head>
 <body>
 <header class="site-header">
-  <a class="logo" href="index.html" style="text-decoration:none;color:#fff">PC<span>Pilot</span></a>
+  <a id="brand-logo" class="logo" href="index.html" aria-label="SystemFit PC home">
+  <span class="brand-monogram" aria-hidden="true">S<span>F</span></span>
+  <span class="brand-wordmark"><span class="brand-system">System</span><span class="brand-fit">Fit</span></span>
+  <span class="brand-pc">PC</span>
+</a>
   <nav class="nav" aria-label="Main navigation">
     <a href="index.html">Home</a>
     <details class="tool-dropdown summary-active">
@@ -268,7 +282,7 @@ a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255
 
 <script>
 /* =========================================================
-   PCPilot hardware scores — benchmark data
+   SystemFit PC hardware scores — benchmark data
    ---------------------------------------------------------
    Scores are normalized 1080p gaming rankings where available.
    Direct = current chart; bridged = legacy chart scaled through
