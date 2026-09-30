@@ -451,11 +451,14 @@ a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255
 /* Hover preview and click-pinned tools menu */
 .tool-dropdown{--menu-duration:190ms}
 .tool-menu{transform-origin:top center;animation:tools-expand var(--menu-duration) cubic-bezier(.2,.75,.2,1) both}
-@keyframes tools-expand{from{opacity:0;transform:translate(-50%,-9px) scale(.975)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+@keyframes tools-expand{from{opacity:0;transform:translateY(-9px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}
 .tool-dropdown.is-closing .tool-menu{animation:tools-collapse 150ms cubic-bezier(.4,0,.8,.5) both}
-@keyframes tools-collapse{from{opacity:1;transform:translate(-50%,0) scale(1)}to{opacity:0;transform:translate(-50%,-6px) scale(.985)}}
+@keyframes tools-collapse{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}
 @media(max-width:800px){.tool-menu{animation-name:tools-expand-mobile}.tool-dropdown.is-closing .tool-menu{animation-name:tools-collapse-mobile}@keyframes tools-expand-mobile{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes tools-collapse-mobile{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}}
 @media(prefers-reduced-motion:reduce){.tool-menu,.tool-dropdown.is-closing .tool-menu{animation:none}}
+
+/* Keep the flyout inside the viewport at the right-hand end of the header */
+.tool-dropdown .tool-menu{left:auto;right:0;transform:none;transform-origin:top right}
 </style>
 </head>
 
