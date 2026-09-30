@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Plan a gaming or productivity PC with a guided, step-by-step build planner and practical part compatibility checks.">
-<title>PCPilot — PC Build Planner</title>
+<title>SystemFit PC — PC Build Planner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -122,11 +122,25 @@ footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:
 @media(max-width:640px){.site-header{height:auto;min-height:66px;align-items:flex-start;flex-direction:column;gap:5px;padding:10px 14px}.nav{width:100%;justify-content:space-between;gap:2px}.nav>a,.tool-dropdown summary{font-size:12px;padding:8px 9px}.tool-menu{left:auto;right:-60px;transform:none}.wrap{padding:25px 13px 48px}.hero p{font-size:14px}.step{padding:16px}.fields,.fields.three{grid-template-columns:1fr}.field.full{grid-column:auto}.goal-row{grid-template-columns:1fr}.goal-choice label{min-height:60px}.preset-row{display:grid;grid-template-columns:1fr}.summary-card{padding:15px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 @media print{body{background:#fff;color:#111}.site-header,.hero-note,.preset-row,.builder,.summary-actions,footer{display:none!important}.wrap{padding:0}.layout{display:block}.summary{position:static}.summary-card{background:#fff;color:#111;border:1px solid #ccc;box-shadow:none}.part-line{background:#fff;color:#111}.part-line span:nth-child(2),.source-note,.tip-list li{color:#333}.status-badge{color:#111}}
-@keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}@media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}</style>
+@keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}@media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}
+/* SystemFit PC wordmark */
+#brand-logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap}
+#brand-logo .brand-monogram{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(159,142,255,.38);border-radius:12px;background:linear-gradient(145deg,rgba(119,94,255,.3),rgba(63,179,231,.15));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 18px rgba(73,62,170,.16);font:800 12px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.09em;color:#f8f7ff}
+#brand-logo .brand-monogram span{color:#86dcff}
+#brand-logo .brand-wordmark{display:inline-flex;align-items:center;font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.055em;color:#f5f7fc}
+#brand-logo .brand-system{color:#f5f7fc}
+#brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+#brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
+@media(max-width:800px){#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}}
+</style>
 </head>
 <body>
 <header class="site-header">
-  <a class="logo" href="index.html">PC<span>Pilot</span></a>
+  <a id="brand-logo" class="logo" href="index.html" aria-label="SystemFit PC home">
+  <span class="brand-monogram" aria-hidden="true">S<span>F</span></span>
+  <span class="brand-wordmark"><span class="brand-system">System</span><span class="brand-fit">Fit</span></span>
+  <span class="brand-pc">PC</span>
+</a>
   <nav class="nav" aria-label="Main navigation">
     <a href="index.html">Home</a>
     <details class="tool-dropdown" id="toolsMenu">
@@ -146,9 +160,9 @@ footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:
 <main class="wrap">
   <section class="hero">
     <div>
-      <span class="eyebrow"><i></i> PCPilot Smart Build</span>
+      <span class="eyebrow"><i></i> SystemFit PC Smart Build</span>
       <h1>Build a PC that <span>fits together.</span></h1>
-      <p>Start with gaming, productivity or both. Then choose a budget and parts one step at a time while PCPilot checks fit and compatibility.</p>
+      <p>Start with gaming, productivity or both. Then choose a budget and parts one step at a time while SystemFit PC checks fit and compatibility.</p>
     </div>
     <aside class="hero-note">
       <strong>Built for real decisions, not just a parts list.</strong>
@@ -182,7 +196,7 @@ footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:
           <button type="button" class="choice-card" data-budget="balanced"><b>$900–$1,500</b><small>More room for performance</small></button>
           <button type="button" class="choice-card" data-budget="high"><b>$1,500+</b><small>Higher-end parts and expansion</small></button>
         </div>
-        <p class="budget-note">Broad USD planning guides only. Local prices, taxes and used-part deals vary; PCPilot does not fetch live prices.</p>
+        <p class="budget-note">Broad USD planning guides only. Local prices, taxes and used-part deals vary; SystemFit PC does not fetch live prices.</p>
         <button type="button" class="step-back" data-back="2">← Change workload</button>
       </section>
       <section class="step wizard-step" id="workloadStep" data-stage="2" hidden>
@@ -259,7 +273,7 @@ footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:
     <a href="https://www.amd.com/content/dam/amd/en/documents/partner-hub/radeon/radeon-rx-9000-series-quick-reference-guide-non-competitive.pdf" target="_blank" rel="noopener">AMD Radeon RX 9000 specifications</a>.
   </section>
 </main>
-<footer>PCPilot build planner · Compatibility checks are a starting point. Confirm the exact part specifications and BIOS support before purchase.</footer>
+<footer>SystemFit PC build planner · Compatibility checks are a starting point. Confirm the exact part specifications and BIOS support before purchase.</footer>
 <script>
 const CPU_DATA=[
 {id:"r3-4100",name:"AMD Ryzen 3 4100",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"entry",igpu:false},
