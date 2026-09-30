@@ -886,69 +886,100 @@ system factors.
 ========================================================= */
 
 const cpuData = [
-
+["Intel Pentium G4560",18],["Intel Core i3-2100",20],
+["Intel Core i5-2400",25],
 ["Intel Core i5-2500K",28],
 ["Intel Core i7-2600K",32],
 ["Intel Core i5-3570K",31],
 ["Intel Core i7-3770K",36],
+["Intel Core i5-4440",32],
 ["Intel Core i5-4670K",34],
+["Intel Core i7-4770K",37],
 ["Intel Core i7-4790K",40],
+["Intel Core i5-4690K",36],
+["Intel Core i7-5775C",41],
 ["Intel Core i5-6600K",39],
 ["Intel Core i7-6700K",44],
+["Intel Core i5-7400",40],
 ["Intel Core i5-7600K",44],
 ["Intel Core i7-7700K",49],
+["Intel Core i3-8100",43],
 ["Intel Core i5-8400",48],
+["Intel Core i5-8600K",51],
 ["Intel Core i7-8700K",57],
+["Intel Core i7-8086K",56],
 ["Intel Core i5-9400F",49],
+["Intel Core i5-9600K",53],
 ["Intel Core i7-9700K",61],
 ["Intel Core i9-9900K",68],
+["Intel Core i3-10100F",47],
 ["Intel Core i5-10400F",54],
+["Intel Core i5-10600K",58],
 ["Intel Core i7-10700K",66],
 ["Intel Core i9-10900K",72],
 ["Intel Core i5-11400F",59],
+["Intel Core i5-11600K",63],
 ["Intel Core i7-11700K",69],
 ["Intel Core i9-11900K",72],
+["Intel Core i3-12100F",61],
 ["Intel Core i5-12400F",70],
 ["Intel Core i5-12600K",77],
 ["Intel Core i7-12700K",84],
 ["Intel Core i9-12900K",89],
+["Intel Core i3-13100F",64],
 ["Intel Core i5-13400F",74],
 ["Intel Core i5-13600K",86],
 ["Intel Core i7-13700K",92],
 ["Intel Core i9-13900K",96],
+["Intel Core i3-14100F",66],
 ["Intel Core i5-14400F",76],
 ["Intel Core i5-14600K",88],
 ["Intel Core i7-14700K",95],
 ["Intel Core i9-14900K",99],
-
+["Intel Core Ultra 5 225F",77],
+["Intel Core Ultra 5 225",78],
+["Intel Core Ultra 5 245K",86],
+["Intel Core Ultra 7 265K",92],
+["Intel Core Ultra 9 285K",96],["Intel Core Ultra 7 265KF",91],["Intel Core Ultra 5 245KF",85],["Intel Core i9-10900F",70],["Intel Core i7-10700F",64],["Intel Core i5-12400",69],
+["AMD FX-8350",22],
+["AMD Ryzen 3 1200",23],["AMD Ryzen 3 2200G",27],["AMD Ryzen 5 2400G",30],["AMD Ryzen 5 3400G",37],
+["AMD Ryzen 5 1400",26],
 ["AMD Ryzen 5 1600",31],
 ["AMD Ryzen 7 1700",34],
 ["AMD Ryzen 5 2600",38],
 ["AMD Ryzen 7 2700X",43],
+["AMD Ryzen 5 3300X",45],
 ["AMD Ryzen 5 3600",50],
 ["AMD Ryzen 7 3700X",55],
 ["AMD Ryzen 5 5600",67],
 ["AMD Ryzen 5 5600X",69],
 ["AMD Ryzen 7 5700X",72],
+["AMD Ryzen 7 5700X3D",82],
 ["AMD Ryzen 7 5800X",75],
 ["AMD Ryzen 7 5800X3D",87],
 ["AMD Ryzen 9 5900X",82],
 ["AMD Ryzen 9 5950X",87],
+["AMD Ryzen 5 7500F",76],
 ["AMD Ryzen 5 7600",78],
 ["AMD Ryzen 5 7600X",80],
 ["AMD Ryzen 7 7700",82],
 ["AMD Ryzen 7 7700X",84],
 ["AMD Ryzen 7 7800X3D",95],
+["AMD Ryzen 9 7900",88],
 ["AMD Ryzen 9 7900X",91],
 ["AMD Ryzen 9 7950X",95],
 ["AMD Ryzen 5 8400F",73],
+["AMD Ryzen 5 8500G",71],
 ["AMD Ryzen 5 8600G",75],
 ["AMD Ryzen 7 8700G",80],
+["AMD Ryzen 5 9600X",89],
 ["AMD Ryzen 7 9700X",94],
 ["AMD Ryzen 7 9800X3D",100],
 ["AMD Ryzen 9 9900X",97],
-["AMD Ryzen 9 9950X",100]
-
+["AMD Ryzen 9 9950X",100],
+["AMD Ryzen 7 9850X3D",100],
+["AMD Ryzen 9 9900X3D",99],
+["AMD Ryzen 9 9950X3D",100]
 ];
 
 
@@ -957,15 +988,25 @@ const cpuData = [
 ========================================================= */
 
 const gpuData = [
-
-["NVIDIA GeForce GTX 750 Ti",18],
+["NVIDIA GeForce GT 1030",15],["NVIDIA GeForce GTX 750 Ti",18],
+["NVIDIA GeForce GTX 950",22],
 ["NVIDIA GeForce GTX 960",28],
 ["NVIDIA GeForce GTX 970",34],
 ["NVIDIA GeForce GTX 980",39],
+["NVIDIA GeForce GTX 980 Ti",43],
+["NVIDIA GeForce GTX 1050",27],
+["NVIDIA GeForce GTX 1050 Ti",31],
+["NVIDIA GeForce GTX 1060 3GB",39],
 ["NVIDIA GeForce GTX 1060 6GB",43],
 ["NVIDIA GeForce GTX 1070",51],
+["NVIDIA GeForce GTX 1070 Ti",55],
 ["NVIDIA GeForce GTX 1080",58],
 ["NVIDIA GeForce GTX 1080 Ti",67],
+["NVIDIA GeForce GTX 1650",34],
+["NVIDIA GeForce GTX 1650 Super",40],
+["NVIDIA GeForce GTX 1660",43],
+["NVIDIA GeForce GTX 1660 Super",47],
+["NVIDIA GeForce GTX 1660 Ti",49],
 ["NVIDIA GeForce RTX 2060",55],
 ["NVIDIA GeForce RTX 2060 Super",59],
 ["NVIDIA GeForce RTX 2070",61],
@@ -973,6 +1014,7 @@ const gpuData = [
 ["NVIDIA GeForce RTX 2080",68],
 ["NVIDIA GeForce RTX 2080 Super",71],
 ["NVIDIA GeForce RTX 2080 Ti",76],
+["NVIDIA GeForce RTX 3050 8GB",45],
 ["NVIDIA GeForce RTX 3060",57],
 ["NVIDIA GeForce RTX 3060 Ti",68],
 ["NVIDIA GeForce RTX 3070",73],
@@ -990,7 +1032,19 @@ const gpuData = [
 ["NVIDIA GeForce RTX 4080",96],
 ["NVIDIA GeForce RTX 4080 Super",98],
 ["NVIDIA GeForce RTX 4090",100],
-
+["NVIDIA GeForce RTX 5050",55],
+["NVIDIA GeForce RTX 5060",63],
+["NVIDIA GeForce RTX 5060 Ti 8GB",67],
+["NVIDIA GeForce RTX 5060 Ti 16GB",69],
+["NVIDIA GeForce RTX 5070",76],
+["NVIDIA GeForce RTX 5070 Ti",86],
+["NVIDIA GeForce RTX 5080",96],
+["NVIDIA GeForce RTX 5090",100],["NVIDIA GeForce RTX 5080 Laptop",86],["NVIDIA GeForce RTX 5070 Laptop",74],
+["AMD Radeon R7 370",18],["AMD Radeon RX 460",21],
+["AMD Radeon RX 470",27],
+["AMD Radeon RX 480",29],
+["AMD Radeon RX 550",17],
+["AMD Radeon RX 560",22],
 ["AMD Radeon RX 570",30],
 ["AMD Radeon RX 580",35],
 ["AMD Radeon RX 590",38],
@@ -998,9 +1052,11 @@ const gpuData = [
 ["AMD Radeon RX 5600 XT",49],
 ["AMD Radeon RX 5700",55],
 ["AMD Radeon RX 5700 XT",60],
+["AMD Radeon RX 6500 XT",33],
 ["AMD Radeon RX 6600",54],
 ["AMD Radeon RX 6600 XT",59],
 ["AMD Radeon RX 6650 XT",62],
+["AMD Radeon RX 6700",65],
 ["AMD Radeon RX 6700 XT",70],
 ["AMD Radeon RX 6750 XT",73],
 ["AMD Radeon RX 6800",79],
@@ -1014,11 +1070,18 @@ const gpuData = [
 ["AMD Radeon RX 7900 GRE",83],
 ["AMD Radeon RX 7900 XT",91],
 ["AMD Radeon RX 7900 XTX",98],
-
+["AMD Radeon RX 9060",72],
+["AMD Radeon RX 9060 XT 8GB",76],
+["AMD Radeon RX 9060 XT 16GB",79],
+["AMD Radeon RX 9070",88],
+["AMD Radeon RX 9070 GRE",84],
+["AMD Radeon RX 9070 XT",94],["AMD Radeon RX 9050",52],["AMD Radeon RX 9050 4GB",47],["AMD Radeon RX 9060 XT LP",75],["AMD Radeon RX 9070 GRE",84],
+["Intel Arc A380",25],
 ["Intel Arc A580",51],
 ["Intel Arc A750",57],
-["Intel Arc A770",62]
-
+["Intel Arc A770",62],
+["Intel Arc B570",56],
+["Intel Arc B580",64]
 ];
 
 
@@ -1032,13 +1095,6 @@ const gpuSelect = document.getElementById("gpu");
 function populateCPU(list = cpuData) {
 
     cpuSelect.innerHTML = "";
-
-    const placeholder = document.createElement("option");
-    placeholder.value = "";
-    placeholder.textContent = "— Select a CPU —";
-    placeholder.disabled = false;
-    placeholder.selected = true;
-    cpuSelect.appendChild(placeholder);
 
     list.forEach((cpu, index) => {
 
@@ -1056,13 +1112,6 @@ function populateCPU(list = cpuData) {
 function populateGPU(list = gpuData) {
 
     gpuSelect.innerHTML = "";
-
-    const placeholder = document.createElement("option");
-    placeholder.value = "";
-    placeholder.textContent = "— Select a GPU —";
-    placeholder.disabled = false;
-    placeholder.selected = true;
-    gpuSelect.appendChild(placeholder);
 
     list.forEach((gpu, index) => {
 
@@ -1178,13 +1227,7 @@ function calculate() {
     const cpu = cpuData.find(entry => entry[0] === cpuSelect.value);
     const gpu = gpuData.find(entry => entry[0] === gpuSelect.value);
 
-    if (!cpu || !gpu) {
-        document.getElementById("resultTitle").textContent = "Select Your CPU & GPU";
-        document.getElementById("resultSubtitle").textContent = "Choose both components above to calculate the estimated balance.";
-        document.getElementById("badge").textContent = "Waiting for hardware";
-        document.getElementById("explanation").textContent = "Select a CPU and GPU from the lists above, then click Calculate Bottleneck.";
-        return;
-    }
+    if (!cpu || !gpu) return;
 
     updateBrandUI("cpu");
     updateBrandUI("gpu");
@@ -1560,12 +1603,10 @@ function calculate() {
 
 
 /* =========================================================
-   INITIAL STATE
-   Start with no CPU/GPU selected. The user must choose both.
+   DEFAULT CALCULATION
 ========================================================= */
 
-updateBrandUI("cpu");
-updateBrandUI("gpu");
+calculate();
 
 </script>
 
