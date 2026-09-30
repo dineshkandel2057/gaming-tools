@@ -10,8 +10,7 @@
 <title>CPU & GPU Bottleneck Calculator | GamingTools</title>
 
 <meta name="description"
-content="Free CPU and GPU bottleneck calculator. Compare your CPU and GPU at different resolutions, game types and FPS targets.">
-
+content="Free CPU and GPU bottleneck calculator. Get an estimated CPU or GPU limitation based on your hardware, resolution, game type and target FPS.">
 
 <style>
 
@@ -21,229 +20,217 @@ content="Free CPU and GPU bottleneck calculator. Compare your CPU and GPU at dif
     padding: 0;
 }
 
-
 body {
-
     font-family: Arial, sans-serif;
-
     background: #0f1117;
-
     color: #ffffff;
-
     line-height: 1.6;
 }
 
-
 header {
-
     background: #11141c;
-
     border-bottom: 1px solid #252936;
 }
 
-
 .nav {
-
     max-width: 1100px;
-
     margin: auto;
-
     padding: 20px;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 }
 
-
 .logo {
-
     font-size: 24px;
-
     font-weight: bold;
 }
 
-
 .logo span {
-
     color: #6c63ff;
 }
 
-
 nav a {
-
     color: #aaa;
-
     text-decoration: none;
 }
 
-
 nav a:hover {
-
-    color: #ffffff;
+    color: #fff;
 }
 
-
 .container {
-
     max-width: 850px;
-
     margin: auto;
-
     padding: 60px 20px;
 }
 
-
 .title {
-
     text-align: center;
-
     margin-bottom: 40px;
 }
 
-
 .title h1 {
-
     font-size: 42px;
-
     margin-bottom: 15px;
 }
 
-
 .title h1 span {
-
     color: #6c63ff;
 }
 
-
 .title p {
-
     color: #999;
-
     max-width: 680px;
-
     margin: auto;
 }
 
-
 .calculator {
-
     background: #171a23;
-
     border: 1px solid #292d39;
-
     border-radius: 15px;
-
     padding: 30px;
 }
 
-
 .field {
-
     margin-bottom: 24px;
 }
 
-
 label {
-
     display: block;
-
     margin-bottom: 8px;
-
     font-weight: bold;
 }
 
-
 select {
-
     width: 100%;
-
     padding: 13px;
 
     border-radius: 8px;
-
     border: 1px solid #343846;
 
     background: #0f1117;
-
-    color: #ffffff;
+    color: white;
 
     font-size: 16px;
 }
 
-
 select:focus {
-
     outline: none;
-
     border-color: #6c63ff;
 }
 
-
 .calculate {
-
     width: 100%;
-
     padding: 14px;
 
     border: none;
-
     border-radius: 8px;
 
     background: #6c63ff;
-
     color: white;
 
     font-size: 17px;
-
     font-weight: bold;
 
     cursor: pointer;
 }
 
-
 .calculate:hover {
-
     background: #574fff;
 }
 
+/* RESULT */
 
 .result {
-
     display: none;
 
     margin-top: 30px;
-
     padding: 25px;
 
     border-radius: 12px;
 
     background: #11141c;
-
     border: 1px solid #343846;
 }
 
-
 .result h2 {
-
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-size: 26px;
 }
 
-
-.result p {
-
+.result-description {
     color: #aaa;
-
-    margin-top: 10px;
+    margin-bottom: 22px;
 }
 
+/* PERFORMANCE BAR */
+
+.bar-labels {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    color: #aaa;
+}
+
+.performance-bar {
+    width: 100%;
+    height: 14px;
+
+    background: #292d39;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+}
+
+.performance-fill {
+    height: 100%;
+
+    width: 50%;
+
+    background: #6c63ff;
+
+    transition: width 0.5s ease;
+}
+
+/* WHY */
+
+.why {
+    padding: 18px;
+
+    background: #171a23;
+
+    border-radius: 10px;
+
+    margin-bottom: 18px;
+}
+
+.why h3 {
+    margin-bottom: 8px;
+}
+
+.why p {
+    color: #aaa;
+}
+
+/* ESTIMATE */
+
+.estimate {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* NOTE */
 
 .note {
-
     margin-top: 30px;
-
     padding: 20px;
 
     background: #171a23;
@@ -255,9 +242,7 @@ select:focus {
     color: #aaa;
 }
 
-
 footer {
-
     margin-top: 50px;
 
     border-top: 1px solid #252936;
@@ -269,17 +254,13 @@ footer {
     color: #777;
 }
 
-
 @media (max-width: 600px) {
 
     .title h1 {
-
         font-size: 32px;
     }
 
-
     .calculator {
-
         padding: 20px;
     }
 
@@ -302,7 +283,6 @@ footer {
 Gaming<span>Tools</span>
 
 </div>
-
 
 <nav>
 
@@ -331,11 +311,10 @@ CPU & GPU
 
 </h1>
 
-
 <p>
 
-Select your hardware, resolution, game type and target FPS
-to get an estimated performance limitation.
+Estimate which component is more likely to limit gaming
+performance based on your hardware and gaming scenario.
 
 </p>
 
@@ -351,15 +330,10 @@ to get an estimated performance limitation.
 <div class="field">
 
 <label for="cpu">
-
 Select your CPU
-
 </label>
 
-
-<select id="cpu">
-
-</select>
+<select id="cpu"></select>
 
 </div>
 
@@ -370,15 +344,10 @@ Select your CPU
 <div class="field">
 
 <label for="gpu">
-
 Select your GPU
-
 </label>
 
-
-<select id="gpu">
-
-</select>
+<select id="gpu"></select>
 
 </div>
 
@@ -389,32 +358,21 @@ Select your GPU
 <div class="field">
 
 <label for="resolution">
-
 Gaming Resolution
-
 </label>
-
 
 <select id="resolution">
 
 <option value="1080">
-
 1920 × 1080 (1080p)
-
 </option>
-
 
 <option value="1440">
-
 2560 × 1440 (1440p)
-
 </option>
 
-
 <option value="2160">
-
 3840 × 2160 (4K)
-
 </option>
 
 </select>
@@ -423,44 +381,30 @@ Gaming Resolution
 
 
 
-<!-- GAME TYPE -->
+<!-- GAME -->
 
 <div class="field">
 
 <label for="gameType">
-
 Game Type
-
 </label>
-
 
 <select id="gameType">
 
 <option value="mixed">
-
 General Gaming
-
 </option>
-
 
 <option value="esports">
-
 Esports / Competitive
-
 </option>
-
 
 <option value="aaa">
-
 AAA / Story Games
-
 </option>
 
-
 <option value="simulation">
-
 Simulation / Strategy
-
 </option>
 
 </select>
@@ -474,46 +418,29 @@ Simulation / Strategy
 <div class="field">
 
 <label for="targetFps">
-
 Target FPS
-
 </label>
-
 
 <select id="targetFps">
 
 <option value="60">
-
 60 FPS
-
 </option>
-
 
 <option value="120">
-
 120 FPS
-
 </option>
-
 
 <option value="144">
-
 144 FPS
-
 </option>
-
 
 <option value="165">
-
 165 FPS
-
 </option>
 
-
 <option value="240">
-
 240 FPS
-
 </option>
 
 </select>
@@ -532,13 +459,71 @@ Calculate
 
 
 
+<!-- RESULT -->
+
 <div
 class="result"
 id="result">
 
+
 <h2 id="resultTitle"></h2>
 
-<p id="resultText"></p>
+
+<p
+class="result-description"
+id="resultDescription">
+</p>
+
+
+
+<div class="bar-labels">
+
+<span>
+CPU
+</span>
+
+<span>
+GPU
+</span>
+
+</div>
+
+
+<div class="performance-bar">
+
+<div
+class="performance-fill"
+id="performanceFill">
+</div>
+
+</div>
+
+
+
+<div class="why">
+
+<h3>
+Why?
+</h3>
+
+<p id="whyText">
+</p>
+
+</div>
+
+
+
+<p
+class="estimate">
+
+<strong>Estimate only:</strong>
+
+This result is based on generalized hardware performance
+and workload assumptions. Individual games can behave
+very differently.
+
+</p>
+
 
 </div>
 
@@ -551,12 +536,11 @@ id="result">
 
 <strong>Important:</strong>
 
-This calculator provides an estimate rather than an exact
-measurement.
+A CPU/GPU bottleneck is not a fixed percentage.
 
-Actual results vary depending on the specific game,
-graphics settings, RAM, drivers, background programs,
-CPU/GPU clocks and other system factors.
+Game engine, graphics settings, resolution, frame-rate
+target, RAM, drivers and background processes can all
+change which component becomes the limitation.
 
 </div>
 
@@ -568,16 +552,14 @@ CPU/GPU clocks and other system factors.
 <footer>
 
 <p>
-
 © 2026 GamingTools. Free tools for PC gamers.
-
 </p>
 
 </footer>
 
 
 
-<!-- LOAD HARDWARE DATABASE -->
+<!-- LOAD DATABASE -->
 
 <script src="data.js"></script>
 
@@ -586,10 +568,9 @@ CPU/GPU clocks and other system factors.
 <script>
 
 
-/* ==========================================
-   LOAD CPU DATABASE
-   ========================================== */
-
+/* =========================================
+   LOAD CPU OPTIONS
+   ========================================= */
 
 const cpuSelect =
 document.querySelector("#cpu");
@@ -600,14 +581,11 @@ cpuData.forEach(function(cpu) {
     const option =
     document.createElement("option");
 
-
     option.value =
     cpu.id;
 
-
     option.textContent =
     cpu.name;
-
 
     cpuSelect.appendChild(option);
 
@@ -615,10 +593,9 @@ cpuData.forEach(function(cpu) {
 
 
 
-/* ==========================================
-   LOAD GPU DATABASE
-   ========================================== */
-
+/* =========================================
+   LOAD GPU OPTIONS
+   ========================================= */
 
 const gpuSelect =
 document.querySelector("#gpu");
@@ -629,14 +606,11 @@ gpuData.forEach(function(gpu) {
     const option =
     document.createElement("option");
 
-
     option.value =
     gpu.id;
 
-
     option.textContent =
     gpu.name;
-
 
     gpuSelect.appendChild(option);
 
@@ -644,10 +618,9 @@ gpuData.forEach(function(gpu) {
 
 
 
-/* ==========================================
+/* =========================================
    CALCULATOR
-   ========================================== */
-
+   ========================================= */
 
 const calculateButton =
 document.querySelector("#calculateButton");
@@ -658,8 +631,6 @@ calculateButton.addEventListener(
 function() {
 
 
-    /* Get selected CPU */
-
     const selectedCpu =
     cpuData.find(function(cpu) {
 
@@ -668,9 +639,6 @@ function() {
     });
 
 
-
-    /* Get selected GPU */
-
     const selectedGpu =
     gpuData.find(function(gpu) {
 
@@ -678,9 +646,6 @@ function() {
 
     });
 
-
-
-    /* Get settings */
 
     const resolution =
     document.querySelector("#resolution").value;
@@ -696,9 +661,6 @@ function() {
     );
 
 
-
-    /* Result elements */
-
     const result =
     document.querySelector("#result");
 
@@ -707,17 +669,24 @@ function() {
     document.querySelector("#resultTitle");
 
 
-    const resultText =
-    document.querySelector("#resultText");
+    const resultDescription =
+    document.querySelector("#resultDescription");
+
+
+    const performanceFill =
+    document.querySelector("#performanceFill");
+
+
+    const whyText =
+    document.querySelector("#whyText");
 
 
 
     /*
-    ==========================================
-    START WITH HARDWARE CAPABILITY
-    ==========================================
+    =========================================
+    START WITH HARDWARE SCORES
+    =========================================
     */
-
 
     let cpuCapacity =
     selectedCpu.score;
@@ -729,230 +698,274 @@ function() {
 
 
     /*
-    ==========================================
-    RESOLUTION
-
-    1080p:
-    CPU pressure increases.
-
-    1440p:
-    Balanced.
-
-    4K:
-    GPU pressure increases.
-    ==========================================
+    =========================================
+    RESOLUTION PRESSURE
+    =========================================
     */
+
+    let cpuPressure =
+    1;
+
+
+    let gpuPressure =
+    1;
 
 
     if (resolution === "1080") {
 
-        cpuCapacity *= 0.92;
+        cpuPressure = 1.20;
 
-        gpuCapacity *= 1.08;
+        gpuPressure = 0.85;
 
     }
 
 
     else if (resolution === "1440") {
 
-        cpuCapacity *= 1.00;
+        cpuPressure = 1.00;
 
-        gpuCapacity *= 1.00;
+        gpuPressure = 1.00;
 
     }
 
 
     else if (resolution === "2160") {
 
-        cpuCapacity *= 1.05;
+        cpuPressure = 0.85;
 
-        gpuCapacity *= 0.78;
+        gpuPressure = 1.35;
 
     }
 
 
 
     /*
-    ==========================================
-    GAME TYPE
-
-    Esports:
-    High FPS + CPU pressure.
-
-    AAA:
-    GPU pressure.
-
-    Simulation:
-    CPU pressure.
-    ==========================================
+    =========================================
+    GAME TYPE PRESSURE
+    =========================================
     */
-
 
     if (gameType === "esports") {
 
-        cpuCapacity *= 0.85;
+        cpuPressure *= 1.20;
 
     }
 
 
-    else if (gameType === "aaa") {
+    if (gameType === "aaa") {
 
-        gpuCapacity *= 0.88;
+        gpuPressure *= 1.15;
 
     }
 
 
-    else if (gameType === "simulation") {
+    if (gameType === "simulation") {
 
-        cpuCapacity *= 0.82;
+        cpuPressure *= 1.25;
 
     }
 
 
 
     /*
-    ==========================================
-    TARGET FPS
-
-    Higher FPS targets increase CPU pressure.
-    ==========================================
+    =========================================
+    FPS PRESSURE
+    =========================================
     */
-
 
     if (targetFps === 120) {
 
-        cpuCapacity *= 0.95;
+        cpuPressure *= 1.10;
 
     }
 
 
-    else if (targetFps === 144) {
+    if (targetFps === 144) {
 
-        cpuCapacity *= 0.92;
-
-    }
-
-
-    else if (targetFps === 165) {
-
-        cpuCapacity *= 0.89;
+        cpuPressure *= 1.15;
 
     }
 
 
-    else if (targetFps === 240) {
+    if (targetFps === 165) {
 
-        cpuCapacity *= 0.80;
+        cpuPressure *= 1.20;
+
+    }
+
+
+    if (targetFps === 240) {
+
+        cpuPressure *= 1.35;
 
     }
 
 
 
     /*
-    ==========================================
-    COMPARE CAPACITY
+    =========================================
+    EFFECTIVE CAPABILITY
 
-    Lower effective capacity =
-    more likely limiting component.
-    ==========================================
+    Higher pressure means that component
+    has a harder workload.
+
+    Lower resulting capability means
+    greater chance of limitation.
+    =========================================
     */
 
-
-    const difference =
-    Math.abs(cpuCapacity - gpuCapacity);
-
-
-    const average =
-    (cpuCapacity + gpuCapacity) / 2;
+    const effectiveCpu =
+    cpuCapacity / cpuPressure;
 
 
-    const differenceRatio =
-    difference / average;
+    const effectiveGpu =
+    gpuCapacity / gpuPressure;
 
 
 
     /*
-    ==========================================
+    =========================================
+    CALCULATE TENDENCY
+
+    Percentage represents how strongly
+    the scenario leans toward CPU/GPU.
+    It is NOT a real bottleneck percentage.
+    =========================================
+    */
+
+    const total =
+    effectiveCpu + effectiveGpu;
+
+
+    let cpuPercent =
+    (effectiveGpu / total) * 100;
+
+
+    cpuPercent =
+    Math.max(
+        10,
+        Math.min(90, cpuPercent)
+    );
+
+
+    const gpuPercent =
+    100 - cpuPercent;
+
+
+
+    /*
+    =========================================
     RESULT
-    ==========================================
+    =========================================
     */
 
+    let title;
 
-    if (differenceRatio < 0.10) {
+    let description;
 
-
-        resultTitle.textContent =
-        "Relatively Balanced";
-
-
-        resultText.textContent =
-
-        "Your CPU and GPU appear reasonably balanced " +
-
-        "for " +
-        resolution +
-        "p gaming at a " +
-        targetFps +
-        " FPS target. " +
-
-        "Actual results depend heavily on the specific game, " +
-
-        "graphics settings and system configuration.";
+    let explanation;
 
 
-    }
 
+    if (cpuPercent >= 57) {
 
-    else if (cpuCapacity < gpuCapacity) {
-
-
-        resultTitle.textContent =
+        title =
         "Likely CPU-Limited";
 
 
-        resultText.textContent =
+        description =
+        "The current scenario leans toward the CPU being the primary performance limitation.";
 
-        "Your CPU is more likely to limit performance " +
 
-        "in this scenario. This becomes more noticeable " +
+        explanation =
+        "Your selected resolution, game type and FPS target create relatively more CPU workload. " +
+        "This is especially relevant when targeting high frame rates or playing CPU-heavy games.";
 
-        "at high FPS targets, lower resolutions and " +
+    }
 
-        "CPU-heavy games.";
 
+    else if (gpuPercent >= 57) {
+
+        title =
+        "Likely GPU-Limited";
+
+
+        description =
+        "The current scenario leans toward the GPU being the primary performance limitation.";
+
+
+        explanation =
+        "The selected resolution and game workload place relatively more demand on the GPU. " +
+        "Higher resolutions and demanding graphics settings generally increase GPU workload.";
 
     }
 
 
     else {
 
+        title =
+        "Relatively Balanced";
 
-        resultTitle.textContent =
-        "Likely GPU-Limited";
+
+        description =
+        "Neither component clearly dominates the estimated workload in this scenario.";
 
 
-        resultText.textContent =
-
-        "Your GPU is more likely to limit performance " +
-
-        "in this scenario. This becomes more noticeable " +
-
-        "at higher resolutions and demanding graphics settings.";
-
+        explanation =
+        "The selected CPU and GPU have relatively similar effective capability for this scenario. " +
+        "The actual limiting component can still change from game to game.";
 
     }
 
 
 
-    /* Show result */
+    /*
+    =========================================
+    DISPLAY RESULT
+    =========================================
+    */
+
+    resultTitle.textContent =
+    title;
+
+
+    resultDescription.textContent =
+    description;
+
+
+    whyText.textContent =
+    explanation;
+
+
+    /*
+    BAR
+
+    Left = CPU
+
+    Right = GPU
+
+    Width represents CPU tendency.
+    */
+
+    performanceFill.style.width =
+    cpuPercent + "%";
+
 
     result.style.display =
     "block";
 
 
-}
+    /*
+    Scroll result into view
+    */
 
-);
+    result.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+
+
+});
 
 </script>
 
