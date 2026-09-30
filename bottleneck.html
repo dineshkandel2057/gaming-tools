@@ -23,12 +23,11 @@ label{display:block;font-weight:700;font-size:13px;margin-bottom:8px}
 input,select{width:100%;height:42px;background:#0d0f15;border:1px solid #323849;color:#f4f6fa;border-radius:8px;padding:0 12px;outline:none}
 input:focus,select:focus{border-color:#6370ff}
 .search-row{margin-bottom:16px}
-.hw-card{height:76px;background:linear-gradient(135deg,#151821,#0f1117);border:1px solid #303647;border-radius:10px;padding:12px;display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.hw-card.cpu{border-left:3px solid #7657ff}.hw-card.gpu{border-left:3px solid #10a9ed}
-.brand{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;font-size:11px;font-weight:900;color:white;background:#168eea}
-.gpu .brand{background:#e92f49}.brand.nvidia{background:#43b63d}.brand.amd{background:#e62e49}
-.hw-text{min-width:0}.brand-name{font-size:10px;color:#9ba7bb;font-weight:800;letter-spacing:1px}.hw-name{font-weight:800;font-size:14px}.hw-score{font-size:10px;color:#8490a6}
 .field-help{font-size:10px;color:#76839a;margin-top:6px}
+.brand-name{font-size:10px;color:#9ba7bb;font-weight:800;letter-spacing:1px}
+.hw-score{font-size:10px;color:#8490a6}
+.scenario-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.scenario-grid > div{min-width:0}
 .full{grid-column:1/-1}.select-row{margin-top:4px}
 .btn{height:44px;border:0;border-radius:8px;background:var(--purple);color:white;font-weight:800;width:100%;cursor:pointer;margin-top:18px}
 .btn:hover{filter:brightness(1.08)}
@@ -42,15 +41,9 @@ input:focus,select:focus{border-color:#6370ff}
 .section{background:#191d26;border:1px solid #2a3040;border-radius:10px;padding:16px;margin-top:14px}.section h3{font-size:14px;margin:0 0 15px}
 .bar-row{margin:12px 0}.bar-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px}.bar{height:8px;background:#292f3d;border-radius:20px;overflow:hidden}.fill{height:100%;border-radius:20px}.fill.cpu{background:var(--cpu)}.fill.gpu{background:var(--gpu)}.fill.good{background:var(--good)}.fill.warn{background:var(--warn)}
 .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.info{background:#191d26;border:1px solid #292f3c;border-radius:9px;padding:12px}.info small{display:block;color:#8290a7;font-size:10px}.info strong{font-size:14px;margin-top:4px;display:block}
-.estimator{margin-top:20px;background:linear-gradient(180deg,#171b24,#12151c);border:1px solid #343b4d;border-radius:12px;padding:18px}
-.estimator h2{margin:0 0 5px;font-size:20px}.estimator p{color:#8996ab;font-size:12px;margin:0 0 16px}
-.est-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.estimate-main{margin-top:15px;background:#0d1016;border:1px solid #2c3342;border-radius:10px;padding:16px}
-.big-fps{font-size:42px;font-weight:900}.fps-unit{font-size:13px;color:#9ca9bd}.fps-note{font-size:11px;color:#7e8ba0;margin-top:4px}
-.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.mini{background:#191d26;border:1px solid #292f3c;border-radius:9px;padding:12px}.mini b{font-size:18px}.mini small{display:block;color:#8390a5;font-size:10px;margin-bottom:4px}
-.resolution{margin-top:14px}.res-row{display:grid;grid-template-columns:55px 1fr 52px;align-items:center;gap:10px;margin:9px 0;font-size:10px}.res-bar{height:7px;background:#292f3d;border-radius:10px;overflow:hidden}.res-fill{height:100%;background:#7357ff;border-radius:10px}
 .disclaimer{font-size:10px;color:#6f7c91;line-height:1.55;margin-top:16px}
 .hidden{display:none}
-@media(max-width:800px){.grid2,.stats,.est-grid,.info-grid{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.vs{display:none}.site-header{padding:0 18px}.nav a{padding:8px}.wrap{padding:18px 12px}.result-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:800px){.grid2,.stats,.scenario-grid,.info-grid{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.vs{display:none}.site-header{padding:0 18px}.nav a{padding:8px}.wrap{padding:18px 12px}.result-head{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
@@ -81,41 +74,51 @@ input:focus,select:focus{border-color:#6370ff}
 
     <div>
       <label>Select your CPU</label>
-      <div class="hw-card cpu" id="cpuCard"><div class="brand" id="cpuBrand">INTEL</div><div class="hw-text"><div class="brand-name" id="cpuVendor">INTEL</div><div class="hw-name" id="cpuName">Select a CPU</div><div class="hw-score" id="cpuScoreText">Relative gaming score</div></div></div>
-      <select id="cpuSelect"><option value="">— Select a CPU —</option></select>
+      <select id="cpuSelect">
+        <option value="">— Select a CPU —</option>
+      </select>
       <div class="field-help">Search above, then choose your processor from the list.</div>
     </div>
 
     <div>
       <label>Select your GPU</label>
-      <div class="hw-card gpu" id="gpuCard"><div class="brand nvidia" id="gpuBrand">NVIDIA</div><div class="hw-text"><div class="brand-name" id="gpuVendor">NVIDIA</div><div class="hw-name" id="gpuName">Select a GPU</div><div class="hw-score" id="gpuScoreText">Relative graphics score</div></div></div>
-      <select id="gpuSelect"><option value="">— Select a GPU —</option></select>
+      <select id="gpuSelect">
+        <option value="">— Select a GPU —</option>
+      </select>
       <div class="field-help">Search above, then choose your graphics card from the list.</div>
     </div>
 
-    <div class="full">
-      <label>Gaming Resolution</label>
-      <select id="resolution">
-        <option value="720">1280 × 720 (720p)</option>
-        <option value="1080" selected>1920 × 1080 (1080p)</option>
-        <option value="1440">2560 × 1440 (1440p)</option>
-        <option value="2160">3840 × 2160 (4K)</option>
-      </select>
-    </div>
-    <div class="full">
-      <label>Game Type</label>
-      <select id="gameType">
-        <option value="esports" selected>Esports / Competitive</option>
-        <option value="balanced">Mixed / General Gaming</option>
-        <option value="aaa">AAA / Story Games</option>
-        <option value="cpu">CPU-Heavy / Simulation</option>
-      </select>
-    </div>
-    <div class="full">
-      <label>Target FPS</label>
-      <select id="targetFps">
-        <option>60 FPS</option><option>120 FPS</option><option>144 FPS</option><option>165 FPS</option><option selected>240 FPS</option>
-      </select>
+    <div class="scenario-grid">
+      <div>
+        <label>Gaming Resolution</label>
+        <select id="resolution">
+          <option value="720">1280 × 720 (720p)</option>
+          <option value="1080" selected>1920 × 1080 (1080p)</option>
+          <option value="1440">2560 × 1440 (1440p)</option>
+          <option value="2160">3840 × 2160 (4K)</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Game Type</label>
+        <select id="gameType">
+          <option value="esports" selected>Esports / Competitive</option>
+          <option value="balanced">Mixed / General Gaming</option>
+          <option value="aaa">AAA / Story Games</option>
+          <option value="cpu">CPU-Heavy / Simulation</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Target FPS</label>
+        <select id="targetFps">
+          <option>60 FPS</option>
+          <option>120 FPS</option>
+          <option>144 FPS</option>
+          <option>165 FPS</option>
+          <option selected>240 FPS</option>
+        </select>
+      </div>
     </div>
   </div>
 
@@ -154,55 +157,6 @@ input:focus,select:focus{border-color:#6370ff}
       <div class="info"><small>Game Type</small><strong id="infoGame"></strong></div>
       <div class="info"><small>Primary Limitation</small><strong id="infoLimit"></strong></div>
       <div class="info"><small>Relative Performance Gap</small><strong id="gap"></strong></div>
-    </div>
-
-    <!-- NEW FEATURE: FPS ESTIMATOR -->
-    <div class="estimator">
-      <h2>Game FPS Estimator</h2>
-      <p>Estimate expected gaming performance from your selected CPU, GPU, resolution and workload. These are modeled estimates, not measured benchmark results.</p>
-      <div class="est-grid">
-        <div>
-          <label>Game</label>
-          <select id="game">
-            <option value="valorant">Valorant</option>
-            <option value="cs2">Counter-Strike 2</option>
-            <option value="fortnite">Fortnite</option>
-            <option value="minecraft">Minecraft Java</option>
-            <option value="gtav">GTA V</option>
-            <option value="rdr2">Red Dead Redemption 2</option>
-            <option value="cyberpunk">Cyberpunk 2077</option>
-            <option value="hogwarts">Hogwarts Legacy</option>
-          </select>
-        </div>
-        <div>
-          <label>Graphics Preset</label>
-          <select id="preset">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high" selected>High</option>
-            <option value="ultra">Ultra</option>
-          </select>
-        </div>
-        <div>
-          <label>Ray Tracing</label>
-          <select id="rt"><option value="off" selected>Off</option><option value="on">On</option></select>
-        </div>
-      </div>
-      <button class="btn" style="margin-top:12px" onclick="estimateFPS()">Estimate FPS</button>
-
-      <div class="estimate-main">
-        <div><span class="fps-unit">Estimated Average FPS</span><div class="big-fps" id="avgFps">—</div><div class="fps-note" id="fpsNote">Select hardware and calculate first.</div></div>
-        <div class="mini-grid">
-          <div class="mini"><small>Estimated 1% Low</small><b id="lowFps">—</b></div>
-          <div class="mini"><small>Estimated CPU Load</small><b id="estCpuLoad">—</b></div>
-          <div class="mini"><small>Estimated GPU Load</small><b id="estGpuLoad">—</b></div>
-          <div class="mini"><small>Performance Level</small><b id="perfLevel">—</b></div>
-        </div>
-        <div class="resolution">
-          <h3>Resolution Comparison</h3>
-          <div id="resolutionRows"></div>
-        </div>
-      </div>
     </div>
 
     <div class="section">
@@ -280,36 +234,12 @@ function validateHardwareDatabase(list,type){
 validateHardwareDatabase(CPUs,"CPU");
 validateHardwareDatabase(GPUs,"GPU");
 
-const gameBase={valorant:280,cs2:210,fortnite:165,minecraft:190,gtav:125,rdr2:82,cyberpunk:75,hogwarts:68};
-const gameCpu={valorant:1.25,cs2:1.15,fortnite:1.08,minecraft:1.20,gtav:1.0,rdr2:.86,cyberpunk:.82,hogwarts:.80};
-const presetMult={low:1.55,medium:1.25,high:1,ultra:.82};
-const resMult={720:1.30,1080:1,1440:.72,2160:.42};
-
 function fillSelect(id,data){
  const s=document.getElementById(id);
  data.forEach((x,i)=>{const o=document.createElement("option");o.value=i;o.textContent=x.name;s.appendChild(o)});
 }
 fillSelect("cpuSelect",CPUs);fillSelect("gpuSelect",GPUs);
 
-function updateCard(type){
- const sel=document.getElementById(type+"Select"), data=(type==="cpu"?CPUs:GPUs), x=data[sel.value];
- const brand=document.getElementById(type+"Brand"), vendor=document.getElementById(type+"Vendor"), name=document.getElementById(type+"Name"), score=document.getElementById(type+"ScoreText");
- if(!x){
-   brand.textContent=type==="cpu"?"INTEL":"NVIDIA";
-   brand.className="brand "+(type==="gpu"?"nvidia":"");
-   vendor.textContent=type==="cpu"?"INTEL":"NVIDIA";
-   name.textContent=type==="cpu"?"Select a CPU":"Select a GPU";
-   score.textContent=type==="cpu"?"Relative gaming score":"Relative graphics score";
-   return;
- }
- brand.textContent=x.vendor;
- brand.className="brand "+(x.vendor==="NVIDIA"?"nvidia":"");
- vendor.textContent=x.vendor;
- name.textContent=x.name;
- score.textContent="Relative score "+getHardwareScore(x)+"/100";
-}
-document.getElementById("cpuSelect").onchange=()=>updateCard("cpu");
-document.getElementById("gpuSelect").onchange=()=>updateCard("gpu");
 
 function searchFilter(inputId,selectId,data){
  const q=document.getElementById(inputId).value.toLowerCase().trim(),s=document.getElementById(selectId),old=s.value;
@@ -352,40 +282,11 @@ function calculate(){
  document.getElementById("infoGame").textContent=document.getElementById("gameType").selectedOptions[0].text;
  document.getElementById("infoLimit").textContent=limit;document.getElementById("gap").textContent=gap+"%";
  document.getElementById("meaning").textContent=limit==="CPU"?"Your CPU is under relatively more pressure than your GPU in this scenario. This is more common when targeting high FPS, using lower resolutions, or playing CPU-heavy games. A CPU limitation is not automatically a problem if the system is delivering your desired FPS.":limit==="GPU"?"Your GPU is under relatively more pressure than your CPU in this scenario. Higher resolutions and demanding graphics workloads generally increase GPU demand. Being GPU-limited is not automatically a problem if the GPU is delivering your desired FPS.":"CPU and GPU pressure are relatively close for this scenario. That generally means neither component is disproportionately ahead of the other.";
- estimateFPS();
  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
 }
 function setBar(id,val,textId,num){document.getElementById(id).style.width=Math.max(0,Math.min(100,val))+"%";document.getElementById(textId).textContent=Math.round(num)+"%";}
 
-function estimateFPS(){
- const ci=document.getElementById("cpuSelect").value,gi=document.getElementById("gpuSelect").value;
- if(ci===""||gi===""){alert("Select a CPU and GPU first.");return}
- const c=CPUs[ci],g=GPUs[gi],game=document.getElementById("game").value,preset=document.getElementById("preset").value,rt=document.getElementById("rt").value;
- const selectedRes=document.getElementById("resolution").value;
- function calc(r){
-   let cpuCap=gameBase[game]*(getHardwareScore(c)/60)*gameCpu[game];
-   let gpuCap=gameBase[game]*(getHardwareScore(g)/60)*resMult[r]*presetMult[preset];
-   if(rt==="on") gpuCap*=.68;
-   return Math.max(5,Math.round(Math.min(cpuCap,gpuCap)));
- }
- const avg=calc(selectedRes);
- const low=Math.max(3,Math.round(avg*((game==="valorant"||game==="cs2")?.78:.68)));
- document.getElementById("avgFps").textContent=avg+" FPS";
- document.getElementById("lowFps").textContent=low+" FPS";
- const cpuLoad=Math.min(100,Math.round((avg/(gameBase[game]*(getHardwareScore(c)/60)*gameCpu[game]))*100));
- const gpuLoad=Math.min(100,Math.round((avg/(gameBase[game]*(getHardwareScore(g)/60)*resMult[selectedRes]*presetMult[preset]*(rt==="on"?.68:1)))*100));
- document.getElementById("estCpuLoad").textContent=cpuLoad+"%";
- document.getElementById("estGpuLoad").textContent=gpuLoad+"%";
- document.getElementById("perfLevel").textContent=avg>=144?"Excellent":avg>=90?"Very Good":avg>=60?"Good":avg>=30?"Playable":"Low";
- document.getElementById("fpsNote").textContent=`Modeled estimate for ${document.getElementById("game").selectedOptions[0].text}, ${document.getElementById("preset").selectedOptions[0].text}, ${selectedRes==="2160"?"4K":selectedRes+"p"}${rt==="on"?" + RT":""}.`;
- const rows=[["720",calc("720")],["1080",calc("1080")],["1440",calc("1440")],["4K",calc("2160")]];
- const maxFps=Math.max(...rows.map(x=>x[1]));
- document.getElementById("resolutionRows").innerHTML=rows.map(([label,fps])=>`<div class="res-row"><b>${label}</b><div class="res-bar"><div class="res-fill" style="width:${Math.min(100,Math.round(fps/maxFps*100))}%"></div></div><b style="text-align:right">${fps} FPS</b></div>`).join("");
-}
 
-/* Keep the initial state intentionally empty. */
-updateCard("cpu");
-updateCard("gpu");
 </script>
 </body>
 </html>
