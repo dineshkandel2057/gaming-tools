@@ -163,7 +163,7 @@ input:focus,select:focus{border-color:#6370ff}
       <h3>💡 What does this mean?</h3>
       <div style="font-size:12px;color:#9aa7bb;line-height:1.6" id="meaning"></div>
     </div>
-    <div class="disclaimer"><b>Data note:</b> Hardware scores are a normalized internal scale used for this calculator. Benchmark source information is retained separately and will only be converted into the internal scale when it can be mapped consistently. <b>Important:</b> Pressure values are scenario-demand estimates, not measured hardware utilization and not a direct prediction of FPS loss. Real-world performance varies with game engine, graphics settings, drivers, RAM, cooling, background applications and other system factors.</div>
+    <div class="disclaimer"><b>Data note:</b> Hardware scores are a normalized internal scale used for this calculator. Benchmark source information is retained separately and will only be converted into the internal scale when it can be mapped consistently. <b>Important:</b> Pressure values are modeled workload-to-capability ratios, not measured utilization or a direct prediction of FPS. Values above 100% indicate that estimated scenario demand exceeds the provisional nominal capability score. Balance also falls when the target appears out of reach. Real-world performance varies with game engine, graphics settings, drivers, RAM, cooling, background applications and other system factors.</div>
   </div>
 </section>
 </main>
@@ -252,21 +252,33 @@ document.getElementById("gpuSearch").oninput=()=>searchFilter("gpuSearch","gpuSe
 
 /*
   Scenario model:
-  - CPU demand rises with target FPS and CPU-heavy/esports workloads.
-  - GPU demand rises with target FPS, resolution and graphics-heavy workloads.
-  - Component pressure is demand divided by the component's normalized capability.
-  - The result is a heuristic scenario estimate, NOT measured utilization.
+  Scores are provisional relative-capability points, not benchmark FPS.
+  Pressure is a workload-to-capability ratio. Values over 100 mean the
+  selected target exceeds this model's nominal capability estimate.
 */
-function resolutionGpuMultiplier(r){return ({720:0.72,1080:1,1440:1.42,2160:2.05})[r]||1;}
+function resolutionGpuMultiplier(r){return ({720:0.56,1080:1,1440:1.78,2160:3.16})[r]||1;}
 function gameDemand(type){
   return {
-    esports:{cpu:1.15,gpu:0.82},
-    balanced:{cpu:1.00,gpu:1.00},
-    aaa:{cpu:0.88,gpu:1.18},
-    cpu:{cpu:1.28,gpu:0.92}
+    esports:{cpu:1.08,gpu:0.78},
+    balanced:{cpu:1,gpu:1},
+    aaa:{cpu:0.92,gpu:1.18},
+    cpu:{cpu:1.25,gpu:0.88}
   }[type]||{cpu:1,gpu:1};
 }
 function clamp(value,min=0,max=100){return Math.max(min,Math.min(max,value));}
+function modelScenario(cpuScore,gpuScore,resolution,gameType,target){
+  const demand=gameDemand(gameType);
+  const cpuLoad=42*Math.pow(target/60,0.82)*demand.cpu*100/cpuScore;
+  const gpuLoad=42*Math.pow(target/60,0.68)*demand.gpu*resolutionGpuMultiplier(resolution)*100/gpuScore;
+  const cpuSafe=Math.max(cpuLoad,0.01),gpuSafe=Math.max(gpuLoad,0.01);
+  const ratio=cpuSafe/gpuSafe;
+  const limiting=ratio>1.20?"CPU":ratio<1/1.20?"GPU":"Balanced";
+  const overload=Math.max(cpuLoad,gpuLoad);
+  const matchScore=100*Math.exp(-Math.abs(Math.log(ratio)));
+  const targetFeasibility=Math.min(1,100/Math.max(overload,100));
+  const balance=clamp(matchScore*targetFeasibility);
+  return {cpuLoad,gpuLoad,balance,limiting,overload};
+}
 
 function calculate(){
  const ci=document.getElementById("cpuSelect").value,gi=document.getElementById("gpuSelect").value;
@@ -278,24 +290,14 @@ function calculate(){
  const demand=gameDemand(gt);
  const cpuScore=getHardwareScore(c),gpuScore=getHardwareScore(g);
 
- // 60 FPS is the baseline workload. Higher target FPS increases CPU demand
- // more strongly because frame scheduling/logic is often CPU-sensitive.
- const targetFactor=Math.pow(target/60,0.72);
- const cpuDemand=targetFactor*demand.cpu*100;
- const gpuDemand=targetFactor*demand.gpu*resolutionGpuMultiplier(r)*100;
-
- const cpuPressure=clamp((cpuDemand/cpuScore)*42);
- const gpuPressure=clamp((gpuDemand/gpuScore)*42);
-
- // Balance is based on relative scenario pressure, not simply raw score gap.
- const pressureGap=Math.abs(cpuPressure-gpuPressure);
- const balance=clamp(100-pressureGap*1.35);
- const limit=cpuPressure-gpuPressure>8?"CPU":gpuPressure-cpuPressure>8?"GPU":"Balanced";
+ const scenario=modelScenario(cpuScore,gpuScore,r,gt,target);
+ const cpuPressure=scenario.cpuLoad,gpuPressure=scenario.gpuLoad;
+ const balance=scenario.balance,limit=scenario.limiting;
  const stronger=Math.max(cpuScore,gpuScore),weaker=Math.min(cpuScore,gpuScore);
  const gap=Math.round((1-weaker/stronger)*100);
 
  document.getElementById("result").classList.remove("hidden");
- document.getElementById("resultTitle").textContent=limit==="Balanced"?"Well-Balanced Pairing":`Likely ${limit}-Limited`;
+ document.getElementById("resultTitle").textContent=limit==="Balanced"?(scenario.overload>100?"Balanced Pairing — Target Stressed":"Well-Balanced Pairing"):`Likely ${limit}-Limited`;
  document.getElementById("resultPair").textContent=c.name+" + "+g.name;
  const pill=document.getElementById("limitPill");
  pill.textContent="• "+(limit==="Balanced"?"Balanced":limit+" Limited");
@@ -314,8 +316,8 @@ function calculate(){
  setBar("cpuPressure",cpuPressure,"cpuPressureText",cpuPressure);
  setBar("gpuPressure",gpuPressure,"gpuPressureText",gpuPressure);
  setBar("balanceBar",balance,"balanceText",balance);
- document.getElementById("cpuHeadroom").textContent=Math.round(100-cpuPressure)+"%";
- document.getElementById("gpuHeadroom").textContent=Math.round(100-gpuPressure)+"%";
+ document.getElementById("cpuHeadroom").textContent=Math.max(0,Math.round(100-cpuPressure))+"%";
+ document.getElementById("gpuHeadroom").textContent=Math.max(0,Math.round(100-gpuPressure))+"%";
  document.getElementById("infoResolution").textContent=r==="2160"?"4K":r+"p";
  document.getElementById("infoTarget").textContent=target+" FPS";
  document.getElementById("infoGame").textContent=document.getElementById("gameType").selectedOptions[0].text;
@@ -327,7 +329,7 @@ function calculate(){
   "The selected target and workload place relatively more modeled demand on the CPU than on the GPU. This is more likely at high target FPS, lower resolutions, esports workloads, or CPU-heavy games. A CPU-limited result is not automatically a problem if the system still reaches the target FPS.":
   limit==="GPU"?
   "The selected scenario places relatively more modeled demand on the GPU than on the CPU. Higher resolutions and graphics-heavy workloads increase GPU demand. A GPU-limited result is not automatically a problem if the GPU can deliver the target FPS.":
-  "The modeled CPU and GPU demands are relatively close for this scenario. That means neither component is disproportionately ahead of the other under the assumptions used by this calculator.";
+  scenario.overload>100?"The CPU and GPU are relatively matched, but at least one modeled load exceeds 100%. The selected target may be difficult to sustain under these assumptions.":"The modeled CPU and GPU demands are relatively close, and both remain within the model’s nominal target capacity. Real game performance can still differ.";
 
  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
 }
