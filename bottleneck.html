@@ -170,13 +170,12 @@ input:focus,select:focus{border-color:#6370ff}
 
 <script>
 /* =========================================================
-   PCPilot Hardware Database — scoring foundation
+   PCPilot hardware scores — benchmark data
    ---------------------------------------------------------
-   score = INTERNAL RELATIVE GAMING CAPABILITY (0–100).
-   sourceScore is retained as provenance only. It is NOT
-   directly substituted into the internal score because
-   different benchmark generations/testbeds are not directly
-   interchangeable.
+   Scores are normalized 1080p gaming rankings where available.
+   Direct = current chart; bridged = legacy chart scaled through
+   a common tested model; estimated = no comparable chart result.
+   CPU and GPU scales use separate reference hardware.
    ========================================================= */
 const DATABASE_VERSION = "0.4-benchmark-scores-2026-09";
 const SCORE_SCALE = {min:0,max:100,reference:"approximate source-normalized 1080p gaming performance"};
@@ -223,7 +222,8 @@ function validateHardwareDatabase(list,type){
     if(!x.id||ids.has(x.id)) throw new Error(`Duplicate/missing ${type} id: ${x.id||"unknown"}`);
     ids.add(x.id);
     if(!x.name||!x.vendor) throw new Error(`Incomplete ${type} record: ${x.id}`);
-    if(typeof x.score!=="number"||x.score<SCORE_SCALE.min||x.score>SCORE_SCALE.max) throw new Error(`Invalid ${type} score: ${x.id}`);\n    if(!["direct","bridged","estimated"].includes(x.status)||!x.scoreNote) throw new Error(`Missing score provenance: ${x.id}`);
+    if(typeof x.score!=="number"||x.score<SCORE_SCALE.min||x.score>SCORE_SCALE.max) throw new Error(`Invalid ${type} score: ${x.id}`);
+    if(!["direct","bridged","estimated"].includes(x.status)||!x.scoreNote) throw new Error(`Missing score provenance: ${x.id}`);
   });
   return true;
 }
