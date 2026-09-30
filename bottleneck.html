@@ -1033,6 +1033,13 @@ function populateCPU(list = cpuData) {
 
     cpuSelect.innerHTML = "";
 
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "— Select a CPU —";
+    placeholder.disabled = false;
+    placeholder.selected = true;
+    cpuSelect.appendChild(placeholder);
+
     list.forEach((cpu, index) => {
 
         const option = document.createElement("option");
@@ -1049,6 +1056,13 @@ function populateCPU(list = cpuData) {
 function populateGPU(list = gpuData) {
 
     gpuSelect.innerHTML = "";
+
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "— Select a GPU —";
+    placeholder.disabled = false;
+    placeholder.selected = true;
+    gpuSelect.appendChild(placeholder);
 
     list.forEach((gpu, index) => {
 
@@ -1164,7 +1178,13 @@ function calculate() {
     const cpu = cpuData.find(entry => entry[0] === cpuSelect.value);
     const gpu = gpuData.find(entry => entry[0] === gpuSelect.value);
 
-    if (!cpu || !gpu) return;
+    if (!cpu || !gpu) {
+        document.getElementById("resultTitle").textContent = "Select Your CPU & GPU";
+        document.getElementById("resultSubtitle").textContent = "Choose both components above to calculate the estimated balance.";
+        document.getElementById("badge").textContent = "Waiting for hardware";
+        document.getElementById("explanation").textContent = "Select a CPU and GPU from the lists above, then click Calculate Bottleneck.";
+        return;
+    }
 
     updateBrandUI("cpu");
     updateBrandUI("gpu");
@@ -1540,10 +1560,12 @@ function calculate() {
 
 
 /* =========================================================
-   DEFAULT CALCULATION
+   INITIAL STATE
+   Start with no CPU/GPU selected. The user must choose both.
 ========================================================= */
 
-calculate();
+updateBrandUI("cpu");
+updateBrandUI("gpu");
 
 </script>
 
