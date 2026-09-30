@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CPU & GPU Bottleneck Calculator | GamingTools</title>
+
+    <meta name="description" content="Free CPU and GPU bottleneck calculator. Estimate whether your gaming PC is likely to be CPU or GPU limited at different resolutions.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f1117;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        header {
+            border-bottom: 1px solid #252936;
+            background: #11141c;
+        }
+
+        .nav {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #6c63ff;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .title h1 span {
+            color: #6c63ff;
+        }
+
+        .title p {
+            color: #999;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .calculator {
+            background: #171a23;
+            border: 1px solid #292d39;
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .field {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 13px;
+            border-radius: 8px;
+            border: 1px solid #343846;
+            background: #0f1117;
+            color: white;
+            font-size: 16px;
+        }
+
+        .calculate {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #6c63ff;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .calculate:hover {
+            background: #574fff;
+        }
+
+        .result {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            background: #11141c;
+            border: 1px solid #343846;
+        }
+
+        .result h2 {
+            margin-bottom: 10px;
+        }
+
+        .result p {
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        .note {
+            margin-top: 30px;
+            padding: 20px;
+            background: #171a23;
+            border-left: 4px solid #6c63ff;
+            border-radius: 6px;
+            color: #aaa;
+        }
+
+        footer {
+            margin-top: 50px;
+            border-top: 1px solid #252936;
+            padding: 30px 20px;
+            text-align: center;
+            color: #777;
+        }
+
+        @media (max-width: 600px) {
+            .title h1 {
+                font-size: 32px;
+            }
+
+            .calculator {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <div class="logo">
+            Gaming<span>Tools</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<div class="container">
+
+    <div class="title">
+
+        <h1>CPU & GPU <span>Bottleneck Calculator</span></h1>
+
+        <p>
+            Get a quick estimate of whether your CPU or GPU is more likely
+            to limit gaming performance at your selected resolution.
+        </p>
+
+    </div>
+
+
+    <div class="calculator">
+
+        <div class="field">
+
+            <label for="cpu">Select your CPU</label>
+
+            <select id="cpu">
+
+                <option value="entry">Entry-level CPU</option>
+
+                <option value="mid">Mid-range CPU</option>
+
+                <option value="high">High-end CPU</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="gpu">Select your GPU</label>
+
+            <select id="gpu">
+
+                <option value="entry">Entry-level GPU</option>
+
+                <option value="mid">Mid-range GPU</option>
+
+                <option value="high">High-end GPU</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="resolution">Gaming resolution</label>
+
+            <select id="resolution">
+
+                <option value="1080">1920 × 1080 (1080p)</option>
+
+                <option value="1440">2560 × 1440 (1440p)</option>
+
+                <option value="2160">3840 × 2160 (4K)</option>
+
+            </select>
+
+        </div>
+
+
+        <button class="calculate" id="calculateButton">
+            Calculate
+        </button>
+
+
+        <div class="result" id="result">
+
+            <h2 id="resultTitle"></h2>
+
+            <p id="resultText"></p>
+
+        </div>
+
+    </div>
+
+
+    <div class="note">
+
+        <strong>Important:</strong>
+
+        This calculator provides an estimate rather than an exact
+        measurement. Actual CPU/GPU limitations vary by game,
+        graphics settings, drivers, RAM, background processes and
+        hardware configuration.
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <p>© 2026 GamingTools. Free tools for PC gamers.</p>
+
+</footer>
+
+
+<script>
+
+    const calculateButton = document.querySelector("#calculateButton");
+
+    calculateButton.addEventListener("click", function () {
+
+        const cpu = document.querySelector("#cpu").value;
+
+        const gpu = document.querySelector("#gpu").value;
+
+        const resolution = document.querySelector("#resolution").value;
+
+        const result = document.querySelector("#result");
+
+        const resultTitle = document.querySelector("#resultTitle");
+
+        const resultText = document.querySelector("#resultText");
+
+
+        let cpuScore = 0;
+
+        let gpuScore = 0;
+
+
+        if (cpu === "entry") {
+            cpuScore = 1;
+        }
+
+        if (cpu === "mid") {
+            cpuScore = 2;
+        }
+
+        if (cpu === "high") {
+            cpuScore = 3;
+        }
+
+
+        if (gpu === "entry") {
+            gpuScore = 1;
+        }
+
+        if (gpu === "mid") {
+            gpuScore = 2;
+        }
+
+        if (gpu === "high") {
+            gpuScore = 3;
+        }
+
+
+        /*
+            Higher resolutions put more workload on the GPU.
+            Therefore we give the GPU a small advantage at
+            1440p and a larger advantage at 4K.
+        */
+
+        if (resolution === "1440") {
+            gpuScore += 1;
+        }
+
+        if (resolution === "2160") {
+            gpuScore += 2;
+        }
+
+
+        if (cpuScore > gpuScore) {
+
+            resultTitle.textContent = "Likely GPU-limited";
+
+            resultText.textContent =
+                "Based on these selections, your GPU is more likely to be the limiting component at this resolution.";
+
+        }
+
+        else if (gpuScore > cpuScore) {
+
+            resultTitle.textContent = "Likely CPU-limited";
+
+            resultText.textContent =
+                "Based on these selections, your CPU is more likely to be the limiting component. Actual results will vary by game and settings.";
+
+        }
+
+        else {
+
+            resultTitle.textContent = "Relatively balanced";
+
+            resultText.textContent =
+                "Your selected CPU and GPU appear relatively balanced for this resolution based on this simplified estimate.";
+
+        }
+
+
+        result.style.display = "block";
+
+    });
+
+</script>
+
+</body>
+</html>
