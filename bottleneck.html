@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CPU & GPU Bottleneck Calculator | GamingTools</title>
+    <title>Gaming Tools - Free PC Gaming Tools & Calculators</title>
 
-    <meta name="description" content="Free CPU and GPU bottleneck calculator. Estimate whether your gaming PC is likely to be CPU or GPU limited at different resolutions.">
+    <meta name="description" content="Free PC gaming tools and calculators for FPS, hardware, bottlenecks, PSU, RAM and OBS.">
 
     <style>
         * {
@@ -55,117 +55,130 @@
             color: #ffffff;
         }
 
-        .container {
-            max-width: 850px;
+        .hero {
+            max-width: 1100px;
             margin: auto;
-            padding: 60px 20px;
-        }
-
-        .title {
+            padding: 90px 20px 70px;
             text-align: center;
-            margin-bottom: 40px;
         }
 
-        .title h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
         }
 
-        .title h1 span {
+        .hero h1 span {
             color: #6c63ff;
         }
 
-        .title p {
-            color: #999;
+        .hero p {
+            color: #aaa;
+            font-size: 19px;
             max-width: 650px;
             margin: auto;
         }
 
-        .calculator {
-            background: #171a23;
-            border: 1px solid #292d39;
-            border-radius: 15px;
-            padding: 30px;
+        .section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
         }
 
-        .field {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        select {
-            width: 100%;
-            padding: 13px;
-            border-radius: 8px;
-            border: 1px solid #343846;
-            background: #0f1117;
-            color: white;
-            font-size: 16px;
-        }
-
-        .calculate {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            background: #6c63ff;
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .calculate:hover {
-            background: #574fff;
-        }
-
-        .result {
-            display: none;
-            margin-top: 30px;
-            padding: 25px;
-            border-radius: 12px;
-            background: #11141c;
-            border: 1px solid #343846;
-        }
-
-        .result h2 {
+        .section h2 {
+            font-size: 30px;
             margin-bottom: 10px;
         }
 
-        .result p {
-            color: #aaa;
-            margin-top: 10px;
+        .section-description {
+            color: #999;
+            margin-bottom: 30px;
         }
 
-        .note {
-            margin-top: 30px;
-            padding: 20px;
+        .tools {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .tool-card {
             background: #171a23;
-            border-left: 4px solid #6c63ff;
-            border-radius: 6px;
-            color: #aaa;
+            border: 1px solid #292d39;
+            border-radius: 12px;
+            padding: 25px;
+            transition: 0.2s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            border-color: #6c63ff;
+        }
+
+        .tool-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .tool-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            color: #999;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #6c63ff;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #574fff;
+        }
+
+        .coming {
+            opacity: 0.65;
         }
 
         footer {
-            margin-top: 50px;
+            margin-top: 60px;
             border-top: 1px solid #252936;
             padding: 30px 20px;
             text-align: center;
             color: #777;
         }
 
-        @media (max-width: 600px) {
-            .title h1 {
-                font-size: 32px;
+        @media (max-width: 800px) {
+            .tools {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .calculator {
-                padding: 20px;
+            .hero h1 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .tools {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 60px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
             }
         }
     </style>
@@ -182,107 +195,164 @@
 
         <nav>
             <a href="index.html">Home</a>
+            <a href="#tools">Tools</a>
+            <a href="#guides">Guides</a>
         </nav>
 
     </div>
 </header>
 
 
-<div class="container">
+<section class="hero">
 
-    <div class="title">
+    <h1>Free Tools for <span>PC Gamers</span></h1>
 
-        <h1>CPU & GPU <span>Bottleneck Calculator</span></h1>
+    <p>
+        Calculate, optimize and understand your gaming PC.
+        Simple tools for FPS, hardware, performance and recording.
+    </p>
 
-        <p>
-            Get a quick estimate of whether your CPU or GPU is more likely
-            to limit gaming performance at your selected resolution.
-        </p>
+</section>
+
+
+<section class="section" id="tools">
+
+    <h2>Gaming Tools</h2>
+
+    <p class="section-description">
+        Free tools designed to help you get more from your gaming PC.
+    </p>
+
+
+    <div class="tools">
+
+        <!-- CPU & GPU BOTTLENECK CALCULATOR -->
+
+        <div class="tool-card">
+
+            <div class="tool-icon">⚡</div>
+
+            <h3>CPU & GPU Bottleneck Calculator</h3>
+
+            <p>
+                Estimate whether your CPU or GPU may limit gaming performance.
+            </p>
+
+            <a class="button" href="bottleneck.html">
+                Open Calculator
+            </a>
+
+        </div>
+
+
+        <!-- FPS CALCULATOR -->
+
+        <div class="tool-card coming">
+
+            <div class="tool-icon">🎮</div>
+
+            <h3>FPS Calculator</h3>
+
+            <p>
+                Estimate gaming performance based on your PC hardware.
+            </p>
+
+            <a class="button" href="#">
+                Coming Soon
+            </a>
+
+        </div>
+
+
+        <!-- PSU CALCULATOR -->
+
+        <div class="tool-card coming">
+
+            <div class="tool-icon">🔌</div>
+
+            <h3>PSU Calculator</h3>
+
+            <p>
+                Calculate the recommended power supply for your gaming PC.
+            </p>
+
+            <a class="button" href="#">
+                Coming Soon
+            </a>
+
+        </div>
+
+
+        <!-- RAM CALCULATOR -->
+
+        <div class="tool-card coming">
+
+            <div class="tool-icon">🧠</div>
+
+            <h3>RAM Calculator</h3>
+
+            <p>
+                Estimate how much RAM your gaming PC actually needs.
+            </p>
+
+            <a class="button" href="#">
+                Coming Soon
+            </a>
+
+        </div>
+
+
+        <!-- OBS BITRATE CALCULATOR -->
+
+        <div class="tool-card coming">
+
+            <div class="tool-icon">🎥</div>
+
+            <h3>OBS Bitrate Calculator</h3>
+
+            <p>
+                Find suitable recording and streaming bitrate settings.
+            </p>
+
+            <a class="button" href="#">
+                Coming Soon
+            </a>
+
+        </div>
+
+
+        <!-- PC UPGRADE CALCULATOR -->
+
+        <div class="tool-card coming">
+
+            <div class="tool-icon">🖥️</div>
+
+            <h3>PC Upgrade Calculator</h3>
+
+            <p>
+                Find which component could make the biggest difference.
+            </p>
+
+            <a class="button" href="#">
+                Coming Soon
+            </a>
+
+        </div>
 
     </div>
 
-
-    <div class="calculator">
-
-        <div class="field">
-
-            <label for="cpu">Select your CPU</label>
-
-            <select id="cpu">
-
-                <option value="entry">Entry-level CPU</option>
-
-                <option value="mid">Mid-range CPU</option>
-
-                <option value="high">High-end CPU</option>
-
-            </select>
-
-        </div>
+</section>
 
 
-        <div class="field">
+<section class="section" id="guides">
 
-            <label for="gpu">Select your GPU</label>
+    <h2>Gaming Guides</h2>
 
-            <select id="gpu">
+    <p class="section-description">
+        Practical guides for improving gaming performance and PC setup.
+    </p>
 
-                <option value="entry">Entry-level GPU</option>
-
-                <option value="mid">Mid-range GPU</option>
-
-                <option value="high">High-end GPU</option>
-
-            </select>
-
-        </div>
-
-
-        <div class="field">
-
-            <label for="resolution">Gaming resolution</label>
-
-            <select id="resolution">
-
-                <option value="1080">1920 × 1080 (1080p)</option>
-
-                <option value="1440">2560 × 1440 (1440p)</option>
-
-                <option value="2160">3840 × 2160 (4K)</option>
-
-            </select>
-
-        </div>
-
-
-        <button class="calculate" id="calculateButton">
-            Calculate
-        </button>
-
-
-        <div class="result" id="result">
-
-            <h2 id="resultTitle"></h2>
-
-            <p id="resultText"></p>
-
-        </div>
-
-    </div>
-
-
-    <div class="note">
-
-        <strong>Important:</strong>
-
-        This calculator provides an estimate rather than an exact
-        measurement. Actual CPU/GPU limitations vary by game,
-        graphics settings, drivers, RAM, background processes and
-        hardware configuration.
-
-    </div>
-
-</div>
+</section>
 
 
 <footer>
@@ -290,106 +360,6 @@
     <p>© 2026 GamingTools. Free tools for PC gamers.</p>
 
 </footer>
-
-
-<script>
-
-    const calculateButton = document.querySelector("#calculateButton");
-
-    calculateButton.addEventListener("click", function () {
-
-        const cpu = document.querySelector("#cpu").value;
-
-        const gpu = document.querySelector("#gpu").value;
-
-        const resolution = document.querySelector("#resolution").value;
-
-        const result = document.querySelector("#result");
-
-        const resultTitle = document.querySelector("#resultTitle");
-
-        const resultText = document.querySelector("#resultText");
-
-
-        let cpuScore = 0;
-
-        let gpuScore = 0;
-
-
-        if (cpu === "entry") {
-            cpuScore = 1;
-        }
-
-        if (cpu === "mid") {
-            cpuScore = 2;
-        }
-
-        if (cpu === "high") {
-            cpuScore = 3;
-        }
-
-
-        if (gpu === "entry") {
-            gpuScore = 1;
-        }
-
-        if (gpu === "mid") {
-            gpuScore = 2;
-        }
-
-        if (gpu === "high") {
-            gpuScore = 3;
-        }
-
-
-        /*
-            Higher resolutions put more workload on the GPU.
-            Therefore we give the GPU a small advantage at
-            1440p and a larger advantage at 4K.
-        */
-
-        if (resolution === "1440") {
-            gpuScore += 1;
-        }
-
-        if (resolution === "2160") {
-            gpuScore += 2;
-        }
-
-
-        if (cpuScore > gpuScore) {
-
-            resultTitle.textContent = "Likely GPU-limited";
-
-            resultText.textContent =
-                "Based on these selections, your GPU is more likely to be the limiting component at this resolution.";
-
-        }
-
-        else if (gpuScore > cpuScore) {
-
-            resultTitle.textContent = "Likely CPU-limited";
-
-            resultText.textContent =
-                "Based on these selections, your CPU is more likely to be the limiting component. Actual results will vary by game and settings.";
-
-        }
-
-        else {
-
-            resultTitle.textContent = "Relatively balanced";
-
-            resultText.textContent =
-                "Your selected CPU and GPU appear relatively balanced for this resolution based on this simplified estimate.";
-
-        }
-
-
-        result.style.display = "block";
-
-    });
-
-</script>
 
 </body>
 </html>
