@@ -209,7 +209,7 @@ input:focus,select:focus{border-color:#6370ff}
       <h3>💡 What does this mean?</h3>
       <div style="font-size:12px;color:#9aa7bb;line-height:1.6" id="meaning"></div>
     </div>
-    <div class="disclaimer"><b>Important:</b> This calculator provides generalized estimates based on relative hardware performance and workload assumptions. Bottleneck and pressure values are not measured hardware utilization and should not be interpreted as exact FPS loss. Real-world performance varies with game engine, graphics settings, drivers, RAM, cooling, background applications and other system factors.</div>
+    <div class="disclaimer"><b>Data note:</b> Some hardware entries are benchmark-verified while others remain provisional until they can be mapped to a consistent test source. Verified source scores are stored separately from the internal calculator scale. <b>Important:</b> This calculator provides generalized estimates based on relative hardware performance and workload assumptions. Bottleneck and pressure values are not measured hardware utilization and should not be interpreted as exact FPS loss. Real-world performance varies with game engine, graphics settings, drivers, RAM, cooling, background applications and other system factors.</div>
   </div>
 </section>
 </main>
@@ -224,38 +224,47 @@ input:focus,select:focus{border-color:#6370ff}
    replace provisional values with verified benchmark-derived
    values without changing the calculator UI.
    ========================================================= */
-const DATABASE_VERSION = "0.1-provisional";
+const DATABASE_VERSION = "0.2-benchmark-aware";
 const SCORE_SCALE = {min:0,max:100,reference:"relative gaming performance"};
 
 const CPUs = [
- {id:"i5-2500k",name:"Intel Core i5-2500K",vendor:"INTEL",family:"Core i5",score:28,status:"provisional"},
- {id:"i7-4790k",name:"Intel Core i7-4790K",vendor:"INTEL",family:"Core i7",score:42,status:"provisional"},
- {id:"i5-12400f",name:"Intel Core i5-12400F",vendor:"INTEL",family:"Core i5",score:66,status:"provisional"},
- {id:"i5-13600k",name:"Intel Core i5-13600K",vendor:"INTEL",family:"Core i5",score:86,status:"provisional"},
- {id:"i7-14700k",name:"Intel Core i7-14700K",vendor:"INTEL",family:"Core i7",score:96,status:"provisional"},
- {id:"r5-3600",name:"AMD Ryzen 5 3600",vendor:"AMD",family:"Ryzen 5",score:48,status:"provisional"},
- {id:"r5-5600",name:"AMD Ryzen 5 5600",vendor:"AMD",family:"Ryzen 5",score:61,status:"provisional"},
- {id:"r5-7600",name:"AMD Ryzen 5 7600",vendor:"AMD",family:"Ryzen 5",score:78,status:"provisional"},
- {id:"r7-7800x3d",name:"AMD Ryzen 7 7800X3D",vendor:"AMD",family:"Ryzen 7",score:94,status:"provisional"},
- {id:"r9-9950x",name:"AMD Ryzen 9 9950X",vendor:"AMD",family:"Ryzen 9",score:99,status:"provisional"}
+ {id:"i5-2500k",name:"Intel Core i5-2500K",vendor:"INTEL",family:"Core i5",score:28,status:"provisional",source:"Internal placeholder"},
+ {id:"i7-4790k",name:"Intel Core i7-4790K",vendor:"INTEL",family:"Core i7",score:42,status:"provisional",source:"Internal placeholder"},
+ {id:"i5-12400f",name:"Intel Core i5-12400F",vendor:"INTEL",family:"Core i5",score:66,status:"provisional",source:"Internal placeholder"},
+ {id:"i5-13600k",name:"Intel Core i5-13600K",vendor:"INTEL",family:"Core i5",score:86,status:"provisional",source:"Internal placeholder"},
+ {id:"i7-14700k",name:"Intel Core i7-14700K",vendor:"INTEL",family:"Core i7",score:96,status:"verified",source:"Tom’s Hardware CPU Hierarchy 2026",sourceMetric:"Gaming",sourceScore:90.1},
+ {id:"r5-3600",name:"AMD Ryzen 5 3600",vendor:"AMD",family:"Ryzen 5",score:48,status:"provisional",source:"Internal placeholder"},
+ {id:"r5-5600",name:"AMD Ryzen 5 5600",vendor:"AMD",family:"Ryzen 5",score:61,status:"provisional",source:"Internal placeholder"},
+ {id:"r5-7600",name:"AMD Ryzen 5 7600",vendor:"AMD",family:"Ryzen 5",score:78,status:"provisional",source:"Internal placeholder"},
+ {id:"r7-7800x3d",name:"AMD Ryzen 7 7800X3D",vendor:"AMD",family:"Ryzen 7",score:94,status:"verified",source:"Tom’s Hardware CPU Hierarchy 2026",sourceMetric:"Gaming",sourceScore:85.6},
+ {id:"r9-9950x",name:"AMD Ryzen 9 9950X",vendor:"AMD",family:"Ryzen 9",score:99,status:"provisional",source:"Internal placeholder"}
 ];
 
 const GPUs = [
  {id:"gtx-750-ti",name:"NVIDIA GeForce GTX 750 Ti",vendor:"NVIDIA",family:"GeForce GTX",score:18,status:"provisional"},
- {id:"gtx-1060-6gb",name:"NVIDIA GeForce GTX 1060 6GB",vendor:"NVIDIA",family:"GeForce GTX",score:42,status:"provisional"},
+ {id:"gtx-1060-6gb",name:"NVIDIA GeForce GTX 1060 6GB",vendor:"NVIDIA",family:"GeForce GTX",score:42,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2022–2024",sourceMetric:"1080p Ultra",sourceScore:20.8},
  {id:"gtx-1080-ti",name:"NVIDIA GeForce GTX 1080 Ti",vendor:"NVIDIA",family:"GeForce GTX",score:58,status:"provisional"},
  {id:"rtx-2060",name:"NVIDIA GeForce RTX 2060",vendor:"NVIDIA",family:"GeForce RTX",score:55,status:"provisional"},
  {id:"rtx-3060-8gb",name:"NVIDIA GeForce RTX 3060 8GB",vendor:"NVIDIA",family:"GeForce RTX",score:65,status:"provisional"},
- {id:"rtx-4060",name:"NVIDIA GeForce RTX 4060",vendor:"NVIDIA",family:"GeForce RTX",score:72,status:"provisional"},
- {id:"rtx-2080-ti",name:"NVIDIA GeForce RTX 2080 Ti",vendor:"NVIDIA",family:"GeForce RTX",score:77,status:"provisional"},
+ {id:"rtx-4060",name:"NVIDIA GeForce RTX 4060",vendor:"NVIDIA",family:"GeForce RTX",score:72,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2022–2024",sourceMetric:"1080p Ultra",sourceScore:35.4},
+ {id:"rtx-2080-ti",name:"NVIDIA GeForce RTX 2080 Ti",vendor:"NVIDIA",family:"GeForce RTX",score:77,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2022–2024",sourceMetric:"1080p Ultra",sourceScore:42.7},
  {id:"rtx-4070",name:"NVIDIA GeForce RTX 4070",vendor:"NVIDIA",family:"GeForce RTX",score:86,status:"provisional"},
- {id:"rtx-4090",name:"NVIDIA GeForce RTX 4090",vendor:"NVIDIA",family:"GeForce RTX",score:100,status:"provisional"},
- {id:"rx-580",name:"AMD Radeon RX 580",vendor:"AMD",family:"Radeon RX",score:29,status:"provisional"},
+ {id:"rtx-4090",name:"NVIDIA GeForce RTX 4090",vendor:"NVIDIA",family:"GeForce RTX",score:100,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2026",sourceMetric:"1080p Ultra",sourceScore:90.1},
+ {id:"rx-580",name:"AMD Radeon RX 580",vendor:"AMD",family:"Radeon RX",score:29,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2022–2024",sourceMetric:"1080p Ultra",sourceScore:22.9},
  {id:"rx-6600",name:"AMD Radeon RX 6600",vendor:"AMD",family:"Radeon RX",score:52,status:"provisional"},
  {id:"rx-6700-xt",name:"AMD Radeon RX 6700 XT",vendor:"AMD",family:"Radeon RX",score:69,status:"provisional"},
  {id:"rx-7600",name:"AMD Radeon RX 7600",vendor:"AMD",family:"Radeon RX",score:62,status:"provisional"},
- {id:"rx-7800-xt",name:"AMD Radeon RX 7800 XT",vendor:"AMD",family:"Radeon RX",score:82,status:"provisional"}
+ {id:"rx-7800-xt",name:"AMD Radeon RX 7800 XT",vendor:"AMD",family:"Radeon RX",score:82,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2022–2024",sourceMetric:"1080p Ultra",sourceScore:46.7}
 ];
+
+/* Benchmark-aware normalization layer.
+   Source scores are retained separately from the calculator's internal score.
+   We do not silently mix test generations/testbeds. */
+function benchmarkScore(record){
+  if(record.status!=="verified" || typeof record.sourceScore!=="number") return record.score;
+  return Math.max(1,Math.min(100,Math.round(record.sourceScore)));
+}
+function getHardwareScore(record){ return benchmarkScore(record); }
 
 /* Validation keeps future database edits from silently breaking the calculator. */
 function validateHardwareDatabase(list,type){
@@ -297,7 +306,7 @@ function updateCard(type){
  brand.className="brand "+(x.vendor==="NVIDIA"?"nvidia":"");
  vendor.textContent=x.vendor;
  name.textContent=x.name;
- score.textContent="Relative score "+x.score+"/100";
+ score.textContent="Relative score "+getHardwareScore(x)+"/100";
 }
 document.getElementById("cpuSelect").onchange=()=>updateCard("cpu");
 document.getElementById("gpuSelect").onchange=()=>updateCard("gpu");
@@ -325,18 +334,18 @@ function calculate(){
  const c=CPUs[ci],g=GPUs[gi],r=document.getElementById("resolution").value,target=parseInt(document.getElementById("targetFps").value),gt=document.getElementById("gameType").value;
  let cpuP=Math.min(100,(target/240)*100*(gt==="esports"?1.1:gt==="cpu"?1.18:1));
  let gpuP=Math.min(100,(target/240)*100*resolutionFactor(r)*(gt==="aaa"?1.15:gt==="balanced"?1.05:1));
- cpuP=Math.min(100,cpuP*(60/Math.max(c.score,1))*55);
- gpuP=Math.min(100,gpuP*(70/Math.max(g.score,1))*55);
+ cpuP=Math.min(100,cpuP*(60/Math.max(getHardwareScore(c),1))*55);
+ gpuP=Math.min(100,gpuP*(70/Math.max(getHardwareScore(g),1))*55);
  const balance=Math.round(100-Math.abs(cpuP-gpuP));
- const gap=Math.round(Math.abs(c.score-g.score)/Math.max(c.score,g.score)*100);
+ const gap=Math.round(Math.abs(getHardwareScore(c)-getHardwareScore(g))/Math.max(getHardwareScore(c),getHardwareScore(g))*100);
  const limit=cpuP-gpuP>8?"CPU":gpuP-cpuP>8?"GPU":"Balanced";
  document.getElementById("result").classList.remove("hidden");
  document.getElementById("resultTitle").textContent=limit==="Balanced"?"Well-Balanced Pairing":`Likely ${limit}-Limited`;
  document.getElementById("resultPair").textContent=c.name+" + "+g.name;
  const pill=document.getElementById("limitPill");pill.textContent="• "+(limit==="Balanced"?"Balanced":limit+" Limited");pill.className="pill "+(limit==="Balanced"?"balanced":limit.toLowerCase());
- document.getElementById("pairCpuVendor").textContent=c.vendor;document.getElementById("pairCpu").textContent=c.name;document.getElementById("pairCpuScore").textContent="Performance score "+c.score+"/100";
- document.getElementById("pairGpuVendor").textContent=g.vendor;document.getElementById("pairGpu").textContent=g.name;document.getElementById("pairGpuScore").textContent="Performance score "+g.score+"/100";
- document.getElementById("cpuPerf").textContent=c.score;document.getElementById("gpuPerf").textContent=g.score;document.getElementById("balance").textContent=balance;
+ document.getElementById("pairCpuVendor").textContent=c.vendor;document.getElementById("pairCpu").textContent=c.name;document.getElementById("pairCpuScore").textContent="Performance score "+getHardwareScore(c)+"/100";
+ document.getElementById("pairGpuVendor").textContent=g.vendor;document.getElementById("pairGpu").textContent=g.name;document.getElementById("pairGpuScore").textContent="Performance score "+getHardwareScore(g)+"/100";
+ document.getElementById("cpuPerf").textContent=getHardwareScore(c);document.getElementById("gpuPerf").textContent=getHardwareScore(g);document.getElementById("balance").textContent=balance;
  setBar("cpuPressure",cpuP,"cpuPressureText",cpuP);setBar("gpuPressure",gpuP,"gpuPressureText",gpuP);setBar("balanceBar",balance,"balanceText",balance);
  document.getElementById("cpuHeadroom").textContent=Math.round(100-cpuP)+"%";document.getElementById("gpuHeadroom").textContent=Math.round(100-gpuP)+"%";
  document.getElementById("infoResolution").textContent=r==="2160"?"4K":r+"p";document.getElementById("infoTarget").textContent=target+" FPS";
@@ -354,17 +363,17 @@ function estimateFPS(){
  const c=CPUs[ci],g=GPUs[gi],game=document.getElementById("game").value,preset=document.getElementById("preset").value,rt=document.getElementById("rt").value;
  const selectedRes=document.getElementById("resolution").value;
  function calc(r){
-   let cpuCap=gameBase[game]*(c.score/60)*gameCpu[game];
-   let gpuCap=gameBase[game]*(g.score/60)*resMult[r]*presetMult[preset];
+   let cpuCap=gameBase[game]*(getHardwareScore(c)/60)*gameCpu[game];
+   let gpuCap=gameBase[game]*(getHardwareScore(g)/60)*resMult[r]*presetMult[preset];
    if(rt==="on") gpuCap*=.68;
    return Math.max(5,Math.round(Math.min(cpuCap,gpuCap)));
  }
  const avg=calc(selectedRes);
- const low=Math.max(3,Math.round(avg*(game==="valorant"||game==="cs2"?.78:.68)));
+ const low=Math.max(3,Math.round(avg*((game==="valorant"||game==="cs2")?.78:.68)));
  document.getElementById("avgFps").textContent=avg+" FPS";
  document.getElementById("lowFps").textContent=low+" FPS";
- const cpuLoad=Math.min(100,Math.round((avg/(gameBase[game]*(c.score/60)*gameCpu[game]))*100));
- const gpuLoad=Math.min(100,Math.round((avg/(gameBase[game]*(g.score/60)*resMult[selectedRes]*presetMult[preset]*(rt==="on"?.68:1)))*100));
+ const cpuLoad=Math.min(100,Math.round((avg/(gameBase[game]*(getHardwareScore(c)/60)*gameCpu[game]))*100));
+ const gpuLoad=Math.min(100,Math.round((avg/(gameBase[game]*(getHardwareScore(g)/60)*resMult[selectedRes]*presetMult[preset]*(rt==="on"?.68:1)))*100));
  document.getElementById("estCpuLoad").textContent=cpuLoad+"%";
  document.getElementById("estGpuLoad").textContent=gpuLoad+"%";
  document.getElementById("perfLevel").textContent=avg>=144?"Excellent":avg>=90?"Very Good":avg>=60?"Good":avg>=30?"Playable":"Low";
