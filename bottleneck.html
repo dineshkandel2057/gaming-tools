@@ -163,23 +163,23 @@ input:focus,select:focus{border-color:#6370ff}
       <h3>💡 What does this mean?</h3>
       <div style="font-size:12px;color:#9aa7bb;line-height:1.6" id="meaning"></div>
     </div>
-    <div class="disclaimer"><b>Data note:</b> Some hardware entries are benchmark-verified while others remain provisional until they can be mapped to a consistent test source. Verified source scores are stored separately from the internal calculator scale. <b>Important:</b> This calculator provides generalized estimates based on relative hardware performance and workload assumptions. Bottleneck and pressure values are not measured hardware utilization and should not be interpreted as exact FPS loss. Real-world performance varies with game engine, graphics settings, drivers, RAM, cooling, background applications and other system factors.</div>
+    <div class="disclaimer"><b>Data note:</b> Hardware scores are a normalized internal scale used for this calculator. Benchmark source information is retained separately and will only be converted into the internal scale when it can be mapped consistently. <b>Important:</b> Pressure values are scenario-demand estimates, not measured hardware utilization and not a direct prediction of FPS loss. Real-world performance varies with game engine, graphics settings, drivers, RAM, cooling, background applications and other system factors.</div>
   </div>
 </section>
 </main>
 
 <script>
 /* =========================================================
-   PCPilot Hardware Database — Step 1
+   PCPilot Hardware Database — scoring foundation
    ---------------------------------------------------------
-   Scores are INTERNAL RELATIVE GAMING SCORES (0–100).
-   They are not measured FPS and are not presented as such.
-   Each record has provenance/status fields so we can later
-   replace provisional values with verified benchmark-derived
-   values without changing the calculator UI.
+   score = INTERNAL RELATIVE GAMING CAPABILITY (0–100).
+   sourceScore is retained as provenance only. It is NOT
+   directly substituted into the internal score because
+   different benchmark generations/testbeds are not directly
+   interchangeable.
    ========================================================= */
-const DATABASE_VERSION = "0.2-benchmark-aware";
-const SCORE_SCALE = {min:0,max:100,reference:"relative gaming performance"};
+const DATABASE_VERSION = "0.3-scenario-model";
+const SCORE_SCALE = {min:0,max:100,reference:"relative gaming capability"};
 
 const CPUs = [
  {id:"i5-2500k",name:"Intel Core i5-2500K",vendor:"INTEL",family:"Core i5",score:28,status:"provisional",source:"Internal placeholder"},
@@ -211,16 +211,12 @@ const GPUs = [
  {id:"rx-7800-xt",name:"AMD Radeon RX 7800 XT",vendor:"AMD",family:"Radeon RX",score:82,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2022–2024",sourceMetric:"1080p Ultra",sourceScore:46.7}
 ];
 
-/* Benchmark-aware normalization layer.
-   Source scores are retained separately from the calculator's internal score.
-   We do not silently mix test generations/testbeds. */
-function benchmarkScore(record){
-  if(record.status!=="verified" || typeof record.sourceScore!=="number") return record.score;
-  return Math.max(1,Math.min(100,Math.round(record.sourceScore)));
+function getHardwareScore(record){
+  // Keep one consistent internal scale. External source metrics remain metadata
+  // until we build a documented cross-test normalization table.
+  return Math.max(SCORE_SCALE.min,Math.min(SCORE_SCALE.max,record.score));
 }
-function getHardwareScore(record){ return benchmarkScore(record); }
 
-/* Validation keeps future database edits from silently breaking the calculator. */
 function validateHardwareDatabase(list,type){
   const ids=new Set();
   list.forEach(x=>{
@@ -240,7 +236,6 @@ function fillSelect(id,data){
 }
 fillSelect("cpuSelect",CPUs);fillSelect("gpuSelect",GPUs);
 
-
 function searchFilter(inputId,selectId,data){
  const q=document.getElementById(inputId).value.toLowerCase().trim(),s=document.getElementById(selectId),old=s.value;
  s.innerHTML='<option value="">— Select —</option>';
@@ -251,42 +246,96 @@ function searchFilter(inputId,selectId,data){
    }
  });
  if([...s.options].some(o=>o.value===old))s.value=old;
- updateCard(selectId==="cpuSelect"?"cpu":"gpu");
 }
 document.getElementById("cpuSearch").oninput=()=>searchFilter("cpuSearch","cpuSelect",CPUs);
 document.getElementById("gpuSearch").oninput=()=>searchFilter("gpuSearch","gpuSelect",GPUs);
 
-function resolutionFactor(r){return ({720:1.3,1080:1,1440:.72,2160:.42})[r]}
+/*
+  Scenario model:
+  - CPU demand rises with target FPS and CPU-heavy/esports workloads.
+  - GPU demand rises with target FPS, resolution and graphics-heavy workloads.
+  - Component pressure is demand divided by the component's normalized capability.
+  - The result is a heuristic scenario estimate, NOT measured utilization.
+*/
+function resolutionGpuMultiplier(r){return ({720:0.72,1080:1,1440:1.42,2160:2.05})[r]||1;}
+function gameDemand(type){
+  return {
+    esports:{cpu:1.15,gpu:0.82},
+    balanced:{cpu:1.00,gpu:1.00},
+    aaa:{cpu:0.88,gpu:1.18},
+    cpu:{cpu:1.28,gpu:0.92}
+  }[type]||{cpu:1,gpu:1};
+}
+function clamp(value,min=0,max=100){return Math.max(min,Math.min(max,value));}
 
 function calculate(){
  const ci=document.getElementById("cpuSelect").value,gi=document.getElementById("gpuSelect").value;
- if(ci===""||gi===""){alert("Please select both a CPU and GPU first.");return}
- const c=CPUs[ci],g=GPUs[gi],r=document.getElementById("resolution").value,target=parseInt(document.getElementById("targetFps").value),gt=document.getElementById("gameType").value;
- let cpuP=Math.min(100,(target/240)*100*(gt==="esports"?1.1:gt==="cpu"?1.18:1));
- let gpuP=Math.min(100,(target/240)*100*resolutionFactor(r)*(gt==="aaa"?1.15:gt==="balanced"?1.05:1));
- cpuP=Math.min(100,cpuP*(60/Math.max(getHardwareScore(c),1))*55);
- gpuP=Math.min(100,gpuP*(70/Math.max(getHardwareScore(g),1))*55);
- const balance=Math.round(100-Math.abs(cpuP-gpuP));
- const gap=Math.round(Math.abs(getHardwareScore(c)-getHardwareScore(g))/Math.max(getHardwareScore(c),getHardwareScore(g))*100);
- const limit=cpuP-gpuP>8?"CPU":gpuP-cpuP>8?"GPU":"Balanced";
+ if(ci===""||gi===""){alert("Please select both a CPU and GPU first.");return;}
+ const c=CPUs[ci],g=GPUs[gi];
+ const r=document.getElementById("resolution").value;
+ const target=parseInt(document.getElementById("targetFps").value,10);
+ const gt=document.getElementById("gameType").value;
+ const demand=gameDemand(gt);
+ const cpuScore=getHardwareScore(c),gpuScore=getHardwareScore(g);
+
+ // 60 FPS is the baseline workload. Higher target FPS increases CPU demand
+ // more strongly because frame scheduling/logic is often CPU-sensitive.
+ const targetFactor=Math.pow(target/60,0.72);
+ const cpuDemand=targetFactor*demand.cpu*100;
+ const gpuDemand=targetFactor*demand.gpu*resolutionGpuMultiplier(r)*100;
+
+ const cpuPressure=clamp((cpuDemand/cpuScore)*42);
+ const gpuPressure=clamp((gpuDemand/gpuScore)*42);
+
+ // Balance is based on relative scenario pressure, not simply raw score gap.
+ const pressureGap=Math.abs(cpuPressure-gpuPressure);
+ const balance=clamp(100-pressureGap*1.35);
+ const limit=cpuPressure-gpuPressure>8?"CPU":gpuPressure-cpuPressure>8?"GPU":"Balanced";
+ const stronger=Math.max(cpuScore,gpuScore),weaker=Math.min(cpuScore,gpuScore);
+ const gap=Math.round((1-weaker/stronger)*100);
+
  document.getElementById("result").classList.remove("hidden");
  document.getElementById("resultTitle").textContent=limit==="Balanced"?"Well-Balanced Pairing":`Likely ${limit}-Limited`;
  document.getElementById("resultPair").textContent=c.name+" + "+g.name;
- const pill=document.getElementById("limitPill");pill.textContent="• "+(limit==="Balanced"?"Balanced":limit+" Limited");pill.className="pill "+(limit==="Balanced"?"balanced":limit.toLowerCase());
- document.getElementById("pairCpuVendor").textContent=c.vendor;document.getElementById("pairCpu").textContent=c.name;document.getElementById("pairCpuScore").textContent="Performance score "+getHardwareScore(c)+"/100";
- document.getElementById("pairGpuVendor").textContent=g.vendor;document.getElementById("pairGpu").textContent=g.name;document.getElementById("pairGpuScore").textContent="Performance score "+getHardwareScore(g)+"/100";
- document.getElementById("cpuPerf").textContent=getHardwareScore(c);document.getElementById("gpuPerf").textContent=getHardwareScore(g);document.getElementById("balance").textContent=balance;
- setBar("cpuPressure",cpuP,"cpuPressureText",cpuP);setBar("gpuPressure",gpuP,"gpuPressureText",gpuP);setBar("balanceBar",balance,"balanceText",balance);
- document.getElementById("cpuHeadroom").textContent=Math.round(100-cpuP)+"%";document.getElementById("gpuHeadroom").textContent=Math.round(100-gpuP)+"%";
- document.getElementById("infoResolution").textContent=r==="2160"?"4K":r+"p";document.getElementById("infoTarget").textContent=target+" FPS";
+ const pill=document.getElementById("limitPill");
+ pill.textContent="• "+(limit==="Balanced"?"Balanced":limit+" Limited");
+ pill.className="pill "+(limit==="Balanced"?"balanced":limit.toLowerCase());
+
+ document.getElementById("pairCpuVendor").textContent=c.vendor;
+ document.getElementById("pairCpu").textContent=c.name;
+ document.getElementById("pairCpuScore").textContent="Performance score "+cpuScore+"/100";
+ document.getElementById("pairGpuVendor").textContent=g.vendor;
+ document.getElementById("pairGpu").textContent=g.name;
+ document.getElementById("pairGpuScore").textContent="Performance score "+gpuScore+"/100";
+ document.getElementById("cpuPerf").textContent=cpuScore;
+ document.getElementById("gpuPerf").textContent=gpuScore;
+ document.getElementById("balance").textContent=Math.round(balance);
+
+ setBar("cpuPressure",cpuPressure,"cpuPressureText",cpuPressure);
+ setBar("gpuPressure",gpuPressure,"gpuPressureText",gpuPressure);
+ setBar("balanceBar",balance,"balanceText",balance);
+ document.getElementById("cpuHeadroom").textContent=Math.round(100-cpuPressure)+"%";
+ document.getElementById("gpuHeadroom").textContent=Math.round(100-gpuPressure)+"%";
+ document.getElementById("infoResolution").textContent=r==="2160"?"4K":r+"p";
+ document.getElementById("infoTarget").textContent=target+" FPS";
  document.getElementById("infoGame").textContent=document.getElementById("gameType").selectedOptions[0].text;
- document.getElementById("infoLimit").textContent=limit;document.getElementById("gap").textContent=gap+"%";
- document.getElementById("meaning").textContent=limit==="CPU"?"Your CPU is under relatively more pressure than your GPU in this scenario. This is more common when targeting high FPS, using lower resolutions, or playing CPU-heavy games. A CPU limitation is not automatically a problem if the system is delivering your desired FPS.":limit==="GPU"?"Your GPU is under relatively more pressure than your CPU in this scenario. Higher resolutions and demanding graphics workloads generally increase GPU demand. Being GPU-limited is not automatically a problem if the GPU is delivering your desired FPS.":"CPU and GPU pressure are relatively close for this scenario. That generally means neither component is disproportionately ahead of the other.";
+ document.getElementById("infoLimit").textContent=limit;
+ document.getElementById("gap").textContent=gap+"%";
+
+ document.getElementById("meaning").textContent=
+  limit==="CPU"?
+  "The selected target and workload place relatively more modeled demand on the CPU than on the GPU. This is more likely at high target FPS, lower resolutions, esports workloads, or CPU-heavy games. A CPU-limited result is not automatically a problem if the system still reaches the target FPS.":
+  limit==="GPU"?
+  "The selected scenario places relatively more modeled demand on the GPU than on the CPU. Higher resolutions and graphics-heavy workloads increase GPU demand. A GPU-limited result is not automatically a problem if the GPU can deliver the target FPS.":
+  "The modeled CPU and GPU demands are relatively close for this scenario. That means neither component is disproportionately ahead of the other under the assumptions used by this calculator.";
+
  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
 }
-function setBar(id,val,textId,num){document.getElementById(id).style.width=Math.max(0,Math.min(100,val))+"%";document.getElementById(textId).textContent=Math.round(num)+"%";}
 
-
+function setBar(id,val,textId,num){
+ document.getElementById(id).style.width=clamp(val)+"%";
+ document.getElementById(textId).textContent=Math.round(num)+"%";
+}
 </script>
 </body>
 </html>
