@@ -6,7 +6,6 @@ permissions:
   contents: write
 jobs:
   patch:
-    if: "!startsWith(github.event.head_commit.message, 'Calibrate bottleneck scenario model')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,6 +15,9 @@ jobs:
           from pathlib import Path
           import re
           p=Path('bottleneck.html'); s=p.read_text(encoding='utf-8')
+          if 'const BASELINE_DEMAND=42;' in s:
+              print('Calibration already applied; no change needed.')
+              raise SystemExit(0)
           new='''function modelScenario(cpuScore,gpuScore,resolution,gameType,target){
   const demand=gameDemand(gameType);
   const BASELINE_DEMAND=42;
@@ -32,10 +34,11 @@ jobs:
           s,n=re.subn(pat,new+'\n\nfunction setVendorAccent',s,count=1,flags=re.S)
           if n!=1: raise SystemExit('Scoring block not found exactly once')
           p.write_text(s,encoding='utf-8')
-      - name: Commit
+      - name: Commit only if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add bottleneck.html
+          git diff --cached --quiet && exit 0
           git commit -m "Calibrate bottleneck scenario model"
           git push origin main
