@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
 <title>PCPilot — CPU & GPU Bottleneck Calculator</title>
 <style>
 :root{
@@ -44,6 +48,59 @@ input:focus,select:focus{border-color:#6370ff}
 .disclaimer{font-size:10px;color:#6f7c91;line-height:1.55;margin-top:16px}
 .hidden{display:none}
 @media(max-width:800px){.grid2,.stats,.scenario-grid,.info-grid{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.vs{display:none}.site-header{padding:0 18px}.nav a{padding:8px}.wrap{padding:18px 12px}.result-head{align-items:flex-start;flex-direction:column}}
+
+/* PCPilot visual refresh */
+:root{--bg:#090c14;--panel:rgba(20,26,40,.78);--panel2:rgba(13,18,29,.9);--border:rgba(157,174,204,.17);--text:#f5f7fc;--muted:#aab5c8;--purple:#765fff;--cpu:#a78bfa;--gpu:#63c7ff;--good:#5ce0a2;--warn:#ffc06b;--bad:#ff7d86}
+body{font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 12% 0%,rgba(110,78,255,.19),transparent 34%),radial-gradient(ellipse at 90% 18%,rgba(28,157,218,.13),transparent 32%),var(--bg)}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 65% 75%,rgba(59,105,180,.08),transparent 36%);filter:blur(35px)}
+h1,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
+.site-header{background:rgba(9,12,20,.74);border-color:var(--border);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.logo span{color:#a591ff}
+.nav a{border:1px solid transparent;transition:background .2s,border-color .2s,color .2s}
+.nav a:hover,.nav a.active{background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
+.wrap{padding-top:38px}
+.card{background:linear-gradient(145deg,rgba(22,29,45,.88),rgba(13,18,29,.86));border-color:var(--border);border-radius:20px;padding:clamp(20px,3vw,34px);box-shadow:0 24px 80px rgba(0,0,0,.23);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+h1{font-size:clamp(29px,4vw,40px);line-height:1.12}
+.subtitle{max-width:760px;font-size:15px;line-height:1.75;color:#adbad0}
+label{font-size:13px;letter-spacing:.01em}
+input,select{height:48px;background:rgba(7,11,19,.72);border-color:rgba(159,176,207,.2);border-radius:10px;font:inherit;transition:border-color .2s,box-shadow .2s,background .2s}
+input:hover,select:hover{border-color:rgba(153,134,255,.46)}
+input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,255,.15);background:#0c1120}
+.field-help{font-size:11px;color:#8d9cb5}
+.brand-name{display:inline-flex;align-items:center;width:max-content;padding:5px 9px;margin-bottom:8px;border:1px solid currentColor;border-radius:999px;background:rgba(255,255,255,.04);font-size:10px;letter-spacing:.06em}
+.vendor-intel{color:#66c4ff}.vendor-amd{color:#ff927d}.vendor-nvidia{color:#7fe3a0}.vendor-other{color:#b6c2d8}
+.hw-score{font-size:11px;line-height:1.55;color:#a1aec4}
+.btn{height:50px;border-radius:11px;background:linear-gradient(115deg,#795fff,#654de7);box-shadow:0 12px 28px rgba(93,74,227,.22);font:700 15px "DM Sans",sans-serif;transition:transform .2s,filter .2s}
+.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.result{background:rgba(8,12,20,.76);border-color:rgba(150,169,200,.2);border-radius:16px;padding:clamp(16px,2.5vw,26px)}
+.result-title{font-family:"Space Grotesk",sans-serif;font-size:clamp(22px,3vw,29px);letter-spacing:-.04em}
+.pill{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.055)}
+.pair{gap:14px}
+.pair-card{min-width:0;min-height:116px;display:flex;align-items:center;gap:15px;padding:17px;border-radius:14px;background:linear-gradient(145deg,rgba(29,36,55,.86),rgba(15,21,34,.9));border-color:rgba(156,174,205,.16)}
+.pair-card.cpu{border-left:3px solid var(--cpu);background:linear-gradient(145deg,rgba(84,61,150,.19),rgba(15,21,34,.9))}
+.pair-card.gpu{border-left:3px solid var(--gpu);background:linear-gradient(145deg,rgba(37,104,145,.2),rgba(15,21,34,.9))}
+.pair-card b{display:block;font-size:15px;line-height:1.35;overflow-wrap:anywhere}
+.pair-info{min-width:0}
+.hardware-icon{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:15px;background:rgba(167,139,250,.11);color:#b7a2ff;border:1px solid rgba(167,139,250,.19)}
+.pair-card.gpu .hardware-icon{width:74px;flex-basis:74px;background:rgba(99,199,255,.1);color:#7bd5ff;border-color:rgba(99,199,255,.2)}
+.hardware-icon svg{width:48px;height:48px}
+.pair-card.gpu .hardware-icon svg{width:66px;height:48px}
+.vs{color:#7e8ca4}
+.stats{gap:12px}
+.stat{background:rgba(20,27,42,.75);border-color:var(--border);border-radius:13px;padding:16px}
+.stat:nth-child(1){border-top:2px solid var(--cpu)}.stat:nth-child(2){border-top:2px solid var(--gpu)}.stat:nth-child(3){border-top:2px solid var(--good)}
+.stat small{font-size:11px;color:#aab7cd}.stat strong{font-family:"Space Grotesk",sans-serif;font-size:28px}
+.section{background:rgba(19,26,40,.76);border-color:var(--border);border-radius:14px;padding:18px}
+.section h3{font-size:16px;letter-spacing:-.02em}
+.bar{height:10px;background:rgba(147,163,189,.14)}
+.fill{transition:width .45s ease}
+.info{background:rgba(12,18,30,.75);border-color:rgba(157,174,204,.12);border-radius:11px;padding:14px}
+.info small{font-size:11px}.info strong{font-size:14px;line-height:1.4}
+.disclaimer{font-size:11px;color:#9aa8bf;line-height:1.75;padding:14px 15px;border:1px solid rgba(157,174,204,.12);border-radius:12px;background:rgba(255,255,255,.025)}
+:focus-visible{outline:2px solid #9b8aff;outline-offset:3px}
+@media(max-width:800px){.wrap{padding:22px 14px 42px}.pair{grid-template-columns:1fr;gap:10px}.pair-card{min-height:100px}.vs{display:none}.grid2,.stats,.scenario-grid,.info-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.site-header{height:auto;min-height:68px;align-items:flex-start;flex-direction:column;gap:6px;padding:12px 16px}.nav{width:100%;justify-content:space-between;gap:2px}.nav a{font-size:12px;padding:8px 9px}.card{padding:18px}.pair-card{gap:11px;padding:13px}.hardware-icon{width:48px;height:48px;flex-basis:48px}.pair-card.gpu .hardware-icon{width:62px;flex-basis:62px}.hardware-icon svg{width:40px;height:40px}.pair-card.gpu .hardware-icon svg{width:54px;height:40px}.stat{padding:13px}}
+
 </style>
 </head>
 <body>
@@ -131,9 +188,15 @@ input:focus,select:focus{border-color:#6370ff}
     </div>
 
     <div class="pair">
-      <div class="pair-card cpu"><div class="brand-name" id="pairCpuVendor"></div><b id="pairCpu"></b><div class="hw-score" id="pairCpuScore"></div></div>
+      <div class="pair-card cpu">
+        <div class="hardware-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><rect x="15" y="15" width="34" height="34" rx="7" stroke="currentColor" stroke-width="3"/><rect x="23" y="23" width="18" height="18" rx="3" fill="currentColor" opacity=".3" stroke="currentColor" stroke-width="2"/><path d="M22 7v8m10-8v8m10-8v8M22 49v8m10-8v8m10-8v8M7 22h8m-8 10h8m-8 10h8m34-20h8m-8 10h8m-8 10h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div class="pair-info"><div class="brand-name" id="pairCpuVendor"></div><b id="pairCpu"></b><div class="hw-score" id="pairCpuScore"></div></div>
+      </div>
       <div class="vs">VS</div>
-      <div class="pair-card gpu"><div class="brand-name" id="pairGpuVendor"></div><b id="pairGpu"></b><div class="hw-score" id="pairGpuScore"></div></div>
+      <div class="pair-card gpu">
+        <div class="hardware-icon" aria-hidden="true"><svg viewBox="0 0 100 64" fill="none"><rect x="7" y="10" width="80" height="42" rx="8" stroke="currentColor" stroke-width="3"/><circle cx="35" cy="31" r="13" stroke="currentColor" stroke-width="2"/><circle cx="35" cy="31" r="4" fill="currentColor"/><path d="M35 18c6 4 7 8 1 13-5 4-9 1-13-1 1-7 5-11 12-12ZM48 31c-4 6-8 7-13 1-4-5-1-9 1-13 7 1 11 5 12 12ZM35 44c-6-4-7-8-1-13 5-4 9-1 13 1-1 7-5 11-12 12ZM22 31c4-6 8-7 13-1 4 5 1 9-1 13-7-1-11-5-12-12Z" fill="currentColor" opacity=".65"/><circle cx="65" cy="31" r="13" stroke="currentColor" stroke-width="2"/><circle cx="65" cy="31" r="4" fill="currentColor"/><path d="M65 18c6 4 7 8 1 13-5 4-9 1-13-1 1-7 5-11 12-12ZM78 31c-4 6-8 7-13 1-4-5-1-9 1-13 7 1 11 5 12 12ZM65 44c-6-4-7-8-1-13 5-4 9-1 13 1-1 7-5 11-12 12ZM52 31c4-6 8-7 13-1 4 5 1 9-1 13-7-1-11-5-12-12Z" fill="currentColor" opacity=".65"/><path d="M87 21h7v20h-7M22 52v7h17v-7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div class="pair-info"><div class="brand-name" id="pairGpuVendor"></div><b id="pairGpu"></b><div class="hw-score" id="pairGpuScore"></div></div>
+      </div>
     </div>
 
     <div class="stats">
@@ -375,6 +438,11 @@ function modelScenario(cpuScore,gpuScore,resolution,gameType,target){
   return {cpuLoad,gpuLoad,balance,limiting,overload};
 }
 
+function setVendorAccent(element,vendor){
+ const key=String(vendor||"").toLowerCase();
+ element.className="brand-name "+(key==="intel"?"vendor-intel":key==="amd"?"vendor-amd":key==="nvidia"?"vendor-nvidia":"vendor-other");
+}
+
 function calculate(){
  const ci=document.getElementById("cpuSelect").value,gi=document.getElementById("gpuSelect").value;
  if(ci===""||gi===""){alert("Please select both a CPU and GPU first.");return;}
@@ -398,9 +466,11 @@ function calculate(){
  pill.textContent="• "+(limit==="Balanced"?"Balanced":limit+" Limited");
  pill.className="pill "+(limit==="Balanced"?"balanced":limit.toLowerCase());
 
+ setVendorAccent(document.getElementById("pairCpuVendor"),c.vendor);
  document.getElementById("pairCpuVendor").textContent=c.vendor;
  document.getElementById("pairCpu").textContent=c.name;
  document.getElementById("pairCpuScore").textContent="Gaming score "+cpuScore+"/100 · "+c.status;
+ setVendorAccent(document.getElementById("pairGpuVendor"),g.vendor);
  document.getElementById("pairGpuVendor").textContent=g.vendor;
  document.getElementById("pairGpu").textContent=g.name;
  document.getElementById("pairGpuScore").textContent="Gaming score "+gpuScore+"/100 · "+g.status;
