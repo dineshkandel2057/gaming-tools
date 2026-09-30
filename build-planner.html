@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Plan a gaming PC with step-by-step part compatibility checks for CPU, motherboard, memory, graphics, cooling, case fit and power.">
+<title>PCPilot — PC Build Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090c14;--panel:rgba(20,26,40,.82);--panel2:rgba(12,18,30,.9);--line:rgba(157,174,204,.16);--text:#f5f7fc;--muted:#aab5c8;--purple:#8e79ff;--blue:#65c9ff;--green:#66e2a5;--amber:#ffcb76;--red:#ff818b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,rgba(108,78,255,.17),transparent 32%),radial-gradient(ellipse at 91% 22%,rgba(35,158,220,.12),transparent 30%),var(--bg);color:var(--text);font:15px/1.6 "DM Sans",Inter,ui-sans-serif,system-ui,sans-serif}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 60% 75%,rgba(48,99,173,.08),transparent 38%);filter:blur(35px)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
+.site-header{height:74px;position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:0 max(22px,calc((100vw - 1180px)/2));border-bottom:1px solid var(--line);background:rgba(9,12,20,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.logo{font-size:24px;font-weight:700}.logo span{color:#a591ff}
+.nav{display:flex;align-items:center;gap:8px}
+.nav>a,.tool-dropdown summary{padding:9px 13px;color:var(--muted);font-size:14px;border:1px solid transparent;border-radius:9px;transition:.2s}
+.nav>a:hover,.nav>a.active,.tool-dropdown summary:hover,.tool-dropdown[open] summary{color:white;background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
+.tool-dropdown{position:relative}
+.tool-dropdown summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;user-select:none}
+.tool-dropdown summary::-webkit-details-marker{display:none}
+.tool-dropdown summary:after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.tool-dropdown[open] summary:after{transform:rotate(225deg) translate(-1px,-1px)}
+.tool-menu{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);width:min(350px,calc(100vw - 28px));padding:10px;border:1px solid var(--line);border-radius:15px;background:rgba(13,18,29,.97);box-shadow:0 24px 70px #0008;backdrop-filter:blur(22px)}
+.tool-menu-label{margin:2px 8px 6px;color:#8f9db5;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+.tool-menu-item{display:flex;align-items:center;gap:11px;padding:10px;border:1px solid transparent;border-radius:11px;color:#edf1f9}
+.tool-menu-item.current-tool{background:rgba(118,95,255,.13);border-color:rgba(151,132,255,.23)}
+.tool-menu-item>span:nth-child(2){flex:1}.tool-menu-item b{display:block;font-size:12px}.tool-menu-item small{display:block;margin-top:2px;color:#9eabc0;font-size:10px}
+.tool-menu-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:10px;background:rgba(137,111,255,.16);color:#c2adff;font-size:10px;font-weight:800}
+.menu-arrow{color:#a591ff}
+.wrap{max-width:1180px;margin:auto;padding:36px 22px 70px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(290px,.7fr);gap:30px;align-items:center;margin-bottom:26px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid rgba(142,121,255,.2);border-radius:999px;color:#c7baff;background:rgba(142,121,255,.08);font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+h1{font-size:clamp(36px,5vw,55px);line-height:1.05;margin:13px 0}
+.hero h1 span{background:linear-gradient(100deg,#a992ff,#6dceff);color:transparent;-webkit-background-clip:text;background-clip:text}
+.hero p{max-width:690px;margin:0;color:var(--muted);font-size:16px;line-height:1.75}
+.hero-note{padding:18px 19px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(140deg,rgba(28,36,56,.8),rgba(13,18,29,.85));box-shadow:0 16px 50px #0002}
+.hero-note strong{display:block;margin-bottom:5px;font:600 15px "Space Grotesk",sans-serif}
+.hero-note p{font-size:12px;line-height:1.65}
+.preset-row{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}
+.preset-btn,.action-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.035);color:#dce5f4;font:600 12px "DM Sans",sans-serif;cursor:pointer;transition:.18s}
+.preset-btn:hover,.action-btn:hover{border-color:rgba(158,138,255,.5);background:rgba(126,105,255,.12);transform:translateY(-1px)}
+.preset-btn.primary{border-color:rgba(142,121,255,.35);background:rgba(126,105,255,.13);color:#dcd4ff}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px;align-items:start}
+.builder{display:grid;gap:14px}
+.step,.summary-card{border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,rgba(22,29,45,.86),rgba(12,18,29,.9));box-shadow:0 14px 45px rgba(0,0,0,.14);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px)}
+.step{padding:20px}
+.step-heading{display:flex;align-items:flex-start;gap:12px;margin-bottom:15px}
+.step-number{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border-radius:10px;background:rgba(136,113,255,.16);color:#c3b4ff;font:700 12px "Space Grotesk",sans-serif}
+.step-heading h2{margin:0;font-size:18px;line-height:1.35}
+.step-heading p{margin:4px 0 0;color:#97a6be;font-size:11px;line-height:1.5}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.fields.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.field{min-width:0}
+.field.full{grid-column:1/-1}
+label{display:block;margin:0 0 6px;color:#dfe6f1;font-size:11px;font-weight:700}
+input,select{width:100%;height:44px;padding:0 12px;border:1px solid rgba(157,174,204,.2);border-radius:10px;outline:none;background:rgba(7,11,19,.74);color:#f2f5fb;font:13px "DM Sans",sans-serif}
+input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,255,.14)}
+.field small{display:block;margin-top:5px;color:#8998b0;font-size:10px;line-height:1.45}
+select option{background:#111827;color:#f5f7fc}
+.select-note{min-height:15px;color:#8798b2;font-size:10px;margin-top:5px}
+.goal-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.goal-choice{position:relative}
+.goal-choice input{position:absolute;opacity:0;pointer-events:none}
+.goal-choice label{height:100%;min-height:74px;display:flex;flex-direction:column;justify-content:center;margin:0;padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025);cursor:pointer;transition:.18s}
+.goal-choice label b{font-size:12px;color:#f1f4fa}.goal-choice label span{font-size:10px;color:#98a7bd;font-weight:500;margin-top:3px}
+.goal-choice input:checked+label{border-color:rgba(142,121,255,.55);background:rgba(126,105,255,.13);box-shadow:0 0 0 2px rgba(126,105,255,.08)}
+.part-select{display:flex;gap:9px;align-items:center}
+.part-icon{width:35px;height:35px;flex:0 0 35px;display:grid;place-items:center;border-radius:10px;background:rgba(126,105,255,.12);color:#c6b7ff;font-size:13px}
+.part-icon.gpu{background:rgba(69,185,235,.12);color:#81d8ff}
+.part-icon.power{background:rgba(255,192,107,.12);color:#ffd28a}
+.part-icon.case{background:rgba(92,224,162,.11);color:#85eab8}
+.part-select select{flex:1}
+.summary{position:sticky;top:92px;display:grid;gap:12px}
+.summary-card{padding:18px}
+.summary-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.summary-header h2{margin:0;font-size:19px}
+.status-badge{padding:5px 8px;border:1px solid rgba(157,174,204,.18);border-radius:999px;background:rgba(255,255,255,.04);color:#aab5c8;font-size:9px;font-weight:800;white-space:nowrap}
+.status-badge.ready{color:#77e6ad;background:rgba(92,224,162,.1);border-color:rgba(92,224,162,.22)}
+.status-badge.issue{color:#ffad8d;background:rgba(255,129,139,.1);border-color:rgba(255,129,139,.2)}
+.progress-line{height:6px;margin:12px 0 14px;border-radius:99px;background:rgba(157,174,204,.12);overflow:hidden}
+.progress-line i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8b79ff,#58c9ff,#66e2a5);border-radius:inherit;transition:width .3s}
+.parts-list{display:grid;gap:8px}
+.part-line{display:grid;grid-template-columns:20px 1fr auto;gap:7px;align-items:center;padding:8px 9px;border:1px solid rgba(157,174,204,.1);border-radius:9px;background:rgba(4,9,17,.22)}
+.part-line .mark{font-size:12px;color:#74849d}
+.part-line.good .mark{color:var(--green)}.part-line.warn .mark{color:var(--amber)}.part-line.bad .mark{color:var(--red)}
+.part-line span:nth-child(2){font-size:10px;line-height:1.3}
+.part-line b{font-size:9px;color:#97a6be;text-align:right}
+.recommendation{margin-top:12px;padding:12px;border:1px solid rgba(100,193,255,.14);border-radius:11px;background:rgba(66,157,210,.06);color:#b9cbe0;font-size:11px;line-height:1.6}
+.recommendation strong{display:block;margin-bottom:3px;color:#87d0ff}
+.summary-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}
+.action-btn{min-height:38px;padding:8px;font-size:10px}
+.action-btn.save{grid-column:1/-1;background:linear-gradient(115deg,#795fff,#654de7);border-color:transparent;color:#fff;font-weight:800}
+.saved-note{margin:9px 0 0;color:#83e5af;font-size:10px;min-height:14px}
+.source-note{font-size:10px;color:#8796ad;line-height:1.6}
+.source-note a{color:#b7a8ff;text-decoration:underline;text-underline-offset:2px}
+.tip-list{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+.tip-list li{padding-left:13px;position:relative;color:#9dabc0;font-size:10px;line-height:1.55}
+.tip-list li:before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:#a18bff}
+footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:10px;text-align:center}
+:focus-visible{outline:2px solid #9b8aff;outline-offset:3px}
+@media(max-width:920px){.layout{grid-template-columns:1fr}.summary{position:static;grid-row:1}.hero{grid-template-columns:1fr}.hero-note{max-width:680px}}
+@media(max-width:640px){.site-header{height:auto;min-height:66px;align-items:flex-start;flex-direction:column;gap:5px;padding:10px 14px}.nav{width:100%;justify-content:space-between;gap:2px}.nav>a,.tool-dropdown summary{font-size:12px;padding:8px 9px}.tool-menu{left:auto;right:-60px;transform:none}.wrap{padding:25px 13px 48px}.hero p{font-size:14px}.step{padding:16px}.fields,.fields.three{grid-template-columns:1fr}.field.full{grid-column:auto}.goal-row{grid-template-columns:1fr}.goal-choice label{min-height:60px}.preset-row{display:grid;grid-template-columns:1fr}.summary-card{padding:15px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+@media print{body{background:#fff;color:#111}.site-header,.hero-note,.preset-row,.builder,.summary-actions,footer{display:none!important}.wrap{padding:0}.layout{display:block}.summary{position:static}.summary-card{background:#fff;color:#111;border:1px solid #ccc;box-shadow:none}.part-line{background:#fff;color:#111}.part-line span:nth-child(2),.source-note,.tip-list li{color:#333}.status-badge{color:#111}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="index.html">PC<span>Pilot</span></a>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <details class="tool-dropdown" id="toolsMenu">
+      <summary aria-label="Open tools menu">Tools</summary>
+      <div class="tool-menu" aria-label="Tools">
+        <p class="tool-menu-label">Available now</p>
+        <a class="tool-menu-item" href="bottleneck.html"><span class="tool-menu-icon">CPU</span><span><b>CPU &amp; GPU Bottleneck</b><small>Compare your components</small></span><span class="menu-arrow">↗</span></a>
+        <a class="tool-menu-item current-tool" href="build-planner.html" aria-current="page"><span class="tool-menu-icon">PC</span><span><b>PC Build Planner</b><small>Check component fit and power</small></span><span class="menu-arrow">↗</span></a>
+        <p class="tool-menu-label" style="margin-top:8px;padding-top:12px;border-top:1px solid rgba(157,174,204,.12)">Coming soon</p>
+        <div class="tool-menu-item"><span class="tool-menu-icon">FPS</span><span><b>FPS Calculator</b><small>Estimate game performance</small></span><span style="font-size:9px;color:#8796ad">Soon</span></div>
+        <div class="tool-menu-item"><span class="tool-menu-icon">↔</span><span><b>Hardware Comparison</b><small>Compare CPU and GPU options</small></span><span style="font-size:9px;color:#8796ad">Soon</span></div>
+      </div>
+    </details>
+    <a href="index.html#about">About</a>
+  </nav>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <span class="eyebrow"><i></i> PCPilot Smart Build</span>
+      <h1>Build a PC that <span>fits together.</span></h1>
+      <p>Choose the parts you want. PCPilot checks the platform, memory, cooler fit, graphics-card clearance and power supply as you go, then explains anything that needs a second look.</p>
+    </div>
+    <aside class="hero-note">
+      <strong>Built for real decisions, not just a parts list.</strong>
+      <p>Start from a gaming goal or a one-click build, then review a plain-language checklist. Compatibility is a helpful planning check; always verify exact board revision, BIOS and partner-card dimensions before ordering.</p>
+    </aside>
+  </section>
+  <section class="preset-row" aria-label="Build starting points">
+    <button class="preset-btn primary" type="button" data-preset="value">Start with 1080p value</button>
+    <button class="preset-btn" type="button" data-preset="1440">Start with 1440p balanced</button>
+    <button class="preset-btn" type="button" data-preset="4k">Start with 4K high detail</button>
+    <button class="preset-btn" type="button" id="resetBuild">Start from scratch</button>
+  </section>
+  <div class="layout">
+    <form class="builder" id="buildForm">
+      <section class="step">
+        <div class="step-heading"><span class="step-number">01</span><div><h2>What do you want to play?</h2><p>Choose a starting goal. This guides the GPU recommendation; it does not predict exact FPS.</p></div></div>
+        <div class="goal-row">
+          <div class="goal-choice"><input type="radio" name="goal" id="goal1080" value="1080" checked><label for="goal1080"><b>1080p gaming</b><span>High refresh and value</span></label></div>
+          <div class="goal-choice"><input type="radio" name="goal" id="goal1440" value="1440"><label for="goal1440"><b>1440p gaming</b><span>Sharper detail, strong all-rounder</span></label></div>
+          <div class="goal-choice"><input type="radio" name="goal" id="goal4k" value="2160"><label for="goal4k"><b>4K gaming</b><span>Prioritize graphics power</span></label></div>
+        </div>
+      </section>
+      <section class="step">
+        <div class="step-heading"><span class="step-number">02</span><div><h2>Choose your processor and platform</h2><p>The motherboard and memory choices will follow your CPU’s socket and supported memory generation.</p></div></div>
+        <div class="fields three">
+          <div class="field"><label for="cpu">Processor</label><select id="cpu" required></select><small>Pick a CPU to see compatible motherboard families.</small></div>
+          <div class="field"><label for="motherboard">Motherboard</label><select id="motherboard" required></select><div class="select-note" id="boardNote">Choose a CPU first.</div></div>
+          <div class="field"><label for="memory">Memory kit</label><select id="memory" required></select><div class="select-note" id="memoryNote">Choose a motherboard first.</div></div>
+        </div>
+      </section>
+      <section class="step">
+        <div class="step-heading"><span class="step-number">03</span><div><h2>Add graphics and storage</h2><p>The listed GPU size is a reference design. Partner models can be larger or use more power.</p></div></div>
+        <div class="fields">
+          <div class="field"><label for="gpu">Graphics card</label><div class="part-select"><span class="part-icon gpu" aria-hidden="true">▰</span><select id="gpu" required></select></div><small>Includes NVIDIA GeForce and AMD Radeon options.</small></div>
+          <div class="field"><label for="storage">Storage</label><div class="part-select"><span class="part-icon" aria-hidden="true">▤</span><select id="storage" required></select></div><small>NVMe drives use the motherboard’s M.2 slot.</small></div>
+        </div>
+      </section>
+      <section class="step">
+        <div class="step-heading"><span class="step-number">04</span><div><h2>Make sure it fits and stays cool</h2><p>Case and cooler measurements are simplified planning values, not a substitute for exact product specifications.</p></div></div>
+        <div class="fields three">
+          <div class="field"><label for="cooler">CPU cooler</label><select id="cooler" required></select><div class="select-note" id="coolerNote"></div></div>
+          <div class="field"><label for="case">Case size</label><div class="part-select"><span class="part-icon case" aria-hidden="true">▣</span><select id="case" required></select></div><div class="select-note" id="caseNote"></div></div>
+          <div class="field"><label for="psu">Power supply</label><div class="part-select"><span class="part-icon power" aria-hidden="true">ϟ</span><select id="psu" required></select></div><div class="select-note" id="psuNote"></div></div>
+        </div>
+      </section>
+    </form>
+    <aside class="summary" aria-live="polite">
+      <section class="summary-card">
+        <div class="summary-header"><div><span class="eyebrow">Your build</span><h2 style="margin-top:8px">Compatibility check</h2></div><span class="status-badge" id="overallStatus">Getting started</span></div>
+        <div class="progress-line"><i id="progressBar"></i></div>
+        <div class="parts-list" id="checks"></div>
+        <div class="recommendation" id="recommendation"><strong>Start with your gaming goal</strong>Choose a goal or load a starting build above. Your selections stay in this browser.</div>
+        <div class="summary-actions">
+          <button type="button" class="action-btn save" id="saveBuild">Save this build</button>
+          <button type="button" class="action-btn" id="shareBuild">Copy share link</button>
+          <button type="button" class="action-btn" id="printBuild">Print summary</button>
+        </div>
+        <p class="saved-note" id="savedNote" role="status"></p>
+      </section>
+      <section class="summary-card source-note">
+        <b style="color:#e4eafa">Before you buy:</b>
+        <ul class="tip-list" style="margin-top:9px">
+          <li>Some older motherboards need a BIOS update for newer CPUs.</li>
+          <li>DDR4 and DDR5 cannot be mixed; match the kit to the board.</li>
+          <li>GPU partner cards can be longer and thicker than reference cards.</li>
+          <li>Check your exact case, cooler and PSU connectors before ordering.</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+  <section class="step source-note" style="margin-top:16px">
+    <b style="color:#e4eafa">How the checks work:</b> Platform and memory rules follow manufacturer-published socket and memory support. Power and physical fit use reference specifications and broad case classes. They do not account for every board revision, BIOS version, cooler mount, add-in-card model or transient load. Confirm those details with the part makers before purchase.
+    <br><br><b style="color:#e4eafa">Reference specs:</b>
+    <a href="https://www.intel.com/content/www/us/en/support/articles/000099723/processors.html" target="_blank" rel="noopener">Intel socket guidance</a> ·
+    <a href="https://www.amd.com/en/products/processors/chipsets/am5.html" target="_blank" rel="noopener">AMD AM5 compatibility</a> ·
+    <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/compare/" target="_blank" rel="noopener">NVIDIA reference GPU power/size</a> ·
+    <a href="https://www.amd.com/content/dam/amd/en/documents/partner-hub/radeon/radeon-rx-9000-series-quick-reference-guide-non-competitive.pdf" target="_blank" rel="noopener">AMD Radeon RX 9000 specifications</a>.
+  </section>
+</main>
+<footer>PCPilot build planner · Compatibility checks are a starting point. Confirm the exact part specifications and BIOS support before purchase.</footer>
+<script>
+const CPU_DATA=[
+{id:"r5-5600",name:"AMD Ryzen 5 5600",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:88,gaming:"value"},
+{id:"r7-5700x3d",name:"AMD Ryzen 7 5700X3D",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:142,gaming:"value"},
+{id:"r5-7600",name:"AMD Ryzen 5 7600",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:88,gaming:"value"},
+{id:"r7-7800x3d",name:"AMD Ryzen 7 7800X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:162,gaming:"balanced"},
+{id:"r7-9800x3d",name:"AMD Ryzen 7 9800X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:162,gaming:"high"},
+{id:"r9-9950x",name:"AMD Ryzen 9 9950X",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:230,gaming:"high"},
+{id:"i5-12400f",name:"Intel Core i5-12400F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:117,gaming:"value"},
+{id:"i5-13600k",name:"Intel Core i5-13600K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:181,gaming:"balanced"},
+{id:"i7-14700k",name:"Intel Core i7-14700K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:253,gaming:"high"},
+{id:"u5-245k",name:"Intel Core Ultra 5 245K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:159,gaming:"balanced"},
+{id:"u7-265k",name:"Intel Core Ultra 7 265K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:250,gaming:"high"},
+{id:"u9-285k",name:"Intel Core Ultra 9 285K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:250,gaming:"high"}
+];
+const BOARD_DATA=[
+{id:"b550-matx",name:"B550 Micro-ATX · DDR4",socket:"AM4",memory:"DDR4",form:"Micro-ATX",chipset:"B550",m2:2},
+{id:"b550-atx",name:"B550 ATX · DDR4",socket:"AM4",memory:"DDR4",form:"ATX",chipset:"B550",m2:2},
+{id:"x570-atx",name:"X570 ATX · DDR4",socket:"AM4",memory:"DDR4",form:"ATX",chipset:"X570",m2:2},
+{id:"b650-matx",name:"B650 Micro-ATX · DDR5",socket:"AM5",memory:"DDR5",form:"Micro-ATX",chipset:"B650",m2:2},
+{id:"b650-atx",name:"B650 ATX · DDR5",socket:"AM5",memory:"DDR5",form:"ATX",chipset:"B650",m2:2},
+{id:"b850-atx",name:"B850 ATX · DDR5",socket:"AM5",memory:"DDR5",form:"ATX",chipset:"B850",m2:3},
+{id:"x870e-atx",name:"X870E ATX · DDR5",socket:"AM5",memory:"DDR5",form:"ATX",chipset:"X870E",m2:4},
+{id:"b760-ddr4",name:"B760 ATX · DDR4",socket:"LGA1700",memory:"DDR4",form:"ATX",chipset:"B760",m2:2},
+{id:"b760-ddr5",name:"B760 Micro-ATX · DDR5",socket:"LGA1700",memory:"DDR5",form:"Micro-ATX",chipset:"B760",m2:2},
+{id:"z790-ddr4",name:"Z790 ATX · DDR4",socket:"LGA1700",memory:"DDR4",form:"ATX",chipset:"Z790",m2:3},
+{id:"z790-ddr5",name:"Z790 ATX · DDR5",socket:"LGA1700",memory:"DDR5",form:"ATX",chipset:"Z790",m2:4},
+{id:"b860-atx",name:"B860 ATX · DDR5",socket:"LGA1851",memory:"DDR5",form:"ATX",chipset:"B860",m2:3},
+{id:"b860-matx",name:"B860 Micro-ATX · DDR5",socket:"LGA1851",memory:"DDR5",form:"Micro-ATX",chipset:"B860",m2:2},
+{id:"z890-atx",name:"Z890 ATX · DDR5",socket:"LGA1851",memory:"DDR5",form:"ATX",chipset:"Z890",m2:4}
+];
+const MEMORY_DATA=[
+{id:"d4-16",name:"16 GB · DDR4-3200 · 2×8 GB",type:"DDR4",capacity:16},
+{id:"d4-32",name:"32 GB · DDR4-3600 · 2×16 GB",type:"DDR4",capacity:32},
+{id:"d5-32-6000",name:"32 GB · DDR5-6000 · 2×16 GB",type:"DDR5",capacity:32},
+{id:"d5-32-6400",name:"32 GB · DDR5-6400 · 2×16 GB",type:"DDR5",capacity:32},
+{id:"d5-64",name:"64 GB · DDR5-6000 · 2×32 GB",type:"DDR5",capacity:64}
+];
+const GPU_DATA=[
+{id:"rtx-5060",name:"NVIDIA GeForce RTX 5060",brand:"NVIDIA GeForce",power:145,psu:550,length:240,tier:1080},
+{id:"rtx-5060-ti",name:"NVIDIA GeForce RTX 5060 Ti",brand:"NVIDIA GeForce",power:180,psu:600,length:267,tier:1080},
+{id:"rtx-5070",name:"NVIDIA GeForce RTX 5070",brand:"NVIDIA GeForce",power:250,psu:650,length:267,tier:1440},
+{id:"rtx-5070-ti",name:"NVIDIA GeForce RTX 5070 Ti",brand:"NVIDIA GeForce",power:300,psu:750,length:304,tier:1440},
+{id:"rtx-5080",name:"NVIDIA GeForce RTX 5080",brand:"NVIDIA GeForce",power:360,psu:850,length:304,tier:2160},
+{id:"rtx-5090",name:"NVIDIA GeForce RTX 5090",brand:"NVIDIA GeForce",power:575,psu:1000,length:313,tier:2160},
+{id:"rx-9060xt",name:"AMD Radeon RX 9060 XT",brand:"AMD Radeon",power:160,psu:650,length:280,tier:1080},
+{id:"rx-9070",name:"AMD Radeon RX 9070",brand:"AMD Radeon",power:220,psu:650,length:267,tier:1440},
+{id:"rx-9070xt",name:"AMD Radeon RX 9070 XT",brand:"AMD Radeon",power:304,psu:750,length:304,tier:2160}
+];
+const COOLER_DATA=[
+{id:"air-120",name:"Compact air cooler · 120 W class",type:"air",capacity:120,height:145,sockets:["AM4","AM5","LGA1700","LGA1851"]},
+{id:"air-180",name:"Tower air cooler · 180 W class",type:"air",capacity:180,height:158,sockets:["AM4","AM5","LGA1700","LGA1851"]},
+{id:"air-250",name:"Large dual-tower air cooler · 250 W class",type:"air",capacity:250,height:165,sockets:["AM4","AM5","LGA1700","LGA1851"]},
+{id:"aio-240",name:"240 mm liquid cooler · 250 W class",type:"aio",capacity:250,radiator:240,sockets:["AM4","AM5","LGA1700","LGA1851"]}
+];
+const CASE_DATA=[
+{id:"compact-matx",name:"Compact Micro-ATX case",forms:["Micro-ATX","Mini-ITX"],maxGpu:310,maxCooler:155,radiators:[120,240]},
+{id:"airflow-mid",name:"Airflow Mid-Tower",forms:["ATX","Micro-ATX","Mini-ITX"],maxGpu:360,maxCooler:170,radiators:[120,240,360]},
+{id:"large-mid",name:"Roomy Mid-Tower",forms:["ATX","Micro-ATX","Mini-ITX"],maxGpu:400,maxCooler:180,radiators:[120,240,360]}
+];
+const PSU_DATA=[
+{id:"psu-550",name:"550 W · 80+ Bronze class",watts:550,length:140},
+{id:"psu-650",name:"650 W · 80+ Gold class",watts:650,length:150},
+{id:"psu-750",name:"750 W · 80+ Gold class",watts:750,length:160},
+{id:"psu-850",name:"850 W · 80+ Gold class",watts:850,length:160},
+{id:"psu-1000",name:"1000 W · 80+ Gold class",watts:1000,length:180},
+{id:"psu-1200",name:"1200 W · 80+ Gold class",watts:1200,length:180}
+];
+const STORAGE_DATA=[
+{id:"nvme-1",name:"1 TB PCIe 4.0 NVMe SSD",type:"nvme",capacity:1},
+{id:"nvme-2",name:"2 TB PCIe 4.0 NVMe SSD",type:"nvme",capacity:2},
+{id:"nvme-4",name:"4 TB PCIe 4.0 NVMe SSD",type:"nvme",capacity:4},
+{id:"sata-1",name:"1 TB SATA SSD",type:"sata",capacity:1}
+];
+const $=id=>document.getElementById(id);
+function addOptions(selectId,list,label,selected){
+ const el=$(selectId),old=selected||el.value;
+ el.innerHTML='<option value="">Choose '+label.toLowerCase()+'</option>';
+ list.forEach(item=>{const op=document.createElement("option");op.value=item.id;op.textContent=item.name;el.appendChild(op)});
+ if(list.some(x=>x.id===old))el.value=old;
+}
+function getById(list,id){return list.find(x=>x.id===id)||null}
+function setSelect(id,list,label,selected){addOptions(id,list,label,selected)}
+function updatePlatformOptions(){
+ const cpu=getById(CPU_DATA,$("cpu").value);
+ const oldBoard=$("motherboard").value,oldMemory=$("memory").value;
+ const boards=cpu?BOARD_DATA.filter(x=>x.socket===cpu.socket):[];
+ setSelect("motherboard",boards,"motherboard",oldBoard);
+ const board=getById(boards,$("motherboard").value);
+ const kits=board?MEMORY_DATA.filter(x=>x.type===board.memory):[];
+ setSelect("memory",kits,"memory kit",oldMemory);
+ $("boardNote").textContent=cpu?(boards.length+" motherboard families shown for "+cpu.socket+". Check the exact BIOS support list before buying."):"Choose a CPU first.";
+ $("memoryNote").textContent=board?board.memory+" kits only; memory kits are not interchangeable across DDR generations.":"Choose a compatible motherboard first.";
+}
+function getValue(id,list){return getById(list,$(id).value)}
+function systemPowerNeed(cpu,gpu){
+ if(!gpu)return 0;
+ const cpuBase=cpu?cpu.power:120;
+ const extra=Math.max(0,cpuBase-120);
+ return Math.ceil((gpu.psu+extra*0.45)/50)*50;
+}
+function evaluateBuild(){
+ const cpu=getValue("cpu",CPU_DATA),board=getValue("motherboard",BOARD_DATA),memory=getValue("memory",MEMORY_DATA),gpu=getValue("gpu",GPU_DATA),cooler=getValue("cooler",COOLER_DATA),pcCase=getValue("case",CASE_DATA),psu=getValue("psu",PSU_DATA),storage=getValue("storage",STORAGE_DATA);
+ const checks=[];
+ checks.push({label:"CPU and motherboard platform",value:cpu&&board?(cpu.socket===board.socket?"Compatible · "+cpu.socket:"Mismatch · "+cpu.socket+" vs "+board.socket):"Choose both parts",status:cpu&&board?(cpu.socket===board.socket?"good":"bad"):"pending"});
+ checks.push({label:"Memory generation",value:board&&memory?(board.memory===memory.type?"Compatible · "+memory.type:"Mismatch · "+board.memory+" board"): "Choose a board and memory kit",status:board&&memory?(board.memory===memory.type?"good":"bad"):"pending"});
+ checks.push({label:"Motherboard fits the case",value:board&&pcCase?(pcCase.forms.includes(board.form)?"Fits · "+board.form+" in "+pcCase.name:"Does not fit · "+board.form+" board"): "Choose a case and motherboard",status:board&&pcCase?(pcCase.forms.includes(board.form)?"good":"bad"):"pending"});
+ checks.push({label:"Graphics card clearance",value:gpu&&pcCase?(gpu.length<=pcCase.maxGpu?"Fits reference size · "+gpu.length+" / "+pcCase.maxGpu+" mm":"Too long for this case · "+gpu.length+" / "+pcCase.maxGpu+" mm"):"Choose a GPU and case",status:gpu&&pcCase?(gpu.length<=pcCase.maxGpu?"good":"bad"):"pending"});
+ let coolStatus="pending",coolValue="Choose a CPU cooler and case";
+ if(cpu&&cooler&&pcCase){
+  const socketOk=cooler.sockets.includes(cpu.socket),capacityOk=cooler.capacity>=cpu.power;
+  const fitOk=cooler.type==="air"?cooler.height<=pcCase.maxCooler:pcCase.radiators.includes(cooler.radiator);
+  coolStatus=socketOk&&capacityOk&&fitOk?"good":"bad";
+  coolValue=!socketOk?"Mount not listed for "+cpu.socket:!capacityOk?"Cooler capacity below CPU planning power":!fitOk?"Cooler may not fit case clearance":"Mount, planning capacity and case fit check out";
+ }
+ checks.push({label:"Cooler mount, capacity and fit",value:coolValue,status:coolStatus});
+ const needed=systemPowerNeed(cpu,gpu);
+ checks.push({label:"Power supply headroom",value:psu&&gpu?(psu.watts>=needed?"Pass · "+psu.watts+" W selected / "+needed+" W planning need":"Low · "+psu.watts+" W selected / "+needed+" W planning need"): "Choose a GPU and power supply",status:psu&&gpu?(psu.watts>=needed?"good":"bad"):"pending"});
+ checks.push({label:"Storage connection",value:board&&storage?(storage.type==="sata"?"SATA drive selected":board.m2>0?"NVMe · "+board.m2+" M.2 slots listed":"No M.2 slot listed"): "Choose storage and a motherboard",status:board&&storage?(storage.type==="sata"||board.m2>0?"good":"bad"):"pending"});
+ checks.push({label:"Gaming goal match",value:gpu?goalText(gpu):"Choose a graphics card",status:gpu?goalStatus(gpu):"pending"});
+ return {cpu,board,memory,gpu,cooler,pcCase,psu,storage,checks};
+}
+function goalValue(){return document.querySelector('input[name="goal"]:checked')?.value||"1080"}
+function goalText(gpu){
+ const goal=Number(goalValue()),labels={1080:"1080p",1440:"1440p",2160:"4K"};
+ if(!gpu)return "Choose a graphics card";
+ return gpu.tier>=goal?"GPU tier aligns with a "+labels[goal]+" gaming goal":"GPU is below the selected "+labels[goal]+" goal tier";
+}
+function goalStatus(gpu){return gpu.tier>=Number(goalValue())?"good":"warn"}
+function renderBuild(){
+ updatePlatformOptions();
+ const b=evaluateBuild();
+ const complete=b.checks.filter(x=>x.status!=="pending").length;
+ const failures=b.checks.filter(x=>x.status==="bad").length;
+ const warnings=b.checks.filter(x=>x.status==="warn").length;
+ const allSelected=!!(b.cpu&&b.board&&b.memory&&b.gpu&&b.cooler&&b.pcCase&&b.psu&&b.storage);
+ const ready=allSelected&&failures===0;
+ $("overallStatus").textContent=ready?"Checks look good":failures?failures+" item"+(failures===1?"":"s")+" to fix":allSelected&&warnings?"Review recommendation":"Building your list";
+ $("overallStatus").className="status-badge "+(ready?"ready":failures?"issue":"");
+ $("progressBar").style.width=Math.round(complete/b.checks.length*100)+"%";
+ $("checks").innerHTML=b.checks.map(x=>'<div class="part-line '+x.status+'"><span class="mark">'+(x.status==="good"?"✓":x.status==="bad"?"!":x.status==="warn"?"△":"·")+'</span><span>'+x.label+'</span><b>'+x.value+'</b></div>').join("");
+ const gpu=b.gpu,goal=Number(goalValue());
+ let rec="<strong>Choose a gaming goal</strong>Pick a goal above to get a GPU tier suggestion.";
+ if(gpu){
+  const focus=goal===1080?"1080p":goal===1440?"1440p":"4K";
+  rec="<strong>"+focus+" planning note</strong>"+(gpu.tier>=goal?"Your selected GPU is in the suggested tier for this goal.":"Consider a stronger GPU tier for this goal. Current selection: "+gpu.name+".")+" This is a broad tier guide, not an FPS prediction.";
+ }
+ if(failures>0)rec="<strong>Fix the red checks first</strong>"+b.checks.filter(x=>x.status==="bad").map(x=>x.label).join("; ")+".";
+ $("recommendation").innerHTML=rec;
+ $("savedNote").textContent="";
+}
+function persistBuild(){
+ const vals={cpu:$("cpu").value,motherboard:$("motherboard").value,memory:$("memory").value,gpu:$("gpu").value,cooler:$("cooler").value,case:$("case").value,psu:$("psu").value,storage:$("storage").value,goal:goalValue()};
+ try{localStorage.setItem("pcpilot-build-v1",JSON.stringify(vals))}catch(e){}
+}
+function selectValues(vals){
+ if(!vals)return;
+ const set=(id,value)=>{if(value&&Array.from($(id).options).some(o=>o.value===value))$(id).value=value};
+ set("cpu",vals.cpu);updatePlatformOptions();set("motherboard",vals.motherboard);updatePlatformOptions();set("memory",vals.memory);
+ ["gpu","cooler","case","psu","storage"].forEach(id=>set(id,vals[id]));
+ if(vals.goal){const goal=document.querySelector('input[name="goal"][value="'+vals.goal+'"]');if(goal)goal.checked=true}
+ renderBuild();
+}
+function applyPreset(kind){
+ const presets={
+ value:{cpu:"r5-5600",motherboard:"b550-matx",memory:"d4-32",gpu:"rtx-5060",cooler:"air-120",case:"compact-matx",psu:"psu-650",storage:"nvme-1",goal:"1080"},
+ "1440":{cpu:"r7-7800x3d",motherboard:"b650-atx",memory:"d5-32-6000",gpu:"rtx-5070",cooler:"air-180",case:"airflow-mid",psu:"psu-750",storage:"nvme-2",goal:"1440"},
+ "4k":{cpu:"r7-9800x3d",motherboard:"b850-atx",memory:"d5-64",gpu:"rx-9070xt",cooler:"air-250",case:"large-mid",psu:"psu-850",storage:"nvme-2",goal:"2160"}
+ };
+ selectValues(presets[kind]);
+ persistBuild();
+}
+function shareUrl(){
+ const data={cpu:$("cpu").value,motherboard:$("motherboard").value,memory:$("memory").value,gpu:$("gpu").value,cooler:$("cooler").value,case:$("case").value,psu:$("psu").value,storage:$("storage").value,goal:goalValue()};
+ const url=new URL(location.href);url.searchParams.set("build",btoa(unescape(encodeURIComponent(JSON.stringify(data)))));return url.toString();
+}
+document.querySelectorAll("#buildForm select,#buildForm input").forEach(el=>el.addEventListener("change",()=>{renderBuild();persistBuild()}));
+document.querySelectorAll("[data-preset]").forEach(btn=>btn.addEventListener("click",()=>applyPreset(btn.dataset.preset)));
+$("resetBuild").addEventListener("click",()=>{localStorage.removeItem("pcpilot-build-v1");$("buildForm").reset();["cpu","motherboard","memory","gpu","cooler","case","psu","storage"].forEach(id=>$(id).value="");updatePlatformOptions();renderBuild();$("savedNote").textContent="Started a fresh build."});
+$("saveBuild").addEventListener("click",()=>{persistBuild();$("savedNote").textContent="Build saved in this browser."});
+$("shareBuild").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(shareUrl());$("savedNote").textContent="Share link copied. It includes your selected parts."; }catch(e){const input=document.createElement("textarea");input.value=shareUrl();document.body.appendChild(input);input.select();document.execCommand("copy");input.remove();$("savedNote").textContent="Share link copied. It includes your selected parts."}});
+$("printBuild").addEventListener("click",()=>window.print());
+document.addEventListener("click",event=>document.querySelectorAll(".tool-dropdown[open]").forEach(menu=>{if(!menu.contains(event.target))menu.removeAttribute("open")}));
+document.addEventListener("keydown",event=>{if(event.key==="Escape")document.querySelectorAll(".tool-dropdown[open]").forEach(menu=>{menu.removeAttribute("open");menu.querySelector("summary").focus()})});
+function decodeShared(){
+ const encoded=new URLSearchParams(location.search).get("build");
+ if(!encoded)return null;
+ try{return JSON.parse(decodeURIComponent(escape(atob(encoded))))}catch(e){return null}
+}
+const stored=(()=>{try{return JSON.parse(localStorage.getItem("pcpilot-build-v1")||"null")}catch(e){return null}})();
+addOptions("cpu",CPU_DATA,"processor");
+addOptions("gpu",GPU_DATA,"graphics card");
+addOptions("cooler",COOLER_DATA,"CPU cooler");
+addOptions("case",CASE_DATA,"case");
+addOptions("psu",PSU_DATA,"power supply");
+addOptions("storage",STORAGE_DATA,"storage");
+updatePlatformOptions();
+selectValues(decodeShared()||stored);
+renderBuild();
+</script>
+</body>
+</html>
