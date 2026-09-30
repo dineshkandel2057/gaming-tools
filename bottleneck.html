@@ -163,7 +163,7 @@ input:focus,select:focus{border-color:#6370ff}
       <h3>💡 What does this mean?</h3>
       <div style="font-size:12px;color:#9aa7bb;line-height:1.6" id="meaning"></div>
     </div>
-    <div class="disclaimer"><b>Data note:</b> Hardware scores are a normalized internal scale used for this calculator. Benchmark source information is retained separately and will only be converted into the internal scale when it can be mapped consistently. <b>Important:</b> Pressure values are modeled workload-to-capability ratios, not measured utilization or a direct prediction of FPS. Values above 100% indicate that estimated scenario demand exceeds the provisional nominal capability score. Balance also falls when the target appears out of reach. Real-world performance varies with game engine, graphics settings, drivers, RAM, cooling, background applications and other system factors.</div>
+    <div class="disclaimer"><b>Score data:</b> Scores use Tom’s Hardware 1080p gaming rankings where exact results are available. “Bridged” values come from older test suites and are scaled through a processor or graphics card tested in both suites. “Estimate” means no comparable result was available. CPU and GPU scores have separate reference hardware, so they are rankings—not equivalent measured FPS. <b>Important:</b> Pressure and balance remain scenario estimates, not measured utilization or predicted FPS; values above 100% mean modeled demand exceeds the score-based nominal capacity. Real-world performance varies with game engine, graphics settings, drivers, RAM, cooling, background applications and other system factors.</div>
   </div>
 </section>
 </main>
@@ -178,37 +178,37 @@ input:focus,select:focus{border-color:#6370ff}
    different benchmark generations/testbeds are not directly
    interchangeable.
    ========================================================= */
-const DATABASE_VERSION = "0.3-scenario-model";
-const SCORE_SCALE = {min:0,max:100,reference:"relative gaming capability"};
+const DATABASE_VERSION = "0.4-benchmark-scores-2026-09";
+const SCORE_SCALE = {min:0,max:100,reference:"approximate source-normalized 1080p gaming performance"};
 
 const CPUs = [
- {id:"i5-2500k",name:"Intel Core i5-2500K",vendor:"INTEL",family:"Core i5",score:28,status:"provisional",source:"Internal placeholder"},
- {id:"i7-4790k",name:"Intel Core i7-4790K",vendor:"INTEL",family:"Core i7",score:42,status:"provisional",source:"Internal placeholder"},
- {id:"i5-12400f",name:"Intel Core i5-12400F",vendor:"INTEL",family:"Core i5",score:66,status:"provisional",source:"Internal placeholder"},
- {id:"i5-13600k",name:"Intel Core i5-13600K",vendor:"INTEL",family:"Core i5",score:86,status:"provisional",source:"Internal placeholder"},
- {id:"i7-14700k",name:"Intel Core i7-14700K",vendor:"INTEL",family:"Core i7",score:96,status:"verified",source:"Tom’s Hardware CPU Hierarchy 2026",sourceMetric:"Gaming",sourceScore:90.1},
- {id:"r5-3600",name:"AMD Ryzen 5 3600",vendor:"AMD",family:"Ryzen 5",score:48,status:"provisional",source:"Internal placeholder"},
- {id:"r5-5600",name:"AMD Ryzen 5 5600",vendor:"AMD",family:"Ryzen 5",score:61,status:"provisional",source:"Internal placeholder"},
- {id:"r5-7600",name:"AMD Ryzen 5 7600",vendor:"AMD",family:"Ryzen 5",score:78,status:"provisional",source:"Internal placeholder"},
- {id:"r7-7800x3d",name:"AMD Ryzen 7 7800X3D",vendor:"AMD",family:"Ryzen 7",score:94,status:"verified",source:"Tom’s Hardware CPU Hierarchy 2026",sourceMetric:"Gaming",sourceScore:85.6},
- {id:"r9-9950x",name:"AMD Ryzen 9 9950X",vendor:"AMD",family:"Ryzen 9",score:99,status:"provisional",source:"Internal placeholder"}
+ {id:"i5-2500k",name:"Intel Core i5-2500K",vendor:"INTEL",family:"Core i5",score:28,status:"estimated",scoreNote:"No comparable current gaming chart"},
+ {id:"i7-4790k",name:"Intel Core i7-4790K",vendor:"INTEL",family:"Core i7",score:42,status:"estimated",scoreNote:"No comparable current gaming chart"},
+ {id:"i5-12400f",name:"Intel Core i5-12400F",vendor:"INTEL",family:"Core i5",score:51,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p chart; Core i5-12400 proxy scaled via Core i9-13900K overlap"},
+ {id:"i5-13600k",name:"Intel Core i5-13600K",vendor:"INTEL",family:"Core i5",score:71,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart: 70.9%"},
+ {id:"i7-14700k",name:"Intel Core i7-14700K",vendor:"INTEL",family:"Core i7",score:76,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart: 76.4%"},
+ {id:"r5-3600",name:"AMD Ryzen 5 3600",vendor:"AMD",family:"Ryzen 5",score:56,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p chart scaled via Core i7-12700K overlap"},
+ {id:"r5-5600",name:"AMD Ryzen 5 5600",vendor:"AMD",family:"Ryzen 5",score:52,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p chart; Ryzen 5 5600X proxy scaled via Core i9-13900K overlap"},
+ {id:"r5-7600",name:"AMD Ryzen 5 7600",vendor:"AMD",family:"Ryzen 5",score:61,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p chart scaled via Core i9-13900K overlap"},
+ {id:"r7-7800x3d",name:"AMD Ryzen 7 7800X3D",vendor:"AMD",family:"Ryzen 7",score:86,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart: 85.6%"},
+ {id:"r9-9950x",name:"AMD Ryzen 9 9950X",vendor:"AMD",family:"Ryzen 9",score:77,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart: 76.9%"}
 ];
 
 const GPUs = [
- {id:"gtx-750-ti",name:"NVIDIA GeForce GTX 750 Ti",vendor:"NVIDIA",family:"GeForce GTX",score:18,status:"provisional"},
- {id:"gtx-1060-6gb",name:"NVIDIA GeForce GTX 1060 6GB",vendor:"NVIDIA",family:"GeForce GTX",score:42,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2022–2024",sourceMetric:"1080p Ultra",sourceScore:20.8},
- {id:"gtx-1080-ti",name:"NVIDIA GeForce GTX 1080 Ti",vendor:"NVIDIA",family:"GeForce GTX",score:58,status:"provisional"},
- {id:"rtx-2060",name:"NVIDIA GeForce RTX 2060",vendor:"NVIDIA",family:"GeForce RTX",score:55,status:"provisional"},
- {id:"rtx-3060-8gb",name:"NVIDIA GeForce RTX 3060 8GB",vendor:"NVIDIA",family:"GeForce RTX",score:65,status:"provisional"},
- {id:"rtx-4060",name:"NVIDIA GeForce RTX 4060",vendor:"NVIDIA",family:"GeForce RTX",score:72,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2022–2024",sourceMetric:"1080p Ultra",sourceScore:35.4},
- {id:"rtx-2080-ti",name:"NVIDIA GeForce RTX 2080 Ti",vendor:"NVIDIA",family:"GeForce RTX",score:77,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2022–2024",sourceMetric:"1080p Ultra",sourceScore:42.7},
- {id:"rtx-4070",name:"NVIDIA GeForce RTX 4070",vendor:"NVIDIA",family:"GeForce RTX",score:86,status:"provisional"},
- {id:"rtx-4090",name:"NVIDIA GeForce RTX 4090",vendor:"NVIDIA",family:"GeForce RTX",score:100,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2026",sourceMetric:"1080p Ultra",sourceScore:90.1},
- {id:"rx-580",name:"AMD Radeon RX 580",vendor:"AMD",family:"Radeon RX",score:29,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2022–2024",sourceMetric:"1080p Ultra",sourceScore:22.9},
- {id:"rx-6600",name:"AMD Radeon RX 6600",vendor:"AMD",family:"Radeon RX",score:52,status:"provisional"},
- {id:"rx-6700-xt",name:"AMD Radeon RX 6700 XT",vendor:"AMD",family:"Radeon RX",score:69,status:"provisional"},
- {id:"rx-7600",name:"AMD Radeon RX 7600",vendor:"AMD",family:"Radeon RX",score:62,status:"provisional"},
- {id:"rx-7800-xt",name:"AMD Radeon RX 7800 XT",vendor:"AMD",family:"Radeon RX",score:82,status:"verified",source:"Tom’s Hardware GPU Hierarchy 2022–2024",sourceMetric:"1080p Ultra",sourceScore:46.7}
+ {id:"gtx-750-ti",name:"NVIDIA GeForce GTX 750 Ti",vendor:"NVIDIA",family:"GeForce GTX",score:12,status:"estimated",scoreNote:"No comparable raster gaming chart"},
+ {id:"gtx-1060-6gb",name:"NVIDIA GeForce GTX 1060 6GB",vendor:"NVIDIA",family:"GeForce GTX",score:19,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p Ultra chart: 20.8% of RTX 4090; bridged to 2026 RTX 5090 scale"},
+ {id:"gtx-1080-ti",name:"NVIDIA GeForce GTX 1080 Ti",vendor:"NVIDIA",family:"GeForce GTX",score:39,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p Ultra chart: 43.1% of RTX 4090; bridged to 2026 RTX 5090 scale"},
+ {id:"rtx-2060",name:"NVIDIA GeForce RTX 2060",vendor:"NVIDIA",family:"GeForce RTX",score:32,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p Ultra chart: 36.0% of RTX 4090; bridged to 2026 RTX 5090 scale"},
+ {id:"rtx-3060-8gb",name:"NVIDIA GeForce RTX 3060 8GB",vendor:"NVIDIA",family:"GeForce RTX",score:26,status:"estimated",scoreNote:"RTX 3060 12GB benchmark adjusted downward for the 8GB model; no exact matching listing"},
+ {id:"rtx-4060",name:"NVIDIA GeForce RTX 4060",vendor:"NVIDIA",family:"GeForce RTX",score:35,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p Ultra gaming chart: 35.1%"},
+ {id:"rtx-2080-ti",name:"NVIDIA GeForce RTX 2080 Ti",vendor:"NVIDIA",family:"GeForce RTX",score:56,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p Ultra chart: 62.5% of RTX 4090; bridged to 2026 RTX 5090 scale"},
+ {id:"rtx-4070",name:"NVIDIA GeForce RTX 4070",vendor:"NVIDIA",family:"GeForce RTX",score:55,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p Ultra gaming chart: 54.7%"},
+ {id:"rtx-4090",name:"NVIDIA GeForce RTX 4090",vendor:"NVIDIA",family:"GeForce RTX",score:90,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p Ultra gaming chart: 90.1%"},
+ {id:"rx-580",name:"AMD Radeon RX 580",vendor:"AMD",family:"Radeon RX",score:21,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p Ultra chart: 22.9% of RTX 4090; bridged to 2026 RTX 5090 scale"},
+ {id:"rx-6600",name:"AMD Radeon RX 6600",vendor:"AMD",family:"Radeon RX",score:26,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p Ultra gaming chart: 25.5%"},
+ {id:"rx-6700-xt",name:"AMD Radeon RX 6700 XT",vendor:"AMD",family:"Radeon RX",score:39,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p Ultra gaming chart: 38.9%"},
+ {id:"rx-7600",name:"AMD Radeon RX 7600",vendor:"AMD",family:"Radeon RX",score:34,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p Ultra gaming chart: 34.3%"},
+ {id:"rx-7800-xt",name:"AMD Radeon RX 7800 XT",vendor:"AMD",family:"Radeon RX",score:58,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p Ultra gaming chart: 58.1%"}
 ];
 
 function getHardwareScore(record){
@@ -223,7 +223,7 @@ function validateHardwareDatabase(list,type){
     if(!x.id||ids.has(x.id)) throw new Error(`Duplicate/missing ${type} id: ${x.id||"unknown"}`);
     ids.add(x.id);
     if(!x.name||!x.vendor) throw new Error(`Incomplete ${type} record: ${x.id}`);
-    if(typeof x.score!=="number"||x.score<SCORE_SCALE.min||x.score>SCORE_SCALE.max) throw new Error(`Invalid ${type} score: ${x.id}`);
+    if(typeof x.score!=="number"||x.score<SCORE_SCALE.min||x.score>SCORE_SCALE.max) throw new Error(`Invalid ${type} score: ${x.id}`);\n    if(!["direct","bridged","estimated"].includes(x.status)||!x.scoreNote) throw new Error(`Missing score provenance: ${x.id}`);
   });
   return true;
 }
@@ -305,10 +305,10 @@ function calculate(){
 
  document.getElementById("pairCpuVendor").textContent=c.vendor;
  document.getElementById("pairCpu").textContent=c.name;
- document.getElementById("pairCpuScore").textContent="Performance score "+cpuScore+"/100";
+ document.getElementById("pairCpuScore").textContent="Gaming score "+cpuScore+"/100 · "+c.status;
  document.getElementById("pairGpuVendor").textContent=g.vendor;
  document.getElementById("pairGpu").textContent=g.name;
- document.getElementById("pairGpuScore").textContent="Performance score "+gpuScore+"/100";
+ document.getElementById("pairGpuScore").textContent="Gaming score "+gpuScore+"/100 · "+g.status;
  document.getElementById("cpuPerf").textContent=cpuScore;
  document.getElementById("gpuPerf").textContent=gpuScore;
  document.getElementById("balance").textContent=Math.round(balance);
