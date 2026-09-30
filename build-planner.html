@@ -172,7 +172,7 @@ footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:
         </div>
       </section>
       <section class="step">
-        <div class="step-heading"><span class="step-number">03</span><div><h2>Add graphics and storage</h2><p>The listed GPU size is a reference design. Partner models can be larger or use more power.</p></div></div>
+        <div class="step-heading"><span class="step-number">03</span><div><h2>Add graphics and storage</h2><p>The listed GPU length is a planning reference, not an exact card model. Board-partner versions may be larger or use more power.</p></div></div>
         <div class="fields">
           <div class="field"><label for="gpu">Graphics card</label><div class="part-select"><span class="part-icon gpu" aria-hidden="true">▰</span><select id="gpu" required></select></div><small>Includes NVIDIA GeForce and AMD Radeon options.</small></div>
           <div class="field"><label for="storage">Storage</label><div class="part-select"><span class="part-icon" aria-hidden="true">▤</span><select id="storage" required></select></div><small>NVMe drives use the motherboard’s M.2 slot.</small></div>
@@ -213,7 +213,7 @@ footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:
     </aside>
   </div>
   <section class="step source-note" style="margin-top:16px">
-    <b style="color:#e4eafa">How the checks work:</b> Platform and memory rules follow manufacturer-published socket and memory support. Power and physical fit use reference specifications and broad case classes. They do not account for every board revision, BIOS version, cooler mount, add-in-card model or transient load. Confirm those details with the part makers before purchase.
+    <b style="color:#e4eafa">How the checks work:</b> Platform and memory rules follow manufacturer-published socket and memory support. Power estimates use published GPU guidance where available; card lengths and generic case clearances are planning estimates. They do not account for every board revision, BIOS version, cooler mount, add-in-card model or transient load. Confirm those details with the part makers before purchase.
     <br><br><b style="color:#e4eafa">Reference specs:</b>
     <a href="https://www.intel.com/content/www/us/en/support/articles/000099723/processors.html" target="_blank" rel="noopener">Intel socket guidance</a> ·
     <a href="https://www.amd.com/en/products/processors/chipsets/am5.html" target="_blank" rel="noopener">AMD AM5 compatibility</a> ·
@@ -329,7 +329,7 @@ function evaluateBuild(){
  checks.push({label:"CPU and motherboard platform",value:cpu&&board?(cpu.socket===board.socket?"Compatible · "+cpu.socket:"Mismatch · "+cpu.socket+" vs "+board.socket):"Choose both parts",status:cpu&&board?(cpu.socket===board.socket?"good":"bad"):"pending"});
  checks.push({label:"Memory generation",value:board&&memory?(board.memory===memory.type?"Compatible · "+memory.type:"Mismatch · "+board.memory+" board"): "Choose a board and memory kit",status:board&&memory?(board.memory===memory.type?"good":"bad"):"pending"});
  checks.push({label:"Motherboard fits the case",value:board&&pcCase?(pcCase.forms.includes(board.form)?"Fits · "+board.form+" in "+pcCase.name:"Does not fit · "+board.form+" board"): "Choose a case and motherboard",status:board&&pcCase?(pcCase.forms.includes(board.form)?"good":"bad"):"pending"});
- checks.push({label:"Graphics card clearance",value:gpu&&pcCase?(gpu.length<=pcCase.maxGpu?"Fits reference size · "+gpu.length+" / "+pcCase.maxGpu+" mm":"Too long for this case · "+gpu.length+" / "+pcCase.maxGpu+" mm"):"Choose a GPU and case",status:gpu&&pcCase?(gpu.length<=pcCase.maxGpu?"good":"bad"):"pending"});
+ checks.push({label:"Graphics card clearance",value:gpu&&pcCase?(gpu.length<=pcCase.maxGpu?"Fits listed length · "+gpu.length+" / "+pcCase.maxGpu+" mm":"Too long for this case · "+gpu.length+" / "+pcCase.maxGpu+" mm"):"Choose a GPU and case",status:gpu&&pcCase?(gpu.length<=pcCase.maxGpu?"good":"bad"):"pending"});
  let coolStatus="pending",coolValue="Choose a CPU cooler and case";
  if(cpu&&cooler&&pcCase){
   const socketOk=cooler.sockets.includes(cpu.socket),capacityOk=cooler.capacity>=cpu.power;
