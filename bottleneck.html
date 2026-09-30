@@ -829,6 +829,18 @@ Primary Limitation
 
 </div>
 
+<div class="detail">
+
+<div class="detail-title">
+Estimated Bottleneck Difference
+</div>
+
+<div class="detail-value" id="detailBottleneck">
+--
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -851,9 +863,11 @@ Select your hardware and click Calculate.
 
 <strong>Important:</strong>
 This calculator provides a generalized estimate based on relative hardware
-performance and gaming workload assumptions. Real-world performance can vary
-between games because of game engines, graphics settings, drivers, RAM,
-background applications, cooling and other system factors.
+performance and workload assumptions. The pressure and bottleneck values are
+not measured utilization and should not be interpreted as exact FPS loss.
+Real-world performance can vary between games because of game engines,
+graphics settings, drivers, RAM, background applications, cooling and other
+system factors.
 
 </div>
 
@@ -1169,41 +1183,151 @@ function calculate() {
 
 
     /*
-       Higher FPS increases CPU pressure.
-       Higher resolution increases GPU pressure.
+       PCPilot estimation model
+       ------------------------
+       This is NOT a benchmark or a measurement of real hardware
+       utilization. It estimates workload pressure from:
+
+       1. Relative CPU/GPU performance score
+       2. Target FPS
+       3. Resolution
+       4. Game workload type
+
+       The important change here is that CPU and GPU demand are
+       calculated separately before comparing them. This avoids
+       treating a simple CPU-score minus GPU-score difference as
+       a "bottleneck percentage".
     */
 
+    /* Higher FPS increases CPU demand strongly. */
     const fpsFactor =
-        Math.max(0.55, fps / 120);
+        Math.max(0.75, fps / 80);
 
-    let cpuPressure =
-        (fpsFactor * gameMultiplier * 58)
-        / (cpu[1] / 50);
+    /*
+       Resolution has a much smaller effect on CPU demand than GPU
+       demand. The selected resolution values are already encoded
+       in the select element.
+    */
+    const cpuResolutionFactor =
+        Math.max(0.65, 1 - ((resolution - 1) * 0.23));
 
-    let gpuPressure =
-        (resolution * gameMultiplier * 58)
-        / (gpu[1] / 50);
-
-
-    cpuPressure =
-        Math.min(100, Math.max(5, cpuPressure));
-
-    gpuPressure =
-        Math.min(100, Math.max(5, gpuPressure));
+    /*
+       GPU workload scales more directly with resolution.
+       At higher resolutions the GPU becomes increasingly important.
+    */
+    const gpuResolutionFactor =
+        resolution;
 
 
     /*
-       Balance:
-       Smaller difference = better balance.
+       GPU workload also rises slightly with higher target FPS,
+       but much less aggressively than CPU workload.
     */
+    const gpuFPSFactor =
+        0.90 + (Math.min(fps, 360) / 360) * 0.20;
 
-    const difference =
-        Math.abs(cpuPressure - gpuPressure);
 
+    /*
+       Baseline workload values.
+
+       These are calibration constants for a relative estimator,
+       not FPS measurements.
+    */
+    const cpuDemand =
+        42 *
+        gameMultiplier *
+        fpsFactor *
+        cpuResolutionFactor;
+
+    const gpuDemand =
+        50 *
+        gameMultiplier *
+        gpuResolutionFactor *
+        gpuFPSFactor;
+
+
+    /*
+       Convert workload demand into estimated pressure.
+
+       Example:
+       demand 50 / performance 100 = 50% pressure.
+       demand 75 / performance 50 = 150% pressure.
+
+       Raw values can exceed 100. The displayed bars are capped
+       at 100%, but the raw values are retained for determining
+       which component is under greater relative pressure.
+    */
+    const rawCpuPressure =
+        (cpuDemand / cpu[1]) * 100;
+
+    const rawGpuPressure =
+        (gpuDemand / gpu[1]) * 100;
+
+
+    const cpuPressure =
+        Math.min(
+            100,
+            Math.max(5, rawCpuPressure)
+        );
+
+    const gpuPressure =
+        Math.min(
+            100,
+            Math.max(5, rawGpuPressure)
+        );
+
+
+    /*
+       Compare the raw pressures rather than the capped bars.
+       This matters when both components are above 100%.
+    */
+    const higherPressure =
+        Math.max(
+            rawCpuPressure,
+            rawGpuPressure
+        );
+
+    const lowerPressure =
+        Math.min(
+            rawCpuPressure,
+            rawGpuPressure
+        );
+
+    const pressureDifference =
+        higherPressure > 0
+            ? (higherPressure - lowerPressure) / higherPressure
+            : 0;
+
+
+    /*
+       Balance is based on the relative pressure difference.
+
+       100 = very similar pressure
+       0   = extremely different pressure
+    */
     const balance =
         Math.max(
             0,
-            Math.round(100 - difference)
+            Math.min(
+                100,
+                Math.round(
+                    (1 - pressureDifference) * 100
+                )
+            )
+        );
+
+
+    /*
+       Bottleneck percentage represents the difference in estimated
+       pressure. It should NOT be interpreted as "exact FPS lost".
+    */
+    const bottleneckPercent =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                Math.round(pressureDifference * 100)
+            )
         );
 
 
@@ -1211,7 +1335,7 @@ function calculate() {
     let title;
     let badge;
 
-    if (difference <= 10) {
+    if (pressureDifference <= 0.08) {
 
         bottleneck = "Balanced";
 
@@ -1221,13 +1345,19 @@ function calculate() {
 
     }
 
-    else if (cpuPressure > gpuPressure) {
+    else if (rawCpuPressure > rawGpuPressure) {
 
         bottleneck = "CPU";
 
-        title = "Likely CPU-Limited";
+        title =
+            pressureDifference <= 0.18
+                ? "Mild CPU Limitation"
+                : "Likely CPU-Limited";
 
-        badge = "🟣 CPU Limited";
+        badge =
+            pressureDifference <= 0.18
+                ? "🟡 Mild CPU Pressure"
+                : "🟣 CPU Limited";
 
     }
 
@@ -1235,20 +1365,31 @@ function calculate() {
 
         bottleneck = "GPU";
 
-        title = "Likely GPU-Limited";
+        title =
+            pressureDifference <= 0.18
+                ? "Mild GPU Limitation"
+                : "Likely GPU-Limited";
 
-        badge = "🔵 GPU Limited";
-
+        badge =
+            pressureDifference <= 0.18
+                ? "🟡 Mild GPU Pressure"
+                : "🔵 GPU Limited";
     }
 
 
     /* HEADROOM */
 
     const cpuHeadroom =
-        Math.max(0, Math.round(100 - cpuPressure));
+        Math.max(
+            0,
+            Math.round(100 - rawCpuPressure)
+        );
 
     const gpuHeadroom =
-        Math.max(0, Math.round(100 - gpuPressure));
+        Math.max(
+            0,
+            Math.round(100 - rawGpuPressure)
+        );
 
 
     /* UPDATE SCOREBOARD */
@@ -1339,6 +1480,15 @@ function calculate() {
         bottleneck;
 
 
+    const bottleneckElement =
+        document.getElementById("detailBottleneck");
+
+    if (bottleneckElement) {
+        bottleneckElement.textContent =
+            bottleneckPercent + "%";
+    }
+
+
     /* =====================================================
        BEGINNER EXPLANATION
     ===================================================== */
@@ -1349,9 +1499,10 @@ function calculate() {
 
         explanation =
         "Your CPU is under relatively more pressure than your GPU " +
-        "in this scenario. This commonly happens when targeting high " +
-        "FPS at lower resolutions. Competitive games, simulation games " +
-        "and CPU-heavy game engines can make this difference more noticeable.";
+        "in this scenario. This is more common when targeting high " +
+        "FPS, using lower resolutions, or playing CPU-heavy games. " +
+        "The percentage shown is an estimate of pressure imbalance, " +
+        "not an exact percentage of FPS loss.";
 
     }
 
@@ -1359,18 +1510,20 @@ function calculate() {
 
         explanation =
         "Your GPU is under relatively more pressure than your CPU " +
-        "in this scenario. This commonly happens at higher resolutions " +
-        "or when using demanding graphics settings. Increasing resolution " +
-        "or graphics quality generally increases GPU workload.";
+        "in this scenario. Higher resolutions and demanding graphics " +
+        "workloads generally increase GPU demand. Being GPU-limited " +
+        "is not automatically a problem if the GPU is delivering your " +
+        "desired FPS.";
 
     }
 
     else {
 
         explanation =
-        "Your CPU and GPU have relatively similar workload pressure " +
-        "for this scenario. This means neither component clearly dominates " +
-        "the estimated limitation.";
+        "Your CPU and GPU have relatively similar estimated pressure " +
+        "for this scenario. That indicates a comparatively balanced " +
+        "pairing, although the actual limiting component can vary " +
+        "between games, graphics settings and game engines.";
 
     }
 
