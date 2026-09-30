@@ -7,237 +7,307 @@
 <title>CPU & GPU Bottleneck Calculator</title>
 
 <style>
-    * {
-        box-sizing: border-box;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0d0f15;
+    color: #f5f5f7;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 18px;
+}
+
+.card {
+    background: #171a22;
+    border: 1px solid #2b3040;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+}
+
+.subtitle {
+    color: #aeb4c5;
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #343949;
+    background: #0e1016;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: #7164ff;
+}
+
+button {
+    width: 100%;
+    border: 0;
+    border-radius: 11px;
+    padding: 16px;
+    background: #6c5cff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:hover {
+    background: #7a6cff;
+    transform: translateY(-1px);
+}
+
+/* ================= RESULT ================= */
+
+.result {
+    margin-top: 30px;
+    background: #101219;
+    border: 1px solid #303544;
+    border-radius: 18px;
+    padding: 28px;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.result-title {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.badge {
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-weight: bold;
+    background: #252938;
+}
+
+/* SCORE CARDS */
+
+.score-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.score-card {
+    background: #191c25;
+    border: 1px solid #2c3040;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.score-label {
+    color: #9fa6b8;
+    font-size: 14px;
+}
+
+.score-number {
+    font-size: 34px;
+    font-weight: bold;
+    margin-top: 7px;
+}
+
+.score-small {
+    color: #858c9f;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* ================= CHART ================= */
+
+.chart-box {
+    margin-top: 25px;
+    padding: 22px;
+    border-radius: 15px;
+    background: #191c25;
+    border: 1px solid #2c3040;
+}
+
+.chart-title {
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.chart-row {
+    margin-bottom: 20px;
+}
+
+.chart-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: #d8dbe5;
+}
+
+.bar {
+    height: 18px;
+    background: #292d3a;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 20px;
+    width: 0%;
+    transition: width .7s ease;
+}
+
+.cpu-bar {
+    background: #6c5cff;
+}
+
+.gpu-bar {
+    background: #3aa0ff;
+}
+
+.balance-bar {
+    background: #43d17d;
+}
+
+/* ================= EXPLANATION ================= */
+
+.explanation {
+    margin-top: 25px;
+    background: #191c25;
+    border-radius: 15px;
+    padding: 22px;
+    border: 1px solid #2c3040;
+}
+
+.explanation h3 {
+    margin-top: 0;
+}
+
+.explanation p {
+    color: #b8bdcc;
+    line-height: 1.7;
+}
+
+/* ================= DETAILS ================= */
+
+.details {
+    margin-top: 25px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.detail {
+    background: #191c25;
+    padding: 18px;
+    border-radius: 13px;
+    border: 1px solid #2c3040;
+}
+
+.detail-title {
+    color: #8f96aa;
+    font-size: 13px;
+}
+
+.detail-value {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* ================= LEGEND ================= */
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 22px;
+}
+
+.legend span {
+    color: #aeb4c5;
+    font-size: 13px;
+}
+
+/* ================= DISCLAIMER ================= */
+
+.disclaimer {
+    margin-top: 22px;
+    color: #777e91;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width: 750px) {
+
+    .grid,
+    .score-grid,
+    .detail-grid {
+        grid-template-columns: 1fr;
     }
 
-    body {
-        margin: 0;
-        padding: 24px;
-        background: #0d0f14;
-        color: #f5f5f7;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .container {
-        width: 100%;
-        max-width: 1100px;
-        margin: auto;
-        background: #171a22;
-        border: 1px solid #303442;
-        border-radius: 18px;
-        padding: 32px;
-        box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+    .result-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     h1 {
-        margin: 0 0 10px;
-        font-size: 34px;
+        font-size: 26px;
     }
 
-    .subtitle {
-        color: #b9bdc9;
-        font-size: 16px;
-        line-height: 1.6;
-        margin-bottom: 30px;
-    }
-
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    .full {
-        grid-column: 1 / -1;
-    }
-
-    label {
-        display: block;
-        font-weight: 700;
-        margin-bottom: 9px;
-        color: #f3f3f5;
-    }
-
-    input,
-    select {
-        width: 100%;
-        height: 50px;
-        border-radius: 9px;
-        border: 1px solid #343847;
-        background: #0d0f14;
-        color: #f5f5f7;
-        padding: 0 15px;
-        font-size: 16px;
-        outline: none;
-    }
-
-    input:focus,
-    select:focus {
-        border-color: #6c5cff;
-        box-shadow: 0 0 0 2px rgba(108,92,255,0.15);
-    }
-
-    .search-row {
-        margin-bottom: 8px;
-    }
-
-    .select-wrap {
-        position: relative;
-    }
-
-    select {
-        cursor: pointer;
-    }
-
-    .calculate {
-        width: 100%;
-        height: 54px;
-        border: 0;
-        border-radius: 9px;
-        background: #6c5cff;
-        color: white;
-        font-size: 17px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: 0.2s;
-        margin-top: 4px;
-    }
-
-    .calculate:hover {
-        background: #796bff;
-        transform: translateY(-1px);
+    .card {
+        padding: 20px;
     }
 
     .result {
-        margin-top: 30px;
-        border: 1px solid #343847;
-        background: #0f1117;
-        border-radius: 15px;
-        padding: 26px;
-    }
-
-    .result h2 {
-        margin: 0 0 10px;
-        font-size: 28px;
-    }
-
-    .result-description {
-        color: #bfc3cf;
-        line-height: 1.6;
-        margin-bottom: 25px;
-    }
-
-    .pressure-title {
-        display: flex;
-        justify-content: space-between;
-        color: #c9ccd6;
-        font-size: 14px;
-        margin-bottom: 7px;
-    }
-
-    .bar {
-        height: 15px;
-        background: #292d39;
-        border-radius: 50px;
-        overflow: hidden;
-        margin-bottom: 20px;
-    }
-
-    .bar-fill {
-        height: 100%;
-        width: 0%;
-        background: #6c5cff;
-        border-radius: 50px;
-        transition: width 0.5s ease;
-    }
-
-    .stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        margin: 22px 0;
-    }
-
-    .stat {
-        background: #181b24;
-        border-radius: 10px;
-        padding: 17px;
-    }
-
-    .stat-label {
-        color: #aeb3c1;
-        font-size: 13px;
-        margin-bottom: 6px;
-    }
-
-    .stat-value {
-        font-size: 24px;
-        font-weight: 700;
-    }
-
-    .why {
-        background: #181b24;
-        border-radius: 10px;
         padding: 20px;
-        margin-top: 20px;
     }
-
-    .why h3 {
-        margin-top: 0;
-        font-size: 19px;
-    }
-
-    .why p {
-        margin-bottom: 0;
-        color: #c2c6d0;
-        line-height: 1.65;
-    }
-
-    .hardware-info {
-        margin-top: 18px;
-        color: #9ea4b3;
-        font-size: 13px;
-        line-height: 1.6;
-    }
-
-    .notice {
-        margin-top: 25px;
-        padding: 15px;
-        background: #12151c;
-        border: 1px solid #292d39;
-        border-radius: 9px;
-        color: #aeb3c1;
-        font-size: 13px;
-        line-height: 1.6;
-    }
-
-    @media (max-width: 760px) {
-        body {
-            padding: 12px;
-        }
-
-        .container {
-            padding: 20px;
-            border-radius: 13px;
-        }
-
-        .grid {
-            grid-template-columns: 1fr;
-        }
-
-        .full {
-            grid-column: auto;
-        }
-
-        .stats {
-            grid-template-columns: 1fr;
-        }
-
-        h1 {
-            font-size: 28px;
-        }
-    }
+}
 </style>
 </head>
 
@@ -245,1065 +315,822 @@
 
 <div class="container">
 
-    <h1>CPU & GPU Bottleneck Calculator</h1>
+<div class="card">
+
+<h1>CPU & GPU Bottleneck Calculator</h1>
+
+<div class="subtitle">
+Estimate how your CPU and GPU balance against each other for your selected gaming scenario.
+Choose your hardware, resolution, game type and target FPS.
+</div>
+
+<div class="grid">
+
+<div>
+<label>Search CPU</label>
+<input
+type="text"
+id="cpuSearch"
+placeholder="Type CPU name..."
+oninput="filterCPU()">
+</div>
+
+<div>
+<label>Search GPU</label>
+<input
+type="text"
+id="gpuSearch"
+placeholder="Type GPU name..."
+oninput="filterGPU()">
+</div>
+
+<div>
+<label>Select your CPU</label>
+<select id="cpu"></select>
+</div>
+
+<div>
+<label>Select your GPU</label>
+<select id="gpu"></select>
+</div>
+
+<div class="full">
+<label>Gaming Resolution</label>
+<select id="resolution">
+<option value="0.75">1280 × 720 (720p)</option>
+<option value="1">1920 × 1080 (1080p)</option>
+<option value="1.35">2560 × 1440 (1440p)</option>
+<option value="1.8">3440 × 1440 (Ultrawide)</option>
+<option value="2">3840 × 2160 (4K)</option>
+<option value="2.5">5120 × 2880 (5K)</option>
+</select>
+</div>
+
+<div class="full">
+<label>Game Type</label>
+<select id="gameType">
+<option value="1.25">Esports / Competitive</option>
+<option value="1">AAA / Story Games</option>
+<option value="1.15">Open World</option>
+<option value="1.2">Simulation / Strategy</option>
+<option value="1.1">Minecraft / Sandbox</option>
+<option value="1.05">Indie / Lightweight</option>
+</select>
+</div>
 
-    <div class="subtitle">
-        Estimate whether your CPU or GPU is more likely to limit gaming performance.
-        Choose your hardware, resolution, game type and target FPS.
-    </div>
+<div class="full">
+<label>Target FPS</label>
+<select id="fps">
+<option value="60">60 FPS</option>
+<option value="90">90 FPS</option>
+<option value="120">120 FPS</option>
+<option value="144">144 FPS</option>
+<option value="165">165 FPS</option>
+<option value="240">240 FPS</option>
+<option value="360">360 FPS</option>
+<option value="500">500 FPS</option>
+</select>
+</div>
 
-    <div class="grid">
+<div class="full">
+<button onclick="calculate()">Calculate Bottleneck</button>
+</div>
 
-        <!-- CPU SEARCH -->
-        <div>
-            <label for="cpuSearch">Search CPU</label>
-            <div class="search-row">
-                <input
-                    type="text"
-                    id="cpuSearch"
-                    placeholder="Example: i7, Ryzen 7, 7800X3D..."
-                    oninput="filterCPUs()"
-                >
-            </div>
+</div>
 
-            <label for="cpuSelect">Select your CPU</label>
 
-            <select id="cpuSelect"></select>
-        </div>
+<!-- ================= RESULT ================= -->
 
+<div class="result">
 
-        <!-- GPU SEARCH -->
-        <div>
-            <label for="gpuSearch">Search GPU</label>
-            <div class="search-row">
-                <input
-                    type="text"
-                    id="gpuSearch"
-                    placeholder="Example: RTX 4070, RX 7800..."
-                    oninput="filterGPUs()"
-                >
-            </div>
+<div class="result-header">
 
-            <label for="gpuSelect">Select your GPU</label>
+<div>
+<div class="result-title" id="resultTitle">
+Ready to Calculate
+</div>
 
-            <select id="gpuSelect"></select>
-        </div>
+<div class="subtitle" id="resultSubtitle">
+Choose your hardware and gaming scenario.
+</div>
+</div>
 
+<div class="badge" id="badge">
+Waiting
+</div>
 
-        <!-- RESOLUTION -->
-        <div class="full">
+</div>
 
-            <label for="resolution">Gaming Resolution</label>
 
-            <select id="resolution">
+<!-- SCOREBOARD -->
 
-                <option value="720">1280 × 720 (720p)</option>
+<div class="score-grid">
 
-                <option value="1080" selected>
-                    1920 × 1080 (1080p)
-                </option>
+<div class="score-card">
 
-                <option value="1440">
-                    2560 × 1440 (1440p)
-                </option>
+<div class="score-label">
+CPU Performance
+</div>
 
-                <option value="2160">
-                    3840 × 2160 (4K)
-                </option>
+<div class="score-number" id="cpuScore">
+--
+</div>
 
-                <option value="ultrawide">
-                    3440 × 1440 (Ultrawide)
-                </option>
+<div class="score-small">
+Relative hardware performance
+</div>
 
-            </select>
+</div>
 
-        </div>
 
+<div class="score-card">
 
-        <!-- GAME TYPE -->
-        <div class="full">
+<div class="score-label">
+GPU Performance
+</div>
 
-            <label for="gameType">Game Type</label>
+<div class="score-number" id="gpuScore">
+--
+</div>
 
-            <select id="gameType">
+<div class="score-small">
+Relative hardware performance
+</div>
 
-                <option value="esports">
-                    Esports / Competitive
-                </option>
+</div>
 
-                <option value="aaa">
-                    AAA / Story Games
-                </option>
 
-                <option value="openworld">
-                    Open World / Simulation
-                </option>
+<div class="score-card">
 
-                <option value="strategy">
-                    Strategy / CPU Heavy
-                </option>
+<div class="score-label">
+Balance Score
+</div>
 
-                <option value="minecraft">
-                    Minecraft / Sandbox
-                </option>
+<div class="score-number" id="balanceScore">
+--
+</div>
 
-            </select>
+<div class="score-small">
+CPU/GPU pairing balance
+</div>
 
-        </div>
+</div>
 
+</div>
 
-        <!-- FPS -->
-        <div class="full">
 
-            <label for="fps">Target FPS</label>
+<!-- PRESSURE CHART -->
 
-            <select id="fps">
+<div class="chart-box">
 
-                <option value="60">60 FPS</option>
-                <option value="90">90 FPS</option>
-                <option value="120">120 FPS</option>
-                <option value="144">144 FPS</option>
-                <option value="165">165 FPS</option>
-                <option value="180">180 FPS</option>
-                <option value="200">200 FPS</option>
-                <option value="240" selected>240 FPS</option>
-                <option value="300">300 FPS</option>
-                <option value="360">360 FPS</option>
-                <option value="500">500 FPS</option>
+<div class="chart-title">
+Performance Pressure
+</div>
 
-            </select>
+<div class="chart-row">
 
-        </div>
+<div class="chart-label">
+<span>CPU Pressure</span>
+<strong id="cpuPressureText">0%</strong>
+</div>
 
+<div class="bar">
+<div
+id="cpuPressureBar"
+class="bar-fill cpu-bar">
+</div>
+</div>
 
-        <!-- BUTTON -->
-        <div class="full">
+</div>
 
-            <button class="calculate" onclick="calculateBottleneck()">
-                Calculate
-            </button>
 
-        </div>
+<div class="chart-row">
 
-    </div>
+<div class="chart-label">
+<span>GPU Pressure</span>
+<strong id="gpuPressureText">0%</strong>
+</div>
 
+<div class="bar">
+<div
+id="gpuPressureBar"
+class="bar-fill gpu-bar">
+</div>
+</div>
 
-    <!-- RESULT -->
-    <div class="result">
+</div>
 
-        <h2 id="resultTitle">
-            Select your hardware
-        </h2>
 
-        <div class="result-description" id="resultDescription">
-            Choose a CPU and GPU, then click Calculate.
-        </div>
+<div class="chart-row">
 
+<div class="chart-label">
+<span>System Balance</span>
+<strong id="balanceText">0%</strong>
+</div>
 
-        <!-- CPU PRESSURE -->
+<div class="bar">
+<div
+id="balanceBar"
+class="bar-fill balance-bar">
+</div>
+</div>
 
-        <div class="pressure-title">
+</div>
 
-            <span>CPU Pressure</span>
 
-            <span id="cpuPressureText">0%</span>
+<div class="legend">
+<span>🟣 CPU workload</span>
+<span>🔵 GPU workload</span>
+<span>🟢 System balance</span>
+</div>
 
-        </div>
+</div>
 
-        <div class="bar">
 
-            <div
-                class="bar-fill"
-                id="cpuBar">
-            </div>
+<!-- DETAILS -->
 
-        </div>
+<div class="details">
 
+<div class="detail-grid">
 
-        <!-- GPU PRESSURE -->
+<div class="detail">
 
-        <div class="pressure-title">
+<div class="detail-title">
+CPU Headroom
+</div>
 
-            <span>GPU Pressure</span>
+<div class="detail-value" id="cpuHeadroom">
+--
+</div>
 
-            <span id="gpuPressureText">0%</span>
+</div>
 
-        </div>
 
-        <div class="bar">
+<div class="detail">
 
-            <div
-                class="bar-fill"
-                id="gpuBar">
-            </div>
+<div class="detail-title">
+GPU Headroom
+</div>
 
-        </div>
+<div class="detail-value" id="gpuHeadroom">
+--
+</div>
 
+</div>
 
-        <!-- SCORES -->
 
-        <div class="stats">
+<div class="detail">
 
-            <div class="stat">
+<div class="detail-title">
+Resolution
+</div>
 
-                <div class="stat-label">
-                    CPU Gaming Score
-                </div>
+<div class="detail-value" id="detailResolution">
+--
+</div>
 
-                <div
-                    class="stat-value"
-                    id="cpuScore">
-                    -
-                </div>
+</div>
 
-            </div>
 
+<div class="detail">
 
-            <div class="stat">
+<div class="detail-title">
+Target FPS
+</div>
 
-                <div class="stat-label">
-                    GPU Gaming Score
-                </div>
+<div class="detail-value" id="detailFPS">
+--
+</div>
 
-                <div
-                    class="stat-value"
-                    id="gpuScore">
-                    -
-                </div>
+</div>
 
-            </div>
 
+<div class="detail">
 
-            <div class="stat">
+<div class="detail-title">
+Game Type
+</div>
 
-                <div class="stat-label">
-                    Selected CPU
-                </div>
+<div class="detail-value" id="detailGame">
+--
+</div>
 
-                <div
-                    class="stat-value"
-                    id="cpuName"
-                    style="font-size:17px;">
-                    -
-                </div>
+</div>
 
-            </div>
 
+<div class="detail">
 
-            <div class="stat">
+<div class="detail-title">
+Primary Limitation
+</div>
 
-                <div class="stat-label">
-                    Selected GPU
-                </div>
+<div class="detail-value" id="detailLimit">
+--
+</div>
 
-                <div
-                    class="stat-value"
-                    id="gpuName"
-                    style="font-size:17px;">
-                    -
-                </div>
+</div>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
 
-        <!-- WHY -->
+<!-- EXPLANATION -->
 
-        <div class="why">
+<div class="explanation">
 
-            <h3>Why?</h3>
+<h3>💡 What does this mean?</h3>
 
-            <p id="whyText">
-                Your selected hardware and gaming scenario will determine
-                the estimated CPU and GPU pressure.
-            </p>
+<p id="explanation">
+Select your hardware and click Calculate.
+</p>
 
-        </div>
+</div>
 
 
-        <div class="hardware-info">
+<div class="disclaimer">
 
-            <strong>Estimate only:</strong>
-            This calculator uses relative gaming-performance scores and
-            generalized workload assumptions. Actual results can vary
-            significantly between individual games, graphics settings,
-            drivers, RAM, game engines, background applications and
-            system configuration.
+<strong>Important:</strong>
+This calculator provides a generalized estimate based on relative hardware
+performance and gaming workload assumptions. Real-world performance can vary
+between games because of game engines, graphics settings, drivers, RAM,
+background applications, cooling and other system factors.
 
-        </div>
+</div>
 
-    </div>
+</div>
 
-
-    <div class="notice">
-
-        <strong>How this calculator works:</strong>
-        CPU and GPU scores represent relative gaming capability.
-        Resolution, game type and target FPS modify the expected workload.
-        The result is therefore a scenario estimate rather than a universal
-        percentage of CPU/GPU bottleneck.
-
-    </div>
+</div>
 
 </div>
 
 
 <script>
 
-/* ============================================================
+/* =========================================================
    CPU DATABASE
-   Relative gaming score.
-   100 = very high-end reference class.
-   ============================================================ */
+   Performance scores are relative, not benchmark scores.
+========================================================= */
 
-const CPUs = [
+const cpuData = [
 
-/* AMD Ryzen 9000 / 8000 */
+["Intel Core i5-2500K",28],
+["Intel Core i7-2600K",32],
+["Intel Core i5-3570K",31],
+["Intel Core i7-3770K",36],
+["Intel Core i5-4670K",34],
+["Intel Core i7-4790K",40],
+["Intel Core i5-6600K",39],
+["Intel Core i7-6700K",44],
+["Intel Core i5-7600K",44],
+["Intel Core i7-7700K",49],
+["Intel Core i5-8400",48],
+["Intel Core i7-8700K",57],
+["Intel Core i5-9400F",49],
+["Intel Core i7-9700K",61],
+["Intel Core i9-9900K",68],
+["Intel Core i5-10400F",54],
+["Intel Core i7-10700K",66],
+["Intel Core i9-10900K",72],
+["Intel Core i5-11400F",59],
+["Intel Core i7-11700K",69],
+["Intel Core i9-11900K",72],
+["Intel Core i5-12400F",70],
+["Intel Core i5-12600K",77],
+["Intel Core i7-12700K",84],
+["Intel Core i9-12900K",89],
+["Intel Core i5-13400F",74],
+["Intel Core i5-13600K",86],
+["Intel Core i7-13700K",92],
+["Intel Core i9-13900K",96],
+["Intel Core i5-14400F",76],
+["Intel Core i5-14600K",88],
+["Intel Core i7-14700K",95],
+["Intel Core i9-14900K",99],
 
-["AMD Ryzen 7 9850X3D",100],
-["AMD Ryzen 7 9800X3D",97],
-["AMD Ryzen 9 9950X3D",96],
-["AMD Ryzen 9 9900X3D",87],
-["AMD Ryzen 9 9950X",86],
-["AMD Ryzen 9 9900X",82],
-["AMD Ryzen 7 9700X",79],
-["AMD Ryzen 5 9600X",76],
-["AMD Ryzen 7 8700G",68],
-["AMD Ryzen 5 8600G",63],
-["AMD Ryzen 7 8700F",64],
-["AMD Ryzen 5 8500G",51],
-
-/* AMD Ryzen 7000 */
-
-["AMD Ryzen 7 7800X3D",86],
-["AMD Ryzen 9 7950X3D",84],
-["AMD Ryzen 9 7950X",82],
-["AMD Ryzen 9 7900X3D",78],
-["AMD Ryzen 9 7900X",76],
-["AMD Ryzen 9 7900",71],
-["AMD Ryzen 7 7700X",71],
-["AMD Ryzen 7 7700",68],
-["AMD Ryzen 5 7600X3D",81],
-["AMD Ryzen 5 7600X",68],
-["AMD Ryzen 5 7600",66],
-["AMD Ryzen 5 7500F",63],
-["AMD Ryzen 7 7800X",69],
-["AMD Ryzen 7 7700X3D",72],
-
-/* AMD Ryzen 5000 */
-
-["AMD Ryzen 7 5800X3D",74],
-["AMD Ryzen 7 5800X",61],
-["AMD Ryzen 7 5700X3D",69],
-["AMD Ryzen 7 5700X",58],
-["AMD Ryzen 7 5700G",52],
-["AMD Ryzen 7 5800",57],
-["AMD Ryzen 5 5600X",55],
-["AMD Ryzen 5 5600",53],
-["AMD Ryzen 5 5600G",48],
-["AMD Ryzen 5 5500",45],
-["AMD Ryzen 5 5500GT",45],
-["AMD Ryzen 5 5100",39],
-["AMD Ryzen 9 5950X",67],
-["AMD Ryzen 9 5900X",64],
-["AMD Ryzen 9 5900",60],
-
-/* AMD Ryzen 3000 */
-
-["AMD Ryzen 9 3950X",55],
-["AMD Ryzen 9 3900X",53],
-["AMD Ryzen 7 3800X",49],
-["AMD Ryzen 7 3700X",48],
-["AMD Ryzen 5 3600X",43],
-["AMD Ryzen 5 3600",41],
-["AMD Ryzen 5 3500X",39],
-["AMD Ryzen 5 3500",37],
-["AMD Ryzen 3 3300X",36],
-["AMD Ryzen 3 3100",32],
-
-/* AMD older */
-
-["AMD Ryzen 7 2700X",35],
-["AMD Ryzen 7 2700",33],
-["AMD Ryzen 5 2600X",32],
-["AMD Ryzen 5 2600",30],
-["AMD Ryzen 5 1600 AF",28],
-["AMD Ryzen 5 1600",26],
-["AMD Ryzen 5 1500X",22],
-["AMD Ryzen 3 3300X",36],
-["AMD Ryzen 3 2200G",20],
-["AMD Ryzen 3 1200",17],
-
-/* Intel Core Ultra */
-
-["Intel Core Ultra 9 285K",84],
-["Intel Core Ultra 7 285K",82],
-["Intel Core Ultra 7 270K Plus",91],
-["Intel Core Ultra 7 265K",81],
-["Intel Core Ultra 5 250K Plus",84],
-["Intel Core Ultra 5 245K",78],
-["Intel Core Ultra 5 235",70],
-["Intel Core Ultra 5 225",67],
-
-/* Intel 14th Gen */
-
-["Intel Core i9-14900KS",85],
-["Intel Core i9-14900K",82],
-["Intel Core i9-14900KF",82],
-["Intel Core i7-14700K",80],
-["Intel Core i7-14700KF",80],
-["Intel Core i5-14600K",76],
-["Intel Core i5-14600KF",76],
-["Intel Core i5-14500",69],
-["Intel Core i5-14400F",65],
-["Intel Core i5-14400",65],
-["Intel Core i3-14100F",48],
-["Intel Core i3-14100",48],
-
-/* Intel 13th Gen */
-
-["Intel Core i9-13900KS",84],
-["Intel Core i9-13900K",81],
-["Intel Core i9-13900KF",81],
-["Intel Core i7-13700K",79],
-["Intel Core i7-13700KF",79],
-["Intel Core i5-13600K",74],
-["Intel Core i5-13600KF",74],
-["Intel Core i5-13500",65],
-["Intel Core i5-13400F",61],
-["Intel Core i5-13400",61],
-["Intel Core i3-13100F",45],
-["Intel Core i3-13100",45],
-
-/* Intel 12th Gen */
-
-["Intel Core i9-12900KS",76],
-["Intel Core i9-12900K",73],
-["Intel Core i9-12900KF",73],
-["Intel Core i7-12700K",70],
-["Intel Core i7-12700KF",70],
-["Intel Core i5-12600K",66],
-["Intel Core i5-12600KF",66],
-["Intel Core i5-12400F",57],
-["Intel Core i5-12400",57],
-["Intel Core i3-12100F",46],
-["Intel Core i3-12100",46],
-
-/* Intel 11th Gen */
-
-["Intel Core i9-11900K",58],
-["Intel Core i7-11700K",54],
-["Intel Core i5-11600K",52],
-["Intel Core i5-11400F",48],
-["Intel Core i5-11400",48],
-["Intel Core i3-12100F",46],
-
-/* Intel 10th Gen */
-
-["Intel Core i9-10900K",56],
-["Intel Core i7-10700K",53],
-["Intel Core i5-10600K",48],
-["Intel Core i5-10400F",42],
-["Intel Core i3-10100F",34],
-
-/* Intel 9th Gen */
-
-["Intel Core i9-9900K",53],
-["Intel Core i7-9700K",49],
-["Intel Core i5-9600K",43],
-["Intel Core i5-9400F",38],
-
-/* Intel 8th Gen */
-
-["Intel Core i7-8700K",48],
-["Intel Core i5-8600K",43],
-["Intel Core i5-8400",38],
-
-/* Intel 7th Gen */
-
-["Intel Core i7-7700K",39],
-["Intel Core i7-7700",37],
-["Intel Core i5-7600K",34],
-["Intel Core i5-7500",31],
-
-/* Intel 6th Gen */
-
-["Intel Core i7-6700K",36],
-["Intel Core i7-6700",34],
-["Intel Core i5-6600K",31],
-["Intel Core i5-6500",28],
-
-/* Intel 4th Gen */
-
-["Intel Core i7-4790K",30],
-["Intel Core i7-4790",29],
-["Intel Core i5-4690K",26],
-["Intel Core i5-4690",25],
-["Intel Core i5-4570",22]
+["AMD Ryzen 5 1600",31],
+["AMD Ryzen 7 1700",34],
+["AMD Ryzen 5 2600",38],
+["AMD Ryzen 7 2700X",43],
+["AMD Ryzen 5 3600",50],
+["AMD Ryzen 7 3700X",55],
+["AMD Ryzen 5 5600",67],
+["AMD Ryzen 5 5600X",69],
+["AMD Ryzen 7 5700X",72],
+["AMD Ryzen 7 5800X",75],
+["AMD Ryzen 7 5800X3D",87],
+["AMD Ryzen 9 5900X",82],
+["AMD Ryzen 9 5950X",87],
+["AMD Ryzen 5 7600",78],
+["AMD Ryzen 5 7600X",80],
+["AMD Ryzen 7 7700",82],
+["AMD Ryzen 7 7700X",84],
+["AMD Ryzen 7 7800X3D",95],
+["AMD Ryzen 9 7900X",91],
+["AMD Ryzen 9 7950X",95],
+["AMD Ryzen 5 8400F",73],
+["AMD Ryzen 5 8600G",75],
+["AMD Ryzen 7 8700G",80],
+["AMD Ryzen 7 9700X",94],
+["AMD Ryzen 7 9800X3D",100],
+["AMD Ryzen 9 9900X",97],
+["AMD Ryzen 9 9950X",100]
 
 ];
 
 
-/* ============================================================
+/* =========================================================
    GPU DATABASE
-   Relative gaming score.
-   ============================================================ */
+========================================================= */
 
-const GPUs = [
+const gpuData = [
 
-/* NVIDIA RTX 50 */
+["NVIDIA GeForce GTX 750 Ti",18],
+["NVIDIA GeForce GTX 960",28],
+["NVIDIA GeForce GTX 970",34],
+["NVIDIA GeForce GTX 980",39],
+["NVIDIA GeForce GTX 1060 6GB",43],
+["NVIDIA GeForce GTX 1070",51],
+["NVIDIA GeForce GTX 1080",58],
+["NVIDIA GeForce GTX 1080 Ti",67],
+["NVIDIA GeForce RTX 2060",55],
+["NVIDIA GeForce RTX 2060 Super",59],
+["NVIDIA GeForce RTX 2070",61],
+["NVIDIA GeForce RTX 2070 Super",65],
+["NVIDIA GeForce RTX 2080",68],
+["NVIDIA GeForce RTX 2080 Super",71],
+["NVIDIA GeForce RTX 2080 Ti",76],
+["NVIDIA GeForce RTX 3060",57],
+["NVIDIA GeForce RTX 3060 Ti",68],
+["NVIDIA GeForce RTX 3070",73],
+["NVIDIA GeForce RTX 3070 Ti",77],
+["NVIDIA GeForce RTX 3080",84],
+["NVIDIA GeForce RTX 3080 Ti",89],
+["NVIDIA GeForce RTX 3090",91],
+["NVIDIA GeForce RTX 3090 Ti",94],
+["NVIDIA GeForce RTX 4060",61],
+["NVIDIA GeForce RTX 4060 Ti",68],
+["NVIDIA GeForce RTX 4070",78],
+["NVIDIA GeForce RTX 4070 Super",83],
+["NVIDIA GeForce RTX 4070 Ti",87],
+["NVIDIA GeForce RTX 4070 Ti Super",90],
+["NVIDIA GeForce RTX 4080",96],
+["NVIDIA GeForce RTX 4080 Super",98],
+["NVIDIA GeForce RTX 4090",100],
 
-["NVIDIA GeForce RTX 5090",100],
-["NVIDIA GeForce RTX 5080",86],
-["NVIDIA GeForce RTX 5070 Ti",74],
-["NVIDIA GeForce RTX 5070",66],
-["NVIDIA GeForce RTX 5060 Ti 16GB",55],
-["NVIDIA GeForce RTX 5060 Ti 8GB",53],
-["NVIDIA GeForce RTX 5060",48],
+["AMD Radeon RX 570",30],
+["AMD Radeon RX 580",35],
+["AMD Radeon RX 590",38],
+["AMD Radeon RX 5500 XT",40],
+["AMD Radeon RX 5600 XT",49],
+["AMD Radeon RX 5700",55],
+["AMD Radeon RX 5700 XT",60],
+["AMD Radeon RX 6600",54],
+["AMD Radeon RX 6600 XT",59],
+["AMD Radeon RX 6650 XT",62],
+["AMD Radeon RX 6700 XT",70],
+["AMD Radeon RX 6750 XT",73],
+["AMD Radeon RX 6800",79],
+["AMD Radeon RX 6800 XT",86],
+["AMD Radeon RX 6900 XT",91],
+["AMD Radeon RX 6950 XT",94],
+["AMD Radeon RX 7600",58],
+["AMD Radeon RX 7600 XT",61],
+["AMD Radeon RX 7700 XT",74],
+["AMD Radeon RX 7800 XT",80],
+["AMD Radeon RX 7900 GRE",83],
+["AMD Radeon RX 7900 XT",91],
+["AMD Radeon RX 7900 XTX",98],
 
-/* NVIDIA RTX 40 */
-
-["NVIDIA GeForce RTX 4090",93],
-["NVIDIA GeForce RTX 4080 SUPER",82],
-["NVIDIA GeForce RTX 4080",79],
-["NVIDIA GeForce RTX 4070 Ti SUPER",73],
-["NVIDIA GeForce RTX 4070 Ti",68],
-["NVIDIA GeForce RTX 4070 SUPER",68],
-["NVIDIA GeForce RTX 4070",61],
-["NVIDIA GeForce RTX 4060 Ti 16GB",48],
-["NVIDIA GeForce RTX 4060 Ti 8GB",46],
-["NVIDIA GeForce RTX 4060",41],
-
-/* NVIDIA RTX 30 */
-
-["NVIDIA GeForce RTX 3090 Ti",70],
-["NVIDIA GeForce RTX 3090",66],
-["NVIDIA GeForce RTX 3080 Ti",65],
-["NVIDIA GeForce RTX 3080 12GB",63],
-["NVIDIA GeForce RTX 3080 10GB",59],
-["NVIDIA GeForce RTX 3070 Ti",53],
-["NVIDIA GeForce RTX 3070",49],
-["NVIDIA GeForce RTX 3060 Ti",46],
-["NVIDIA GeForce RTX 3060 12GB",38],
-["NVIDIA GeForce RTX 3060 8GB",32],
-["NVIDIA GeForce RTX 3050 8GB",26],
-["NVIDIA GeForce RTX 3050 6GB",22],
-
-/* NVIDIA RTX 20 */
-
-["NVIDIA GeForce RTX 2080 Ti",49],
-["NVIDIA GeForce RTX 2080 SUPER",44],
-["NVIDIA GeForce RTX 2080",42],
-["NVIDIA GeForce RTX 2070 SUPER",41],
-["NVIDIA GeForce RTX 2070",38],
-["NVIDIA GeForce RTX 2060 SUPER",37],
-["NVIDIA GeForce RTX 2060",33],
-
-/* NVIDIA GTX 16 */
-
-["NVIDIA GeForce GTX 1660 Ti",31],
-["NVIDIA GeForce GTX 1660 SUPER",30],
-["NVIDIA GeForce GTX 1660",28],
-["NVIDIA GeForce GTX 1650 SUPER",23],
-["NVIDIA GeForce GTX 1650",18],
-
-/* NVIDIA GTX 10 */
-
-["NVIDIA GeForce GTX 1080 Ti",40],
-["NVIDIA GeForce GTX 1080",34],
-["NVIDIA GeForce GTX 1070 Ti",32],
-["NVIDIA GeForce GTX 1070",29],
-["NVIDIA GeForce GTX 1060 6GB",24],
-["NVIDIA GeForce GTX 1060 3GB",21],
-["NVIDIA GeForce GTX 1050 Ti",14],
-["NVIDIA GeForce GTX 1050",12],
-
-/* NVIDIA GTX 900 */
-
-["NVIDIA GeForce GTX 980 Ti",27],
-["NVIDIA GeForce GTX 980",24],
-["NVIDIA GeForce GTX 970",22],
-["NVIDIA GeForce GTX 960",15],
-["NVIDIA GeForce GTX 950",12],
-
-/* AMD RX 9000 */
-
-["AMD Radeon RX 9070 XT",82],
-["AMD Radeon RX 9070",73],
-["AMD Radeon RX 9060 XT 16GB",60],
-["AMD Radeon RX 9060 XT 8GB",56],
-
-/* AMD RX 7000 */
-
-["AMD Radeon RX 7900 XTX",83],
-["AMD Radeon RX 7900 XT",72],
-["AMD Radeon RX 7900 GRE",65],
-["AMD Radeon RX 7800 XT",61],
-["AMD Radeon RX 7700 XT",52],
-["AMD Radeon RX 7600 XT",42],
-["AMD Radeon RX 7600",36],
-["AMD Radeon RX 7500 XT",31],
-
-/* AMD RX 6000 */
-
-["AMD Radeon RX 6950 XT",68],
-["AMD Radeon RX 6900 XT",64],
-["AMD Radeon RX 6800 XT",59],
-["AMD Radeon RX 6800",53],
-["AMD Radeon RX 6750 XT",51],
-["AMD Radeon RX 6700 XT",47],
-["AMD Radeon RX 6650 XT",39],
-["AMD Radeon RX 6600 XT",37],
-["AMD Radeon RX 6600",32],
-["AMD Radeon RX 6500 XT",21],
-["AMD Radeon RX 6400",16],
-
-/* AMD RX 5000 */
-
-["AMD Radeon RX 5700 XT",42],
-["AMD Radeon RX 5700",38],
-["AMD Radeon RX 5600 XT",34],
-["AMD Radeon RX 5500 XT 8GB",26],
-["AMD Radeon RX 5500 XT 4GB",23],
-
-/* AMD Vega */
-
-["AMD Radeon VII",40],
-["AMD Radeon RX Vega 64",34],
-["AMD Radeon RX Vega 56",29],
-
-/* AMD RX 500 */
-
-["AMD Radeon RX 590",23],
-["AMD Radeon RX 580 8GB",21],
-["AMD Radeon RX 580 4GB",19],
-["AMD Radeon RX 570 8GB",18],
-["AMD Radeon RX 570 4GB",16],
-["AMD Radeon RX 560",11],
-
-/* AMD RX 400 */
-
-["AMD Radeon RX 480 8GB",18],
-["AMD Radeon RX 480 4GB",16],
-["AMD Radeon RX 470",15],
-["AMD Radeon RX 460",10]
+["Intel Arc A580",51],
+["Intel Arc A750",57],
+["Intel Arc A770",62]
 
 ];
 
 
-/* ============================================================
-   SORT DATABASES
-   ============================================================ */
-
-CPUs.sort((a,b) => a[0].localeCompare(b[0]));
-
-GPUs.sort((a,b) => a[0].localeCompare(b[0]));
-
-
-/* ============================================================
+/* =========================================================
    POPULATE SELECTS
-   ============================================================ */
+========================================================= */
 
-function populateCPUs(list = CPUs) {
+const cpuSelect = document.getElementById("cpu");
+const gpuSelect = document.getElementById("gpu");
 
-    const select = document.getElementById("cpuSelect");
+function populateCPU(list = cpuData) {
 
-    select.innerHTML = "";
+    cpuSelect.innerHTML = "";
 
-    list.forEach(cpu => {
+    list.forEach((cpu, index) => {
 
         const option = document.createElement("option");
 
-        option.value = cpu[0];
-
+        option.value = index;
         option.textContent = cpu[0];
 
-        select.appendChild(option);
+        cpuSelect.appendChild(option);
 
     });
 
 }
 
+function populateGPU(list = gpuData) {
 
-function populateGPUs(list = GPUs) {
+    gpuSelect.innerHTML = "";
 
-    const select = document.getElementById("gpuSelect");
-
-    select.innerHTML = "";
-
-    list.forEach(gpu => {
+    list.forEach((gpu, index) => {
 
         const option = document.createElement("option");
 
-        option.value = gpu[0];
-
+        option.value = index;
         option.textContent = gpu[0];
 
-        select.appendChild(option);
+        gpuSelect.appendChild(option);
 
     });
 
 }
 
+populateCPU();
+populateGPU();
 
-/* ============================================================
+
+/* =========================================================
    SEARCH
-   ============================================================ */
+========================================================= */
 
-function filterCPUs() {
+function filterCPU() {
 
     const query =
-        document
-        .getElementById("cpuSearch")
+        document.getElementById("cpuSearch")
         .value
-        .toLowerCase()
-        .trim();
+        .toLowerCase();
 
-    const filtered = CPUs.filter(cpu =>
+    const filtered = cpuData.filter(cpu =>
         cpu[0].toLowerCase().includes(query)
     );
 
-    populateCPUs(filtered);
+    populateCPU(filtered);
 }
 
 
-function filterGPUs() {
+function filterGPU() {
 
     const query =
-        document
-        .getElementById("gpuSearch")
+        document.getElementById("gpuSearch")
         .value
-        .toLowerCase()
-        .trim();
+        .toLowerCase();
 
-    const filtered = GPUs.filter(gpu =>
+    const filtered = gpuData.filter(gpu =>
         gpu[0].toLowerCase().includes(query)
     );
 
-    populateGPUs(filtered);
+    populateGPU(filtered);
 }
 
 
-/* ============================================================
-   FIND HARDWARE
-   ============================================================ */
+/* =========================================================
+   CALCULATOR
+========================================================= */
 
-function getCPU(name) {
+function calculate() {
 
-    return CPUs.find(cpu => cpu[0] === name);
-
-}
-
-
-function getGPU(name) {
-
-    return GPUs.find(gpu => gpu[0] === name);
-
-}
-
-
-/* ============================================================
-   CALCULATION MODEL
-   ============================================================ */
-
-function calculateBottleneck() {
-
-    const cpuName =
-        document.getElementById("cpuSelect").value;
-
-    const gpuName =
-        document.getElementById("gpuSelect").value;
+    const cpu = cpuData[cpuSelect.value];
+    const gpu = gpuData[gpuSelect.value];
 
     const resolution =
-        document.getElementById("resolution").value;
+        parseFloat(
+            document.getElementById("resolution").value
+        );
 
-    const gameType =
-        document.getElementById("gameType").value;
+    const gameMultiplier =
+        parseFloat(
+            document.getElementById("gameType").value
+        );
 
-    const targetFPS =
-        Number(document.getElementById("fps").value);
-
-
-    const cpu = getCPU(cpuName);
-    const gpu = getGPU(gpuName);
-
-    if (!cpu || !gpu) {
-        return;
-    }
-
-
-    const cpuScore = cpu[1];
-    const gpuScore = gpu[1];
-
-
-    /* ----------------------------------------
-       RESOLUTION MULTIPLIERS
-       Higher resolution shifts workload toward GPU.
-       ---------------------------------------- */
-
-    let cpuResolutionFactor = 1;
-    let gpuResolutionFactor = 1;
-
-    if (resolution === "720") {
-
-        cpuResolutionFactor = 1.18;
-        gpuResolutionFactor = 0.78;
-
-    }
-
-    else if (resolution === "1080") {
-
-        cpuResolutionFactor = 1.00;
-        gpuResolutionFactor = 1.00;
-
-    }
-
-    else if (resolution === "1440") {
-
-        cpuResolutionFactor = 0.88;
-        gpuResolutionFactor = 1.22;
-
-    }
-
-    else if (resolution === "2160") {
-
-        cpuResolutionFactor = 0.72;
-        gpuResolutionFactor = 1.55;
-
-    }
-
-    else if (resolution === "ultrawide") {
-
-        cpuResolutionFactor = 0.84;
-        gpuResolutionFactor = 1.32;
-
-    }
-
-
-    /* ----------------------------------------
-       GAME TYPE
-       ---------------------------------------- */
-
-    let cpuGameFactor = 1;
-    let gpuGameFactor = 1;
-
-    switch(gameType) {
-
-        case "esports":
-
-            cpuGameFactor = 1.25;
-            gpuGameFactor = 0.78;
-
-            break;
-
-        case "aaa":
-
-            cpuGameFactor = 0.92;
-            gpuGameFactor = 1.25;
-
-            break;
-
-        case "openworld":
-
-            cpuGameFactor = 1.12;
-            gpuGameFactor = 1.12;
-
-            break;
-
-        case "strategy":
-
-            cpuGameFactor = 1.35;
-            gpuGameFactor = 0.82;
-
-            break;
-
-        case "minecraft":
-
-            cpuGameFactor = 1.40;
-            gpuGameFactor = 0.85;
-
-            break;
-
-    }
-
-
-    /* ----------------------------------------
-       FPS TARGET
-       High FPS puts considerably more pressure
-       on CPU.
-       ---------------------------------------- */
-
-    let fpsCPUFactor =
-        0.80 + (targetFPS / 240) * 0.55;
-
-    let fpsGPUFactor =
-        0.85 + (targetFPS / 240) * 0.25;
-
-
-    /* ----------------------------------------
-       FINAL PRESSURE
-       ---------------------------------------- */
-
-    let cpuPressure =
-        (100 / cpuScore)
-        * cpuResolutionFactor
-        * cpuGameFactor
-        * fpsCPUFactor
-        * 35;
-
-
-    let gpuPressure =
-        (100 / gpuScore)
-        * gpuResolutionFactor
-        * gpuGameFactor
-        * fpsGPUFactor
-        * 35;
+    const fps =
+        parseInt(
+            document.getElementById("fps").value
+        );
 
 
     /*
-       Keep numbers readable.
+       Higher FPS increases CPU pressure.
+       Higher resolution increases GPU pressure.
     */
 
+    const fpsFactor =
+        Math.max(0.55, fps / 120);
+
+    let cpuPressure =
+        (fpsFactor * gameMultiplier * 58)
+        / (cpu[1] / 50);
+
+    let gpuPressure =
+        (resolution * gameMultiplier * 58)
+        / (gpu[1] / 50);
+
+
     cpuPressure =
-        Math.max(5, Math.min(100, cpuPressure));
+        Math.min(100, Math.max(5, cpuPressure));
 
     gpuPressure =
-        Math.max(5, Math.min(100, gpuPressure));
+        Math.min(100, Math.max(5, gpuPressure));
 
 
-    /* ----------------------------------------
-       RESULT DIFFERENCE
-       ---------------------------------------- */
+    /*
+       Balance:
+       Smaller difference = better balance.
+    */
 
     const difference =
         Math.abs(cpuPressure - gpuPressure);
 
+    const balance =
+        Math.max(
+            0,
+            Math.round(100 - difference)
+        );
 
+
+    let bottleneck;
     let title;
-    let description;
-    let why;
+    let badge;
 
+    if (difference <= 10) {
 
-    if (difference < 10) {
+        bottleneck = "Balanced";
 
-        title = "Relatively Balanced";
+        title = "Well Balanced";
 
-        description =
-            "Neither component clearly dominates the estimated workload in this scenario.";
-
-        why =
-            "Your CPU and GPU have relatively similar pressure for the selected resolution, game type and FPS target. The actual limiting component can still change from game to game.";
+        badge = "⚖️ Balanced";
 
     }
 
     else if (cpuPressure > gpuPressure) {
 
+        bottleneck = "CPU";
+
         title = "Likely CPU-Limited";
 
-        description =
-            "The current scenario leans toward the CPU being the primary performance limitation.";
-
-        why =
-            "The selected resolution, game type and FPS target place relatively more pressure on the CPU compared with its estimated gaming capability. This becomes especially important at lower resolutions and high FPS targets.";
+        badge = "🟣 CPU Limited";
 
     }
 
     else {
 
+        bottleneck = "GPU";
+
         title = "Likely GPU-Limited";
 
-        description =
-            "The current scenario leans toward the GPU being the primary performance limitation.";
-
-        why =
-            "The selected resolution, game type and FPS target place relatively more pressure on the GPU compared with its estimated gaming capability. Higher resolutions and demanding graphics workloads generally increase GPU pressure.";
+        badge = "🔵 GPU Limited";
 
     }
 
 
-    /* ----------------------------------------
-       UPDATE UI
-       ---------------------------------------- */
+    /* HEADROOM */
 
-    document.getElementById("resultTitle").textContent =
-        title;
+    const cpuHeadroom =
+        Math.max(0, Math.round(100 - cpuPressure));
 
-    document.getElementById("resultDescription").textContent =
-        description;
-
-    document.getElementById("whyText").textContent =
-        why;
+    const gpuHeadroom =
+        Math.max(0, Math.round(100 - gpuPressure));
 
 
-    document.getElementById("cpuPressureText").textContent =
+    /* UPDATE SCOREBOARD */
+
+    document.getElementById("cpuScore")
+        .textContent = cpu[1];
+
+    document.getElementById("gpuScore")
+        .textContent = gpu[1];
+
+    document.getElementById("balanceScore")
+        .textContent = balance;
+
+
+    document.getElementById("resultTitle")
+        .textContent = title;
+
+    document.getElementById("badge")
+        .textContent = badge;
+
+
+    document.getElementById("resultSubtitle")
+        .textContent =
+        cpu[0] + " + " + gpu[0];
+
+
+    /* PRESSURE */
+
+    document.getElementById("cpuPressureBar")
+        .style.width = cpuPressure + "%";
+
+    document.getElementById("gpuPressureBar")
+        .style.width = gpuPressure + "%";
+
+    document.getElementById("balanceBar")
+        .style.width = balance + "%";
+
+
+    document.getElementById("cpuPressureText")
+        .textContent =
         Math.round(cpuPressure) + "%";
 
-    document.getElementById("gpuPressureText").textContent =
+    document.getElementById("gpuPressureText")
+        .textContent =
         Math.round(gpuPressure) + "%";
 
-
-    document.getElementById("cpuBar").style.width =
-        cpuPressure + "%";
-
-    document.getElementById("gpuBar").style.width =
-        gpuPressure + "%";
+    document.getElementById("balanceText")
+        .textContent =
+        balance + "%";
 
 
-    document.getElementById("cpuScore").textContent =
-        cpuScore;
+    /* DETAILS */
 
-    document.getElementById("gpuScore").textContent =
-        gpuScore;
+    document.getElementById("cpuHeadroom")
+        .textContent =
+        cpuHeadroom + "%";
+
+    document.getElementById("gpuHeadroom")
+        .textContent =
+        gpuHeadroom + "%";
 
 
-    document.getElementById("cpuName").textContent =
-        cpuName;
+    const resolutionText =
+        document.getElementById("resolution")
+        .selectedOptions[0]
+        .textContent;
 
-    document.getElementById("gpuName").textContent =
-        gpuName;
+    const gameText =
+        document.getElementById("gameType")
+        .selectedOptions[0]
+        .textContent;
+
+
+    document.getElementById("detailResolution")
+        .textContent =
+        resolutionText;
+
+    document.getElementById("detailFPS")
+        .textContent =
+        fps + " FPS";
+
+    document.getElementById("detailGame")
+        .textContent =
+        gameText;
+
+    document.getElementById("detailLimit")
+        .textContent =
+        bottleneck;
+
+
+    /* =====================================================
+       BEGINNER EXPLANATION
+    ===================================================== */
+
+    let explanation = "";
+
+    if (bottleneck === "CPU") {
+
+        explanation =
+        "Your CPU is under relatively more pressure than your GPU " +
+        "in this scenario. This commonly happens when targeting high " +
+        "FPS at lower resolutions. Competitive games, simulation games " +
+        "and CPU-heavy game engines can make this difference more noticeable.";
+
+    }
+
+    else if (bottleneck === "GPU") {
+
+        explanation =
+        "Your GPU is under relatively more pressure than your CPU " +
+        "in this scenario. This commonly happens at higher resolutions " +
+        "or when using demanding graphics settings. Increasing resolution " +
+        "or graphics quality generally increases GPU workload.";
+
+    }
+
+    else {
+
+        explanation =
+        "Your CPU and GPU have relatively similar workload pressure " +
+        "for this scenario. This means neither component clearly dominates " +
+        "the estimated limitation.";
+
+    }
+
+
+    document.getElementById("explanation")
+        .textContent = explanation;
 
 }
 
 
-/* ============================================================
-   INITIALIZE
-   ============================================================ */
+/* =========================================================
+   DEFAULT CALCULATION
+========================================================= */
 
-populateCPUs();
-populateGPUs();
-
-
-/*
-   Default selection:
-   Your current PC from previous discussions.
-*/
-
-const defaultCPU =
-    CPUs.find(cpu => cpu[0] === "Intel Core i7-4790K");
-
-const defaultGPU =
-    GPUs.find(gpu => gpu[0] === "AMD Radeon RX 580 8GB");
-
-
-if (defaultCPU) {
-
-    document.getElementById("cpuSelect").value =
-        defaultCPU[0];
-
-}
-
-if (defaultGPU) {
-
-    document.getElementById("gpuSelect").value =
-        defaultGPU[0];
-
-}
-
-
-/* Calculate initial result */
-
-calculateBottleneck();
+calculate();
 
 </script>
 
