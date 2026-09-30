@@ -229,6 +229,7 @@ footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:
           <button type="button" class="action-btn save" id="saveBuild">Save this build</button>
           <button type="button" class="action-btn" id="shareBuild">Copy share link</button>
           <button type="button" class="action-btn" id="printBuild">Print summary</button>
+          <button type="button" class="action-btn" id="startNewBuild">Start a new build</button>
         </div>
         <p class="saved-note" id="savedNote" role="status"></p>
       </section>
@@ -500,11 +501,12 @@ function refreshHints(){
  $("cpuNote").textContent=label+": "+(cpuHints[wizardBudget]||cpuHints.value).join(" · ")+". Browse all options below.";
  $("gpuNote").textContent=wizardMode==="productivity"?"Integrated graphics may suit everyday work; dedicated cards help with GPU-accelerated creative apps. All listed cards remain selectable.":label+": "+(gpuHints[wizardBudget]||gpuHints.value).join(" · ")+". Browse all options below.";
 }
-document.querySelectorAll("[data-mode]").forEach(btn=>btn.addEventListener("click",()=>{wizardMode=btn.dataset.mode;wizardBudget="";wizardWorkload="";clearParts();workloadOptions();renderBuild();showWizardStep(2);persistBuild()}));
+document.querySelectorAll("[data-mode]").forEach(btn=>btn.addEventListener("click",()=>{wizardMode=btn.dataset.mode;wizardBudget="";wizardWorkload="";$("resumeBuild").hidden=true;clearParts();workloadOptions();renderBuild();showWizardStep(2);persistBuild()}));
 document.querySelectorAll("[data-budget]").forEach(btn=>btn.addEventListener("click",()=>{wizardBudget=btn.dataset.budget;refreshHints();showWizardStep(3);persistBuild()}));
 $("workloadChoices").addEventListener("click",event=>{const btn=event.target.closest("[data-workload]");if(!btn)return;wizardWorkload=btn.querySelector("b").textContent;$("goalValue").value=btn.dataset.goal;refreshHints();showWizardStep(4);persistBuild()});
 document.querySelectorAll("[data-back]").forEach(btn=>btn.addEventListener("click",()=>showWizardStep(Number(btn.dataset.back))));
 $("editBuild").addEventListener("click",()=>showWizardStep(8));
+$("startNewBuild").addEventListener("click",()=>{localStorage.removeItem("pcpilot-build-v1");wizardMode="";wizardBudget="";wizardWorkload="";clearParts();$("resumeBuild").hidden=true;renderBuild();showWizardStep(1)});
 document.querySelectorAll("#buildForm select").forEach(el=>el.addEventListener("change",()=>{
  if(el.id==="cpu")updateGraphicsOptions();
  renderBuild();persistBuild();
