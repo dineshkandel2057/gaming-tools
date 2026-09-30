@@ -25,6 +25,8 @@
 .compare-dock{position:fixed;z-index:70;left:50%;bottom:max(14px,env(safe-area-inset-bottom));width:min(760px,calc(100vw - 28px));display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 14px;border:1px solid rgba(157,140,255,.42);border-radius:16px;background:rgba(13,18,29,.94);box-shadow:0 16px 48px #0009,0 0 28px #9d8cff1a;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,14px);transition:opacity .2s ease,transform .2s ease,visibility .2s}.compare-dock.visible{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}.compare-dock-copy{display:grid;gap:2px;min-width:0}.compare-dock-copy strong{font-size:14px;color:#f5f7fc}.compare-dock-copy span{font-size:12px;color:#aab5c8}.compare-dock .btn{flex:0 0 auto;white-space:nowrap}.compare-dock .btn:disabled{opacity:.5;cursor:not-allowed}
 @media(max-width:560px){.compare-dock{bottom:max(9px,env(safe-area-inset-bottom));width:calc(100vw - 20px);gap:8px;padding:10px}.compare-dock-copy strong{font-size:12px}.compare-dock-copy span{font-size:10px}.compare-dock .btn{padding:10px 11px;font-size:11px}}
 @media(prefers-reduced-motion:reduce){.compare-dock{transition:none}}
+
+.summary-image{height:136px}.gpu-thumb:has(.gpu-photo),.summary-image:has(img){background:#f3f5f8}.gpu-photo,.summary-image img{object-fit:contain!important;object-position:center!important}body.compare-dock-visible{padding-bottom:96px}
 </style>
 </head>
 <body>
