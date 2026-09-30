@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
 
 <title>PCPilot - Free PC Gaming Tools</title>
 
@@ -360,6 +364,61 @@ footer {
 
 }
 
+
+/* PCPilot visual refresh */
+:root{--bg:#090c14;--panel:rgba(19,25,39,.78);--panel2:rgba(13,18,29,.9);--border:rgba(157,174,204,.16);--text:#f5f7fc;--muted:#aab5c8;--purple:#735dff;--purple2:#a18bff;--blue:#55b9ff;--green:#5ce0a2;--red:#ff7c71}
+html{scroll-padding-top:88px}
+body{font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 16% 3%,rgba(102,77,255,.18),transparent 34%),radial-gradient(ellipse at 88% 18%,rgba(33,162,219,.12),transparent 33%),var(--bg);color:var(--text)}
+body:before{content:"";position:fixed;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(circle at 70% 60%,rgba(39,102,176,.08),transparent 36%);filter:blur(34px)}
+h1,h2,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
+header{background:rgba(9,12,20,.76);border-color:var(--border);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.nav{min-height:76px}
+.logo{font-size:25px}
+.logo span{color:#a591ff}
+nav a{border:1px solid transparent;transition:background .2s,border-color .2s,color .2s}
+nav a:hover,nav a.active{background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2);color:#fff}
+.home{padding-top:76px}
+.hero{max-width:none;text-align:left;display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.9fr);gap:54px;align-items:center}
+.hero-copy{max-width:610px}
+.hero h1{font-size:clamp(42px,5.4vw,68px);line-height:1.03;letter-spacing:-.065em;margin-bottom:20px}
+.hero h1 span{background:linear-gradient(100deg,#a992ff 10%,#66cbff 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:18px;line-height:1.75;margin:0;max-width:590px}
+.hero-buttons{justify-content:flex-start}
+.primary-button,.tool-button{background:linear-gradient(135deg,#765dff,#604be8);box-shadow:0 10px 30px rgba(91,71,225,.22);transition:transform .2s,filter .2s}
+.primary-button:hover,.tool-button:hover{background:linear-gradient(135deg,#8c75ff,#735eff);transform:translateY(-2px)}
+.secondary-button{border-color:var(--border);background:rgba(255,255,255,.025)}
+.hero-visual{position:relative;min-height:360px;border:1px solid rgba(157,174,204,.17);border-radius:28px;overflow:hidden;padding:22px;background:linear-gradient(145deg,rgba(27,34,54,.86),rgba(12,17,28,.78));box-shadow:0 24px 90px rgba(0,0,0,.28);backdrop-filter:blur(18px)}
+.hero-visual:before{content:"";position:absolute;width:260px;height:260px;right:7%;top:0;border-radius:50%;background:rgba(112,83,255,.2);filter:blur(80px)}
+.visual-top{position:relative;display:flex;justify-content:space-between;align-items:center;color:#9baac2;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#50e0a0;margin-right:7px;box-shadow:0 0 14px #50e0a0}
+.visual-components{position:relative;display:grid;grid-template-columns:.8fr 1.2fr;gap:16px;align-items:center;margin-top:26px}
+.component-illustration{min-height:204px;position:relative;display:flex;justify-content:center;align-items:center;border:1px solid rgba(168,182,210,.14);border-radius:20px;background:linear-gradient(145deg,rgba(20,28,45,.94),rgba(11,16,27,.95));overflow:hidden}
+.component-illustration.cpu-art{color:#a98aff}.component-illustration.gpu-art{color:#65c6ff}
+.component-illustration svg{width:90%;height:auto;max-height:180px;filter:drop-shadow(0 14px 25px rgba(0,0,0,.32))}
+.visual-caption{position:absolute;left:14px;bottom:12px;font-size:10px;font-weight:700;letter-spacing:.11em;color:#bec8da;text-transform:uppercase}
+.brand-strip{position:relative;display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.brand-chip{padding:7px 10px;border:1px solid rgba(160,176,205,.16);border-radius:999px;background:rgba(255,255,255,.035);font-size:10px;font-weight:700;color:#c0cadb}
+.brand-chip.intel{color:#78c7ff}.brand-chip.amd{color:#ff9b83}.brand-chip.nvidia{color:#80e9a9}.brand-chip.radeon{color:#ff858b}.brand-chip.arc{color:#7edbd2}
+.tools{max-width:1120px;margin-top:92px}
+.section-title h2{font-size:clamp(27px,3.2vw,36px);letter-spacing:-.045em}
+.section-title p{font-size:15px}
+.tools-grid{gap:16px}
+.tool-card{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(24,31,47,.82),rgba(15,20,32,.86));border-color:var(--border);border-radius:18px;padding:24px;backdrop-filter:blur(12px);transition:transform .22s,border-color .22s,box-shadow .22s}
+.tool-card:hover{transform:translateY(-4px);border-color:rgba(146,128,255,.44);box-shadow:0 18px 40px rgba(0,0,0,.22)}
+.tool-card:first-child{background:linear-gradient(145deg,rgba(42,35,78,.7),rgba(16,23,38,.9));border-color:rgba(145,123,255,.31)}
+.tool-icon{width:48px;height:48px;background:rgba(126,105,255,.14);border:1px solid rgba(151,132,255,.2);border-radius:14px}
+.tool-card h3{font-size:20px;letter-spacing:-.025em}
+.tool-card p{line-height:1.75}
+.coming-card{opacity:.82}
+.about-section{margin-top:20px;background:rgba(18,24,37,.72);border-color:var(--border);border-radius:22px;backdrop-filter:blur(14px)}
+.about-item{background:rgba(10,15,25,.58);border-color:rgba(157,174,204,.12);border-radius:14px}
+.about-item h3{color:#e9e5ff}
+.about-item p{line-height:1.75}
+footer{border-color:var(--border);color:#8895aa}
+:focus-visible{outline:2px solid #9b8aff;outline-offset:3px}
+@media(max-width:800px){.home{padding-top:48px}.hero{grid-template-columns:1fr;gap:32px;text-align:center}.hero-copy{margin:0 auto}.hero p{font-size:16px}.hero-buttons{justify-content:center}.hero-visual{min-height:320px}.visual-components{gap:10px}.component-illustration{min-height:180px}.tools{margin-top:66px}}
+@media(max-width:480px){.hero h1{font-size:41px}.hero-visual{padding:15px;min-height:294px;border-radius:20px}.visual-components{grid-template-columns:.9fr 1.1fr;margin-top:18px}.component-illustration{min-height:160px}.brand-strip{gap:6px}.brand-chip{font-size:9px;padding:6px 8px}.tool-card{padding:20px}}
+
 </style>
 </head>
 
@@ -410,27 +469,47 @@ footer {
 <section class="home" id="home">
 
 <div class="hero">
-
-    <h1>
-        Your PC Gaming
-        <span>Toolkit</span>
-    </h1>
-
-    <p>
-        Simple and useful tools for PC gamers.
-        Check hardware balance, understand your system,
-        and make better upgrade decisions.
-    </p>
-
+  <div class="hero-copy">
+    <h1>Your PC Gaming<br><span>Toolkit</span></h1>
+    <p>Make your next PC decision with more confidence. Compare your CPU and graphics card, explore gaming scenarios, and understand what your system needs.</p>
     <div class="hero-buttons">
-
-        <a href="#tools" class="primary-button">
-            Explore Tools
-        </a>
-
-
+      <a href="#tools" class="primary-button">Explore Tools <span aria-hidden="true">→</span></a>
+      <a href="bottleneck.html" class="secondary-button">Open Bottleneck Calculator</a>
     </div>
-
+  </div>
+  <div class="hero-visual" role="img" aria-label="Illustrations of a processor and graphics card from Intel, AMD, NVIDIA and Radeon">
+    <div class="visual-top"><span>PC hardware, made clearer</span><span><i class="live-dot"></i>Gaming tools</span></div>
+    <div class="visual-components">
+      <div class="component-illustration cpu-art">
+        <svg viewBox="0 0 220 190" aria-hidden="true">
+          <defs><linearGradient id="chipMetal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dce8ff"/><stop offset=".45" stop-color="#667998"/><stop offset="1" stop-color="#24334b"/></linearGradient><linearGradient id="chipCore" x1="0" x2="1"><stop stop-color="#a795ff"/><stop offset="1" stop-color="#6cbcff"/></linearGradient></defs>
+          <g stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".75"><path d="M62 29v16M86 23v22M110 20v25M134 23v22M158 29v16M62 145v16M86 145v22M110 145v25M134 145v22M158 145v16M39 52h16M39 76h16M39 100h16M39 124h16M165 52h16M165 76h16M165 100h16M165 124h16"/></g>
+          <rect x="52" y="39" width="116" height="116" rx="17" fill="url(#chipMetal)" stroke="#d7e5ff" stroke-opacity=".55"/>
+          <rect x="68" y="55" width="84" height="84" rx="11" fill="#111a2b" stroke="currentColor" stroke-width="2"/>
+          <rect x="78" y="65" width="64" height="64" rx="8" fill="url(#chipCore)" opacity=".9"/>
+          <path d="M91 84h38M91 95h38M91 106h22" stroke="#131a2c" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+          <circle cx="110" cy="97" r="39" fill="none" stroke="#fff" stroke-opacity=".16"/>
+        </svg>
+        <span class="visual-caption">Processor</span>
+      </div>
+      <div class="component-illustration gpu-art">
+        <svg viewBox="0 0 320 190" aria-hidden="true">
+          <defs><linearGradient id="gpuShell" x1="0" x2="1"><stop stop-color="#283b58"/><stop offset=".55" stop-color="#17263d"/><stop offset="1" stop-color="#0e1728"/></linearGradient><radialGradient id="fanGlow"><stop stop-color="#72d9ff" stop-opacity=".25"/><stop offset="1" stop-color="#72d9ff" stop-opacity="0"/></radialGradient></defs>
+          <path d="M36 47h235a17 17 0 0 1 17 17v67a17 17 0 0 1-17 17H36z" fill="url(#gpuShell)" stroke="#8dcfff" stroke-opacity=".6" stroke-width="2"/>
+          <path d="M52 56h191v84H52z" fill="#0e1829" stroke="#5e88b2" stroke-opacity=".55"/>
+          <g fill="url(#fanGlow)" stroke="currentColor" stroke-width="2"><circle cx="107" cy="98" r="31"/><circle cx="188" cy="98" r="31"/></g>
+          <g fill="currentColor" opacity=".83"><path d="M107 73c7 11 8 17 1 24-5 5-11 5-18 1 0-12 5-20 17-25M132 98c-11 7-17 8-24 1-5-5-5-11-1-18 12 0 20 5 25 17M107 123c-7-11-8-17-1-24 5-5 11-5 18-1 0 12-5 20-17 25M82 98c11-7 17-8 24-1 5 5 5 11 1 18-12 0-20-5-25-17M188 73c7 11 8 17 1 24-5 5-11 5-18 1 0-12 5-20 17-25M213 98c-11 7-17 8-24 1-5-5-5-11-1-18 12 0 20 5 25 17M188 123c-7-11-8-17-1-24 5-5 11-5 18-1 0 12-5 20-17 25M163 98c11-7 17-8 24-1 5 5 5 11 1 18-12 0-20-5-25-17"/></g>
+          <circle cx="107" cy="98" r="7" fill="#d9f3ff"/><circle cx="188" cy="98" r="7" fill="#d9f3ff"/>
+          <path d="M282 77h15v50h-15M65 150v10h34v-10" fill="none" stroke="#b7c6da" stroke-width="4"/>
+        </svg>
+        <span class="visual-caption">Graphics card</span>
+      </div>
+    </div>
+    <div class="brand-strip" aria-label="Hardware brands">
+      <span class="brand-chip intel">Intel Core</span><span class="brand-chip amd">AMD Ryzen</span>
+      <span class="brand-chip nvidia">GeForce</span><span class="brand-chip radeon">Radeon</span><span class="brand-chip arc">Intel Arc</span>
+    </div>
+  </div>
 </div>
 
 
