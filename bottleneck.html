@@ -215,34 +215,61 @@ input:focus,select:focus{border-color:#6370ff}
 </main>
 
 <script>
-const CPUs=[
- {name:"Intel Core i5-2500K",vendor:"INTEL",score:28},
- {name:"Intel Core i7-4790K",vendor:"INTEL",score:42},
- {name:"Intel Core i5-12400F",vendor:"INTEL",score:66},
- {name:"Intel Core i5-13600K",vendor:"INTEL",score:86},
- {name:"Intel Core i7-14700K",vendor:"INTEL",score:96},
- {name:"AMD Ryzen 5 3600",vendor:"AMD",score:48},
- {name:"AMD Ryzen 5 5600",vendor:"AMD",score:61},
- {name:"AMD Ryzen 5 7600",vendor:"AMD",score:78},
- {name:"AMD Ryzen 7 7800X3D",vendor:"AMD",score:94},
- {name:"AMD Ryzen 9 9950X",vendor:"AMD",score:99}
+/* =========================================================
+   PCPilot Hardware Database — Step 1
+   ---------------------------------------------------------
+   Scores are INTERNAL RELATIVE GAMING SCORES (0–100).
+   They are not measured FPS and are not presented as such.
+   Each record has provenance/status fields so we can later
+   replace provisional values with verified benchmark-derived
+   values without changing the calculator UI.
+   ========================================================= */
+const DATABASE_VERSION = "0.1-provisional";
+const SCORE_SCALE = {min:0,max:100,reference:"relative gaming performance"};
+
+const CPUs = [
+ {id:"i5-2500k",name:"Intel Core i5-2500K",vendor:"INTEL",family:"Core i5",score:28,status:"provisional"},
+ {id:"i7-4790k",name:"Intel Core i7-4790K",vendor:"INTEL",family:"Core i7",score:42,status:"provisional"},
+ {id:"i5-12400f",name:"Intel Core i5-12400F",vendor:"INTEL",family:"Core i5",score:66,status:"provisional"},
+ {id:"i5-13600k",name:"Intel Core i5-13600K",vendor:"INTEL",family:"Core i5",score:86,status:"provisional"},
+ {id:"i7-14700k",name:"Intel Core i7-14700K",vendor:"INTEL",family:"Core i7",score:96,status:"provisional"},
+ {id:"r5-3600",name:"AMD Ryzen 5 3600",vendor:"AMD",family:"Ryzen 5",score:48,status:"provisional"},
+ {id:"r5-5600",name:"AMD Ryzen 5 5600",vendor:"AMD",family:"Ryzen 5",score:61,status:"provisional"},
+ {id:"r5-7600",name:"AMD Ryzen 5 7600",vendor:"AMD",family:"Ryzen 5",score:78,status:"provisional"},
+ {id:"r7-7800x3d",name:"AMD Ryzen 7 7800X3D",vendor:"AMD",family:"Ryzen 7",score:94,status:"provisional"},
+ {id:"r9-9950x",name:"AMD Ryzen 9 9950X",vendor:"AMD",family:"Ryzen 9",score:99,status:"provisional"}
 ];
-const GPUs=[
- {name:"NVIDIA GeForce GTX 750 Ti",vendor:"NVIDIA",score:18},
- {name:"NVIDIA GeForce GTX 1060 6GB",vendor:"NVIDIA",score:42},
- {name:"NVIDIA GeForce GTX 1080 Ti",vendor:"NVIDIA",score:58},
- {name:"NVIDIA GeForce RTX 2060",vendor:"NVIDIA",score:55},
- {name:"NVIDIA GeForce RTX 3060 8GB",vendor:"NVIDIA",score:65},
- {name:"NVIDIA GeForce RTX 4060",vendor:"NVIDIA",score:72},
- {name:"NVIDIA GeForce RTX 2080 Ti",vendor:"NVIDIA",score:77},
- {name:"NVIDIA GeForce RTX 4070",vendor:"NVIDIA",score:86},
- {name:"NVIDIA GeForce RTX 4090",vendor:"NVIDIA",score:100},
- {name:"AMD Radeon RX 580",vendor:"AMD",score:29},
- {name:"AMD Radeon RX 6600",vendor:"AMD",score:52},
- {name:"AMD Radeon RX 6700 XT",vendor:"AMD",score:69},
- {name:"AMD Radeon RX 7600",vendor:"AMD",score:62},
- {name:"AMD Radeon RX 7800 XT",vendor:"AMD",score:82}
+
+const GPUs = [
+ {id:"gtx-750-ti",name:"NVIDIA GeForce GTX 750 Ti",vendor:"NVIDIA",family:"GeForce GTX",score:18,status:"provisional"},
+ {id:"gtx-1060-6gb",name:"NVIDIA GeForce GTX 1060 6GB",vendor:"NVIDIA",family:"GeForce GTX",score:42,status:"provisional"},
+ {id:"gtx-1080-ti",name:"NVIDIA GeForce GTX 1080 Ti",vendor:"NVIDIA",family:"GeForce GTX",score:58,status:"provisional"},
+ {id:"rtx-2060",name:"NVIDIA GeForce RTX 2060",vendor:"NVIDIA",family:"GeForce RTX",score:55,status:"provisional"},
+ {id:"rtx-3060-8gb",name:"NVIDIA GeForce RTX 3060 8GB",vendor:"NVIDIA",family:"GeForce RTX",score:65,status:"provisional"},
+ {id:"rtx-4060",name:"NVIDIA GeForce RTX 4060",vendor:"NVIDIA",family:"GeForce RTX",score:72,status:"provisional"},
+ {id:"rtx-2080-ti",name:"NVIDIA GeForce RTX 2080 Ti",vendor:"NVIDIA",family:"GeForce RTX",score:77,status:"provisional"},
+ {id:"rtx-4070",name:"NVIDIA GeForce RTX 4070",vendor:"NVIDIA",family:"GeForce RTX",score:86,status:"provisional"},
+ {id:"rtx-4090",name:"NVIDIA GeForce RTX 4090",vendor:"NVIDIA",family:"GeForce RTX",score:100,status:"provisional"},
+ {id:"rx-580",name:"AMD Radeon RX 580",vendor:"AMD",family:"Radeon RX",score:29,status:"provisional"},
+ {id:"rx-6600",name:"AMD Radeon RX 6600",vendor:"AMD",family:"Radeon RX",score:52,status:"provisional"},
+ {id:"rx-6700-xt",name:"AMD Radeon RX 6700 XT",vendor:"AMD",family:"Radeon RX",score:69,status:"provisional"},
+ {id:"rx-7600",name:"AMD Radeon RX 7600",vendor:"AMD",family:"Radeon RX",score:62,status:"provisional"},
+ {id:"rx-7800-xt",name:"AMD Radeon RX 7800 XT",vendor:"AMD",family:"Radeon RX",score:82,status:"provisional"}
 ];
+
+/* Validation keeps future database edits from silently breaking the calculator. */
+function validateHardwareDatabase(list,type){
+  const ids=new Set();
+  list.forEach(x=>{
+    if(!x.id||ids.has(x.id)) throw new Error(`Duplicate/missing ${type} id: ${x.id||"unknown"}`);
+    ids.add(x.id);
+    if(!x.name||!x.vendor) throw new Error(`Incomplete ${type} record: ${x.id}`);
+    if(typeof x.score!=="number"||x.score<SCORE_SCALE.min||x.score>SCORE_SCALE.max) throw new Error(`Invalid ${type} score: ${x.id}`);
+  });
+  return true;
+}
+validateHardwareDatabase(CPUs,"CPU");
+validateHardwareDatabase(GPUs,"GPU");
 
 const gameBase={valorant:280,cs2:210,fortnite:165,minecraft:190,gtav:125,rdr2:82,cyberpunk:75,hogwarts:68};
 const gameCpu={valorant:1.25,cs2:1.15,fortnite:1.08,minecraft:1.20,gtav:1.0,rdr2:.86,cyberpunk:.82,hogwarts:.80};
@@ -258,10 +285,19 @@ fillSelect("cpuSelect",CPUs);fillSelect("gpuSelect",GPUs);
 function updateCard(type){
  const sel=document.getElementById(type+"Select"), data=(type==="cpu"?CPUs:GPUs), x=data[sel.value];
  const brand=document.getElementById(type+"Brand"), vendor=document.getElementById(type+"Vendor"), name=document.getElementById(type+"Name"), score=document.getElementById(type+"ScoreText");
- if(!x){name.textContent=type==="cpu"?"Select a CPU":"Select a GPU";score.textContent=type==="cpu"?"Relative gaming score":"Relative graphics score";return}
- brand.textContent=x.vendor==="AMD"&&type==="gpu"?"AMD":x.vendor;
+ if(!x){
+   brand.textContent=type==="cpu"?"INTEL":"NVIDIA";
+   brand.className="brand "+(type==="gpu"?"nvidia":"");
+   vendor.textContent=type==="cpu"?"INTEL":"NVIDIA";
+   name.textContent=type==="cpu"?"Select a CPU":"Select a GPU";
+   score.textContent=type==="cpu"?"Relative gaming score":"Relative graphics score";
+   return;
+ }
+ brand.textContent=x.vendor;
  brand.className="brand "+(x.vendor==="NVIDIA"?"nvidia":"");
- vendor.textContent=x.vendor;name.textContent=x.name;score.textContent="Relative score "+x.score+"/100";
+ vendor.textContent=x.vendor;
+ name.textContent=x.name;
+ score.textContent="Relative score "+x.score+"/100";
 }
 document.getElementById("cpuSelect").onchange=()=>updateCard("cpu");
 document.getElementById("gpuSelect").onchange=()=>updateCard("gpu");
@@ -269,7 +305,12 @@ document.getElementById("gpuSelect").onchange=()=>updateCard("gpu");
 function searchFilter(inputId,selectId,data){
  const q=document.getElementById(inputId).value.toLowerCase().trim(),s=document.getElementById(selectId),old=s.value;
  s.innerHTML='<option value="">— Select —</option>';
- data.forEach((x,i)=>{if(!q||x.name.toLowerCase().includes(q)||x.vendor.toLowerCase().includes(q)){const o=document.createElement("option");o.value=i;o.textContent=x.name;s.appendChild(o)}});
+ data.forEach((x,i)=>{
+   const haystack=(x.name+" "+x.vendor+" "+x.family).toLowerCase();
+   if(!q||haystack.includes(q)){
+     const o=document.createElement("option");o.value=i;o.textContent=x.name;s.appendChild(o);
+   }
+ });
  if([...s.options].some(o=>o.value===old))s.value=old;
  updateCard(selectId==="cpuSelect"?"cpu":"gpu");
 }
@@ -277,6 +318,7 @@ document.getElementById("cpuSearch").oninput=()=>searchFilter("cpuSearch","cpuSe
 document.getElementById("gpuSearch").oninput=()=>searchFilter("gpuSearch","gpuSelect",GPUs);
 
 function resolutionFactor(r){return ({720:1.3,1080:1,1440:.72,2160:.42})[r]}
+
 function calculate(){
  const ci=document.getElementById("cpuSelect").value,gi=document.getElementById("gpuSelect").value;
  if(ci===""||gi===""){alert("Please select both a CPU and GPU first.");return}
@@ -318,7 +360,7 @@ function estimateFPS(){
    return Math.max(5,Math.round(Math.min(cpuCap,gpuCap)));
  }
  const avg=calc(selectedRes);
- const low=Math.max(3,Math.round(avg*(game==="valorant"||game==="cs2"?0.78:.68)));
+ const low=Math.max(3,Math.round(avg*(game==="valorant"||game==="cs2"?.78:.68)));
  document.getElementById("avgFps").textContent=avg+" FPS";
  document.getElementById("lowFps").textContent=low+" FPS";
  const cpuLoad=Math.min(100,Math.round((avg/(gameBase[game]*(c.score/60)*gameCpu[game]))*100));
@@ -328,8 +370,13 @@ function estimateFPS(){
  document.getElementById("perfLevel").textContent=avg>=144?"Excellent":avg>=90?"Very Good":avg>=60?"Good":avg>=30?"Playable":"Low";
  document.getElementById("fpsNote").textContent=`Modeled estimate for ${document.getElementById("game").selectedOptions[0].text}, ${document.getElementById("preset").selectedOptions[0].text}, ${selectedRes==="2160"?"4K":selectedRes+"p"}${rt==="on"?" + RT":""}.`;
  const rows=[["720",calc("720")],["1080",calc("1080")],["1440",calc("1440")],["4K",calc("2160")]];
- document.getElementById("resolutionRows").innerHTML=rows.map(([label,fps])=>`<div class="res-row"><b>${label}</b><div class="res-bar"><div class="res-fill" style="width:${Math.min(100,Math.round(fps/Math.max(...rows.map(x=>x[1]))*100))}%"></div></div><b style="text-align:right">${fps} FPS</b></div>`).join("");
+ const maxFps=Math.max(...rows.map(x=>x[1]));
+ document.getElementById("resolutionRows").innerHTML=rows.map(([label,fps])=>`<div class="res-row"><b>${label}</b><div class="res-bar"><div class="res-fill" style="width:${Math.min(100,Math.round(fps/maxFps*100))}%"></div></div><b style="text-align:right">${fps} FPS</b></div>`).join("");
 }
+
+/* Keep the initial state intentionally empty. */
+updateCard("cpu");
+updateCard("gpu");
 </script>
 </body>
 </html>
