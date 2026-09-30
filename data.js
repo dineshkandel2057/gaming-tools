@@ -1,21 +1,3 @@
-/*
-    PCPilot Hardware Database
-
-    IMPORTANT:
-    The indexes below are normalized development indexes.
-    They are not benchmark FPS values.
-
-    CPU indexes are based on relative gaming-performance
-    positioning from current CPU benchmark hierarchies.
-
-    GPU indexes are based on relative raster gaming
-    performance positioning.
-
-    These indexes are intended for directional estimation,
-    not exact FPS prediction.
-*/
-
-
 const cpuData = [
 
     {
