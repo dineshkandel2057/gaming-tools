@@ -445,6 +445,8 @@ a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255
 @media(max-width:800px){.tool-dropdown{width:max-content}.tool-dropdown summary{padding:8px 11px}.tool-menu{left:auto;right:-60px;transform:none}.tool-menu[open]{transform:none}@keyframes menu-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}}
 @media(prefers-reduced-motion:reduce){.tool-menu{animation:none}.tool-dropdown summary:after{transition:none}}
 
+.build-tool-card{display:block;text-decoration:none!important;background:linear-gradient(145deg,rgba(25,58,66,.72),rgba(15,23,38,.9));border-color:rgba(89,206,176,.24)}
+.build-tool-card .tool-icon{background:rgba(78,214,176,.13);border-color:rgba(78,214,176,.22)}
 </style>
 </head>
 
@@ -471,7 +473,7 @@ a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255
 <a class="tool-menu-item current-tool" href="bottleneck.html"><span class="tool-menu-icon cpu-menu-icon" aria-hidden="true">CPU</span><span><b>CPU &amp; GPU Bottleneck</b><small>Compare your components</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
 <p class="tool-menu-label planned-label">Coming soon</p>
 <div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon fps-menu-icon" aria-hidden="true">FPS</span><span><b>FPS Calculator</b><small>Estimate performance</small></span><span class="soon-tag">Soon</span></div>
-<div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon build-menu-icon" aria-hidden="true">PC</span><span><b>PC Build Planner</b><small>Plan compatible parts</small></span><span class="soon-tag">Soon</span></div>
+<a class="tool-menu-item" href="build-planner.html"><span class="tool-menu-icon build-menu-icon" aria-hidden="true">PC</span><span><b>PC Build Planner</b><small>Check component fit and power</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
 <div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon upgrade-menu-icon" aria-hidden="true">↑</span><span><b>Upgrade Planner</b><small>Find your next upgrade</small></span><span class="soon-tag">Soon</span></div>
 <div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon compare-menu-icon" aria-hidden="true">↔</span><span><b>CPU &amp; GPU Compare</b><small>Compare hardware directly</small></span><span class="soon-tag">Soon</span></div>
 <div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon power-menu-icon" aria-hidden="true">W</span><span><b>PSU Power Guide</b><small>Estimate power needs</small></span><span class="soon-tag">Soon</span></div></div>
@@ -587,12 +589,12 @@ a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255
             <span class="tool-button">Coming Soon</span>
         </div>
 
-        <div class="tool-card coming-card">
-            <div class="tool-icon">🖥️</div>
-            <h3>PC Build Calculator</h3>
-            <p>Plan a balanced gaming PC and check how your selected components work together.</p>
-            <span class="tool-button">Coming Soon</span>
-        </div>
+        <a href="build-planner.html" class="tool-card build-tool-card">
+            <div class="tool-icon">🧩</div>
+            <h3>PC Build Planner</h3>
+            <p>Choose your parts and get clear checks for motherboard, memory, case fit, cooling and power.</p>
+            <span class="tool-button">Open Build Planner →</span>
+        </a>
 
         <div class="tool-card coming-card">
             <div class="tool-icon">💰</div>
