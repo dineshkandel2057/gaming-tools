@@ -86,6 +86,11 @@ select option{background:#111827;color:#f5f7fc}
 .status-badge.issue{color:#ffad8d;background:rgba(255,129,139,.1);border-color:rgba(255,129,139,.2)}
 .progress-line{height:6px;margin:12px 0 14px;border-radius:99px;background:rgba(157,174,204,.12);overflow:hidden}
 .progress-line i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8b79ff,#58c9ff,#66e2a5);border-radius:inherit;transition:width .3s}
+.selected-build{display:grid;gap:5px;margin:8px 0 14px;padding:10px;border:1px solid rgba(157,174,204,.1);border-radius:11px;background:rgba(5,10,18,.25)}
+.selected-build:empty{display:none}
+.selected-build-title{margin-bottom:3px;color:#9eabc0;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.selected-part{display:flex;gap:8px;justify-content:space-between;color:#d9e1ef;font-size:10px;line-height:1.4}
+.selected-part b{max-width:74%;text-align:right;font-weight:600}
 .parts-list{display:grid;gap:8px}
 .part-line{display:grid;grid-template-columns:20px 1fr auto;gap:7px;align-items:center;padding:8px 9px;border:1px solid rgba(157,174,204,.1);border-radius:9px;background:rgba(4,9,17,.22)}
 .part-line .mark{font-size:12px;color:#74849d}
@@ -186,6 +191,7 @@ footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:
       <section class="summary-card">
         <div class="summary-header"><div><span class="eyebrow">Your build</span><h2 style="margin-top:8px">Compatibility check</h2></div><span class="status-badge" id="overallStatus">Getting started</span></div>
         <div class="progress-line"><i id="progressBar"></i></div>
+        <div class="selected-build" id="selectedBuild"></div>
         <div class="parts-list" id="checks"></div>
         <div class="recommendation" id="recommendation"><strong>Start with your gaming goal</strong>Choose a goal or load a starting build above. Your selections stay in this browser.</div>
         <div class="summary-actions">
@@ -272,9 +278,9 @@ const COOLER_DATA=[
 {id:"aio-240",name:"240 mm liquid cooler · 250 W class",type:"aio",capacity:250,radiator:240,sockets:["AM4","AM5","LGA1700","LGA1851"]}
 ];
 const CASE_DATA=[
-{id:"compact-matx",name:"Compact Micro-ATX case",forms:["Micro-ATX","Mini-ITX"],maxGpu:310,maxCooler:155,radiators:[120,240]},
-{id:"airflow-mid",name:"Airflow Mid-Tower",forms:["ATX","Micro-ATX","Mini-ITX"],maxGpu:360,maxCooler:170,radiators:[120,240,360]},
-{id:"large-mid",name:"Roomy Mid-Tower",forms:["ATX","Micro-ATX","Mini-ITX"],maxGpu:400,maxCooler:180,radiators:[120,240,360]}
+{id:"compact-matx",name:"Compact Micro-ATX case",forms:["Micro-ATX","Mini-ITX"],maxGpu:310,maxCooler:155,maxPsu:160,radiators:[120,240]},
+{id:"airflow-mid",name:"Airflow Mid-Tower",forms:["ATX","Micro-ATX","Mini-ITX"],maxGpu:360,maxCooler:170,maxPsu:180,radiators:[120,240,360]},
+{id:"large-mid",name:"Roomy Mid-Tower",forms:["ATX","Micro-ATX","Mini-ITX"],maxGpu:400,maxCooler:180,maxPsu:200,radiators:[120,240,360]}
 ];
 const PSU_DATA=[
 {id:"psu-550",name:"550 W · 80+ Bronze class",watts:550,length:140},
@@ -333,6 +339,7 @@ function evaluateBuild(){
  }
  checks.push({label:"Cooler mount, capacity and fit",value:coolValue,status:coolStatus});
  const needed=systemPowerNeed(cpu,gpu);
+ checks.push({label:"Power supply length fits the case",value:psu&&pcCase?(psu.length<=pcCase.maxPsu?"Fits · "+psu.length+" / "+pcCase.maxPsu+" mm":"Too long · "+psu.length+" / "+pcCase.maxPsu+" mm"):"Choose a case and power supply",status:psu&&pcCase?(psu.length<=pcCase.maxPsu?"good":"bad"):"pending"});
  checks.push({label:"Power supply headroom",value:psu&&gpu?(psu.watts>=needed?"Pass · "+psu.watts+" W selected / "+needed+" W planning need":"Low · "+psu.watts+" W selected / "+needed+" W planning need"): "Choose a GPU and power supply",status:psu&&gpu?(psu.watts>=needed?"good":"bad"):"pending"});
  checks.push({label:"Storage connection",value:board&&storage?(storage.type==="sata"?"SATA drive selected":board.m2>0?"NVMe · "+board.m2+" M.2 slots listed":"No M.2 slot listed"): "Choose storage and a motherboard",status:board&&storage?(storage.type==="sata"||board.m2>0?"good":"bad"):"pending"});
  checks.push({label:"Gaming goal match",value:gpu?goalText(gpu):"Choose a graphics card",status:gpu?goalStatus(gpu):"pending"});
@@ -349,6 +356,8 @@ function renderBuild(){
  updatePlatformOptions();
  const b=evaluateBuild();
  const complete=b.checks.filter(x=>x.status!=="pending").length;
+ const chosen=[["CPU",b.cpu],["Board",b.board],["Memory",b.memory],["GPU",b.gpu],["Cooler",b.cooler],["Case",b.pcCase],["PSU",b.psu],["Storage",b.storage]].filter(x=>x[1]);
+ $("selectedBuild").innerHTML=chosen.length?'<div class="selected-build-title">Selected parts</div>'+chosen.map(x=>'<div class="selected-part"><span>'+x[0]+'</span><b>'+x[1].name+'</b></div>').join(""):"";
  const failures=b.checks.filter(x=>x.status==="bad").length;
  const warnings=b.checks.filter(x=>x.status==="warn").length;
  const allSelected=!!(b.cpu&&b.board&&b.memory&&b.gpu&&b.cooler&&b.pcCase&&b.psu&&b.storage);
