@@ -6,7 +6,7 @@ permissions:
   contents: write
 jobs:
   patch:
-    if: startsWith(github.event.head_commit.message, 'PATCH_BOTTLENECK_MODEL')
+    if: "!startsWith(github.event.head_commit.message, 'Fix bottleneck scenario scoring model')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
