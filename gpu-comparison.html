@@ -28,6 +28,7 @@
 body.compare-dock-visible{padding-bottom:96px}
 
 .gpu-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.gpu-card{min-height:148px;padding:15px}.gpu-name{font-size:18px!important;line-height:1.25;min-height:0}.brand-group{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 2px;padding:11px 13px;border:1px solid rgba(157,140,255,.24);border-radius:11px;background:linear-gradient(100deg,rgba(119,94,255,.11),rgba(33,162,219,.06))}.brand-group strong{font:700 15px "Space Grotesk","DM Sans",sans-serif;letter-spacing:.03em}.brand-group span{color:#aab5c8;font-size:12px}@media(max-width:1000px){.gpu-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:900px){.gpu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.gpu-card{min-height:0;padding:13px}.gpu-name{font-size:16px!important}.brand-group{margin-top:8px}.brand-group span{font-size:11px}}
+.hero{grid-template-columns:1fr}
 </style>
 </head>
 <body>
@@ -35,17 +36,7 @@ body.compare-dock-visible{padding-bottom:96px}
 <main class="main">
 <section class="hero">
 <div><span class="eyebrow">SystemFit PC · Hardware comparison</span><h1>Find the right <span class="gradient">graphics card</span></h1><p class="lede">Compare up to five GPUs in one clear view. See what matters for gaming, creative work, memory, power and price—without needing to decode spec sheets first.</p><div class="quick-points"><span class="pill">NVIDIA · AMD · Intel</span><span class="pill">Budget to enthusiast</span><span class="pill">Compare 2–5 cards</span></div></div>
-<div class="hero-art"><div class="art-caption">A closer look at your next GPU</div>
-<svg viewBox="0 0 440 230" role="img" aria-label="Stylized graphics card illustration with three cooling fans">
-<defs><linearGradient id="shell" x1="0" x2="1"><stop stop-color="#314565"/><stop offset=".55" stop-color="#192a43"/><stop offset="1" stop-color="#101a2b"/></linearGradient><radialGradient id="glow"><stop stop-color="#79d9ff" stop-opacity=".34"/><stop offset="1" stop-color="#7c64ff" stop-opacity="0"/></radialGradient></defs>
-<ellipse cx="217" cy="160" rx="180" ry="55" fill="url(#glow)"/>
-<path d="M43 53h320a18 18 0 0 1 18 18v102a18 18 0 0 1-18 18H43z" fill="url(#shell)" stroke="#a6c9ff" stroke-opacity=".55" stroke-width="2"/>
-<path d="M59 64h260v115H59z" fill="#0d1727" stroke="#6682a8" stroke-opacity=".65"/>
-<g fill="none" stroke="#78caff" stroke-opacity=".7"><circle cx="125" cy="120" r="42"/><circle cx="215" cy="120" r="42"/><circle cx="305" cy="120" r="42"/></g>
-<g fill="#83d8ff" opacity=".78"><path d="M125 86c9 13 11 22 2 30-6 6-15 6-25 2 0-16 8-27 23-32m34 34c-13 9-22 11-30 2-6-6-6-15-2-25 16 0 27 8 32 23m-34 34c-9-13-11-22-2-30 6-6 15-6 25-2 0 16-8 27-23 32m-34-34c13-9 22-11 30-2 6 6 6 15 2 25-16 0-27-8-32-23M215 86c9 13 11 22 2 30-6 6-15 6-25 2 0-16 8-27 23-32m34 34c-13 9-22 11-30 2-6-6-6-15-2-25 16 0 27 8 32 23m-34 34c-9-13-11-22-2-30 6-6 15-6 25-2 0 16-8 27-23 32m-34-34c13-9 22-11 30-2 6 6 6 15 2 25-16 0-27-8-32-23M305 86c9 13 11 22 2 30-6 6-15 6-25 2 0-16 8-27 23-32m34 34c-13 9-22 11-30 2-6-6-6-15-2-25 16 0 27 8 32 23m-34 34c-9-13-11-22-2-30 6-6 15-6 25-2 0 16-8 27-23 32m-34-34c13-9 22-11 30-2 6 6 6 15 2 25-16 0-27-8-32-23"/></g>
-<g fill="#e8f6ff"><circle cx="125" cy="120" r="7"/><circle cx="215" cy="120" r="7"/><circle cx="305" cy="120" r="7"/></g><path d="M379 86h20v73h-20M76 191v12h45v-12" fill="none" stroke="#b9c8dd" stroke-width="5" stroke-linecap="round"/>
-</svg>
-</div>
+
 </section>
 <div class="flow" aria-label="Comparison steps"><div class="flow-step active" id="stepOne"><span class="num">1</span><span>Choose your GPUs</span></div><span class="flow-arrow" aria-hidden="true">→</span><div class="flow-step" id="stepTwo"><span class="num">2</span><span>Compare &amp; decide</span></div></div>
 <p class="score-method">Relative benchmark index: RX 580 = 100. The cited database does not publish the full test suite or setup for this aggregate index, so treat it as a directional comparison, not expected FPS. Results vary by game, resolution, settings, drivers and partner-card model. <a href="https://graphicscardsdatabase.com/gpu/amd-radeon-rx-580" target="_blank" rel="noopener">View benchmark source ↗</a></p>
