@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Plan a gaming PC with step-by-step part compatibility checks for CPU, motherboard, memory, graphics, cooling, case fit and power.">
+<meta name="description" content="Plan a gaming or productivity PC with a guided, step-by-step build planner and practical part compatibility checks.">
 <title>PCPilot — PC Build Planner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,11 +110,15 @@ select option{background:#111827;color:#f5f7fc}
 .tip-list li:before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:#a18bff}
 footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:10px;text-align:center}
 :focus-visible{outline:2px solid #9b8aff;outline-offset:3px}
+.flow-header{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:2px 1px 0}.flow-header h2{margin:8px 0 3px;font:600 20px "Space Grotesk",sans-serif;letter-spacing:-.03em}.flow-header p{margin:0;color:#98a7bd;font-size:12px}.flow-header #flowCount{color:#b7a8ff;font-size:11px;font-weight:700;white-space:nowrap}.flow-progress{height:5px;overflow:hidden;border-radius:99px;background:rgba(157,174,204,.12);margin:-4px 0 2px}.flow-progress i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#8e79ff,#65c9ff,#66e2a5);transition:width .35s ease}.wizard-step[hidden],.summary[hidden],[hidden]{display:none!important}.layout{grid-template-columns:1fr}.layout.is-final{grid-template-columns:minmax(0,1fr) 350px}.builder{min-width:0}.choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.budget-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.choice-card{min-height:138px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:7px;padding:17px;text-align:left;border:1px solid rgba(157,174,204,.16);border-radius:14px;background:linear-gradient(150deg,rgba(28,37,57,.78),rgba(13,19,31,.88));color:#f4f6fb;cursor:pointer;transition:transform .2s,border-color .2s,background .2s,box-shadow .2s}.choice-card:hover{transform:translateY(-3px);border-color:rgba(145,124,255,.55);background:linear-gradient(150deg,rgba(62,54,106,.48),rgba(15,25,39,.95));box-shadow:0 14px 35px #0003}.choice-card b{font:600 16px "Space Grotesk",sans-serif}.choice-card small{color:#9eacc1;font-size:11px;line-height:1.5}.choice-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:rgba(142,121,255,.14);color:#d0c4ff;font-size:17px}.choice-arrow{margin-top:auto;padding-top:4px;color:#b7a8ff;font-size:11px;font-weight:700}.budget-grid .choice-card{min-height:118px}.workload-grid .choice-card{min-height:105px}.budget-note{margin:13px 0 2px;color:#8796ad;font-size:10px}.step-back,.resume-link{min-height:36px;margin-top:14px;padding:7px 10px;border:1px solid rgba(157,174,204,.17);border-radius:9px;background:rgba(255,255,255,.025);color:#acb9cd;font:600 11px "DM Sans",sans-serif;cursor:pointer;transition:.18s}.step-back:hover,.resume-link:hover{border-color:rgba(145,124,255,.45);color:#eee9ff;background:rgba(126,105,255,.1)}.resume-link{display:block;margin-left:auto;color:#9be2be;border-color:rgba(102,226,165,.23)}.finish-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px}.finish-row span{color:#98a7bd;font-size:11px}.finish-row .step-back{flex:none}.edit-build{margin:0;padding:6px 8px;white-space:nowrap}.summary-header{flex-wrap:wrap}.summary-header>div{flex:1 0 100%}
+@media(max-width:920px){.layout.is-final{grid-template-columns:1fr}.summary{position:static}}
+@media(max-width:720px){.choice-grid,.budget-grid{grid-template-columns:1fr 1fr}.choice-card{min-height:118px}.fields.two{grid-template-columns:1fr}.flow-header{align-items:flex-start;flex-direction:column;gap:4px}.finish-row{align-items:flex-start;flex-direction:column}}
+@media(max-width:480px){.choice-grid,.budget-grid{grid-template-columns:1fr}.choice-card{min-height:100px;padding:14px}}
 @media(max-width:920px){.layout{grid-template-columns:1fr}.summary{position:static;grid-row:1}.hero{grid-template-columns:1fr}.hero-note{max-width:680px}}
 @media(max-width:640px){.site-header{height:auto;min-height:66px;align-items:flex-start;flex-direction:column;gap:5px;padding:10px 14px}.nav{width:100%;justify-content:space-between;gap:2px}.nav>a,.tool-dropdown summary{font-size:12px;padding:8px 9px}.tool-menu{left:auto;right:-60px;transform:none}.wrap{padding:25px 13px 48px}.hero p{font-size:14px}.step{padding:16px}.fields,.fields.three{grid-template-columns:1fr}.field.full{grid-column:auto}.goal-row{grid-template-columns:1fr}.goal-choice label{min-height:60px}.preset-row{display:grid;grid-template-columns:1fr}.summary-card{padding:15px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 @media print{body{background:#fff;color:#111}.site-header,.hero-note,.preset-row,.builder,.summary-actions,footer{display:none!important}.wrap{padding:0}.layout{display:block}.summary{position:static}.summary-card{background:#fff;color:#111;border:1px solid #ccc;box-shadow:none}.part-line{background:#fff;color:#111}.part-line span:nth-child(2),.source-note,.tip-list li{color:#333}.status-badge{color:#111}}
-</style>
+@keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}@media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}</style>
 </head>
 <body>
 <header class="site-header">
@@ -140,56 +144,83 @@ footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:
     <div>
       <span class="eyebrow"><i></i> PCPilot Smart Build</span>
       <h1>Build a PC that <span>fits together.</span></h1>
-      <p>Choose the parts you want. PCPilot checks the platform, memory, cooler fit, graphics-card clearance and power supply as you go, then explains anything that needs a second look.</p>
+      <p>Start with gaming, productivity or both. Then choose a budget and parts one step at a time while PCPilot checks fit and compatibility.</p>
     </div>
     <aside class="hero-note">
       <strong>Built for real decisions, not just a parts list.</strong>
-      <p>Start from a gaming goal or a one-click build, then review a plain-language checklist. Compatibility is a helpful planning check; always verify exact board revision, BIOS and partner-card dimensions before ordering.</p>
+      <p>Start with what you want to do and work through one choice at a time. Check compatibility as you go, then verify exact product revisions and dimensions before ordering.</p>
     </aside>
   </section>
-  <section class="preset-row" aria-label="Build starting points">
+  <section class="preset-row" aria-label="Build starting points" hidden>
     <button class="preset-btn primary" type="button" data-preset="value">Start with 1080p value</button>
     <button class="preset-btn" type="button" data-preset="1440">Start with 1440p balanced</button>
     <button class="preset-btn" type="button" data-preset="4k">Start with 4K high detail</button>
     <button class="preset-btn" type="button" id="resetBuild">Start from scratch</button>
   </section>
-  <div class="layout">
+  <div class="layout" id="layout">
     <form class="builder" id="buildForm">
-      <section class="step">
-        <div class="step-heading"><span class="step-number">01</span><div><h2>What do you want to play?</h2><p>Choose a starting goal. This guides the GPU recommendation; it does not predict exact FPS.</p></div></div>
-        <div class="goal-row">
-          <div class="goal-choice"><input type="radio" name="goal" id="goal1080" value="1080" checked><label for="goal1080"><b>1080p gaming</b><span>High refresh and value</span></label></div>
-          <div class="goal-choice"><input type="radio" name="goal" id="goal1440" value="1440"><label for="goal1440"><b>1440p gaming</b><span>Sharper detail, strong all-rounder</span></label></div>
-          <div class="goal-choice"><input type="radio" name="goal" id="goal4k" value="2160"><label for="goal4k"><b>4K gaming</b><span>Prioritize graphics power</span></label></div>
+      <div class="flow-header"><div><span class="eyebrow">Your guided build</span><h2 id="flowTitle">First, what are you building?</h2><p id="flowHint">Choose a direction. We’ll reveal one decision at a time.</p></div><span id="flowCount">Step 1 of 8</span></div>
+      <div class="flow-progress" aria-hidden="true"><i id="flowProgress"></i></div>
+      <section class="step wizard-step" id="modeStep" data-stage="1">
+        <div class="step-heading"><span class="step-number">01</span><div><h2>What will you use your PC for?</h2><p>We’ll tailor the next questions to what matters most to you.</p></div></div>
+        <div class="choice-grid">
+          <button type="button" class="choice-card" data-mode="gaming"><span class="choice-icon">🎮</span><b>Gaming</b><small>Choose resolution and gaming performance</small><span class="choice-arrow">Continue →</span></button>
+          <button type="button" class="choice-card" data-mode="productivity"><span class="choice-icon">✦</span><b>Productivity</b><small>For school, creative work, coding and more</small><span class="choice-arrow">Continue →</span></button>
+          <button type="button" class="choice-card" data-mode="mixed"><span class="choice-icon">◈</span><b>Gaming + productivity</b><small>A balanced everyday PC for both</small><span class="choice-arrow">Continue →</span></button>
         </div>
+        <button type="button" class="resume-link" id="resumeBuild" hidden>Resume my saved build</button>
       </section>
-      <section class="step">
-        <div class="step-heading"><span class="step-number">02</span><div><h2>Choose your processor and platform</h2><p>The motherboard and memory choices will follow your CPU’s socket and supported memory generation.</p></div></div>
-        <div class="fields three">
-          <div class="field"><label for="cpu">Processor</label><select id="cpu" required></select><small>Pick a CPU to see compatible motherboard families.</small></div>
-          <div class="field"><label for="motherboard">Motherboard</label><select id="motherboard" required></select><div class="select-note" id="boardNote">Choose a CPU first.</div></div>
-          <div class="field"><label for="memory">Memory kit</label><select id="memory" required></select><div class="select-note" id="memoryNote">Choose a motherboard first.</div></div>
+      <section class="step wizard-step" id="budgetStep" data-stage="2" hidden>
+        <div class="step-heading"><span class="step-number">02</span><div><h2>What’s your budget for the tower?</h2><p>Pick a range to focus the suggestions. All component options remain available.</p></div></div>
+        <div class="choice-grid budget-grid">
+          <button type="button" class="choice-card" data-budget="starter"><b>Under $600</b><small>Essentials and careful value picks</small></button>
+          <button type="button" class="choice-card" data-budget="value"><b>$600–$900</b><small>Affordable all-rounder</small></button>
+          <button type="button" class="choice-card" data-budget="balanced"><b>$900–$1,500</b><small>More room for performance</small></button>
+          <button type="button" class="choice-card" data-budget="high"><b>$1,500+</b><small>Higher-end parts and expansion</small></button>
         </div>
+        <p class="budget-note">Broad USD planning guides only. Local prices, taxes and used-part deals vary; PCPilot does not fetch live prices.</p>
+        <button type="button" class="step-back" data-back="1">← Change PC purpose</button>
       </section>
-      <section class="step">
-        <div class="step-heading"><span class="step-number">03</span><div><h2>Add graphics and storage</h2><p>The listed GPU length is a planning reference, not an exact card model. Board-partner versions may be larger or use more power.</p></div></div>
-        <div class="fields">
-          <div class="field"><label for="gpu">Graphics card</label><div class="part-select"><span class="part-icon gpu" aria-hidden="true">▰</span><select id="gpu" required></select></div><small>Includes NVIDIA GeForce and AMD Radeon options.</small></div>
+      <section class="step wizard-step" id="workloadStep" data-stage="3" hidden>
+        <div class="step-heading"><span class="step-number">03</span><div><h2 id="workloadTitle">Pick your main goal</h2><p id="workloadHint">This helps us suggest parts that make sense for your use.</p></div></div>
+        <div class="choice-grid" id="workloadChoices"></div>
+        <button type="button" class="step-back" data-back="2">← Change budget</button>
+      </section>
+      <section class="step wizard-step" id="cpuStep" data-stage="4" hidden>
+        <div class="step-heading"><span class="step-number">04</span><div><h2>Choose your processor</h2><p>Browse the full catalog, including affordable and previous-generation options.</p></div></div>
+        <div class="field"><label for="cpu">Processor</label><select id="cpu" required></select><div class="select-note" id="cpuNote"></div><small>Choose a CPU to reveal the graphics step.</small></div>
+        <button type="button" class="step-back" data-back="3">← Change your goal</button>
+      </section>
+      <section class="step wizard-step" id="gpuStep" data-stage="5" hidden>
+        <div class="step-heading"><span class="step-number">05</span><div><h2>Choose graphics</h2><p>Discrete graphics are optional for many study and office builds.</p></div></div>
+        <div class="field"><label for="gpu">Graphics card</label><div class="part-select"><span class="part-icon gpu" aria-hidden="true">▰</span><select id="gpu" required></select></div><div class="select-note" id="gpuNote"></div><small>Integrated graphics requires a CPU that includes it; the checklist flags mismatches.</small></div>
+        <button type="button" class="step-back" data-back="4">← Change processor</button>
+      </section>
+      <section class="step wizard-step" id="boardStep" data-stage="6" hidden>
+        <div class="step-heading"><span class="step-number">06</span><div><h2>Choose a motherboard</h2><p>Only the selected processor’s socket family is shown.</p></div></div>
+        <div class="field"><label for="motherboard">Motherboard family</label><select id="motherboard" required></select><div class="select-note" id="boardNote">Choose a CPU first.</div><small>Confirm exact board model, BIOS support and revision before buying.</small></div>
+        <button type="button" class="step-back" data-back="5">← Change graphics</button>
+      </section>
+      <section class="step wizard-step" id="memoryStep" data-stage="7" hidden>
+        <div class="step-heading"><span class="step-number">07</span><div><h2>Match your memory</h2><p>Memory generation follows your motherboard.</p></div></div>
+        <div class="field"><label for="memory">Memory kit</label><select id="memory" required></select><div class="select-note" id="memoryNote">Choose a motherboard first.</div></div>
+        <button type="button" class="step-back" data-back="6">← Change motherboard</button>
+      </section>
+      <section class="step wizard-step" id="detailsStep" data-stage="8" hidden>
+        <div class="step-heading"><span class="step-number">08</span><div><h2>Finish your build</h2><p>Select storage, cooling, case and power. Then review the compatibility checklist.</p></div></div>
+        <div class="fields two">
           <div class="field"><label for="storage">Storage</label><div class="part-select"><span class="part-icon" aria-hidden="true">▤</span><select id="storage" required></select></div><small>NVMe drives use the motherboard’s M.2 slot.</small></div>
-        </div>
-      </section>
-      <section class="step">
-        <div class="step-heading"><span class="step-number">04</span><div><h2>Make sure it fits and stays cool</h2><p>Case and cooler measurements are simplified planning values, not a substitute for exact product specifications.</p></div></div>
-        <div class="fields three">
           <div class="field"><label for="cooler">CPU cooler</label><select id="cooler" required></select><div class="select-note" id="coolerNote"></div></div>
-          <div class="field"><label for="case">Case size</label><div class="part-select"><span class="part-icon case" aria-hidden="true">▣</span><select id="case" required></select></div><div class="select-note" id="caseNote"></div></div>
-          <div class="field"><label for="psu">Power supply</label><div class="part-select"><span class="part-icon power" aria-hidden="true">ϟ</span><select id="psu" required></select></div><div class="select-note" id="psuNote"></div></div>
+          <div class="field"><label for="case">Case size</label><div class="part-select"><span class="part-icon case" aria-hidden="true">▣</span><select id="case" required></select><div class="select-note" id="caseNote"></div></div></div>
+          <div class="field"><label for="psu">Power supply</label><div class="part-select"><span class="part-icon power" aria-hidden="true">ϟ</span><select id="psu" required></select><div class="select-note" id="psuNote"></div></div></div>
         </div>
+        <div class="finish-row"><span id="finishHint">Choose all four to see your compatibility summary.</span><button type="button" class="step-back" data-back="7">← Change memory</button></div>
       </section>
+      <input type="hidden" id="goalValue" value="1080">
     </form>
-    <aside class="summary" aria-live="polite">
+    <aside class="summary" id="buildSummary" aria-live="polite" hidden>
       <section class="summary-card">
-        <div class="summary-header"><div><span class="eyebrow">Your build</span><h2 style="margin-top:8px">Compatibility check</h2></div><span class="status-badge" id="overallStatus">Getting started</span></div>
+        <div class="summary-header"><div><span class="eyebrow">Your build</span><h2 style="margin-top:8px">Compatibility check</h2></div><button type="button" class="step-back edit-build" id="editBuild">← Edit parts</button><span class="status-badge" id="overallStatus">Getting started</span></div>
         <div class="progress-line"><i id="progressBar"></i></div>
         <div class="selected-build" id="selectedBuild"></div>
         <div class="parts-list" id="checks"></div>
@@ -224,18 +255,30 @@ footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:
 <footer>PCPilot build planner · Compatibility checks are a starting point. Confirm the exact part specifications and BIOS support before purchase.</footer>
 <script>
 const CPU_DATA=[
-{id:"r5-5600",name:"AMD Ryzen 5 5600",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:88,gaming:"value"},
-{id:"r7-5700x3d",name:"AMD Ryzen 7 5700X3D",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:142,gaming:"value"},
-{id:"r5-7600",name:"AMD Ryzen 5 7600",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:88,gaming:"value"},
-{id:"r7-7800x3d",name:"AMD Ryzen 7 7800X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:162,gaming:"balanced"},
-{id:"r7-9800x3d",name:"AMD Ryzen 7 9800X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:162,gaming:"high"},
-{id:"r9-9950x",name:"AMD Ryzen 9 9950X",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:230,gaming:"high"},
-{id:"i5-12400f",name:"Intel Core i5-12400F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:117,gaming:"value"},
-{id:"i5-13600k",name:"Intel Core i5-13600K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:181,gaming:"balanced"},
-{id:"i7-14700k",name:"Intel Core i7-14700K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:253,gaming:"high"},
-{id:"u5-245k",name:"Intel Core Ultra 5 245K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:159,gaming:"balanced"},
-{id:"u7-265k",name:"Intel Core Ultra 7 265K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:250,gaming:"high"},
-{id:"u9-285k",name:"Intel Core Ultra 9 285K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:250,gaming:"high"}
+{id:"r3-4100",name:"AMD Ryzen 3 4100",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"entry",igpu:false},
+{id:"r5-4500",name:"AMD Ryzen 5 4500",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"entry",igpu:false},
+{id:"r5-5500",name:"AMD Ryzen 5 5500",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"value",igpu:false},
+{id:"r5-5600g",name:"AMD Ryzen 5 5600G · Radeon Graphics",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"value",igpu:true},
+{id:"r5-5600",name:"AMD Ryzen 5 5600",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:88,gaming:"value",igpu:false},
+{id:"r7-5700x3d",name:"AMD Ryzen 7 5700X3D",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:142,gaming:"value",igpu:false},
+{id:"r5-7500f",name:"AMD Ryzen 5 7500F",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:88,gaming:"value",igpu:false},
+{id:"r5-7600",name:"AMD Ryzen 5 7600",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:88,gaming:"value",igpu:true},
+{id:"r5-8400g",name:"AMD Ryzen 5 8400G · Radeon Graphics",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:88,gaming:"entry",igpu:true},
+{id:"r5-8600g",name:"AMD Ryzen 5 8600G · Radeon Graphics",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:88,gaming:"value",igpu:true},
+{id:"r7-7800x3d",name:"AMD Ryzen 7 7800X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:162,gaming:"balanced",igpu:true},
+{id:"r7-9800x3d",name:"AMD Ryzen 7 9800X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:162,gaming:"high",igpu:true},
+{id:"r9-9950x",name:"AMD Ryzen 9 9950X",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:230,gaming:"high",igpu:true},
+{id:"i3-12100",name:"Intel Core i3-12100 · UHD Graphics",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:89,gaming:"entry",igpu:true},
+{id:"i3-12100f",name:"Intel Core i3-12100F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:89,gaming:"entry",igpu:false},
+{id:"i5-12400",name:"Intel Core i5-12400 · UHD Graphics",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:117,gaming:"value",igpu:true},
+{id:"i5-12400f",name:"Intel Core i5-12400F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:117,gaming:"value",igpu:false},
+{id:"i5-13400f",name:"Intel Core i5-13400F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:148,gaming:"value",igpu:false},
+{id:"i5-14400f",name:"Intel Core i5-14400F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:148,gaming:"value",igpu:false},
+{id:"i5-13600k",name:"Intel Core i5-13600K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:181,gaming:"balanced",igpu:true},
+{id:"i7-14700k",name:"Intel Core i7-14700K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:253,gaming:"high",igpu:true},
+{id:"u5-245k",name:"Intel Core Ultra 5 245K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:159,gaming:"balanced",igpu:true},
+{id:"u7-265k",name:"Intel Core Ultra 7 265K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:250,gaming:"high",igpu:true},
+{id:"u9-285k",name:"Intel Core Ultra 9 285K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:250,gaming:"high",igpu:true}
 ];
 const BOARD_DATA=[
 {id:"b550-matx",name:"B550 Micro-ATX · DDR4",socket:"AM4",memory:"DDR4",form:"Micro-ATX",chipset:"B550",m2:2},
@@ -261,17 +304,30 @@ const MEMORY_DATA=[
 {id:"d5-64",name:"64 GB · DDR5-6000 · 2×32 GB",type:"DDR5",capacity:64}
 ];
 const GPU_DATA=[
-{id:"rtx-5060",name:"NVIDIA GeForce RTX 5060",brand:"NVIDIA GeForce",power:145,psu:550,length:240,tier:1080},
-{id:"rtx-5060-ti",name:"NVIDIA GeForce RTX 5060 Ti",brand:"NVIDIA GeForce",power:180,psu:600,length:267,tier:1080},
-{id:"rtx-5070",name:"NVIDIA GeForce RTX 5070",brand:"NVIDIA GeForce",power:250,psu:650,length:267,tier:1440},
+{id:"gtx-1650",name:"NVIDIA GeForce GTX 1650",brand:"NVIDIA GeForce",power:75,psu:300,length:180,tier:1080,discrete:true},
+{id:"gtx-1660s",name:"NVIDIA GeForce GTX 1660 Super",brand:"NVIDIA GeForce",power:125,psu:450,length:230,tier:1080,discrete:true},
+{id:"rtx-2060",name:"NVIDIA GeForce RTX 2060",brand:"NVIDIA GeForce",power:160,psu:500,length:230,tier:1080,discrete:true},
+{id:"rtx-3050",name:"NVIDIA GeForce RTX 3050 6GB",brand:"NVIDIA GeForce",power:70,psu:300,length:200,tier:1080,discrete:true},
+{id:"rtx-3060",name:"NVIDIA GeForce RTX 3060 12GB",brand:"NVIDIA GeForce",power:170,psu:550,length:242,tier:1080,discrete:true},
+{id:"rx-580",name:"AMD Radeon RX 580 8GB",brand:"AMD Radeon",power:185,psu:550,length:240,tier:1080,discrete:true},
+{id:"rx-6600",name:"AMD Radeon RX 6600 8GB",brand:"AMD Radeon",power:132,psu:450,length:193,tier:1080,discrete:true},
+{id:"rx-7600",name:"AMD Radeon RX 7600 8GB",brand:"AMD Radeon",power:165,psu:550,length:240,tier:1080,discrete:true},
+{id:"arc-a380",name:"Intel Arc A380 6GB",brand:"Intel Arc",power:75,psu:350,length:190,tier:1080,discrete:true},
+{id:"arc-a580",name:"Intel Arc A580 8GB",brand:"Intel Arc",power:185,psu:600,length:270,tier:1080,discrete:true},
+{id:"arc-b570",name:"Intel Arc B570 10GB",brand:"Intel Arc",power:150,psu:550,length:270,tier:1080,discrete:true},
+{id:"integrated",name:"Integrated graphics · no separate card",brand:"Integrated graphics",power:0,psu:0,length:0,tier:0,discrete:false},
+{id:"rtx-5060",name:"NVIDIA GeForce RTX 5060",brand:"NVIDIA GeForce",power:145,psu:550,length:240,tier:1080,discrete:true},
+{id:"rtx-5060-ti",name:"NVIDIA GeForce RTX 5060 Ti",brand:"NVIDIA GeForce",power:180,psu:600,length:267,tier:1080,discrete:true},
+{id:"rtx-5070",name:"NVIDIA GeForce RTX 5070",brand:"NVIDIA GeForce",power:250,psu:650,length:267,tier:1440,discrete:true},
 {id:"rtx-5070-ti",name:"NVIDIA GeForce RTX 5070 Ti",brand:"NVIDIA GeForce",power:300,psu:750,length:304,tier:1440},
 {id:"rtx-5080",name:"NVIDIA GeForce RTX 5080",brand:"NVIDIA GeForce",power:360,psu:850,length:304,tier:2160},
 {id:"rtx-5090",name:"NVIDIA GeForce RTX 5090",brand:"NVIDIA GeForce",power:575,psu:1000,length:313,tier:2160},
-{id:"rx-9060xt",name:"AMD Radeon RX 9060 XT",brand:"AMD Radeon",power:160,psu:650,length:280,tier:1080},
+{id:"rx-9060xt",name:"AMD Radeon RX 9060 XT",brand:"AMD Radeon",power:160,psu:650,length:280,tier:1080,discrete:true},
 {id:"rx-9070",name:"AMD Radeon RX 9070",brand:"AMD Radeon",power:220,psu:650,length:267,tier:1440},
 {id:"rx-9070xt",name:"AMD Radeon RX 9070 XT",brand:"AMD Radeon",power:304,psu:750,length:304,tier:2160}
 ];
 const COOLER_DATA=[
+{id:"air-stock",name:"Stock / compact air cooler · up to 90 W",type:"air",capacity:90,height:155,sockets:["AM4","AM5","LGA1700","LGA1851"]},
 {id:"air-120",name:"Compact air cooler · 120 W class",type:"air",capacity:120,height:145,sockets:["AM4","AM5","LGA1700","LGA1851"]},
 {id:"air-180",name:"Tower air cooler · 180 W class",type:"air",capacity:180,height:158,sockets:["AM4","AM5","LGA1700","LGA1851"]},
 {id:"air-250",name:"Large dual-tower air cooler · 250 W class",type:"air",capacity:250,height:165,sockets:["AM4","AM5","LGA1700","LGA1851"]},
@@ -283,6 +339,7 @@ const CASE_DATA=[
 {id:"large-mid",name:"Roomy Mid-Tower",forms:["ATX","Micro-ATX","Mini-ITX"],maxGpu:400,maxCooler:180,maxPsu:200,radiators:[120,240,360]}
 ];
 const PSU_DATA=[
+{id:"psu-450",name:"450 W · 80+ Bronze class",watts:450,length:140},
 {id:"psu-550",name:"550 W · 80+ Bronze class",watts:550,length:140},
 {id:"psu-650",name:"650 W · 80+ Gold class",watts:650,length:150},
 {id:"psu-750",name:"750 W · 80+ Gold class",watts:750,length:160},
@@ -297,6 +354,7 @@ const STORAGE_DATA=[
 {id:"sata-1",name:"1 TB SATA SSD",type:"sata",capacity:1}
 ];
 const $=id=>document.getElementById(id);
+let wizardMode="",wizardBudget="",wizardWorkload="",wizardStage=1;
 function addOptions(selectId,list,label,selected){
  const el=$(selectId),old=selected||el.value;
  el.innerHTML='<option value="">Choose '+label.toLowerCase()+'</option>';
@@ -342,10 +400,13 @@ function evaluateBuild(){
  checks.push({label:"Power supply length fits the case",value:psu&&pcCase?(psu.length<=pcCase.maxPsu?"Fits · "+psu.length+" / "+pcCase.maxPsu+" mm":"Too long · "+psu.length+" / "+pcCase.maxPsu+" mm"):"Choose a case and power supply",status:psu&&pcCase?(psu.length<=pcCase.maxPsu?"good":"bad"):"pending"});
  checks.push({label:"Power supply headroom",value:psu&&gpu?(psu.watts>=needed?"Pass · "+psu.watts+" W selected / "+needed+" W planning need":"Low · "+psu.watts+" W selected / "+needed+" W planning need"): "Choose a GPU and power supply",status:psu&&gpu?(psu.watts>=needed?"good":"bad"):"pending"});
  checks.push({label:"Storage connection",value:board&&storage?(storage.type==="sata"?"SATA drive selected":board.m2>0?"NVMe · "+board.m2+" M.2 slots listed":"No M.2 slot listed"): "Choose storage and a motherboard",status:board&&storage?(storage.type==="sata"||board.m2>0?"good":"bad"):"pending"});
- checks.push({label:"Gaming goal match",value:gpu?goalText(gpu):"Choose a graphics card",status:gpu?goalStatus(gpu):"pending"});
+ const targetLabel=wizardMode==="productivity"?"Workload setup":"Gaming goal match";
+ const targetValue=wizardMode==="productivity"?(wizardWorkload||"Choose a work goal"):(gpu?goalText(gpu):"Choose a graphics card");
+ const targetStatus=wizardMode==="productivity"?(wizardWorkload?"good":"pending"):(gpu?goalStatus(gpu):"pending");
+ checks.push({label:targetLabel,value:targetValue,status:targetStatus});
  return {cpu,board,memory,gpu,cooler,pcCase,psu,storage,checks};
 }
-function goalValue(){return document.querySelector('input[name="goal"]:checked')?.value||"1080"}
+function goalValue(){return $("goalValue").value||"1080"}
 function goalText(gpu){
  const goal=Number(goalValue()),labels={1080:"1080p",1440:"1440p",2160:"4K"};
  if(!gpu)return "Choose a graphics card";
@@ -367,8 +428,8 @@ function renderBuild(){
  $("progressBar").style.width=Math.round(complete/b.checks.length*100)+"%";
  $("checks").innerHTML=b.checks.map(x=>'<div class="part-line '+x.status+'"><span class="mark">'+(x.status==="good"?"✓":x.status==="bad"?"!":x.status==="warn"?"△":"·")+'</span><span>'+x.label+'</span><b>'+x.value+'</b></div>').join("");
  const gpu=b.gpu,goal=Number(goalValue());
- let rec="<strong>Choose a gaming goal</strong>Pick a goal above to get a GPU tier suggestion.";
- if(gpu){
+ let rec=wizardMode==="productivity"?"<strong>Workload selected</strong>"+wizardWorkload+". Check recommended specifications for your actual apps.":"<strong>Choose a gaming goal</strong>Choose a resolution to get a broad GPU tier suggestion.";
+ if(gpu&&wizardMode!=="productivity"){
   const focus=goal===1080?"1080p":goal===1440?"1440p":"4K";
   rec="<strong>"+focus+" planning note</strong>"+(gpu.tier>=goal?"Your selected GPU is in the suggested tier for this goal.":"Consider a stronger GPU tier for this goal. Current selection: "+gpu.name+".")+" This is a broad tier guide, not an FPS prediction.";
  }
@@ -377,35 +438,85 @@ function renderBuild(){
  $("savedNote").textContent="";
 }
 function persistBuild(){
- const vals={cpu:$("cpu").value,motherboard:$("motherboard").value,memory:$("memory").value,gpu:$("gpu").value,cooler:$("cooler").value,case:$("case").value,psu:$("psu").value,storage:$("storage").value,goal:goalValue()};
+ const vals={cpu:$("cpu").value,motherboard:$("motherboard").value,memory:$("memory").value,gpu:$("gpu").value,cooler:$("cooler").value,case:$("case").value,psu:$("psu").value,storage:$("storage").value,goal:goalValue(),mode:wizardMode,budget:wizardBudget,workload:wizardWorkload};
  try{localStorage.setItem("pcpilot-build-v1",JSON.stringify(vals))}catch(e){}
+}
+function updateGraphicsOptions(){
+ const cpu=getValue("cpu",CPU_DATA),old=$("gpu").value;
+ const choices=GPU_DATA.filter(x=>x.discrete!==false||(cpu&&cpu.igpu));
+ setSelect("gpu",choices,"graphics card",old);
+ $("gpuNote").textContent=wizardMode==="productivity"?"For everyday office and study, integrated graphics may be enough. For editing, 3D and GPU-accelerated apps, compare discrete options.":"Affordable previous-generation cards are included alongside newer models.";
+}
+function workloadOptions(){
+ const groups={
+  gaming:[["1080","1080p value","Good place to start for affordable high-refresh gaming."],["1440","1440p all-rounder","A sharper image with more graphics demand."],["2160","4K detail","A demanding target that calls for stronger graphics."]],
+  productivity:[["1080","School & everyday","Web, documents, calls and everyday multitasking."],["1080","Photo & video creation","Prioritize memory and graphics acceleration for your apps."],["1080","3D, CAD & engineering","Choose components around your exact software requirements."],["1080","Coding & virtual machines","More memory and CPU capacity can help with larger projects."],["1080","Streaming & content creation","Balance CPU capacity, graphics and encoding support."]],
+  mixed:[["1080","Gaming + school","Affordable gaming with room for daily tasks."],["1440","Gaming + creative apps","A flexible build for gaming and heavier creative work."],["1080","Gaming + streaming","Balance game performance with streaming and recording."]]
+ };
+ const data=groups[wizardMode]||groups.gaming;
+ $("workloadTitle").textContent=wizardMode==="gaming"?"What resolution do you play at?":wizardMode==="productivity"?"What kind of work will you do?":"Which mix fits you best?";
+ $("workloadHint").textContent=wizardMode==="gaming"?"Choose a target. This is a broad GPU tier guide, not an FPS promise.":wizardMode==="productivity"?"Pick your main apps; requirements vary, so check the software maker’s recommendations.":"Choose the use that matters most. You can still browse every processor and graphics option.";
+ $("workloadChoices").className="choice-grid workload-grid";
+ $("workloadChoices").innerHTML=data.map((x,i)=>'<button type="button" class="choice-card" data-workload="'+i+'" data-goal="'+x[0]+'"><b>'+x[1]+'</b><small>'+x[2]+'</small><span class="choice-arrow">Choose this →</span></button>').join("");
+}
+function showWizardStep(stage,scroll=true){
+ wizardStage=stage;
+ document.querySelectorAll(".wizard-step").forEach(el=>el.hidden=Number(el.dataset.stage)!==stage);
+ const final=stage===9;
+ $("buildSummary").hidden=!final;$("buildForm").hidden=final;$("layout").classList.toggle("is-final",final);
+ $("flowCount").textContent=final?"Build review complete":"Step "+stage+" of 8";
+ $("flowProgress").style.width=(final?100:Math.round((stage-1)/8*100))+"%";
+ const titles={1:"First, what are you building?",2:"Set a comfortable budget",3:"Pick a goal that fits you",4:"Choose your processor",5:"Choose graphics",6:"Match a motherboard",7:"Choose memory",8:"Finish the parts list",9:"Review your PC build"};
+ const hints={1:"Choose a direction. We’ll reveal one decision at a time.",2:"The range helps focus suggestions; all parts remain available.",3:"These choices help us frame component suggestions.",4:"We’ll show platform-matched options in the next steps.",5:"Affordable and previous-generation options are included.",6:"Only compatible socket families will appear.",7:"Memory options follow the motherboard type.",8:"Choose storage, cooling, case and power.",9:"Review the parts and fix any highlighted compatibility issue."};
+ $("flowTitle").textContent=titles[stage];$("flowHint").textContent=hints[stage];
+ if(stage===8)refreshFinishHint();
+ if(scroll){const target=final?$("buildSummary"):document.querySelector('.wizard-step[data-stage="'+stage+'"]');target?.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}
+}
+function refreshFinishHint(){
+ const complete=["storage","cooler","case","psu"].every(id=>$(id).value);
+ $("finishHint").textContent=complete?"All parts selected. Your compatibility summary is ready.":"Choose all four to see your compatibility summary.";
 }
 function selectValues(vals){
  if(!vals)return;
+ wizardMode=vals.mode||"gaming";wizardBudget=vals.budget||"value";wizardWorkload=vals.workload||"Gaming";
+ $("goalValue").value=vals.goal||"1080";workloadOptions();
  const set=(id,value)=>{if(value&&Array.from($(id).options).some(o=>o.value===value))$(id).value=value};
- set("cpu",vals.cpu);updatePlatformOptions();set("motherboard",vals.motherboard);updatePlatformOptions();set("memory",vals.memory);
+ set("cpu",vals.cpu);updatePlatformOptions();updateGraphicsOptions();set("motherboard",vals.motherboard);updatePlatformOptions();set("memory",vals.memory);
  ["gpu","cooler","case","psu","storage"].forEach(id=>set(id,vals[id]));
- if(vals.goal){const goal=document.querySelector('input[name="goal"][value="'+vals.goal+'"]');if(goal)goal.checked=true}
- renderBuild();
-}
-function applyPreset(kind){
- const presets={
- value:{cpu:"r5-5600",motherboard:"b550-matx",memory:"d4-32",gpu:"rtx-5060",cooler:"air-120",case:"compact-matx",psu:"psu-650",storage:"nvme-1",goal:"1080"},
- "1440":{cpu:"r7-7800x3d",motherboard:"b650-atx",memory:"d5-32-6000",gpu:"rtx-5070",cooler:"air-180",case:"airflow-mid",psu:"psu-750",storage:"nvme-2",goal:"1440"},
- "4k":{cpu:"r7-9800x3d",motherboard:"b850-atx",memory:"d5-64",gpu:"rx-9070xt",cooler:"air-250",case:"large-mid",psu:"psu-850",storage:"nvme-2",goal:"2160"}
- };
- selectValues(presets[kind]);
- persistBuild();
+ renderBuild();showWizardStep(9,false);
 }
 function shareUrl(){
- const data={cpu:$("cpu").value,motherboard:$("motherboard").value,memory:$("memory").value,gpu:$("gpu").value,cooler:$("cooler").value,case:$("case").value,psu:$("psu").value,storage:$("storage").value,goal:goalValue()};
+ const data={cpu:$("cpu").value,motherboard:$("motherboard").value,memory:$("memory").value,gpu:$("gpu").value,cooler:$("cooler").value,case:$("case").value,psu:$("psu").value,storage:$("storage").value,goal:goalValue(),mode:wizardMode,budget:wizardBudget,workload:wizardWorkload};
  const url=new URL(location.href);url.searchParams.set("build",btoa(unescape(encodeURIComponent(JSON.stringify(data)))));return url.toString();
 }
-document.querySelectorAll("#buildForm select,#buildForm input").forEach(el=>el.addEventListener("change",()=>{renderBuild();persistBuild()}));
-document.querySelectorAll("[data-preset]").forEach(btn=>btn.addEventListener("click",()=>applyPreset(btn.dataset.preset)));
-$("resetBuild").addEventListener("click",()=>{localStorage.removeItem("pcpilot-build-v1");$("buildForm").reset();["cpu","motherboard","memory","gpu","cooler","case","psu","storage"].forEach(id=>$(id).value="");updatePlatformOptions();renderBuild();$("savedNote").textContent="Started a fresh build."});
+function clearParts(){
+ ["cpu","motherboard","memory","gpu","cooler","case","psu","storage"].forEach(id=>$(id).value="");
+ $("goalValue").value="1080";updatePlatformOptions();updateGraphicsOptions();
+}
+function refreshHints(){
+ const cpuHints={starter:["AMD Ryzen 3 4100","AMD Ryzen 5 5500","AMD Ryzen 5 5600G · Radeon Graphics","Intel Core i3-12100F"],value:["AMD Ryzen 5 5600","AMD Ryzen 5 5600G · Radeon Graphics","AMD Ryzen 5 7600","Intel Core i5-12400F"],balanced:["AMD Ryzen 5 7600","AMD Ryzen 5 8600G · Radeon Graphics","Intel Core i5-14400F","AMD Ryzen 7 7800X3D"],high:["AMD Ryzen 7 9800X3D","AMD Ryzen 9 9950X","Intel Core Ultra 7 265K","Intel Core i7-14700K"]};
+ const gpuHints={starter:["Integrated graphics · no separate card","NVIDIA GeForce GTX 1650","NVIDIA GeForce RTX 3050 6GB","Intel Arc A380 6GB"],value:["AMD Radeon RX 6600 8GB","NVIDIA GeForce RTX 3060 12GB","Intel Arc B570 10GB","AMD Radeon RX 7600 8GB"],balanced:["NVIDIA GeForce RTX 5060","AMD Radeon RX 9060 XT","NVIDIA GeForce RTX 5070","AMD Radeon RX 9070"],high:["NVIDIA GeForce RTX 5080","NVIDIA GeForce RTX 5090","AMD Radeon RX 9070 XT","NVIDIA GeForce RTX 5070 Ti"]};
+ const labels={starter:"Starter range ideas",value:"Value range ideas",balanced:"All-rounder ideas",high:"Higher-performance ideas"},label=labels[wizardBudget]||"Starting points";
+ $("cpuNote").textContent=label+": "+(cpuHints[wizardBudget]||cpuHints.value).join(" · ")+". Browse all options below.";
+ $("gpuNote").textContent=wizardMode==="productivity"?"Integrated graphics may suit everyday work; dedicated cards help with GPU-accelerated creative apps. All listed cards remain selectable.":label+": "+(gpuHints[wizardBudget]||gpuHints.value).join(" · ")+". Browse all options below.";
+}
+document.querySelectorAll("[data-mode]").forEach(btn=>btn.addEventListener("click",()=>{wizardMode=btn.dataset.mode;wizardBudget="";wizardWorkload="";clearParts();workloadOptions();renderBuild();showWizardStep(2);persistBuild()}));
+document.querySelectorAll("[data-budget]").forEach(btn=>btn.addEventListener("click",()=>{wizardBudget=btn.dataset.budget;refreshHints();showWizardStep(3);persistBuild()}));
+$("workloadChoices").addEventListener("click",event=>{const btn=event.target.closest("[data-workload]");if(!btn)return;wizardWorkload=btn.querySelector("b").textContent;$("goalValue").value=btn.dataset.goal;refreshHints();showWizardStep(4);persistBuild()});
+document.querySelectorAll("[data-back]").forEach(btn=>btn.addEventListener("click",()=>showWizardStep(Number(btn.dataset.back))));
+$("editBuild").addEventListener("click",()=>showWizardStep(8));
+document.querySelectorAll("#buildForm select").forEach(el=>el.addEventListener("change",()=>{
+ if(el.id==="cpu")updateGraphicsOptions();
+ renderBuild();persistBuild();
+ if(el.id==="cpu")showWizardStep(5);
+ else if(el.id==="gpu")showWizardStep(6);
+ else if(el.id==="motherboard")showWizardStep(7);
+ else if(el.id==="memory")showWizardStep(8);
+ else if(["storage","cooler","case","psu"].includes(el.id)){refreshFinishHint();if(["storage","cooler","case","psu"].every(id=>$(id).value))showWizardStep(9)}
+}));
+$("resumeBuild").addEventListener("click",()=>{const saved=(()=>{try{return JSON.parse(localStorage.getItem("pcpilot-build-v1")||"null")}catch(e){return null}})();if(saved)selectValues(saved)});
 $("saveBuild").addEventListener("click",()=>{persistBuild();$("savedNote").textContent="Build saved in this browser."});
-$("shareBuild").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(shareUrl());$("savedNote").textContent="Share link copied. It includes your selected parts."; }catch(e){const input=document.createElement("textarea");input.value=shareUrl();document.body.appendChild(input);input.select();document.execCommand("copy");input.remove();$("savedNote").textContent="Share link copied. It includes your selected parts."}});
+$("shareBuild").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(shareUrl());$("savedNote").textContent="Share link copied. It includes your selections."}catch(e){const input=document.createElement("textarea");input.value=shareUrl();document.body.appendChild(input);input.select();document.execCommand("copy");input.remove();$("savedNote").textContent="Share link copied. It includes your selections."}});
 $("printBuild").addEventListener("click",()=>window.print());
 document.addEventListener("click",event=>document.querySelectorAll(".tool-dropdown[open]").forEach(menu=>{if(!menu.contains(event.target))menu.removeAttribute("open")}));
 document.addEventListener("keydown",event=>{if(event.key==="Escape")document.querySelectorAll(".tool-dropdown[open]").forEach(menu=>{menu.removeAttribute("open");menu.querySelector("summary").focus()})});
@@ -421,9 +532,13 @@ addOptions("cooler",COOLER_DATA,"CPU cooler");
 addOptions("case",CASE_DATA,"case");
 addOptions("psu",PSU_DATA,"power supply");
 addOptions("storage",STORAGE_DATA,"storage");
-updatePlatformOptions();
-selectValues(decodeShared()||stored);
+updatePlatformOptions();updateGraphicsOptions();workloadOptions();
+if(stored&&stored.cpu)$("resumeBuild").hidden=false;
+const shared=decodeShared();
+if(shared)selectValues(shared);else showWizardStep(1,false);
 renderBuild();
 </script>
-</body>
+<script>
+(()=>{const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduce)return;document.addEventListener("click",event=>{const link=event.target.closest("a[href]");if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target||link.hasAttribute("download"))return;const url=new URL(link.href,location.href);if(url.origin!==location.origin||url.pathname===location.pathname||!["/index.html","/bottleneck.html","/build-planner.html"].some(path=>url.pathname.endsWith(path)))return;event.preventDefault();document.body.classList.add("page-leave");setTimeout(()=>location.assign(url.href),145)})})();
+</script></body>
 </html>
