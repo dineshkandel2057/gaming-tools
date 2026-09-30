@@ -1037,7 +1037,7 @@ function populateCPU(list = cpuData) {
 
         const option = document.createElement("option");
 
-        option.value = index;
+        option.value = cpu[0];
         option.textContent = cpu[0];
 
         cpuSelect.appendChild(option);
@@ -1054,7 +1054,7 @@ function populateGPU(list = gpuData) {
 
         const option = document.createElement("option");
 
-        option.value = index;
+        option.value = gpu[0];
         option.textContent = gpu[0];
 
         gpuSelect.appendChild(option);
@@ -1118,7 +1118,10 @@ function updateBrandUI(type) {
     if (!select.options.length) return;
     const selected = select.options[select.selectedIndex];
     if (!selected) return;
-    const score = type === "cpu" ? cpuData[select.value][1] : gpuData[select.value][1];
+    const source = type === "cpu" ? cpuData : gpuData;
+    const item = source.find(entry => entry[0] === select.value);
+    if (!item) return;
+    const score = item[1];
     const brand = getBrand(selected.textContent);
     const prefix = type === "cpu" ? "cpu" : "gpu";
     const mark = document.getElementById(prefix + "BrandMark");
@@ -1158,8 +1161,10 @@ document.getElementById("gpuBrandPicker").addEventListener("click", () => gpuSel
 
 function calculate() {
 
-    const cpu = cpuData[cpuSelect.value];
-    const gpu = gpuData[gpuSelect.value];
+    const cpu = cpuData.find(entry => entry[0] === cpuSelect.value);
+    const gpu = gpuData.find(entry => entry[0] === gpuSelect.value);
+
+    if (!cpu || !gpu) return;
 
     updateBrandUI("cpu");
     updateBrandUI("gpu");
