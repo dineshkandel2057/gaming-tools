@@ -3,1799 +3,333 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PCPilot - CPU & GPU Bottleneck Calculator</title>
-
+<title>PCPilot — CPU & GPU Bottleneck Calculator</title>
 <style>
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    background: #0d0f14;
-    color: #f5f7fb;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.5;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.site-header {
-    height: 88px;
-    background: #0c0e13;
-    border-bottom: 1px solid #292e3a;
-    display: flex;
-    align-items: center;
-    padding: 0 7%;
-    position: relative;
-    z-index: 20;
-}
-
-.logo {
-    font-size: 25px;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
-.logo span {
-    color: #7561ff;
-}
-
-.nav {
-    margin-left: auto;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.nav a {
-    padding: 10px 15px;
-    border-radius: 9px;
-    color: #aeb5c5;
-    font-size: 14px;
-}
-
-.nav a:hover {
-    background: #191c25;
-    color: #fff;
-}
-
-.nav a.active {
-    background: #20232e;
-    color: #fff;
-}
-
-.page {
-    width: min(1180px, calc(100% - 32px));
-    margin: 0 auto;
-    padding: 36px 0 70px;
-}
-
-.calculator-card {
-    background: #171a22;
-    border: 1px solid #2b3040;
-    border-radius: 14px;
-    padding: 28px;
-}
-
-h1 {
-    margin: 0 0 6px;
-    font-size: 32px;
-    letter-spacing: -0.7px;
-}
-
-.subtitle {
-    color: #aab2c5;
-    margin-bottom: 28px;
-    font-size: 15px;
-}
-
-.search-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
-}
-
-.field {
-    margin-bottom: 18px;
-}
-
-label {
-    display: block;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-input,
-select {
-    width: 100%;
-    height: 48px;
-    border: 1px solid #343a49;
-    border-radius: 9px;
-    background: #0e1016;
-    color: #f7f8fc;
-    padding: 0 14px;
-    font-size: 14px;
-    outline: none;
-}
-
-input:focus {
-    border-color: #7561ff;
-    box-shadow: 0 0 0 2px rgba(117,97,255,.12);
-}
-
-.cpu-select {
-    border-color: #168dff;
-}
-
-.gpu-select {
-    border-color: #ef334d;
-}
-
-.hardware-card {
-    height: 64px;
-    border: 1px solid #303645;
-    border-radius: 11px;
-    background: linear-gradient(135deg, #151821, #101219);
-    padding: 9px 13px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.hardware-card.cpu {
-    border-left: 3px solid #168dff;
-}
-
-.hardware-card.gpu {
-    border-left: 3px solid #ef334d;
-}
-
-.brand-box {
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 10px;
-    font-weight: 900;
-    margin-right: 10px;
-}
-
-.cpu .brand-box {
-    background: #168dff;
-}
-
-.gpu .brand-box {
-    background: #e52e49;
-}
-
-.hardware-info {
-    min-width: 0;
-}
-
-.brand {
-    font-size: 9px;
-    color: #aab1c3;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-.hardware-name {
-    font-size: 13px;
-    font-weight: 800;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.hardware-score {
-    color: #8e98ae;
-    font-size: 10px;
-}
-
-.helper {
-    color: #778096;
-    font-size: 10px;
-    margin-top: 6px;
-}
-
-.full-field {
-    margin-top: 2px;
-}
-
-button.calculate {
-    width: 100%;
-    height: 50px;
-    border: 0;
-    border-radius: 9px;
-    background: #6c58ff;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 800;
-    cursor: pointer;
-    margin-top: 4px;
-}
-
-button.calculate:hover {
-    background: #7968ff;
-}
-
-/* RESULT */
-
-.result {
-    margin-top: 24px;
-    background: #0f1117;
-    border: 1px solid #303645;
-    border-radius: 14px;
-    padding: 22px;
-}
-
-.result-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    align-items: flex-start;
-}
-
-.result-title {
-    font-size: 25px;
-    font-weight: 800;
-    margin-bottom: 2px;
-}
-
-.result-subtitle {
-    color: #9ca6bb;
-    font-size: 13px;
-}
-
-.status {
-    padding: 8px 14px;
-    background: #252a39;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 800;
-    white-space: nowrap;
-}
-
-.status.cpu {
-    color: #b59cff;
-}
-
-.status.gpu {
-    color: #39a8ff;
-}
-
-.status.balanced {
-    color: #42d783;
-}
-
-.component-compare {
-    display: grid;
-    grid-template-columns: 1fr 60px 1fr;
-    align-items: center;
-    gap: 12px;
-    margin: 22px 0;
-}
-
-.component {
-    background: #191c25;
-    border: 1px solid #303645;
-    border-radius: 11px;
-    padding: 15px;
-    min-width: 0;
-}
-
-.component.cpu {
-    border-left: 3px solid #7561ff;
-}
-
-.component.gpu {
-    border-left: 3px solid #169ff4;
-}
-
-.component-brand {
-    color: #8f98ab;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-.component-name {
-    font-size: 14px;
-    font-weight: 800;
-    margin-top: 2px;
-}
-
-.component-score {
-    color: #8c96aa;
-    font-size: 10px;
-}
-
-.vs {
-    text-align: center;
-    color: #7e8799;
-    font-size: 11px;
-    font-weight: 800;
-}
-
-.score-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 18px;
-}
-
-.score-box {
-    background: #191c25;
-    border-radius: 10px;
-    padding: 15px;
-    border: 1px solid #292e3a;
-}
-
-.score-label {
-    color: #8d97ad;
-    font-size: 11px;
-}
-
-.score-value {
-    font-size: 28px;
-    font-weight: 800;
-    margin-top: 2px;
-}
-
-.score-description {
-    color: #747e94;
-    font-size: 10px;
-}
-
-/* CHART */
-
-.breakdown {
-    background: #191c25;
-    border: 1px solid #303645;
-    border-radius: 12px;
-    padding: 18px;
-    margin-top: 16px;
-}
-
-.section-title {
-    font-size: 16px;
-    font-weight: 800;
-    margin-bottom: 17px;
-}
-
-.bar-row {
-    margin-bottom: 16px;
-}
-
-.bar-top {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    margin-bottom: 6px;
-}
-
-.bar-track {
-    height: 10px;
-    background: #292e3a;
-    border-radius: 99px;
-    overflow: hidden;
-}
-
-.bar-fill {
-    height: 100%;
-    border-radius: 99px;
-    transition: width .5s ease;
-}
-
-.cpu-fill {
-    background: #8a67ff;
-}
-
-.gpu-fill {
-    background: #159eea;
-}
-
-.balance-fill {
-    background: #35d77a;
-}
-
-.legend {
-    display: flex;
-    gap: 18px;
-    margin-top: 12px;
-    font-size: 10px;
-    color: #a0a8b8;
-}
-
-.dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 5px;
-}
-
-.dot.cpu {
-    background: #8a67ff;
-}
-
-.dot.gpu {
-    background: #159eea;
-}
-
-.dot.balance {
-    background: #35d77a;
-}
-
-/* DETAIL GRID */
-
-.detail-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 16px;
-}
-
-.detail-box {
-    background: #191c25;
-    border: 1px solid #292e3a;
-    border-radius: 10px;
-    padding: 14px;
-}
-
-.detail-label {
-    color: #8490a7;
-    font-size: 10px;
-}
-
-.detail-value {
-    font-size: 15px;
-    font-weight: 800;
-    margin-top: 2px;
-}
-
-/* RESOLUTION / FPS TABLE */
-
-.scenario {
-    margin-top: 18px;
-    background: #191c25;
-    border: 1px solid #303645;
-    border-radius: 12px;
-    padding: 18px;
-}
-
-.scenario-row {
-    display: grid;
-    grid-template-columns: 110px 1fr 70px;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.scenario-name {
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.scenario-track {
-    height: 8px;
-    background: #292e3a;
-    border-radius: 99px;
-    overflow: hidden;
-}
-
-.scenario-fill {
-    height: 100%;
-    border-radius: 99px;
-    background: #7561ff;
-}
-
-.scenario-value {
-    text-align: right;
-    font-size: 11px;
-    font-weight: 700;
-}
-
-/* EXPLANATION */
-
-.explanation {
-    margin-top: 18px;
-    background: #191c25;
-    border: 1px solid #303645;
-    border-radius: 12px;
-    padding: 18px;
-}
-
-.explanation h3 {
-    margin: 0 0 9px;
-    font-size: 16px;
-}
-
-.explanation p {
-    margin: 0;
-    color: #a8b1c3;
-    font-size: 13px;
-}
-
-.warning {
-    margin-top: 15px;
-    padding: 13px;
-    background: #151821;
-    border-radius: 9px;
-    color: #8e98ab;
-    font-size: 10px;
-}
-
-/* EMPTY */
-
-.empty-result {
-    text-align: center;
-    color: #778197;
-    padding: 40px 10px;
-}
-
-.hidden {
-    display: none;
-}
-
-@media (max-width: 800px) {
-
-    .site-header {
-        padding: 0 20px;
-    }
-
-    .page {
-        width: min(100% - 20px, 1180px);
-    }
-
-    .calculator-card {
-        padding: 18px;
-    }
-
-    .search-grid {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .score-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .component-compare {
-        grid-template-columns: 1fr;
-    }
-
-    .vs {
-        display: none;
-    }
-
-    .detail-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .scenario-row {
-        grid-template-columns: 85px 1fr 55px;
-    }
-
-    .nav a {
-        padding: 8px;
-        font-size: 12px;
-    }
-
-    h1 {
-        font-size: 25px;
-    }
-}
+:root{
+  --bg:#0b0d12;--panel:#171a22;--panel2:#111319;--border:#2b3040;
+  --text:#f3f5f8;--muted:#91a0b8;--purple:#7357ff;--cpu:#8b5cf6;
+  --gpu:#19a8e8;--good:#36d77a;--warn:#f4a62a;--bad:#ff4d5d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
+.site-header{height:72px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:#0c0e14;position:sticky;top:0;z-index:20}
+.logo{font-size:22px;font-weight:800}.logo span{color:#765cff}
+.nav{display:flex;gap:8px}.nav a{color:#aeb7c8;text-decoration:none;padding:10px 14px;border-radius:8px;font-size:14px}.nav a.active{background:#202431;color:#fff}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 22px 60px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px}
+h1{font-size:30px;margin:0 0 8px}.subtitle{color:#9eabc0;font-size:14px;line-height:1.6;margin-bottom:26px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:block;font-weight:700;font-size:13px;margin-bottom:8px}
+input,select{width:100%;height:42px;background:#0d0f15;border:1px solid #323849;color:#f4f6fa;border-radius:8px;padding:0 12px;outline:none}
+input:focus,select:focus{border-color:#6370ff}
+.search-row{margin-bottom:16px}
+.hw-card{height:76px;background:linear-gradient(135deg,#151821,#0f1117);border:1px solid #303647;border-radius:10px;padding:12px;display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.hw-card.cpu{border-left:3px solid #7657ff}.hw-card.gpu{border-left:3px solid #10a9ed}
+.brand{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;font-size:11px;font-weight:900;color:white;background:#168eea}
+.gpu .brand{background:#e92f49}.brand.nvidia{background:#43b63d}.brand.amd{background:#e62e49}
+.hw-text{min-width:0}.brand-name{font-size:10px;color:#9ba7bb;font-weight:800;letter-spacing:1px}.hw-name{font-weight:800;font-size:14px}.hw-score{font-size:10px;color:#8490a6}
+.field-help{font-size:10px;color:#76839a;margin-top:6px}
+.full{grid-column:1/-1}.select-row{margin-top:4px}
+.btn{height:44px;border:0;border-radius:8px;background:var(--purple);color:white;font-weight:800;width:100%;cursor:pointer;margin-top:18px}
+.btn:hover{filter:brightness(1.08)}
+.result{margin-top:18px;background:#0f1117;border:1px solid #2a3040;border-radius:12px;padding:20px}
+.result-head{display:flex;justify-content:space-between;align-items:center;gap:15px}.result-title{font-size:22px;font-weight:800}.pill{padding:8px 12px;border-radius:20px;background:#252a3b;font-size:12px;font-weight:800}
+.pill.cpu{color:#c3a7ff}.pill.gpu{color:#48baff}.pill.balanced{color:#52e28a}
+.pair{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:12px;margin:18px 0}
+.pair-card{background:#191d26;border:1px solid #303748;border-radius:10px;padding:14px}.pair-card.cpu{border-left:3px solid var(--cpu)}.pair-card.gpu{border-left:3px solid var(--gpu)}
+.vs{text-align:center;color:#9aa4b6;font-size:11px;font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#191d26;border:1px solid #292f3c;border-radius:9px;padding:13px}.stat small{color:#8290a7;display:block;font-size:10px}.stat strong{display:block;font-size:24px;margin-top:5px}.stat span{font-size:10px;color:#76839a}
+.section{background:#191d26;border:1px solid #2a3040;border-radius:10px;padding:16px;margin-top:14px}.section h3{font-size:14px;margin:0 0 15px}
+.bar-row{margin:12px 0}.bar-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px}.bar{height:8px;background:#292f3d;border-radius:20px;overflow:hidden}.fill{height:100%;border-radius:20px}.fill.cpu{background:var(--cpu)}.fill.gpu{background:var(--gpu)}.fill.good{background:var(--good)}.fill.warn{background:var(--warn)}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.info{background:#191d26;border:1px solid #292f3c;border-radius:9px;padding:12px}.info small{display:block;color:#8290a7;font-size:10px}.info strong{font-size:14px;margin-top:4px;display:block}
+.estimator{margin-top:20px;background:linear-gradient(180deg,#171b24,#12151c);border:1px solid #343b4d;border-radius:12px;padding:18px}
+.estimator h2{margin:0 0 5px;font-size:20px}.estimator p{color:#8996ab;font-size:12px;margin:0 0 16px}
+.est-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.estimate-main{margin-top:15px;background:#0d1016;border:1px solid #2c3342;border-radius:10px;padding:16px}
+.big-fps{font-size:42px;font-weight:900}.fps-unit{font-size:13px;color:#9ca9bd}.fps-note{font-size:11px;color:#7e8ba0;margin-top:4px}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.mini{background:#191d26;border:1px solid #292f3c;border-radius:9px;padding:12px}.mini b{font-size:18px}.mini small{display:block;color:#8390a5;font-size:10px;margin-bottom:4px}
+.resolution{margin-top:14px}.res-row{display:grid;grid-template-columns:55px 1fr 52px;align-items:center;gap:10px;margin:9px 0;font-size:10px}.res-bar{height:7px;background:#292f3d;border-radius:10px;overflow:hidden}.res-fill{height:100%;background:#7357ff;border-radius:10px}
+.disclaimer{font-size:10px;color:#6f7c91;line-height:1.55;margin-top:16px}
+.hidden{display:none}
+@media(max-width:800px){.grid2,.stats,.est-grid,.info-grid{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.vs{display:none}.site-header{padding:0 18px}.nav a{padding:8px}.wrap{padding:18px 12px}.result-head{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
-
 <body>
-
-<!-- EXISTING WEBSITE HEADER -->
 <header class="site-header">
-    <a href="index.html" class="logo">PC<span>Pilot</span></a>
-
-    <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="tools.html">Tools</a>
-        <a href="bottleneck.html" class="active">Calculator</a>
-        <a href="about.html">About</a>
-    </nav>
+  <a class="logo" href="index.html" style="text-decoration:none;color:#fff">PC<span>Pilot</span></a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="tools.html">Tools</a>
+    <a href="bottleneck.html" class="active">Calculator</a>
+    <a href="about.html">About</a>
+  </nav>
 </header>
 
+<main class="wrap">
+<section class="card">
+  <h1>CPU &amp; GPU Bottleneck Calculator</h1>
+  <div class="subtitle">Estimate how your CPU and GPU balance against each other for your selected gaming scenario. Choose your hardware, resolution, game type and target FPS.</div>
 
-<main class="page">
-
-<div class="calculator-card">
-
-    <h1>CPU & GPU Bottleneck Calculator</h1>
-
-    <div class="subtitle">
-        Estimate how your CPU and GPU balance against each other for your selected gaming scenario.
-        Choose your hardware, resolution, game type and target FPS.
+  <div class="grid2">
+    <div>
+      <label>Search CPU</label>
+      <input id="cpuSearch" placeholder="Type CPU name..." autocomplete="off">
+    </div>
+    <div>
+      <label>Search GPU</label>
+      <input id="gpuSearch" placeholder="Type GPU name..." autocomplete="off">
     </div>
 
+    <div>
+      <label>Select your CPU</label>
+      <div class="hw-card cpu" id="cpuCard"><div class="brand" id="cpuBrand">INTEL</div><div class="hw-text"><div class="brand-name" id="cpuVendor">INTEL</div><div class="hw-name" id="cpuName">Select a CPU</div><div class="hw-score" id="cpuScoreText">Relative gaming score</div></div></div>
+      <select id="cpuSelect"><option value="">— Select a CPU —</option></select>
+      <div class="field-help">Search above, then choose your processor from the list.</div>
+    </div>
 
-    <!-- CPU / GPU SEARCH -->
+    <div>
+      <label>Select your GPU</label>
+      <div class="hw-card gpu" id="gpuCard"><div class="brand nvidia" id="gpuBrand">NVIDIA</div><div class="hw-text"><div class="brand-name" id="gpuVendor">NVIDIA</div><div class="hw-name" id="gpuName">Select a GPU</div><div class="hw-score" id="gpuScoreText">Relative graphics score</div></div></div>
+      <select id="gpuSelect"><option value="">— Select a GPU —</option></select>
+      <div class="field-help">Search above, then choose your graphics card from the list.</div>
+    </div>
 
-    <div class="search-grid">
+    <div class="full">
+      <label>Gaming Resolution</label>
+      <select id="resolution">
+        <option value="720">1280 × 720 (720p)</option>
+        <option value="1080" selected>1920 × 1080 (1080p)</option>
+        <option value="1440">2560 × 1440 (1440p)</option>
+        <option value="2160">3840 × 2160 (4K)</option>
+      </select>
+    </div>
+    <div class="full">
+      <label>Game Type</label>
+      <select id="gameType">
+        <option value="esports" selected>Esports / Competitive</option>
+        <option value="balanced">Mixed / General Gaming</option>
+        <option value="aaa">AAA / Story Games</option>
+        <option value="cpu">CPU-Heavy / Simulation</option>
+      </select>
+    </div>
+    <div class="full">
+      <label>Target FPS</label>
+      <select id="targetFps">
+        <option>60 FPS</option><option>120 FPS</option><option>144 FPS</option><option>165 FPS</option><option selected>240 FPS</option>
+      </select>
+    </div>
+  </div>
 
+  <button class="btn" onclick="calculate()">Calculate Bottleneck</button>
+
+  <div class="result hidden" id="result">
+    <div class="result-head">
+      <div><div class="result-title" id="resultTitle">Result</div><div style="font-size:11px;color:#8d9ab0;margin-top:4px" id="resultPair"></div></div>
+      <div class="pill" id="limitPill">Balanced</div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-card cpu"><div class="brand-name" id="pairCpuVendor"></div><b id="pairCpu"></b><div class="hw-score" id="pairCpuScore"></div></div>
+      <div class="vs">VS</div>
+      <div class="pair-card gpu"><div class="brand-name" id="pairGpuVendor"></div><b id="pairGpu"></b><div class="hw-score" id="pairGpuScore"></div></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><small>CPU Performance</small><strong id="cpuPerf">—</strong><span>Relative hardware score</span></div>
+      <div class="stat"><small>GPU Performance</small><strong id="gpuPerf">—</strong><span>Relative hardware score</span></div>
+      <div class="stat"><small>Balance Score</small><strong id="balance">—</strong><span>CPU/GPU scenario balance</span></div>
+    </div>
+
+    <div class="section">
+      <h3>Performance Breakdown</h3>
+      <div class="bar-row"><div class="bar-label"><span>CPU Pressure</span><b id="cpuPressureText"></b></div><div class="bar"><div class="fill cpu" id="cpuPressure"></div></div></div>
+      <div class="bar-row"><div class="bar-label"><span>GPU Pressure</span><b id="gpuPressureText"></b></div><div class="bar"><div class="fill gpu" id="gpuPressure"></div></div></div>
+      <div class="bar-row"><div class="bar-label"><span>System Balance</span><b id="balanceText"></b></div><div class="bar"><div class="fill good" id="balanceBar"></div></div></div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info"><small>CPU Headroom</small><strong id="cpuHeadroom"></strong></div>
+      <div class="info"><small>GPU Headroom</small><strong id="gpuHeadroom"></strong></div>
+      <div class="info"><small>Resolution</small><strong id="infoResolution"></strong></div>
+      <div class="info"><small>Target FPS</small><strong id="infoTarget"></strong></div>
+      <div class="info"><small>Game Type</small><strong id="infoGame"></strong></div>
+      <div class="info"><small>Primary Limitation</small><strong id="infoLimit"></strong></div>
+      <div class="info"><small>Relative Performance Gap</small><strong id="gap"></strong></div>
+    </div>
+
+    <!-- NEW FEATURE: FPS ESTIMATOR -->
+    <div class="estimator">
+      <h2>Game FPS Estimator</h2>
+      <p>Estimate expected gaming performance from your selected CPU, GPU, resolution and workload. These are modeled estimates, not measured benchmark results.</p>
+      <div class="est-grid">
         <div>
-            <div class="field">
-                <label>Search CPU</label>
-                <input
-                    type="text"
-                    id="cpuSearch"
-                    placeholder="Type CPU name..."
-                    autocomplete="off"
-                >
-            </div>
-
-            <div class="field">
-                <label>Select your CPU</label>
-
-                <div class="hardware-card cpu">
-                    <div class="brand-box">INTEL</div>
-
-                    <div class="hardware-info">
-                        <div class="brand" id="cpuBrand">INTEL</div>
-                        <div class="hardware-name" id="cpuDisplay">
-                            Select a CPU
-                        </div>
-                        <div class="hardware-score" id="cpuDisplayScore">
-                            Relative gaming score
-                        </div>
-                    </div>
-                </div>
-
-                <select id="cpuSelect" class="cpu-select">
-                    <option value="">— Select a CPU —</option>
-                </select>
-
-                <div class="helper">
-                    Search above, then choose your processor from the list.
-                </div>
-            </div>
+          <label>Game</label>
+          <select id="game">
+            <option value="valorant">Valorant</option>
+            <option value="cs2">Counter-Strike 2</option>
+            <option value="fortnite">Fortnite</option>
+            <option value="minecraft">Minecraft Java</option>
+            <option value="gtav">GTA V</option>
+            <option value="rdr2">Red Dead Redemption 2</option>
+            <option value="cyberpunk">Cyberpunk 2077</option>
+            <option value="hogwarts">Hogwarts Legacy</option>
+          </select>
         </div>
-
-
         <div>
-            <div class="field">
-                <label>Search GPU</label>
-                <input
-                    type="text"
-                    id="gpuSearch"
-                    placeholder="Type GPU name..."
-                    autocomplete="off"
-                >
-            </div>
-
-            <div class="field">
-                <label>Select your GPU</label>
-
-                <div class="hardware-card gpu">
-                    <div class="brand-box">NVIDIA</div>
-
-                    <div class="hardware-info">
-                        <div class="brand" id="gpuBrand">NVIDIA</div>
-                        <div class="hardware-name" id="gpuDisplay">
-                            Select a GPU
-                        </div>
-                        <div class="hardware-score" id="gpuDisplayScore">
-                            Relative graphics score
-                        </div>
-                    </div>
-                </div>
-
-                <select id="gpuSelect" class="gpu-select">
-                    <option value="">— Select a GPU —</option>
-                </select>
-
-                <div class="helper">
-                    Search above, then choose your graphics card from the list.
-                </div>
-            </div>
+          <label>Graphics Preset</label>
+          <select id="preset">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high" selected>High</option>
+            <option value="ultra">Ultra</option>
+          </select>
         </div>
-
-    </div>
-
-
-    <!-- SCENARIO -->
-
-    <div class="field full-field">
-        <label>Gaming Resolution</label>
-
-        <select id="resolution">
-            <option value="">— Select Resolution —</option>
-            <option value="720">1280 × 720 (720p)</option>
-            <option value="1080">1920 × 1080 (1080p)</option>
-            <option value="1440">2560 × 1440 (1440p)</option>
-            <option value="2160">3840 × 2160 (4K)</option>
-        </select>
-    </div>
-
-
-    <div class="field full-field">
-        <label>Game Type</label>
-
-        <select id="gameType">
-            <option value="">— Select Game Type —</option>
-            <option value="esports">Esports / Competitive</option>
-            <option value="gaming">Gaming</option>
-            <option value="aaa">AAA / Story Games</option>
-            <option value="simulation">Simulation / Strategy</option>
-            <option value="productivity">Productivity / Mixed</option>
-        </select>
-    </div>
-
-
-    <div class="field full-field">
-        <label>Target FPS</label>
-
-        <select id="targetFPS">
-            <option value="">— Select Target FPS —</option>
-            <option value="30">30 FPS</option>
-            <option value="60">60 FPS</option>
-            <option value="75">75 FPS</option>
-            <option value="90">90 FPS</option>
-            <option value="120">120 FPS</option>
-            <option value="144">144 FPS</option>
-            <option value="165">165 FPS</option>
-            <option value="180">180 FPS</option>
-            <option value="240">240 FPS</option>
-            <option value="360">360 FPS</option>
-            <option value="500">500 FPS</option>
-        </select>
-    </div>
-
-
-    <button class="calculate" onclick="calculate()">
-        Calculate Bottleneck
-    </button>
-
-
-    <!-- RESULT -->
-
-    <div id="result" class="result">
-
-        <div class="empty-result">
-            Select a CPU, GPU, resolution, game type and FPS target to calculate.
+        <div>
+          <label>Ray Tracing</label>
+          <select id="rt"><option value="off" selected>Off</option><option value="on">On</option></select>
         </div>
+      </div>
+      <button class="btn" style="margin-top:12px" onclick="estimateFPS()">Estimate FPS</button>
 
+      <div class="estimate-main">
+        <div><span class="fps-unit">Estimated Average FPS</span><div class="big-fps" id="avgFps">—</div><div class="fps-note" id="fpsNote">Select hardware and calculate first.</div></div>
+        <div class="mini-grid">
+          <div class="mini"><small>Estimated 1% Low</small><b id="lowFps">—</b></div>
+          <div class="mini"><small>Estimated CPU Load</small><b id="estCpuLoad">—</b></div>
+          <div class="mini"><small>Estimated GPU Load</small><b id="estGpuLoad">—</b></div>
+          <div class="mini"><small>Performance Level</small><b id="perfLevel">—</b></div>
+        </div>
+        <div class="resolution">
+          <h3>Resolution Comparison</h3>
+          <div id="resolutionRows"></div>
+        </div>
+      </div>
     </div>
 
-</div>
-
+    <div class="section">
+      <h3>💡 What does this mean?</h3>
+      <div style="font-size:12px;color:#9aa7bb;line-height:1.6" id="meaning"></div>
+    </div>
+    <div class="disclaimer"><b>Important:</b> This calculator provides generalized estimates based on relative hardware performance and workload assumptions. Bottleneck and pressure values are not measured hardware utilization and should not be interpreted as exact FPS loss. Real-world performance varies with game engine, graphics settings, drivers, RAM, cooling, background applications and other system factors.</div>
+  </div>
+</section>
 </main>
 
-
 <script>
-
-/* =========================================================
-   HARDWARE DATABASE
-   Scores are relative calculator values, NOT benchmark FPS.
-   ========================================================= */
-
-const CPUs = [
-
-    {name:"Intel Core i5-2500K", score:28, brand:"INTEL"},
-    {name:"Intel Core i7-2600K", score:31, brand:"INTEL"},
-    {name:"Intel Core i5-3570K", score:33, brand:"INTEL"},
-    {name:"Intel Core i7-3770K", score:37, brand:"INTEL"},
-    {name:"Intel Core i5-4670K", score:35, brand:"INTEL"},
-    {name:"Intel Core i7-4790K", score:42, brand:"INTEL"},
-    {name:"Intel Core i5-4690K", score:38, brand:"INTEL"},
-    {name:"Intel Core i7-6700K", score:45, brand:"INTEL"},
-    {name:"Intel Core i5-6600K", score:41, brand:"INTEL"},
-    {name:"Intel Core i7-7700K", score:49, brand:"INTEL"},
-    {name:"Intel Core i5-7600K", score:45, brand:"INTEL"},
-    {name:"Intel Core i7-8700K", score:57, brand:"INTEL"},
-    {name:"Intel Core i5-8600K", score:52, brand:"INTEL"},
-    {name:"Intel Core i7-9700K", score:61, brand:"INTEL"},
-    {name:"Intel Core i9-9900K", score:66, brand:"INTEL"},
-    {name:"Intel Core i5-9600K", score:55, brand:"INTEL"},
-    {name:"Intel Core i7-10700K", score:65, brand:"INTEL"},
-    {name:"Intel Core i9-10900K", score:69, brand:"INTEL"},
-    {name:"Intel Core i5-10600K", score:61, brand:"INTEL"},
-    {name:"Intel Core i7-11700K", score:70, brand:"INTEL"},
-    {name:"Intel Core i9-11900K", score:72, brand:"INTEL"},
-    {name:"Intel Core i5-11600K", score:65, brand:"INTEL"},
-    {name:"Intel Core i7-12700K", score:79, brand:"INTEL"},
-    {name:"Intel Core i9-12900K", score:84, brand:"INTEL"},
-    {name:"Intel Core i5-12400F", score:67, brand:"INTEL"},
-    {name:"Intel Core i5-12600K", score:74, brand:"INTEL"},
-    {name:"Intel Core i7-13700K", score:88, brand:"INTEL"},
-    {name:"Intel Core i9-13900K", score:94, brand:"INTEL"},
-    {name:"Intel Core i5-13400F", score:73, brand:"INTEL"},
-    {name:"Intel Core i5-13600K", score:83, brand:"INTEL"},
-    {name:"Intel Core i7-14700K", score:92, brand:"INTEL"},
-    {name:"Intel Core i9-14900K", score:97, brand:"INTEL"},
-    {name:"Intel Core i5-14400F", score:79, brand:"INTEL"},
-    {name:"Intel Core i5-14600K", score:88, brand:"INTEL"},
-
-    {name:"AMD Ryzen 5 1600", score:32, brand:"AMD"},
-    {name:"AMD Ryzen 7 1700", score:35, brand:"AMD"},
-    {name:"AMD Ryzen 5 2600", score:38, brand:"AMD"},
-    {name:"AMD Ryzen 7 2700X", score:43, brand:"AMD"},
-    {name:"AMD Ryzen 5 3600", score:48, brand:"AMD"},
-    {name:"AMD Ryzen 7 3700X", score:53, brand:"AMD"},
-    {name:"AMD Ryzen 9 3900X", score:61, brand:"AMD"},
-    {name:"AMD Ryzen 5 5600", score:62, brand:"AMD"},
-    {name:"AMD Ryzen 5 5600X", score:65, brand:"AMD"},
-    {name:"AMD Ryzen 7 5700X", score:69, brand:"AMD"},
-    {name:"AMD Ryzen 7 5800X", score:72, brand:"AMD"},
-    {name:"AMD Ryzen 9 5900X", score:77, brand:"AMD"},
-    {name:"AMD Ryzen 9 5950X", score:82, brand:"AMD"},
-    {name:"AMD Ryzen 7 5800X3D", score:86, brand:"AMD"},
-    {name:"AMD Ryzen 5 7600", score:72, brand:"AMD"},
-    {name:"AMD Ryzen 5 7600X", score:75, brand:"AMD"},
-    {name:"AMD Ryzen 7 7700", score:79, brand:"AMD"},
-    {name:"AMD Ryzen 7 7700X", score:82, brand:"AMD"},
-    {name:"AMD Ryzen 7 7800X3D", score:94, brand:"AMD"},
-    {name:"AMD Ryzen 9 7900X", score:88, brand:"AMD"},
-    {name:"AMD Ryzen 9 7950X", score:94, brand:"AMD"},
-    {name:"AMD Ryzen 9 7950X3D", score:98, brand:"AMD"},
-    {name:"AMD Ryzen 5 9600X", score:83, brand:"AMD"},
-    {name:"AMD Ryzen 7 9700X", score:89, brand:"AMD"},
-    {name:"AMD Ryzen 7 9800X3D", score:100, brand:"AMD"},
-    {name:"AMD Ryzen 9 9900X", score:94, brand:"AMD"},
-    {name:"AMD Ryzen 9 9950X", score:99, brand:"AMD"}
+const CPUs=[
+ {name:"Intel Core i5-2500K",vendor:"INTEL",score:28},
+ {name:"Intel Core i7-4790K",vendor:"INTEL",score:42},
+ {name:"Intel Core i5-12400F",vendor:"INTEL",score:66},
+ {name:"Intel Core i5-13600K",vendor:"INTEL",score:86},
+ {name:"Intel Core i7-14700K",vendor:"INTEL",score:96},
+ {name:"AMD Ryzen 5 3600",vendor:"AMD",score:48},
+ {name:"AMD Ryzen 5 5600",vendor:"AMD",score:61},
+ {name:"AMD Ryzen 5 7600",vendor:"AMD",score:78},
+ {name:"AMD Ryzen 7 7800X3D",vendor:"AMD",score:94},
+ {name:"AMD Ryzen 9 9950X",vendor:"AMD",score:99}
+];
+const GPUs=[
+ {name:"NVIDIA GeForce GTX 750 Ti",vendor:"NVIDIA",score:18},
+ {name:"NVIDIA GeForce GTX 1060 6GB",vendor:"NVIDIA",score:42},
+ {name:"NVIDIA GeForce GTX 1080 Ti",vendor:"NVIDIA",score:58},
+ {name:"NVIDIA GeForce RTX 2060",vendor:"NVIDIA",score:55},
+ {name:"NVIDIA GeForce RTX 3060 8GB",vendor:"NVIDIA",score:65},
+ {name:"NVIDIA GeForce RTX 4060",vendor:"NVIDIA",score:72},
+ {name:"NVIDIA GeForce RTX 2080 Ti",vendor:"NVIDIA",score:77},
+ {name:"NVIDIA GeForce RTX 4070",vendor:"NVIDIA",score:86},
+ {name:"NVIDIA GeForce RTX 4090",vendor:"NVIDIA",score:100},
+ {name:"AMD Radeon RX 580",vendor:"AMD",score:29},
+ {name:"AMD Radeon RX 6600",vendor:"AMD",score:52},
+ {name:"AMD Radeon RX 6700 XT",vendor:"AMD",score:69},
+ {name:"AMD Radeon RX 7600",vendor:"AMD",score:62},
+ {name:"AMD Radeon RX 7800 XT",vendor:"AMD",score:82}
 ];
 
+const gameBase={valorant:280,cs2:210,fortnite:165,minecraft:190,gtav:125,rdr2:82,cyberpunk:75,hogwarts:68};
+const gameCpu={valorant:1.25,cs2:1.15,fortnite:1.08,minecraft:1.20,gtav:1.0,rdr2:.86,cyberpunk:.82,hogwarts:.80};
+const presetMult={low:1.55,medium:1.25,high:1,ultra:.82};
+const resMult={720:1.30,1080:1,1440:.72,2160:.42};
 
-const GPUs = [
-
-    {name:"NVIDIA GeForce GTX 750 Ti", score:18, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce GTX 960", score:25, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce GTX 970", score:31, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce GTX 980", score:35, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce GTX 1060 6GB", score:39, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce GTX 1070", score:46, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce GTX 1070 Ti", score:51, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce GTX 1080", score:55, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce GTX 1080 Ti", score:63, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 2060", score:50, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 2060 Super", score:55, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 2070", score:58, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 2070 Super", score:62, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 2080", score:67, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 2080 Super", score:71, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 2080 Ti", score:77, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 3060", score:55, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 3060 Ti", score:65, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 3070", score:69, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 3070 Ti", score:73, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 3080", score:80, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 3080 Ti", score:85, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 3090", score:88, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 3090 Ti", score:91, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 4060", score:58, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 4060 Ti", score:64, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 4070", score:76, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 4070 Super", score:81, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 4070 Ti", score:84, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 4070 Ti Super", score:88, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 4080", score:94, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 4080 Super", score:96, brand:"NVIDIA"},
-    {name:"NVIDIA GeForce RTX 4090", score:100, brand:"NVIDIA"},
-
-    {name:"AMD Radeon RX 570", score:24, brand:"AMD"},
-    {name:"AMD Radeon RX 580", score:29, brand:"AMD"},
-    {name:"AMD Radeon RX 590", score:32, brand:"AMD"},
-    {name:"AMD Radeon RX 5500 XT", score:34, brand:"AMD"},
-    {name:"AMD Radeon RX 5600 XT", score:43, brand:"AMD"},
-    {name:"AMD Radeon RX 5700", score:48, brand:"AMD"},
-    {name:"AMD Radeon RX 5700 XT", score:54, brand:"AMD"},
-    {name:"AMD Radeon RX 6600", score:47, brand:"AMD"},
-    {name:"AMD Radeon RX 6600 XT", score:52, brand:"AMD"},
-    {name:"AMD Radeon RX 6650 XT", score:55, brand:"AMD"},
-    {name:"AMD Radeon RX 6700", score:58, brand:"AMD"},
-    {name:"AMD Radeon RX 6700 XT", score:63, brand:"AMD"},
-    {name:"AMD Radeon RX 6750 XT", score:66, brand:"AMD"},
-    {name:"AMD Radeon RX 6800", score:72, brand:"AMD"},
-    {name:"AMD Radeon RX 6800 XT", score:79, brand:"AMD"},
-    {name:"AMD Radeon RX 6900 XT", score:83, brand:"AMD"},
-    {name:"AMD Radeon RX 6950 XT", score:86, brand:"AMD"},
-    {name:"AMD Radeon RX 7600", score:53, brand:"AMD"},
-    {name:"AMD Radeon RX 7600 XT", score:57, brand:"AMD"},
-    {name:"AMD Radeon RX 7700 XT", score:69, brand:"AMD"},
-    {name:"AMD Radeon RX 7800 XT", score:76, brand:"AMD"},
-    {name:"AMD Radeon RX 7900 GRE", score:81, brand:"AMD"},
-    {name:"AMD Radeon RX 7900 XT", score:89, brand:"AMD"},
-    {name:"AMD Radeon RX 7900 XTX", score:96, brand:"AMD"}
-];
-
-
-/* =========================================================
-   LOAD SELECTS
-   ========================================================= */
-
-const cpuSelect = document.getElementById("cpuSelect");
-const gpuSelect = document.getElementById("gpuSelect");
-
-function loadHardware() {
-
-    CPUs
-        .sort((a,b) => a.name.localeCompare(b.name))
-        .forEach((cpu, index) => {
-
-            const option = document.createElement("option");
-
-            option.value = index;
-            option.textContent = cpu.name;
-
-            cpuSelect.appendChild(option);
-        });
-
-
-    GPUs
-        .sort((a,b) => a.name.localeCompare(b.name))
-        .forEach((gpu, index) => {
-
-            const option = document.createElement("option");
-
-            option.value = index;
-            option.textContent = gpu.name;
-
-            gpuSelect.appendChild(option);
-        });
+function fillSelect(id,data){
+ const s=document.getElementById(id);
+ data.forEach((x,i)=>{const o=document.createElement("option");o.value=i;o.textContent=x.name;s.appendChild(o)});
 }
+fillSelect("cpuSelect",CPUs);fillSelect("gpuSelect",GPUs);
 
-loadHardware();
-
-
-/* =========================================================
-   SEARCH
-   ========================================================= */
-
-function filterSelect(inputId, selectElement, database) {
-
-    const query =
-        document.getElementById(inputId)
-        .value
-        .toLowerCase()
-        .trim();
-
-    const currentValue = selectElement.value;
-
-    selectElement.innerHTML =
-        '<option value="">— Select —</option>';
-
-    database.forEach((item, index) => {
-
-        if (
-            !query ||
-            item.name.toLowerCase().includes(query) ||
-            item.brand.toLowerCase().includes(query)
-        ) {
-
-            const option = document.createElement("option");
-
-            option.value = index;
-            option.textContent = item.name;
-
-            selectElement.appendChild(option);
-        }
-    });
-
-    if (
-        [...selectElement.options]
-        .some(option => option.value === currentValue)
-    ) {
-        selectElement.value = currentValue;
-    }
+function updateCard(type){
+ const sel=document.getElementById(type+"Select"), data=(type==="cpu"?CPUs:GPUs), x=data[sel.value];
+ const brand=document.getElementById(type+"Brand"), vendor=document.getElementById(type+"Vendor"), name=document.getElementById(type+"Name"), score=document.getElementById(type+"ScoreText");
+ if(!x){name.textContent=type==="cpu"?"Select a CPU":"Select a GPU";score.textContent=type==="cpu"?"Relative gaming score":"Relative graphics score";return}
+ brand.textContent=x.vendor==="AMD"&&type==="gpu"?"AMD":x.vendor;
+ brand.className="brand "+(x.vendor==="NVIDIA"?"nvidia":"");
+ vendor.textContent=x.vendor;name.textContent=x.name;score.textContent="Relative score "+x.score+"/100";
 }
+document.getElementById("cpuSelect").onchange=()=>updateCard("cpu");
+document.getElementById("gpuSelect").onchange=()=>updateCard("gpu");
 
-
-document.getElementById("cpuSearch")
-.addEventListener("input", () => {
-
-    filterSelect(
-        "cpuSearch",
-        cpuSelect,
-        CPUs
-    );
-});
-
-
-document.getElementById("gpuSearch")
-.addEventListener("input", () => {
-
-    filterSelect(
-        "gpuSearch",
-        gpuSelect,
-        GPUs
-    );
-});
-
-
-/* =========================================================
-   UPDATE HARDWARE CARDS
-   ========================================================= */
-
-cpuSelect.addEventListener("change", updateHardwareCards);
-gpuSelect.addEventListener("change", updateHardwareCards);
-
-function updateHardwareCards() {
-
-    const cpu =
-        cpuSelect.value !== ""
-        ? CPUs[cpuSelect.value]
-        : null;
-
-    const gpu =
-        gpuSelect.value !== ""
-        ? GPUs[gpuSelect.value]
-        : null;
-
-
-    document.getElementById("cpuDisplay").textContent =
-        cpu ? cpu.name : "Select a CPU";
-
-    document.getElementById("cpuDisplayScore").textContent =
-        cpu
-        ? `Relative score ${cpu.score}/100`
-        : "Relative gaming score";
-
-    document.getElementById("cpuBrand").textContent =
-        cpu ? cpu.brand : "INTEL";
-
-
-    document.getElementById("gpuDisplay").textContent =
-        gpu ? gpu.name : "Select a GPU";
-
-    document.getElementById("gpuDisplayScore").textContent =
-        gpu
-        ? `Relative score ${gpu.score}/100`
-        : "Relative graphics score";
-
-    document.getElementById("gpuBrand").textContent =
-        gpu ? gpu.brand : "NVIDIA";
+function searchFilter(inputId,selectId,data){
+ const q=document.getElementById(inputId).value.toLowerCase().trim(),s=document.getElementById(selectId),old=s.value;
+ s.innerHTML='<option value="">— Select —</option>';
+ data.forEach((x,i)=>{if(!q||x.name.toLowerCase().includes(q)||x.vendor.toLowerCase().includes(q)){const o=document.createElement("option");o.value=i;o.textContent=x.name;s.appendChild(o)}});
+ if([...s.options].some(o=>o.value===old))s.value=old;
+ updateCard(selectId==="cpuSelect"?"cpu":"gpu");
 }
-
-
-/* =========================================================
-   CALCULATOR
-   ========================================================= */
-
-function calculate() {
-
-    const cpu =
-        cpuSelect.value !== ""
-        ? CPUs[cpuSelect.value]
-        : null;
-
-    const gpu =
-        gpuSelect.value !== ""
-        ? GPUs[gpuSelect.value]
-        : null;
-
-    const resolution =
-        document.getElementById("resolution").value;
-
-    const gameType =
-        document.getElementById("gameType").value;
-
-    const fps =
-        document.getElementById("targetFPS").value;
-
-
-    if (!cpu || !gpu || !resolution || !gameType || !fps) {
-
-        document.getElementById("result").innerHTML = `
-            <div class="empty-result">
-                Please select a CPU, GPU, resolution, game type and target FPS before calculating.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    /*
-       Resolution affects GPU pressure.
-       Lower resolution = relatively more CPU pressure.
-       Higher resolution = relatively more GPU pressure.
-    */
-
-    const resolutionMultiplier = {
-
-        "720": 0.72,
-        "1080": 1.00,
-        "1440": 1.25,
-        "2160": 1.65
-
-    }[resolution];
-
-
-    /*
-       FPS target increases CPU pressure.
-    */
-
-    const fpsMultiplier = {
-
-        "30": 0.70,
-        "60": 1.00,
-        "75": 1.05,
-        "90": 1.10,
-        "120": 1.20,
-        "144": 1.28,
-        "165": 1.35,
-        "180": 1.40,
-        "240": 1.55,
-        "360": 1.80,
-        "500": 2.00
-
-    }[fps];
-
-
-    /*
-       Different game types place different pressure
-       on the CPU/GPU.
-    */
-
-    const gameMultiplier = {
-
-        esports: {
-            cpu: 1.30,
-            gpu: 0.80
-        },
-
-        gaming: {
-            cpu: 1.00,
-            gpu: 1.00
-        },
-
-        aaa: {
-            cpu: 0.95,
-            gpu: 1.25
-        },
-
-        simulation: {
-            cpu: 1.35,
-            gpu: 0.90
-        },
-
-        productivity: {
-            cpu: 1.10,
-            gpu: 0.60
-        }
-
-    }[gameType];
-
-
-    /*
-       Effective pressure
-    */
-
-    let cpuPressure =
-        50 *
-        fpsMultiplier *
-        gameMultiplier.cpu *
-        (1 / Math.sqrt(resolutionMultiplier));
-
-    let gpuPressure =
-        50 *
-        resolutionMultiplier *
-        gameMultiplier.gpu;
-
-
-    /*
-       Hardware capability reduces pressure.
-    */
-
-    cpuPressure =
-        cpuPressure *
-        (60 / Math.max(cpu.score, 20));
-
-    gpuPressure =
-        gpuPressure *
-        (60 / Math.max(gpu.score, 15));
-
-
-    /*
-       Normalize.
-    */
-
-    cpuPressure =
-        Math.max(0, Math.min(100, cpuPressure));
-
-    gpuPressure =
-        Math.max(0, Math.min(100, gpuPressure));
-
-
-    /*
-       Balance score:
-       100 = very balanced
-       lower = larger relative imbalance
-    */
-
-    const difference =
-        Math.abs(cpuPressure - gpuPressure);
-
-    const balance =
-        Math.max(
-            0,
-            Math.round(100 - difference)
-        );
-
-
-    const relativeGap =
-        Math.round(
-            Math.abs(cpu.score - gpu.score) /
-            Math.max(cpu.score, gpu.score) * 100
-        );
-
-
-    let limitation;
-
-    if (Math.abs(cpuPressure - gpuPressure) < 8) {
-
-        limitation = "Balanced";
-
-    } else if (cpuPressure > gpuPressure) {
-
-        limitation = "CPU";
-
-    } else {
-
-        limitation = "GPU";
-    }
-
-
-    const cpuHeadroom =
-        Math.max(
-            0,
-            Math.round(100 - cpuPressure)
-        );
-
-    const gpuHeadroom =
-        Math.max(
-            0,
-            Math.round(100 - gpuPressure)
-        );
-
-
-    let statusClass =
-        limitation === "CPU"
-        ? "cpu"
-        : limitation === "GPU"
-        ? "gpu"
-        : "balanced";
-
-
-    /*
-       Scenario values
-    */
-
-    const resolutionNames = {
-        "720": "720p",
-        "1080": "1080p",
-        "1440": "1440p",
-        "2160": "4K"
-    };
-
-
-    const scenarioResolutions = [
-        {label:"720p", value:720},
-        {label:"1080p", value:1080},
-        {label:"1440p", value:1440},
-        {label:"4K", value:2160}
-    ];
-
-
-    const scenarioFPS = [
-        60,
-        120,
-        144,
-        165,
-        240
-    ];
-
-
-    const resolutionRows =
-        scenarioResolutions.map(item => {
-
-            let gpuImpact =
-                gpuPressure *
-                (item.value / Number(resolution));
-
-            gpuImpact =
-                Math.max(
-                    0,
-                    Math.min(100, gpuImpact)
-                );
-
-            return `
-                <div class="scenario-row">
-
-                    <div class="scenario-name">
-                        ${item.label}
-                    </div>
-
-                    <div class="scenario-track">
-                        <div
-                            class="scenario-fill"
-                            style="width:${gpuImpact}%"
-                        ></div>
-                    </div>
-
-                    <div class="scenario-value">
-                        ${Math.round(gpuImpact)}%
-                    </div>
-
-                </div>
-            `;
-        }).join("");
-
-
-    const fpsRows =
-        scenarioFPS.map(target => {
-
-            let cpuImpact =
-                cpuPressure *
-                (target / Number(fps));
-
-            cpuImpact =
-                Math.max(
-                    0,
-                    Math.min(100, cpuImpact)
-                );
-
-            return `
-                <div class="scenario-row">
-
-                    <div class="scenario-name">
-                        ${target} FPS
-                    </div>
-
-                    <div class="scenario-track">
-                        <div
-                            class="scenario-fill"
-                            style="width:${cpuImpact}%"
-                        ></div>
-                    </div>
-
-                    <div class="scenario-value">
-                        ${Math.round(cpuImpact)}%
-                    </div>
-
-                </div>
-            `;
-        }).join("");
-
-
-    let explanation = "";
-
-
-    if (limitation === "CPU") {
-
-        explanation = `
-            Your CPU is under relatively more pressure than your GPU
-            in this scenario. This is more common when targeting high FPS,
-            using lower resolutions, or playing CPU-heavy games.
-            A CPU limitation is not automatically a problem if the system
-            is delivering your desired FPS.
-        `;
-
-    } else if (limitation === "GPU") {
-
-        explanation = `
-            Your GPU is under relatively more pressure than your CPU
-            in this scenario. Higher resolutions and demanding graphics
-            workloads generally increase GPU demand. Being GPU-limited
-            is not automatically a problem if the GPU is delivering
-            your desired FPS.
-        `;
-
-    } else {
-
-        explanation = `
-            CPU and GPU pressure are relatively close in this scenario.
-            This indicates a more balanced pairing for the selected
-            resolution, game type and FPS target.
-        `;
-    }
-
-
-    document.getElementById("result").innerHTML = `
-
-        <div class="result-header">
-
-            <div>
-
-                <div class="result-title">
-                    ${limitation === "Balanced"
-                        ? "Likely Balanced"
-                        : `Likely ${limitation}-Limited`
-                    }
-                </div>
-
-                <div class="result-subtitle">
-                    ${cpu.name} + ${gpu.name}
-                </div>
-
-            </div>
-
-            <div class="status ${statusClass}">
-                ● ${limitation === "Balanced"
-                    ? "Balanced"
-                    : limitation + " Limited"
-                }
-            </div>
-
-        </div>
-
-
-        <!-- CPU VS GPU -->
-
-        <div class="component-compare">
-
-            <div class="component cpu">
-
-                <div class="component-brand">
-                    ${cpu.brand}
-                </div>
-
-                <div class="component-name">
-                    ${cpu.name}
-                </div>
-
-                <div class="component-score">
-                    Performance score ${cpu.score}/100
-                </div>
-
-            </div>
-
-
-            <div class="vs">
-                VS
-            </div>
-
-
-            <div class="component gpu">
-
-                <div class="component-brand">
-                    ${gpu.brand}
-                </div>
-
-                <div class="component-name">
-                    ${gpu.name}
-                </div>
-
-                <div class="component-score">
-                    Performance score ${gpu.score}/100
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- SCOREBOARD -->
-
-        <div class="score-grid">
-
-            <div class="score-box">
-
-                <div class="score-label">
-                    CPU Performance
-                </div>
-
-                <div class="score-value">
-                    ${cpu.score}
-                </div>
-
-                <div class="score-description">
-                    Relative hardware score
-                </div>
-
-            </div>
-
-
-            <div class="score-box">
-
-                <div class="score-label">
-                    GPU Performance
-                </div>
-
-                <div class="score-value">
-                    ${gpu.score}
-                </div>
-
-                <div class="score-description">
-                    Relative hardware score
-                </div>
-
-            </div>
-
-
-            <div class="score-box">
-
-                <div class="score-label">
-                    Balance Score
-                </div>
-
-                <div class="score-value">
-                    ${balance}
-                </div>
-
-                <div class="score-description">
-                    CPU/GPU scenario balance
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- PERFORMANCE BREAKDOWN -->
-
-        <div class="breakdown">
-
-            <div class="section-title">
-                Performance Breakdown
-            </div>
-
-
-            <div class="bar-row">
-
-                <div class="bar-top">
-                    <span>CPU Pressure</span>
-                    <strong>${Math.round(cpuPressure)}%</strong>
-                </div>
-
-                <div class="bar-track">
-
-                    <div
-                        class="bar-fill cpu-fill"
-                        style="width:${cpuPressure}%"
-                    ></div>
-
-                </div>
-
-            </div>
-
-
-            <div class="bar-row">
-
-                <div class="bar-top">
-                    <span>GPU Pressure</span>
-                    <strong>${Math.round(gpuPressure)}%</strong>
-                </div>
-
-                <div class="bar-track">
-
-                    <div
-                        class="bar-fill gpu-fill"
-                        style="width:${gpuPressure}%"
-                    ></div>
-
-                </div>
-
-            </div>
-
-
-            <div class="bar-row">
-
-                <div class="bar-top">
-                    <span>System Balance</span>
-                    <strong>${balance}%</strong>
-                </div>
-
-                <div class="bar-track">
-
-                    <div
-                        class="bar-fill balance-fill"
-                        style="width:${balance}%"
-                    ></div>
-
-                </div>
-
-            </div>
-
-
-            <div class="legend">
-
-                <span>
-                    <i class="dot cpu"></i>
-                    CPU workload
-                </span>
-
-                <span>
-                    <i class="dot gpu"></i>
-                    GPU workload
-                </span>
-
-                <span>
-                    <i class="dot balance"></i>
-                    System balance
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- DETAILS -->
-
-        <div class="detail-grid">
-
-            <div class="detail-box">
-
-                <div class="detail-label">
-                    CPU Headroom
-                </div>
-
-                <div class="detail-value">
-                    ${cpuHeadroom}%
-                </div>
-
-            </div>
-
-
-            <div class="detail-box">
-
-                <div class="detail-label">
-                    GPU Headroom
-                </div>
-
-                <div class="detail-value">
-                    ${gpuHeadroom}%
-                </div>
-
-            </div>
-
-
-            <div class="detail-box">
-
-                <div class="detail-label">
-                    Resolution
-                </div>
-
-                <div class="detail-value">
-                    ${resolutionNames[resolution]}
-                </div>
-
-            </div>
-
-
-            <div class="detail-box">
-
-                <div class="detail-label">
-                    Target FPS
-                </div>
-
-                <div class="detail-value">
-                    ${fps} FPS
-                </div>
-
-            </div>
-
-
-            <div class="detail-box">
-
-                <div class="detail-label">
-                    Game Type
-                </div>
-
-                <div class="detail-value">
-                    ${document
-                        .getElementById("gameType")
-                        .selectedOptions[0]
-                        .textContent
-                    }
-                </div>
-
-            </div>
-
-
-            <div class="detail-box">
-
-                <div class="detail-label">
-                    Primary Limitation
-                </div>
-
-                <div class="detail-value">
-                    ${limitation}
-                </div>
-
-            </div>
-
-
-            <div class="detail-box">
-
-                <div class="detail-label">
-                    Relative Performance Gap
-                </div>
-
-                <div class="detail-value">
-                    ${relativeGap}%
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- RESOLUTION IMPACT -->
-
-        <div class="scenario">
-
-            <div class="section-title">
-                Resolution Impact
-            </div>
-
-            <div style="color:#8e98ab;font-size:11px;margin-bottom:15px;">
-                Estimated GPU pressure as resolution changes.
-            </div>
-
-            ${resolutionRows}
-
-        </div>
-
-
-        <!-- FPS IMPACT -->
-
-        <div class="scenario">
-
-            <div class="section-title">
-                FPS Target Impact
-            </div>
-
-            <div style="color:#8e98ab;font-size:11px;margin-bottom:15px;">
-                Estimated CPU pressure as your target FPS increases.
-            </div>
-
-            ${fpsRows}
-
-        </div>
-
-
-        <!-- EXPLANATION -->
-
-        <div class="explanation">
-
-            <h3>
-                💡 What does this mean?
-            </h3>
-
-            <p>
-                ${explanation}
-            </p>
-
-
-            <div class="warning">
-
-                <strong>Important:</strong>
-                This calculator provides a generalized estimate based on
-                relative hardware performance and workload assumptions.
-                The pressure values are not measured hardware utilization
-                and should not be interpreted as exact FPS loss.
-                Real-world performance can vary between games because of
-                game engines, graphics settings, drivers, RAM, cooling,
-                background applications and other system factors.
-
-            </div>
-
-        </div>
-
-    `;
-
+document.getElementById("cpuSearch").oninput=()=>searchFilter("cpuSearch","cpuSelect",CPUs);
+document.getElementById("gpuSearch").oninput=()=>searchFilter("gpuSearch","gpuSelect",GPUs);
+
+function resolutionFactor(r){return ({720:1.3,1080:1,1440:.72,2160:.42})[r]}
+function calculate(){
+ const ci=document.getElementById("cpuSelect").value,gi=document.getElementById("gpuSelect").value;
+ if(ci===""||gi===""){alert("Please select both a CPU and GPU first.");return}
+ const c=CPUs[ci],g=GPUs[gi],r=document.getElementById("resolution").value,target=parseInt(document.getElementById("targetFps").value),gt=document.getElementById("gameType").value;
+ let cpuP=Math.min(100,(target/240)*100*(gt==="esports"?1.1:gt==="cpu"?1.18:1));
+ let gpuP=Math.min(100,(target/240)*100*resolutionFactor(r)*(gt==="aaa"?1.15:gt==="balanced"?1.05:1));
+ cpuP=Math.min(100,cpuP*(60/Math.max(c.score,1))*55);
+ gpuP=Math.min(100,gpuP*(70/Math.max(g.score,1))*55);
+ const balance=Math.round(100-Math.abs(cpuP-gpuP));
+ const gap=Math.round(Math.abs(c.score-g.score)/Math.max(c.score,g.score)*100);
+ const limit=cpuP-gpuP>8?"CPU":gpuP-cpuP>8?"GPU":"Balanced";
+ document.getElementById("result").classList.remove("hidden");
+ document.getElementById("resultTitle").textContent=limit==="Balanced"?"Well-Balanced Pairing":`Likely ${limit}-Limited`;
+ document.getElementById("resultPair").textContent=c.name+" + "+g.name;
+ const pill=document.getElementById("limitPill");pill.textContent="• "+(limit==="Balanced"?"Balanced":limit+" Limited");pill.className="pill "+(limit==="Balanced"?"balanced":limit.toLowerCase());
+ document.getElementById("pairCpuVendor").textContent=c.vendor;document.getElementById("pairCpu").textContent=c.name;document.getElementById("pairCpuScore").textContent="Performance score "+c.score+"/100";
+ document.getElementById("pairGpuVendor").textContent=g.vendor;document.getElementById("pairGpu").textContent=g.name;document.getElementById("pairGpuScore").textContent="Performance score "+g.score+"/100";
+ document.getElementById("cpuPerf").textContent=c.score;document.getElementById("gpuPerf").textContent=g.score;document.getElementById("balance").textContent=balance;
+ setBar("cpuPressure",cpuP,"cpuPressureText",cpuP);setBar("gpuPressure",gpuP,"gpuPressureText",gpuP);setBar("balanceBar",balance,"balanceText",balance);
+ document.getElementById("cpuHeadroom").textContent=Math.round(100-cpuP)+"%";document.getElementById("gpuHeadroom").textContent=Math.round(100-gpuP)+"%";
+ document.getElementById("infoResolution").textContent=r==="2160"?"4K":r+"p";document.getElementById("infoTarget").textContent=target+" FPS";
+ document.getElementById("infoGame").textContent=document.getElementById("gameType").selectedOptions[0].text;
+ document.getElementById("infoLimit").textContent=limit;document.getElementById("gap").textContent=gap+"%";
+ document.getElementById("meaning").textContent=limit==="CPU"?"Your CPU is under relatively more pressure than your GPU in this scenario. This is more common when targeting high FPS, using lower resolutions, or playing CPU-heavy games. A CPU limitation is not automatically a problem if the system is delivering your desired FPS.":limit==="GPU"?"Your GPU is under relatively more pressure than your CPU in this scenario. Higher resolutions and demanding graphics workloads generally increase GPU demand. Being GPU-limited is not automatically a problem if the GPU is delivering your desired FPS.":"CPU and GPU pressure are relatively close for this scenario. That generally means neither component is disproportionately ahead of the other.";
+ estimateFPS();
+ document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
 }
+function setBar(id,val,textId,num){document.getElementById(id).style.width=Math.max(0,Math.min(100,val))+"%";document.getElementById(textId).textContent=Math.round(num)+"%";}
 
+function estimateFPS(){
+ const ci=document.getElementById("cpuSelect").value,gi=document.getElementById("gpuSelect").value;
+ if(ci===""||gi===""){alert("Select a CPU and GPU first.");return}
+ const c=CPUs[ci],g=GPUs[gi],game=document.getElementById("game").value,preset=document.getElementById("preset").value,rt=document.getElementById("rt").value;
+ const selectedRes=document.getElementById("resolution").value;
+ function calc(r){
+   let cpuCap=gameBase[game]*(c.score/60)*gameCpu[game];
+   let gpuCap=gameBase[game]*(g.score/60)*resMult[r]*presetMult[preset];
+   if(rt==="on") gpuCap*=.68;
+   return Math.max(5,Math.round(Math.min(cpuCap,gpuCap)));
+ }
+ const avg=calc(selectedRes);
+ const low=Math.max(3,Math.round(avg*(game==="valorant"||game==="cs2"?0.78:.68)));
+ document.getElementById("avgFps").textContent=avg+" FPS";
+ document.getElementById("lowFps").textContent=low+" FPS";
+ const cpuLoad=Math.min(100,Math.round((avg/(gameBase[game]*(c.score/60)*gameCpu[game]))*100));
+ const gpuLoad=Math.min(100,Math.round((avg/(gameBase[game]*(g.score/60)*resMult[selectedRes]*presetMult[preset]*(rt==="on"?.68:1)))*100));
+ document.getElementById("estCpuLoad").textContent=cpuLoad+"%";
+ document.getElementById("estGpuLoad").textContent=gpuLoad+"%";
+ document.getElementById("perfLevel").textContent=avg>=144?"Excellent":avg>=90?"Very Good":avg>=60?"Good":avg>=30?"Playable":"Low";
+ document.getElementById("fpsNote").textContent=`Modeled estimate for ${document.getElementById("game").selectedOptions[0].text}, ${document.getElementById("preset").selectedOptions[0].text}, ${selectedRes==="2160"?"4K":selectedRes+"p"}${rt==="on"?" + RT":""}.`;
+ const rows=[["720",calc("720")],["1080",calc("1080")],["1440",calc("1440")],["4K",calc("2160")]];
+ document.getElementById("resolutionRows").innerHTML=rows.map(([label,fps])=>`<div class="res-row"><b>${label}</b><div class="res-bar"><div class="res-fill" style="width:${Math.min(100,Math.round(fps/Math.max(...rows.map(x=>x[1]))*100))}%"></div></div><b style="text-align:right">${fps} FPS</b></div>`).join("");
+}
 </script>
-
 </body>
 </html>
