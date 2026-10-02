@@ -8,59 +8,155 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#090c14;--panel:rgba(20,26,40,.85);--line:rgba(157,174,204,.16);--text:#f5f7fc;--muted:#aab5c8;--purple:#8e79ff;--green:#66e2a5;--amber:#ffcb76;--red:#ff818b}
-*{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100vh;background:radial-gradient(ellipse at 14% 0%,rgba(108,78,255,.16),transparent 34%),radial-gradient(ellipse at 90% 20%,rgba(35,158,220,.1),transparent 32%),var(--bg);color:var(--text);font:15px/1.6 "DM Sans",system-ui,sans-serif}
-a{color:inherit;text-decoration:none}
-h1,h2,h3{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.03em}
+:root{
+  --bg:#0b0d12;--panel:#171a22;--panel2:#111319;--border:#2b3040;
+  --text:#f3f5f8;--muted:#91a0b8;--purple:#7357ff;--cpu:#8b5cf6;
+  --gpu:#19a8e8;--good:#36d77a;--warn:#f4a62a;--bad:#ff4d5d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
+.site-header{height:72px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:#0c0e14;position:sticky;top:0;z-index:20}
+.logo{font-size:22px;font-weight:800}.logo span{color:#765cff}
+.nav{display:flex;gap:8px}.nav a{color:#aeb7c8;text-decoration:none;padding:10px 14px;border-radius:8px;font-size:14px}.nav a.active{background:#202431;color:#fff}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 22px 60px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px}
+h1{font-size:30px;margin:0 0 8px}.subtitle{color:#9eabc0;font-size:14px;line-height:1.6;margin-bottom:26px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:block;font-weight:700;font-size:13px;margin-bottom:8px}
+input,select{width:100%;height:42px;background:#0d0f15;border:1px solid #323849;color:#f4f6fa;border-radius:8px;padding:0 12px;outline:none}
+input:focus,select:focus{border-color:#6370ff}
+.search-row{margin-bottom:16px}
+.field-help{font-size:10px;color:#76839a;margin-top:6px}
+.brand-name{font-size:10px;color:#9ba7bb;font-weight:800;letter-spacing:1px}
+.hw-score{font-size:10px;color:#8490a6}
+.scenario-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.scenario-grid > div{min-width:0}
+.full{grid-column:1/-1}.select-row{margin-top:4px}
+.btn{height:44px;border:0;border-radius:8px;background:var(--purple);color:white;font-weight:800;width:100%;cursor:pointer;margin-top:18px}
+.btn:hover{filter:brightness(1.08)}
+.result{margin-top:18px;background:#0f1117;border:1px solid #2a3040;border-radius:12px;padding:20px}
+.result-head{display:flex;justify-content:space-between;align-items:center;gap:15px}.result-title{font-size:22px;font-weight:800}.pill{padding:8px 12px;border-radius:20px;background:#252a3b;font-size:12px;font-weight:800}
+.pill.cpu{color:#c3a7ff}.pill.gpu{color:#48baff}.pill.balanced{color:#52e28a}
+.pair{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:12px;margin:18px 0}
+.pair-card{background:#191d26;border:1px solid #303748;border-radius:10px;padding:14px}.pair-card.cpu{border-left:3px solid var(--cpu)}.pair-card.gpu{border-left:3px solid var(--gpu)}
+.vs{text-align:center;color:#9aa4b6;font-size:11px;font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#191d26;border:1px solid #292f3c;border-radius:9px;padding:13px}.stat small{color:#8290a7;display:block;font-size:10px}.stat strong{display:block;font-size:24px;margin-top:5px}.stat span{font-size:10px;color:#76839a}
+.section{background:#191d26;border:1px solid #2a3040;border-radius:10px;padding:16px;margin-top:14px}.section h3{font-size:14px;margin:0 0 15px}
+.bar-row{margin:12px 0}.bar-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px}.bar{height:8px;background:#292f3d;border-radius:20px;overflow:hidden}.fill{height:100%;border-radius:20px}.fill.cpu{background:var(--cpu)}.fill.gpu{background:var(--gpu)}.fill.good{background:var(--good)}.fill.warn{background:var(--warn)}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.info{background:#191d26;border:1px solid #292f3c;border-radius:9px;padding:12px}.info small{display:block;color:#8290a7;font-size:10px}.info strong{font-size:14px;margin-top:4px;display:block}
+.disclaimer{font-size:10px;color:#6f7c91;line-height:1.55;margin-top:16px}
+.hidden{display:none}
+@media(max-width:800px){.grid2,.stats,.scenario-grid,.info-grid{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.vs{display:none}.site-header{padding:0 18px}.nav a{padding:8px}.wrap{padding:18px 12px}.result-head{align-items:flex-start;flex-direction:column}}
 
-header{position:sticky;top:0;z-index:50;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 max(20px,calc((100vw - 1140px)/2));border-bottom:1px solid var(--line);background:rgba(9,12,20,.82);backdrop-filter:blur(16px)}
-.logo{font:700 22px "Space Grotesk",sans-serif}.logo span{color:#a591ff}
-nav{display:flex;gap:6px;align-items:center}
-nav a{padding:8px 12px;border-radius:8px;color:var(--muted);font-size:14px;border:1px solid transparent}
-nav a:hover,nav a.active{color:#fff;background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.22)}
+/* SystemFit PC visual refresh */
+:root{--bg:#090c14;--panel:rgba(20,26,40,.78);--panel2:rgba(13,18,29,.9);--border:rgba(157,174,204,.17);--text:#f5f7fc;--muted:#aab5c8;--purple:#765fff;--cpu:#a78bfa;--gpu:#63c7ff;--good:#5ce0a2;--warn:#ffc06b;--bad:#ff7d86}
+body{font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 12% 0%,rgba(110,78,255,.19),transparent 34%),radial-gradient(ellipse at 90% 18%,rgba(28,157,218,.13),transparent 32%),var(--bg)}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 65% 75%,rgba(59,105,180,.08),transparent 36%);filter:blur(35px)}
+h1,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
+.site-header{background:rgba(9,12,20,.74);border-color:var(--border);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.logo span{color:#a591ff}
+.nav a{border:1px solid transparent;transition:background .2s,border-color .2s,color .2s}
+.nav a:hover,.nav a.active{background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
+.wrap{padding-top:38px}
+.card{background:linear-gradient(145deg,rgba(22,29,45,.88),rgba(13,18,29,.86));border-color:var(--border);border-radius:20px;padding:clamp(20px,3vw,34px);box-shadow:0 24px 80px rgba(0,0,0,.23);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+h1{font-size:clamp(29px,4vw,40px);line-height:1.12}
+.subtitle{max-width:760px;font-size:15px;line-height:1.75;color:#adbad0}
+label{font-size:13px;letter-spacing:.01em}
+input,select{height:48px;background:rgba(7,11,19,.72);border-color:rgba(159,176,207,.2);border-radius:10px;font:inherit;transition:border-color .2s,box-shadow .2s,background .2s}
+input:hover,select:hover{border-color:rgba(153,134,255,.46)}
+input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,255,.15);background:#0c1120}
+.field-help{font-size:11px;color:#8d9cb5}
+.brand-name{display:inline-flex;align-items:center;width:max-content;padding:5px 9px;margin-bottom:8px;border:1px solid currentColor;border-radius:999px;background:rgba(255,255,255,.04);font-size:10px;letter-spacing:.06em}
+.vendor-intel{color:#66c4ff}.vendor-amd{color:#ff927d}.vendor-nvidia{color:#7fe3a0}.vendor-other{color:#b6c2d8}
+.hw-score{font-size:11px;line-height:1.55;color:#a1aec4}
+.btn{height:50px;border-radius:11px;background:linear-gradient(115deg,#795fff,#654de7);box-shadow:0 12px 28px rgba(93,74,227,.22);font:700 15px "DM Sans",sans-serif;transition:transform .2s,filter .2s}
+.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.result{background:rgba(8,12,20,.76);border-color:rgba(150,169,200,.2);border-radius:16px;padding:clamp(16px,2.5vw,26px)}
+.result-title{font-family:"Space Grotesk",sans-serif;font-size:clamp(22px,3vw,29px);letter-spacing:-.04em}
+.pill{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.055)}
+.pair{gap:14px}
+.pair-card{min-width:0;min-height:116px;display:flex;align-items:center;gap:15px;padding:17px;border-radius:14px;background:linear-gradient(145deg,rgba(29,36,55,.86),rgba(15,21,34,.9));border-color:rgba(156,174,205,.16)}
+.pair-card.cpu{border-left:3px solid var(--cpu);background:linear-gradient(145deg,rgba(84,61,150,.19),rgba(15,21,34,.9))}
+.pair-card.gpu{border-left:3px solid var(--gpu);background:linear-gradient(145deg,rgba(37,104,145,.2),rgba(15,21,34,.9))}
+.pair-card b{display:block;font-size:15px;line-height:1.35;overflow-wrap:anywhere}
+.pair-info{min-width:0}
+.hardware-icon{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:15px;background:rgba(167,139,250,.11);color:#b7a2ff;border:1px solid rgba(167,139,250,.19)}
+.pair-card.gpu .hardware-icon{width:74px;flex-basis:74px;background:rgba(99,199,255,.1);color:#7bd5ff;border-color:rgba(99,199,255,.2)}
+.hardware-icon svg{width:48px;height:48px}
+.pair-card.gpu .hardware-icon svg{width:66px;height:48px}
+.vs{color:#7e8ca4}
+.stats{gap:12px}
+.stat{background:rgba(20,27,42,.75);border-color:var(--border);border-radius:13px;padding:16px}
+.stat:nth-child(1){border-top:2px solid var(--cpu)}.stat:nth-child(2){border-top:2px solid var(--gpu)}.stat:nth-child(3){border-top:2px solid var(--good)}
+.stat small{font-size:11px;color:#aab7cd}.stat strong{font-family:"Space Grotesk",sans-serif;font-size:28px}
+.section{background:rgba(19,26,40,.76);border-color:var(--border);border-radius:14px;padding:18px}
+.section h3{font-size:16px;letter-spacing:-.02em}
+.bar{height:10px;background:rgba(147,163,189,.14)}
+.fill{transition:width .45s ease}
+.info{background:rgba(12,18,30,.75);border-color:rgba(157,174,204,.12);border-radius:11px;padding:14px}
+.info small{font-size:11px}.info strong{font-size:14px;line-height:1.4}
+.disclaimer{font-size:11px;color:#9aa8bf;line-height:1.75;padding:14px 15px;border:1px solid rgba(157,174,204,.12);border-radius:12px;background:rgba(255,255,255,.025)}
+:focus-visible{outline:2px solid #9b8aff;outline-offset:3px}
+@media(max-width:800px){.wrap{padding:22px 14px 42px}.pair{grid-template-columns:1fr;gap:10px}.pair-card{min-height:100px}.vs{display:none}.grid2,.stats,.scenario-grid,.info-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.site-header{height:auto;min-height:68px;align-items:flex-start;flex-direction:column;gap:6px;padding:12px 16px}.nav{width:100%;justify-content:space-between;gap:2px}.nav a{font-size:12px;padding:8px 9px}.card{padding:18px}.pair-card{gap:11px;padding:13px}.hardware-icon{width:48px;height:48px;flex-basis:48px}.pair-card.gpu .hardware-icon{width:62px;flex-basis:62px}.hardware-icon svg{width:40px;height:40px}.pair-card.gpu .hardware-icon svg{width:54px;height:40px}.stat{padding:13px}}
 
-.wrap{max-width:1100px;margin:0 auto;padding:36px 20px 70px}
-.card{border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(22,29,45,.9),rgba(12,18,29,.92));padding:clamp(22px,3vw,34px);box-shadow:0 20px 60px rgba(0,0,0,.22)}
-h1{font-size:clamp(28px,4vw,36px);margin-bottom:8px}
-.sub{color:var(--muted);font-size:15px;line-height:1.7;max-width:680px;margin-bottom:28px}
 
-.layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:800px){.layout{grid-template-columns:1fr}}
+/* Expandable tools menu */
+.tool-dropdown{position:relative}
+.tool-dropdown summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;color:var(--muted);padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;transition:background .2s,border-color .2s,color .2s;user-select:none}
+.tool-dropdown summary::-webkit-details-marker{display:none}
+.tool-dropdown summary:after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s}
+.tool-dropdown[open] summary:after{transform:rotate(225deg) translate(-1px,-1px)}
+.tool-dropdown summary:hover,.tool-dropdown[open] summary,.tool-dropdown.summary-active summary{color:#fff;background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
+.tool-menu{position:absolute;z-index:1001;top:calc(100% + 12px);left:50%;transform:translateX(-50%);width:min(355px,calc(100vw - 28px));max-height:min(70vh,560px);overflow:auto;padding:10px;border:1px solid rgba(157,174,204,.2);border-radius:16px;background:rgba(13,18,29,.96);box-shadow:0 24px 70px rgba(0,0,0,.48);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);animation:menu-in .16s ease-out}
+@keyframes menu-in{from{opacity:0;transform:translate(-50%,-5px)}to{opacity:1;transform:translate(-50%,0)}}
+.tool-menu-label{padding:8px 10px 6px;color:#8f9db5;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+.tool-menu-label.planned-label{margin-top:7px;border-top:1px solid rgba(157,174,204,.12);padding-top:14px}
+.tool-menu-item{display:flex;align-items:center;gap:11px;padding:10px;border:1px solid transparent;border-radius:11px;color:#edf1f9;text-decoration:none;transition:background .18s,border-color .18s}
+.tool-menu-item>span:nth-child(2){min-width:0;flex:1}
+.tool-menu-item b{display:block;font-size:12px;line-height:1.35;font-weight:700}
+.tool-menu-item small{display:block;margin-top:3px;color:#96a3b9;font-size:10px;line-height:1.3}
+a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255,.13);border-color:rgba(151,132,255,.25);outline:none}
+.tool-menu-item.current-tool{background:linear-gradient(110deg,rgba(118,95,255,.12),rgba(66,157,210,.07));border-color:rgba(142,128,239,.17)}
+.tool-menu-item.planned-tool{cursor:default;color:#c1cada}
+.tool-menu-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);color:#b6c2d8;font-family:"Space Grotesk",sans-serif;font-size:10px;font-weight:700}
+.cpu-menu-icon{background:rgba(137,111,255,.16);color:#c2adff}.fps-menu-icon{background:rgba(72,182,255,.12);color:#77cbff}.build-menu-icon{background:rgba(68,212,150,.12);color:#71e5b0}.upgrade-menu-icon{background:rgba(255,170,98,.12);color:#ffc080}.compare-menu-icon{background:rgba(255,126,145,.12);color:#ff9baa}.power-menu-icon{background:rgba(255,204,92,.12);color:#ffda7d}
+.tool-menu-arrow{color:#9d8cff;font-size:15px}
+.soon-tag{padding:4px 7px;border:1px solid rgba(157,174,204,.13);border-radius:999px;color:#8c99af;font-size:9px;font-weight:700}
+@media(max-width:800px){.tool-dropdown{width:max-content}.tool-dropdown summary{padding:8px 11px}.tool-menu{left:auto;right:-60px;transform:none}@keyframes menu-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}}
+@media(prefers-reduced-motion:reduce){.tool-menu{animation:none}.tool-dropdown summary:after{transition:none}}
 
-label{display:block;font-size:12px;font-weight:700;margin-bottom:6px;color:#dce4f0}
-select{width:100%;height:46px;padding:0 12px;border:1px solid rgba(157,174,204,.22);border-radius:10px;background:rgba(7,11,19,.8);color:#f2f5fb;font:13px "DM Sans",sans-serif;outline:none}
-select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,255,.15)}
-
-.field{margin-bottom:14px}
-.btn{height:48px;width:100%;border:0;border-radius:11px;background:linear-gradient(115deg,#795fff,#654de7);color:#fff;font:700 15px "DM Sans",sans-serif;cursor:pointer;margin-top:8px}
-.btn:hover{filter:brightness(1.1)}
-
-.result{margin-top:24px;padding:22px;border:1px solid var(--line);border-radius:16px;background:rgba(8,12,20,.75);display:none}
-.result.show{display:block}
-.fps-num{font:700 clamp(44px,7vw,60px)/1 "Space Grotesk",sans-serif;margin:10px 0 4px}
-.fps-label{color:var(--muted);font-size:13px}
-.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
-@media(max-width:600px){.meta{grid-template-columns:1fr}}
-.meta div{padding:14px;border-radius:12px;background:rgba(20,27,42,.8);border:1px solid var(--line)}
-.meta small{display:block;color:#aab7cd;font-size:11px}
-.meta strong{display:block;font-size:20px;margin-top:4px;font-family:"Space Grotesk",sans-serif}
-.rating{display:inline-block;margin-top:12px;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700}
-.rating.good{background:rgba(102,226,165,.12);color:#66e2a5;border:1px solid rgba(102,226,165,.25)}
-.rating.ok{background:rgba(255,203,118,.12);color:#ffcb76;border:1px solid rgba(255,203,118,.25)}
-.rating.bad{background:rgba(255,129,139,.12);color:#ff818b;border:1px solid rgba(255,129,139,.25)}
-.note{font-size:11px;color:#9aa8bf;line-height:1.7;margin-top:16px;padding:12px 14px;border:1px solid rgba(157,174,204,.12);border-radius:12px;background:rgba(255,255,255,.02)}
+@keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}@media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}
+/* SystemFit PC wordmark */
+#brand-logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap}
+#brand-logo .brand-monogram{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(159,142,255,.38);border-radius:12px;background:linear-gradient(145deg,rgba(119,94,255,.3),rgba(63,179,231,.15));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 18px rgba(73,62,170,.16);font:800 12px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.09em;color:#f8f7ff}
+#brand-logo .brand-monogram span{color:#86dcff}
+#brand-logo .brand-wordmark{display:inline-flex;align-items:center;font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.055em;color:#f5f7fc}
+#brand-logo .brand-system{color:#f5f7fc}
+#brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+#brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
+@media(max-width:800px){#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}}
+</style>
+<style id="homepage-header-system">
+/* Shared SystemFit PC homepage header */
+header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bottom:1px solid rgba(157,174,204,.16);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}header .nav{max-width:1180px;min-height:76px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;flex-direction:row;gap:0}header .logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap;font:700 25px/1 "Space Grotesk","DM Sans",sans-serif}header .logo span{color:#a591ff}header nav{display:flex;align-items:center;gap:8px}header nav>a{color:#aab5c8;padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;text-decoration:none;transition:background .2s,border-color .2s,color .2s}header nav>a:hover,header nav>a.active{background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2);color:#fff}
+#brand-logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap}#brand-logo .brand-monogram{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(159,142,255,.38);border-radius:12px;background:linear-gradient(145deg,rgba(119,94,255,.3),rgba(63,179,231,.15));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 18px rgba(73,62,170,.16);font:800 12px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.09em;color:#f8f7ff}#brand-logo .brand-monogram span{color:#86dcff}#brand-logo .brand-wordmark{display:inline-flex;align-items:center;font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.055em;color:#f5f7fc}#brand-logo .brand-system{color:#f5f7fc!important}#brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}#brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
+.tool-dropdown{position:relative;--menu-duration:190ms}.tool-dropdown summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;color:#aab5c8;padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;transition:background .2s,border-color .2s,color .2s;user-select:none}.tool-dropdown summary::-webkit-details-marker{display:none}.tool-dropdown summary:after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s}.tool-dropdown[open] summary:after{transform:rotate(225deg) translate(-1px,-1px)}.tool-dropdown summary:hover,.tool-dropdown[open] summary,.tool-dropdown.summary-active summary{color:#fff;background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
+.tool-menu{position:absolute;z-index:1001;top:calc(100% + 12px);left:auto;right:0;transform:none;transform-origin:top right;width:min(355px,calc(100vw - 28px));max-height:min(70vh,560px);overflow:auto;padding:10px;border:1px solid rgba(157,174,204,.2);border-radius:16px;background:rgba(13,18,29,.96);box-shadow:0 24px 70px rgba(0,0,0,.48);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);animation:tools-expand 190ms cubic-bezier(.2,.75,.2,1) both}.tool-menu-label{padding:8px 10px 6px;color:#8f9db5;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.tool-menu-label.planned-label{margin-top:7px;border-top:1px solid rgba(157,174,204,.12);padding-top:14px}.tool-menu-item{display:flex;align-items:center;gap:11px;padding:10px;border:1px solid transparent;border-radius:11px;color:#edf1f9;text-decoration:none;transition:background .18s,border-color .18s}.tool-menu-item>span:nth-child(2){min-width:0;flex:1}.tool-menu-item b{display:block;font-size:12px;line-height:1.35;font-weight:700}.tool-menu-item small{display:block;margin-top:3px;color:#96a3b9;font-size:10px;line-height:1.3}a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255,.13);border-color:rgba(151,132,255,.25);outline:none}.tool-menu-item.current-tool{background:linear-gradient(110deg,rgba(118,95,255,.12),rgba(66,157,210,.07));border-color:rgba(142,128,239,.17)}.tool-menu-item.planned-tool{cursor:default;color:#c1cada}.tool-menu-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);color:#b6c2d8;font:700 10px "Space Grotesk",sans-serif}.cpu-menu-icon{background:rgba(137,111,255,.16);color:#c2adff}.fps-menu-icon{background:rgba(72,182,255,.12);color:#77cbff}.build-menu-icon{background:rgba(68,212,150,.12);color:#71e5b0}.upgrade-menu-icon{background:rgba(255,170,98,.12);color:#ffc080}.compare-menu-icon{background:rgba(255,126,145,.12);color:#ff9baa}.power-menu-icon{background:rgba(255,204,92,.12);color:#ffda7d}.tool-menu-arrow{color:#9d8cff;font-size:15px}.soon-tag{padding:4px 7px;border:1px solid rgba(157,174,204,.13);border-radius:999px;color:#8c99af;font-size:9px;font-weight:700}
+@keyframes tools-expand{from{opacity:0;transform:translateY(-9px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}.tool-dropdown.is-closing .tool-menu{animation:tools-collapse 150ms cubic-bezier(.4,0,.8,.5) both}@keyframes tools-collapse{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}
+@media(max-width:800px){header .nav{min-height:auto;padding:15px;flex-direction:column;gap:10px}header nav{flex-wrap:wrap;justify-content:center}#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}.tool-dropdown{width:max-content}.tool-menu{left:auto;right:0;transform:none;transform-origin:top right;animation-name:tools-expand-mobile}@keyframes tools-expand-mobile{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}.tool-dropdown.is-closing .tool-menu{animation-name:tools-collapse-mobile}@keyframes tools-collapse-mobile{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}}
+@media(prefers-reduced-motion:reduce){.tool-menu,.tool-dropdown.is-closing .tool-menu{animation:none}.tool-dropdown summary:after{transition:none}}
 </style>
 </head>
 <body>
 <header>
-  <a href="index.html" class="logo">System<span>Fit</span> PC</a>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="bottleneck.html">Bottleneck</a>
-    <a href="fps-calculator.html" class="active">FPS Calculator</a>
-    <a href="build-planner.html">Build Planner</a>
-  </nav>
+<div class="nav">
+<a id="brand-logo" class="logo" href="index.html#home" aria-label="SystemFit PC home"><span class="brand-monogram" aria-hidden="true">S<span>F</span></span><span class="brand-wordmark"><span class="brand-system">System</span><span class="brand-fit">Fit</span></span><span class="brand-pc">PC</span></a>
+<nav aria-label="Main navigation"><a href="index.html#home">Home</a><details class="tool-dropdown" id="toolsMenu"><summary aria-label="Open tools menu">Tools</summary><div class="tool-menu" aria-label="Tools"><p class="tool-menu-label">Available now</p><a class="tool-menu-item" href="bottleneck.html"><span class="tool-menu-icon cpu-menu-icon" aria-hidden="true">CPU</span><span><b>CPU &amp; GPU Bottleneck</b><small>Compare your components</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
+<a class="tool-menu-item" href="build-planner.html"><span class="tool-menu-icon build-menu-icon" aria-hidden="true">PC</span><span><b>PC Build Planner</b><small>Check component fit and power</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
+<a class="tool-menu-item" href="gpu-comparison.html"><span class="tool-menu-icon compare-menu-icon" aria-hidden="true">GPU</span><span><b>GPU Comparison</b><small>Compare up to five graphics cards</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a><a class="tool-menu-item current-tool" href="fps-calculator.html" aria-current="page"><span class="tool-menu-icon fps-menu-icon" aria-hidden="true">FPS</span><span><b>FPS Calculator</b><small>Estimate performance</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
+<p class="tool-menu-label planned-label">Coming soon</p><div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon upgrade-menu-icon" aria-hidden="true">↑</span><span><b>Upgrade Planner</b><small>Find your next upgrade</small></span><span class="soon-tag">Soon</span></div><div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon compare-menu-icon" aria-hidden="true">↔</span><span><b>CPU &amp; GPU Compare</b><small>Compare hardware directly</small></span><span class="soon-tag">Soon</span></div><div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon power-menu-icon" aria-hidden="true">W</span><span><b>PSU Power Guide</b><small>Estimate power needs</small></span><span class="soon-tag">Soon</span></div></div></details><a href="index.html#about">About</a></nav>
+</div>
 </header>
 
 <div class="wrap">
