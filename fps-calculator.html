@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SystemFit PC — FPS Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090c14;--panel:rgba(20,26,40,.82);--panel2:rgba(12,18,30,.9);--line:rgba(157,174,204,.16);--text:#f5f7fc;--muted:#aab5c8;--purple:#8e79ff;--blue:#65c9ff;--green:#66e2a5;--amber:#ffcb76;--red:#ff818b}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,rgba(108,78,255,.17),transparent 32%),radial-gradient(ellipse at 91% 22%,rgba(35,158,220,.12),transparent 30%),var(--bg);color:var(--text);font:15px/1.6 "DM Sans",Inter,ui-sans-serif,system-ui,sans-serif}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 60% 75%,rgba(48,99,173,.08),transparent 38%);filter:blur(35px)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
+.site-header{height:74px;position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:0 max(22px,calc((100vw - 1180px)/2));border-bottom:1px solid var(--line);background:rgba(9,12,20,.78);backdrop-filter:blur(18px)}
+.logo{font-size:24px;font-weight:700}.logo span{color:#a591ff}
+.nav{display:flex;align-items:center;gap:8px}
+.nav a{padding:9px 13px;color:var(--muted);font-size:14px;border:1px solid transparent;border-radius:9px}
+.nav a:hover,.nav a.active{color:#fff;background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
+.wrap{max-width:1100px;margin:auto;padding:36px 22px 70px}
+.card{border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(22,29,45,.86),rgba(12,18,29,.9));padding:clamp(20px,3vw,32px);box-shadow:0 20px 60px rgba(0,0,0,.2)}
+h1{font-size:clamp(28px,4vw,38px);margin:0 0 8px}
+.subtitle{color:var(--muted);font-size:15px;line-height:1.7;max-width:720px;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:block;font-size:12px;font-weight:700;margin-bottom:6px;color:#dfe6f1}
+select,input{width:100%;height:46px;padding:0 12px;border:1px solid rgba(157,174,204,.2);border-radius:10px;background:rgba(7,11,19,.74);color:#f2f5fb;font:13px "DM Sans",sans-serif;outline:none}
+select:focus,input:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,255,.14)}
+.full{grid-column:1/-1}
+.btn{height:48px;width:100%;border:0;border-radius:11px;background:linear-gradient(115deg,#795fff,#654de7);color:#fff;font:700 15px "DM Sans",sans-serif;cursor:pointer;margin-top:18px}
+.btn:hover{filter:brightness(1.1)}
+.result{margin-top:22px;padding:22px;border:1px solid var(--line);border-radius:16px;background:rgba(8,12,20,.7);display:none}
+.result.show{display:block}
+.result-title{font-size:22px;font-weight:700;margin-bottom:6px}
+.fps-big{font-family:"Space Grotesk",sans-serif;font-size:clamp(42px,6vw,64px);font-weight:700;line-height:1;margin:12px 0 4px}
+.fps-label{color:var(--muted);font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.stat{padding:14px;border-radius:12px;background:rgba(20,27,42,.75);border:1px solid var(--line)}
+.stat small{display:block;color:#aab7cd;font-size:11px}
+.stat strong{display:block;font-size:22px;margin-top:4px;font-family:"Space Grotesk",sans-serif}
+.pill{display:inline-block;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;margin-top:10px}
+.pill.good{background:rgba(102,226,165,.12);color:#66e2a5;border:1px solid rgba(102,226,165,.25)}
+.pill.warn{background:rgba(255,203,118,.12);color:#ffcb76;border:1px solid rgba(255,203,118,.25)}
+.pill.bad{background:rgba(255,129,139,.12);color:#ff818b;border:1px solid rgba(255,129,139,.25)}
+.disclaimer{font-size:11px;color:#9aa8bf;line-height:1.7;margin-top:18px;padding:12px 14px;border:1px solid rgba(157,174,204,.12);border-radius:12px;background:rgba(255,255,255,.025)}
+@media(max-width:800px){.grid,.stats{grid-template-columns:1fr}.site-header{padding:0 16px}.nav a{font-size:13px;padding:8px 10px}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">System<span>Fit</span> PC</a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="bottleneck.html">Bottleneck</a>
+    <a href="fps-calculator.html" class="active">FPS Calculator</a>
+    <a href="build-planner.html">Build Planner</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <h1>FPS Calculator</h1>
+    <p class="subtitle">Estimate average FPS for popular games based on your CPU, GPU, resolution and graphics settings. Results are relative estimates derived from hardware scores and typical game demand — not exact benchmarks.</p>
+
+    <div class="grid">
+      <div>
+        <label>CPU</label>
+        <select id="cpuSelect"></select>
+      </div>
+      <div>
+        <label>GPU</label>
+        <select id="gpuSelect"></select>
+      </div>
+      <div>
+        <label>Resolution</label>
+        <select id="resolution">
+          <option value="1.0">1080p (Full HD)</option>
+          <option value="0.72">1440p (QHD)</option>
+          <option value="0.42">4K (UHD)</option>
+          <option value="1.15">720p</option>
+        </select>
+      </div>
+      <div>
+        <label>Graphics Preset</label>
+        <select id="preset">
+          <option value="1.35">Low</option>
+          <option value="1.15">Medium</option>
+          <option value="1.0" selected>High</option>
+          <option value="0.82">Ultra</option>
+        </select>
+      </div>
+      <div class="full">
+        <label>Game Type</label>
+        <select id="gameType">
+          <option value="esports">Esports / Competitive (CS2, Valorant, Fortnite)</option>
+          <option value="aaa" selected>AAA / Story (Cyberpunk, Alan Wake, Black Myth)</option>
+          <option value="mixed">Mixed / Open World</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn" onclick="calculate()">Estimate FPS</button>
+
+    <div class="result" id="result">
+      <div class="result-title">Estimated Performance</div>
+      <div class="fps-big" id="avgFps">—</div>
+      <div class="fps-label">Average FPS (estimate)</div>
+      <div id="ratingPill" class="pill good">—</div>
+
+      <div class="stats">
+        <div class="stat"><small>1% Low (est.)</small><strong id="lowFps">—</strong></div>
+        <div class="stat"><small>Limiting Component</small><strong id="limiter">—</strong></div>
+        <div class="stat"><small>Frame Time</small><strong id="frameTime">—</strong></div>
+      </div>
+
+      <p class="disclaimer">
+        This is a relative estimate based on hardware scores and typical game demand. Real FPS varies with drivers, game updates, thermals, background apps, and specific in-game settings. Use it for planning only.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+const CPUs = [
+  {name:"Intel Core i3-12100F",score:42},
+  {name:"Intel Core i5-12400F",score:51},
+  {name:"Intel Core i5-13400F",score:65},
+  {name:"Intel Core i5-14400F",score:66},
+  {name:"Intel Core i5-14600K",score:73},
+  {name:"Intel Core i7-13700K",score:76},
+  {name:"Intel Core i7-14700K",score:76},
+  {name:"Intel Core i9-13900K",score:77},
+  {name:"Intel Core i9-14900K",score:78},
+  {name:"AMD Ryzen 5 5600",score:52},
+  {name:"AMD Ryzen 5 7600",score:61},
+  {name:"AMD Ryzen 5 9600X",score:72},
+  {name:"AMD Ryzen 7 5700X3D",score:72},
+  {name:"AMD Ryzen 7 5800X3D",score:76},
+  {name:"AMD Ryzen 7 7800X3D",score:86},
+  {name:"AMD Ryzen 7 9800X3D",score:97},
+  {name:"AMD Ryzen 7 9850X3D",score:100},
+  {name:"AMD Ryzen 9 7950X3D",score:84},
+  {name:"AMD Ryzen 9 9950X3D",score:96}
+];
+
+const GPUs = [
+  {name:"NVIDIA GeForce GTX 1660 SUPER",score:22},
+  {name:"NVIDIA GeForce RTX 3060 12GB",score:33},
+  {name:"NVIDIA GeForce RTX 3060 Ti",score:42},
+  {name:"NVIDIA GeForce RTX 3070",score:48},
+  {name:"NVIDIA GeForce RTX 4060",score:35},
+  {name:"NVIDIA GeForce RTX 4060 Ti",score:42},
+  {name:"NVIDIA GeForce RTX 4070",score:55},
+  {name:"NVIDIA GeForce RTX 4070 SUPER",score:62},
+  {name:"NVIDIA GeForce RTX 4070 Ti SUPER",score:70},
+  {name:"NVIDIA GeForce RTX 4080 SUPER",score:82},
+  {name:"NVIDIA GeForce RTX 4090",score:90},
+  {name:"NVIDIA GeForce RTX 5070",score:68},
+  {name:"NVIDIA GeForce RTX 5070 Ti",score:82},
+  {name:"NVIDIA GeForce RTX 5080",score:92},
+  {name:"NVIDIA GeForce RTX 5090",score:100},
+  {name:"AMD Radeon RX 6600",score:30},
+  {name:"AMD Radeon RX 6700 XT",score:45},
+  {name:"AMD Radeon RX 7600",score:34},
+  {name:"AMD Radeon RX 7800 XT",score:60},
+  {name:"AMD Radeon RX 7900 XTX",score:84},
+  {name:"AMD Radeon RX 9070 XT",score:85},
+  {name:"Intel Arc B580",score:40}
+];
+
+function fill(id, data) {
+  const s = document.getElementById(id);
+  data.forEach((x, i) => {
+    const o = document.createElement("option");
+    o.value = i;
+    o.textContent = x.name;
+    s.appendChild(o);
+  });
+}
+fill("cpuSelect", CPUs);
+fill("gpuSelect", GPUs);
+
+function calculate() {
+  const cpu = CPUs[+document.getElementById("cpuSelect").value];
+  const gpu = GPUs[+document.getElementById("gpuSelect").value];
+  const resMul = +document.getElementById("resolution").value;
+  const presetMul = +document.getElementById("preset").value;
+  const gameType = document.getElementById("gameType").value;
+
+  let cpuWeight = 0.35, gpuWeight = 0.65;
+  if (gameType === "esports") { cpuWeight = 0.55; gpuWeight = 0.45; }
+  if (gameType === "mixed") { cpuWeight = 0.40; gpuWeight = 0.60; }
+
+  const baseRef = 180;
+  const cpuContrib = (cpu.score / 100) * baseRef * cpuWeight;
+  const gpuContrib = (gpu.score / 100) * baseRef * gpuWeight;
+
+  let avg = Math.min(cpuContrib / cpuWeight, gpuContrib / gpuWeight) * resMul * presetMul;
+  avg = Math.max(15, Math.round(avg));
+
+  const low = Math.max(10, Math.round(avg * 0.75));
+  const frameTime = (1000 / avg).toFixed(1) + " ms";
+
+  const cpuLoad = cpuContrib / (cpuContrib + gpuContrib);
+  let limiter = "Balanced";
+  if (cpuLoad > 0.58) limiter = "CPU";
+  else if (cpuLoad < 0.42) limiter = "GPU";
+
+  let rating = "Playable", cls = "warn";
+  if (avg >= 144) { rating = "Excellent / High Refresh"; cls = "good"; }
+  else if (avg >= 90) { rating = "Great / Smooth"; cls = "good"; }
+  else if (avg >= 60) { rating = "Good / Playable"; cls = "good"; }
+  else if (avg >= 40) { rating = "Acceptable"; cls = "warn"; }
+  else { rating = "Low / Struggle"; cls = "bad"; }
+
+  document.getElementById("avgFps").textContent = avg;
+  document.getElementById("lowFps").textContent = low;
+  document.getElementById("limiter").textContent = limiter;
+  document.getElementById("frameTime").textContent = frameTime;
+  const pill = document.getElementById("ratingPill");
+  pill.textContent = rating;
+  pill.className = "pill " + cls;
+  document.getElementById("result").classList.add("show");
+}
+</script>
+</body>
+</html>
