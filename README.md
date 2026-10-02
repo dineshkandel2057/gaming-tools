@@ -1,3 +1,3 @@
 # gaming-tools
 
-SystemFit PC tools — write access test.
+SystemFit PC tools — write access confirmed.
