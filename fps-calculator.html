@@ -220,68 +220,87 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 <script>
 /* Popular games with demand profile (gpuBias 0-1, higher = more GPU heavy) */
 const GAMES = [
-  {name:"Counter-Strike 2", gpuBias:0.35, base:280},
-  {name:"Valorant", gpuBias:0.30, base:320},
+  {name:"Counter-Strike 2", gpuBias:0.30, base:420},
+  {name:"Valorant", gpuBias:0.25, base:500},
   {name:"Fortnite", gpuBias:0.45, base:220},
-  {name:"League of Legends", gpuBias:0.30, base:300},
-  {name:"Apex Legends", gpuBias:0.50, base:180},
+  {name:"League of Legends", gpuBias:0.25, base:450},
+  {name:"Apex Legends", gpuBias:0.50, base:200},
   {name:"Call of Duty: Warzone", gpuBias:0.55, base:160},
-  {name:"Overwatch 2", gpuBias:0.40, base:240},
-  {name:"Rainbow Six Siege", gpuBias:0.40, base:230},
-  {name:"Minecraft (Java)", gpuBias:0.35, base:260},
-  {name:"Roblox", gpuBias:0.30, base:250},
-  {name:"GTA V", gpuBias:0.55, base:150},
-  {name:"GTA VI (est.)", gpuBias:0.70, base:90},
-  {name:"Cyberpunk 2077", gpuBias:0.75, base:95},
-  {name:"Alan Wake 2", gpuBias:0.78, base:85},
-  {name:"Black Myth: Wukong", gpuBias:0.72, base:100},
-  {name:"Elden Ring", gpuBias:0.60, base:120},
-  {name:"Red Dead Redemption 2", gpuBias:0.68, base:105},
-  {name:"Hogwarts Legacy", gpuBias:0.70, base:100},
-  {name:"Starfield", gpuBias:0.65, base:110},
-  {name:"The Witcher 3", gpuBias:0.60, base:130},
-  {name:"Assassin's Creed Valhalla", gpuBias:0.65, base:115},
-  {name:"Forza Horizon 5", gpuBias:0.60, base:140},
-  {name:"Microsoft Flight Simulator", gpuBias:0.55, base:90},
-  {name:"Baldur's Gate 3", gpuBias:0.50, base:130},
-  {name:"Destiny 2", gpuBias:0.55, base:150},
-  {name:"Destiny 2 (Raids)", gpuBias:0.60, base:130},
-  {name:"World of Warcraft", gpuBias:0.45, base:160},
-  {name:"Final Fantasy XIV", gpuBias:0.50, base:140},
-  {name:"Path of Exile 2", gpuBias:0.55, base:130},
-  {name:"Diablo IV", gpuBias:0.58, base:135},
-  {name:"Monster Hunter Wilds", gpuBias:0.70, base:95},
-  {name:"Resident Evil 4 Remake", gpuBias:0.62, base:125},
-  {name:"Spider-Man Remastered", gpuBias:0.65, base:130},
-  {name:"God of War", gpuBias:0.63, base:125},
-  {name:"Horizon Forbidden West", gpuBias:0.68, base:110}
+  {name:"Overwatch 2", gpuBias:0.40, base:280},
+  {name:"Rainbow Six Siege", gpuBias:0.40, base:260},
+  {name:"Minecraft (Java)", gpuBias:0.35, base:300},
+  {name:"Roblox", gpuBias:0.30, base:280},
+  {name:"GTA V", gpuBias:0.55, base:160},
+  {name:"GTA VI (est.)", gpuBias:0.72, base:85},
+  {name:"Cyberpunk 2077", gpuBias:0.75, base:110},
+  {name:"Alan Wake 2", gpuBias:0.78, base:95},
+  {name:"Black Myth: Wukong", gpuBias:0.72, base:105},
+  {name:"Elden Ring", gpuBias:0.60, base:130},
+  {name:"Red Dead Redemption 2", gpuBias:0.68, base:115},
+  {name:"Hogwarts Legacy", gpuBias:0.70, base:105},
+  {name:"Starfield", gpuBias:0.65, base:115},
+  {name:"The Witcher 3", gpuBias:0.60, base:140},
+  {name:"Assassin's Creed Valhalla", gpuBias:0.65, base:120},
+  {name:"Forza Horizon 5", gpuBias:0.60, base:150},
+  {name:"Microsoft Flight Simulator", gpuBias:0.55, base:95},
+  {name:"Baldur's Gate 3", gpuBias:0.50, base:140},
+  {name:"Destiny 2", gpuBias:0.55, base:160},
+  {name:"World of Warcraft", gpuBias:0.45, base:180},
+  {name:"Final Fantasy XIV", gpuBias:0.50, base:150},
+  {name:"Path of Exile 2", gpuBias:0.55, base:140},
+  {name:"Diablo IV", gpuBias:0.58, base:145},
+  {name:"Monster Hunter Wilds", gpuBias:0.70, base:100},
+  {name:"Resident Evil 4 Remake", gpuBias:0.62, base:135},
+  {name:"Spider-Man Remastered", gpuBias:0.65, base:140},
+  {name:"God of War", gpuBias:0.63, base:135},
+  {name:"Horizon Forbidden West", gpuBias:0.68, base:120}
 ];
 
 const CPUs = [
-  {name:"Intel Core i3-12100F",score:42},{name:"Intel Core i5-12400F",score:51},
-  {name:"Intel Core i5-13400F",score:65},{name:"Intel Core i5-14400F",score:66},
-  {name:"Intel Core i5-14600K",score:73},{name:"Intel Core i7-13700K",score:76},
-  {name:"Intel Core i7-14700K",score:76},{name:"Intel Core i9-13900K",score:77},
-  {name:"Intel Core i9-14900K",score:78},{name:"AMD Ryzen 5 5600",score:52},
-  {name:"AMD Ryzen 5 7600",score:61},{name:"AMD Ryzen 5 9600X",score:72},
-  {name:"AMD Ryzen 7 5700X3D",score:72},{name:"AMD Ryzen 7 5800X3D",score:76},
-  {name:"AMD Ryzen 7 7800X3D",score:86},{name:"AMD Ryzen 7 9800X3D",score:97},
-  {name:"AMD Ryzen 7 9850X3D",score:100},{name:"AMD Ryzen 9 7950X3D",score:84},
+  {name:"Intel Core i3-12100F",score:40},
+  {name:"Intel Core i5-12400F",score:50},
+  {name:"Intel Core i5-13400F",score:62},
+  {name:"Intel Core i5-14400F",score:64},
+  {name:"Intel Core i5-14600K",score:72},
+  {name:"Intel Core i7-13700K",score:75},
+  {name:"Intel Core i7-14700K",score:76},
+  {name:"Intel Core i9-13900K",score:77},
+  {name:"Intel Core i9-14900K",score:78},
+  {name:"AMD Ryzen 5 5600",score:50},
+  {name:"AMD Ryzen 5 7600",score:60},
+  {name:"AMD Ryzen 5 9600X",score:70},
+  {name:"AMD Ryzen 7 5700X3D",score:70},
+  {name:"AMD Ryzen 7 5800X3D",score:74},
+  {name:"AMD Ryzen 7 7800X3D",score:86},
+  {name:"AMD Ryzen 7 9800X3D",score:97},
+  {name:"AMD Ryzen 7 9850X3D",score:100},
+  {name:"AMD Ryzen 9 7950X3D",score:84},
   {name:"AMD Ryzen 9 9950X3D",score:96}
 ];
 
 const GPUs = [
-  {name:"NVIDIA GeForce GTX 1660 SUPER",score:22},{name:"NVIDIA GeForce RTX 3060 12GB",score:33},
-  {name:"NVIDIA GeForce RTX 3060 Ti",score:42},{name:"NVIDIA GeForce RTX 3070",score:48},
-  {name:"NVIDIA GeForce RTX 4060",score:35},{name:"NVIDIA GeForce RTX 4060 Ti",score:42},
-  {name:"NVIDIA GeForce RTX 4070",score:55},{name:"NVIDIA GeForce RTX 4070 SUPER",score:62},
-  {name:"NVIDIA GeForce RTX 4070 Ti SUPER",score:70},{name:"NVIDIA GeForce RTX 4080 SUPER",score:82},
-  {name:"NVIDIA GeForce RTX 4090",score:90},{name:"NVIDIA GeForce RTX 5070",score:68},
-  {name:"NVIDIA GeForce RTX 5070 Ti",score:82},{name:"NVIDIA GeForce RTX 5080",score:92},
-  {name:"NVIDIA GeForce RTX 5090",score:100},{name:"AMD Radeon RX 6600",score:30},
-  {name:"AMD Radeon RX 6700 XT",score:45},{name:"AMD Radeon RX 7600",score:34},
-  {name:"AMD Radeon RX 7800 XT",score:60},{name:"AMD Radeon RX 7900 XTX",score:84},
-  {name:"AMD Radeon RX 9070 XT",score:85},{name:"Intel Arc B580",score:40}
+  {name:"NVIDIA GeForce GTX 1660 SUPER",score:18},
+  {name:"NVIDIA GeForce RTX 3060 12GB",score:28},
+  {name:"NVIDIA GeForce RTX 3060 Ti",score:36},
+  {name:"NVIDIA GeForce RTX 3070",score:42},
+  {name:"NVIDIA GeForce RTX 4060",score:32},
+  {name:"NVIDIA GeForce RTX 4060 Ti",score:38},
+  {name:"NVIDIA GeForce RTX 4070",score:48},
+  {name:"NVIDIA GeForce RTX 4070 SUPER",score:54},
+  {name:"NVIDIA GeForce RTX 4070 Ti SUPER",score:62},
+  {name:"NVIDIA GeForce RTX 4080 SUPER",score:75},
+  {name:"NVIDIA GeForce RTX 4090",score:88},
+  {name:"NVIDIA GeForce RTX 5070",score:58},
+  {name:"NVIDIA GeForce RTX 5070 Ti",score:70},
+  {name:"NVIDIA GeForce RTX 5080",score:80},
+  {name:"NVIDIA GeForce RTX 5090",score:100},
+  {name:"AMD Radeon RX 6600",score:26},
+  {name:"AMD Radeon RX 6700 XT",score:38},
+  {name:"AMD Radeon RX 7600",score:30},
+  {name:"AMD Radeon RX 7800 XT",score:52},
+  {name:"AMD Radeon RX 7900 XTX",score:76},
+  {name:"AMD Radeon RX 9070 XT",score:74},
+  {name:"Intel Arc B580",score:34}
 ];
 
 function fill(id, arr, key){
@@ -300,9 +319,11 @@ function run(){
   const gpuW = g.gpuBias;
   const cpuW = 1 - gpuW;
 
-  // Scale hardware scores against game base demand
-  const cpuPart = (cpu.score/100) * g.base * (0.7 + cpuW*0.6);
-  const gpuPart = (gpu.score/100) * g.base * (0.7 + gpuW*0.6);
+  // Hardware contribution scaled to real-world relative scores
+  const cpuFactor = Math.pow(cpu.score/100, 0.85);
+  const gpuFactor = Math.pow(gpu.score/100, 0.90);
+  const cpuPart = cpuFactor * g.base * (0.55 + cpuW*0.7);
+  const gpuPart = gpuFactor * g.base * (0.55 + gpuW*0.7);
   let avg = Math.min(cpuPart, gpuPart) * res * preset;
   avg = Math.max(12, Math.round(avg));
 
