@@ -109,7 +109,7 @@
     }
 
     /* Guide UX enhancements */
-    .reading-progress{position:fixed;top:0;left:0;width:0;height:3px;z-index:2000;background:linear-gradient(90deg,#a892ff,#69caff);box-shadow:0 0 14px rgba(105,202,255,.35);transition:width .08s linear}
+    
     .article-header>*{opacity:0;transform:translateY(12px);animation:guideHeroIn .55s ease forwards}
     .article-header .eyebrow{animation-delay:.05s}.article-header h1{animation-delay:.12s}.article-header .article-intro{animation-delay:.19s}.article-header .meta{animation-delay:.26s}
     @keyframes guideHeroIn{to{opacity:1;transform:none}}
@@ -144,37 +144,9 @@
 </head>
 
 <body>
-<div class="reading-progress" aria-hidden="true"></div>
 
-<div class="sfp-site-header">
-  <div class="nav">
-    <a id="brand-logo" href="index.html" aria-label="SystemFit PC home">
-      <span class="brand-monogram">S<span>F</span></span>
-      <span class="brand-wordmark"><span class="brand-system">System</span><span class="brand-fit">Fit</span><span class="brand-pc">PC</span></span>
-    </a>
-    <nav aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <details class="tool-dropdown">
-        <summary>Tools</summary>
-        <div class="tool-menu">
-          <div class="tool-menu-label">Available now</div>
-          <a class="tool-menu-item" href="bottleneck.html"><span class="tool-menu-icon cpu-menu-icon">CPU</span><span><b>Bottleneck Calculator</b><small>Check CPU &amp; GPU balance</small></span><span class="tool-menu-arrow">→</span></a>
-          <a class="tool-menu-item" href="fps-calculator.html"><span class="tool-menu-icon fps-menu-icon">FPS</span><span><b>FPS Calculator</b><small>Estimate gaming performance</small></span><span class="tool-menu-arrow">→</span></a>
-          <a class="tool-menu-item" href="build-planner.html"><span class="tool-menu-icon build-menu-icon">PC</span><span><b>PC Build Planner</b><small>Plan your components</small></span><span class="tool-menu-arrow">→</span></a>
-          <a class="tool-menu-item" href="gpu-comparison.html"><span class="tool-menu-icon compare-menu-icon">GPU</span><span><b>GPU Comparison</b><small>Compare graphics cards</small></span><span class="tool-menu-arrow">→</span></a>
-          <div class="tool-menu-label planned-label">Coming soon</div>
-          <div class="tool-menu-item"><span class="tool-menu-icon">RAM</span><span><b>RAM Calculator</b><small>Memory planning tool</small></span><span class="soon-tag">SOON</span></div>
-          <div class="tool-menu-item"><span class="tool-menu-icon">PSU</span><span><b>PSU Calculator</b><small>Power supply planning</small></span><span class="soon-tag">SOON</span></div>
-        </div>
-      </details>
-      <a href="guides.html">Guides</a>
-      <a href="index.html#about">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</div>
-
-
+<div id="site-header"></div>
+  
 <main>
 
   <header class="article-header">
@@ -531,16 +503,6 @@
     });
   });
 
-  const progress=document.querySelector(".reading-progress");
-  const updateProgress=()=>{
-    if(!progress)return;
-    const doc=document.documentElement;
-    const max=doc.scrollHeight-window.innerHeight;
-    progress.style.width=(max>0?(window.scrollY/max)*100:0)+"%";
-  };
-  addEventListener("scroll",updateProgress,{passive:true});
-  addEventListener("resize",updateProgress);
-  updateProgress();
 
   const items=document.querySelectorAll(".reveal");
   if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
