@@ -79,6 +79,13 @@
     .tool-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
     .tool-link{display:block;padding:16px;border:1px solid var(--border);border-radius:14px;background:rgba(19,25,39,.7);transition:transform .2s,border-color .2s}
     .tool-link:hover{transform:translateY(-2px);border-color:rgba(146,128,255,.44)}
+
+    .tool-link{display:flex;align-items:center;gap:12px}
+    .tool-link-icon{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);font:700 10px "Space Grotesk",sans-serif}
+    .tool-link-icon.build{background:rgba(68,212,150,.12);color:#71e5b0}
+    .tool-link-icon.cpu{background:rgba(137,111,255,.16);color:#c2adff}
+    .tool-link-icon.fps{background:rgba(72,182,255,.12);color:#77cbff}
+    .tool-link-copy{min-width:0}
     .tool-link b{display:block;margin-bottom:4px;color:#f4f6fb}.tool-link span{font-size:12px;color:#96a3b9}
     .faq{padding:18px 0;border-top:1px solid rgba(157,174,204,.13)}
     .faq h3{margin:0 0 7px;font-size:19px}
@@ -100,11 +107,73 @@
       main{padding-left:15px;padding-right:15px}
       .quick-answer{padding:20px}
     }
+
+    /* Guide UX enhancements */
+    .reading-progress{position:fixed;top:0;left:0;width:0;height:3px;z-index:2000;background:linear-gradient(90deg,#a892ff,#69caff);box-shadow:0 0 14px rgba(105,202,255,.35);transition:width .08s linear}
+    .article-header>*{opacity:0;transform:translateY(12px);animation:guideHeroIn .55s ease forwards}
+    .article-header .eyebrow{animation-delay:.05s}.article-header h1{animation-delay:.12s}.article-header .article-intro{animation-delay:.19s}.article-header .meta{animation-delay:.26s}
+    @keyframes guideHeroIn{to{opacity:1;transform:none}}
+    .quick-answer{position:relative;overflow:hidden}
+    .quick-answer:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,#a892ff,#69caff);opacity:.9}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.is-visible{opacity:1;transform:none}
+    .accordion{margin-top:42px}.accordion.reveal{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:border-color .25s ease,background .25s ease;opacity:0;transform:translateY(24px)}.accordion.reveal.is-visible{opacity:1;transform:none}
+    .accordion-item{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:border-color .25s ease,background .25s ease}
+    .accordion-item:has(.accordion-trigger[aria-expanded="true"]){border-color:rgba(157,139,255,.28);background:rgba(19,25,39,.52)}
+    .accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;background:none;border:0;color:var(--text);font:700 30px/1.2 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em;text-align:left;cursor:pointer}
+    .accordion-trigger:focus-visible{outline:2px solid #8f7dff;outline-offset:5px;border-radius:6px}
+    .accordion-icon{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border:1px solid rgba(157,174,204,.18);border-radius:50%;color:#b9aaff;font:500 22px/1 "DM Sans",sans-serif;transition:transform .3s ease,background .3s ease,border-color .3s ease}
+    .accordion-trigger[aria-expanded="true"] .accordion-icon{transform:rotate(45deg);background:rgba(118,95,255,.12);border-color:rgba(157,139,255,.35)}
+    .accordion-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .42s cubic-bezier(.2,.75,.25,1),opacity .3s ease;opacity:0}
+    .accordion-panel-inner{min-height:0;overflow:hidden;padding:0 22px}
+    .accordion-panel-inner>*:last-child{margin-bottom:24px}
+    .accordion-panel.open{grid-template-rows:1fr;opacity:1}
+    .table-wrap table tbody tr{transition:background .2s ease}
+    .table-wrap table tbody tr:hover{background:rgba(118,95,255,.06)}
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .article-header>*{animation:none;opacity:1;transform:none}
+      .reveal{transition:none;opacity:1;transform:none}
+      .accordion-panel{transition:none}
+      .accordion-icon{transition:none}
+    }
+    @media(max-width:700px){
+      .accordion-trigger{font-size:24px}
+    }
   </style>
 </head>
 
 <body>
-<div id="site-header"></div>
+<div class="reading-progress" aria-hidden="true"></div>
+
+<div class="sfp-site-header">
+  <div class="nav">
+    <a id="brand-logo" href="index.html" aria-label="SystemFit PC home">
+      <span class="brand-monogram">S<span>F</span></span>
+      <span class="brand-wordmark"><span class="brand-system">System</span><span class="brand-fit">Fit</span><span class="brand-pc">PC</span></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <details class="tool-dropdown">
+        <summary>Tools</summary>
+        <div class="tool-menu">
+          <div class="tool-menu-label">Available now</div>
+          <a class="tool-menu-item" href="bottleneck.html"><span class="tool-menu-icon cpu-menu-icon">CPU</span><span><b>Bottleneck Calculator</b><small>Check CPU &amp; GPU balance</small></span><span class="tool-menu-arrow">→</span></a>
+          <a class="tool-menu-item" href="fps-calculator.html"><span class="tool-menu-icon fps-menu-icon">FPS</span><span><b>FPS Calculator</b><small>Estimate gaming performance</small></span><span class="tool-menu-arrow">→</span></a>
+          <a class="tool-menu-item" href="build-planner.html"><span class="tool-menu-icon build-menu-icon">PC</span><span><b>PC Build Planner</b><small>Plan your components</small></span><span class="tool-menu-arrow">→</span></a>
+          <a class="tool-menu-item" href="gpu-comparison.html"><span class="tool-menu-icon compare-menu-icon">GPU</span><span><b>GPU Comparison</b><small>Compare graphics cards</small></span><span class="tool-menu-arrow">→</span></a>
+          <div class="tool-menu-label planned-label">Coming soon</div>
+          <div class="tool-menu-item"><span class="tool-menu-icon">RAM</span><span><b>RAM Calculator</b><small>Memory planning tool</small></span><span class="soon-tag">SOON</span></div>
+          <div class="tool-menu-item"><span class="tool-menu-icon">PSU</span><span><b>PSU Calculator</b><small>Power supply planning</small></span><span class="soon-tag">SOON</span></div>
+        </div>
+      </details>
+      <a href="guides.html">Guides</a>
+      <a href="index.html#about">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</div>
+
 
 <main>
 
@@ -114,8 +183,6 @@
     <p class="article-intro">16GB vs 32GB vs 64GB — a practical guide to choosing the right amount of system memory for gaming, streaming, multitasking and demanding workloads.</p>
     <p class="meta">Updated October 2026 · SystemFit PC</p>
   </header>
-
-  <article>
 
   <article>
     <div class="quick-answer">
@@ -134,8 +201,13 @@
       </div>
     </div>
 
-    <section>
-      <h2>Is 16GB Enough for Gaming in 2026?</h2>
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>Is 16GB Enough for Gaming in 2026?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p><strong>Yes, for many gamers.</strong></p>
       <p>A 16GB system can still run a large number of modern PC games without a problem. If your game and background applications fit comfortably within your available memory, moving to 32GB may not produce a large increase in average FPS.</p>
       <p>That matters because <strong>more RAM does not automatically mean more FPS</strong>. If a game already has enough memory, adding more capacity does not magically make the CPU or GPU faster.</p>
@@ -147,10 +219,17 @@
         <li>Gamers who keep background applications to a minimum</li>
         <li>Existing PCs that already perform well</li>
       </ul>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Is 32GB Better for Gaming?</h2>
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>Is 32GB Better for Gaming?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p><strong>For a new gaming PC, 32GB is the safer choice.</strong></p>
       <p>The main advantage is not necessarily dramatically higher average FPS. Instead, 32GB gives Windows, your game and background applications more memory headroom.</p>
       <p>That can be useful when you're:</p>
@@ -162,10 +241,17 @@
         <li>Multitasking heavily while gaming</li>
       </ul>
       <p>That's why 32GB is a particularly sensible target for a new mid-range or high-end gaming PC.</p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>16GB vs 32GB: Does More RAM Increase FPS?</h2>
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>16GB vs 32GB: Does More RAM Increase FPS?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p><strong>Usually, not by a huge amount.</strong></p>
       <p>If a game already has enough memory available, increasing RAM capacity may have little effect on average FPS. The difference becomes more useful when the game and your other software are putting pressure on available memory.</p>
       <p>In those situations, additional RAM can help with:</p>
@@ -177,10 +263,17 @@
         <li>Heavy multitasking</li>
       </ul>
       <div class="callout"><strong>Think of 32GB as headroom, not a guaranteed FPS upgrade.</strong> If your 16GB system is not running out of memory, adding RAM alone may not noticeably improve gaming performance.</div>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>What About 64GB RAM?</h2>
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>What About 64GB RAM?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>For gaming alone, <strong>64GB is usually unnecessary</strong>.</p>
       <p>It can make sense if your PC is also used for memory-heavy work such as:</p>
       <ul>
@@ -193,10 +286,17 @@
         <li>Gaming while running several demanding applications</li>
       </ul>
       <p>If your PC is primarily a gaming machine, the money saved by choosing 32GB instead of 64GB may be better spent on a stronger CPU, GPU or other component, depending on your build.</p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>How Much RAM Do You Need for 1080p, 1440p and 4K Gaming?</h2>
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>How Much RAM Do You Need for 1080p, 1440p and 4K Gaming?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>You may hear that 4K gaming requires more RAM than 1080p. That's an oversimplification.</p>
       <p><strong>Resolution primarily increases the workload on your GPU.</strong> System RAM requirements depend more on the game, operating system, background applications, settings, mods and overall workload.</p>
       <div class="table-wrap">
@@ -214,10 +314,17 @@
         </table>
       </div>
       <p>These are practical recommendations, not hard requirements. A well-configured 16GB gaming PC can still provide an excellent experience.</p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>How Do You Know If You Need More RAM?</h2>
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>How Do You Know If You Need More RAM?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>Don't upgrade just because someone online says you need 32GB. <strong>Check your actual memory usage first.</strong></p>
       <ol>
         <li>Start your game.</li>
@@ -229,16 +336,30 @@
       <p>If your system regularly gets very close to its available memory while gaming and you experience stuttering or other memory-related problems, additional RAM may help.</p>
       <p>However, stuttering can also come from CPU limitations, GPU limitations, VRAM limits, storage performance, drivers or game optimization. <strong>Don't automatically blame RAM.</strong></p>
       <p>Not sure which component is limiting your system? Try the <a href="bottleneck.html" style="color:#a18bff;font-weight:700">SystemFit PC Bottleneck Calculator</a>.</p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>RAM Capacity vs RAM Speed</h2>
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>RAM Capacity vs RAM Speed</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>RAM capacity isn't the only specification that matters. You'll also see terms such as DDR4, DDR5, MT/s and memory latency.</p>
       <p>For a gaming PC, you want a sensible balance between <strong>capacity and memory speed</strong>. But if your workload is already approaching the limit of 16GB, having enough capacity can be more important than chasing small differences in memory specifications.</p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Should You Buy One RAM Stick or Two?</h2>
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>Should You Buy One RAM Stick or Two?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>For most desktop gaming PCs, a matched pair of compatible memory modules is preferable to relying on a single stick.</p>
       <p>Common examples are:</p>
       <ul>
@@ -247,10 +368,17 @@
       </ul>
       <p>Using two compatible modules allows supported desktop platforms to use dual-channel memory configurations, which can provide more memory bandwidth than a single-module setup.</p>
       <p>Always check your motherboard's memory compatibility and recommended configuration before buying.</p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>How Much RAM Should You Buy for a New Gaming PC?</h2>
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>How Much RAM Should You Buy for a New Gaming PC?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <h3>Choose 16GB if:</h3>
       <ul>
         <li>You're building on a tight budget.</li>
@@ -277,9 +405,11 @@
         <li>You use virtual machines.</li>
         <li>You regularly run several demanding applications simultaneously.</li>
       </ul>
+        </div>
+      </div>
     </section>
 
-    <section>
+    <section class="reveal">
       <h2>Final Verdict</h2>
       <p><strong>16GB is not dead.</strong> For many gamers, 16GB remains perfectly usable in 2026.</p>
       <p>However, if you're buying RAM for a <strong>new mid-range or high-end gaming PC</strong>, 32GB is the better long-term choice because it provides more headroom for modern games, background applications, streaming and demanding workloads.</p>
@@ -288,43 +418,79 @@
       <p>Build around your actual workload and budget.</p>
 
       <div class="tool-links">
-        <a class="tool-link" href="build-planner.html"><b>PC Build Planner →</b><span>Plan your components and check compatibility.</span></a>
-        <a class="tool-link" href="bottleneck.html"><b>Bottleneck Calculator →</b><span>Check your CPU and GPU balance.</span></a>
-        <a class="tool-link" href="fps-calculator.html"><b>FPS Calculator →</b><span>Estimate gaming performance.</span></a>
+        <a class="tool-link" href="build-planner.html"><span class="tool-link-icon build" aria-hidden="true">PC</span><span class="tool-link-copy"><b>PC Build Planner →</b><span>Plan your components and check compatibility.</span></span></a>
+        <a class="tool-link" href="bottleneck.html"><span class="tool-link-icon cpu" aria-hidden="true">CPU</span><span class="tool-link-copy"><b>Bottleneck Calculator →</b><span>Check your CPU and GPU balance.</span></span></a>
+        <a class="tool-link" href="fps-calculator.html"><span class="tool-link-icon fps" aria-hidden="true">FPS</span><span class="tool-link-copy"><b>FPS Calculator →</b><span>Estimate gaming performance.</span></span></a>
       </div>
     </section>
 
-    <section>
+    <section class="reveal">
       <h2>Frequently Asked Questions</h2>
 
-      <div class="faq">
-        <h3>Is 16GB RAM enough for gaming in 2026?</h3>
-        <p>Yes. 16GB is still enough for many games and remains a practical option for budget and mainstream gaming PCs.</p>
+      <div class="faq accordion-item">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Is 16GB RAM enough for gaming in 2026?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+            <p>Yes. 16GB is still enough for many games and remains a practical option for budget and mainstream gaming PCs.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="faq">
-        <h3>Is 32GB RAM overkill for gaming?</h3>
-        <p>Not for a new mid-range or high-end gaming PC. Many games can run well with 16GB, but 32GB provides more headroom for demanding games, multitasking, streaming and mods.</p>
+      <div class="faq accordion-item">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Is 32GB RAM overkill for gaming?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+            <p>Not for a new mid-range or high-end gaming PC. Many games can run well with 16GB, but 32GB provides more headroom for demanding games, multitasking, streaming and mods.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="faq">
-        <h3>Does 32GB RAM increase FPS?</h3>
-        <p>Not necessarily. If 16GB is already sufficient for a game, average FPS may change very little. Additional RAM becomes more useful when the system is approaching its memory limit.</p>
+      <div class="faq accordion-item">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Does 32GB RAM increase FPS?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+            <p>Not necessarily. If 16GB is already sufficient for a game, average FPS may change very little. Additional RAM becomes more useful when the system is approaching its memory limit.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="faq">
-        <h3>Is 64GB RAM necessary for gaming?</h3>
-        <p>Usually not. 64GB is mainly useful when gaming is combined with memory-heavy workloads such as video editing, virtual machines or other professional applications.</p>
+      <div class="faq accordion-item">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Is 64GB RAM necessary for gaming?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+            <p>Usually not. 64GB is mainly useful when gaming is combined with memory-heavy workloads such as video editing, virtual machines or other professional applications.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="faq">
-        <h3>Does 1440p gaming require more RAM than 1080p?</h3>
-        <p>Not necessarily. Higher resolution primarily increases GPU workload. System RAM requirements depend more on the game, applications, settings and workload.</p>
+      <div class="faq accordion-item">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Does 1440p gaming require more RAM than 1080p?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+            <p>Not necessarily. Higher resolution primarily increases GPU workload. System RAM requirements depend more on the game, applications, settings and workload.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="faq">
-        <h3>How can I check my RAM usage?</h3>
-        <p>Open Windows Task Manager with <strong>Ctrl + Shift + Esc</strong>, then go to <strong>Performance → Memory</strong>. Check memory usage while playing your normal games.</p>
+      <div class="faq accordion-item">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>How can I check my RAM usage?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+            <p>Open Windows Task Manager with <strong>Ctrl + Shift + Esc</strong>, then go to <strong>Performance → Memory</strong>. Check memory usage while playing your normal games.</p>
+          </div>
+        </div>
       </div>
     </section>
   </article>
@@ -336,7 +502,62 @@
 </footer>
 
 <script>
-(()=>{const dropdown=document.querySelector(".tool-dropdown");if(!dropdown)return;const summary=dropdown.querySelector("summary");let pinned=false;let closeTimer;const closeMenu=()=>{clearTimeout(closeTimer);if(!dropdown.open)return;dropdown.open=false};dropdown.addEventListener("pointerenter",()=>{clearTimeout(closeTimer);if(!pinned)dropdown.open=true});dropdown.addEventListener("pointerleave",()=>{if(!pinned)closeTimer=setTimeout(closeMenu,210)});summary.addEventListener("click",event=>{event.preventDefault();clearTimeout(closeTimer);if(pinned){pinned=false;closeMenu()}else{pinned=true;dropdown.open=true}});document.addEventListener("pointerdown",event=>{if(!dropdown.contains(event.target)){pinned=false;closeMenu()}});document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dropdown.open){pinned=false;closeMenu();summary.focus()}});dropdown.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{pinned=false;closeMenu()}))})();
+(()=>{
+  const dropdown=document.querySelector(".tool-dropdown");
+  if(dropdown){
+    const summary=dropdown.querySelector("summary");
+    let pinned=false,closeTimer;
+    const closeMenu=()=>{clearTimeout(closeTimer);if(!dropdown.open)return;dropdown.open=false};
+    dropdown.addEventListener("pointerenter",()=>{clearTimeout(closeTimer);if(!pinned)dropdown.open=true});
+    dropdown.addEventListener("pointerleave",()=>{if(!pinned)closeTimer=setTimeout(closeMenu,210)});
+    summary.addEventListener("click",event=>{event.preventDefault();clearTimeout(closeTimer);if(pinned){pinned=false;closeMenu()}else{pinned=true;dropdown.open=true}});
+    document.addEventListener("pointerdown",event=>{if(!dropdown.contains(event.target)){pinned=false;closeMenu()}});
+    document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dropdown.open){pinned=false;closeMenu();summary.focus()}});
+    dropdown.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{pinned=false;closeMenu()}));
+  }
+
+  document.querySelectorAll(".accordion-trigger").forEach(trigger=>{
+    trigger.addEventListener("click",()=>{
+      const panel=trigger.nextElementSibling;
+      const open=trigger.getAttribute("aria-expanded")==="true";
+      trigger.setAttribute("aria-expanded",String(!open));
+      if(open){
+        panel.classList.remove("open");
+        panel.addEventListener("transitionend",()=>{if(!panel.classList.contains("open"))panel.hidden=true},{once:true});
+      }else{
+        panel.hidden=false;
+        requestAnimationFrame(()=>panel.classList.add("open"));
+      }
+    });
+  });
+
+  const progress=document.querySelector(".reading-progress");
+  const updateProgress=()=>{
+    if(!progress)return;
+    const doc=document.documentElement;
+    const max=doc.scrollHeight-window.innerHeight;
+    progress.style.width=(max>0?(window.scrollY/max)*100:0)+"%";
+  };
+  addEventListener("scroll",updateProgress,{passive:true});
+  addEventListener("resize",updateProgress);
+  updateProgress();
+
+  const items=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.08,rootMargin:"0px 0px -40px 0px"});
+    items.forEach(item=>observer.observe(item));
+  }else{
+    items.forEach(item=>item.classList.add("is-visible"));
+  }
+})();
 </script>
-<script src="header.js" defer></script>`r`n</body>
+<script src="header.js" defer></script>
+</body>
 </html>
