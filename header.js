@@ -241,14 +241,14 @@ body::-webkit-scrollbar-thumb:hover {
       z-index: 1001;
       top: calc(100% + 12px);
       right: 0;
-      width: min(355px,calc(100vw - 28px));
-      max-height: min(70vh,560px);
+      width: min(410px,calc(100vw - 28px));
+      max-height: min(70vh,620px);
       overflow: auto;
-      padding: 10px;
-      border: 1px solid rgba(157,174,204,.2);
-      border-radius: 16px;
-      background: rgba(13,18,29,.96);
-      box-shadow: 0 24px 70px rgba(0,0,0,.48);
+      padding: 12px;
+      border: 1px solid rgba(157,174,204,.22);
+      border-radius: 18px;
+      background: linear-gradient(145deg,rgba(24,31,49,.98),rgba(10,15,26,.98));
+      box-shadow: 0 28px 80px rgba(0,0,0,.52),inset 0 1px 0 rgba(255,255,255,.045);
       backdrop-filter: blur(22px);
       -webkit-backdrop-filter: blur(22px);
       transform-origin: top right;
@@ -289,19 +289,14 @@ body::-webkit-scrollbar-thumb:hover {
       text-transform: uppercase;
     }
 
-    .sfp-menu-label.planned {
-      margin-top: 7px;
-      border-top: 1px solid rgba(157,174,204,.12);
-      padding-top: 14px;
-    }
-
-    .sfp-tool-item {
+        .sfp-tool-item {
       display: flex;
       align-items: center;
-      gap: 11px;
-      padding: 10px;
+      gap: 13px;
+      padding: 12px;
+      min-height: 70px;
       border: 1px solid transparent;
-      border-radius: 11px;
+      border-radius: 14px;
       color: #edf1f9;
       text-decoration: none;
       transition:
@@ -311,8 +306,10 @@ body::-webkit-scrollbar-thumb:hover {
 
     .sfp-tool-item:hover,
     .sfp-tool-item:focus-visible {
-      background: rgba(118,95,255,.13);
-      border-color: rgba(151,132,255,.25);
+      background: linear-gradient(100deg,rgba(118,95,255,.16),rgba(68,168,226,.08));
+      border-color: rgba(151,132,255,.3);
+      box-shadow: 0 10px 24px rgba(0,0,0,.16);
+      transform: translateY(-1px);
       outline: none;
     }
 
@@ -330,13 +327,21 @@ body::-webkit-scrollbar-thumb:hover {
       flex: 1;
     }
 
+    .sfp-tool-icon svg {
+      width: 25px;
+      height: 25px;
+      display: block;
+    }
+
     .sfp-tool-icon {
-      width: 36px;
-      height: 36px;
-      flex: 0 0 36px;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
       display: grid;
       place-items: center;
-      border-radius: 10px;
+      border-radius: 13px;
+      border: 1px solid rgba(255,255,255,.07);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
       background: rgba(255,255,255,.06);
       color: #b6c2d8;
       font: 700 10px "Space Grotesk",sans-serif;
@@ -344,17 +349,19 @@ body::-webkit-scrollbar-thumb:hover {
 
     .sfp-tool-item b {
       display: block;
-      font-size: 12px;
+      font-size: 14px;
       line-height: 1.35;
-      font-weight: 700;
+      font-weight: 750;
+      letter-spacing: -.01em;
+      color: #f5f7fc;
     }
 
     .sfp-tool-item small {
       display: block;
-      margin-top: 3px;
-      color: #96a3b9;
-      font-size: 10px;
-      line-height: 1.3;
+      margin-top: 4px;
+      color: #9eabc0;
+      font-size: 11px;
+      line-height: 1.4;
     }
 
     .sfp-arrow {
@@ -362,16 +369,7 @@ body::-webkit-scrollbar-thumb:hover {
       font-size: 15px;
     }
 
-    .sfp-soon {
-      padding: 4px 7px;
-      border: 1px solid rgba(157,174,204,.13);
-      border-radius: 999px;
-      color: #8c99af;
-      font-size: 9px;
-      font-weight: 700;
-    }
-
-    .sfp-cpu {
+        .sfp-cpu {
       background: rgba(137,111,255,.16);
       color: #c2adff;
     }
@@ -386,22 +384,7 @@ body::-webkit-scrollbar-thumb:hover {
       color: #71e5b0;
     }
 
-    .sfp-upgrade {
-      background: rgba(255,170,98,.12);
-      color: #ffc080;
-    }
-
-    .sfp-compare {
-      background: rgba(255,126,145,.12);
-      color: #ff9baa;
-    }
-
-    .sfp-power {
-      background: rgba(255,204,92,.12);
-      color: #ffda7d;
-    }
-
-    @media(max-width:800px) {
+                @media(max-width:800px) {
       .sfp-nav {
         min-height: auto;
         padding: 15px;
@@ -434,6 +417,7 @@ body::-webkit-scrollbar-thumb:hover {
 
       .sfp-tool-menu {
         right: 0;
+        width: min(410px,calc(100vw - 20px));
       }
     }
 
@@ -507,13 +491,13 @@ body::-webkit-scrollbar-thumb:hover {
             <div class="sfp-tool-menu" aria-label="Tools">
 
               <p class="sfp-menu-label">
-                Available now
+                PC Tools
               </p>
 
               ${toolLink(
                 "bottleneck.html",
                 "sfp-cpu",
-                "CPU",
+                `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2.5" stroke="currentColor" stroke-width="1.7"/><rect x="9" y="9" width="6" height="6" rx="1.2" fill="currentColor" opacity=".35" stroke="currentColor" stroke-width="1.4"/><path d="M9 2.8v2.4M12 2.8v2.4M15 2.8v2.4M9 18.8v2.4M12 18.8v2.4M15 18.8v2.4M2.8 9h2.4M2.8 12h2.4M2.8 15h2.4M18.8 9h2.4M18.8 12h2.4M18.8 15h2.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
                 "CPU &amp; GPU Bottleneck",
                 "Compare your components",
                 current === "bottleneck.html"
@@ -522,7 +506,7 @@ body::-webkit-scrollbar-thumb:hover {
               ${toolLink(
                 "build-planner.html",
                 "sfp-build",
-                "PC",
+                `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8.4 5.2 3.1 3.1 2.2-2.2-3.1-3.1a5.2 5.2 0 0 0-6.1 6.1l3.2-1 3.6 3.6-4.9 4.9a2.1 2.1 0 1 0 3 3l4.9-4.9 3.6 3.6-1 3.2a5.2 5.2 0 0 0 6.1-6.1l-3.1-3.1-2.2 2.2 3.1 3.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
                 "PC Build Planner",
                 "Check component fit and power",
                 current === "build-planner.html"
@@ -531,7 +515,7 @@ body::-webkit-scrollbar-thumb:hover {
               ${toolLink(
                 "gpu-comparison.html",
                 "sfp-compare",
-                "GPU",
+                `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="17" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M20 10h2M20 14h2M6 18v2M9 18v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
                 "GPU Comparison",
                 "Compare up to five graphics cards",
                 current === "gpu-comparison.html"
@@ -540,45 +524,11 @@ body::-webkit-scrollbar-thumb:hover {
               ${toolLink(
                 "fps-calculator.html",
                 "sfp-fps",
-                "FPS",
+                `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 17V7M4 7h8M4 12h7M14 17V7h6M14 7h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m8 20 2.2-2.4L12 19l2.2-2.4L16 18l2.2-2.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".55"/></svg>`,
                 "FPS Calculator",
                 "Estimate performance",
                 current === "fps-calculator.html"
               )}
-
-              <p class="sfp-menu-label planned">
-                Coming soon
-              </p>
-
-              <div class="sfp-tool-item">
-                <span class="sfp-tool-icon sfp-upgrade"
-                      aria-hidden="true">↑</span>
-                <span>
-                  <b>Upgrade Planner</b>
-                  <small>Find your next upgrade</small>
-                </span>
-                <span class="sfp-soon">Soon</span>
-              </div>
-
-              <div class="sfp-tool-item">
-                <span class="sfp-tool-icon sfp-compare"
-                      aria-hidden="true">↔</span>
-                <span>
-                  <b>CPU &amp; GPU Compare</b>
-                  <small>Compare hardware directly</small>
-                </span>
-                <span class="sfp-soon">Soon</span>
-              </div>
-
-              <div class="sfp-tool-item">
-                <span class="sfp-tool-icon sfp-power"
-                      aria-hidden="true">W</span>
-                <span>
-                  <b>PSU Power Guide</b>
-                  <small>Estimate power needs</small>
-                </span>
-                <span class="sfp-soon">Soon</span>
-              </div>
 
             </div>
           </details>
