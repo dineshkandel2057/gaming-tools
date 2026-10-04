@@ -154,6 +154,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 </head>
 <body>
 <div id="site-header"></div>
+<script src="header.js"></script>
 
 <main class="wrap">
 <section class="card">
@@ -191,8 +192,8 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       <div>
         <label>Gaming Resolution</label>
         <select id="resolution">
-          <option value="" disabled selected>— Select a gaming resolution —</option>
-          <option value="720">1280 × 720 (720p)</option>
+    <option value="" disabled selected>— Select a gaming resolution —</option>
+    <option value="720">1280 × 720 (720p)</option>
           <option value="1080">1920 × 1080 (1080p)</option>
           <option value="1440">2560 × 1440 (1440p)</option>
           <option value="2160">3840 × 2160 (4K)</option>
@@ -202,8 +203,8 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       <div>
         <label>Game Type</label>
         <select id="gameType">
-          <option value="" disabled selected>— Select a game type —</option>
-          <option value="esports">Esports / Competitive</option>
+    <option value="" disabled selected>— Select a game type —</option>
+    <option value="esports">Esports / Competitive</option>
           <option value="balanced">Mixed / General Gaming</option>
           <option value="aaa">AAA / Story Games</option>
           <option value="cpu">CPU-Heavy / Simulation</option>
@@ -213,8 +214,8 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       <div>
         <label>Target FPS</label>
         <select id="targetFps">
-          <option value="" disabled selected>— Select target FPS —</option>
-          <option>60 FPS</option>
+    <option value="" disabled selected>— Select target FPS —</option>
+    <option>60 FPS</option>
           <option>120 FPS</option>
           <option>144 FPS</option>
           <option>165 FPS</option>
@@ -2563,11 +2564,15 @@ function setBar(id,val,textId,num){
  document.getElementById(textId).textContent=Math.round(num)+"%";
 }
 
+/* Keep the tools menu easy to dismiss by mouse and keyboard. */
+document.addEventListener("click",event=>document.querySelectorAll(".tool-dropdown[open]").forEach(menu=>{if(!menu.contains(event.target))menu.removeAttribute("open")}));
+document.addEventListener("keydown",event=>{if(event.key==="Escape")document.querySelectorAll(".tool-dropdown[open]").forEach(menu=>{menu.removeAttribute("open");menu.querySelector("summary").focus()})});
 </script>
 <script>
 (()=>{const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduce)return;document.addEventListener("click",event=>{const link=event.target.closest("a[href]");if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target||link.hasAttribute("download"))return;const url=new URL(link.href,location.href);if(url.origin!==location.origin||url.pathname===location.pathname||!["/index.html","/bottleneck.html","/build-planner.html"].some(path=>url.pathname.endsWith(path)))return;event.preventDefault();document.body.classList.add("page-leave");setTimeout(()=>location.assign(url.href),145)})})();
+</script><script>
+(()=>{const dropdown=document.querySelector(".tool-dropdown");if(!dropdown)return;const summary=dropdown.querySelector("summary");let pinned=false;let closeTimer;const closeDelay=210;const cancelClose=()=>{clearTimeout(closeTimer);dropdown.classList.remove("is-closing")};const closeMenu=()=>{cancelClose();if(!dropdown.open)return;dropdown.classList.add("is-closing");closeTimer=setTimeout(()=>{dropdown.open=false;dropdown.classList.remove("is-closing")},150)};dropdown.addEventListener("pointerenter",()=>{cancelClose();if(!pinned)dropdown.open=true});dropdown.addEventListener("pointerleave",()=>{if(!pinned){clearTimeout(closeTimer);closeTimer=setTimeout(closeMenu,closeDelay)}});summary.addEventListener("click",event=>{event.preventDefault();cancelClose();if(pinned){pinned=false;closeMenu()}else{pinned=true;dropdown.open=true}});document.addEventListener("pointerdown",event=>{if(!dropdown.contains(event.target)){pinned=false;closeMenu()}});document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dropdown.open){pinned=false;closeMenu();summary.focus()}});dropdown.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{pinned=false;closeMenu()}));dropdown.addEventListener("focusout",event=>{if(!dropdown.contains(event.relatedTarget)&&!pinned)closeMenu()})})();
 </script>
-<script src="header.js"></script>
 </body>
 </html>
 
