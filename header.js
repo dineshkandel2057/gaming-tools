@@ -128,18 +128,25 @@ body::-webkit-scrollbar-thumb:hover {
     .sfp-monogram {
       width: 36px;
       height: 36px;
-      flex: 0 0 36px;
-      display: block;
-      border-radius: 10px;
-      overflow: hidden;
-      line-height: 0;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(159,142,255,.38);
+      border-radius: 12px;
+      background: linear-gradient(
+        145deg,
+        rgba(119,94,255,.3),
+        rgba(63,179,231,.15)
+      );
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.12),
+        0 5px 18px rgba(73,62,170,.16);
+      font: 800 12px/1 "Space Grotesk","DM Sans",sans-serif;
+      letter-spacing: -.09em;
+      color: #f8f7ff;
     }
 
-    .sfp-monogram img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
+    .sfp-monogram span {
+      color: #86dcff;
     }
 
     .sfp-wordmark {
@@ -397,8 +404,7 @@ body::-webkit-scrollbar-thumb:hover {
       .sfp-monogram {
         width: 32px;
         height: 32px;
-        flex-basis: 32px;
-        border-radius: 9px;
+        border-radius: 10px;
       }
 
       .sfp-wordmark {
@@ -456,7 +462,7 @@ body::-webkit-scrollbar-thumb:hover {
            aria-label="SystemFit PC home">
 
           <span class="sfp-monogram" aria-hidden="true">
-            <img src="systemfit-logo.png" alt="">
+            S<span>F</span>
           </span>
 
           <span class="sfp-wordmark">
@@ -555,15 +561,6 @@ body::-webkit-scrollbar-thumb:hover {
     style.id = "sfp-header-style";
     style.textContent = headerCSS;
     document.head.appendChild(style);
-
-    let favicon = document.querySelector('link[rel="icon"]');
-    if (!favicon) {
-      favicon = document.createElement("link");
-      favicon.rel = "icon";
-      document.head.appendChild(favicon);
-    }
-    favicon.type = "image/png";
-    favicon.href = "systemfit-favicon.png";
 
     host.outerHTML = markup;
 
