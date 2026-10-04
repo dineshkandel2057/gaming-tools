@@ -58,6 +58,43 @@ body::-webkit-scrollbar-thumb:hover {
       }
     }
 
+
+    body > footer {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 26px 22px 30px;
+      border-top: 1px solid rgba(157,174,204,.16);
+      color: #8895aa;
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    body > footer p {
+      margin: 0;
+    }
+
+    body > footer p + p {
+      margin-top: 7px;
+    }
+
+    body > footer a {
+      color: #a892ff;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    body > footer a:hover {
+      color: #fff;
+    }
+
+    @media(max-width:800px) {
+      body > footer {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+
     .sfp-site-header {
       position: sticky;
       top: 0;
@@ -576,6 +613,24 @@ body::-webkit-scrollbar-thumb:hover {
     document.head.appendChild(style);
 
     host.outerHTML = markup;
+
+    // Remove only the accidental literal migration artifact from the page text.
+    const cleanupFooterArtifact = () => {
+      const walker = document.createTreeWalker(
+        document.body,
+        NodeFilter.SHOW_TEXT
+      );
+      const nodes = [];
+      let node;
+      while ((node = walker.nextNode())) nodes.push(node);
+      nodes.forEach((textNode) => {
+        if (textNode.nodeValue.includes("`r`n")) {
+          textNode.nodeValue = textNode.nodeValue.replace(/`r`n/g, "");
+        }
+      });
+    };
+
+    cleanupFooterArtifact();
 
     const progress = document.getElementById("sfpScrollProgress");
 
