@@ -193,7 +193,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
         <label>Gaming Resolution</label>
         <select id="resolution">
     <option value="" disabled selected>— Select a gaming resolution —</option>
-    <option value="720">1280 × 720 (720p)</option>
+          <option value="720">1280 × 720 (720p)</option>
           <option value="1080">1920 × 1080 (1080p)</option>
           <option value="1440">2560 × 1440 (1440p)</option>
           <option value="2160">3840 × 2160 (4K)</option>
@@ -204,7 +204,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
         <label>Game Type</label>
         <select id="gameType">
     <option value="" disabled selected>— Select a game type —</option>
-    <option value="esports">Esports / Competitive</option>
+          <option value="esports">Esports / Competitive</option>
           <option value="balanced">Mixed / General Gaming</option>
           <option value="aaa">AAA / Story Games</option>
           <option value="cpu">CPU-Heavy / Simulation</option>
@@ -215,7 +215,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
         <label>Target FPS</label>
         <select id="targetFps">
     <option value="" disabled selected>— Select target FPS —</option>
-    <option>60 FPS</option>
+          <option>60 FPS</option>
           <option>120 FPS</option>
           <option>144 FPS</option>
           <option>165 FPS</option>
@@ -2573,6 +2573,12 @@ document.addEventListener("keydown",event=>{if(event.key==="Escape")document.que
 </script><script>
 (()=>{const dropdown=document.querySelector(".tool-dropdown");if(!dropdown)return;const summary=dropdown.querySelector("summary");let pinned=false;let closeTimer;const closeDelay=210;const cancelClose=()=>{clearTimeout(closeTimer);dropdown.classList.remove("is-closing")};const closeMenu=()=>{cancelClose();if(!dropdown.open)return;dropdown.classList.add("is-closing");closeTimer=setTimeout(()=>{dropdown.open=false;dropdown.classList.remove("is-closing")},150)};dropdown.addEventListener("pointerenter",()=>{cancelClose();if(!pinned)dropdown.open=true});dropdown.addEventListener("pointerleave",()=>{if(!pinned){clearTimeout(closeTimer);closeTimer=setTimeout(closeMenu,closeDelay)}});summary.addEventListener("click",event=>{event.preventDefault();cancelClose();if(pinned){pinned=false;closeMenu()}else{pinned=true;dropdown.open=true}});document.addEventListener("pointerdown",event=>{if(!dropdown.contains(event.target)){pinned=false;closeMenu()}});document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dropdown.open){pinned=false;closeMenu();summary.focus()}});dropdown.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{pinned=false;closeMenu()}));dropdown.addEventListener("focusout",event=>{if(!dropdown.contains(event.relatedTarget)&&!pinned)closeMenu()})})();
 </script>
+
+
+<footer>
+  <p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
+  <p><a href="privacy-policy.html">Privacy Policy</a></p>
+</footer>
 </body>
 </html>
 
