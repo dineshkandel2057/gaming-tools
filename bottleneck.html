@@ -151,6 +151,24 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 @media(max-width:800px){header .nav{min-height:auto;padding:15px;flex-direction:column;gap:10px}header nav{flex-wrap:wrap;justify-content:center}#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}.tool-dropdown{width:max-content}.tool-menu{left:auto;right:0;transform:none;transform-origin:top right;animation-name:tools-expand-mobile}@keyframes tools-expand-mobile{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}.tool-dropdown.is-closing .tool-menu{animation-name:tools-collapse-mobile}@keyframes tools-collapse-mobile{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}}
 @media(prefers-reduced-motion:reduce){.tool-menu,.tool-dropdown.is-closing .tool-menu{animation:none}.tool-dropdown summary:after{transition:none}}
 </style>
+
+<style id="bottleneck-footer-blend">
+  html {
+    background: var(--bg) !important;
+  }
+  body {
+    min-height: 100vh;
+  }
+  body > footer {
+    border-top: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  body > footer::before {
+    content: none !important;
+  }
+</style>
+
 </head>
 <body>
 <div id="site-header"></div>
