@@ -48,7 +48,7 @@ body::-webkit-scrollbar-thumb:hover {
       pointer-events: none;
       background: linear-gradient(90deg, #a892ff, #69caff);
       box-shadow: 0 0 12px rgba(105,202,255,.28);
-      transform-origin: left center;
+      transform-origin: left center;      transition: width .08s linear;
     }
 
     @media(prefers-reduced-motion:reduce) {
