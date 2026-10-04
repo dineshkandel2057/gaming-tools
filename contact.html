@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact SystemFit PC</title>
+
+<meta name="description"
+content="Contact SystemFit PC for feedback, tool issues, suggestions and general questions.">
+
+<link rel="canonical"
+href="https://systemfitpc.vercel.app/contact.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH7D3F7VV"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-CSH7D3F7VV');
+</script>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #090c14;
+    --panel: rgba(19,25,39,.78);
+    --border: rgba(157,174,204,.16);
+    --text: #f5f7fc;
+    --muted: #aab5c8;
+    --purple: #735dff;
+    --purple2: #a18bff;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            ellipse at 16% 3%,
+            rgba(102,77,255,.18),
+            transparent 34%
+        ),
+        radial-gradient(
+            ellipse at 88% 18%,
+            rgba(33,162,219,.12),
+            transparent 33%
+        ),
+        var(--bg);
+
+    color: var(--text);
+    font-family: "DM Sans", Arial, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* HEADER */
+
+header {
+    border-bottom: 1px solid var(--border);
+    background: rgba(9,12,20,.82);
+    backdrop-filter: blur(18px);
+}
+
+.nav {
+    max-width: 1180px;
+    min-height: 76px;
+    margin: auto;
+    padding: 0 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--purple2);
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+}
+
+nav a {
+    padding: 9px 13px;
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: white;
+    background: rgba(126,105,255,.14);
+}
+
+/* MAIN */
+
+main {
+    max-width: 850px;
+    margin: auto;
+    padding: 80px 22px;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 45px;
+    backdrop-filter: blur(14px);
+}
+
+h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(36px, 5vw, 52px);
+    letter-spacing: -.045em;
+    margin-bottom: 15px;
+}
+
+.intro {
+    color: var(--muted);
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+.section {
+    margin-top: 30px;
+}
+
+.section h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.section p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.contact-box {
+    margin-top: 30px;
+    padding: 24px;
+    border: 1px solid rgba(157,174,204,.14);
+    border-radius: 14px;
+    background: rgba(10,15,25,.58);
+}
+
+.contact-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 18px;
+    border-radius: 9px;
+
+    background: linear-gradient(
+        135deg,
+        #765dff,
+        #604be8
+    );
+
+    font-weight: 700;
+}
+
+.contact-button:hover {
+    background: linear-gradient(
+        135deg,
+        #8c75ff,
+        #735eff
+    );
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 20px;
+    text-align: center;
+    color: #8895aa;
+    font-size: 13px;
+}
+
+footer p + p {
+    margin-top: 8px;
+}
+
+footer a {
+    color: var(--purple2);
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    main {
+        padding: 50px 16px;
+    }
+
+    .card {
+        padding: 28px 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="nav">
+
+        <a href="index.html" class="logo">
+            SystemFit <span>PC</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="bottleneck.html">Bottleneck</a>
+            <a href="build-planner.html">Build Planner</a>
+            <a href="fps-calculator.html">FPS Calculator</a>
+            <a href="gpu-comparison.html">GPU Comparison</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <div class="card">
+
+        <h1>Contact SystemFit PC</h1>
+
+        <p class="intro">
+            Have a suggestion, found an issue with one of our tools,
+            or simply want to get in touch? We'd be happy to hear from you.
+        </p>
+
+
+        <div class="section">
+
+            <h2>Feedback & Tool Issues</h2>
+
+            <p>
+                If you notice incorrect information, a calculator behaving
+                unexpectedly, or anything that could improve SystemFit PC,
+                please let us know.
+            </p>
+
+        </div>
+
+
+        <div class="section">
+
+            <h2>Suggestions</h2>
+
+            <p>
+                Have an idea for a new PC tool or feature?
+                Suggestions are welcome and may help shape future updates
+                to SystemFit PC.
+            </p>
+
+        </div>
+
+
+        <div class="contact-box">
+
+            <h2>Contact us through GitHub</h2>
+
+            <p>
+                You can use the SystemFit PC GitHub repository to report
+                issues, provide feedback, or suggest improvements.
+            </p>
+
+            <a
+                class="contact-button"
+                href="https://github.com/dineshkandel2057/gaming-tools"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Open GitHub Repository
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 SystemFit PC. Practical tools for better PC decisions.
+    </p>
+
+    <p>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </p>
+
+</footer>
+
+</body>
+
+</html>
