@@ -181,10 +181,53 @@
       h2{font-size:25px}
       .decision{grid-template-columns:1fr}
     }
+
+    /* Guide UX enhancements — matched to the approved RAM guide */
+    .reading-progress{position:fixed;top:0;left:0;width:0;height:3px;z-index:2000;background:linear-gradient(90deg,#a892ff,#69caff);box-shadow:0 0 14px rgba(105,202,255,.35);transition:width .08s linear}
+    .article-header>*{opacity:0;transform:translateY(12px);animation:guideHeroIn .55s ease forwards}
+    .article-header .eyebrow{animation-delay:.05s}.article-header h1{animation-delay:.12s}.article-header .dek{animation-delay:.19s}.article-header .meta{animation-delay:.26s}
+    @keyframes guideHeroIn{to{opacity:1;transform:none}}
+    .answer-box{position:relative;overflow:hidden}
+    .answer-box:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,#a892ff,#69caff);opacity:.9}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.is-visible{opacity:1;transform:none}
+    .accordion{margin:14px 0}
+    .accordion.reveal{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:border-color .25s ease,background .25s ease,opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1);opacity:0;transform:translateY(32px)}
+    .accordion.reveal:nth-of-type(2){transition-delay:.04s}.accordion.reveal:nth-of-type(3){transition-delay:.08s}.accordion.reveal:nth-of-type(4){transition-delay:.12s}.accordion.reveal:nth-of-type(5){transition-delay:.16s}.accordion.reveal:nth-of-type(6){transition-delay:.20s}
+    .accordion.reveal.is-visible{opacity:1;transform:translateY(0)}
+    .accordion.reveal:has(.accordion-trigger[aria-expanded="true"]){border-color:rgba(157,139,255,.28);background:rgba(19,25,39,.52)}
+    .accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;background:none;border:0;color:var(--text);font:700 30px/1.2 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em;text-align:left;cursor:pointer}
+    .accordion-trigger:focus-visible{outline:2px solid #8f7dff;outline-offset:5px;border-radius:6px}
+    .accordion-icon{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border:1px solid rgba(157,174,204,.18);border-radius:50%;color:#b9aaff;font:500 22px/1 "DM Sans",sans-serif;transition:transform .3s ease,background .3s ease,border-color .3s ease}
+    .accordion-trigger[aria-expanded="true"] .accordion-icon{transform:rotate(45deg);background:rgba(118,95,255,.12);border-color:rgba(157,139,255,.35)}
+    .accordion-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .42s cubic-bezier(.2,.75,.25,1),opacity .3s ease;opacity:0}
+    .accordion-panel-inner{min-height:0;overflow:hidden;padding:0 22px}
+    .accordion-panel-inner>*:last-child{margin-bottom:24px}
+    .accordion-panel.open{grid-template-rows:1fr;opacity:1}
+    .table-wrap table tbody tr{transition:background .2s ease}
+    .table-wrap table tbody tr:hover{background:rgba(118,95,255,.06)}
+    .tool-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+    .tool-link{display:flex;align-items:center;gap:12px;padding:16px;border:1px solid var(--border);border-radius:14px;background:rgba(19,25,39,.7);transition:transform .2s,border-color .2s}
+    .tool-link:hover{transform:translateY(-2px);border-color:rgba(146,128,255,.44)}
+    .tool-link-icon{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);font:700 10px "Space Grotesk",sans-serif}
+    .tool-link-icon.build{background:rgba(68,212,150,.12);color:#71e5b0}.tool-link-icon.cpu{background:rgba(137,111,255,.16);color:#c2adff}.tool-link-icon.fps{background:rgba(72,182,255,.12);color:#77cbff}
+    .tool-link-copy{min-width:0}
+    .tool-link b{display:block;margin-bottom:4px;color:#f4f6fb}.tool-link span{font-size:12px;color:#96a3b9}
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .article-header>*{animation:none;opacity:1;transform:none}
+      .reveal,.accordion.reveal{transition:none;opacity:1;transform:none}
+      .accordion-panel,.accordion-icon{transition:none}
+    }
+    @media(max-width:700px){
+      .accordion-trigger{font-size:24px}
+      .tool-links{grid-template-columns:1fr}
+    }
   </style>
 </head>
 
 <body>
+  <div class="reading-progress" aria-hidden="true"></div>
   <div id="site-header">
     <header class="sfp-site-header">
       <div class="sfp-nav">
@@ -231,15 +274,27 @@
         <p>There is no universal VRAM requirement. The right amount depends on the game, resolution, graphics settings, ray tracing, texture quality and how long you plan to keep the GPU.</p>
       </div>
 
-      <section>
-        <h2>What Is VRAM?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>What Is VRAM?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>VRAM, or video memory, is the dedicated memory built into a graphics card. The GPU uses it to store textures, shaders, frame buffers and other graphics data needed to render a game.</p>
         <p>VRAM is different from your normal system RAM. Your PC might have 16GB or 32GB of system memory while your graphics card has 8GB, 12GB or 16GB of VRAM.</p>
         <p>If you want to understand the other side of the memory equation, see our guide to <a class="internal-link" href="how-much-ram-for-gaming-2026.html">how much RAM you need for gaming in 2026</a>.</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>How Much VRAM Do You Need for Gaming?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>How Much VRAM Do You Need for Gaming?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>These are practical targets rather than strict minimum requirements:</p>
 
         <div class="table-wrap">
@@ -259,27 +314,48 @@
         </div>
 
         <p>Current 2026 guidance broadly places 8GB around the 1080p baseline, 12GB as a comfortable mainstream target for 1440p, and 16GB as a stronger choice for demanding higher-resolution gaming. Actual requirements still vary substantially by game and settings.</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>Is 8GB VRAM Enough in 2026?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Is 8GB VRAM Enough in 2026?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p><strong>Yes, in some situations.</strong> An 8GB graphics card is not automatically obsolete. It can still make sense for 1080p esports, older games and many mainstream titles, particularly when you're willing to adjust texture quality or other settings.</p>
         <p>The problem is that 8GB gives you less room for modern AAA games at high settings. When a game needs more VRAM than the GPU has available, performance can become much less consistent.</p>
 
         <div class="callout"><strong>Think of 8GB as a usable entry point, not a universal recommendation.</strong> If you're buying a new GPU for several years of modern AAA gaming, paying a reasonable premium for more VRAM can make sense.</div>
 
         <p>Recent testing illustrates the range. Tom's Hardware found an 8GB RTX 5060 Ti could perform very similarly to its 16GB counterpart at 1080p medium, while the gap grew at higher settings and resolutions. In its 21-game testing, the 8GB model was 18% slower on average at 1440p Ultra and 42% slower at 4K Ultra. Ray-tracing games showed particularly large differences. citeturn0search7</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>Is 12GB VRAM the Sweet Spot?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Is 12GB VRAM the Sweet Spot?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p><strong>For many new gaming PCs, 12GB is a very sensible middle ground.</strong></p>
         <p>It gives a modern GPU substantially more memory headroom than an 8GB card without automatically pushing you into the highest-priced graphics cards. For 1440p gaming, 12GB is a particularly reasonable target.</p>
         <p>But don't choose a GPU based on VRAM capacity alone. A faster 8GB GPU can outperform a slower 12GB GPU when the game fits comfortably inside 8GB. GPU architecture, processing performance, memory bandwidth, upscaling support and price all matter.</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>Is 16GB VRAM Worth It?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Is 16GB VRAM Worth It?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p><strong>16GB becomes more attractive as your graphics workload becomes more demanding.</strong></p>
         <ul>
           <li>1440p at high or ultra settings</li>
@@ -290,10 +366,17 @@
         </ul>
         <p>Forza Horizon 6 provides a good example of why capacity matters. TechSpot found the 16GB RTX 5060 Ti substantially ahead of the 8GB version in demanding settings, including a large performance difference at 1440p with ray tracing. In one extended 1440p test, the 16GB card was dramatically faster than the 8GB model. citeturn0search2</p>
         <p>That does not mean every game will show a huge difference. It means that once a workload actually exceeds the available VRAM, having additional capacity can prevent a major performance and frame-time problem.</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>Does More VRAM Increase FPS?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Does More VRAM Increase FPS?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p><strong>Not automatically.</strong></p>
         <p>More VRAM is best thought of as additional capacity. If a game only needs 7GB and your GPU has 8GB, moving to 16GB does not magically make the GPU's processor twice as fast.</p>
         <p>The benefit appears when the workload needs more memory than the GPU comfortably has available. At that point, you may see:</p>
@@ -305,17 +388,31 @@
           <li>Asset streaming problems or visual pop-in</li>
         </ul>
         <p>TechSpot's 2026 testing shows how severe this can become in some games. In Forza Horizon 6, the 8GB configuration could fall far behind the 16GB model when demanding settings pushed memory requirements beyond 8GB. citeturn0search2</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>What Happens When You Run Out of VRAM?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>What Happens When You Run Out of VRAM?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>Games don't all respond to VRAM limits in exactly the same way. Some reduce texture quality or stream assets through system memory. Others can suffer from severe stuttering or large drops in frame-time consistency.</p>
         <p>That is why a VRAM-limited game can sometimes show a surprisingly high average FPS while still feeling terrible to play. Looking at <strong>1% lows and frame times</strong> can reveal problems that the average FPS number hides.</p>
         <p>System RAM can sometimes provide overflow space, but it is not a replacement for dedicated VRAM. Recent testing has shown that an 8GB GPU paired with more system RAM can reduce some of the worst stuttering, but the 8GB GPU still remains VRAM-limited. citeturn0search3</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>VRAM vs RAM: What's the Difference?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>VRAM vs RAM: What's the Difference?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p><strong>RAM</strong> is your computer's general system memory. It is used by Windows, games, browsers, Discord and other applications.</p>
         <p><strong>VRAM</strong> is memory attached to the graphics card and is primarily used for graphics workloads.</p>
 
@@ -331,35 +428,70 @@
         </div>
 
         <p>Having 32GB of system RAM does not turn an 8GB GPU into a 12GB or 16GB GPU. The two memory pools solve different problems.</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>How Much VRAM Do You Need for 1080p?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>How Much VRAM Do You Need for 1080p?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>For 1080p, <strong>8GB is still usable</strong>, especially for esports and less demanding games. However, modern AAA games can exceed 8GB at high settings, particularly with ray tracing.</p>
         <p>If you're buying a new GPU specifically for 1080p and the price difference is reasonable, <strong>12GB gives you more breathing room</strong>. You don't need 16GB simply because your monitor is 1080p, but it can be useful if you want to keep the GPU for a long time or use demanding settings.</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>How Much VRAM Do You Need for 1440p?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>How Much VRAM Do You Need for 1440p?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p><strong>12GB is a strong target for 1440p gaming.</strong></p>
         <p>8GB can still work if you're willing to adjust settings, but the margin becomes smaller as you move toward ultra textures, ray tracing and demanding new games. 16GB gives additional headroom for those workloads.</p>
         <p>Current 2026 GPU guidance also increasingly places 12GB around the mainstream 1440p target. citeturn0search0turn0search1</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>How Much VRAM Do You Need for 4K?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>How Much VRAM Do You Need for 4K?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>For 4K, <strong>16GB is a sensible target</strong> for a new high-end gaming system, especially if you want high settings and ray tracing.</p>
         <p>However, don't confuse VRAM capacity with overall GPU performance. A 16GB card still needs enough processing power to actually render 4K at your desired frame rate. More memory cannot compensate for a GPU that is simply too slow.</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>Does Ray Tracing Need More VRAM?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Does Ray Tracing Need More VRAM?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>Ray tracing can increase the graphics workload and can also increase memory requirements in some games and settings. This is one reason why an 8GB card can look fine in rasterized 1080p gaming but run into limitations sooner when ray tracing is enabled.</p>
         <p>Tom's Hardware's testing found the 8GB-versus-16GB difference was especially large in its ray-tracing test group at higher settings. citeturn0search7</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>How Can You Check Your VRAM Usage?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>How Can You Check Your VRAM Usage?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>You can monitor dedicated GPU memory while a game is running using Windows Task Manager or a hardware monitoring tool.</p>
         <ol>
           <li>Start the game you want to test.</li>
@@ -369,10 +501,17 @@
           <li>Watch dedicated GPU memory usage while playing.</li>
         </ol>
         <p>Don't treat a single memory number as a guaranteed requirement. Games can reserve or allocate memory differently, and actual performance problems are more useful evidence than a number by itself.</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>Should You Buy 8GB, 12GB or 16GB?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Should You Buy 8GB, 12GB or 16GB?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <div class="decision">
           <div class="decision-card">
             <b>Choose 8GB if...</b>
@@ -391,23 +530,39 @@
             <span>Compare the GPU's actual performance, architecture, features, price and power requirements too.</span>
           </div>
         </div>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>What Should You Upgrade First?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>What Should You Upgrade First?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>If you're already getting poor gaming performance, don't automatically buy a GPU with more VRAM. First find out what is actually limiting your system.</p>
         <p>You can use the <a class="internal-link" href="bottleneck.html">SystemFit PC Bottleneck Calculator</a> to get a starting point, then compare graphics cards with the <a class="internal-link" href="gpu-comparison.html">SystemFit PC GPU Comparison</a>.</p>
         <p>If you're planning a complete new build, the <a class="internal-link" href="build-planner.html">SystemFit PC Build Planner</a> can help you check the rest of the configuration as well.</p>
+          </div>
+        </div>
       </section>
 
-      <section>
+
+      <div class="tool-links reveal">
+        <a class="tool-link" href="build-planner.html"><span class="tool-link-icon build" aria-hidden="true">PC</span><span class="tool-link-copy"><b>PC Build Planner →</b><span>Plan your components and check compatibility.</span></span></a>
+        <a class="tool-link" href="bottleneck.html"><span class="tool-link-icon cpu" aria-hidden="true">CPU</span><span class="tool-link-copy"><b>Bottleneck Calculator →</b><span>Check your CPU and GPU balance.</span></span></a>
+        <a class="tool-link" href="fps-calculator.html"><span class="tool-link-icon fps" aria-hidden="true">FPS</span><span class="tool-link-copy"><b>FPS Calculator →</b><span>Estimate gaming performance.</span></span></a>
+      </div>
+
+      <section class="reveal">
         <h2>Final Verdict</h2>
         <p><strong>8GB is not automatically useless in 2026, but it is becoming a tighter fit for demanding modern games.</strong></p>
         <p>For a new gaming PC, 12GB is a strong mainstream target, particularly for 1440p. If you want higher settings, ray tracing, 4K or more memory headroom for long-term ownership, 16GB is the safer choice.</p>
         <p>The most important rule is simple: <strong>buy enough VRAM for the games and settings you actually want to run, but never judge a graphics card by VRAM capacity alone.</strong></p>
       </section>
 
-      <div class="sources">
+      <div class="sources reveal">
         <p><strong>Research sources:</strong> Tom's Hardware GPU testing and buying guidance; TechSpot 2026 VRAM testing; ASUS 2026 VRAM guidance; AMD's VRAM technical overview.</p>
         <p>These sources were used for technical cross-checking and examples; the recommendations above are SystemFit PC's practical interpretation rather than a manufacturer's buying list.</p>
       </div>
@@ -419,6 +574,49 @@
     <p><a href="privacy-policy.html">Privacy Policy</a></p>
   </footer>
 
-  <script src="header.js" defer></script>
-</body>
+  <script>
+  (()=>{
+    document.querySelectorAll(".accordion-trigger").forEach(trigger=>{
+      trigger.addEventListener("click",()=>{
+        const panel=trigger.nextElementSibling;
+        const open=trigger.getAttribute("aria-expanded")==="true";
+        trigger.setAttribute("aria-expanded",String(!open));
+        if(open){
+          panel.classList.remove("open");
+          panel.addEventListener("transitionend",()=>{if(!panel.classList.contains("open"))panel.hidden=true},{once:true});
+        }else{
+          panel.hidden=false;
+          requestAnimationFrame(()=>panel.classList.add("open"));
+        }
+      });
+    });
+
+    const progress=document.querySelector(".reading-progress");
+    const updateProgress=()=>{
+      if(!progress)return;
+      const doc=document.documentElement;
+      const max=doc.scrollHeight-window.innerHeight;
+      progress.style.width=(max>0?(window.scrollY/max)*100:0)+"%";
+    };
+    addEventListener("scroll",updateProgress,{passive:true});
+    addEventListener("resize",updateProgress);
+    updateProgress();
+
+    const items=document.querySelectorAll(".reveal");
+    if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+      const observer=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },{threshold:.08,rootMargin:"0px 0px -40px 0px"});
+      items.forEach(item=>observer.observe(item));
+    }else{
+      items.forEach(item=>item.classList.add("is-visible"));
+    }
+  })();
+  </script>
+  <script src="header.js" defer></script></body>
 </html>
