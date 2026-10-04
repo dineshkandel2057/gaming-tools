@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-CSH7D3F7VV');
 </script>
 <meta charset="UTF-8">
@@ -15,365 +14,61 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-
 <title>SystemFit PC — Practical PC Planning Tools</title>
-
-<meta name="description"
-content="SystemFit PC offers clear, practical tools for planning and understanding computers for gaming, work and everyday use.">
+<meta name="description" content="SystemFit PC offers clear, practical tools for planning and understanding computers for gaming, work and everyday use.">
 <link rel="canonical" href="https://systemfitpc.vercel.app/">
 
 <style>
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-:root {
-    --bg: #0d0f15;
-    --panel: #171a23;
-    --panel2: #11141c;
-    --border: #2d3240;
-    --text: #f4f6fb;
-    --muted: #a9b0c0;
-    --purple: #6c5cff;
-    --purple2: #806fff;
-    --blue: #35a7ff;
-    --green: #3ed47a;
-    --red: #ff5f6d;
-}
-
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* ================= HEADER ================= */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(13, 15, 21, 0.96);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(10px);
-}
-
-.nav {
-    max-width: 1180px;
-    min-height: 72px;
-    margin: auto;
-    padding: 0 22px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    font-size: 23px;
-    font-weight: 800;
-}
-
-.logo span {
-    color: var(--purple2);
-}
-
-nav {
-    display: flex;
-    gap: 8px;
-}
-
-nav a {
-    color: var(--muted);
-    padding: 9px 13px;
-    border-radius: 8px;
-    font-size: 14px;
-}
-
-nav a:hover,
-nav a.active {
-    color: white;
-    background: #1d202b;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--bg:#0d0f15;--panel:#171a23;--panel2:#11141c;--border:#2d3240;--text:#f4f6fb;--muted:#a9b0c0;--purple:#6c5cff;--purple2:#806fff;--blue:#35a7ff;--green:#3ed47a;--red:#ff5f6d}
+body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.nav{max-width:1180px;min-height:72px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:23px;font-weight:800}.logo span{color:var(--purple2)}
+nav{display:flex;gap:8px}nav a{color:var(--muted);padding:9px 13px;border-radius:8px;font-size:14px}
+nav a:hover,nav a.active{color:white;background:#1d202b}
 
 /* ================= HOMEPAGE ================= */
-
-.home {
-    max-width: 1180px;
-    margin: auto;
-    padding: 90px 22px 70px;
-}
-
-.hero {
-    text-align: center;
-    max-width: 800px;
-    margin: auto;
-}
-
-.hero h1 {
-    font-size: 52px;
-    line-height: 1.1;
-    margin-bottom: 20px;
-}
-
-.hero h1 span {
-    color: var(--purple2);
-}
-
-.hero p {
-    color: var(--muted);
-    font-size: 18px;
-    max-width: 680px;
-    margin: auto;
-}
-
-.hero-buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.primary-button {
-    display: inline-block;
-    padding: 14px 22px;
-    background: var(--purple);
-    border-radius: 9px;
-    font-weight: 800;
-}
-
-.primary-button:hover {
-    background: var(--purple2);
-}
-
-.secondary-button {
-    display: inline-block;
-    padding: 14px 22px;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    color: var(--muted);
-}
-
-.secondary-button:hover {
-    color: white;
-    background: var(--panel);
-}
+.home{max-width:1180px;margin:auto;padding:90px 22px 70px}
+.hero{text-align:center;max-width:800px;margin:auto}.hero h1{font-size:52px;line-height:1.1;margin-bottom:20px}
+.hero h1 span{color:var(--purple2)}.hero p{color:var(--muted);font-size:18px;max-width:680px;margin:auto}
+.hero-buttons{margin-top:30px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.primary-button{display:inline-block;padding:14px 22px;background:var(--purple);border-radius:9px;font-weight:800}
+.primary-button:hover{background:var(--purple2)}
+.secondary-button{display:inline-block;padding:14px 22px;border:1px solid var(--border);border-radius:9px;color:var(--muted)}
+.secondary-button:hover{color:white;background:var(--panel)}
 
 /* ================= TOOLS ================= */
-
-.tools {
-    max-width: 1000px;
-    margin: 70px auto 0;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 28px;
-}
-
-.section-title h2 {
-    font-size: 30px;
-    margin-bottom: 8px;
-}
-
-.section-title p {
-    color: var(--muted);
-}
-
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.tool-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 15px;
-    padding: 25px;
-}
-
-.tool-icon {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #211e3a;
-    border-radius: 11px;
-
-    font-size: 22px;
-    margin-bottom: 18px;
-}
-
-.tool-card h3 {
-    font-size: 21px;
-    margin-bottom: 8px;
-}
-
-.tool-card p {
-    color: var(--muted);
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-
-.tool-button {
-    display: inline-block;
-    padding: 10px 15px;
-    border-radius: 8px;
-    background: var(--purple);
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.tool-button:hover {
-    background: var(--purple2);
-}
-
-.coming-card {
-    opacity: 0.75;
-}
-
-.coming-card .tool-button {
-    background: #282c38;
-    color: #9ca4b5;
-    cursor: default;
-}
+.tools{max-width:1000px;margin:70px auto 0}.section-title{text-align:center;margin-bottom:28px}
+.section-title h2{font-size:30px;margin-bottom:8px}.section-title p{color:var(--muted)}
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.tool-card{background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:25px}
+.tool-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#211e3a;border-radius:11px;font-size:22px;margin-bottom:18px}
+.tool-card h3{font-size:21px;margin-bottom:8px}.tool-card p{color:var(--muted);font-size:14px;margin-bottom:20px}
+.tool-button{display:inline-block;padding:10px 15px;border-radius:8px;background:var(--purple);font-size:14px;font-weight:700}
+.tool-button:hover{background:var(--purple2)}.coming-card{opacity:.75}
+.coming-card .tool-button{background:#282c38;color:#9ca4b5;cursor:default}
 
 /* ================= FOOTER ================= */
-
-footer {
-    border-top: 1px solid var(--border);
-    padding: 30px 20px;
-    text-align: center;
-    color: #737c91;
-    font-size: 13px;
-}
+footer{border-top:1px solid var(--border);padding:30px 20px;text-align:center;color:#737c91;font-size:13px}
 
 /* ================= MOBILE ================= */
 
 /* ================= ABOUT ================= */
-
-.about-section {
-    max-width: 1000px;
-    margin: 20px auto 80px;
-    padding: 34px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 16px;
+.about-section{max-width:1000px;margin:20px auto 80px;padding:34px;background:var(--panel);border:1px solid var(--border);border-radius:16px}
+.about-section .section-title{margin-bottom:24px}
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.about-item{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:20px}
+.about-item h3{font-size:16px;margin-bottom:7px}.about-item p{color:var(--muted);font-size:13px;line-height:1.7}
+.about-intro{color:var(--muted);max-width:760px;margin:-10px auto 0;text-align:center;line-height:1.7}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr}}
+@media(max-width:800px){
+.nav{min-height:auto;padding:15px;flex-direction:column;gap:10px}nav{flex-wrap:wrap;justify-content:center}
+.home{padding-top:60px}.hero h1{font-size:36px}.tools-grid{grid-template-columns:1fr}
+.hardware-grid{grid-template-columns:1fr}.full{grid-column:auto}.score-grid{grid-template-columns:1fr}.details-grid{grid-template-columns:1fr}
+.result-header{flex-direction:column;align-items:flex-start}.calculator-card{padding:18px}
 }
-
-.about-section .section-title {
-    margin-bottom: 24px;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.about-item {
-    background: var(--panel2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-}
-
-.about-item h3 {
-    font-size: 16px;
-    margin-bottom: 7px;
-}
-
-.about-item p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.about-intro {
-    color: var(--muted);
-    max-width: 760px;
-    margin: -10px auto 0;
-    text-align: center;
-    line-height: 1.7;
-}
-
-@media (max-width: 800px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 800px) {
-
-    .nav {
-        min-height: auto;
-        padding: 15px;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .home {
-        padding-top: 60px;
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .tools-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hardware-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .full {
-        grid-column: auto;
-    }
-
-    .score-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .details-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .result-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .calculator-card {
-        padding: 18px;
-    }
-
-}
-
 
 /* SystemFit PC visual refresh */
 :root{--bg:#090c14;--panel:rgba(19,25,39,.78);--panel2:rgba(13,18,29,.9);--border:rgba(157,174,204,.16);--text:#f5f7fc;--muted:#aab5c8;--purple:#735dff;--purple2:#a18bff;--blue:#55b9ff;--green:#5ce0a2;--red:#ff7c71}
@@ -381,19 +76,10 @@ html{scroll-padding-top:88px}
 body{font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 16% 3%,rgba(102,77,255,.18),transparent 34%),radial-gradient(ellipse at 88% 18%,rgba(33,162,219,.12),transparent 33%),var(--bg);color:var(--text)}
 body:before{content:"";position:fixed;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(circle at 70% 60%,rgba(39,102,176,.08),transparent 36%);filter:blur(34px)}
 h1,h2,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
-header{background:rgba(9,12,20,.76);border-color:var(--border);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.nav{min-height:76px}
-.logo{font-size:25px}
-.logo span{color:#a591ff}
-nav a{border:1px solid transparent;transition:background .2s,border-color .2s,color .2s}
-nav a:hover,nav a.active{background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2);color:#fff}
-.home{padding-top:76px}
-.hero{max-width:none;text-align:left;display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.9fr);gap:54px;align-items:center}
-.hero-copy{max-width:610px}
-.hero h1{font-size:clamp(42px,5.4vw,68px);line-height:1.03;letter-spacing:-.065em;margin-bottom:20px}
+.home{padding-top:76px}.hero{max-width:none;text-align:left;display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.9fr);gap:54px;align-items:center}
+.hero-copy{max-width:610px}.hero h1{font-size:clamp(42px,5.4vw,68px);line-height:1.03;letter-spacing:-.065em;margin-bottom:20px}
 .hero h1 span{background:linear-gradient(100deg,#a992ff 10%,#66cbff 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{font-size:18px;line-height:1.75;margin:0;max-width:590px}
-.hero-buttons{justify-content:flex-start}
+.hero p{font-size:18px;line-height:1.75;margin:0;max-width:590px}.hero-buttons{justify-content:flex-start}
 .primary-button,.tool-button{background:linear-gradient(135deg,#765dff,#604be8);box-shadow:0 10px 30px rgba(91,71,225,.22);transition:transform .2s,filter .2s}
 .primary-button:hover,.tool-button:hover{background:linear-gradient(135deg,#8c75ff,#735eff);transform:translateY(-2px)}
 .secondary-button{border-color:var(--border);background:rgba(255,255,255,.025)}
@@ -409,108 +95,60 @@ nav a:hover,nav a.active{background:rgba(126,105,255,.14);border-color:rgba(157,
 .brand-strip{position:relative;display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
 .brand-chip{padding:7px 10px;border:1px solid rgba(160,176,205,.16);border-radius:999px;background:rgba(255,255,255,.035);font-size:10px;font-weight:700;color:#c0cadb}
 .brand-chip.intel{color:#78c7ff}.brand-chip.amd{color:#ff9b83}.brand-chip.nvidia{color:#80e9a9}.brand-chip.radeon{color:#ff858b}.brand-chip.arc{color:#7edbd2}
-.tools{max-width:1120px;margin-top:92px}
-.section-title h2{font-size:clamp(27px,3.2vw,36px);letter-spacing:-.045em}
-.section-title p{font-size:15px}
-.tools-grid{gap:16px}
-.tool-card{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(24,31,47,.82),rgba(15,20,32,.86));border-color:var(--border);border-radius:18px;padding:24px;backdrop-filter:blur(12px);transition:transform .22s,border-color .22s,box-shadow .22s}
+.tools{max-width:1120px;margin-top:92px}.section-title h2{font-size:clamp(27px,3.2vw,36px);letter-spacing:-.045em}.section-title p{font-size:15px}
+.tools-grid{gap:16px}.tool-card{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(24,31,47,.82),rgba(15,20,32,.86));border-color:var(--border);border-radius:18px;padding:24px;backdrop-filter:blur(12px);transition:transform .22s,border-color .22s,box-shadow .22s}
 .tool-card:hover{transform:translateY(-4px);border-color:rgba(146,128,255,.44);box-shadow:0 18px 40px rgba(0,0,0,.22)}
 .tool-card:first-child{background:linear-gradient(145deg,rgba(42,35,78,.7),rgba(16,23,38,.9));border-color:rgba(145,123,255,.31)}
 .tool-icon{width:48px;height:48px;background:rgba(126,105,255,.14);border:1px solid rgba(151,132,255,.2);border-radius:14px}
-.tool-card h3{font-size:20px;letter-spacing:-.025em}
-.tool-card p{line-height:1.75}
-.coming-card{opacity:.82}
+.tool-card h3{font-size:20px;letter-spacing:-.025em}.tool-card p{line-height:1.75}.coming-card{opacity:.82}
 .about-section{margin-top:20px;background:rgba(18,24,37,.72);border-color:var(--border);border-radius:22px;backdrop-filter:blur(14px)}
-.about-item{background:rgba(10,15,25,.58);border-color:rgba(157,174,204,.12);border-radius:14px}
-.about-item h3{color:#e9e5ff}
-.about-item p{line-height:1.75}
-footer{border-color:var(--border);color:#8895aa}
-:focus-visible{outline:2px solid #9b8aff;outline-offset:3px}
+.about-item{background:rgba(10,15,25,.58);border-color:rgba(157,174,204,.12);border-radius:14px}.about-item h3{color:#e9e5ff}.about-item p{line-height:1.75}
+footer{border-color:var(--border);color:#8895aa}:focus-visible{outline:2px solid #9b8aff;outline-offset:3px}
 @media(max-width:800px){.home{padding-top:48px}.hero{grid-template-columns:1fr;gap:32px;text-align:center}.hero-copy{margin:0 auto}.hero p{font-size:16px}.hero-buttons{justify-content:center}.hero-visual{min-height:320px}.visual-components{gap:10px}.component-illustration{min-height:180px}.tools{margin-top:66px}}
 @media(max-width:480px){.hero h1{font-size:41px}.hero-visual{padding:15px;min-height:294px;border-radius:20px}.visual-components{grid-template-columns:.9fr 1.1fr;margin-top:18px}.component-illustration{min-height:160px}.brand-strip{gap:6px}.brand-chip{font-size:9px;padding:6px 8px}.tool-card{padding:20px}}
 
-
 /* Expandable tools menu */
-.tool-dropdown{position:relative}
-.tool-dropdown summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;color:var(--muted);padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;transition:background .2s,border-color .2s,color .2s;user-select:none}
-.tool-dropdown summary::-webkit-details-marker{display:none}
-.tool-dropdown summary:after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s}
-.tool-dropdown[open] summary:after{transform:rotate(225deg) translate(-1px,-1px)}
-.tool-dropdown summary:hover,.tool-dropdown[open] summary,.tool-dropdown.summary-active summary{color:#fff;background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
+.tool-dropdown{position:relative}.tool-dropdown summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;color:var(--muted);padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;transition:background .2s,border-color .2s,color .2s;user-select:none}
+.tool-dropdown summary::-webkit-details-marker{display:none}.tool-dropdown summary:after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s}
+.tool-dropdown[open] summary:after{transform:rotate(225deg) translate(-1px,-1px)}.tool-dropdown summary:hover,.tool-dropdown[open] summary,.tool-dropdown.summary-active summary{color:#fff;background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
 .tool-menu{position:absolute;z-index:1001;top:calc(100% + 12px);left:50%;transform:translateX(-50%);width:min(355px,calc(100vw - 28px));max-height:min(70vh,560px);overflow:auto;padding:10px;border:1px solid rgba(157,174,204,.2);border-radius:16px;background:rgba(13,18,29,.96);box-shadow:0 24px 70px rgba(0,0,0,.48);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);animation:menu-in .16s ease-out}
-@keyframes menu-in{from{opacity:0;transform:translate(-50%,-5px)}to{opacity:1;transform:translate(-50%,0)}}
-.tool-menu-label{padding:8px 10px 6px;color:#8f9db5;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
-.tool-menu-label.planned-label{margin-top:7px;border-top:1px solid rgba(157,174,204,.12);padding-top:14px}
-.tool-menu-item{display:flex;align-items:center;gap:11px;padding:10px;border:1px solid transparent;border-radius:11px;color:#edf1f9;text-decoration:none;transition:background .18s,border-color .18s}
-.tool-menu-item>span:nth-child(2){min-width:0;flex:1}
-.tool-menu-item b{display:block;font-size:12px;line-height:1.35;font-weight:700}
-.tool-menu-item small{display:block;margin-top:3px;color:#96a3b9;font-size:10px;line-height:1.3}
-a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255,.13);border-color:rgba(151,132,255,.25);outline:none}
-.tool-menu-item.current-tool{background:linear-gradient(110deg,rgba(118,95,255,.12),rgba(66,157,210,.07));border-color:rgba(142,128,239,.17)}
-.tool-menu-item.planned-tool{cursor:default;color:#c1cada}
-.tool-menu-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);color:#b6c2d8;font-family:"Space Grotesk",sans-serif;font-size:10px;font-weight:700}
-.cpu-menu-icon{background:rgba(137,111,255,.16);color:#c2adff}.fps-menu-icon{background:rgba(72,182,255,.12);color:#77cbff}.build-menu-icon{background:rgba(68,212,150,.12);color:#71e5b0}.upgrade-menu-icon{background:rgba(255,170,98,.12);color:#ffc080}.compare-menu-icon{background:rgba(255,126,145,.12);color:#ff9baa}.power-menu-icon{background:rgba(255,204,92,.12);color:#ffda7d}
-.tool-menu-arrow{color:#9d8cff;font-size:15px}
+@keyframes menu-in{from{opacity:0;transform:translate(-50%,-5px)}to{opacity:1;transform:translate(-50%,0)}}.tool-menu-label{padding:8px 10px 6px;color:#8f9db5;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+.tool-menu-label.planned-label{margin-top:7px;border-top:1px solid rgba(157,174,204,.12);padding-top:14px}.tool-menu-item{display:flex;align-items:center;gap:11px;padding:10px;border:1px solid transparent;border-radius:11px;color:#edf1f9;text-decoration:none;transition:background .18s,border-color .18s}
+.tool-menu-item>span:nth-child(2){min-width:0;flex:1}.tool-menu-item b{display:block;font-size:12px;line-height:1.35;font-weight:700}.tool-menu-item small{display:block;margin-top:3px;color:#96a3b9;font-size:10px;line-height:1.3}
+a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255,.13);border-color:rgba(151,132,255,.25);outline:none}.tool-menu-item.current-tool{background:linear-gradient(110deg,rgba(118,95,255,.12),rgba(66,157,210,.07));border-color:rgba(142,128,239,.17)}
+.tool-menu-item.planned-tool{cursor:default;color:#c1cada}.tool-menu-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);color:#b6c2d8;font-family:"Space Grotesk",sans-serif;font-size:10px;font-weight:700}
+.cpu-menu-icon{background:rgba(137,111,255,.16);color:#c2adff}.fps-menu-icon{background:rgba(72,182,255,.12);color:#77cbff}.build-menu-icon{background:rgba(68,212,150,.12);color:#71e5b0}.upgrade-menu-icon{background:rgba(255,170,98,.12);color:#ffc080}.compare-menu-icon{background:rgba(255,126,145,.12);color:#ff9baa}.power-menu-icon{background:rgba(255,204,92,.12);color:#ffda7d}.tool-menu-arrow{color:#9d8cff;font-size:15px}
 .soon-tag{padding:4px 7px;border:1px solid rgba(157,174,204,.13);border-radius:999px;color:#8c99af;font-size:9px;font-weight:700}
 @media(max-width:800px){.tool-dropdown{width:max-content}.tool-dropdown summary{padding:8px 11px}.tool-menu{left:auto;right:-60px;transform:none}.tool-menu[open]{transform:none}@keyframes menu-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}}
 @media(prefers-reduced-motion:reduce){.tool-menu{animation:none}.tool-dropdown summary:after{transition:none}}
-
 .build-tool-card{display:block;text-decoration:none!important;background:linear-gradient(145deg,rgba(25,58,66,.72),rgba(15,23,38,.9));border-color:rgba(89,206,176,.24)}
-.build-tool-card .tool-icon{background:rgba(78,214,176,.13);border-color:rgba(78,214,176,.22)}
-.gpu-tool-card{display:block;text-decoration:none!important;background:linear-gradient(145deg,rgba(33,47,78,.78),rgba(15,23,38,.9));border-color:rgba(100,164,255,.27)}
+.build-tool-card .tool-icon{background:rgba(78,214,176,.13);border-color:rgba(78,214,176,.22)}.gpu-tool-card{display:block;text-decoration:none!important;background:linear-gradient(145deg,rgba(33,47,78,.78),rgba(15,23,38,.9));border-color:rgba(100,164,255,.27)}
 .gpu-tool-card .tool-icon{background:rgba(89,158,255,.15);border-color:rgba(100,164,255,.26)}
-.scroll-reveal{transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.2,1),filter .55s ease}.has-scroll-reveal .scroll-reveal{opacity:0;transform:translateY(22px);filter:blur(5px)}.has-scroll-reveal .scroll-reveal.is-visible{opacity:1;transform:translateY(0);filter:blur(0)}@keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}@media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}
+.scroll-reveal{transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.2,1),filter .55s ease}.has-scroll-reveal .scroll-reveal{opacity:0;transform:translateY(22px);filter:blur(5px)}.has-scroll-reveal .scroll-reveal.is-visible{opacity:1;transform:translateY(0);filter:blur(0)}
+@keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}
+body > #site-header{position:relative;z-index:2147483646}
+body > .sfp-scroll-progress{position:fixed!important;top:0!important;left:0!important;right:auto!important;bottom:auto!important;z-index:2147483647!important;transform:none!important}
+body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}
+@media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}
 /* Hover preview and click-pinned tools menu */
-.tool-dropdown{--menu-duration:190ms}
-.tool-menu{transform-origin:top center;animation:tools-expand var(--menu-duration) cubic-bezier(.2,.75,.2,1) both}
-@keyframes tools-expand{from{opacity:0;transform:translateY(-9px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}
-.tool-dropdown.is-closing .tool-menu{animation:tools-collapse 150ms cubic-bezier(.4,0,.8,.5) both}
+.tool-dropdown{--menu-duration:190ms}.tool-menu{transform-origin:top center;animation:tools-expand var(--menu-duration) cubic-bezier(.2,.75,.2,1) both}
+@keyframes tools-expand{from{opacity:0;transform:translateY(-9px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}.tool-dropdown.is-closing .tool-menu{animation:tools-collapse 150ms cubic-bezier(.4,0,.8,.5) both}
 @keyframes tools-collapse{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}
 @media(max-width:800px){.tool-menu{animation-name:tools-expand-mobile}.tool-dropdown.is-closing .tool-menu{animation-name:tools-collapse-mobile}@keyframes tools-expand-mobile{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes tools-collapse-mobile{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}}
 @media(prefers-reduced-motion:reduce){.tool-menu,.tool-dropdown.is-closing .tool-menu{animation:none}}
-
-/* Keep the flyout inside the viewport at the right-hand end of the header */
 .tool-dropdown .tool-menu{left:auto;right:0;transform:none;transform-origin:top right}
-
-/* SystemFit PC wordmark */
 #brand-logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap}
 #brand-logo .brand-monogram{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(159,142,255,.38);border-radius:12px;background:linear-gradient(145deg,rgba(119,94,255,.3),rgba(63,179,231,.15));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 18px rgba(73,62,170,.16);font:800 12px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.09em;color:#f8f7ff}
-#brand-logo .brand-monogram span{color:#86dcff}
-#brand-logo .brand-wordmark{display:inline-flex;align-items:center;font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.055em;color:#f5f7fc}
-#brand-logo .brand-system{color:#f5f7fc}
-#brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+#brand-logo .brand-monogram span{color:#86dcff}#brand-logo .brand-wordmark{display:inline-flex;align-items:center;font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.055em;color:#f5f7fc}
+#brand-logo .brand-system{color:#f5f7fc}#brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}
 #brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
 @media(max-width:800px){#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}}
 </style>
-<style id="homepage-header-system">
-/* Shared SystemFit PC homepage header */
-header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bottom:1px solid rgba(157,174,204,.16);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}header .nav{max-width:1180px;min-height:76px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;flex-direction:row;gap:0}header .logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap;font:700 25px/1 "Space Grotesk","DM Sans",sans-serif}header .logo span{color:#a591ff}header nav{display:flex;align-items:center;gap:8px}header nav>a{color:#aab5c8;padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;text-decoration:none;transition:background .2s,border-color .2s,color .2s}header nav>a:hover,header nav>a.active{background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2);color:#fff}
-#brand-logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap}#brand-logo .brand-monogram{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(159,142,255,.38);border-radius:12px;background:linear-gradient(145deg,rgba(119,94,255,.3),rgba(63,179,231,.15));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 18px rgba(73,62,170,.16);font:800 12px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.09em;color:#f8f7ff}#brand-logo .brand-monogram span{color:#86dcff}#brand-logo .brand-wordmark{display:inline-flex;align-items:center;font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.055em;color:#f5f7fc}#brand-logo .brand-system{color:#f5f7fc!important}#brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}#brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
-.tool-dropdown{position:relative;--menu-duration:190ms}.tool-dropdown summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;color:#aab5c8;padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;transition:background .2s,border-color .2s,color .2s;user-select:none}.tool-dropdown summary::-webkit-details-marker{display:none}.tool-dropdown summary:after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s}.tool-dropdown[open] summary:after{transform:rotate(225deg) translate(-1px,-1px)}.tool-dropdown summary:hover,.tool-dropdown[open] summary,.tool-dropdown.summary-active summary{color:#fff;background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
-.tool-menu{position:absolute;z-index:1001;top:calc(100% + 12px);left:auto;right:0;transform:none;transform-origin:top right;width:min(355px,calc(100vw - 28px));max-height:min(70vh,560px);overflow:auto;padding:10px;border:1px solid rgba(157,174,204,.2);border-radius:16px;background:rgba(13,18,29,.96);box-shadow:0 24px 70px rgba(0,0,0,.48);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);animation:tools-expand 190ms cubic-bezier(.2,.75,.2,1) both}.tool-menu-label{padding:8px 10px 6px;color:#8f9db5;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.tool-menu-label.planned-label{margin-top:7px;border-top:1px solid rgba(157,174,204,.12);padding-top:14px}.tool-menu-item{display:flex;align-items:center;gap:11px;padding:10px;border:1px solid transparent;border-radius:11px;color:#edf1f9;text-decoration:none;transition:background .18s,border-color .18s}.tool-menu-item>span:nth-child(2){min-width:0;flex:1}.tool-menu-item b{display:block;font-size:12px;line-height:1.35;font-weight:700}.tool-menu-item small{display:block;margin-top:3px;color:#96a3b9;font-size:10px;line-height:1.3}a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255,.13);border-color:rgba(151,132,255,.25);outline:none}.tool-menu-item.current-tool{background:linear-gradient(110deg,rgba(118,95,255,.12),rgba(66,157,210,.07));border-color:rgba(142,128,239,.17)}.tool-menu-item.planned-tool{cursor:default;color:#c1cada}.tool-menu-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);color:#b6c2d8;font:700 10px "Space Grotesk",sans-serif}.cpu-menu-icon{background:rgba(137,111,255,.16);color:#c2adff}.fps-menu-icon{background:rgba(72,182,255,.12);color:#77cbff}.build-menu-icon{background:rgba(68,212,150,.12);color:#71e5b0}.upgrade-menu-icon{background:rgba(255,170,98,.12);color:#ffc080}.compare-menu-icon{background:rgba(255,126,145,.12);color:#ff9baa}.power-menu-icon{background:rgba(255,204,92,.12);color:#ffda7d}.tool-menu-arrow{color:#9d8cff;font-size:15px}.soon-tag{padding:4px 7px;border:1px solid rgba(157,174,204,.13);border-radius:999px;color:#8c99af;font-size:9px;font-weight:700}
-@keyframes tools-expand{from{opacity:0;transform:translateY(-9px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}.tool-dropdown.is-closing .tool-menu{animation:tools-collapse 150ms cubic-bezier(.4,0,.8,.5) both}@keyframes tools-collapse{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}
-@media(max-width:800px){header .nav{min-height:auto;padding:15px;flex-direction:column;gap:10px}header nav{flex-wrap:wrap;justify-content:center}#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}.tool-dropdown{width:max-content}.tool-menu{left:auto;right:0;transform:none;transform-origin:top right;animation-name:tools-expand-mobile}@keyframes tools-expand-mobile{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}.tool-dropdown.is-closing .tool-menu{animation-name:tools-collapse-mobile}@keyframes tools-collapse-mobile{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}}
-@media(prefers-reduced-motion:reduce){.tool-menu,.tool-dropdown.is-closing .tool-menu{animation:none}.tool-dropdown summary:after{transition:none}}
-.tools-group-heading{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:7px 0 -5px;padding:11px 14px;border:1px solid rgba(157,174,204,.14);border-radius:12px;background:rgba(13,18,29,.6);color:#f2f5fd;font-weight:800}.tools-group-heading small{color:#96a3b9;font-size:11px;font-weight:500}.tools-group-heading.soon{margin-top:20px}
-</style>
 </head>
-
-
 <body>
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
 <div id="site-header"></div>
 
-
-<!-- =========================================================
-     HOMEPAGE
-========================================================= -->
-
 <section class="home" id="home">
-
 <div class="hero">
   <div class="hero-copy">
     <h1>Plan a Better<br><span>PC Setup</span></h1>
@@ -524,194 +162,53 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
     <div class="visual-top"><span>PC hardware, made clearer</span><span><i class="live-dot"></i>Gaming tools</span></div>
     <div class="visual-components">
       <div class="component-illustration cpu-art">
-        <svg viewBox="0 0 220 190" aria-hidden="true">
-          <defs><linearGradient id="chipMetal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dce8ff"/><stop offset=".45" stop-color="#667998"/><stop offset="1" stop-color="#24334b"/></linearGradient><linearGradient id="chipCore" x1="0" x2="1"><stop stop-color="#a795ff"/><stop offset="1" stop-color="#6cbcff"/></linearGradient></defs>
-          <g stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".75"><path d="M62 29v16M86 23v22M110 20v25M134 23v22M158 29v16M62 145v16M86 145v22M110 145v25M134 145v22M158 145v16M39 52h16M39 76h16M39 100h16M39 124h16M165 52h16M165 76h16M165 100h16M165 124h16"/></g>
-          <rect x="52" y="39" width="116" height="116" rx="17" fill="url(#chipMetal)" stroke="#d7e5ff" stroke-opacity=".55"/>
-          <rect x="68" y="55" width="84" height="84" rx="11" fill="#111a2b" stroke="currentColor" stroke-width="2"/>
-          <rect x="78" y="65" width="64" height="64" rx="8" fill="url(#chipCore)" opacity=".9"/>
-          <path d="M91 84h38M91 95h38M91 106h22" stroke="#131a2c" stroke-width="5" stroke-linecap="round" opacity=".7"/>
-          <circle cx="110" cy="97" r="39" fill="none" stroke="#fff" stroke-opacity=".16"/>
-        </svg>
+        <svg viewBox="0 0 220 190" aria-hidden="true"><defs><linearGradient id="chipMetal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dce8ff"/><stop offset=".45" stop-color="#667998"/><stop offset="1" stop-color="#24334b"/></linearGradient><linearGradient id="chipCore" x1="0" x2="1"><stop stop-color="#a795ff"/><stop offset="1" stop-color="#6cbcff"/></linearGradient></defs><g stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".75"><path d="M62 29v16M86 23v22M110 20v25M134 23v22M158 29v16M62 145v16M86 145v22M110 145v25M134 145v22M158 145v16M39 52h16M39 76h16M39 100h16M39 124h16M165 52h16M165 76h16M165 100h16M165 124h16"/></g><rect x="52" y="39" width="116" height="116" rx="17" fill="url(#chipMetal)" stroke="#d7e5ff" stroke-opacity=".55"/><rect x="68" y="55" width="84" height="84" rx="11" fill="#111a2b" stroke="currentColor" stroke-width="2"/><rect x="78" y="65" width="64" height="64" rx="8" fill="url(#chipCore)" opacity=".9"/><path d="M91 84h38M91 95h38M91 106h22" stroke="#131a2c" stroke-width="5" stroke-linecap="round" opacity=".7"/><circle cx="110" cy="97" r="39" fill="none" stroke="#fff" stroke-opacity=".16"/></svg>
         <span class="visual-caption">Processor</span>
       </div>
       <div class="component-illustration gpu-art">
-        <svg viewBox="0 0 320 190" aria-hidden="true">
-          <defs><linearGradient id="gpuShell" x1="0" x2="1"><stop stop-color="#283b58"/><stop offset=".55" stop-color="#17263d"/><stop offset="1" stop-color="#0e1728"/></linearGradient><radialGradient id="fanGlow"><stop stop-color="#72d9ff" stop-opacity=".25"/><stop offset="1" stop-color="#72d9ff" stop-opacity="0"/></radialGradient></defs>
-          <path d="M36 47h235a17 17 0 0 1 17 17v67a17 17 0 0 1-17 17H36z" fill="url(#gpuShell)" stroke="#8dcfff" stroke-opacity=".6" stroke-width="2"/>
-          <path d="M52 56h191v84H52z" fill="#0e1829" stroke="#5e88b2" stroke-opacity=".55"/>
-          <g fill="url(#fanGlow)" stroke="currentColor" stroke-width="2"><circle cx="107" cy="98" r="31"/><circle cx="188" cy="98" r="31"/></g>
-          <g fill="currentColor" opacity=".83"><path d="M107 73c7 11 8 17 1 24-5 5-11 5-18 1 0-12 5-20 17-25M132 98c-11 7-17 8-24 1-5-5-5-11-1-18 12 0 20 5 25 17M107 123c-7-11-8-17-1-24 5-5 11-5 18-1 0 12-5 20-17 25M82 98c11-7 17-8 24-1 5 5 5 11 1 18-12 0-20-5-25-17M188 73c7 11 8 17 1 24-5 5-11 5-18 1 0-12 5-20 17-25M213 98c-11 7-17 8-24 1-5-5-5-11-1-18 12 0 20 5 25 17M188 123c-7-11-8-17-1-24 5-5 11-5 18-1 0 12-5 20-17 25M163 98c11-7 17-8 24-1 5 5 5 11 1 18-12 0-20-5-25-17"/></g>
-          <circle cx="107" cy="98" r="7" fill="#d9f3ff"/><circle cx="188" cy="98" r="7" fill="#d9f3ff"/>
-          <path d="M282 77h15v50h-15M65 150v10h34v-10" fill="none" stroke="#b7c6da" stroke-width="4"/>
-        </svg>
+        <svg viewBox="0 0 320 190" aria-hidden="true"><defs><linearGradient id="gpuShell" x1="0" x2="1"><stop stop-color="#283b58"/><stop offset=".55" stop-color="#17263d"/><stop offset="1" stop-color="#0e1728"/></linearGradient><radialGradient id="fanGlow"><stop stop-color="#72d9ff" stop-opacity=".25"/><stop offset="1" stop-color="#72d9ff" stop-opacity="0"/></radialGradient></defs><path d="M36 47h235a17 17 0 0 1 17 17v67a17 17 0 0 1-17 17H36z" fill="url(#gpuShell)" stroke="#8dcfff" stroke-opacity=".6" stroke-width="2"/><path d="M52 56h191v84H52z" fill="#0e1829" stroke="#5e88b2" stroke-opacity=".55"/><g fill="url(#fanGlow)" stroke="currentColor" stroke-width="2"><circle cx="107" cy="98" r="31"/><circle cx="188" cy="98" r="31"/></g><g fill="currentColor" opacity=".83"><path d="M107 73c7 11 8 17 1 24-5 5-11 5-18 1 0-12 5-20 17-25M132 98c-11 7-17 8-24 1-5-5-5-11-1-18 12 0 20 5 25 17M107 123c-7-11-8-17-1-24 5-5 11-5 18-1 0 12-5 20-17 25M82 98c11-7 17-8 24-1 5 5 5 11 1 18-12 0-20-5-25-17M188 73c7 11 8 17 1 24-5 5-11 5-18 1 0-12 5-20 17-25M213 98c-11 7-17 8-24 1-5-5-5-11-1-18 12 0 20 5 25 17M188 123c-7-11-8-17-1-24 5-5 11-5 18-1 0 12-5 20-17 25M163 98c11-7 17-8 24-1 5 5 5 11 1 18-12 0-20 5-25-17"/></g><circle cx="107" cy="98" r="7" fill="#d9f3ff"/><circle cx="188" cy="98" r="7" fill="#d9f3ff"/><path d="M282 77h15v50h-15M65 150v10h34v-10" fill="none" stroke="#b7c6da" stroke-width="4"/></svg>
         <span class="visual-caption">Graphics card</span>
       </div>
     </div>
-    <div class="brand-strip" aria-label="Hardware brands">
-      <span class="brand-chip intel">Intel Core</span><span class="brand-chip amd">AMD Ryzen</span>
-      <span class="brand-chip nvidia">GeForce</span><span class="brand-chip radeon">Radeon</span><span class="brand-chip arc">Intel Arc</span>
-    </div>
+    <div class="brand-strip" aria-label="Hardware brands"><span class="brand-chip intel">Intel Core</span><span class="brand-chip amd">AMD Ryzen</span><span class="brand-chip nvidia">GeForce</span><span class="brand-chip radeon">Radeon</span><span class="brand-chip arc">Intel Arc</span></div>
   </div>
 </div>
 
-
 <div class="tools" id="tools">
-
-    <div class="section-title">
-
-        <h2>
-            PC Tools
-        </h2>
-
-        <p>
-            Choose a tool below.
-        </p>
-
-    </div>
-
-
+    <div class="section-title"><h2>PC Tools</h2><p>Choose a tool below.</p></div>
     <div class="tools-grid">
 <div class="tools-group-heading"><span>Available now</span><small>Ready to use</small></div>
-<!-- BOTTLENECK TOOL -->
-
-        <div class="tool-card">
-
-            <div class="tool-icon">
-                ⚙️
-            </div>
-
-            <h3>
-                CPU & GPU Bottleneck Calculator
-            </h3>
-
-            <p>
-                Estimate CPU and GPU workload balance
-                based on your hardware, resolution,
-                game type and target FPS.
-            </p>
-
-            <a href="bottleneck.html" class="tool-button">
-                Open Calculator →
-            </a>
-
-        </div>
-<a href="build-planner.html" class="tool-card build-tool-card">
-            <div class="tool-icon">🧩</div>
-            <h3>PC Build Planner</h3>
-            <p>Choose your parts and get clear checks for motherboard, memory, case fit, cooling and power.</p>
-            <span class="tool-button">Open Build Planner →</span>
-        </a>
-<a href="gpu-comparison.html" class="tool-card gpu-tool-card">
-            <div class="tool-icon">🎨</div>
-            <h3>GPU Comparison Tool</h3>
-            <p>Compare up to five cards side by side, including VRAM, power, workloads and optional local prices.</p>
-            <span class="tool-button">Compare GPUs →</span>
-        </a>
-        <a href="fps-calculator.html" class="tool-card">
-            <div class="tool-icon">📊</div>
-            <h3>FPS Calculator</h3>
-            <p>Estimate gaming FPS based on your hardware, resolution and target settings.</p>
-            <span class="tool-button">Open Tool</span>
-        </a>
+<div class="tool-card"><div class="tool-icon">⚙️</div><h3>CPU &amp; GPU Bottleneck Calculator</h3><p>Estimate CPU and GPU workload balance based on your hardware, resolution, game type and target FPS.</p><a href="bottleneck.html" class="tool-button">Open Calculator →</a></div>
+<a href="build-planner.html" class="tool-card build-tool-card"><div class="tool-icon">🧩</div><h3>PC Build Planner</h3><p>Choose your parts and get clear checks for motherboard, memory, case fit, cooling and power.</p><span class="tool-button">Open Build Planner →</span></a>
+<a href="gpu-comparison.html" class="tool-card gpu-tool-card"><div class="tool-icon">🎨</div><h3>GPU Comparison Tool</h3><p>Compare up to five cards side by side, including VRAM, power, workloads and optional local prices.</p><span class="tool-button">Compare GPUs →</span></a>
+<a href="fps-calculator.html" class="tool-card"><div class="tool-icon">📊</div><h3>FPS Calculator</h3><p>Estimate gaming FPS based on your hardware, resolution and target settings.</p><span class="tool-button">Open Tool</span></a>
 <div class="tools-group-heading soon"><span>Coming soon</span><small>More tools are on the way</small></div>
-<!-- FUTURE TOOLS -->
-
-
-        
-
-        <div class="tool-card coming-card">
-            <div class="tool-icon">💰</div>
-            <h3>PC Upgrade Calculator</h3>
-            <p>Understand which component may be worth upgrading for your gaming setup.</p>
-            <span class="tool-button">Coming Soon</span>
-        </div>
-
-        <div class="tool-card coming-card">
-            <div class="tool-icon">🎮</div>
-            <h3>Game FPS Estimator</h3>
-            <p>Estimate expected performance for games using your selected hardware and settings.</p>
-            <span class="tool-button">Coming Soon</span>
-        </div>
-
-        <div class="tool-card coming-card">
-            <div class="tool-icon">🔌</div>
-            <h3>PSU &amp; Power Calculator</h3>
-            <p>Estimate system power requirements and explore an appropriate PSU capacity.</p>
-            <span class="tool-button">Coming Soon</span>
-        </div>
-
-        <div class="tool-card coming-card">
-            <div class="tool-icon">🧠</div>
-            <h3>CPU Comparison Tool</h3>
-            <p>Compare processors and understand their relative gaming performance.</p>
-            <span class="tool-button">Coming Soon</span>
-        </div>
-</div>
-
-</div>
-
+<div class="tool-card coming-card"><div class="tool-icon">💰</div><h3>PC Upgrade Calculator</h3><p>Understand which component may be worth upgrading for your gaming setup.</p><span class="tool-button">Coming Soon</span></div>
+<div class="tool-card coming-card"><div class="tool-icon">🎮</div><h3>Game FPS Estimator</h3><p>Estimate expected performance for games using your selected hardware and settings.</p><span class="tool-button">Coming Soon</span></div>
+<div class="tool-card coming-card"><div class="tool-icon">🔌</div><h3>PSU &amp; Power Calculator</h3><p>Estimate system power requirements and explore an appropriate PSU capacity.</p><span class="tool-button">Coming Soon</span></div>
+<div class="tool-card coming-card"><div class="tool-icon">🧠</div><h3>CPU Comparison Tool</h3><p>Compare processors and understand their relative gaming performance.</p><span class="tool-button">Coming Soon</span></div>
+</div></div>
 </section>
-
-
-<!-- =========================================================
-     ABOUT PCPILOT
-========================================================= -->
 
 <section class="about-section" id="about">
-
-    <div class="section-title">
-        <h2>About SystemFit PC</h2>
-        <p class="about-intro">SystemFit PC makes computer decisions easier to understand. Our tools turn technical details into practical guidance for first-time builders and experienced PC users alike.</p>
-    </div>
-
+    <div class="section-title"><h2>About SystemFit PC</h2><p class="about-intro">SystemFit PC makes computer decisions easier to understand. Our tools turn technical details into practical guidance for first-time builders and experienced PC users alike.</p></div>
     <div class="about-grid">
-        <div class="about-item">
-            <h3>⚡ Simple &amp; Practical</h3>
-            <p>Clear results and explanations without forcing you to understand complicated hardware terminology first.</p>
-        </div>
-
-        <div class="about-item">
-            <h3>🛠️ Useful for Every PC</h3>
-            <p>Tools support practical decisions about performance, component fit, upgrades, power requirements and more.</p>
-        </div>
-
-        <div class="about-item">
-            <h3>📊 Estimates, Not Guesswork</h3>
-            <p>Where a result is an estimate, SystemFit PC clearly explains the limitations so you can understand what the number actually means.</p>
-        </div>
+        <div class="about-item"><h3>⚡ Simple &amp; Practical</h3><p>Clear results and explanations without forcing you to understand complicated hardware terminology first.</p></div>
+        <div class="about-item"><h3>🛠️ Useful for Every PC</h3><p>Tools support practical decisions about performance, component fit, upgrades, power requirements and more.</p></div>
+        <div class="about-item"><h3>📊 Estimates, Not Guesswork</h3><p>Where a result is an estimate, SystemFit PC clearly explains the limitations so you can understand what the number actually means.</p></div>
     </div>
-
 </section>
 
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-    <p>
-        © 2026 SystemFit PC. Practical tools for better PC decisions.
-    </p>
-
-    <p>
-        <a href="privacy-policy.html">Privacy Policy</a>
-    </p>
-
-</footer>
-
-
-
+<footer><p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p><p><a href="privacy-policy.html">Privacy Policy</a></p></footer>
 
 <script>
 (()=>{const cards=document.querySelectorAll(".tool-card,.about-item");if(!cards.length)return;document.documentElement.classList.add("has-scroll-reveal");if(!("IntersectionObserver"in window)||matchMedia("(prefers-reduced-motion: reduce)").matches){cards.forEach(x=>x.classList.add("scroll-reveal","is-visible"));return}const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target)}}),{threshold:.12,rootMargin:"0px 0px -30px 0px"});cards.forEach((card,index)=>{card.classList.add("scroll-reveal");card.style.transitionDelay=Math.min(index%4,3)*70+"ms";observer.observe(card)})})();
 </script><script>
 (()=>{const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduce)return;document.addEventListener("click",event=>{const link=event.target.closest("a[href]");if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target||link.hasAttribute("download"))return;const url=new URL(link.href,location.href);if(url.origin!==location.origin||url.pathname===location.pathname||!["/index.html","/bottleneck.html","/build-planner.html","/gpu-comparison.html"].some(path=>url.pathname.endsWith(path)))return;event.preventDefault();document.body.classList.add("page-leave");setTimeout(()=>location.assign(url.href),145)});window.addEventListener("pageshow",function(){document.body.classList.remove("page-leave")})})();
 </script>
-
 <script>
 (()=>{const dropdown=document.querySelector(".tool-dropdown");if(!dropdown)return;const summary=dropdown.querySelector("summary");let pinned=false;let closeTimer;const closeDelay=210;const cancelClose=()=>{clearTimeout(closeTimer);dropdown.classList.remove("is-closing")};const closeMenu=()=>{cancelClose();if(!dropdown.open)return;dropdown.classList.add("is-closing");closeTimer=setTimeout(()=>{dropdown.open=false;dropdown.classList.remove("is-closing")},150)};dropdown.addEventListener("pointerenter",()=>{cancelClose();if(!pinned)dropdown.open=true});dropdown.addEventListener("pointerleave",()=>{if(!pinned){clearTimeout(closeTimer);closeTimer=setTimeout(closeMenu,closeDelay)}});summary.addEventListener("click",event=>{event.preventDefault();cancelClose();if(pinned){pinned=false;closeMenu()}else{pinned=true;dropdown.open=true}});document.addEventListener("pointerdown",event=>{if(!dropdown.contains(event.target)){pinned=false;closeMenu()}});document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dropdown.open){pinned=false;closeMenu();summary.focus()}});dropdown.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{pinned=false;closeMenu()}));dropdown.addEventListener("focusout",event=>{if(!dropdown.contains(event.relatedTarget)&&!pinned)closeMenu()})})();
 </script>
-<script src="header.js" defer></script>`r`n</body>
+<script src="header.js" defer></script>
+</body>
 </html>
