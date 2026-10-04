@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH7D3F7VV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CSH7D3F7VV');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CPU vs GPU bottleneck explained: learn what bottlenecks mean, how resolution and game type change the result, how to identify the limiting component, and when an upgrade is actually worth it.">
+  <link rel="canonical" href="https://systemfitpc.vercel.app/cpu-vs-gpu-bottleneck.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <title>CPU vs GPU Bottleneck: What It Means and How to Fix It | SystemFit PC</title>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    :root{--bg:#090c14;--panel:rgba(19,25,39,.82);--border:rgba(157,174,204,.16);--text:#f5f7fc;--muted:#aab5c8;--purple:#735dff;--purple2:#a18bff;--blue:#55b9ff;--green:#5ce0a2}
+    body{background:radial-gradient(ellipse at 16% 3%,rgba(102,77,255,.18),transparent 34%),radial-gradient(ellipse at 88% 18%,rgba(33,162,219,.12),transparent 33%),var(--bg);color:var(--text);font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7}
+    body:before{content:"";position:fixed;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(circle at 70% 60%,rgba(39,102,176,.08),transparent 36%);filter:blur(34px)}
+    a{text-decoration:none;color:inherit}
+    h1,h2,h3,.sfp-brand{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
+
+    /* Standalone copy of the site's shared header so this page also works in local preview. */
+    .sfp-site-header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bottom:1px solid rgba(157,174,204,.16);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .sfp-nav{max-width:1180px;min-height:76px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between}
+    .sfp-brand{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap}
+    .sfp-monogram{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(159,142,255,.38);border-radius:12px;background:linear-gradient(145deg,rgba(119,94,255,.3),rgba(63,179,231,.15));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 18px rgba(73,62,170,.16);font:800 12px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.09em;color:#f8f7ff}
+    .sfp-monogram span{color:#86dcff}
+    .sfp-wordmark{display:inline-flex;align-items:center;font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.055em;color:#f5f7fc}
+    .sfp-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sfp-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.03);font:700 10px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:.05em;color:#bfc9da}
+    .sfp-main-nav{display:flex;align-items:center;gap:8px}
+    .sfp-main-nav>a,.sfp-tools-summary{color:#aab5c8;padding:9px 13px;border:1px solid transparent;border-radius:9px;font:500 14px/1.4 "DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;transition:background .2s,border-color .2s,color .2s}
+    .sfp-main-nav>a:hover,.sfp-main-nav>a.sfp-active,.sfp-tools-summary:hover,.sfp-tools[open] .sfp-tools-summary{color:#fff;background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
+    .sfp-tools{position:relative}
+    .sfp-tools-summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;user-select:none}
+    .sfp-tools-summary::-webkit-details-marker{display:none}
+    .sfp-tools-summary:after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+    .sfp-tool-menu{position:absolute;z-index:1001;top:calc(100% + 12px);right:0;width:min(355px,calc(100vw - 28px));max-height:min(70vh,560px);overflow:auto;padding:10px;border:1px solid rgba(157,174,204,.2);border-radius:16px;background:rgba(13,18,29,.96);box-shadow:0 24px 70px rgba(0,0,0,.48);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+    .sfp-menu-label{padding:8px 10px 6px;color:#8f9db5;font:800 10px/1.3 "DM Sans",sans-serif;letter-spacing:.11em;text-transform:uppercase}
+    .sfp-menu-label.planned{margin-top:7px;border-top:1px solid rgba(157,174,204,.12);padding-top:14px}
+    .sfp-tool-item{display:flex;align-items:center;gap:11px;padding:10px;border:1px solid transparent;border-radius:11px;color:#edf1f9;text-decoration:none;transition:background .18s,border-color .18s}
+    .sfp-tool-item:hover{background:rgba(118,95,255,.13);border-color:rgba(151,132,255,.25)}
+    .sfp-tool-item>span:nth-child(2){min-width:0;flex:1}
+    .sfp-tool-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);color:#b6c2d8;font:700 10px "Space Grotesk",sans-serif}
+    .sfp-tool-item b{display:block;font-size:12px;line-height:1.35;font-weight:700}
+    .sfp-tool-item small{display:block;margin-top:3px;color:#96a3b9;font-size:10px;line-height:1.3}
+    .sfp-arrow{color:#9d8cff;font-size:15px}.sfp-soon{padding:4px 7px;border:1px solid rgba(157,174,204,.13);border-radius:999px;color:#8c99af;font-size:9px;font-weight:700}
+    .sfp-cpu{background:rgba(137,111,255,.16);color:#c2adff}.sfp-fps{background:rgba(72,182,255,.12);color:#77cbff}.sfp-build{background:rgba(68,212,150,.12);color:#71e5b0}.sfp-compare{background:rgba(255,126,145,.12);color:#ff9baa}.sfp-upgrade{background:rgba(255,184,84,.12);color:#ffc36d}.sfp-power{background:rgba(107,224,182,.12);color:#75e6bd}
+
+    main{max-width:900px;margin:0 auto;padding:72px 22px 90px}
+    .article-header{text-align:center;max-width:820px;margin:0 auto 42px}
+    .eyebrow{display:inline-block;margin-bottom:16px;padding:7px 11px;border:1px solid rgba(157,139,255,.24);border-radius:999px;background:rgba(118,95,255,.10);color:#b9aaff;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(38px,6vw,60px);line-height:1.08;margin-bottom:18px}
+    .article-header h1 span{background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .dek{color:var(--muted);font-size:18px;line-height:1.8}.meta{margin-top:15px;color:#7f8da4;font-size:12px}
+    article{border:1px solid var(--border);border-radius:20px;background:linear-gradient(145deg,rgba(19,25,39,.72),rgba(13,18,29,.84));padding:34px}
+    .answer-box{margin-bottom:32px;padding:22px 24px;border:1px solid rgba(118,95,255,.28);border-radius:16px;background:linear-gradient(135deg,rgba(118,95,255,.13),rgba(57,157,214,.07))}
+    .answer-box strong{color:#fff}.answer-box p+p{margin-top:9px}
+    section+section{margin-top:38px}h2{font-size:29px;line-height:1.2;margin-bottom:14px}h3{font-size:20px;line-height:1.3;margin:24px 0 10px}
+    p{color:#c1cada}p+p{margin-top:14px}ul,ol{margin:14px 0 0 22px;color:#c1cada}li+li{margin-top:7px}strong{color:#f5f7fc}
+    .table-wrap{overflow-x:auto;margin:20px 0}table{width:100%;border-collapse:collapse;min-width:620px}th,td{padding:13px 14px;text-align:left;border-bottom:1px solid rgba(157,174,204,.12)}th{color:#f5f7fc;background:rgba(255,255,255,.035);font-size:13px}td{color:#b8c3d5;font-size:14px}
+    .callout{margin:20px 0;padding:17px 19px;border-left:3px solid #9d8cff;border-radius:0 12px 12px 0;background:rgba(118,95,255,.08);color:#c8d1df}
+    .decision{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.decision-card{padding:17px;border:1px solid rgba(157,174,204,.14);border-radius:13px;background:rgba(255,255,255,.025)}.decision-card b{display:block;margin-bottom:6px;color:#f5f7fc}.decision-card span{color:#aeb9cc;font-size:13px}
+    .internal-link{color:#b8a9ff;font-weight:700}.sources{margin-top:38px;padding-top:25px;border-top:1px solid rgba(157,174,204,.12)}.sources p{font-size:12px;color:#8592a7}.sources a{color:#a99bff}
+    footer{border-top:1px solid var(--border);padding:30px 20px;text-align:center;color:#8895aa;font-size:13px}footer p+p{margin-top:6px}footer a:hover{color:#fff}
+    @media(max-width:700px){.sfp-nav{min-height:auto;padding:15px;flex-direction:column;gap:10px}.sfp-main-nav{flex-wrap:wrap;justify-content:center}.sfp-brand{gap:7px}.sfp-monogram{width:32px;height:32px;border-radius:10px}.sfp-wordmark{font-size:19px}.sfp-tool-menu{right:0}main{padding:48px 15px 70px}article{padding:23px 18px;border-radius:16px}h2{font-size:25px}.decision{grid-template-columns:1fr}}
+  </style>
+</head>
+
+<body>
+  <div id="site-header">
+    <header class="sfp-site-header">
+      <div class="sfp-nav">
+        <a class="sfp-brand" href="index.html#home" aria-label="SystemFit PC home">
+          <span class="sfp-monogram" aria-hidden="true">S<span>F</span></span>
+          <span class="sfp-wordmark"><span>System</span><span class="sfp-fit">Fit</span></span>
+          <span class="sfp-pc">PC</span>
+        </a>
+        <nav class="sfp-main-nav" aria-label="Main navigation">
+          <a href="index.html#home">Home</a>
+          <details class="sfp-tools">
+            <summary class="sfp-tools-summary">Tools</summary>
+            <div class="sfp-tool-menu">
+              <p class="sfp-menu-label">Available now</p>
+              <a class="sfp-tool-item" href="bottleneck.html"><span class="sfp-tool-icon sfp-cpu">CPU</span><span><b>CPU &amp; GPU Bottleneck</b><small>Compare your components</small></span><span class="sfp-arrow">↗</span></a>
+              <a class="sfp-tool-item" href="build-planner.html"><span class="sfp-tool-icon sfp-build">PC</span><span><b>PC Build Planner</b><small>Check component fit and power</small></span><span class="sfp-arrow">↗</span></a>
+              <a class="sfp-tool-item" href="gpu-comparison.html"><span class="sfp-tool-icon sfp-compare">GPU</span><span><b>GPU Comparison</b><small>Compare up to five graphics cards</small></span><span class="sfp-arrow">↗</span></a>
+              <a class="sfp-tool-item" href="fps-calculator.html"><span class="sfp-tool-icon sfp-fps">FPS</span><span><b>FPS Calculator</b><small>Estimate performance</small></span><span class="sfp-arrow">↗</span></a>
+              <p class="sfp-menu-label planned">Coming soon</p>
+              <div class="sfp-tool-item"><span class="sfp-tool-icon sfp-upgrade">↑</span><span><b>Upgrade Planner</b><small>Find your next upgrade</small></span><span class="sfp-soon">Soon</span></div>
+              <div class="sfp-tool-item"><span class="sfp-tool-icon sfp-compare">↔</span><span><b>CPU &amp; GPU Compare</b><small>Compare hardware directly</small></span><span class="sfp-soon">Soon</span></div>
+              <div class="sfp-tool-item"><span class="sfp-tool-icon sfp-power">W</span><span><b>PSU Power Guide</b><small>Estimate power needs</small></span><span class="sfp-soon">Soon</span></div>
+            </div>
+          </details>
+          <a href="guides.html">Guides</a>
+          <a href="index.html#about">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <header class="article-header">
+      <div class="eyebrow">Gaming Hardware · 2026</div>
+      <h1><span>CPU vs GPU</span> Bottleneck: What It Means and How to Fix It</h1>
+      <p class="dek">Learn what actually limits your FPS, how resolution and game type change the answer, and when a CPU or GPU upgrade is really worth it.</p>
+      <p class="meta">Updated October 2026 · SystemFit PC</p>
+    </header>
+
+    <article>
+      <div class="answer-box">
+        <p><strong>Short answer:</strong> a bottleneck is simply the part of your PC that limits performance first in a particular game and scenario. A GPU being the limit is normal for many games; a CPU limit matters when it prevents you from reaching your target FPS or causes poor frame-time consistency.</p>
+        <p>There is no single bottleneck percentage that stays true for every game. Resolution, graphics settings, game engine, frame-rate target, memory, drivers and even the scene you're playing can change which component is limiting performance.</p>
+      </div>
+
+      <section>
+        <h2>What Is a PC Bottleneck?</h2>
+        <p>A bottleneck is the component that reaches its practical performance limit first for a particular workload. In gaming, the CPU and GPU work together to produce each frame, but they do different jobs.</p>
+        <ul>
+          <li><strong>CPU:</strong> handles game logic, physics, AI, simulation, draw-call preparation and other game-side work.</li>
+          <li><strong>GPU:</strong> renders the image, including geometry, lighting, shadows, textures, effects and ray tracing.</li>
+        </ul>
+        <p>If the CPU cannot prepare frames quickly enough, the GPU can end up waiting. If the GPU needs more time to render each frame, the CPU may finish its work and wait for the GPU.</p>
+        <p>That means every gaming PC is limited by something in a given scenario. The goal is not to eliminate bottlenecks completely. The goal is to have the right component doing the limiting for the performance you actually want.</p>
+      </section>
+
+      <section>
+        <h2>CPU Bottleneck vs GPU Bottleneck</h2>
+        <div class="decision">
+          <div class="decision-card"><b>CPU-limited</b><span>The processor cannot prepare the next frames quickly enough, so the GPU may be underused.</span></div>
+          <div class="decision-card"><b>GPU-limited</b><span>The graphics card needs more time to render each frame, so GPU utilization is usually high.</span></div>
+        </div>
+        <h3>What a CPU bottleneck looks like</h3>
+        <p>A CPU bottleneck is more likely when your GPU is not close to full utilization while your FPS is below the target you want. One or more CPU threads can be heavily loaded even when total CPU usage looks moderate.</p>
+        <p>CPU limits are especially noticeable in high-FPS gaming, simulation-heavy games, large open worlds and situations with lots of AI or physics.</p>
+        <h3>What a GPU bottleneck looks like</h3>
+        <p>A GPU bottleneck is more likely when the graphics card is consistently near full utilization and changing GPU-heavy settings changes your FPS substantially.</p>
+        <p>This is often a perfectly normal result. If your GPU is running near 100% and delivering the FPS you want, you usually do not have a problem that needs fixing.</p>
+      </section>
+
+      <section>
+        <h2>How to Tell Which Component Is Limiting Your FPS</h2>
+        <p>The best way to diagnose a bottleneck is to look at the game you're actually playing rather than relying only on a calculator number.</p>
+        <h3>1. Watch GPU utilization</h3>
+        <p>If the GPU sits around 95–100% during a repeatable gameplay section, it is probably doing most of the limiting work. High GPU utilization is generally desirable when you're getting the performance you want.</p>
+        <h3>2. Look at CPU usage per core</h3>
+        <p>Total CPU utilization can hide a CPU bottleneck. A game may depend heavily on one or two threads while the remaining cores are relatively quiet. Look at per-core or per-thread usage when possible.</p>
+        <h3>3. Lower the resolution</h3>
+        <p>Run the same scene at a lower resolution while keeping the rest of the settings as similar as possible.</p>
+        <ul>
+          <li>If FPS rises substantially, the GPU was likely a major limitation.</li>
+          <li>If FPS changes only slightly, the CPU, memory, game engine or another limit may be setting the pace.</li>
+        </ul>
+        <h3>4. Watch frame times and 1% lows</h3>
+        <p>Average FPS does not tell the whole story. A system can show a high average while still producing uneven frame times or poor 1% lows. If the game feels stuttery, investigate frame-time consistency rather than chasing a single average-FPS number.</p>
+      </section>
+
+      <section>
+        <h2>Why Resolution Changes the Bottleneck</h2>
+        <p>Resolution changes the amount of work the GPU has to perform. As resolution increases, the graphics card generally becomes more important to frame time.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Scenario</th><th>What usually becomes more important</th><th>Typical situation</th></tr></thead>
+            <tbody>
+              <tr><td>1080p, very high FPS</td><td>CPU</td><td>High refresh-rate competitive gaming can expose CPU limits.</td></tr>
+              <tr><td>1440p</td><td>Both</td><td>Often a balanced middle ground for modern gaming PCs.</td></tr>
+              <tr><td>4K</td><td>GPU</td><td>Rendering the higher-resolution image puts much more pressure on the graphics card.</td></tr>
+              <tr><td>Ray tracing</td><td>GPU</td><td>Additional rendering work can make GPU performance and VRAM more important.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>This is why the same CPU and GPU can be CPU-limited at 1080p but GPU-limited at 1440p or 4K. A useful bottleneck estimate therefore needs context rather than treating a hardware pairing as having one permanent answer.</p>
+      </section>
+
+      <section>
+        <h2>Is a GPU Bottleneck Actually Bad?</h2>
+        <p><strong>Usually not.</strong> If your GPU is near 100% utilization and you are getting the frame rate you want, the graphics card is simply doing its job.</p>
+        <p>For example, suppose your target is 90 FPS at 1440p and your GPU consistently delivers around 90 FPS while operating close to full load. There is no reason to upgrade the CPU just because the GPU is the limiting component.</p>
+        <div class="callout"><strong>A GPU bottleneck is only a problem when the GPU is preventing you from achieving the performance, image quality or frame-rate target you actually care about.</strong></div>
+      </section>
+
+      <section>
+        <h2>Is a CPU Bottleneck Actually Bad?</h2>
+        <p>A CPU bottleneck matters when the processor prevents your graphics card from delivering the performance you want, particularly at high frame rates.</p>
+        <p>For example, a powerful GPU paired with an older CPU may produce a situation where lowering the resolution from 1440p to 1080p barely changes FPS. The GPU has plenty of rendering capability left, but the CPU is not feeding it frames quickly enough.</p>
+        <p>CPU limitations can also show up as poor 1% lows, inconsistent frame times or slowdowns in busy areas even when average FPS looks acceptable.</p>
+      </section>
+
+      <section>
+        <h2>What Does a Bottleneck Percentage Really Mean?</h2>
+        <p>Be careful with calculators that tell you a PC has a fixed value such as “17% CPU bottleneck.” That number should be treated as an estimate, not a measured amount of FPS loss.</p>
+        <p>A bottleneck changes with:</p>
+        <ul>
+          <li>Game and game engine</li>
+          <li>Resolution</li>
+          <li>Graphics settings</li>
+          <li>Ray tracing and upscaling</li>
+          <li>Target FPS and monitor refresh rate</li>
+          <li>RAM capacity, speed and configuration</li>
+          <li>Drivers, temperatures and power limits</li>
+          <li>The exact scene being rendered</li>
+        </ul>
+        <p>Some current calculator methodologies explicitly treat bottleneck results as scenario-based estimates because a single universal percentage cannot represent every workload.</p>
+      </section>
+
+      <section>
+        <h2>How to Reduce a CPU Bottleneck</h2>
+        <h3>Lower CPU-heavy settings</h3>
+        <p>Depending on the game, settings such as crowd density, object distance, simulation quality, NPC count and physics can place more pressure on the processor. Lowering those settings can sometimes improve CPU-limited performance.</p>
+        <h3>Close unnecessary background tasks</h3>
+        <p>Browsers, recording software and other applications can consume CPU resources. Closing unnecessary programs can reduce background contention.</p>
+        <h3>Check temperatures and clocks</h3>
+        <p>A CPU that is overheating or power-limited may not sustain its expected clocks. Check temperatures, clock speeds and throttling before assuming the hardware itself is simply too slow.</p>
+        <h3>Upgrade the CPU when the limitation is consistent</h3>
+        <p>If the same CPU limitation appears across the games you care about and prevents you from reaching your target FPS, a CPU/platform upgrade can make sense.</p>
+      </section>
+
+      <section>
+        <h2>How to Reduce a GPU Bottleneck</h2>
+        <h3>Lower GPU-heavy settings</h3>
+        <p>Shadows, reflections, volumetric effects, ray tracing and some lighting settings can have a large effect on GPU workload. Reducing them can increase FPS.</p>
+        <h3>Use upscaling</h3>
+        <p>DLSS, FSR, XeSS and similar technologies can reduce the internal rendering workload and reconstruct the final image. The exact quality and performance benefit depends on the game and implementation.</p>
+        <h3>Reduce resolution</h3>
+        <p>Moving from 4K to 1440p, or 1440p to 1080p, can substantially reduce GPU workload when the graphics card is the limiting component.</p>
+        <h3>Upgrade the GPU when it is the real limit</h3>
+        <p>If your GPU is consistently near full load and still cannot deliver the image quality or FPS target you want, upgrading the graphics card is usually more useful than replacing a CPU that is already keeping up.</p>
+      </section>
+
+      <section>
+        <h2>When Should You Upgrade?</h2>
+        <p>Do not upgrade just because a calculator says your parts are mismatched. First decide what performance you are trying to achieve.</p>
+        <div class="decision">
+          <div class="decision-card"><b>Upgrade the CPU</b><span>When CPU limits repeatedly hold FPS below your target, especially in high-FPS or CPU-heavy games.</span></div>
+          <div class="decision-card"><b>Upgrade the GPU</b><span>When the GPU is consistently the limit and you cannot reach your desired FPS or graphics quality.</span></div>
+          <div class="decision-card"><b>Keep your current hardware</b><span>When your games already meet your FPS and visual-quality targets. A theoretical bottleneck is not automatically a problem.</span></div>
+          <div class="decision-card"><b>Investigate first</b><span>When performance is unexpectedly poor. Check temperatures, clocks, RAM, drivers, power settings and background tasks before buying anything.</span></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Use the SystemFit PC Bottleneck Calculator</h2>
+        <p>Our <a class="internal-link" href="bottleneck.html">CPU &amp; GPU Bottleneck Calculator</a> lets you select your CPU, GPU, resolution, game type and target FPS to get a practical estimate for your chosen scenario.</p>
+        <p>Use the result as a starting point, then verify it in the actual game. Calculator estimates cannot reproduce every driver version, game patch, map, graphics setting, temperature or background workload.</p>
+        <p>If you are also planning your system memory, see our guide to <a class="internal-link" href="how-much-ram-for-gaming-2026.html">how much RAM you need for gaming in 2026</a>.</p>
+        <div class="tool-links">
+          <a class="tool-link" href="bottleneck.html"><b>Bottleneck Calculator</b><span>Check CPU and GPU balance for your scenario.</span></a>
+          <a class="tool-link" href="gpu-comparison.html"><b>GPU Comparison</b><span>Compare graphics cards before an upgrade.</span></a>
+          <a class="tool-link" href="build-planner.html"><b>PC Build Planner</b><span>Check component fit and power for a build.</span></a>
+        </div>
+      </section>
+
+      <section>
+        <h2>CPU vs GPU Bottleneck: Quick Summary</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>What you observe</th><th>Likely explanation</th></tr></thead>
+            <tbody>
+              <tr><td>GPU stays around 95–100% and FPS is below target</td><td>Likely GPU-limited.</td></tr>
+              <tr><td>GPU is well below full load and FPS is below target</td><td>Investigate CPU, RAM, frame caps or the game engine.</td></tr>
+              <tr><td>Lowering resolution greatly increases FPS</td><td>GPU was likely a major limitation.</td></tr>
+              <tr><td>Lowering resolution barely changes FPS</td><td>CPU or another non-GPU limit may be setting the pace.</td></tr>
+              <tr><td>1440p/4K high settings with heavy graphics effects</td><td>GPU limitations become more likely.</td></tr>
+              <tr><td>Very high FPS target at 1080p</td><td>CPU performance becomes more important.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>FAQ</h2>
+        <div class="faq"><h3>Is a 100% GPU bottleneck bad?</h3><p>No. High GPU utilization is often normal and desirable when the GPU is delivering the FPS you want.</p></div>
+        <div class="faq"><h3>Can a bottleneck change between games?</h3><p>Yes. Different game engines and workloads can put very different demands on the CPU and GPU.</p></div>
+        <div class="faq"><h3>Can the same PC be CPU-bottlenecked at 1080p and GPU-bottlenecked at 4K?</h3><p>Yes. Increasing resolution generally increases GPU workload, so the limiting component can change.</p></div>
+        <div class="faq"><h3>Does a stronger GPU always need a stronger CPU?</h3><p>Not automatically. The answer depends on your resolution, game, settings and FPS target. A powerful GPU can be perfectly reasonable with a mid-range CPU for 1440p or 4K gaming.</p></div>
+        <div class="faq"><h3>Should I trust a bottleneck percentage?</h3><p>Use it as a rough directional estimate rather than a precise measurement. Real-world monitoring in the game you care about is more useful for an upgrade decision.</p></div>
+      </section>
+
+      <section class="sources">
+        <h2>Research &amp; methodology sources</h2>
+        <p>This guide is based on current bottleneck-calculator methodology discussions and practical hardware guidance. It intentionally treats bottleneck results as scenario-dependent estimates rather than fixed measurements.</p>
+        <p><a href="https://pcpartguide.com/methodology/" target="_blank" rel="noopener">PCPartGuide — Bottleneck Calculator Methodology</a></p>
+        <p><a href="https://specscalc.com/bottleneck-calculator/" target="_blank" rel="noopener">SpecsCalc — CPU/GPU Bottleneck Estimator</a></p>
+        <p><a href="https://www.pcworld.com/article/1955495/pc-bottlenecks-cpu-or-cpu-limiting-gaming-performance.html" target="_blank" rel="noopener">PCWorld — How to identify CPU and GPU bottlenecks</a></p>
+        <p><a href="https://www.bottleneckcalculator.to/en/blog/cpu-vs-gpu-bottleneck-test/" target="_blank" rel="noopener">Bottleneck Calculator — CPU vs GPU bottleneck testing</a></p>
+        <p><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener">Google Search Central — Creating helpful, reliable, people-first content</a></p>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2026 SystemFit PC · Practical tools and guides for PC builders and gamers.</p>
+    <p><a href="privacy-policy.html">Privacy Policy</a> · <a href="contact.html">Contact</a></p>
+  </footer>
+
+  <script src="header.js" defer></script>
+</body>
+</html>
