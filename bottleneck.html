@@ -2432,7 +2432,7 @@ function validateHardwareDatabase(list,type){
     if(!x.id||ids.has(x.id)) throw new Error(`Duplicate/missing ${type} id: ${x.id||"unknown"}`);
     ids.add(x.id);
     if(!x.name||!x.vendor) throw new Error(`Incomplete ${type} record: ${x.id}`);
-    if(typeof x.score!=="number"||x.score<SCORE_SCALE.min||x.score>SCORE_SCALE.max) throw new Error(`Invalid ${type} score: ${x.id}`);
+    if(typeof x.score!=="number"||!Number.isFinite(x.score)||x.score<SCORE_SCALE.min) throw new Error(`Invalid ${type} score: ${x.id}`);
     if(!["direct","bridged","estimated"].includes(x.status)||!x.scoreNote) throw new Error(`Missing score provenance: ${x.id}`);
   });
   return true;
@@ -2578,4 +2578,5 @@ document.addEventListener("keydown",event=>{if(event.key==="Escape")document.que
 </script>
 </body>
 </html>
+
 
