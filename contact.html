@@ -121,30 +121,7 @@ main{padding:50px 16px}
 
 <body>
 
-<header>
-<div class="nav">
-<a id="brand-logo" class="logo" href="index.html#home" aria-label="SystemFit PC home"><span class="brand-monogram" aria-hidden="true">S<span>F</span></span><span class="brand-wordmark"><span class="brand-system">System</span><span class="brand-fit">Fit</span></span><span class="brand-pc">PC</span></a>
-<nav aria-label="Main navigation">
-<a href="index.html#home">Home</a>
-<details class="tool-dropdown" id="toolsMenu">
-<summary aria-label="Open tools menu">Tools</summary>
-<div class="tool-menu" aria-label="Tools">
-<p class="tool-menu-label">Available now</p>
-<a class="tool-menu-item" href="bottleneck.html"><span class="tool-menu-icon cpu-menu-icon" aria-hidden="true">CPU</span><span><b>CPU &amp; GPU Bottleneck</b><small>Compare your components</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
-<a class="tool-menu-item" href="build-planner.html"><span class="tool-menu-icon build-menu-icon" aria-hidden="true">PC</span><span><b>PC Build Planner</b><small>Check component fit and power</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
-<a class="tool-menu-item" href="gpu-comparison.html"><span class="tool-menu-icon compare-menu-icon" aria-hidden="true">GPU</span><span><b>GPU Comparison</b><small>Compare up to five graphics cards</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
-<a class="tool-menu-item" href="fps-calculator.html"><span class="tool-menu-icon fps-menu-icon" aria-hidden="true">FPS</span><span><b>FPS Calculator</b><small>Estimate performance</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
-<p class="tool-menu-label planned-label">Coming soon</p>
-<div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon upgrade-menu-icon" aria-hidden="true">↑</span><span><b>Upgrade Planner</b><small>Find your next upgrade</small></span><span class="soon-tag">Soon</span></div>
-<div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon compare-menu-icon" aria-hidden="true">↔</span><span><b>CPU &amp; GPU Compare</b><small>Compare hardware directly</small></span><span class="soon-tag">Soon</span></div>
-<div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon power-menu-icon" aria-hidden="true">W</span><span><b>PSU Power Guide</b><small>Estimate power needs</small></span><span class="soon-tag">Soon</span></div>
-</div>
-</details>
-<a href="index.html#about">About</a>
-<a href="contact.html" class="active">Contact</a>
-</nav>
-</div>
-</header>
+<div id="site-header"></div>
 
 <main>
 <div class="card">
@@ -200,5 +177,5 @@ Open GitHub Repository
 (()=>{const dropdown=document.querySelector(".tool-dropdown");if(!dropdown)return;const summary=dropdown.querySelector("summary");let pinned=false;let closeTimer;const closeDelay=210;const cancelClose=()=>{clearTimeout(closeTimer);dropdown.classList.remove("is-closing")};const closeMenu=()=>{cancelClose();if(!dropdown.open)return;dropdown.classList.add("is-closing");closeTimer=setTimeout(()=>{dropdown.open=false;dropdown.classList.remove("is-closing")},150)};dropdown.addEventListener("pointerenter",()=>{cancelClose();if(!pinned)dropdown.open=true});dropdown.addEventListener("pointerleave",()=>{if(!pinned){clearTimeout(closeTimer);closeTimer=setTimeout(closeMenu,closeDelay)}});summary.addEventListener("click",event=>{event.preventDefault();cancelClose();if(pinned){pinned=false;closeMenu()}else{pinned=true;dropdown.open=true}});document.addEventListener("pointerdown",event=>{if(!dropdown.contains(event.target)){pinned=false;closeMenu()}});document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dropdown.open){pinned=false;closeMenu();summary.focus()}});dropdown.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{pinned=false;closeMenu()}));dropdown.addEventListener("focusout",event=>{if(!dropdown.contains(event.relatedTarget)&&!pinned)closeMenu()})})();
 </script>
 
-</body>
+<script src="header.js" defer></script>`r`n</body>
 </html>
