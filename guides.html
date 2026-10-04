@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH7D3F7VV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CSH7D3F7VV');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practical PC gaming and hardware guides from SystemFit PC. Learn about RAM, PC builds, performance and smarter upgrade decisions.">
+  <link rel="canonical" href="https://systemfitpc.vercel.app/guides.html">
+  <title>PC Guides — SystemFit PC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    :root{
+      --bg:#090c14;
+      --panel:rgba(19,25,39,.78);
+      --panel2:rgba(13,18,29,.9);
+      --border:rgba(157,174,204,.16);
+      --text:#f5f7fc;
+      --muted:#aab5c8;
+      --purple:#735dff;
+      --purple2:#a18bff;
+    }
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(ellipse at 16% 3%,rgba(102,77,255,.18),transparent 34%),
+        radial-gradient(ellipse at 88% 18%,rgba(33,162,219,.12),transparent 33%),
+        var(--bg);
+      color:var(--text);
+      font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      line-height:1.6;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      z-index:-1;
+      inset:0;
+      pointer-events:none;
+      background:radial-gradient(circle at 70% 60%,rgba(39,102,176,.08),transparent 36%);
+      filter:blur(34px);
+    }
+    a{text-decoration:none;color:inherit}
+    h1,h2,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(9,12,20,.76);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+    }
+    .nav{
+      max-width:1180px;
+      min-height:76px;
+      margin:auto;
+      padding:0 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    #brand-logo{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      color:#f5f7fc;
+      line-height:1;
+      white-space:nowrap;
+    }
+    .brand-monogram{
+      width:36px;height:36px;display:grid;place-items:center;
+      border:1px solid rgba(159,142,255,.38);
+      border-radius:12px;
+      background:linear-gradient(145deg,rgba(119,94,255,.3),rgba(63,179,231,.15));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 18px rgba(73,62,170,.16);
+      font:800 12px/1 "Space Grotesk","DM Sans",sans-serif;
+      letter-spacing:-.09em;
+    }
+    .brand-monogram span{color:#86dcff}
+    .brand-wordmark{
+      display:inline-flex;align-items:center;
+      font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;
+      letter-spacing:-.055em;
+    }
+    .brand-system{color:#f5f7fc}
+    .brand-fit{
+      margin-left:4px;
+      background:linear-gradient(100deg,#a892ff,#69caff);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .brand-pc{
+      padding:4px 6px;
+      border:1px solid rgba(157,174,204,.2);
+      border-radius:6px;
+      background:rgba(255,255,255,.045);
+      color:#b9c7e1;
+      font:800 9px/1 "DM Sans",sans-serif;
+      letter-spacing:.12em;
+      transform:translateY(1px);
+    }
+    nav{display:flex;align-items:center;gap:8px}
+    nav>a, .tool-dropdown summary{
+      color:var(--muted);
+      padding:9px 13px;
+      border:1px solid transparent;
+      border-radius:9px;
+      font-size:14px;
+      transition:background .2s,border-color .2s,color .2s;
+    }
+    nav>a:hover,nav>a.active,.tool-dropdown summary:hover{
+      color:#fff;
+      background:rgba(126,105,255,.14);
+      border-color:rgba(157,139,255,.2);
+    }
+    .tool-dropdown{position:relative}
+    .tool-dropdown summary{
+      display:flex;align-items:center;gap:8px;
+      list-style:none;cursor:pointer;user-select:none;
+    }
+    .tool-dropdown summary::-webkit-details-marker{display:none}
+    .tool-dropdown summary:after{
+      content:"";width:7px;height:7px;
+      border-right:1.5px solid currentColor;
+      border-bottom:1.5px solid currentColor;
+      transform:rotate(45deg) translateY(-2px);
+    }
+    .tool-dropdown[open] summary:after{transform:rotate(225deg) translate(-1px,-1px)}
+    .tool-menu{
+      position:absolute;z-index:1001;top:calc(100% + 12px);right:0;
+      width:min(355px,calc(100vw - 28px));
+      max-height:min(70vh,560px);overflow:auto;padding:10px;
+      border:1px solid rgba(157,174,204,.2);border-radius:16px;
+      background:rgba(13,18,29,.96);
+      box-shadow:0 24px 70px rgba(0,0,0,.48);
+      backdrop-filter:blur(22px);
+    }
+    .tool-menu-label{padding:8px 10px 6px;color:#8f9db5;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+    .planned-label{margin-top:7px;border-top:1px solid rgba(157,174,204,.12);padding-top:14px}
+    .tool-menu-item{
+      display:flex;align-items:center;gap:11px;padding:10px;
+      border:1px solid transparent;border-radius:11px;color:#edf1f9;
+    }
+    .tool-menu-item:hover{background:rgba(118,95,255,.13);border-color:rgba(151,132,255,.25)}
+    .tool-menu-item>span:nth-child(2){min-width:0;flex:1}
+    .tool-menu-item b{display:block;font-size:12px;line-height:1.35}
+    .tool-menu-item small{display:block;margin-top:3px;color:#96a3b9;font-size:10px;line-height:1.3}
+    .tool-menu-icon{
+      width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;
+      border-radius:10px;background:rgba(255,255,255,.06);
+      color:#b6c2d8;font:700 10px "Space Grotesk",sans-serif;
+    }
+    .cpu-menu-icon{background:rgba(137,111,255,.16);color:#c2adff}
+    .fps-menu-icon{background:rgba(72,182,255,.12);color:#77cbff}
+    .build-menu-icon{background:rgba(68,212,150,.12);color:#71e5b0}
+    .compare-menu-icon{background:rgba(255,126,145,.12);color:#ff9baa}
+    .tool-menu-arrow{color:#9d8cff;font-size:15px}
+    .soon-tag{
+      padding:4px 7px;border:1px solid rgba(157,174,204,.13);
+      border-radius:999px;color:#8c99af;font-size:9px;font-weight:700;
+    }
+
+    main{max-width:1040px;margin:0 auto;padding:78px 22px 90px}
+    .page-header{text-align:center;max-width:760px;margin:0 auto 48px}
+    .eyebrow{
+      display:inline-block;margin-bottom:15px;padding:7px 11px;
+      border:1px solid rgba(157,139,255,.24);border-radius:999px;
+      background:rgba(118,95,255,.10);color:#b9aaff;
+      font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+    h1{font-size:clamp(40px,6vw,58px);line-height:1.08;margin-bottom:16px}
+    .page-header h1 span{
+      background:linear-gradient(100deg,#a892ff,#69caff);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .page-header p{color:var(--muted);font-size:18px;line-height:1.8}
+    .guides-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .guide-card{
+      display:block;
+      padding:26px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:linear-gradient(145deg,rgba(24,31,47,.82),rgba(15,20,32,.86));
+      transition:transform .2s,border-color .2s,box-shadow .2s;
+    }
+    .guide-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(146,128,255,.44);
+      box-shadow:0 18px 40px rgba(0,0,0,.22);
+    }
+    .guide-tag{
+      display:inline-block;margin-bottom:15px;padding:5px 9px;
+      border-radius:999px;background:rgba(118,95,255,.12);
+      color:#b9aaff;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+    .guide-card h2{font-size:24px;line-height:1.25;margin-bottom:10px}
+    .guide-card p{color:#aeb9cc;font-size:14px;line-height:1.75;margin-bottom:18px}
+    .read-link{color:#b8a9ff;font-size:14px;font-weight:800}
+    footer{
+      border-top:1px solid var(--border);
+      padding:30px 20px;text-align:center;color:#8895aa;font-size:13px;
+    }
+    footer p+p{margin-top:6px}
+    footer a:hover{color:#fff}
+    @media(max-width:800px){
+      .nav{min-height:auto;padding:15px;flex-direction:column;gap:10px}
+      nav{flex-wrap:wrap;justify-content:center}
+      .tool-menu{right:0}
+      main{padding-top:50px}
+      .guides-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      #brand-logo{gap:7px}
+      .brand-monogram{width:32px;height:32px;border-radius:10px}
+      .brand-wordmark{font-size:19px}
+      h1{font-size:38px}
+      .page-header p{font-size:16px}
+      main{padding-left:15px;padding-right:15px}
+      .guide-card{padding:21px}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="nav">
+    <a id="brand-logo" class="logo" href="index.html#home" aria-label="SystemFit PC home">
+      <span class="brand-monogram" aria-hidden="true">S<span>F</span></span>
+      <span class="brand-wordmark"><span class="brand-system">System</span><span class="brand-fit">Fit</span></span>
+      <span class="brand-pc">PC</span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html#home">Home</a>
+
+      <details class="tool-dropdown" id="toolsMenu">
+        <summary aria-label="Open tools menu">Tools</summary>
+        <div class="tool-menu" aria-label="Tools">
+          <p class="tool-menu-label">Available now</p>
+          <a class="tool-menu-item" href="bottleneck.html"><span class="tool-menu-icon cpu-menu-icon">CPU</span><span><b>CPU &amp; GPU Bottleneck</b><small>Compare your components</small></span><span class="tool-menu-arrow">↗</span></a>
+          <a class="tool-menu-item" href="build-planner.html"><span class="tool-menu-icon build-menu-icon">PC</span><span><b>PC Build Planner</b><small>Check component fit and power</small></span><span class="tool-menu-arrow">↗</span></a>
+          <a class="tool-menu-item" href="gpu-comparison.html"><span class="tool-menu-icon compare-menu-icon">GPU</span><span><b>GPU Comparison</b><small>Compare up to five graphics cards</small></span><span class="tool-menu-arrow">↗</span></a>
+          <a class="tool-menu-item" href="fps-calculator.html"><span class="tool-menu-icon fps-menu-icon">FPS</span><span><b>FPS Calculator</b><small>Estimate performance</small></span><span class="tool-menu-arrow">↗</span></a>
+          <p class="tool-menu-label planned-label">Coming soon</p>
+          <div class="tool-menu-item"><span class="tool-menu-icon">↑</span><span><b>Upgrade Planner</b><small>Find your next upgrade</small></span><span class="soon-tag">Soon</span></div>
+          <div class="tool-menu-item"><span class="tool-menu-icon compare-menu-icon">↔</span><span><b>CPU &amp; GPU Compare</b><small>Compare hardware directly</small></span><span class="soon-tag">Soon</span></div>
+          <div class="tool-menu-item"><span class="tool-menu-icon">W</span><span><b>PSU Power Guide</b><small>Estimate power needs</small></span><span class="soon-tag">Soon</span></div>
+        </div>
+      </details>
+
+      <a href="guides.html" class="active" aria-current="page">Guides</a>
+      <a href="index.html#about">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <div class="eyebrow">SystemFit PC · Guides</div>
+    <h1>Practical <span>PC Guides</span></h1>
+    <p>Clear, practical guides to help you choose, build, upgrade and understand your gaming PC without unnecessary complexity.</p>
+  </div>
+
+  <section class="guides-grid" aria-label="PC guides">
+    <a class="guide-card" href="how-much-ram-for-gaming-2026.html">
+      <span class="guide-tag">Gaming Hardware · 2026</span>
+      <h2>How Much RAM Do You Need for Gaming in 2026?</h2>
+      <p>16GB vs 32GB vs 64GB — learn how much RAM makes sense for gaming, streaming, multitasking and demanding workloads.</p>
+      <span class="read-link">Read Guide →</span>
+    </a>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
+  <p><a href="privacy-policy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+(()=>{const dropdown=document.querySelector(".tool-dropdown");if(!dropdown)return;const summary=dropdown.querySelector("summary");let pinned=false;let closeTimer;const closeMenu=()=>{clearTimeout(closeTimer);if(!dropdown.open)return;dropdown.open=false};dropdown.addEventListener("pointerenter",()=>{clearTimeout(closeTimer);if(!pinned)dropdown.open=true});dropdown.addEventListener("pointerleave",()=>{if(!pinned)closeTimer=setTimeout(closeMenu,210)});summary.addEventListener("click",event=>{event.preventDefault();clearTimeout(closeTimer);if(pinned){pinned=false;closeMenu()}else{pinned=true;dropdown.open=true}});document.addEventListener("pointerdown",event=>{if(!dropdown.contains(event.target)){pinned=false;closeMenu()}});document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dropdown.open){pinned=false;closeMenu();summary.focus()}});dropdown.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{pinned=false;closeMenu()}))})();
+</script>
+</body>
+</html>
