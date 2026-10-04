@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH7D3F7VV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CSH7D3F7VV');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Estimate CPU and GPU bottlenecks for gaming with your selected hardware, resolution, game type and target FPS using SystemFit PC's practical bottleneck calculator.">
-<link rel="canonical" href="https://systemfitpc.vercel.app/bottleneck.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -148,6 +137,9 @@ a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255
 #brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}
 #brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
 @media(max-width:800px){#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}}
+
+/* Inline searchable hardware pickers */
+.hardware-picker{position:relative}.picker-trigger{height:48px;padding:0 12px;border:1px solid rgba(159,176,207,.2);border-radius:10px;background:rgba(7,11,19,.72);color:var(--text);font:inherit;transition:border-color .2s,box-shadow .2s,background .2s}.picker-trigger:hover{border-color:rgba(153,134,255,.46)}.picker-trigger:focus-visible{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,255,.15);outline:none}.picker-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;cursor:pointer}.picker-panel{display:none;position:absolute;z-index:30;top:calc(100% + 6px);left:0;right:0;padding:9px;border:1px solid var(--border);border-radius:12px;background:#111827;box-shadow:0 16px 40px rgba(0,0,0,.38)}.picker-panel.is-open{display:block}.picker-search{width:100%;margin-bottom:7px}.picker-options{max-height:250px;overflow-y:auto}.picker-option{display:block;width:100%;padding:9px 10px;border:0;border-radius:7px;background:transparent;color:var(--text);text-align:left;cursor:pointer;font:inherit;font-size:13px}.picker-option:hover,.picker-option:focus-visible{background:rgba(118,95,255,.18);outline:none}.picker-empty{padding:10px;color:var(--muted);font-size:12px}.native-hardware-select{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 </style>
 <style id="homepage-header-system">
 /* Shared SystemFit PC homepage header */
@@ -161,37 +153,45 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 </style>
 </head>
 <body>
-<div id="site-header"></div>
+<header>
+<div class="nav">
+<a id="brand-logo" class="logo" href="index.html#home" aria-label="SystemFit PC home"><span class="brand-monogram" aria-hidden="true">S<span>F</span></span><span class="brand-wordmark"><span class="brand-system">System</span><span class="brand-fit">Fit</span></span><span class="brand-pc">PC</span></a>
+<nav aria-label="Main navigation"><a href="index.html#home">Home</a><details class="tool-dropdown" id="toolsMenu"><summary aria-label="Open tools menu">Tools</summary><div class="tool-menu" aria-label="Tools"><p class="tool-menu-label">Available now</p><a class="tool-menu-item current-tool" href="bottleneck.html" aria-current="page"><span class="tool-menu-icon cpu-menu-icon" aria-hidden="true">CPU</span><span><b>CPU &amp; GPU Bottleneck</b><small>Compare your components</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
+<a class="tool-menu-item" href="build-planner.html"><span class="tool-menu-icon build-menu-icon" aria-hidden="true">PC</span><span><b>PC Build Planner</b><small>Check component fit and power</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
+<a class="tool-menu-item" href="gpu-comparison.html"><span class="tool-menu-icon compare-menu-icon" aria-hidden="true">GPU</span><span><b>GPU Comparison</b><small>Compare up to five graphics cards</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a><p class="tool-menu-label planned-label">Coming soon</p><div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon fps-menu-icon" aria-hidden="true">FPS</span><span><b>FPS Calculator</b><small>Estimate performance</small></span><span class="soon-tag">Soon</span></div><div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon upgrade-menu-icon" aria-hidden="true">↑</span><span><b>Upgrade Planner</b><small>Find your next upgrade</small></span><span class="soon-tag">Soon</span></div><div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon compare-menu-icon" aria-hidden="true">↔</span><span><b>CPU &amp; GPU Compare</b><small>Compare hardware directly</small></span><span class="soon-tag">Soon</span></div><div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon power-menu-icon" aria-hidden="true">W</span><span><b>PSU Power Guide</b><small>Estimate power needs</small></span><span class="soon-tag">Soon</span></div></div></details><a href="index.html#about">About</a></nav>
+</div>
+</header>
 
 <main class="wrap">
 <section class="card">
-  <h1>CPU & GPU Bottleneck Calculator</h1>
+  <h1>CPU &amp; GPU Bottleneck Calculator</h1>
   <div class="subtitle">Estimate how your CPU and GPU balance against each other for your selected gaming scenario. Choose your hardware, resolution, game type and target FPS.</div>
 
   <div class="grid2">
     <div>
-      <label>Search CPU</label>
-      <input id="cpuSearch" placeholder="Type CPU name..." autocomplete="off">
-    </div>
-    <div>
-      <label>Search GPU</label>
-      <input id="gpuSearch" placeholder="Type GPU name..." autocomplete="off">
-    </div>
-
-    <div>
-      <label>Select your CPU</label>
-      <select id="cpuSelect">
-        <option value="">— Select a CPU —</option>
-      </select>
-      <div class="field-help">Search above, then choose your processor from the list.</div>
+      <label for="cpuPickerButton">Select your CPU</label>
+      <div class="hardware-picker" data-hardware-picker="cpu">
+        <button class="picker-trigger" id="cpuPickerButton" type="button" aria-haspopup="listbox" aria-expanded="false">— Select a CPU — <span aria-hidden="true">⌄</span></button>
+        <div class="picker-panel">
+          <input class="picker-search" type="search" placeholder="Search CPUs..." autocomplete="off" aria-label="Search CPUs">
+          <div class="picker-options" role="listbox" aria-label="Available CPUs"></div>
+          <div class="picker-empty" hidden>No matching CPUs found.</div>
+        </div>
+      </div>
+      <select id="cpuSelect" class="native-hardware-select" aria-hidden="true" tabindex="-1"><option value="">— Select a CPU —</option></select>
     </div>
 
     <div>
-      <label>Select your GPU</label>
-      <select id="gpuSelect">
-        <option value="">— Select a GPU —</option>
-      </select>
-      <div class="field-help">Search above, then choose your graphics card from the list.</div>
+      <label for="gpuPickerButton">Select your GPU</label>
+      <div class="hardware-picker" data-hardware-picker="gpu">
+        <button class="picker-trigger" id="gpuPickerButton" type="button" aria-haspopup="listbox" aria-expanded="false">— Select a GPU — <span aria-hidden="true">⌄</span></button>
+        <div class="picker-panel">
+          <input class="picker-search" type="search" placeholder="Search GPUs..." autocomplete="off" aria-label="Search GPUs">
+          <div class="picker-options" role="listbox" aria-label="Available GPUs"></div>
+          <div class="picker-empty" hidden>No matching GPUs found.</div>
+        </div>
+      </div>
+      <select id="gpuSelect" class="native-hardware-select" aria-hidden="true" tabindex="-1"><option value="">— Select a GPU —</option></select>
     </div>
 
     <div class="scenario-grid">
@@ -289,94 +289,2135 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
    a common tested model; estimated = no comparable chart result.
    CPU and GPU scales use separate reference hardware.
    ========================================================= */
-const DATABASE_VERSION = "0.5-expanded-hardware-catalog-2026-09";
+const DATABASE_VERSION = "hardware-database-json";
 const SCORE_SCALE = {min:0,max:100,reference:"approximate source-normalized 1080p gaming performance"};
 
 const CPUs = [
- {id:"i3-10100",name:"Intel Core i3-10100",vendor:"INTEL",family:"Core i3",score:28,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"i3-12100f",name:"Intel Core i3-12100F",vendor:"INTEL",family:"Core i3",score:42,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"i5-10400f",name:"Intel Core i5-10400F",vendor:"INTEL",family:"Core i5",score:48,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"i5-11400f",name:"Intel Core i5-11400F",vendor:"INTEL",family:"Core i5",score:50,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"i5-12400f",name:"Intel Core i5-12400F",vendor:"INTEL",family:"Core i5",score:51,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p chart scaled"},
- {id:"i5-13400f",name:"Intel Core i5-13400F",vendor:"INTEL",family:"Core i5",score:65,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"i5-14400f",name:"Intel Core i5-14400F",vendor:"INTEL",family:"Core i5",score:66,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"i5-14600k",name:"Intel Core i5-14600K",vendor:"INTEL",family:"Core i5",score:73,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart"},
- {id:"i5-12600k",name:"Intel Core i5-12600K",vendor:"INTEL",family:"Core i5",score:61,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"i5-13600k",name:"Intel Core i5-13600K",vendor:"INTEL",family:"Core i5",score:71,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart"},
- {id:"i7-10700k",name:"Intel Core i7-10700K",vendor:"INTEL",family:"Core i7",score:62,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"i7-11700k",name:"Intel Core i7-11700K",vendor:"INTEL",family:"Core i7",score:67,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"i7-12700k",name:"Intel Core i7-12700K",vendor:"INTEL",family:"Core i7",score:73,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"i7-13700k",name:"Intel Core i7-13700K",vendor:"INTEL",family:"Core i7",score:76,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart"},
- {id:"i7-14700k",name:"Intel Core i7-14700K",vendor:"INTEL",family:"Core i7",score:76,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart: 76.4%"},
- {id:"i9-12900k",name:"Intel Core i9-12900K",vendor:"INTEL",family:"Core i9",score:77,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"i9-13900k",name:"Intel Core i9-13900K",vendor:"INTEL",family:"Core i9",score:77,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart"},
- {id:"i9-14900k",name:"Intel Core i9-14900K",vendor:"INTEL",family:"Core i9",score:78,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart: 78.2%"},
- {id:"r3-3100",name:"AMD Ryzen 3 3100",vendor:"AMD",family:"Ryzen 3",score:32,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r5-3600",name:"AMD Ryzen 5 3600",vendor:"AMD",family:"Ryzen 5",score:46,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p chart scaled"},
- {id:"r5-5500",name:"AMD Ryzen 5 5500",vendor:"AMD",family:"Ryzen 5",score:50,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r5-5600",name:"AMD Ryzen 5 5600",vendor:"AMD",family:"Ryzen 5",score:52,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p chart scaled"},
- {id:"r5-5600x",name:"AMD Ryzen 5 5600X",vendor:"AMD",family:"Ryzen 5",score:54,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r5-7500f",name:"AMD Ryzen 5 7500F",vendor:"AMD",family:"Ryzen 5",score:60,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r5-7600",name:"AMD Ryzen 5 7600",vendor:"AMD",family:"Ryzen 5",score:61,status:"bridged",scoreNote:"Tom’s Hardware legacy 1080p chart scaled"},
- {id:"r5-7600x",name:"AMD Ryzen 5 7600X",vendor:"AMD",family:"Ryzen 5",score:63,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r5-9600x",name:"AMD Ryzen 5 9600X",vendor:"AMD",family:"Ryzen 5",score:72,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r7-5700x",name:"AMD Ryzen 7 5700X",vendor:"AMD",family:"Ryzen 7",score:57,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r7-5700x3d",name:"AMD Ryzen 7 5700X3D",vendor:"AMD",family:"Ryzen 7",score:72,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r7-5800x3d",name:"AMD Ryzen 7 5800X3D",vendor:"AMD",family:"Ryzen 7",score:76,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r7-7700",name:"AMD Ryzen 7 7700",vendor:"AMD",family:"Ryzen 7",score:67,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r7-7700x",name:"AMD Ryzen 7 7700X",vendor:"AMD",family:"Ryzen 7",score:69,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r7-7800x3d",name:"AMD Ryzen 7 7800X3D",vendor:"AMD",family:"Ryzen 7",score:86,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart: 85.6%"},
- {id:"r7-9700x",name:"AMD Ryzen 7 9700X",vendor:"AMD",family:"Ryzen 7",score:78,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r7-9800x3d",name:"AMD Ryzen 7 9800X3D",vendor:"AMD",family:"Ryzen 7",score:97,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart: 97%"},
- {id:"r7-9850x3d",name:"AMD Ryzen 7 9850X3D",vendor:"AMD",family:"Ryzen 7",score:100,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart: 100% (reference)"},
- {id:"r9-5900x",name:"AMD Ryzen 9 5900X",vendor:"AMD",family:"Ryzen 9",score:65,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r9-7900x",name:"AMD Ryzen 9 7900X",vendor:"AMD",family:"Ryzen 9",score:73,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r9-7950x",name:"AMD Ryzen 9 7950X",vendor:"AMD",family:"Ryzen 9",score:76,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r9-7950x3d",name:"AMD Ryzen 9 7950X3D",vendor:"AMD",family:"Ryzen 9",score:84,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart"},
- {id:"r9-9900x",name:"AMD Ryzen 9 9900X",vendor:"AMD",family:"Ryzen 9",score:74,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"r9-9950x",name:"AMD Ryzen 9 9950X",vendor:"AMD",family:"Ryzen 9",score:77,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart: 76.9%"},
- {id:"r9-9950x3d",name:"AMD Ryzen 9 9950X3D",vendor:"AMD",family:"Ryzen 9",score:96,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p gaming chart: 95.7%"}
+ {
+  "id": "intel_g4560",
+  "name": "Pentium G4560",
+  "vendor": "Intel",
+  "family": "7th Gen Kaby Lake",
+  "generation": "7th Gen Kaby Lake",
+  "tier": "Low-End",
+  "score": 10,
+  "status": "estimated",
+  "scoreNote": "Database score; 7th Gen Kaby Lake · Low-End"
+ },
+ {
+  "id": "intel_i3_6100",
+  "name": "Core i3-6100",
+  "vendor": "Intel",
+  "family": "6th Gen Skylake",
+  "generation": "6th Gen Skylake",
+  "tier": "Low-End",
+  "score": 12,
+  "status": "estimated",
+  "scoreNote": "Database score; 6th Gen Skylake · Low-End"
+ },
+ {
+  "id": "intel_i3_7100",
+  "name": "Core i3-7100",
+  "vendor": "Intel",
+  "family": "7th Gen Kaby Lake",
+  "generation": "7th Gen Kaby Lake",
+  "tier": "Low-End",
+  "score": 14,
+  "status": "estimated",
+  "scoreNote": "Database score; 7th Gen Kaby Lake · Low-End"
+ },
+ {
+  "id": "amd_r3_1200",
+  "name": "Ryzen 3 1200",
+  "vendor": "AMD",
+  "family": "Ryzen 1000 Zen 1",
+  "generation": "Ryzen 1000 Zen 1",
+  "tier": "Low-End",
+  "score": 14,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 1000 Zen 1 · Low-End"
+ },
+ {
+  "id": "amd_r3_1300x",
+  "name": "Ryzen 3 1300X",
+  "vendor": "AMD",
+  "family": "Ryzen 1000 Zen 1",
+  "generation": "Ryzen 1000 Zen 1",
+  "tier": "Low-End",
+  "score": 16,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 1000 Zen 1 · Low-End"
+ },
+ {
+  "id": "intel_i5_6400",
+  "name": "Core i5-6400",
+  "vendor": "Intel",
+  "family": "6th Gen Skylake",
+  "generation": "6th Gen Skylake",
+  "tier": "Mid-Range",
+  "score": 18,
+  "status": "estimated",
+  "scoreNote": "Database score; 6th Gen Skylake · Mid-Range"
+ },
+ {
+  "id": "amd_r3_2200g",
+  "name": "Ryzen 3 2200G",
+  "vendor": "AMD",
+  "family": "Ryzen 2000 Zen+",
+  "generation": "Ryzen 2000 Zen+",
+  "tier": "Low-End",
+  "score": 18,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 2000 Zen+ · Low-End"
+ },
+ {
+  "id": "intel_i5_6500",
+  "name": "Core i5-6500",
+  "vendor": "Intel",
+  "family": "6th Gen Skylake",
+  "generation": "6th Gen Skylake",
+  "tier": "Mid-Range",
+  "score": 20,
+  "status": "estimated",
+  "scoreNote": "Database score; 6th Gen Skylake · Mid-Range"
+ },
+ {
+  "id": "amd_r5_1400",
+  "name": "Ryzen 5 1400",
+  "vendor": "AMD",
+  "family": "Ryzen 1000 Zen 1",
+  "generation": "Ryzen 1000 Zen 1",
+  "tier": "Mid-Range",
+  "score": 20,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 1000 Zen 1 · Mid-Range"
+ },
+ {
+  "id": "intel_i5_7400",
+  "name": "Core i5-7400",
+  "vendor": "Intel",
+  "family": "7th Gen Kaby Lake",
+  "generation": "7th Gen Kaby Lake",
+  "tier": "Mid-Range",
+  "score": 21,
+  "status": "estimated",
+  "scoreNote": "Database score; 7th Gen Kaby Lake · Mid-Range"
+ },
+ {
+  "id": "intel_i5_7500",
+  "name": "Core i5-7500",
+  "vendor": "Intel",
+  "family": "7th Gen Kaby Lake",
+  "generation": "7th Gen Kaby Lake",
+  "tier": "Mid-Range",
+  "score": 22,
+  "status": "estimated",
+  "scoreNote": "Database score; 7th Gen Kaby Lake · Mid-Range"
+ },
+ {
+  "id": "intel_i3_8100",
+  "name": "Core i3-8100",
+  "vendor": "Intel",
+  "family": "8th Gen Coffee Lake",
+  "generation": "8th Gen Coffee Lake",
+  "tier": "Low-End",
+  "score": 22,
+  "status": "estimated",
+  "scoreNote": "Database score; 8th Gen Coffee Lake · Low-End"
+ },
+ {
+  "id": "intel_i5_6600k",
+  "name": "Core i5-6600K",
+  "vendor": "Intel",
+  "family": "6th Gen Skylake",
+  "generation": "6th Gen Skylake",
+  "tier": "Mid-Range",
+  "score": 23,
+  "status": "estimated",
+  "scoreNote": "Database score; 6th Gen Skylake · Mid-Range"
+ },
+ {
+  "id": "amd_r5_1600",
+  "name": "Ryzen 5 1600",
+  "vendor": "AMD",
+  "family": "Ryzen 1000 Zen 1",
+  "generation": "Ryzen 1000 Zen 1",
+  "tier": "Mid-Range",
+  "score": 23,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 1000 Zen 1 · Mid-Range"
+ },
+ {
+  "id": "intel_i3_8350k",
+  "name": "Core i3-8350K",
+  "vendor": "Intel",
+  "family": "8th Gen Coffee Lake",
+  "generation": "8th Gen Coffee Lake",
+  "tier": "Low-End",
+  "score": 24,
+  "status": "estimated",
+  "scoreNote": "Database score; 8th Gen Coffee Lake · Low-End"
+ },
+ {
+  "id": "amd_r5_2400g",
+  "name": "Ryzen 5 2400G",
+  "vendor": "AMD",
+  "family": "Ryzen 2000 Zen+",
+  "generation": "Ryzen 2000 Zen+",
+  "tier": "Mid-Range",
+  "score": 24,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 2000 Zen+ · Mid-Range"
+ },
+ {
+  "id": "intel_i5_7600k",
+  "name": "Core i5-7600K",
+  "vendor": "Intel",
+  "family": "7th Gen Kaby Lake",
+  "generation": "7th Gen Kaby Lake",
+  "tier": "Mid-Range",
+  "score": 25,
+  "status": "estimated",
+  "scoreNote": "Database score; 7th Gen Kaby Lake · Mid-Range"
+ },
+ {
+  "id": "intel_i3_9100",
+  "name": "Core i3-9100",
+  "vendor": "Intel",
+  "family": "9th Gen Coffee Lake R",
+  "generation": "9th Gen Coffee Lake R",
+  "tier": "Low-End",
+  "score": 25,
+  "status": "estimated",
+  "scoreNote": "Database score; 9th Gen Coffee Lake R · Low-End"
+ },
+ {
+  "id": "intel_i3_9100f",
+  "name": "Core i3-9100F",
+  "vendor": "Intel",
+  "family": "9th Gen Coffee Lake R",
+  "generation": "9th Gen Coffee Lake R",
+  "tier": "Low-End",
+  "score": 25,
+  "status": "estimated",
+  "scoreNote": "Database score; 9th Gen Coffee Lake R · Low-End"
+ },
+ {
+  "id": "amd_r5_1600x",
+  "name": "Ryzen 5 1600X",
+  "vendor": "AMD",
+  "family": "Ryzen 1000 Zen 1",
+  "generation": "Ryzen 1000 Zen 1",
+  "tier": "Mid-Range",
+  "score": 25,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 1000 Zen 1 · Mid-Range"
+ },
+ {
+  "id": "intel_i7_6700",
+  "name": "Core i7-6700",
+  "vendor": "Intel",
+  "family": "6th Gen Skylake",
+  "generation": "6th Gen Skylake",
+  "tier": "High-End",
+  "score": 26,
+  "status": "estimated",
+  "scoreNote": "Database score; 6th Gen Skylake · High-End"
+ },
+ {
+  "id": "amd_r7_1700",
+  "name": "Ryzen 7 1700",
+  "vendor": "AMD",
+  "family": "Ryzen 1000 Zen 1",
+  "generation": "Ryzen 1000 Zen 1",
+  "tier": "High-End",
+  "score": 27,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 1000 Zen 1 · High-End"
+ },
+ {
+  "id": "intel_i7_6700k",
+  "name": "Core i7-6700K",
+  "vendor": "Intel",
+  "family": "6th Gen Skylake",
+  "generation": "6th Gen Skylake",
+  "tier": "High-End",
+  "score": 28,
+  "status": "estimated",
+  "scoreNote": "Database score; 6th Gen Skylake · High-End"
+ },
+ {
+  "id": "amd_r3_3100",
+  "name": "Ryzen 3 3100",
+  "vendor": "AMD",
+  "family": "Ryzen 3000 Zen 2",
+  "generation": "Ryzen 3000 Zen 2",
+  "tier": "Low-End",
+  "score": 28,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 3000 Zen 2 · Low-End"
+ },
+ {
+  "id": "amd_r7_1700x",
+  "name": "Ryzen 7 1700X",
+  "vendor": "AMD",
+  "family": "Ryzen 1000 Zen 1",
+  "generation": "Ryzen 1000 Zen 1",
+  "tier": "High-End",
+  "score": 29,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 1000 Zen 1 · High-End"
+ },
+ {
+  "id": "amd_r5_2600",
+  "name": "Ryzen 5 2600",
+  "vendor": "AMD",
+  "family": "Ryzen 2000 Zen+",
+  "generation": "Ryzen 2000 Zen+",
+  "tier": "Mid-Range",
+  "score": 29,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 2000 Zen+ · Mid-Range"
+ },
+ {
+  "id": "intel_i3_10100",
+  "name": "Core i3-10100",
+  "vendor": "Intel",
+  "family": "10th Gen Comet Lake",
+  "generation": "10th Gen Comet Lake",
+  "tier": "Low-End",
+  "score": 30,
+  "status": "estimated",
+  "scoreNote": "Database score; 10th Gen Comet Lake · Low-End"
+ },
+ {
+  "id": "intel_i7_7700",
+  "name": "Core i7-7700",
+  "vendor": "Intel",
+  "family": "7th Gen Kaby Lake",
+  "generation": "7th Gen Kaby Lake",
+  "tier": "High-End",
+  "score": 30,
+  "status": "estimated",
+  "scoreNote": "Database score; 7th Gen Kaby Lake · High-End"
+ },
+ {
+  "id": "amd_r7_1800x",
+  "name": "Ryzen 7 1800X",
+  "vendor": "AMD",
+  "family": "Ryzen 1000 Zen 1",
+  "generation": "Ryzen 1000 Zen 1",
+  "tier": "High-End",
+  "score": 30,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 1000 Zen 1 · High-End"
+ },
+ {
+  "id": "intel_i5_8400",
+  "name": "Core i5-8400",
+  "vendor": "Intel",
+  "family": "8th Gen Coffee Lake",
+  "generation": "8th Gen Coffee Lake",
+  "tier": "Mid-Range",
+  "score": 31,
+  "status": "estimated",
+  "scoreNote": "Database score; 8th Gen Coffee Lake · Mid-Range"
+ },
+ {
+  "id": "amd_r5_2600x",
+  "name": "Ryzen 5 2600X",
+  "vendor": "AMD",
+  "family": "Ryzen 2000 Zen+",
+  "generation": "Ryzen 2000 Zen+",
+  "tier": "Mid-Range",
+  "score": 31,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 2000 Zen+ · Mid-Range"
+ },
+ {
+  "id": "intel_i3_10300",
+  "name": "Core i3-10300",
+  "vendor": "Intel",
+  "family": "10th Gen Comet Lake",
+  "generation": "10th Gen Comet Lake",
+  "tier": "Low-End",
+  "score": 32,
+  "status": "estimated",
+  "scoreNote": "Database score; 10th Gen Comet Lake · Low-End"
+ },
+ {
+  "id": "intel_i5_8500",
+  "name": "Core i5-8500",
+  "vendor": "Intel",
+  "family": "8th Gen Coffee Lake",
+  "generation": "8th Gen Coffee Lake",
+  "tier": "Mid-Range",
+  "score": 32,
+  "status": "estimated",
+  "scoreNote": "Database score; 8th Gen Coffee Lake · Mid-Range"
+ },
+ {
+  "id": "amd_r3_3300x",
+  "name": "Ryzen 3 3300X",
+  "vendor": "AMD",
+  "family": "Ryzen 3000 Zen 2",
+  "generation": "Ryzen 3000 Zen 2",
+  "tier": "Low-End",
+  "score": 32,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 3000 Zen 2 · Low-End"
+ },
+ {
+  "id": "intel_i7_7700k",
+  "name": "Core i7-7700K",
+  "vendor": "Intel",
+  "family": "7th Gen Kaby Lake",
+  "generation": "7th Gen Kaby Lake",
+  "tier": "High-End",
+  "score": 33,
+  "status": "estimated",
+  "scoreNote": "Database score; 7th Gen Kaby Lake · High-End"
+ },
+ {
+  "id": "intel_i5_9400f",
+  "name": "Core i5-9400F",
+  "vendor": "Intel",
+  "family": "9th Gen Coffee Lake R",
+  "generation": "9th Gen Coffee Lake R",
+  "tier": "Mid-Range",
+  "score": 34,
+  "status": "estimated",
+  "scoreNote": "Database score; 9th Gen Coffee Lake R · Mid-Range"
+ },
+ {
+  "id": "intel_i7_7740x",
+  "name": "Core i7-7740X",
+  "vendor": "Intel",
+  "family": "Kaby Lake-X HEDT",
+  "generation": "Kaby Lake-X HEDT",
+  "tier": "High-End",
+  "score": 34,
+  "status": "estimated",
+  "scoreNote": "Database score; Kaby Lake-X HEDT · High-End"
+ },
+ {
+  "id": "amd_r7_2700",
+  "name": "Ryzen 7 2700",
+  "vendor": "AMD",
+  "family": "Ryzen 2000 Zen+",
+  "generation": "Ryzen 2000 Zen+",
+  "tier": "High-End",
+  "score": 34,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 2000 Zen+ · High-End"
+ },
+ {
+  "id": "intel_i5_8600k",
+  "name": "Core i5-8600K",
+  "vendor": "Intel",
+  "family": "8th Gen Coffee Lake",
+  "generation": "8th Gen Coffee Lake",
+  "tier": "Mid-Range",
+  "score": 35,
+  "status": "estimated",
+  "scoreNote": "Database score; 8th Gen Coffee Lake · Mid-Range"
+ },
+ {
+  "id": "intel_i7_10750h",
+  "name": "Core i7-10750H",
+  "vendor": "Intel",
+  "family": "10th Gen Mobile",
+  "generation": "10th Gen Mobile",
+  "tier": "Mid-Range",
+  "score": 36,
+  "status": "estimated",
+  "scoreNote": "Database score; 10th Gen Mobile · Mid-Range"
+ },
+ {
+  "id": "amd_r7_2700x",
+  "name": "Ryzen 7 2700X",
+  "vendor": "AMD",
+  "family": "Ryzen 2000 Zen+",
+  "generation": "Ryzen 2000 Zen+",
+  "tier": "High-End",
+  "score": 36,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 2000 Zen+ · High-End"
+ },
+ {
+  "id": "intel_i5_9600k",
+  "name": "Core i5-9600K",
+  "vendor": "Intel",
+  "family": "9th Gen Coffee Lake R",
+  "generation": "9th Gen Coffee Lake R",
+  "tier": "Mid-Range",
+  "score": 37,
+  "status": "estimated",
+  "scoreNote": "Database score; 9th Gen Coffee Lake R · Mid-Range"
+ },
+ {
+  "id": "intel_i7_8700",
+  "name": "Core i7-8700",
+  "vendor": "Intel",
+  "family": "8th Gen Coffee Lake",
+  "generation": "8th Gen Coffee Lake",
+  "tier": "High-End",
+  "score": 38,
+  "status": "estimated",
+  "scoreNote": "Database score; 8th Gen Coffee Lake · High-End"
+ },
+ {
+  "id": "intel_i7_7820x",
+  "name": "Core i7-7820X",
+  "vendor": "Intel",
+  "family": "Skylake-X HEDT",
+  "generation": "Skylake-X HEDT",
+  "tier": "High-End",
+  "score": 39,
+  "status": "estimated",
+  "scoreNote": "Database score; Skylake-X HEDT · High-End"
+ },
+ {
+  "id": "intel_i7_8700k",
+  "name": "Core i7-8700K",
+  "vendor": "Intel",
+  "family": "8th Gen Coffee Lake",
+  "generation": "8th Gen Coffee Lake",
+  "tier": "High-End",
+  "score": 40,
+  "status": "estimated",
+  "scoreNote": "Database score; 8th Gen Coffee Lake · High-End"
+ },
+ {
+  "id": "intel_i5_10400f",
+  "name": "Core i5-10400F",
+  "vendor": "Intel",
+  "family": "10th Gen Comet Lake",
+  "generation": "10th Gen Comet Lake",
+  "tier": "Mid-Range",
+  "score": 41,
+  "status": "estimated",
+  "scoreNote": "Database score; 10th Gen Comet Lake · Mid-Range"
+ },
+ {
+  "id": "amd_r5_3600",
+  "name": "Ryzen 5 3600",
+  "vendor": "AMD",
+  "family": "Ryzen 3000 Zen 2",
+  "generation": "Ryzen 3000 Zen 2",
+  "tier": "Mid-Range",
+  "score": 42,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 3000 Zen 2 · Mid-Range"
+ },
+ {
+  "id": "intel_i9_7900x",
+  "name": "Core i9-7900X",
+  "vendor": "Intel",
+  "family": "Skylake-X HEDT",
+  "generation": "Skylake-X HEDT",
+  "tier": "High-End",
+  "score": 42,
+  "status": "estimated",
+  "scoreNote": "Database score; Skylake-X HEDT · High-End"
+ },
+ {
+  "id": "intel_i5_11400f",
+  "name": "Core i5-11400F",
+  "vendor": "Intel",
+  "family": "11th Gen Rocket Lake",
+  "generation": "11th Gen Rocket Lake",
+  "tier": "Low-End",
+  "score": 43,
+  "status": "estimated",
+  "scoreNote": "Database score; 11th Gen Rocket Lake · Low-End"
+ },
+ {
+  "id": "intel_i7_9700k",
+  "name": "Core i7-9700K",
+  "vendor": "Intel",
+  "family": "9th Gen Coffee Lake R",
+  "generation": "9th Gen Coffee Lake R",
+  "tier": "High-End",
+  "score": 43,
+  "status": "estimated",
+  "scoreNote": "Database score; 9th Gen Coffee Lake R · High-End"
+ },
+ {
+  "id": "intel_i7_11800h",
+  "name": "Core i7-11800H",
+  "vendor": "Intel",
+  "family": "11th Gen Mobile",
+  "generation": "11th Gen Mobile",
+  "tier": "Mid-Range",
+  "score": 44,
+  "status": "estimated",
+  "scoreNote": "Database score; 11th Gen Mobile · Mid-Range"
+ },
+ {
+  "id": "intel_i3_12100f",
+  "name": "Core i3-12100F",
+  "vendor": "Intel",
+  "family": "12th Gen Alder Lake",
+  "generation": "12th Gen Alder Lake",
+  "tier": "Low-End",
+  "score": 44,
+  "status": "estimated",
+  "scoreNote": "Database score; 12th Gen Alder Lake · Low-End"
+ },
+ {
+  "id": "amd_r5_3600x",
+  "name": "Ryzen 5 3600X",
+  "vendor": "AMD",
+  "family": "Ryzen 3000 Zen 2",
+  "generation": "Ryzen 3000 Zen 2",
+  "tier": "Mid-Range",
+  "score": 44,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 3000 Zen 2 · Mid-Range"
+ },
+ {
+  "id": "intel_i5_10600k",
+  "name": "Core i5-10600K",
+  "vendor": "Intel",
+  "family": "10th Gen Comet Lake",
+  "generation": "10th Gen Comet Lake",
+  "tier": "Mid-Range",
+  "score": 45,
+  "status": "estimated",
+  "scoreNote": "Database score; 10th Gen Comet Lake · Mid-Range"
+ },
+ {
+  "id": "amd_r5_5500",
+  "name": "Ryzen 5 5500",
+  "vendor": "AMD",
+  "family": "Ryzen 5000 Zen 3",
+  "generation": "Ryzen 5000 Zen 3",
+  "tier": "Low-End",
+  "score": 45,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 5000 Zen 3 · Low-End"
+ },
+ {
+  "id": "intel_i3_12300",
+  "name": "Core i3-12300",
+  "vendor": "Intel",
+  "family": "12th Gen Alder Lake",
+  "generation": "12th Gen Alder Lake",
+  "tier": "Low-End",
+  "score": 46,
+  "status": "estimated",
+  "scoreNote": "Database score; 12th Gen Alder Lake · Low-End"
+ },
+ {
+  "id": "intel_i9_9900k",
+  "name": "Core i9-9900K",
+  "vendor": "Intel",
+  "family": "9th Gen Coffee Lake R",
+  "generation": "9th Gen Coffee Lake R",
+  "tier": "High-End",
+  "score": 46,
+  "status": "estimated",
+  "scoreNote": "Database score; 9th Gen Coffee Lake R · High-End"
+ },
+ {
+  "id": "intel_i5_11600k",
+  "name": "Core i5-11600K",
+  "vendor": "Intel",
+  "family": "11th Gen Rocket Lake",
+  "generation": "11th Gen Rocket Lake",
+  "tier": "Mid-Range",
+  "score": 48,
+  "status": "estimated",
+  "scoreNote": "Database score; 11th Gen Rocket Lake · Mid-Range"
+ },
+ {
+  "id": "intel_i3_13100f",
+  "name": "Core i3-13100F",
+  "vendor": "Intel",
+  "family": "13th Gen Raptor Lake",
+  "generation": "13th Gen Raptor Lake",
+  "tier": "Low-End",
+  "score": 48,
+  "status": "estimated",
+  "scoreNote": "Database score; 13th Gen Raptor Lake · Low-End"
+ },
+ {
+  "id": "amd_r7_3700x",
+  "name": "Ryzen 7 3700X",
+  "vendor": "AMD",
+  "family": "Ryzen 3000 Zen 2",
+  "generation": "Ryzen 3000 Zen 2",
+  "tier": "High-End",
+  "score": 48,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 3000 Zen 2 · High-End"
+ },
+ {
+  "id": "intel_i9_9980xe",
+  "name": "Core i9-9980XE",
+  "vendor": "Intel",
+  "family": "Skylake-X Refresh HEDT",
+  "generation": "Skylake-X Refresh HEDT",
+  "tier": "High-End",
+  "score": 48,
+  "status": "estimated",
+  "scoreNote": "Database score; Skylake-X Refresh HEDT · High-End"
+ },
+ {
+  "id": "amd_r7_3800x",
+  "name": "Ryzen 7 3800X",
+  "vendor": "AMD",
+  "family": "Ryzen 3000 Zen 2",
+  "generation": "Ryzen 3000 Zen 2",
+  "tier": "High-End",
+  "score": 49,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 3000 Zen 2 · High-End"
+ },
+ {
+  "id": "intel_i7_10700k",
+  "name": "Core i7-10700K",
+  "vendor": "Intel",
+  "family": "10th Gen Comet Lake",
+  "generation": "10th Gen Comet Lake",
+  "tier": "High-End",
+  "score": 50,
+  "status": "estimated",
+  "scoreNote": "Database score; 10th Gen Comet Lake · High-End"
+ },
+ {
+  "id": "amd_r7_3800xt",
+  "name": "Ryzen 7 3800XT",
+  "vendor": "AMD",
+  "family": "Ryzen 3000 XT Refresh",
+  "generation": "Ryzen 3000 XT Refresh",
+  "tier": "High-End",
+  "score": 50,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 3000 XT Refresh · High-End"
+ },
+ {
+  "id": "amd_r9_3900x",
+  "name": "Ryzen 9 3900X",
+  "vendor": "AMD",
+  "family": "Ryzen 3000 Zen 2",
+  "generation": "Ryzen 3000 Zen 2",
+  "tier": "High-End",
+  "score": 51,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 3000 Zen 2 · High-End"
+ },
+ {
+  "id": "intel_i7_11700",
+  "name": "Core i7-11700",
+  "vendor": "Intel",
+  "family": "11th Gen Rocket Lake",
+  "generation": "11th Gen Rocket Lake",
+  "tier": "High-End",
+  "score": 52,
+  "status": "estimated",
+  "scoreNote": "Database score; 11th Gen Rocket Lake · High-End"
+ },
+ {
+  "id": "intel_i3_14100f",
+  "name": "Core i3-14100F",
+  "vendor": "Intel",
+  "family": "14th Gen Raptor Lake R",
+  "generation": "14th Gen Raptor Lake R",
+  "tier": "Low-End",
+  "score": 52,
+  "status": "estimated",
+  "scoreNote": "Database score; 14th Gen Raptor Lake R · Low-End"
+ },
+ {
+  "id": "amd_r9_3950x",
+  "name": "Ryzen 9 3950X",
+  "vendor": "AMD",
+  "family": "Ryzen 3000 Zen 2",
+  "generation": "Ryzen 3000 Zen 2",
+  "tier": "High-End",
+  "score": 52,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 3000 Zen 2 · High-End"
+ },
+ {
+  "id": "intel_i7_11700k",
+  "name": "Core i7-11700K",
+  "vendor": "Intel",
+  "family": "11th Gen Rocket Lake",
+  "generation": "11th Gen Rocket Lake",
+  "tier": "High-End",
+  "score": 53,
+  "status": "estimated",
+  "scoreNote": "Database score; 11th Gen Rocket Lake · High-End"
+ },
+ {
+  "id": "intel_i9_10900k",
+  "name": "Core i9-10900K",
+  "vendor": "Intel",
+  "family": "10th Gen Comet Lake",
+  "generation": "10th Gen Comet Lake",
+  "tier": "High-End",
+  "score": 54,
+  "status": "estimated",
+  "scoreNote": "Database score; 10th Gen Comet Lake · High-End"
+ },
+ {
+  "id": "amd_r5_5600",
+  "name": "Ryzen 5 5600",
+  "vendor": "AMD",
+  "family": "Ryzen 5000 Zen 3",
+  "generation": "Ryzen 5000 Zen 3",
+  "tier": "Mid-Range",
+  "score": 54,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 5000 Zen 3 · Mid-Range"
+ },
+ {
+  "id": "intel_i5_12400f",
+  "name": "Core i5-12400F",
+  "vendor": "Intel",
+  "family": "12th Gen Alder Lake",
+  "generation": "12th Gen Alder Lake",
+  "tier": "Mid-Range",
+  "score": 55,
+  "status": "estimated",
+  "scoreNote": "Database score; 12th Gen Alder Lake · Mid-Range"
+ },
+ {
+  "id": "intel_i9_11900k",
+  "name": "Core i9-11900K",
+  "vendor": "Intel",
+  "family": "11th Gen Rocket Lake",
+  "generation": "11th Gen Rocket Lake",
+  "tier": "High-End",
+  "score": 56,
+  "status": "estimated",
+  "scoreNote": "Database score; 11th Gen Rocket Lake · High-End"
+ },
+ {
+  "id": "amd_r5_5600x",
+  "name": "Ryzen 5 5600X",
+  "vendor": "AMD",
+  "family": "Ryzen 5000 Zen 3",
+  "generation": "Ryzen 5000 Zen 3",
+  "tier": "Mid-Range",
+  "score": 56,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 5000 Zen 3 · Mid-Range"
+ },
+ {
+  "id": "intel_i5_13400f",
+  "name": "Core i5-13400F",
+  "vendor": "Intel",
+  "family": "13th Gen Raptor Lake",
+  "generation": "13th Gen Raptor Lake",
+  "tier": "Mid-Range",
+  "score": 60,
+  "status": "estimated",
+  "scoreNote": "Database score; 13th Gen Raptor Lake · Mid-Range"
+ },
+ {
+  "id": "amd_r7_5700x",
+  "name": "Ryzen 7 5700X",
+  "vendor": "AMD",
+  "family": "Ryzen 5000 Zen 3",
+  "generation": "Ryzen 5000 Zen 3",
+  "tier": "High-End",
+  "score": 62,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 5000 Zen 3 · High-End"
+ },
+ {
+  "id": "amd_r5_7500f",
+  "name": "Ryzen 5 7500F",
+  "vendor": "AMD",
+  "family": "Ryzen 7000 Zen 4",
+  "generation": "Ryzen 7000 Zen 4",
+  "tier": "Low-End",
+  "score": 62,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 7000 Zen 4 · Low-End"
+ },
+ {
+  "id": "intel_i5_14400f",
+  "name": "Core i5-14400F",
+  "vendor": "Intel",
+  "family": "14th Gen Raptor Lake R",
+  "generation": "14th Gen Raptor Lake R",
+  "tier": "Mid-Range",
+  "score": 63,
+  "status": "estimated",
+  "scoreNote": "Database score; 14th Gen Raptor Lake R · Mid-Range"
+ },
+ {
+  "id": "intel_i5_12600k",
+  "name": "Core i5-12600K",
+  "vendor": "Intel",
+  "family": "12th Gen Alder Lake",
+  "generation": "12th Gen Alder Lake",
+  "tier": "Mid-Range",
+  "score": 64,
+  "status": "estimated",
+  "scoreNote": "Database score; 12th Gen Alder Lake · Mid-Range"
+ },
+ {
+  "id": "amd_r7_5800x",
+  "name": "Ryzen 7 5800X",
+  "vendor": "AMD",
+  "family": "Ryzen 5000 Zen 3",
+  "generation": "Ryzen 5000 Zen 3",
+  "tier": "High-End",
+  "score": 64,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 5000 Zen 3 · High-End"
+ },
+ {
+  "id": "amd_r9_5900x",
+  "name": "Ryzen 9 5900X",
+  "vendor": "AMD",
+  "family": "Ryzen 5000 Zen 3",
+  "generation": "Ryzen 5000 Zen 3",
+  "tier": "High-End",
+  "score": 66,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 5000 Zen 3 · High-End"
+ },
+ {
+  "id": "amd_r5_7600",
+  "name": "Ryzen 5 7600",
+  "vendor": "AMD",
+  "family": "Ryzen 7000 Zen 4",
+  "generation": "Ryzen 7000 Zen 4",
+  "tier": "Mid-Range",
+  "score": 66,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 7000 Zen 4 · Mid-Range"
+ },
+ {
+  "id": "amd_r5_5600x3d",
+  "name": "Ryzen 5 5600X3D",
+  "vendor": "AMD",
+  "family": "Ryzen 5000 Zen 3",
+  "generation": "Ryzen 5000 Zen 3",
+  "tier": "High-End",
+  "score": 68,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 5000 Zen 3 · High-End"
+ },
+ {
+  "id": "amd_r9_5950x",
+  "name": "Ryzen 9 5950X",
+  "vendor": "AMD",
+  "family": "Ryzen 5000 Zen 3",
+  "generation": "Ryzen 5000 Zen 3",
+  "tier": "High-End",
+  "score": 68,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 5000 Zen 3 · High-End"
+ },
+ {
+  "id": "amd_r5_7600x",
+  "name": "Ryzen 5 7600X",
+  "vendor": "AMD",
+  "family": "Ryzen 7000 Zen 4",
+  "generation": "Ryzen 7000 Zen 4",
+  "tier": "Mid-Range",
+  "score": 68,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 7000 Zen 4 · Mid-Range"
+ },
+ {
+  "id": "intel_i7_12700k",
+  "name": "Core i7-12700K",
+  "vendor": "Intel",
+  "family": "12th Gen Alder Lake",
+  "generation": "12th Gen Alder Lake",
+  "tier": "High-End",
+  "score": 70,
+  "status": "estimated",
+  "scoreNote": "Database score; 12th Gen Alder Lake · High-End"
+ },
+ {
+  "id": "intel_i9_12900k",
+  "name": "Core i9-12900K",
+  "vendor": "Intel",
+  "family": "12th Gen Alder Lake",
+  "generation": "12th Gen Alder Lake",
+  "tier": "High-End",
+  "score": 72,
+  "status": "estimated",
+  "scoreNote": "Database score; 12th Gen Alder Lake · High-End"
+ },
+ {
+  "id": "amd_r7_5800x3d",
+  "name": "Ryzen 7 5800X3D",
+  "vendor": "AMD",
+  "family": "Ryzen 5000 Zen 3",
+  "generation": "Ryzen 5000 Zen 3",
+  "tier": "High-End",
+  "score": 74,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 5000 Zen 3 · High-End"
+ },
+ {
+  "id": "intel_i5_13600k",
+  "name": "Core i5-13600K",
+  "vendor": "Intel",
+  "family": "13th Gen Raptor Lake",
+  "generation": "13th Gen Raptor Lake",
+  "tier": "Mid-Range",
+  "score": 75,
+  "status": "estimated",
+  "scoreNote": "Database score; 13th Gen Raptor Lake · Mid-Range"
+ },
+ {
+  "id": "amd_r5_9600x",
+  "name": "Ryzen 5 9600X",
+  "vendor": "AMD",
+  "family": "Ryzen 9000 Zen 5",
+  "generation": "Ryzen 9000 Zen 5",
+  "tier": "Mid-Range",
+  "score": 75,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 9000 Zen 5 · Mid-Range"
+ },
+ {
+  "id": "intel_ultra5_245k",
+  "name": "Core Ultra 5 245K",
+  "vendor": "Intel",
+  "family": "Core Ultra Arrow Lake",
+  "generation": "Core Ultra Arrow Lake",
+  "tier": "Mid-Range",
+  "score": 76,
+  "status": "estimated",
+  "scoreNote": "Database score; Core Ultra Arrow Lake · Mid-Range"
+ },
+ {
+  "id": "amd_r7_7700x",
+  "name": "Ryzen 7 7700X",
+  "vendor": "AMD",
+  "family": "Ryzen 7000 Zen 4",
+  "generation": "Ryzen 7000 Zen 4",
+  "tier": "High-End",
+  "score": 76,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 7000 Zen 4 · High-End"
+ },
+ {
+  "id": "intel_i5_14600k",
+  "name": "Core i5-14600K",
+  "vendor": "Intel",
+  "family": "14th Gen Raptor Lake R",
+  "generation": "14th Gen Raptor Lake R",
+  "tier": "Mid-Range",
+  "score": 78,
+  "status": "estimated",
+  "scoreNote": "Database score; 14th Gen Raptor Lake R · Mid-Range"
+ },
+ {
+  "id": "amd_r9_7900x",
+  "name": "Ryzen 9 7900X",
+  "vendor": "AMD",
+  "family": "Ryzen 7000 Zen 4",
+  "generation": "Ryzen 7000 Zen 4",
+  "tier": "High-End",
+  "score": 80,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 7000 Zen 4 · High-End"
+ },
+ {
+  "id": "intel_i7_13700k",
+  "name": "Core i7-13700K",
+  "vendor": "Intel",
+  "family": "13th Gen Raptor Lake",
+  "generation": "13th Gen Raptor Lake",
+  "tier": "High-End",
+  "score": 82,
+  "status": "estimated",
+  "scoreNote": "Database score; 13th Gen Raptor Lake · High-End"
+ },
+ {
+  "id": "amd_r7_9700x",
+  "name": "Ryzen 7 9700X",
+  "vendor": "AMD",
+  "family": "Ryzen 9000 Zen 5",
+  "generation": "Ryzen 9000 Zen 5",
+  "tier": "High-End",
+  "score": 82,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 9000 Zen 5 · High-End"
+ },
+ {
+  "id": "intel_ultra7_265k",
+  "name": "Core Ultra 7 265K",
+  "vendor": "Intel",
+  "family": "Core Ultra Arrow Lake",
+  "generation": "Core Ultra Arrow Lake",
+  "tier": "High-End",
+  "score": 84,
+  "status": "estimated",
+  "scoreNote": "Database score; Core Ultra Arrow Lake · High-End"
+ },
+ {
+  "id": "amd_r9_7950x",
+  "name": "Ryzen 9 7950X",
+  "vendor": "AMD",
+  "family": "Ryzen 7000 Zen 4",
+  "generation": "Ryzen 7000 Zen 4",
+  "tier": "High-End",
+  "score": 84,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 7000 Zen 4 · High-End"
+ },
+ {
+  "id": "intel_i9_13900k",
+  "name": "Core i9-13900K",
+  "vendor": "Intel",
+  "family": "13th Gen Raptor Lake",
+  "generation": "13th Gen Raptor Lake",
+  "tier": "High-End",
+  "score": 85,
+  "status": "estimated",
+  "scoreNote": "Database score; 13th Gen Raptor Lake · High-End"
+ },
+ {
+  "id": "intel_i7_14700k",
+  "name": "Core i7-14700K",
+  "vendor": "Intel",
+  "family": "14th Gen Raptor Lake R",
+  "generation": "14th Gen Raptor Lake R",
+  "tier": "High-End",
+  "score": 85,
+  "status": "estimated",
+  "scoreNote": "Database score; 14th Gen Raptor Lake R · High-End"
+ },
+ {
+  "id": "intel_i9_13900ks",
+  "name": "Core i9-13900KS",
+  "vendor": "Intel",
+  "family": "13th Gen Raptor Lake",
+  "generation": "13th Gen Raptor Lake",
+  "tier": "High-End",
+  "score": 86,
+  "status": "estimated",
+  "scoreNote": "Database score; 13th Gen Raptor Lake · High-End"
+ },
+ {
+  "id": "amd_r9_7950x3d",
+  "name": "Ryzen 9 7950X3D",
+  "vendor": "AMD",
+  "family": "Ryzen 7000 Zen 4",
+  "generation": "Ryzen 7000 Zen 4",
+  "tier": "High-End",
+  "score": 88,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 7000 Zen 4 · High-End"
+ },
+ {
+  "id": "amd_r9_9900x",
+  "name": "Ryzen 9 9900X",
+  "vendor": "AMD",
+  "family": "Ryzen 9000 Zen 5",
+  "generation": "Ryzen 9000 Zen 5",
+  "tier": "High-End",
+  "score": 88,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 9000 Zen 5 · High-End"
+ },
+ {
+  "id": "intel_i9_14900k",
+  "name": "Core i9-14900K",
+  "vendor": "Intel",
+  "family": "14th Gen Raptor Lake R",
+  "generation": "14th Gen Raptor Lake R",
+  "tier": "High-End",
+  "score": 89,
+  "status": "estimated",
+  "scoreNote": "Database score; 14th Gen Raptor Lake R · High-End"
+ },
+ {
+  "id": "intel_ultra9_285k",
+  "name": "Core Ultra 9 285K",
+  "vendor": "Intel",
+  "family": "Core Ultra Arrow Lake",
+  "generation": "Core Ultra Arrow Lake",
+  "tier": "High-End",
+  "score": 89,
+  "status": "estimated",
+  "scoreNote": "Database score; Core Ultra Arrow Lake · High-End"
+ },
+ {
+  "id": "intel_i9_14900ks",
+  "name": "Core i9-14900KS",
+  "vendor": "Intel",
+  "family": "14th Gen Raptor Lake R",
+  "generation": "14th Gen Raptor Lake R",
+  "tier": "High-End",
+  "score": 90,
+  "status": "estimated",
+  "scoreNote": "Database score; 14th Gen Raptor Lake R · High-End"
+ },
+ {
+  "id": "amd_r7_7800x3d",
+  "name": "Ryzen 7 7800X3D",
+  "vendor": "AMD",
+  "family": "Ryzen 7000 Zen 4",
+  "generation": "Ryzen 7000 Zen 4",
+  "tier": "High-End",
+  "score": 92,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 7000 Zen 4 · High-End"
+ },
+ {
+  "id": "amd_r9_9950x3d2",
+  "name": "Ryzen 9 9950X3D2",
+  "vendor": "AMD",
+  "family": "Ryzen 9000 Zen 5",
+  "generation": "Ryzen 9000 Zen 5",
+  "tier": "High-End",
+  "score": 98,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 9000 Zen 5 · High-End"
+ },
+ {
+  "id": "amd_r7_9800x3d",
+  "name": "Ryzen 7 9800X3D",
+  "vendor": "AMD",
+  "family": "Ryzen 9000 Zen 5",
+  "generation": "Ryzen 9000 Zen 5",
+  "tier": "High-End",
+  "score": 100,
+  "status": "estimated",
+  "scoreNote": "Database score; Ryzen 9000 Zen 5 · High-End"
+ }
 ];
-
 const GPUs = [
- {id:"gtx-1650",name:"NVIDIA GeForce GTX 1650",vendor:"NVIDIA",family:"GeForce GTX",score:15,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"gtx-1660-super",name:"NVIDIA GeForce GTX 1660 SUPER",vendor:"NVIDIA",family:"GeForce GTX",score:22,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-2060",name:"NVIDIA GeForce RTX 2060",vendor:"NVIDIA",family:"GeForce RTX",score:32,status:"bridged",scoreNote:"Tom’s Hardware legacy chart scaled"},
- {id:"rtx-3050",name:"NVIDIA GeForce RTX 3050",vendor:"NVIDIA",family:"GeForce RTX",score:24,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-3060",name:"NVIDIA GeForce RTX 3060 12GB",vendor:"NVIDIA",family:"GeForce RTX",score:33,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-3060-ti",name:"NVIDIA GeForce RTX 3060 Ti",vendor:"NVIDIA",family:"GeForce RTX",score:42,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-3070",name:"NVIDIA GeForce RTX 3070",vendor:"NVIDIA",family:"GeForce RTX",score:48,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-3070-ti",name:"NVIDIA GeForce RTX 3070 Ti",vendor:"NVIDIA",family:"GeForce RTX",score:52,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-3080",name:"NVIDIA GeForce RTX 3080",vendor:"NVIDIA",family:"GeForce RTX",score:62,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-4060",name:"NVIDIA GeForce RTX 4060",vendor:"NVIDIA",family:"GeForce RTX",score:35,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p Ultra chart"},
- {id:"rtx-4060-ti-8gb",name:"NVIDIA GeForce RTX 4060 Ti 8GB",vendor:"NVIDIA",family:"GeForce RTX",score:42,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-4060-ti-16gb",name:"NVIDIA GeForce RTX 4060 Ti 16GB",vendor:"NVIDIA",family:"GeForce RTX",score:43,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-4070",name:"NVIDIA GeForce RTX 4070",vendor:"NVIDIA",family:"GeForce RTX",score:55,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p Ultra chart"},
- {id:"rtx-4070-super",name:"NVIDIA GeForce RTX 4070 SUPER",vendor:"NVIDIA",family:"GeForce RTX",score:62,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-4070-ti",name:"NVIDIA GeForce RTX 4070 Ti",vendor:"NVIDIA",family:"GeForce RTX",score:65,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-4070-ti-super",name:"NVIDIA GeForce RTX 4070 Ti SUPER",vendor:"NVIDIA",family:"GeForce RTX",score:70,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-4080",name:"NVIDIA GeForce RTX 4080",vendor:"NVIDIA",family:"GeForce RTX",score:78,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-4080-super",name:"NVIDIA GeForce RTX 4080 SUPER",vendor:"NVIDIA",family:"GeForce RTX",score:82,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rtx-4090",name:"NVIDIA GeForce RTX 4090",vendor:"NVIDIA",family:"GeForce RTX",score:90,status:"direct",scoreNote:"Tom’s Hardware 2026 1080p Ultra chart"},
- {id:"rtx-5060",name:"NVIDIA GeForce RTX 5060",vendor:"NVIDIA",family:"GeForce RTX",score:45,status:"estimated",scoreNote:"Estimated from early 2026 data"},
- {id:"rtx-5070",name:"NVIDIA GeForce RTX 5070",vendor:"NVIDIA",family:"GeForce RTX",score:68,status:"estimated",scoreNote:"Estimated from early 2026 data"},
- {id:"rtx-5070-ti",name:"NVIDIA GeForce RTX 5070 Ti",vendor:"NVIDIA",family:"GeForce RTX",score:82,status:"estimated",scoreNote:"Estimated from early 2026 data"},
- {id:"rtx-5080",name:"NVIDIA GeForce RTX 5080",vendor:"NVIDIA",family:"GeForce RTX",score:92,status:"estimated",scoreNote:"Estimated from early 2026 data"},
- {id:"rtx-5090",name:"NVIDIA GeForce RTX 5090",vendor:"NVIDIA",family:"GeForce RTX",score:100,status:"direct",scoreNote:"Tom’s Hardware 2026 reference leader"},
- {id:"rx-6600",name:"AMD Radeon RX 6600",vendor:"AMD",family:"Radeon RX",score:30,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rx-6700-xt",name:"AMD Radeon RX 6700 XT",vendor:"AMD",family:"Radeon RX",score:45,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rx-6800-xt",name:"AMD Radeon RX 6800 XT",vendor:"AMD",family:"Radeon RX",score:58,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rx-7600",name:"AMD Radeon RX 7600",vendor:"AMD",family:"Radeon RX",score:34,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rx-7700-xt",name:"AMD Radeon RX 7700 XT",vendor:"AMD",family:"Radeon RX",score:48,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rx-7800-xt",name:"AMD Radeon RX 7800 XT",vendor:"AMD",family:"Radeon RX",score:60,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rx-7900-xt",name:"AMD Radeon RX 7900 XT",vendor:"AMD",family:"Radeon RX",score:75,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rx-7900-xtx",name:"AMD Radeon RX 7900 XTX",vendor:"AMD",family:"Radeon RX",score:84,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"rx-9060-xt",name:"AMD Radeon RX 9060 XT",vendor:"AMD",family:"Radeon RX",score:55,status:"estimated",scoreNote:"Estimated from early 2026 data"},
- {id:"rx-9070",name:"AMD Radeon RX 9070",vendor:"AMD",family:"Radeon RX",score:72,status:"estimated",scoreNote:"Estimated from early 2026 data"},
- {id:"rx-9070-xt",name:"AMD Radeon RX 9070 XT",vendor:"AMD",family:"Radeon RX",score:85,status:"estimated",scoreNote:"Estimated from early 2026 data"},
- {id:"arc-a750",name:"Intel Arc A750",vendor:"INTEL",family:"Arc",score:28,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"arc-a770",name:"Intel Arc A770",vendor:"INTEL",family:"Arc",score:32,status:"estimated",scoreNote:"Estimated from product tier"},
- {id:"arc-b580",name:"Intel Arc B580",vendor:"INTEL",family:"Arc",score:40,status:"estimated",scoreNote:"Estimated from early 2026 data"}
+ {
+  "id": "amd_rx_550",
+  "name": "Radeon RX 550",
+  "vendor": "AMD",
+  "family": "RX 500 Polaris",
+  "generation": "RX 500 Polaris",
+  "tier": "Low-End",
+  "score": 4,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 500 Polaris · Low-End"
+ },
+ {
+  "id": "amd_rx_460",
+  "name": "Radeon RX 460",
+  "vendor": "AMD",
+  "family": "RX 400 Polaris",
+  "generation": "RX 400 Polaris",
+  "tier": "Low-End",
+  "score": 5,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 400 Polaris · Low-End"
+ },
+ {
+  "id": "nv_gtx_950",
+  "name": "GeForce GTX 950",
+  "vendor": "NVIDIA",
+  "family": "GTX 900 Maxwell",
+  "generation": "GTX 900 Maxwell",
+  "tier": "Low-End",
+  "score": 6,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 900 Maxwell · Low-End"
+ },
+ {
+  "id": "amd_rx_560",
+  "name": "Radeon RX 560",
+  "vendor": "AMD",
+  "family": "RX 500 Polaris",
+  "generation": "RX 500 Polaris",
+  "tier": "Low-End",
+  "score": 6,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 500 Polaris · Low-End"
+ },
+ {
+  "id": "nv_gtx_1050",
+  "name": "GeForce GTX 1050",
+  "vendor": "NVIDIA",
+  "family": "GTX 10 Pascal",
+  "generation": "GTX 10 Pascal",
+  "tier": "Low-End",
+  "score": 9,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 10 Pascal · Low-End"
+ },
+ {
+  "id": "nv_gtx_960",
+  "name": "GeForce GTX 960",
+  "vendor": "NVIDIA",
+  "family": "GTX 900 Maxwell",
+  "generation": "GTX 900 Maxwell",
+  "tier": "Low-End",
+  "score": 9,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 900 Maxwell · Low-End"
+ },
+ {
+  "id": "amd_rx_6400",
+  "name": "Radeon RX 6400",
+  "vendor": "AMD",
+  "family": "RX 6000 RDNA 2",
+  "generation": "RX 6000 RDNA 2",
+  "tier": "Low-End",
+  "score": 10,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 6000 RDNA 2 · Low-End"
+ },
+ {
+  "id": "nv_gtx_1050ti",
+  "name": "GeForce GTX 1050 Ti",
+  "vendor": "NVIDIA",
+  "family": "GTX 10 Pascal",
+  "generation": "GTX 10 Pascal",
+  "tier": "Low-End",
+  "score": 11,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 10 Pascal · Low-End"
+ },
+ {
+  "id": "amd_rx_470",
+  "name": "Radeon RX 470",
+  "vendor": "AMD",
+  "family": "RX 400 Polaris",
+  "generation": "RX 400 Polaris",
+  "tier": "Mid-Range",
+  "score": 11,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 400 Polaris · Mid-Range"
+ },
+ {
+  "id": "intel_arc_a380",
+  "name": "Arc A380",
+  "vendor": "Intel",
+  "family": "Arc Alchemist",
+  "generation": "Arc Alchemist",
+  "tier": "Low-End",
+  "score": 12,
+  "status": "estimated",
+  "scoreNote": "Database score; Arc Alchemist · Low-End"
+ },
+ {
+  "id": "amd_rx_570",
+  "name": "Radeon RX 570",
+  "vendor": "AMD",
+  "family": "RX 500 Polaris",
+  "generation": "RX 500 Polaris",
+  "tier": "Mid-Range",
+  "score": 12,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 500 Polaris · Mid-Range"
+ },
+ {
+  "id": "nv_gtx_1650",
+  "name": "GeForce GTX 1650",
+  "vendor": "NVIDIA",
+  "family": "GTX 16 Turing",
+  "generation": "GTX 16 Turing",
+  "tier": "Low-End",
+  "score": 13,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 16 Turing · Low-End"
+ },
+ {
+  "id": "amd_rx_480",
+  "name": "Radeon RX 480",
+  "vendor": "AMD",
+  "family": "RX 400 Polaris",
+  "generation": "RX 400 Polaris",
+  "tier": "Mid-Range",
+  "score": 13,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 400 Polaris · Mid-Range"
+ },
+ {
+  "id": "nv_gtx_970",
+  "name": "GeForce GTX 970",
+  "vendor": "NVIDIA",
+  "family": "GTX 900 Maxwell",
+  "generation": "GTX 900 Maxwell",
+  "tier": "Mid-Range",
+  "score": 14,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 900 Maxwell · Mid-Range"
+ },
+ {
+  "id": "amd_rx_6500xt",
+  "name": "Radeon RX 6500 XT",
+  "vendor": "AMD",
+  "family": "RX 6000 RDNA 2",
+  "generation": "RX 6000 RDNA 2",
+  "tier": "Low-End",
+  "score": 14,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 6000 RDNA 2 · Low-End"
+ },
+ {
+  "id": "nv_gtx_1060_3b",
+  "name": "GeForce GTX 1060 3GB",
+  "vendor": "NVIDIA",
+  "family": "GTX 10 Pascal",
+  "generation": "GTX 10 Pascal",
+  "tier": "Mid-Range",
+  "score": 15,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 10 Pascal · Mid-Range"
+ },
+ {
+  "id": "amd_rx_580",
+  "name": "Radeon RX 580",
+  "vendor": "AMD",
+  "family": "RX 500 Polaris",
+  "generation": "RX 500 Polaris",
+  "tier": "Mid-Range",
+  "score": 15,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 500 Polaris · Mid-Range"
+ },
+ {
+  "id": "amd_rx_5500xt",
+  "name": "Radeon RX 5500 XT",
+  "vendor": "AMD",
+  "family": "RX 5000 RDNA 1",
+  "generation": "RX 5000 RDNA 1",
+  "tier": "Low-End",
+  "score": 16,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 5000 RDNA 1 · Low-End"
+ },
+ {
+  "id": "nv_gtx_980",
+  "name": "GeForce GTX 980",
+  "vendor": "NVIDIA",
+  "family": "GTX 900 Maxwell",
+  "generation": "GTX 900 Maxwell",
+  "tier": "Mid-Range",
+  "score": 17,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 900 Maxwell · Mid-Range"
+ },
+ {
+  "id": "amd_rx_590",
+  "name": "Radeon RX 590",
+  "vendor": "AMD",
+  "family": "RX 500 Polaris",
+  "generation": "RX 500 Polaris",
+  "tier": "Mid-Range",
+  "score": 17,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 500 Polaris · Mid-Range"
+ },
+ {
+  "id": "nv_gtx_1060_6b",
+  "name": "GeForce GTX 1060 6GB",
+  "vendor": "NVIDIA",
+  "family": "GTX 10 Pascal",
+  "generation": "GTX 10 Pascal",
+  "tier": "Mid-Range",
+  "score": 18,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 10 Pascal · Mid-Range"
+ },
+ {
+  "id": "intel_arc_a580",
+  "name": "Arc A580",
+  "vendor": "Intel",
+  "family": "Arc Alchemist",
+  "generation": "Arc Alchemist",
+  "tier": "Mid-Range",
+  "score": 21,
+  "status": "estimated",
+  "scoreNote": "Database score; Arc Alchemist · Mid-Range"
+ },
+ {
+  "id": "nv_gtx_980ti",
+  "name": "GeForce GTX 980 Ti",
+  "vendor": "NVIDIA",
+  "family": "GTX 900 Maxwell",
+  "generation": "GTX 900 Maxwell",
+  "tier": "High-End",
+  "score": 21,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 900 Maxwell · High-End"
+ },
+ {
+  "id": "nv_gtx_1660s",
+  "name": "GeForce GTX 1660 Super",
+  "vendor": "NVIDIA",
+  "family": "GTX 16 Turing",
+  "generation": "GTX 16 Turing",
+  "tier": "Mid-Range",
+  "score": 22,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 16 Turing · Mid-Range"
+ },
+ {
+  "id": "amd_rx_vega_56",
+  "name": "Radeon RX Vega 56",
+  "vendor": "AMD",
+  "family": "RX Vega",
+  "generation": "RX Vega",
+  "tier": "Mid-Range",
+  "score": 22,
+  "status": "estimated",
+  "scoreNote": "Database score; RX Vega · Mid-Range"
+ },
+ {
+  "id": "nv_titan_x",
+  "name": "GeForce TITAN X",
+  "vendor": "NVIDIA",
+  "family": "GTX 900 HEDT",
+  "generation": "GTX 900 HEDT",
+  "tier": "High-End",
+  "score": 23,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 900 HEDT · High-End"
+ },
+ {
+  "id": "nv_gtx_1070",
+  "name": "GeForce GTX 1070",
+  "vendor": "NVIDIA",
+  "family": "GTX 10 Pascal",
+  "generation": "GTX 10 Pascal",
+  "tier": "Mid-Range",
+  "score": 24,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 10 Pascal · Mid-Range"
+ },
+ {
+  "id": "amd_rx_5600xt",
+  "name": "Radeon RX 5600 XT",
+  "vendor": "AMD",
+  "family": "RX 5000 RDNA 1",
+  "generation": "RX 5000 RDNA 1",
+  "tier": "Mid-Range",
+  "score": 25,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 5000 RDNA 1 · Mid-Range"
+ },
+ {
+  "id": "amd_rx_vega_64",
+  "name": "Radeon RX Vega 64",
+  "vendor": "AMD",
+  "family": "RX Vega",
+  "generation": "RX Vega",
+  "tier": "High-End",
+  "score": 25,
+  "status": "estimated",
+  "scoreNote": "Database score; RX Vega · High-End"
+ },
+ {
+  "id": "nv_rtx_3050",
+  "name": "GeForce RTX 3050",
+  "vendor": "NVIDIA",
+  "family": "RTX 30 Ampere",
+  "generation": "RTX 30 Ampere",
+  "tier": "Low-End",
+  "score": 26,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 30 Ampere · Low-End"
+ },
+ {
+  "id": "intel_arc_a750",
+  "name": "Arc A750",
+  "vendor": "Intel",
+  "family": "Arc Alchemist",
+  "generation": "Arc Alchemist",
+  "tier": "Mid-Range",
+  "score": 27,
+  "status": "estimated",
+  "scoreNote": "Database score; Arc Alchemist · Mid-Range"
+ },
+ {
+  "id": "nv_gtx_1070ti",
+  "name": "GeForce GTX 1070 Ti",
+  "vendor": "NVIDIA",
+  "family": "GTX 10 Pascal",
+  "generation": "GTX 10 Pascal",
+  "tier": "Mid-Range",
+  "score": 28,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 10 Pascal · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_2060",
+  "name": "GeForce RTX 2060",
+  "vendor": "NVIDIA",
+  "family": "RTX 20 Turing",
+  "generation": "RTX 20 Turing",
+  "tier": "Mid-Range",
+  "score": 29,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 20 Turing · Mid-Range"
+ },
+ {
+  "id": "nv_gtx_1080",
+  "name": "GeForce GTX 1080",
+  "vendor": "NVIDIA",
+  "family": "GTX 10 Pascal",
+  "generation": "GTX 10 Pascal",
+  "tier": "High-End",
+  "score": 30,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 10 Pascal · High-End"
+ },
+ {
+  "id": "amd_rx_5700",
+  "name": "Radeon RX 5700",
+  "vendor": "AMD",
+  "family": "RX 5000 RDNA 1",
+  "generation": "RX 5000 RDNA 1",
+  "tier": "Mid-Range",
+  "score": 30,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 5000 RDNA 1 · Mid-Range"
+ },
+ {
+  "id": "amd_rx_6600",
+  "name": "Radeon RX 6600",
+  "vendor": "AMD",
+  "family": "RX 6000 RDNA 2",
+  "generation": "RX 6000 RDNA 2",
+  "tier": "Mid-Range",
+  "score": 31,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 6000 RDNA 2 · Mid-Range"
+ },
+ {
+  "id": "intel_arc_a770",
+  "name": "Arc A770",
+  "vendor": "Intel",
+  "family": "Arc Alchemist",
+  "generation": "Arc Alchemist",
+  "tier": "High-End",
+  "score": 32,
+  "status": "estimated",
+  "scoreNote": "Database score; Arc Alchemist · High-End"
+ },
+ {
+  "id": "nv_rtx_2060s",
+  "name": "GeForce RTX 2060 Super",
+  "vendor": "NVIDIA",
+  "family": "RTX 20 Turing",
+  "generation": "RTX 20 Turing",
+  "tier": "Mid-Range",
+  "score": 32,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 20 Turing · Mid-Range"
+ },
+ {
+  "id": "amd_rx_5700xt",
+  "name": "Radeon RX 5700 XT",
+  "vendor": "AMD",
+  "family": "RX 5000 RDNA 1",
+  "generation": "RX 5000 RDNA 1",
+  "tier": "High-End",
+  "score": 33,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 5000 RDNA 1 · High-End"
+ },
+ {
+  "id": "nv_gtx_1080ti",
+  "name": "GeForce GTX 1080 Ti",
+  "vendor": "NVIDIA",
+  "family": "GTX 10 Pascal",
+  "generation": "GTX 10 Pascal",
+  "tier": "High-End",
+  "score": 34,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 10 Pascal · High-End"
+ },
+ {
+  "id": "amd_rx_6600xt",
+  "name": "Radeon RX 6600 XT",
+  "vendor": "AMD",
+  "family": "RX 6000 RDNA 2",
+  "generation": "RX 6000 RDNA 2",
+  "tier": "Mid-Range",
+  "score": 35,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 6000 RDNA 2 · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_2070",
+  "name": "GeForce RTX 2070",
+  "vendor": "NVIDIA",
+  "family": "RTX 20 Turing",
+  "generation": "RTX 20 Turing",
+  "tier": "Mid-Range",
+  "score": 36,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 20 Turing · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_3060",
+  "name": "GeForce RTX 3060",
+  "vendor": "NVIDIA",
+  "family": "RTX 30 Ampere",
+  "generation": "RTX 30 Ampere",
+  "tier": "Mid-Range",
+  "score": 36,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 30 Ampere · Mid-Range"
+ },
+ {
+  "id": "nv_titan_xp",
+  "name": "Titan Xp",
+  "vendor": "NVIDIA",
+  "family": "GTX 10 HEDT",
+  "generation": "GTX 10 HEDT",
+  "tier": "High-End",
+  "score": 37,
+  "status": "estimated",
+  "scoreNote": "Database score; GTX 10 HEDT · High-End"
+ },
+ {
+  "id": "amd_rx_7600",
+  "name": "Radeon RX 7600",
+  "vendor": "AMD",
+  "family": "RX 7000 RDNA 3",
+  "generation": "RX 7000 RDNA 3",
+  "tier": "Low-End",
+  "score": 38,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 7000 RDNA 3 · Low-End"
+ },
+ {
+  "id": "nv_rtx_2070s",
+  "name": "GeForce RTX 2070 Super",
+  "vendor": "NVIDIA",
+  "family": "RTX 20 Turing",
+  "generation": "RTX 20 Turing",
+  "tier": "Mid-Range",
+  "score": 40,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 20 Turing · Mid-Range"
+ },
+ {
+  "id": "amd_rx_7600xt",
+  "name": "Radeon RX 7600 XT",
+  "vendor": "AMD",
+  "family": "RX 7000 RDNA 3",
+  "generation": "RX 7000 RDNA 3",
+  "tier": "Mid-Range",
+  "score": 41,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 7000 RDNA 3 · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_3060ti",
+  "name": "GeForce RTX 3060 Ti",
+  "vendor": "NVIDIA",
+  "family": "RTX 30 Ampere",
+  "generation": "RTX 30 Ampere",
+  "tier": "Mid-Range",
+  "score": 44,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 30 Ampere · Mid-Range"
+ },
+ {
+  "id": "intel_arc_b580",
+  "name": "Arc B580",
+  "vendor": "Intel",
+  "family": "Arc Battlemage",
+  "generation": "Arc Battlemage",
+  "tier": "Mid-Range",
+  "score": 45,
+  "status": "estimated",
+  "scoreNote": "Database score; Arc Battlemage · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_2080s",
+  "name": "GeForce RTX 2080 Super",
+  "vendor": "NVIDIA",
+  "family": "RTX 20 Turing",
+  "generation": "RTX 20 Turing",
+  "tier": "High-End",
+  "score": 45,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 20 Turing · High-End"
+ },
+ {
+  "id": "amd_rx_6700_xt",
+  "name": "Radeon RX 6700 XT",
+  "vendor": "AMD",
+  "family": "RX 6000 RDNA 2",
+  "generation": "RX 6000 RDNA 2",
+  "tier": "Mid-Range",
+  "score": 45,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 6000 RDNA 2 · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_4060",
+  "name": "GeForce RTX 4060",
+  "vendor": "NVIDIA",
+  "family": "RTX 40 Ada",
+  "generation": "RTX 40 Ada",
+  "tier": "Low-End",
+  "score": 46,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 40 Ada · Low-End"
+ },
+ {
+  "id": "nv_rtx_2080ti",
+  "name": "GeForce RTX 2080 Ti",
+  "vendor": "NVIDIA",
+  "family": "RTX 20 Turing",
+  "generation": "RTX 20 Turing",
+  "tier": "High-End",
+  "score": 48,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 20 Turing · High-End"
+ },
+ {
+  "id": "nv_rtx_5050",
+  "name": "GeForce RTX 5050",
+  "vendor": "NVIDIA",
+  "family": "RTX 50 Blackwell",
+  "generation": "RTX 50 Blackwell",
+  "tier": "Low-End",
+  "score": 48,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 50 Blackwell · Low-End"
+ },
+ {
+  "id": "nv_rtx_3070",
+  "name": "GeForce RTX 3070",
+  "vendor": "NVIDIA",
+  "family": "RTX 30 Ampere",
+  "generation": "RTX 30 Ampere",
+  "tier": "Mid-Range",
+  "score": 50,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 30 Ampere · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_4060ti",
+  "name": "GeForce RTX 4060 Ti",
+  "vendor": "NVIDIA",
+  "family": "RTX 40 Ada",
+  "generation": "RTX 40 Ada",
+  "tier": "Mid-Range",
+  "score": 51,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 40 Ada · Mid-Range"
+ },
+ {
+  "id": "nv_titan_rtx",
+  "name": "TITAN RTX",
+  "vendor": "NVIDIA",
+  "family": "RTX 20 HEDT",
+  "generation": "RTX 20 HEDT",
+  "tier": "High-End",
+  "score": 53,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 20 HEDT · High-End"
+ },
+ {
+  "id": "amd_rx_7700xt",
+  "name": "Radeon RX 7700 XT",
+  "vendor": "AMD",
+  "family": "RX 7000 RDNA 3",
+  "generation": "RX 7000 RDNA 3",
+  "tier": "Mid-Range",
+  "score": 53,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 7000 RDNA 3 · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_3070ti",
+  "name": "GeForce RTX 3070 Ti",
+  "vendor": "NVIDIA",
+  "family": "RTX 30 Ampere",
+  "generation": "RTX 30 Ampere",
+  "tier": "Mid-Range",
+  "score": 54,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 30 Ampere · Mid-Range"
+ },
+ {
+  "id": "amd_rx_6800",
+  "name": "Radeon RX 6800",
+  "vendor": "AMD",
+  "family": "RX 6000 RDNA 2",
+  "generation": "RX 6000 RDNA 2",
+  "tier": "High-End",
+  "score": 55,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 6000 RDNA 2 · High-End"
+ },
+ {
+  "id": "nv_rtx_5060",
+  "name": "GeForce RTX 5060",
+  "vendor": "NVIDIA",
+  "family": "RTX 50 Blackwell",
+  "generation": "RTX 50 Blackwell",
+  "tier": "Low-End",
+  "score": 58,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 50 Blackwell · Low-End"
+ },
+ {
+  "id": "amd_rx_9060xt",
+  "name": "Radeon RX 9060 XT",
+  "vendor": "AMD",
+  "family": "RX 9000 RDNA 4",
+  "generation": "RX 9000 RDNA 4",
+  "tier": "Mid-Range",
+  "score": 58,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 9000 RDNA 4 · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_3080",
+  "name": "GeForce RTX 3080 10GB",
+  "vendor": "NVIDIA",
+  "family": "RTX 30 Ampere",
+  "generation": "RTX 30 Ampere",
+  "tier": "High-End",
+  "score": 62,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 30 Ampere · High-End"
+ },
+ {
+  "id": "amd_rx_6800xt",
+  "name": "Radeon RX 6800 XT",
+  "vendor": "AMD",
+  "family": "RX 6000 RDNA 2",
+  "generation": "RX 6000 RDNA 2",
+  "tier": "High-End",
+  "score": 62,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 6000 RDNA 2 · High-End"
+ },
+ {
+  "id": "amd_rx_7800xt",
+  "name": "Radeon RX 7800 XT",
+  "vendor": "AMD",
+  "family": "RX 7000 RDNA 3",
+  "generation": "RX 7000 RDNA 3",
+  "tier": "Mid-Range",
+  "score": 63,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 7000 RDNA 3 · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_4070",
+  "name": "GeForce RTX 4070",
+  "vendor": "NVIDIA",
+  "family": "RTX 40 Ada",
+  "generation": "RTX 40 Ada",
+  "tier": "Mid-Range",
+  "score": 64,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 40 Ada · Mid-Range"
+ },
+ {
+  "id": "amd_rx_6900xt",
+  "name": "Radeon RX 6900 XT",
+  "vendor": "AMD",
+  "family": "RX 6000 RDNA 2",
+  "generation": "RX 6000 RDNA 2",
+  "tier": "High-End",
+  "score": 65,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 6000 RDNA 2 · High-End"
+ },
+ {
+  "id": "nv_rtx_3080ti",
+  "name": "GeForce RTX 3080 Ti",
+  "vendor": "NVIDIA",
+  "family": "RTX 30 Ampere",
+  "generation": "RTX 30 Ampere",
+  "tier": "High-End",
+  "score": 66,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 30 Ampere · High-End"
+ },
+ {
+  "id": "amd_rx_6950xt",
+  "name": "Radeon RX 6950 XT",
+  "vendor": "AMD",
+  "family": "RX 6000 RDNA 2",
+  "generation": "RX 6000 RDNA 2",
+  "tier": "High-End",
+  "score": 67,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 6000 RDNA 2 · High-End"
+ },
+ {
+  "id": "amd_rx_7900gre",
+  "name": "Radeon RX 7900 GRE",
+  "vendor": "AMD",
+  "family": "RX 7000 RDNA 3",
+  "generation": "RX 7000 RDNA 3",
+  "tier": "High-End",
+  "score": 67,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 7000 RDNA 3 · High-End"
+ },
+ {
+  "id": "nv_rtx_3090",
+  "name": "GeForce RTX 3090",
+  "vendor": "NVIDIA",
+  "family": "RTX 30 Ampere",
+  "generation": "RTX 30 Ampere",
+  "tier": "High-End",
+  "score": 68,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 30 Ampere · High-End"
+ },
+ {
+  "id": "nv_rtx_4070s",
+  "name": "GeForce RTX 4070 Super",
+  "vendor": "NVIDIA",
+  "family": "RTX 40 Ada",
+  "generation": "RTX 40 Ada",
+  "tier": "Mid-Range",
+  "score": 68,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 40 Ada · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_3090ti",
+  "name": "GeForce RTX 3090 Ti",
+  "vendor": "NVIDIA",
+  "family": "RTX 30 Ampere",
+  "generation": "RTX 30 Ampere",
+  "tier": "High-End",
+  "score": 69,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 30 Ampere · High-End"
+ },
+ {
+  "id": "amd_rx_9070gre",
+  "name": "Radeon RX 9070 GRE",
+  "vendor": "AMD",
+  "family": "RX 9000 RDNA 4",
+  "generation": "RX 9000 RDNA 4",
+  "tier": "High-End",
+  "score": 69,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 9000 RDNA 4 · High-End"
+ },
+ {
+  "id": "nv_rtx_4070ti_s",
+  "name": "GeForce RTX 4070 Ti Super",
+  "vendor": "NVIDIA",
+  "family": "RTX 40 Ada",
+  "generation": "RTX 40 Ada",
+  "tier": "High-End",
+  "score": 75,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 40 Ada · High-End"
+ },
+ {
+  "id": "nv_rtx_5070",
+  "name": "GeForce RTX 5070",
+  "vendor": "NVIDIA",
+  "family": "RTX 50 Blackwell",
+  "generation": "RTX 50 Blackwell",
+  "tier": "Mid-Range",
+  "score": 76,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 50 Blackwell · Mid-Range"
+ },
+ {
+  "id": "amd_rx_7900xt",
+  "name": "Radeon RX 7900 XT",
+  "vendor": "AMD",
+  "family": "RX 7000 RDNA 3",
+  "generation": "RX 7000 RDNA 3",
+  "tier": "High-End",
+  "score": 78,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 7000 RDNA 3 · High-End"
+ },
+ {
+  "id": "amd_rx_9070xt",
+  "name": "Radeon RX 9070 XT",
+  "vendor": "AMD",
+  "family": "RX 9000 RDNA 4",
+  "generation": "RX 9000 RDNA 4",
+  "tier": "High-End",
+  "score": 78,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 9000 RDNA 4 · High-End"
+ },
+ {
+  "id": "nv_rtx_5070ti",
+  "name": "GeForce RTX 5070 Ti",
+  "vendor": "NVIDIA",
+  "family": "RTX 50 Blackwell",
+  "generation": "RTX 50 Blackwell",
+  "tier": "Mid-Range",
+  "score": 82,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 50 Blackwell · Mid-Range"
+ },
+ {
+  "id": "nv_rtx_4080s",
+  "name": "GeForce RTX 4080 Super",
+  "vendor": "NVIDIA",
+  "family": "RTX 40 Ada",
+  "generation": "RTX 40 Ada",
+  "tier": "High-End",
+  "score": 84,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 40 Ada · High-End"
+ },
+ {
+  "id": "amd_rx_7900xtx",
+  "name": "Radeon RX 7900 XTX",
+  "vendor": "AMD",
+  "family": "RX 7000 RDNA 3",
+  "generation": "RX 7000 RDNA 3",
+  "tier": "High-End",
+  "score": 85,
+  "status": "estimated",
+  "scoreNote": "Database score; RX 7000 RDNA 3 · High-End"
+ },
+ {
+  "id": "nv_rtx_4090",
+  "name": "GeForce RTX 4090",
+  "vendor": "NVIDIA",
+  "family": "RTX 40 Ada",
+  "generation": "RTX 40 Ada",
+  "tier": "High-End",
+  "score": 100,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 40 Ada · High-End"
+ },
+ {
+  "id": "nv_rtx_5080",
+  "name": "GeForce RTX 5080 16GB",
+  "vendor": "NVIDIA",
+  "family": "RTX 50 Blackwell",
+  "generation": "RTX 50 Blackwell",
+  "tier": "High-End",
+  "score": 112,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 50 Blackwell · High-End"
+ },
+ {
+  "id": "nv_rtx_5090",
+  "name": "GeForce RTX 5090",
+  "vendor": "NVIDIA",
+  "family": "RTX 50 Blackwell",
+  "generation": "RTX 50 Blackwell",
+  "tier": "High-End",
+  "score": 145,
+  "status": "estimated",
+  "scoreNote": "Database score; RTX 50 Blackwell · High-End"
+ }
 ];
 
 function getHardwareScore(record){
@@ -405,19 +2446,23 @@ function fillSelect(id,data){
 }
 fillSelect("cpuSelect",CPUs);fillSelect("gpuSelect",GPUs);
 
-function searchFilter(inputId,selectId,data){
- const q=document.getElementById(inputId).value.toLowerCase().trim(),s=document.getElementById(selectId),old=s.value;
- s.innerHTML='<option value="">— Select —</option>';
- data.forEach((x,i)=>{
-   const haystack=(x.name+" "+x.vendor+" "+x.family).toLowerCase();
-   if(!q||haystack.includes(q)){
-     const o=document.createElement("option");o.value=i;o.textContent=x.name;s.appendChild(o);
-   }
- });
- if([...s.options].some(o=>o.value===old))s.value=old;
+function setupHardwarePicker(kind,data){
+ const root=document.querySelector(`[data-hardware-picker="${kind}"]`),select=document.getElementById(kind+"Select"),trigger=root.querySelector(".picker-trigger"),panel=root.querySelector(".picker-panel"),search=root.querySelector(".picker-search"),options=root.querySelector(".picker-options"),empty=root.querySelector(".picker-empty");
+ function render(){
+   const q=search.value.trim().toLocaleLowerCase(),matches=[];
+   data.forEach((item,index)=>{const text=(item.name+" "+item.vendor+" "+item.generation+" "+item.tier).toLocaleLowerCase();if(!q||text.includes(q))matches.push({item,index});});
+   options.replaceChildren();
+   matches.forEach(({item,index})=>{const option=document.createElement("button");option.type="button";option.className="picker-option";option.setAttribute("role","option");option.textContent=`${item.name} · ${item.generation} · ${item.tier}`;option.addEventListener("click",()=>{select.value=String(index);select.dispatchEvent(new Event("change",{bubbles:true}));trigger.firstChild.textContent=item.name+" ";close();});options.appendChild(option);});
+   empty.hidden=matches.length!==0;
+ }
+ function close(){panel.classList.remove("is-open");trigger.setAttribute("aria-expanded","false");}
+ trigger.addEventListener("click",()=>{const open=!panel.classList.contains("is-open");document.querySelectorAll(".picker-panel").forEach(p=>p.classList.remove("is-open"));document.querySelectorAll(".picker-trigger").forEach(b=>b.setAttribute("aria-expanded","false"));if(open)panel.classList.add("is-open");trigger.setAttribute("aria-expanded",String(open));if(open){render();search.focus();}});
+ search.addEventListener("input",render);
+ search.addEventListener("keydown",event=>{if(event.key==="Escape"){close();trigger.focus();}else if(event.key==="ArrowDown"){event.preventDefault();options.querySelector("button")?.focus();}});
+ options.addEventListener("keydown",event=>{if(event.key==="Escape"){close();trigger.focus();}});
+ document.addEventListener("click",event=>{if(!root.contains(event.target))close();});
 }
-document.getElementById("cpuSearch").oninput=()=>searchFilter("cpuSearch","cpuSelect",CPUs);
-document.getElementById("gpuSearch").oninput=()=>searchFilter("gpuSearch","gpuSelect",GPUs);
+setupHardwarePicker("cpu",CPUs);setupHardwarePicker("gpu",GPUs);
 
 /*
   Scenario model:
@@ -435,17 +2480,25 @@ function gameDemand(type){
   }[type]||{cpu:1,gpu:1};
 }
 function clamp(value,min=0,max=100){return Math.max(min,Math.min(max,value));}
-function modelScenario(cpuScore,gpuScore,resolution,gameType,target){
-  const demand=gameDemand(gameType);
-  const targetFactor=Math.pow(target/60,0.72);
-  const cpuLoad=(100*targetFactor*demand.cpu)/Math.max(cpuScore,1);
-  const gpuLoad=(100*targetFactor*demand.gpu*resolutionGpuMultiplier(resolution))/Math.max(gpuScore,1);
-  const cpuSafe=Math.max(cpuLoad,0.01),gpuSafe=Math.max(gpuLoad,0.01);
-  const ratio=cpuSafe/gpuSafe;
-  const limiting=ratio>1.25?"CPU":ratio<0.80?"GPU":"Balanced";
-  const balance=clamp(100-Math.abs(Math.log(ratio))*45);
-  const overload=Math.max(cpuLoad,gpuLoad);
-  return {cpuLoad,gpuLoad,balance,limiting,overload};
+function modelScenario(cpuScore, gpuScore, resolution, gameType, target) {
+  const demand = gameDemand(gameType);
+  const targetFactor = Math.pow(target / 60, 0.72);
+  const cpuLoad = (100 * targetFactor * demand.cpu) / Math.max(cpuScore, 1);
+  const gpuLoad = (100 * targetFactor * demand.gpu * resolutionGpuMultiplier(resolution)) / Math.max(gpuScore, 1);
+
+  // Ensure values are within valid ranges
+  cpuLoad = Math.max(0, Math.min(100, cpuLoad));
+  gpuLoad = Math.max(0, Math.min(100, gpuLoad));
+
+  const cpuSafe = Math.max(cpuLoad, 0.01);
+  const gpuSafe = Math.max(gpuLoad, 0.01);
+  const ratio = cpuSafe / gpuSafe;
+
+  const limiting = ratio > 1.25 ? "CPU" : ratio < 0.80 ? "GPU" : "Balanced";
+  const balance = clamp(100 - Math.abs(Math.log(ratio)) * 45);
+  const overload = Math.max(cpuLoad, gpuLoad);
+
+  return { cpuLoad, gpuLoad, balance, limiting, overload };
 }
 
 function setVendorAccent(element,vendor){
@@ -523,14 +2576,6 @@ document.addEventListener("keydown",event=>{if(event.key==="Escape")document.que
 </script><script>
 (()=>{const dropdown=document.querySelector(".tool-dropdown");if(!dropdown)return;const summary=dropdown.querySelector("summary");let pinned=false;let closeTimer;const closeDelay=210;const cancelClose=()=>{clearTimeout(closeTimer);dropdown.classList.remove("is-closing")};const closeMenu=()=>{cancelClose();if(!dropdown.open)return;dropdown.classList.add("is-closing");closeTimer=setTimeout(()=>{dropdown.open=false;dropdown.classList.remove("is-closing")},150)};dropdown.addEventListener("pointerenter",()=>{cancelClose();if(!pinned)dropdown.open=true});dropdown.addEventListener("pointerleave",()=>{if(!pinned){clearTimeout(closeTimer);closeTimer=setTimeout(closeMenu,closeDelay)}});summary.addEventListener("click",event=>{event.preventDefault();cancelClose();if(pinned){pinned=false;closeMenu()}else{pinned=true;dropdown.open=true}});document.addEventListener("pointerdown",event=>{if(!dropdown.contains(event.target)){pinned=false;closeMenu()}});document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dropdown.open){pinned=false;closeMenu();summary.focus()}});dropdown.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{pinned=false;closeMenu()}));dropdown.addEventListener("focusout",event=>{if(!dropdown.contains(event.relatedTarget)&&!pinned)closeMenu()})})();
 </script>
-  <footer>
-    <p>
-        © 2026 SystemFit PC. Practical tools for better PC decisions.
-    </p>
-
-    <p>
-        <a href="privacy-policy.html">Privacy Policy</a>
-    </p>
-</footer>
-<script src="header.js" defer></script>`r`n</body>
+</body>
 </html>
+
