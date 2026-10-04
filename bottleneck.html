@@ -50,21 +50,49 @@ input:focus,select:focus{border-color:#6370ff}
 @media(max-width:800px){.grid2,.stats,.scenario-grid,.info-grid{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.vs{display:none}.site-header{padding:0 18px}.nav a{padding:8px}.wrap{padding:18px 12px}.result-head{align-items:flex-start;flex-direction:column}}
 
 .pill.estimated{color:#c9d1ff;background:rgba(118,95,255,.12);border:1px solid rgba(118,95,255,.22)}
-/* Beginner-friendly result scoreboard */
-.scoreboard{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
-.score-card{background:#191d26;border:1px solid #2a3040;border-radius:10px;padding:14px}
-.score-card .score-kicker{font-size:10px;color:#8290a7;text-transform:uppercase;letter-spacing:.06em}
-.score-card .score-main{display:flex;align-items:baseline;gap:7px;margin-top:5px}
-.score-card .score-main strong{font-size:25px}
-.score-card .score-main span{font-size:11px;color:#9aa7bb}
-.score-card .score-tier{font-size:11px;font-weight:700;margin-top:3px}
-.score-card p{font-size:10px;color:#76839a;line-height:1.5;margin:7px 0 0}
-.score-guide{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.score-guide div{background:rgba(9,12,20,.28);border:1px solid rgba(157,174,204,.1);border-radius:9px;padding:12px}
-.score-guide b{display:block;font-size:11px;margin-bottom:5px}
-.score-guide span{display:block;color:#8e9bb0;font-size:10px;line-height:1.55}
-.score-note{margin-top:10px;color:#7f8ca0;font-size:10px;line-height:1.55}
-@media(max-width:800px){.scoreboard,.score-guide{grid-template-columns:1fr}}
+/* Refined beginner-friendly result scoreboard */
+.scoreboard{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.score-card{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(25,31,44,.96),rgba(14,19,30,.96));border:1px solid rgba(157,174,204,.16);border-radius:14px;padding:18px 18px 17px;min-height:154px;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}
+.score-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#5ce0a2}
+.score-card.status-balanced:before{background:#ffc06b}
+.score-card.target-good:before,.score-card.balance-good:before{background:#5ce0a2}
+.score-card.target-warn:before,.score-card.balance-warn:before{background:#ffc06b}
+.score-card.target-bad:before,.score-card.balance-bad:before{background:#ff7d86}
+.score-card .score-kicker{font-size:11px;color:#aab7cd;text-transform:uppercase;letter-spacing:.075em;font-weight:800}
+.score-card .score-main{display:flex;align-items:baseline;gap:7px;margin-top:7px}
+.score-card .score-main strong{font-family:"Space Grotesk",sans-serif;font-size:30px;line-height:1.08;letter-spacing:-.035em;color:#f5f7fc}
+.score-card .score-main span{font-size:13px;color:#8996aa;font-weight:700}
+.score-card .score-tier{font-size:13px;line-height:1.35;font-weight:800;color:#5ce0a2;margin-top:7px}
+.score-card.status-balanced .score-tier,.score-card.target-warn .score-tier,.score-card.balance-warn .score-tier{color:#ffc06b}
+.score-card.target-bad .score-tier,.score-card.balance-bad .score-tier{color:#ff8b94}
+.score-card p{font-size:12px;color:#a0acc0;line-height:1.55;margin:8px 0 0;max-width:34ch}
+.score-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(157,174,204,.1)}
+.score-legend span{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#8996aa}
+.score-legend i{width:8px;height:8px;border-radius:50%;display:inline-block;background:#5ce0a2;box-shadow:0 0 8px rgba(92,224,162,.22)}
+.score-legend .yellow i{background:#ffc06b;box-shadow:0 0 8px rgba(255,192,107,.2)}
+.score-legend .red i{background:#ff7d86;box-shadow:0 0 8px rgba(255,125,134,.2)}
+.score-guide{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.score-guide div{background:rgba(9,12,20,.34);border:1px solid rgba(157,174,204,.11);border-radius:10px;padding:14px}
+.score-guide b{display:block;font-size:12px;line-height:1.35;margin-bottom:6px;color:#e9edf5}
+.score-guide span{display:block;color:#a0acc0;font-size:11px;line-height:1.6}
+.score-note{margin-top:11px;color:#8e9bb0;font-size:11px;line-height:1.6}
+.result-snapshot,.resolution-compare,.upgrade-guidance{background:linear-gradient(145deg,rgba(17,24,37,.94),rgba(11,16,26,.94));border-color:rgba(157,174,204,.14)}
+.section-subtext{margin:-2px 0 13px;color:#8794a9;font-size:11px;line-height:1.55}
+.fps-snapshot{display:grid;grid-template-columns:1.5fr 1fr;gap:12px}
+.fps-main,.fps-target{background:rgba(7,11,19,.34);border:1px solid rgba(157,174,204,.12);border-radius:11px;padding:14px 16px}
+.fps-main small,.fps-target small{display:block;color:#8491a7;font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
+.fps-main strong,.fps-target strong{display:block;margin-top:5px;font-family:"Space Grotesk",sans-serif;font-size:30px;line-height:1.05;letter-spacing:-.035em}
+.fps-main span,.fps-target span{display:block;margin-top:6px;color:#8e9bb0;font-size:11px;line-height:1.45}
+.resolution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.resolution-card{background:rgba(7,11,19,.34);border:1px solid rgba(157,174,204,.12);border-radius:11px;padding:14px 15px;position:relative;overflow:hidden}
+.resolution-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#5ce0a2}
+.resolution-card.warn:before{background:#ffc06b}.resolution-card.bad:before{background:#ff7d86}
+.resolution-card small{display:block;color:#aab7cd;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.resolution-card strong{display:block;margin-top:7px;font-size:18px;color:#f5f7fc}
+.resolution-card span{display:block;margin-top:4px;color:#909db1;font-size:11px}
+.resolution-card b{display:block;margin-top:9px;color:#5ce0a2;font-size:11px}.resolution-card.warn b{color:#ffc06b}.resolution-card.bad b{color:#ff8b94}
+.upgrade-result{font-size:18px;font-weight:850;color:#f5f7fc}.upgrade-guidance p{margin:7px 0 0;color:#a0acc0;font-size:12px;line-height:1.6;max-width:78ch}.upgrade-note{margin-top:10px;color:#758297;font-size:10px;line-height:1.5}
+@media(max-width:800px){.scoreboard,.score-guide{grid-template-columns:1fr}.score-card{min-height:auto}.fps-snapshot,.resolution-grid{grid-template-columns:1fr}}
 .estimate-method{border-color:rgba(118,95,255,.18);background:linear-gradient(145deg,rgba(22,29,45,.92),rgba(13,18,29,.9))}.estimate-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.estimate-grid div{background:rgba(9,12,20,.28);border:1px solid rgba(157,174,204,.1);border-radius:9px;padding:12px}.estimate-grid b{display:block;font-size:11px;margin-bottom:5px}.estimate-grid span{display:block;color:#8e9bb0;font-size:10px;line-height:1.55}.source-links{margin-top:12px;color:#748197;font-size:10px}.source-links a{color:#9f8dff}.source-links a:hover{color:#c1b7ff}@media(max-width:800px){.estimate-grid{grid-template-columns:1fr}}
 
 /* SystemFit PC visual refresh */
@@ -282,40 +310,70 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
     </div>
 
     <div class="scoreboard" aria-label="Beginner-friendly result scoreboard">
-      <div class="score-card">
+      <div class="score-card" id="limitScoreCard">
         <div class="score-kicker">Likely Limiting Component</div>
         <div class="score-main"><strong id="infoLimitScore">—</strong></div>
         <div class="score-tier" id="limitTier">—</div>
         <p id="limitSimple">Which side is under more modeled pressure in this scenario.</p>
       </div>
-      <div class="score-card">
+      <div class="score-card" id="targetFitCard">
         <div class="score-kicker">Target Fit</div>
         <div class="score-main"><strong id="targetFit">—</strong><span>/ 100</span></div>
         <div class="score-tier" id="targetFitTier">—</div>
         <p id="targetFitText">How comfortably the modeled system capacity compares with your target FPS.</p>
       </div>
-      <div class="score-card">
+      <div class="score-card" id="balanceCard">
         <div class="score-kicker">Pairing Balance</div>
         <div class="score-main"><strong id="balanceScore">—</strong><span>/ 100</span></div>
         <div class="score-tier" id="balanceTier">—</div>
-        <p>How close the modeled CPU and GPU pressure are to each other. Higher does not mean more FPS.</p>
+        <p>How close the modeled CPU and GPU pressure are. It is not an FPS score or bottleneck percentage.</p>
       </div>
+    </div>
+    <div class="score-legend" aria-label="Score color guide">
+      <span><i></i>Clear result / healthy target fit</span>
+      <span class="yellow"><i></i>Balanced or close to the limit</span>
+      <span class="red"><i></i>Target is unlikely / uneven pairing</span>
     </div>
 
     <div class="section">
-      <h3>🧭 How to read your score</h3>
+      <h3>🧭 How to read this scoreboard</h3>
       <div class="score-guide">
-        <div><b>Target Fit = “Can I hit my FPS goal?”</b><span>Higher is better for your selected target. Around 85 means the model estimates capacity roughly at the target; 100 means the score has reached its top range and the model sees strong headroom.</span></div>
-        <div><b>Pairing Balance = “Are CPU and GPU close?”</b><span>100 means their modeled pressure is very close. A lower score means one side is doing noticeably more of the limiting work. It is not a bottleneck percentage.</span></div>
-        <div><b>Limiting Component = “What is more likely to hold me back?”</b><span>CPU means the CPU has more modeled pressure; GPU means the GPU does. Balanced means neither side clearly dominates under this scenario.</span></div>
+        <div><b>🚦 Likely Limiting Component — “What is more likely to hold me back?”</b><span>CPU or GPU means that side has more modeled pressure in this scenario. Balanced means the two sides are close enough that neither clearly dominates.</span></div>
+        <div><b>🎯 Target Fit — “Can I hit my FPS goal?”</b><span>This compares the modeled system capacity with your selected FPS target. Higher means more modeled room above the target; it does not guarantee the same FPS in every game.</span></div>
+        <div><b>⚖️ Pairing Balance — “Are CPU and GPU close?”</b><span>100 means their modeled pressure is very close. A lower score means one side is carrying more of the workload. It is not a speed rating or bottleneck percentage.</span></div>
       </div>
-      <div class="score-note"><b>Beginner tip:</b> Check <strong>Target Fit</strong> first. Then look at <strong>Likely Limiting Component</strong>. Use <strong>Pairing Balance</strong> as extra context, not as a speed rating.</div>
+      <div class="score-note"><b>Easy rule:</b> Check <strong>Target Fit</strong> first → then <strong>Likely Limiting Component</strong> → use <strong>Pairing Balance</strong> for extra context. <strong>Green/yellow/red describe the result type, not whether your PC is “good” or “bad.”</strong></div>
     </div>
 
     <div class="stats">
       <div class="stat"><small>CPU Gaming Index</small><strong id="cpuPerf">—</strong><span>Benchmark-normalized CPU reference</span></div>
       <div class="stat"><small>GPU Scenario Index</small><strong id="gpuPerf">—</strong><span>Resolution-specific GPU reference</span></div>
-      <div class="stat"><small>Estimated Model Capacity</small><strong id="capacityPerf">—</strong><span>Lowest modeled CPU/GPU capacity</span></div>
+      <div class="stat stat-capacity"><small>Estimated FPS Capacity</small><strong id="capacityPerf">—</strong><span>Model-estimated ceiling for this scenario</span></div>
+    </div>
+
+    <div class="section result-snapshot">
+      <h3>🎯 Estimated FPS vs Your Target</h3>
+      <div class="fps-snapshot">
+        <div class="fps-main"><small>Estimated model capacity</small><strong id="capacityBig">—</strong><span id="capacityContext">Estimated — not a game-specific benchmark</span></div>
+        <div class="fps-target"><small>Your target</small><strong id="targetBig">—</strong><span id="targetGapText">—</span></div>
+      </div>
+    </div>
+
+    <div class="section resolution-compare">
+      <h3>🖥️ How the Result Changes by Resolution</h3>
+      <p class="section-subtext">The same CPU and GPU can have a different limiting component as resolution changes. This is a modeled comparison, not measured FPS at each resolution.</p>
+      <div class="resolution-grid" id="resolutionComparison">
+        <div class="resolution-card" data-resolution="1080"><small>1080p</small><strong>—</strong><span>—</span><b>Target Fit —</b></div>
+        <div class="resolution-card" data-resolution="1440"><small>1440p</small><strong>—</strong><span>—</span><b>Target Fit —</b></div>
+        <div class="resolution-card" data-resolution="2160"><small>4K</small><strong>—</strong><span>—</span><b>Target Fit —</b></div>
+      </div>
+    </div>
+
+    <div class="section upgrade-guidance" id="upgradeGuidance">
+      <h3>💡 What Should I Upgrade?</h3>
+      <div class="upgrade-result" id="upgradeResult">—</div>
+      <p id="upgradeReason">—</p>
+      <div class="upgrade-note">This is a planning recommendation based on the selected scenario. It does not account for component prices, motherboard compatibility, PSU capacity, or game-specific benchmark results.</div>
     </div>
 
     <div class="section">
@@ -2962,12 +3020,47 @@ function calculate(){
  document.getElementById("cpuPerf").textContent=cpuScore;
  document.getElementById("gpuPerf").textContent=Math.round(scenario.gpuScenarioScore*10)/10;
  document.getElementById("capacityPerf").textContent=Math.round(scenario.sustainableFps)+" FPS";
+ document.getElementById("capacityBig").textContent="~"+Math.max(0,Math.round(scenario.sustainableFps))+" FPS";
+ document.getElementById("targetBig").textContent=target+" FPS";
+ const fpsDelta=Math.round(scenario.sustainableFps-target);
+ document.getElementById("capacityContext").textContent=scenario.targetStatus+" · estimate for this selected scenario";
+ document.getElementById("targetGapText").textContent=fpsDelta>=0?"~"+fpsDelta+" FPS of modeled headroom":"~"+Math.abs(fpsDelta)+" FPS below target in the model";
+
+ const resolutionChecks=[{key:"1080",label:"1080p"},{key:"1440",label:"1440p"},{key:"2160",label:"4K"}];
+ resolutionChecks.forEach(item=>{
+   const card=document.querySelector('.resolution-card[data-resolution="'+item.key+'"]');
+   const check=modelScenario(cpuScore,gpuScore,item.key,gt,target,g);
+   const tier=check.targetFit>=85?"good":check.targetFit>=65?"warn":"bad";
+   card.className="resolution-card "+tier;
+   card.querySelector("strong").textContent=check.limiting==="Balanced"?"Balanced":check.limiting+"-Limited";
+   card.querySelector("span").textContent="~"+Math.max(0,Math.round(check.sustainableFps))+" FPS model capacity";
+   card.querySelector("b").textContent="Target Fit "+Math.round(check.targetFit)+" / 100";
+ });
+
+ const upgradeResult=document.getElementById("upgradeResult");
+ const upgradeReason=document.getElementById("upgradeReason");
+ if(limit==="GPU"){
+   upgradeResult.textContent="GPU upgrade is the more direct path to higher FPS.";
+   upgradeReason.textContent="The GPU has more modeled pressure in your selected scenario. If your goal is higher FPS at this resolution, upgrading the GPU is more likely to help than upgrading the CPU. If you are already happy with the target FPS, no upgrade is required.";
+ }else if(limit==="CPU"){
+   upgradeResult.textContent="CPU upgrade is the more direct path to a higher FPS ceiling.";
+   upgradeReason.textContent="The CPU has more modeled pressure in your selected scenario. A faster CPU is more likely to raise the frame-rate ceiling, especially for high-FPS, lower-resolution, esports, or CPU-heavy workloads.";
+ }else{
+   upgradeResult.textContent="Neither upgrade is clearly favored by this scenario.";
+   upgradeReason.textContent="CPU and GPU pressure are close. If the target is already met, keep the system as-is; if you need more FPS, compare the resolution-specific result and your actual games before choosing which part to replace.";
+ }
 
  const balanceTier=balance>=90?"Excellent balance":balance>=75?"Good balance":balance>=60?"Mixed balance":"Uneven pairing";
- const targetTier=scenario.targetFit>=95?"Strong headroom":scenario.targetFit>=85?"Target is around model capacity":scenario.targetFit>=65?"Below target range":"Well below target range";
- const limitSimple=limit==="CPU"?"The CPU is more likely to hold back performance in this selected scenario.":limit==="GPU"?"The GPU is more likely to hold back performance in this selected scenario.":"CPU and GPU pressure are close, so neither clearly dominates.";
+ const targetTier=scenario.targetFit>=95?"Strong headroom":scenario.targetFit>=85?"Close to the model limit":scenario.targetFit>=65?"Below target range":"Well below target range";
+ const limitSimple=limit==="CPU"?"The CPU has more modeled pressure in this scenario.":limit==="GPU"?"The GPU has more modeled pressure in this scenario.":"CPU and GPU pressure are close, so neither clearly dominates.";
+ const limitCard=document.getElementById("limitScoreCard");
+ const targetCard=document.getElementById("targetFitCard");
+ const balanceCard=document.getElementById("balanceCard");
+ limitCard.className="score-card "+(limit==="Balanced"?"status-balanced":"status-limited");
+ targetCard.className="score-card "+(scenario.targetFit>=85?"target-good":scenario.targetFit>=65?"target-warn":"target-bad");
+ balanceCard.className="score-card "+(balance>=75?"balance-good":balance>=60?"balance-warn":"balance-bad");
  document.getElementById("infoLimitScore").textContent=limit==="Balanced"?"Balanced":limit+"-Limited";
- document.getElementById("limitTier").textContent=limit==="Balanced"?"Neither side clearly dominates":"More pressure on the "+limit;
+ document.getElementById("limitTier").textContent=limit==="Balanced"?"Yellow = close match":"Green = clear limiting side";
  document.getElementById("limitSimple").textContent=limitSimple;
  document.getElementById("balanceScore").textContent=Math.round(balance);
  document.getElementById("balanceTier").textContent=balanceTier;
