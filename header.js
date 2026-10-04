@@ -10,6 +10,52 @@
   const isContact = current === "contact.html";
 
   const headerCSS = `
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(145,126,255,.72) rgba(9,12,20,.45);
+    }
+
+    html::-webkit-scrollbar {
+      width: 9px;
+    }
+
+    html::-webkit-scrollbar-track {
+      background: rgba(9,12,20,.45);
+    }
+
+    html::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #a892ff, #69caff);
+      border: 2px solid rgba(9,12,20,.45);
+      border-radius: 999px;
+    }
+
+    html::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #b9a9ff, #82d6ff);
+    }
+
+    .sfp-scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      z-index: 2000;
+      pointer-events: none;
+      background: linear-gradient(90deg, #a892ff, #69caff);
+      box-shadow: 0 0 12px rgba(105,202,255,.28);
+      transform-origin: left center;
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .sfp-scroll-progress {
+        transition: none;
+      }
+    }
+
+    .sfp-site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     .sfp-site-header {
       position: sticky;
       top: 0;
