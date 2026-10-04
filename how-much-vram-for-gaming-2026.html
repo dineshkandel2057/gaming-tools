@@ -183,7 +183,6 @@
     }
 
     /* Guide UX enhancements — matched to the approved RAM guide */
-    .reading-progress{position:fixed;top:0;left:0;width:0;height:3px;z-index:2000;background:linear-gradient(90deg,#a892ff,#69caff);box-shadow:0 0 14px rgba(105,202,255,.35);transition:width .08s linear}
     .article-header>*{opacity:0;transform:translateY(12px);animation:guideHeroIn .55s ease forwards}
     .article-header .eyebrow{animation-delay:.05s}.article-header h1{animation-delay:.12s}.article-header .dek{animation-delay:.19s}.article-header .meta{animation-delay:.26s}
     @keyframes guideHeroIn{to{opacity:1;transform:none}}
@@ -227,38 +226,7 @@
 </head>
 
 <body>
-  <div class="reading-progress" aria-hidden="true"></div>
-  <div id="site-header">
-    <header class="sfp-site-header">
-      <div class="sfp-nav">
-        <a class="sfp-brand" href="index.html#home" aria-label="SystemFit PC home">
-          <span class="sfp-monogram" aria-hidden="true">S<span>F</span></span>
-          <span class="sfp-wordmark"><span>System</span><span class="sfp-fit">Fit</span></span>
-          <span class="sfp-pc">PC</span>
-        </a>
-        <nav class="sfp-main-nav" aria-label="Main navigation">
-          <a href="index.html#home">Home</a>
-          <details class="sfp-tools">
-            <summary class="sfp-tools-summary">Tools</summary>
-            <div class="sfp-tool-menu">
-              <p class="sfp-menu-label">Available now</p>
-              <a class="sfp-tool-item" href="bottleneck.html"><span class="sfp-tool-icon sfp-cpu">CPU</span><span><b>CPU &amp; GPU Bottleneck</b><small>Compare your components</small></span><span class="sfp-arrow">↗</span></a>
-              <a class="sfp-tool-item" href="build-planner.html"><span class="sfp-tool-icon sfp-build">PC</span><span><b>PC Build Planner</b><small>Check component fit and power</small></span><span class="sfp-arrow">↗</span></a>
-              <a class="sfp-tool-item" href="gpu-comparison.html"><span class="sfp-tool-icon sfp-compare">GPU</span><span><b>GPU Comparison</b><small>Compare up to five graphics cards</small></span><span class="sfp-arrow">↗</span></a>
-              <a class="sfp-tool-item" href="fps-calculator.html"><span class="sfp-tool-icon sfp-fps">FPS</span><span><b>FPS Calculator</b><small>Estimate performance</small></span><span class="sfp-arrow">↗</span></a>
-              <p class="sfp-menu-label planned">Coming soon</p>
-              <div class="sfp-tool-item"><span class="sfp-tool-icon sfp-upgrade">↑</span><span><b>Upgrade Planner</b><small>Find your next upgrade</small></span><span class="sfp-soon">Soon</span></div>
-              <div class="sfp-tool-item"><span class="sfp-tool-icon sfp-compare">↔</span><span><b>CPU &amp; GPU Compare</b><small>Compare hardware directly</small></span><span class="sfp-soon">Soon</span></div>
-              <div class="sfp-tool-item"><span class="sfp-tool-icon sfp-power">W</span><span><b>PSU Power Guide</b><small>Estimate power needs</small></span><span class="sfp-soon">Soon</span></div>
-            </div>
-          </details>
-          <a href="guides.html" class="sfp-active">Guides</a>
-          <a href="index.html#about">About</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
-  </div>
+  <div id="site-header"></div>
 
   <main>
     <header class="article-header">
@@ -590,17 +558,6 @@
         }
       });
     });
-
-    const progress=document.querySelector(".reading-progress");
-    const updateProgress=()=>{
-      if(!progress)return;
-      const doc=document.documentElement;
-      const max=doc.scrollHeight-window.innerHeight;
-      progress.style.width=(max>0?(window.scrollY/max)*100:0)+"%";
-    };
-    addEventListener("scroll",updateProgress,{passive:true});
-    addEventListener("resize",updateProgress);
-    updateProgress();
 
     const items=document.querySelectorAll(".reveal");
     if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
