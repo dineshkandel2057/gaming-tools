@@ -384,6 +384,7 @@
   }
 
   const markup = `
+      <div class="sfp-scroll-progress" id="sfpScrollProgress" aria-hidden="true"></div>
     <header class="sfp-site-header">
       <div class="sfp-nav">
 
@@ -524,9 +525,48 @@
     const style = document.createElement("style");
     style.id = "sfp-header-style";
     style.textContent = headerCSS;
-    document.head.appendChild(style);
+document.head.appendChild(style);
 
-    host.outerHTML = markup;
+host.outerHTML = markup;
+
+const progress = document.getElementById("sfpScrollProgress");
+
+const updateScrollProgress = () => {
+  if (!progress) return;
+
+  const scrollTop =
+    window.scrollY || document.documentElement.scrollTop;
+
+  const scrollHeight =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  const percent = scrollHeight > 0
+    ? Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100))
+    : 0;
+
+  progress.style.width = percent + "%";
+};
+
+let progressTicking = false;
+
+const requestProgressUpdate = () => {
+  if (progressTicking) return;
+
+  progressTicking = true;
+
+  requestAnimationFrame(() => {
+    updateScrollProgress();
+    progressTicking = false;
+  });
+};
+
+window.addEventListener("scroll", requestProgressUpdate, {
+  passive: true
+});
+
+window.addEventListener("resize", requestProgressUpdate);
+
+updateScrollProgress();
 
     const dropdown = document.getElementById("sfpTools");
 
