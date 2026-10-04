@@ -10,28 +10,33 @@
   const isContact = current === "contact.html";
 
   const headerCSS = `
-    html {
-      scrollbar-width: thin;
-      scrollbar-color: rgba(145,126,255,.72) rgba(9,12,20,.45);
-    }
+    html,
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(145,126,255,.72) rgba(9,12,20,.45);
+}
 
-    html::-webkit-scrollbar {
-      width: 9px;
-    }
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 9px;
+}
 
-    html::-webkit-scrollbar-track {
-      background: rgba(9,12,20,.45);
-    }
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: rgba(9,12,20,.45);
+}
 
-    html::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #a892ff, #69caff);
-      border: 2px solid rgba(9,12,20,.45);
-      border-radius: 999px;
-    }
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a892ff, #69caff);
+  border: 2px solid rgba(9,12,20,.45);
+  border-radius: 999px;
+}
 
-    html::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, #b9a9ff, #82d6ff);
-    }
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #b9a9ff, #82d6ff);
+}
 
     .sfp-scroll-progress {
       position: fixed;
@@ -52,10 +57,6 @@
       }
     }
 
-    .sfp-site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     .sfp-site-header {
       position: sticky;
       top: 0;
