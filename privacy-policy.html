@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH7D3F7VV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CSH7D3F7VV');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Privacy Policy | SystemFit PC</title>
+
+<meta name="description" content="Privacy Policy for SystemFit PC, explaining analytics, cookies, third-party services and how visitor information is handled.">
+
+<link rel="canonical" href="https://systemfitpc.vercel.app/privacy-policy.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg: #090c14;
+    --panel: rgba(19,25,39,.82);
+    --panel2: rgba(13,18,29,.92);
+    --border: rgba(157,174,204,.16);
+    --text: #f5f7fc;
+    --muted: #aab5c8;
+    --purple: #735dff;
+    --purple2: #a18bff;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            ellipse at 16% 3%,
+            rgba(102,77,255,.18),
+            transparent 34%
+        ),
+        radial-gradient(
+            ellipse at 88% 18%,
+            rgba(33,162,219,.12),
+            transparent 33%
+        ),
+        var(--bg);
+    color: var(--text);
+    font-family: "DM Sans", Arial, sans-serif;
+    line-height: 1.7;
+}
+
+body:before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            circle at 70% 60%,
+            rgba(39,102,176,.08),
+            transparent 36%
+        );
+    filter: blur(34px);
+}
+
+a {
+    color: #a991ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(9,12,20,.78);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.nav {
+    max-width: 1180px;
+    min-height: 76px;
+    margin: auto;
+    padding: 0 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -.035em;
+}
+
+.logo .brand-system {
+    color: #f5f7fc;
+}
+
+.logo .brand-fit {
+    color: #a591ff;
+}
+
+.logo .brand-pc {
+    color: #aab5c8;
+    margin-left: 4px;
+    font-size: 15px;
+}
+
+.back {
+    color: var(--muted);
+    padding: 9px 13px;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    font-size: 14px;
+}
+
+.back:hover {
+    color: white;
+    text-decoration: none;
+    background: rgba(126,105,255,.14);
+    border-color: rgba(157,139,255,.2);
+}
+
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 70px 22px 90px;
+}
+
+.policy-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,31,47,.86),
+            rgba(15,20,32,.9)
+        );
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: clamp(24px, 5vw, 48px);
+    box-shadow: 0 24px 80px rgba(0,0,0,.23);
+    backdrop-filter: blur(14px);
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Space Grotesk", "DM Sans", sans-serif;
+    letter-spacing: -.035em;
+}
+
+h1 {
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.1;
+    margin-bottom: 12px;
+}
+
+.updated {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 35px;
+}
+
+h2 {
+    font-size: 22px;
+    margin-top: 34px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 17px;
+    margin-top: 22px;
+    margin-bottom: 8px;
+}
+
+p {
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+ul {
+    margin: 10px 0 18px 22px;
+    color: var(--muted);
+}
+
+li {
+    margin-bottom: 7px;
+}
+
+.highlight {
+    padding: 15px 17px;
+    margin: 18px 0;
+    border: 1px solid rgba(157,139,255,.18);
+    border-radius: 12px;
+    background: rgba(126,105,255,.07);
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 20px;
+    text-align: center;
+    color: #8895aa;
+    font-size: 13px;
+}
+
+footer a {
+    margin: 0 8px;
+}
+
+@media (max-width: 700px) {
+
+    .nav {
+        min-height: 68px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .back {
+        font-size: 13px;
+    }
+
+    main {
+        padding: 35px 14px 55px;
+    }
+
+    .policy-card {
+        border-radius: 16px;
+        padding: 22px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<a class="logo" href="index.html" aria-label="SystemFit PC home">
+    <span class="brand-system">System</span><span class="brand-fit">Fit</span>
+    <span class="brand-pc">PC</span>
+</a>
+
+<a class="back" href="index.html">
+    ← Back to SystemFit PC
+</a>
+
+</div>
+
+</header>
+
+
+<main>
+
+<div class="policy-card">
+
+<h1>Privacy Policy</h1>
+
+<p class="updated">
+Last updated: October 4, 2026
+</p>
+
+<p>
+SystemFit PC ("SystemFit PC", "we", "us", or "our") respects your privacy.
+This Privacy Policy explains what information may be collected when you visit
+and use the SystemFit PC website and how that information is used.
+</p>
+
+<p>
+SystemFit PC provides PC planning and hardware-related tools, including tools
+for estimating PC performance, comparing hardware, planning builds, and
+understanding computer components.
+</p>
+
+
+<h2>1. Information We Collect</h2>
+
+<p>
+SystemFit PC does not currently require visitors to create an account or
+submit personal information in order to use the site's tools.
+</p>
+
+<p>
+However, certain technical and usage information may be collected
+automatically through third-party services used by the website.
+</p>
+
+<p>This may include information such as:</p>
+
+<ul>
+    <li>Browser type and version</li>
+    <li>Device type and operating system</li>
+    <li>Pages visited</li>
+    <li>Approximate geographic information</li>
+    <li>Referring website or source</li>
+    <li>Interactions with the website</li>
+    <li>Date and time of visits</li>
+    <li>Other technical information normally associated with web requests</li>
+</ul>
+
+
+<h2>2. Google Analytics</h2>
+
+<p>
+SystemFit PC currently uses Google Analytics to understand how visitors use
+the website and to improve the site's tools, content, navigation, and
+performance.
+</p>
+
+<p>
+Google Analytics may use cookies, identifiers, and similar technologies to
+collect information about website usage. The information collected through
+Google Analytics is processed by Google according to Google's applicable
+privacy policies and terms.
+</p>
+
+<p>
+We use Google Analytics for aggregated and statistical purposes and do not
+use it to intentionally identify individual visitors.
+</p>
+
+<p>
+You can learn more about how Google uses information from sites and apps that
+use its services here:
+<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">
+How Google uses information from sites or apps that use our services
+</a>.
+</p>
+
+<p>
+You can also review Google's privacy policy here:
+<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+Google Privacy Policy
+</a>.
+</p>
+
+
+<h2>3. Cookies</h2>
+
+<p>
+SystemFit PC may use cookies and similar technologies through third-party
+services such as Google Analytics.
+</p>
+
+<p>
+Cookies are small files stored by your browser that can help websites and
+services recognize a browser, remember information, and understand how a
+website is being used.
+</p>
+
+<p>
+You can control or delete cookies through your browser settings. Disabling
+certain cookies may affect how some websites or third-party services
+function.
+</p>
+
+
+<h2>4. Google Fonts</h2>
+
+<p>
+SystemFit PC uses fonts provided through Google Fonts. When your browser
+loads these fonts, your browser may connect to Google's servers to retrieve
+the required font resources.
+</p>
+
+<p>
+Google may process technical information associated with these requests.
+For more information, please review
+<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+Google's Privacy Policy
+</a>.
+</p>
+
+
+<h2>5. Advertising</h2>
+
+<div class="highlight">
+
+<p>
+<strong>SystemFit PC does not currently display Google AdSense advertisements
+on the website.</strong>
+</p>
+
+</div>
+
+<p>
+If advertising services such as Google AdSense are added to SystemFit PC in
+the future, this Privacy Policy will be updated to explain the applicable
+advertising technologies, cookies, data processing, and user choices before
+or when those services are introduced.
+</p>
+
+
+<h2>6. Third-Party Services</h2>
+
+<p>
+SystemFit PC may rely on third-party services to operate, analyze, host, or
+improve the website. These services may process certain technical information
+according to their own privacy policies.
+</p>
+
+<p>
+The third-party services currently used by the website include Google
+Analytics and Google Fonts.
+</p>
+
+
+<h2>7. Data Security</h2>
+
+<p>
+We take reasonable steps to maintain the security of the website and the
+information associated with its operation. However, no internet transmission
+or electronic storage system can be guaranteed to be completely secure.
+</p>
+
+
+<h2>8. Children's Privacy</h2>
+
+<p>
+SystemFit PC is not specifically directed toward children under the age of
+13, and we do not knowingly request personal information from children.
+</p>
+
+<p>
+If you believe that a child has provided personal information through the
+website, please contact us so that the situation can be reviewed.
+</p>
+
+
+<h2>9. External Links</h2>
+
+<p>
+SystemFit PC may eventually contain links to external websites, products,
+services, or other resources. We are not responsible for the privacy
+practices or content of external websites. You should review the privacy
+policies of those websites before providing information to them.
+</p>
+
+
+<h2>10. Changes to This Privacy Policy</h2>
+
+<p>
+We may update this Privacy Policy when the website, services, analytics,
+advertising, or applicable requirements change.
+</p>
+
+<p>
+When changes are made, the "Last updated" date at the top of this page will
+be updated accordingly.
+</p>
+
+
+<h2>11. Contact</h2>
+
+<p>
+If you have questions or concerns about this Privacy Policy or the privacy
+practices of SystemFit PC, please contact the SystemFit PC website owner
+through the project's official GitHub repository:
+</p>
+
+<p>
+<a href="https://github.com/dineshkandel2057/gaming-tools"
+   target="_blank"
+   rel="noopener noreferrer">
+SystemFit PC GitHub Repository
+</a>
+</p>
+
+</div>
+
+</main>
+
+
+<footer>
+
+<p>
+© 2026 SystemFit PC. Practical tools for better PC decisions.
+</p>
+
+<p>
+<a href="index.html">Home</a>
+<a href="privacy-policy.html">Privacy Policy</a>
+</p>
+
+</footer>
+
+</body>
+</html>
