@@ -44,11 +44,12 @@ body::-webkit-scrollbar-thumb:hover {
       left: 0;
       width: 0%;
       height: 3px;
-      z-index: 2000;
+      z-index: 2147483647;
       pointer-events: none;
       background: linear-gradient(90deg, #a892ff, #69caff);
       box-shadow: 0 0 12px rgba(105,202,255,.28);
-      transform-origin: left center;      transition: width .08s linear;
+      transform-origin: left center;
+      transition: width .08s linear;
     }
 
     @media(prefers-reduced-motion:reduce) {
@@ -572,48 +573,54 @@ body::-webkit-scrollbar-thumb:hover {
     const style = document.createElement("style");
     style.id = "sfp-header-style";
     style.textContent = headerCSS;
-document.head.appendChild(style);
+    document.head.appendChild(style);
 
-host.outerHTML = markup;
+    host.outerHTML = markup;
 
-const progress = document.getElementById("sfpScrollProgress");
+    const progress = document.getElementById("sfpScrollProgress");
 
-const updateScrollProgress = () => {
-  if (!progress) return;
+    // Keep the reading-progress bar outside <body> so page-level
+    // body transforms/animations cannot trap or distort position:fixed.
+    if (progress) {
+      document.documentElement.appendChild(progress);
+    }
 
-  const scrollTop =
-    window.scrollY || document.documentElement.scrollTop;
+    const updateScrollProgress = () => {
+      if (!progress) return;
 
-  const scrollHeight =
-    document.documentElement.scrollHeight - window.innerHeight;
+      const scrollTop =
+        window.scrollY || document.documentElement.scrollTop;
 
-  const percent = scrollHeight > 0
-    ? Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100))
-    : 0;
+      const scrollHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
 
-  progress.style.width = percent + "%";
-};
+      const percent = scrollHeight > 0
+        ? Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100))
+        : 0;
 
-let progressTicking = false;
+      progress.style.width = percent + "%";
+    };
 
-const requestProgressUpdate = () => {
-  if (progressTicking) return;
+    let progressTicking = false;
 
-  progressTicking = true;
+    const requestProgressUpdate = () => {
+      if (progressTicking) return;
 
-  requestAnimationFrame(() => {
+      progressTicking = true;
+
+      requestAnimationFrame(() => {
+        updateScrollProgress();
+        progressTicking = false;
+      });
+    };
+
+    window.addEventListener("scroll", requestProgressUpdate, {
+      passive: true
+    });
+
+    window.addEventListener("resize", requestProgressUpdate);
+
     updateScrollProgress();
-    progressTicking = false;
-  });
-};
-
-window.addEventListener("scroll", requestProgressUpdate, {
-  passive: true
-});
-
-window.addEventListener("resize", requestProgressUpdate);
-
-updateScrollProgress();
 
     const dropdown = document.getElementById("sfpTools");
 
