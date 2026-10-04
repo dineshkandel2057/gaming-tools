@@ -153,14 +153,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 </style>
 </head>
 <body>
-<header>
-<div class="nav">
-<a id="brand-logo" class="logo" href="index.html#home" aria-label="SystemFit PC home"><span class="brand-monogram" aria-hidden="true">S<span>F</span></span><span class="brand-wordmark"><span class="brand-system">System</span><span class="brand-fit">Fit</span></span><span class="brand-pc">PC</span></a>
-<nav aria-label="Main navigation"><a href="index.html#home">Home</a><details class="tool-dropdown" id="toolsMenu"><summary aria-label="Open tools menu">Tools</summary><div class="tool-menu" aria-label="Tools"><p class="tool-menu-label">Available now</p><a class="tool-menu-item current-tool" href="bottleneck.html" aria-current="page"><span class="tool-menu-icon cpu-menu-icon" aria-hidden="true">CPU</span><span><b>CPU &amp; GPU Bottleneck</b><small>Compare your components</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
-<a class="tool-menu-item" href="build-planner.html"><span class="tool-menu-icon build-menu-icon" aria-hidden="true">PC</span><span><b>PC Build Planner</b><small>Check component fit and power</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a>
-<a class="tool-menu-item" href="gpu-comparison.html"><span class="tool-menu-icon compare-menu-icon" aria-hidden="true">GPU</span><span><b>GPU Comparison</b><small>Compare up to five graphics cards</small></span><span class="tool-menu-arrow" aria-hidden="true">↗</span></a><p class="tool-menu-label planned-label">Coming soon</p><div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon fps-menu-icon" aria-hidden="true">FPS</span><span><b>FPS Calculator</b><small>Estimate performance</small></span><span class="soon-tag">Soon</span></div><div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon upgrade-menu-icon" aria-hidden="true">↑</span><span><b>Upgrade Planner</b><small>Find your next upgrade</small></span><span class="soon-tag">Soon</span></div><div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon compare-menu-icon" aria-hidden="true">↔</span><span><b>CPU &amp; GPU Compare</b><small>Compare hardware directly</small></span><span class="soon-tag">Soon</span></div><div class="tool-menu-item planned-tool" aria-disabled="true"><span class="tool-menu-icon power-menu-icon" aria-hidden="true">W</span><span><b>PSU Power Guide</b><small>Estimate power needs</small></span><span class="soon-tag">Soon</span></div></div></details><a href="index.html#about">About</a></nav>
-</div>
-</header>
+<div id="site-header"></div>
 
 <main class="wrap">
 <section class="card">
@@ -198,8 +191,9 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       <div>
         <label>Gaming Resolution</label>
         <select id="resolution">
+          <option value="" disabled selected>— Select a gaming resolution —</option>
           <option value="720">1280 × 720 (720p)</option>
-          <option value="1080" selected>1920 × 1080 (1080p)</option>
+          <option value="1080">1920 × 1080 (1080p)</option>
           <option value="1440">2560 × 1440 (1440p)</option>
           <option value="2160">3840 × 2160 (4K)</option>
         </select>
@@ -208,7 +202,8 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       <div>
         <label>Game Type</label>
         <select id="gameType">
-          <option value="esports" selected>Esports / Competitive</option>
+          <option value="" disabled selected>— Select a game type —</option>
+          <option value="esports">Esports / Competitive</option>
           <option value="balanced">Mixed / General Gaming</option>
           <option value="aaa">AAA / Story Games</option>
           <option value="cpu">CPU-Heavy / Simulation</option>
@@ -218,11 +213,12 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       <div>
         <label>Target FPS</label>
         <select id="targetFps">
+          <option value="" disabled selected>— Select target FPS —</option>
           <option>60 FPS</option>
           <option>120 FPS</option>
           <option>144 FPS</option>
           <option>165 FPS</option>
-          <option selected>240 FPS</option>
+          <option>240 FPS</option>
         </select>
       </div>
     </div>
@@ -2567,15 +2563,11 @@ function setBar(id,val,textId,num){
  document.getElementById(textId).textContent=Math.round(num)+"%";
 }
 
-/* Keep the tools menu easy to dismiss by mouse and keyboard. */
-document.addEventListener("click",event=>document.querySelectorAll(".tool-dropdown[open]").forEach(menu=>{if(!menu.contains(event.target))menu.removeAttribute("open")}));
-document.addEventListener("keydown",event=>{if(event.key==="Escape")document.querySelectorAll(".tool-dropdown[open]").forEach(menu=>{menu.removeAttribute("open");menu.querySelector("summary").focus()})});
 </script>
 <script>
 (()=>{const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduce)return;document.addEventListener("click",event=>{const link=event.target.closest("a[href]");if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target||link.hasAttribute("download"))return;const url=new URL(link.href,location.href);if(url.origin!==location.origin||url.pathname===location.pathname||!["/index.html","/bottleneck.html","/build-planner.html"].some(path=>url.pathname.endsWith(path)))return;event.preventDefault();document.body.classList.add("page-leave");setTimeout(()=>location.assign(url.href),145)})})();
-</script><script>
-(()=>{const dropdown=document.querySelector(".tool-dropdown");if(!dropdown)return;const summary=dropdown.querySelector("summary");let pinned=false;let closeTimer;const closeDelay=210;const cancelClose=()=>{clearTimeout(closeTimer);dropdown.classList.remove("is-closing")};const closeMenu=()=>{cancelClose();if(!dropdown.open)return;dropdown.classList.add("is-closing");closeTimer=setTimeout(()=>{dropdown.open=false;dropdown.classList.remove("is-closing")},150)};dropdown.addEventListener("pointerenter",()=>{cancelClose();if(!pinned)dropdown.open=true});dropdown.addEventListener("pointerleave",()=>{if(!pinned){clearTimeout(closeTimer);closeTimer=setTimeout(closeMenu,closeDelay)}});summary.addEventListener("click",event=>{event.preventDefault();cancelClose();if(pinned){pinned=false;closeMenu()}else{pinned=true;dropdown.open=true}});document.addEventListener("pointerdown",event=>{if(!dropdown.contains(event.target)){pinned=false;closeMenu()}});document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dropdown.open){pinned=false;closeMenu();summary.focus()}});dropdown.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{pinned=false;closeMenu()}));dropdown.addEventListener("focusout",event=>{if(!dropdown.contains(event.relatedTarget)&&!pinned)closeMenu()})})();
 </script>
+<script src="header.js"></script>
 </body>
 </html>
 
