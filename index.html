@@ -109,6 +109,8 @@ footer{border-color:var(--border);color:#8895aa}:focus-visible{outline:2px solid
 
 .tools-group-heading{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:7px 0 -5px;padding:11px 14px;border:1px solid rgba(157,174,204,.14);border-radius:12px;background:rgba(13,18,29,.6);color:#f2f5fd;font-weight:800}.tools-group-heading small{color:#96a3b9;font-size:11px;font-weight:500}.tools-group-heading.soon{margin-top:20px}
 
+ .sfp-scroll-progress{position:fixed!important;top:0!important;left:0!important;height:3px!important;z-index:2147483647!important;pointer-events:none!important;transform:none!important;display:block!important}
+
 /* Expandable tools menu */
 .tool-dropdown{position:relative}.tool-dropdown summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;color:var(--muted);padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;transition:background .2s,border-color .2s,color .2s;user-select:none}
 .tool-dropdown summary::-webkit-details-marker{display:none}.tool-dropdown summary:after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s}
@@ -127,9 +129,7 @@ a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255
 .build-tool-card .tool-icon{background:rgba(78,214,176,.13);border-color:rgba(78,214,176,.22)}.gpu-tool-card{display:block;text-decoration:none!important;background:linear-gradient(145deg,rgba(33,47,78,.78),rgba(15,23,38,.9));border-color:rgba(100,164,255,.27)}
 .gpu-tool-card .tool-icon{background:rgba(89,158,255,.15);border-color:rgba(100,164,255,.26)}
 .scroll-reveal{transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.2,1),filter .55s ease}.has-scroll-reveal .scroll-reveal{opacity:0;transform:translateY(22px);filter:blur(5px)}.has-scroll-reveal .scroll-reveal.is-visible{opacity:1;transform:translateY(0);filter:blur(0)}
-@keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}
-body > #site-header{position:relative;z-index:2147483646}
-body > .sfp-scroll-progress{position:fixed!important;top:0!important;left:0!important;right:auto!important;bottom:auto!important;z-index:2147483647!important;transform:none!important}
+@keyframes pcpilot-enter{from{opacity:0}to{opacity:1}}body{animation:pcpilot-enter .32s ease-out both}
 body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}
 @media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}
 /* Hover preview and click-pinned tools menu */
