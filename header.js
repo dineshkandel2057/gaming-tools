@@ -10,34 +10,6 @@
   const isContact = current === "contact.html";
 
   const headerCSS = `
-    html,
-body {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(145,126,255,.72) rgba(9,12,20,.45);
-}
-
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  width: 9px;
-}
-
-html::-webkit-scrollbar-track,
-body::-webkit-scrollbar-track {
-  background: rgba(9,12,20,.45);
-}
-
-html::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #a892ff, #69caff);
-  border: 2px solid rgba(9,12,20,.45);
-  border-radius: 999px;
-}
-
-html::-webkit-scrollbar-thumb:hover,
-body::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #b9a9ff, #82d6ff);
-}
-
     .sfp-scroll-progress {
       position: fixed;
       top: 0;
@@ -55,43 +27,6 @@ body::-webkit-scrollbar-thumb:hover {
     @media(prefers-reduced-motion:reduce) {
       .sfp-scroll-progress {
         transition: none;
-      }
-    }
-
-
-    body > footer {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 26px 22px 30px;
-      border-top: 1px solid rgba(157,174,204,.16);
-      color: #8895aa;
-      font-size: 12px;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    body > footer p {
-      margin: 0;
-    }
-
-    body > footer p + p {
-      margin-top: 7px;
-    }
-
-    body > footer a {
-      color: #a892ff;
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-
-    body > footer a:hover {
-      color: #fff;
-    }
-
-    @media(max-width:800px) {
-      body > footer {
-        padding-left: 15px;
-        padding-right: 15px;
       }
     }
 
@@ -552,17 +487,86 @@ body::-webkit-scrollbar-thumb:hover {
     </header>
   `;
 
+  function initScrollReveal() {
+    const targets = Array.from(document.querySelectorAll(
+      "[data-sfp-reveal], .reveal"
+    ));
+
+    if (
+      !targets.length ||
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    let observer;
+
+    const showAll = () => {
+      if (observer) observer.disconnect();
+      document.documentElement.classList.remove("sfp-motion-ready");
+      targets.forEach((target) => {
+        target.classList.remove("sfp-reveal-pending");
+        target.classList.add("sfp-reveal-visible");
+      });
+    };
+
+    try {
+      observer = new IntersectionObserver((entries) => {
+        try {
+          entries.forEach((entry) => {
+            const target = entry.target;
+            const alreadyPassed = entry.boundingClientRect.bottom < 0;
+
+            if (entry.isIntersecting || alreadyPassed) {
+              target.classList.remove("sfp-reveal-pending");
+              target.classList.add("sfp-reveal-visible");
+              observer.unobserve(target);
+            } else if (!target.classList.contains("sfp-reveal-visible")) {
+              // Hide an item only after the observer confirms it is below view.
+              target.classList.add("sfp-reveal-pending");
+            }
+          });
+        } catch (_) {
+          showAll();
+        }
+      }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+
+      targets.forEach((target) => {
+        target.classList.add("sfp-reveal-target");
+        observer.observe(target);
+      });
+      document.documentElement.classList.add("sfp-motion-ready");
+    } catch (_) {
+      showAll();
+    }
+  }
+
   function init() {
+    try {
+      initScrollReveal();
+    } catch (_) {
+      // Shared navigation must still render if reveal setup is unavailable.
+      document.documentElement.classList.remove("sfp-motion-ready");
+      document.querySelectorAll(".sfp-reveal-pending").forEach((target) => {
+        target.classList.remove("sfp-reveal-pending");
+      });
+    }
+
     const host = document.getElementById("site-header");
 
-    if (!host) return;
+    if (host) {
+      if (!document.getElementById("sfp-header-style")) {
+        const style = document.createElement("style");
+        style.id = "sfp-header-style";
+        style.textContent = headerCSS;
+        document.head.appendChild(style);
+      }
 
-    const style = document.createElement("style");
-    style.id = "sfp-header-style";
-    style.textContent = headerCSS;
-    document.head.appendChild(style);
-
-    host.outerHTML = markup;
+      host.outerHTML = markup;
+    } else {
+      return;
+    }
 
     // Use the selected high-resolution transparent favicon artwork.
     document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]').forEach((link) => link.remove());

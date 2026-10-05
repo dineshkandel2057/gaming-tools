@@ -110,14 +110,14 @@
 
     /* Guide UX enhancements */
     
-    .article-header>*{opacity:0;transform:translateY(12px);animation:guideHeroIn .55s ease forwards}
+    .article-header>*{opacity:1;transform:none}html.sfp-motion-ready .article-header>*{opacity:0;transform:translateY(12px);animation:guideHeroIn .55s ease forwards}
     .article-header .eyebrow{animation-delay:.05s}.article-header h1{animation-delay:.12s}.article-header .article-intro{animation-delay:.19s}.article-header .meta{animation-delay:.26s}
     @keyframes guideHeroIn{to{opacity:1;transform:none}}
     .quick-answer{position:relative;overflow:hidden}
     .quick-answer:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,#a892ff,#69caff);opacity:.9}
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+    .reveal{opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease}
     .reveal.is-visible{opacity:1;transform:none}
-    .accordion{margin-top:42px}.accordion.reveal{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:border-color .25s ease,background .25s ease;opacity:0;transform:translateY(24px)}.accordion.reveal.is-visible{opacity:1;transform:none}
+    .accordion{margin-top:42px}.accordion.reveal{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:border-color .25s ease,background .25s ease;opacity:1;transform:none;}.accordion.reveal.is-visible{opacity:1;transform:none}
     .accordion-item{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:border-color .25s ease,background .25s ease}
     .accordion-item:has(.accordion-trigger[aria-expanded="true"]){border-color:rgba(157,139,255,.28);background:rgba(19,25,39,.52)}
     .accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;background:none;border:0;color:var(--text);font:700 30px/1.2 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em;text-align:left;cursor:pointer}
@@ -132,7 +132,7 @@
     .table-wrap table tbody tr:hover{background:rgba(118,95,255,.06)}
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
-      .article-header>*{animation:none;opacity:1;transform:none}
+      .article-header>*,html.sfp-motion-ready .article-header>*{animation:none;opacity:1;transform:none}
       .reveal{transition:none;opacity:1;transform:none}
       .accordion-panel{transition:none}
       .accordion-icon{transition:none}
@@ -151,6 +151,7 @@
 <meta name="twitter:title" content="How Much RAM Do You Need for Gaming in 2026? | SystemFit PC">
 <meta name="twitter:description" content="Learn whether 16GB, 32GB or 64GB of system RAM fits your gaming, streaming and multitasking needs.">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How Much RAM Do You Need for Gaming in 2026?","description":"Learn whether 16GB, 32GB or 64GB of system RAM fits your gaming, streaming and multitasking needs.","mainEntityOfPage":{"@type":"WebPage","@id":"https://systemfitpc.vercel.app/how-much-ram-for-gaming-2026.html"},"url":"https://systemfitpc.vercel.app/how-much-ram-for-gaming-2026.html","author":{"@type":"Organization","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/","logo":"https://systemfitpc.vercel.app/systemfit-favicon.png"},"publisher":{"@type":"Organization","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/","logo":"https://systemfitpc.vercel.app/systemfit-favicon.png"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://systemfitpc.vercel.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://systemfitpc.vercel.app/guides.html"},{"@type":"ListItem","position":3,"name":"How Much RAM Do You Need for Gaming in 2026?","item":"https://systemfitpc.vercel.app/how-much-ram-for-gaming-2026.html"}]}]}</script>
+  <link rel="stylesheet" href="site-universal.css">
 </head>
 
 <body>
@@ -478,7 +479,7 @@
   <section><h2>Related tools and guides</h2><p>Plan compatible memory in the <a href="build-planner.html">PC Build Planner</a>, estimate performance with the <a href="fps-calculator.html">FPS Calculator</a>, and read our <a href="how-much-vram-for-gaming-2026.html">VRAM guide</a>.</p></section></article>
 </main>
 
-<footer>
+<footer class="sfp-site-footer">
   <p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
   <p><a href="privacy-policy.html">Privacy Policy</a></p>
 </footer>
