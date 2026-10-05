@@ -965,18 +965,11 @@
 }
 .hardware-picker-empty{padding:12px 11px;color:#78869d;font-size:12px}
 
-    /* FPS page has a different background gradient, so use the universal scrollbar's effective colors opaquely. */
-    html,
-    body {
-      scrollbar-width: thin;
-      scrollbar-color: rgb(107 94 189) rgb(9 12 20);
-    }
-
-    /* Keep the FPS viewport scrollbar locked to the site's universal appearance. */
+    /* FPS viewport scrollbar: use opaque values so Edge cannot blend the universal colors with its native track. */
     html,
     body {
       scrollbar-width: thin !important;
-      scrollbar-color: rgba(145,126,255,.72) rgba(9,12,20,.45) !important;
+      scrollbar-color: rgb(107 94 189) rgb(9 12 20) !important;
     }
 </style>
 
