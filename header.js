@@ -573,24 +573,6 @@ body::-webkit-scrollbar-thumb:hover {
     favicon.href = "systemfit-favicon.png";
     document.head.appendChild(favicon);
 
-    // Remove only the accidental literal migration artifact from the page text.
-    const cleanupFooterArtifact = () => {
-      const walker = document.createTreeWalker(
-        document.body,
-        NodeFilter.SHOW_TEXT
-      );
-      const nodes = [];
-      let node;
-      while ((node = walker.nextNode())) nodes.push(node);
-      nodes.forEach((textNode) => {
-        if (textNode.nodeValue.includes("`r`n")) {
-          textNode.nodeValue = textNode.nodeValue.replace(/`r`n/g, "");
-        }
-      });
-    };
-
-    cleanupFooterArtifact();
-
     const progress = document.getElementById("sfpScrollProgress");
 
     // Keep the reading-progress bar outside <body> so page-level
