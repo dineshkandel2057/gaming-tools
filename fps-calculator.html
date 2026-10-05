@@ -500,6 +500,71 @@
     .fps-box strong{display:block;margin-top:6px;font:700 29px/1 "Space Grotesk",sans-serif}
     .fps-box span{display:block;margin-top:4px;color:#77859d;font-size:9px}
 
+    .fg-breakdown{
+      margin:0 0 10px;
+      padding:12px;
+      border:1px solid rgba(91,200,255,.14);
+      border-radius:12px;
+      background:linear-gradient(145deg,rgba(24,42,59,.52),rgba(10,17,29,.68));
+    }
+    .fg-breakdown[hidden]{display:none}
+    .fg-breakdown-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .fg-breakdown-head b{
+      display:block;
+      color:#dcecff;
+      font-size:10px;
+    }
+    .fg-breakdown-head span{
+      display:block;
+      margin-top:4px;
+      color:#73849b;
+      font-size:8px;
+      line-height:1.45;
+    }
+    .fg-breakdown-head em{
+      flex:none;
+      padding:4px 6px;
+      border-radius:6px;
+      border:1px solid rgba(91,200,255,.18);
+      background:rgba(91,200,255,.06);
+      color:#7fd7ff;
+      font-size:7px;
+      font-style:normal;
+      font-weight:900;
+      letter-spacing:.08em;
+    }
+    .fg-breakdown-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin-top:9px;
+    }
+    .fg-breakdown-grid > div{
+      padding:9px 10px;
+      border-radius:9px;
+      background:rgba(255,255,255,.022);
+      border:1px solid rgba(157,176,211,.08);
+    }
+    .fg-breakdown-grid small{
+      display:block;
+      color:#71829a;
+      font-size:8px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+    }
+    .fg-breakdown-grid strong{
+      display:block;
+      margin-top:4px;
+      color:#eef5ff;
+      font:700 17px/1 "Space Grotesk",sans-serif;
+    }
+
     .metrics{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -545,111 +610,268 @@
     }
 
     /* Library */
+    /* Gaming-focused lower sections */
     .library{
-      margin-top:18px;
-      padding:25px;
+      position:relative;
+      margin-top:22px;
+      padding:28px 25px 24px;
+      overflow:hidden;
+      border-color:rgba(137,119,255,.20);
+      background:
+        radial-gradient(circle at 92% 8%, rgba(123,93,255,.13), transparent 27%),
+        radial-gradient(circle at 8% 100%, rgba(37,190,255,.055), transparent 25%),
+        linear-gradient(145deg, rgba(15,21,35,.98), rgba(8,13,23,.98));
+      box-shadow:0 18px 55px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.025);
+    }
+    .library::before{
+      content:"";
+      position:absolute;
+      top:0;left:8%;right:8%;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(145,125,255,.7), rgba(54,201,255,.55), transparent);
+      opacity:.8;
+    }
+    .library::after{
+      content:"";
+      position:absolute;
+      width:180px;height:180px;
+      right:-90px;bottom:-105px;
+      border:1px solid rgba(139,121,255,.10);
+      border-radius:50%;
+      box-shadow:0 0 0 24px rgba(139,121,255,.025),0 0 0 48px rgba(139,121,255,.018);
+      pointer-events:none;
     }
     .library-head{
+      position:relative;
       display:flex;
       justify-content:space-between;
       align-items:end;
       gap:20px;
-      margin-bottom:17px;
+      margin-bottom:19px;
+      z-index:1;
     }
-    .library-head h2{margin:0;font:700 25px "Space Grotesk",sans-serif;letter-spacing:-.035em}
-    .library-head p{margin:6px 0 0;color:#8e9cb3;font-size:11px}
+    .library-head h2{
+      margin:0;
+      font:700 25px "Space Grotesk",sans-serif;
+      letter-spacing:-.035em;
+      color:#f4f7ff;
+      text-shadow:0 0 22px rgba(139,121,255,.13);
+    }
+    .library-head p{margin:6px 0 0;color:#91a0ba;font-size:11px}
     .count-badge{
       flex:none;
-      padding:8px 10px;
-      border-radius:8px;
-      color:#b9c5d8;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(157,176,211,.12);
+      padding:8px 11px;
+      border-radius:9px;
+      color:#d9d3ff;
+      background:linear-gradient(135deg,rgba(139,121,255,.14),rgba(65,184,255,.06));
+      border:1px solid rgba(139,121,255,.25);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 6px 20px rgba(0,0,0,.16);
       font-size:10px;font-weight:800;
     }
     .library-tools{
+      position:relative;
       display:grid;
       grid-template-columns:minmax(220px,1fr) auto;
       gap:9px;
-      margin-bottom:12px;
+      margin-bottom:14px;
+      z-index:2;
     }
     .category-tabs{display:flex;flex-wrap:wrap;gap:7px}
     .category{
       height:34px;
-      padding:0 10px;
-      border:1px solid rgba(157,176,211,.12);
+      padding:0 11px;
+      border:1px solid rgba(157,176,211,.13);
       border-radius:9px;
-      color:#8f9db4;
+      color:#91a0b9;
       background:rgba(255,255,255,.025);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
       font-size:9px;font-weight:800;
+      transition:.16s ease;
     }
-    .category.active{color:#fff;border-color:rgba(145,125,255,.35);background:rgba(118,92,255,.11)}
+    .category:hover{
+      color:#e9ecf7;
+      border-color:rgba(139,121,255,.28);
+      background:rgba(139,121,255,.06);
+      transform:translateY(-1px);
+    }
+    .category.active{
+      color:#fff;
+      border-color:rgba(145,125,255,.52);
+      background:linear-gradient(135deg,rgba(118,92,255,.20),rgba(73,170,255,.07));
+      box-shadow:0 0 18px rgba(118,92,255,.09),inset 0 1px 0 rgba(255,255,255,.05);
+    }
     .game-list{
+      position:relative;
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:7px;
+      gap:8px;
+      z-index:1;
     }
     .game-card{
+      position:relative;
       min-width:0;
-      padding:11px;
+      min-height:54px;
+      padding:12px 12px 10px;
       text-align:left;
-      border:1px solid rgba(157,176,211,.09);
-      border-radius:10px;
-      color:#bac5d7;
-      background:rgba(255,255,255,.018);
-      transition:.16s;
+      border:1px solid rgba(157,176,211,.10);
+      border-radius:11px;
+      color:#c5cfdf;
+      background:linear-gradient(145deg,rgba(21,29,45,.72),rgba(10,16,27,.72));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+      overflow:hidden;
+      transition:transform .16s ease,border-color .16s ease,background .16s ease,box-shadow .16s ease;
     }
-    .game-card:hover{border-color:rgba(145,125,255,.34);background:rgba(118,92,255,.06);color:#fff}
+    .game-card::before{
+      content:"";
+      position:absolute;
+      left:0;top:0;bottom:0;
+      width:2px;
+      background:linear-gradient(180deg,#8d7aff,rgba(64,193,255,.65));
+      opacity:0;
+      transition:.16s ease;
+    }
+    .game-card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(145,125,255,.38);
+      background:linear-gradient(145deg,rgba(28,35,58,.86),rgba(11,18,31,.86));
+      color:#fff;
+      box-shadow:0 10px 24px rgba(0,0,0,.20),0 0 18px rgba(118,92,255,.06);
+    }
+    .game-card:hover::before{opacity:1}
     .game-card b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px}
-    .game-card small{display:block;margin-top:4px;color:#69778e;font-size:8px}
+    .game-card small{
+      display:inline-flex;
+      margin-top:5px;
+      color:#71819b;
+      font-size:8px;
+      line-height:1;
+    }
     .library-pagination{
+      position:relative;
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      margin-top:15px;
-      padding-top:15px;
-      border-top:1px solid rgba(157,176,211,.09);
+      gap:12px;
+      margin-top:17px;
+      padding-top:17px;
+      border-top:1px solid rgba(157,176,211,.08);
+      z-index:1;
     }
     .page-btn{
       min-width:105px;
       height:36px;
       padding:0 12px;
-      border:1px solid rgba(157,176,211,.13);
+      border:1px solid rgba(157,176,211,.14);
       border-radius:9px;
-      color:#aebbd0;
-      background:rgba(255,255,255,.025);
+      color:#b9c5d8;
+      background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.015));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
       font-size:9px;
       font-weight:800;
+      transition:.16s ease;
     }
     .page-btn:hover:not(:disabled){
       color:#fff;
-      border-color:rgba(145,125,255,.34);
-      background:rgba(118,92,255,.08);
+      border-color:rgba(145,125,255,.42);
+      background:linear-gradient(135deg,rgba(118,92,255,.13),rgba(58,176,255,.05));
+      transform:translateY(-1px);
     }
-    .page-btn:disabled{opacity:.35;cursor:not-allowed}
+    .page-btn:disabled{opacity:.30;cursor:not-allowed}
     .page-status{
       min-width:80px;
       text-align:center;
-      color:#7f8da5;
+      color:#8b9ab2;
       font-size:9px;
       font-weight:800;
     }
-    .empty{grid-column:1/-1;padding:28px;text-align:center;color:#78869e;font-size:11px}
+    .empty{
+      grid-column:1/-1;
+      padding:32px;
+      text-align:center;
+      color:#78869e;
+      font-size:11px;
+      border:1px dashed rgba(157,176,211,.12);
+      border-radius:11px;
+    }
 
     .method{
-      margin-top:18px;
-      padding:20px 22px;
-      border:1px solid rgba(157,176,211,.12);
-      border-radius:16px;
-      background:rgba(11,16,27,.78);
+      position:relative;
+      margin-top:20px;
+      padding:24px 22px 22px;
+      overflow:hidden;
+      border:1px solid rgba(70,193,255,.13);
+      border-radius:17px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(54,194,255,.07), transparent 28%),
+        radial-gradient(circle at 0% 100%, rgba(139,121,255,.08), transparent 28%),
+        linear-gradient(145deg,rgba(12,19,31,.97),rgba(8,13,23,.97));
+      box-shadow:0 18px 50px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.025);
     }
-    .method h2{margin:0 0 8px;font:700 17px "Space Grotesk",sans-serif}
-    .method p{margin:0;color:#8593aa;font-size:10px;line-height:1.7}
-    .method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
-    .method-item{padding:12px;border:1px solid rgba(157,176,211,.09);border-radius:10px;background:rgba(255,255,255,.018)}
-    .method-item b{display:block;font-size:10px}
-    .method-item span{display:block;margin-top:4px;color:#74829a;font-size:9px;line-height:1.45}
+    .method::before{
+      content:"";
+      position:absolute;
+      left:22px;right:22px;top:0;
+      height:1px;
+      background:linear-gradient(90deg,rgba(139,121,255,.65),rgba(61,201,255,.35),transparent);
+    }
+    .method h2{
+      position:relative;
+      margin:0 0 9px;
+      font:700 18px "Space Grotesk",sans-serif;
+      color:#f0f4ff;
+      letter-spacing:-.02em;
+    }
+    .method p{
+      position:relative;
+      margin:0;
+      max-width:930px;
+      color:#8796ad;
+      font-size:10px;
+      line-height:1.75;
+    }
+    .method-grid{
+      position:relative;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:11px;
+      margin-top:17px;
+    }
+    .method-item{
+      position:relative;
+      min-height:92px;
+      padding:16px 15px 14px 48px;
+      border:1px solid rgba(157,176,211,.10);
+      border-radius:12px;
+      background:linear-gradient(145deg,rgba(23,31,48,.68),rgba(9,15,25,.72));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+      transition:.16s ease;
+    }
+    .method-item::before{
+      position:absolute;
+      left:15px;
+      top:15px;
+      width:24px;
+      height:24px;
+      display:grid;
+      place-items:center;
+      border-radius:7px;
+      color:#ddd8ff;
+      background:linear-gradient(135deg,rgba(139,121,255,.20),rgba(55,193,255,.08));
+      border:1px solid rgba(139,121,255,.22);
+      font-size:10px;
+      font-weight:900;
+      box-shadow:0 0 16px rgba(139,121,255,.07);
+    }
+    .method-item:nth-child(1)::before{content:"01"}
+    .method-item:nth-child(2)::before{content:"02"}
+    .method-item:nth-child(3)::before{content:"03"}
+    .method-item:hover{
+      transform:translateY(-2px);
+      border-color:rgba(139,121,255,.28);
+      background:linear-gradient(145deg,rgba(27,35,56,.80),rgba(10,17,29,.80));
+    }
+    .method-item b{display:block;font-size:10px;color:#e7ecf7}
+    .method-item span{display:block;margin-top:6px;color:#7b8aa2;font-size:9px;line-height:1.55}
 
     footer{
       max-width:1220px;
@@ -681,11 +903,13 @@
       .game-list{grid-template-columns:repeat(2,1fr)}
       .library-tools{grid-template-columns:1fr}
       .method-grid{grid-template-columns:1fr}
-      .library{padding:19px}
+      .library{padding:22px 18px}
+      .method{padding:22px 18px 18px}
       .controls,.results{padding:18px}
     }
     @media(max-width:430px){
       .fps-hero{grid-template-columns:1fr}
+      .fg-breakdown-grid{grid-template-columns:1fr 1fr}
       .metrics{grid-template-columns:1fr 1fr}
       .score-row{grid-template-columns:1fr;justify-items:center;text-align:center}
       .score-copy{text-align:center}
@@ -695,7 +919,52 @@
       html{scroll-behavior:auto}
       *{transition:none!important}
     }
-  </style>
+  
+.hardware-search{margin-top:8px}
+.hardware-search input{
+  width:100%;height:40px;background:rgba(7,11,19,.58);
+  border:1px solid rgba(159,176,207,.16);border-radius:9px;
+  color:var(--text);padding:0 11px;outline:none;font:inherit;
+}
+.hardware-search input::placeholder{color:#78869d}
+.hardware-search input:focus{
+  border-color:#8b79ff;box-shadow:0 0 0 3px rgba(139,121,255,.10);
+}
+
+.hardware-picker{position:relative;width:100%}
+.hardware-picker-native{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+.hardware-picker-trigger{
+  width:100%;height:48px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(7,11,19,.72);border:1px solid rgba(159,176,207,.2);
+  border-radius:10px;color:var(--text);padding:0 12px;font:inherit;text-align:left;cursor:pointer;
+}
+.hardware-picker-trigger:hover{border-color:rgba(153,134,255,.46)}
+.hardware-picker.is-open .hardware-picker-trigger{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(139,121,255,.10)}
+.picker-arrow{color:#9da9bd;font-size:18px;line-height:1;transition:transform .15s}
+.hardware-picker.is-open .picker-arrow{transform:rotate(180deg)}
+.hardware-picker-menu{
+  position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:60;
+  display:none;background:#101622;border:1px solid rgba(159,176,207,.2);
+  border-radius:12px;padding:8px;box-shadow:0 20px 45px rgba(0,0,0,.4);
+}
+.hardware-picker.is-open .hardware-picker-menu{display:block}
+.hardware-picker-search{padding-bottom:7px}
+.hardware-picker-search input{
+  width:100%;height:40px;background:#090e18;border:1px solid rgba(159,176,207,.18);
+  border-radius:9px;color:var(--text);padding:0 11px;outline:none;font:inherit;
+}
+.hardware-picker-search input:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(139,121,255,.10)}
+.hardware-picker-search input::placeholder{color:#78869d}
+.hardware-picker-options{max-height:270px;overflow-y:auto}
+.hardware-picker-option{
+  width:100%;border:0;background:transparent;color:#dce3ef;text-align:left;
+  padding:10px 11px;border-radius:8px;cursor:pointer;font:inherit;font-size:13px;
+}
+.hardware-picker-option:hover,.hardware-picker-option[aria-selected="true"]{
+  background:rgba(126,105,255,.14);color:#fff;
+}
+.hardware-picker-empty{padding:12px 11px;color:#78869d;font-size:12px}
+</style>
 </head>
 
 <body>
@@ -753,12 +1022,40 @@
 
           <div class="field">
             <label for="cpu">CPU</label>
-            <select id="cpu" aria-label="CPU"></select>
+            
+<div class="hardware-picker" id="cpuPicker">
+  <button type="button" class="hardware-picker-trigger" id="cpuTrigger" aria-haspopup="listbox" aria-expanded="false">
+    <span id="cpuLabel">Select a CPU</span><span class="picker-arrow">⌄</span>
+  </button>
+  <div class="hardware-picker-menu" id="cpuMenu">
+    <div class="hardware-picker-search">
+      <input type="search" id="cpuSearch" placeholder="Search a CPUs..." autocomplete="off" aria-label="Search a CPUs">
+    </div>
+    <div class="hardware-picker-options" id="cpuOptions" role="listbox"></div>
+  </div>
+  <select id="cpu" aria-hidden="true" tabindex="-1" class="hardware-picker-native">
+    <option value="">Select a CPU</option>
+  </select>
+</div>
           </div>
 
           <div class="field">
             <label for="gpu">GPU</label>
-            <select id="gpu" aria-label="GPU"></select>
+            
+<div class="hardware-picker" id="gpuPicker">
+  <button type="button" class="hardware-picker-trigger" id="gpuTrigger" aria-haspopup="listbox" aria-expanded="false">
+    <span id="gpuLabel">Select a GPU</span><span class="picker-arrow">⌄</span>
+  </button>
+  <div class="hardware-picker-menu" id="gpuMenu">
+    <div class="hardware-picker-search">
+      <input type="search" id="gpuSearch" placeholder="Search a GPUs..." autocomplete="off" aria-label="Search a GPUs">
+    </div>
+    <div class="hardware-picker-options" id="gpuOptions" role="listbox"></div>
+  </div>
+  <select id="gpu" aria-hidden="true" tabindex="-1" class="hardware-picker-native">
+    <option value="">Select a GPU</option>
+  </select>
+</div>
           </div>
 
           <div class="field">
@@ -833,6 +1130,26 @@
             <small>Estimated 1% low</small>
             <strong id="low">—</strong>
             <span>FPS range</span>
+          </div>
+        </div>
+
+        <div class="fg-breakdown" id="fgBreakdown" hidden>
+          <div class="fg-breakdown-head">
+            <div>
+              <b>Frame Generation breakdown</b>
+              <span>Base rendering performance is shown separately from generated frames.</span>
+            </div>
+            <em id="fgBreakdownStatus">MODELED</em>
+          </div>
+          <div class="fg-breakdown-grid">
+            <div>
+              <small>Base FPS</small>
+              <strong id="fgBase">—</strong>
+            </div>
+            <div>
+              <small>With Frame Gen</small>
+              <strong id="fgOutput">—</strong>
+            </div>
           </div>
         </div>
 
@@ -1210,68 +1527,1014 @@
     });
 
     const CPUs = [
-      {name:"Intel Core i3-12100F",score:40,cores:4},
-      {name:"Intel Core i5-12400F",score:50,cores:6},
-      {name:"Intel Core i5-12600K",score:58,cores:10},
-      {name:"Intel Core i5-13400F",score:62,cores:10},
-      {name:"Intel Core i5-14400F",score:64,cores:10},
-      {name:"Intel Core i5-14600K",score:72,cores:14},
-      {name:"Intel Core i7-12700K",score:66,cores:12},
-      {name:"Intel Core i7-13700K",score:75,cores:16},
-      {name:"Intel Core i7-14700K",score:78,cores:20},
-      {name:"Intel Core i9-13900K",score:80,cores:24},
-      {name:"Intel Core i9-14900K",score:81,cores:24},
-      {name:"Intel Core i5-9600K",score:38,cores:6},
-      {name:"Intel Core i7-9700K",score:47,cores:8},
-      {name:"Intel Core i7-10700K",score:54,cores:8},
-      {name:"AMD Ryzen 5 3600",score:39,cores:6},
-      {name:"AMD Ryzen 5 5600",score:50,cores:6},
-      {name:"AMD Ryzen 5 7600",score:60,cores:6},
-      {name:"AMD Ryzen 5 9600X",score:71,cores:6},
-      {name:"AMD Ryzen 7 5700X3D",score:70,cores:8},
-      {name:"AMD Ryzen 7 5800X3D",score:74,cores:8},
-      {name:"AMD Ryzen 7 7700X",score:69,cores:8},
-      {name:"AMD Ryzen 7 7800X3D",score:86,cores:8},
-      {name:"AMD Ryzen 7 9800X3D",score:97,cores:8},
-      {name:"AMD Ryzen 7 9850X3D",score:100,cores:8},
-      {name:"AMD Ryzen 9 7950X3D",score:88,cores:16},
-      {name:"AMD Ryzen 9 9950X3D",score:97,cores:16}
-    ];
+  {
+    "name": "Pentium G4560",
+    "score": 10
+  },
+  {
+    "name": "Core i3-6100",
+    "score": 12
+  },
+  {
+    "name": "Core i3-7100",
+    "score": 14
+  },
+  {
+    "name": "Ryzen 3 1200",
+    "score": 14
+  },
+  {
+    "name": "Ryzen 3 1300X",
+    "score": 16
+  },
+  {
+    "name": "Core i5-6400",
+    "score": 18
+  },
+  {
+    "name": "Ryzen 3 2200G",
+    "score": 18
+  },
+  {
+    "name": "Core i5-6500",
+    "score": 20
+  },
+  {
+    "name": "Ryzen 5 1400",
+    "score": 20
+  },
+  {
+    "name": "Core i5-7400",
+    "score": 21
+  },
+  {
+    "name": "Core i3-8100",
+    "score": 22
+  },
+  {
+    "name": "Core i5-7500",
+    "score": 22
+  },
+  {
+    "name": "Core i5-6600K",
+    "score": 23
+  },
+  {
+    "name": "Ryzen 5 1600",
+    "score": 23
+  },
+  {
+    "name": "Core i3-8350K",
+    "score": 24
+  },
+  {
+    "name": "Ryzen 5 2400G",
+    "score": 24
+  },
+  {
+    "name": "Core i3-9100",
+    "score": 25
+  },
+  {
+    "name": "Core i3-9100F",
+    "score": 25
+  },
+  {
+    "name": "Core i5-7600K",
+    "score": 25
+  },
+  {
+    "name": "Ryzen 5 1600X",
+    "score": 25
+  },
+  {
+    "name": "Core i7-6700",
+    "score": 26
+  },
+  {
+    "name": "Ryzen 7 1700",
+    "score": 27
+  },
+  {
+    "name": "Core i7-6700K",
+    "score": 28
+  },
+  {
+    "name": "Ryzen 3 3100",
+    "score": 28
+  },
+  {
+    "name": "Ryzen 5 2600",
+    "score": 29
+  },
+  {
+    "name": "Ryzen 7 1700X",
+    "score": 29
+  },
+  {
+    "name": "Core i3-10100",
+    "score": 30
+  },
+  {
+    "name": "Core i7-7700",
+    "score": 30
+  },
+  {
+    "name": "Ryzen 7 1800X",
+    "score": 30
+  },
+  {
+    "name": "Core i5-8400",
+    "score": 31
+  },
+  {
+    "name": "Ryzen 5 2600X",
+    "score": 31
+  },
+  {
+    "name": "Core i3-10300",
+    "score": 32
+  },
+  {
+    "name": "Core i5-8500",
+    "score": 32
+  },
+  {
+    "name": "Ryzen 3 3300X",
+    "score": 32
+  },
+  {
+    "name": "Core i7-7700K",
+    "score": 33
+  },
+  {
+    "name": "Core i5-9400F",
+    "score": 34
+  },
+  {
+    "name": "Core i7-7740X",
+    "score": 34
+  },
+  {
+    "name": "Ryzen 7 2700",
+    "score": 34
+  },
+  {
+    "name": "Core i5-8600K",
+    "score": 35
+  },
+  {
+    "name": "Core i7-10750H",
+    "score": 36
+  },
+  {
+    "name": "Ryzen 7 2700X",
+    "score": 36
+  },
+  {
+    "name": "Core i5-9600K",
+    "score": 37
+  },
+  {
+    "name": "Core i7-8700",
+    "score": 38
+  },
+  {
+    "name": "Core i7-7820X",
+    "score": 39
+  },
+  {
+    "name": "Core i7-8700K",
+    "score": 40
+  },
+  {
+    "name": "Core i5-10400F",
+    "score": 41
+  },
+  {
+    "name": "Core i9-7900X",
+    "score": 42
+  },
+  {
+    "name": "Ryzen 5 3600",
+    "score": 42
+  },
+  {
+    "name": "Core i5-11400F",
+    "score": 43
+  },
+  {
+    "name": "Core i7-9700K",
+    "score": 43
+  },
+  {
+    "name": "Core i7-11800H",
+    "score": 44
+  },
+  {
+    "name": "Ryzen 5 3600X",
+    "score": 44
+  },
+  {
+    "name": "Core i5-10600K",
+    "score": 45
+  },
+  {
+    "name": "Core i3-12300",
+    "score": 46
+  },
+  {
+    "name": "Core i9-9900K",
+    "score": 46
+  },
+  {
+    "name": "Core i3-13100F",
+    "score": 48
+  },
+  {
+    "name": "Core i5-11600K",
+    "score": 48
+  },
+  {
+    "name": "Core i9-9980XE",
+    "score": 48
+  },
+  {
+    "name": "Ryzen 7 3700X",
+    "score": 48
+  },
+  {
+    "name": "Ryzen 7 3800X",
+    "score": 49
+  },
+  {
+    "name": "Core i7-10700K",
+    "score": 50
+  },
+  {
+    "name": "Ryzen 7 3800XT",
+    "score": 50
+  },
+  {
+    "name": "Ryzen 9 3900X",
+    "score": 51
+  },
+  {
+    "name": "Core i3-14100F",
+    "score": 52
+  },
+  {
+    "name": "Core i7-11700",
+    "score": 52
+  },
+  {
+    "name": "Ryzen 9 3950X",
+    "score": 52
+  },
+  {
+    "name": "Core i7-11700K",
+    "score": 53
+  },
+  {
+    "name": "Core i9-10900K",
+    "score": 54
+  },
+  {
+    "name": "Ryzen 5 5600",
+    "score": 54
+  },
+  {
+    "name": "Core i9-11900K",
+    "score": 56
+  },
+  {
+    "name": "Ryzen 5 5600X",
+    "score": 56
+  },
+  {
+    "name": "Core i5-13400F",
+    "score": 60
+  },
+  {
+    "name": "Ryzen 5 5500",
+    "score": 60.0
+  },
+  {
+    "name": "Ryzen 5 7500F",
+    "score": 62
+  },
+  {
+    "name": "Core i5-14400F",
+    "score": 63
+  },
+  {
+    "name": "Core i5-12600K",
+    "score": 64
+  },
+  {
+    "name": "Ryzen 7 5800X",
+    "score": 64
+  },
+  {
+    "name": "Ryzen 7 5800X3D",
+    "score": 65.9
+  },
+  {
+    "name": "Ryzen 5 7600",
+    "score": 66
+  },
+  {
+    "name": "Ryzen 9 5900X",
+    "score": 66
+  },
+  {
+    "name": "Ryzen 7 5700X",
+    "score": 67.0
+  },
+  {
+    "name": "Core i3-12100F",
+    "score": 67.3
+  },
+  {
+    "name": "Ryzen 5 5600X3D",
+    "score": 68
+  },
+  {
+    "name": "Ryzen 5 7600X",
+    "score": 68
+  },
+  {
+    "name": "Ryzen 9 5950X",
+    "score": 68
+  },
+  {
+    "name": "Core i5-12400F",
+    "score": 69.5
+  },
+  {
+    "name": "Core i7-12700K",
+    "score": 70
+  },
+  {
+    "name": "Core i9-12900K",
+    "score": 72
+  },
+  {
+    "name": "Ryzen 9 9900X",
+    "score": 73.9
+  },
+  {
+    "name": "Core i5-13600K",
+    "score": 75
+  },
+  {
+    "name": "Ryzen 5 9600X",
+    "score": 75
+  },
+  {
+    "name": "Core i7-13700K",
+    "score": 75.8
+  },
+  {
+    "name": "Core Ultra 5 245K",
+    "score": 76
+  },
+  {
+    "name": "Ryzen 7 7700X",
+    "score": 76
+  },
+  {
+    "name": "Core i7-14700K",
+    "score": 76.4
+  },
+  {
+    "name": "Core i9-13900K",
+    "score": 76.8
+  },
+  {
+    "name": "Core Ultra 7 270K Plus",
+    "score": 77.5
+  },
+  {
+    "name": "Core i5-14600K",
+    "score": 78
+  },
+  {
+    "name": "Core i9-14900K",
+    "score": 78.2
+  },
+  {
+    "name": "Ryzen 9 7900X",
+    "score": 80
+  },
+  {
+    "name": "Ryzen 7 9700X",
+    "score": 82
+  },
+  {
+    "name": "Ryzen 9 7950X3D",
+    "score": 83.9
+  },
+  {
+    "name": "Core Ultra 7 265K",
+    "score": 84
+  },
+  {
+    "name": "Ryzen 9 7950X",
+    "score": 84
+  },
+  {
+    "name": "Ryzen 7 7800X3D",
+    "score": 85.6
+  },
+  {
+    "name": "Core i9-13900KS",
+    "score": 86
+  },
+  {
+    "name": "Ryzen 9 9900X3D",
+    "score": 86.9
+  },
+  {
+    "name": "Core Ultra 9 285K",
+    "score": 89
+  },
+  {
+    "name": "Core i9-14900KS",
+    "score": 90
+  },
+  {
+    "name": "Ryzen 9 9950X3D",
+    "score": 95.7
+  },
+  {
+    "name": "Ryzen 7 9800X3D",
+    "score": 97.0
+  },
+  {
+    "name": "Ryzen 9 9950X3D2",
+    "score": 97.3
+  },
+  {
+    "name": "Ryzen 7 9850X3D",
+    "score": 100.0
+  }
+];
 
     const GPUS = [
-      {name:"NVIDIA GeForce GTX 1660 SUPER",score:18,vram:6,rt:.35},
-      {name:"NVIDIA GeForce RTX 2060",score:22,vram:6,rt:.55},
-      {name:"NVIDIA GeForce RTX 3060 12GB",score:29,vram:12,rt:.70},
-      {name:"NVIDIA GeForce RTX 3060 Ti",score:36,vram:8,rt:.78},
-      {name:"NVIDIA GeForce RTX 3070",score:43,vram:8,rt:.80},
-      {name:"NVIDIA GeForce RTX 4060",score:34,vram:8,rt:.82},
-      {name:"NVIDIA GeForce RTX 4060 Ti 8GB",score:40,vram:8,rt:.86},
-      {name:"NVIDIA GeForce RTX 4060 Ti 16GB",score:41,vram:16,rt:.86},
-      {name:"NVIDIA GeForce RTX 4070",score:50,vram:12,rt:.91},
-      {name:"NVIDIA GeForce RTX 4070 SUPER",score:57,vram:12,rt:.95},
-      {name:"NVIDIA GeForce RTX 4070 Ti SUPER",score:65,vram:16,rt:.98},
-      {name:"NVIDIA GeForce RTX 4080 SUPER",score:78,vram:16,rt:1.0},
-      {name:"NVIDIA GeForce RTX 4090",score:92,vram:24,rt:1.0},
-      {name:"NVIDIA GeForce RTX 5070",score:61,vram:12,rt:1.0},
-      {name:"NVIDIA GeForce RTX 5070 Ti",score:72,vram:16,rt:1.0},
-      {name:"NVIDIA GeForce RTX 5080",score:84,vram:16,rt:1.0},
-      {name:"NVIDIA GeForce RTX 5090",score:100,vram:32,rt:1.0},
-      {name:"AMD Radeon RX 6600",score:26,vram:8,rt:.35},
-      {name:"AMD Radeon RX 6650 XT",score:30,vram:8,rt:.38},
-      {name:"AMD Radeon RX 6700 XT",score:39,vram:12,rt:.42},
-      {name:"AMD Radeon RX 6750 XT",score:42,vram:12,rt:.44},
-      {name:"AMD Radeon RX 7600",score:31,vram:8,rt:.45},
-      {name:"AMD Radeon RX 7700 XT",score:48,vram:12,rt:.52},
-      {name:"AMD Radeon RX 7800 XT",score:55,vram:16,rt:.55},
-      {name:"AMD Radeon RX 7900 GRE",score:59,vram:16,rt:.56},
-      {name:"AMD Radeon RX 7900 XT",score:69,vram:20,rt:.58},
-      {name:"AMD Radeon RX 7900 XTX",score:79,vram:24,rt:.60},
-      {name:"AMD Radeon RX 9060 XT 16GB",score:48,vram:16,rt:.64},
-      {name:"AMD Radeon RX 9070",score:69,vram:16,rt:.70},
-      {name:"AMD Radeon RX 9070 XT",score:76,vram:16,rt:.73},
-      {name:"Intel Arc A750",score:27,vram:8,rt:.55},
-      {name:"Intel Arc B580",score:38,vram:12,rt:.68}
-    ];
+  {
+    "name": "AMD Radeon RX 550",
+    "score": 4,
+    "vram": 4,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 460",
+    "score": 5,
+    "vram": 8,
+    "rt": 0.5
+  },
+  {
+    "name": "NVIDIA GeForce GTX 950",
+    "score": 6,
+    "vram": 2,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 560",
+    "score": 6,
+    "vram": 4,
+    "rt": 0.35
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1050",
+    "score": 9,
+    "vram": 2,
+    "rt": 0.35
+  },
+  {
+    "name": "NVIDIA GeForce GTX 960",
+    "score": 9,
+    "vram": 2,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 6400",
+    "score": 10,
+    "vram": 4,
+    "rt": 0.45
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1050 Ti",
+    "score": 11,
+    "vram": 4,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 470",
+    "score": 11,
+    "vram": 8,
+    "rt": 0.5
+  },
+  {
+    "name": "Intel Arc A380",
+    "score": 12,
+    "vram": 6,
+    "rt": 0.55
+  },
+  {
+    "name": "AMD Radeon RX 570",
+    "score": 12,
+    "vram": 8,
+    "rt": 0.35
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1650",
+    "score": 13,
+    "vram": 4,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 480",
+    "score": 13,
+    "vram": 8,
+    "rt": 0.5
+  },
+  {
+    "name": "NVIDIA GeForce GTX 970",
+    "score": 14,
+    "vram": 4,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 6500 XT",
+    "score": 14,
+    "vram": 4,
+    "rt": 0.45
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1060 3GB",
+    "score": 15,
+    "vram": 3,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 580",
+    "score": 15,
+    "vram": 8,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 5500 XT",
+    "score": 16,
+    "vram": 8,
+    "rt": 0.35
+  },
+  {
+    "name": "NVIDIA GeForce GTX 980",
+    "score": 17,
+    "vram": 4,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 590",
+    "score": 17,
+    "vram": 8,
+    "rt": 0.35
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1060 6GB",
+    "score": 18,
+    "vram": 6,
+    "rt": 0.35
+  },
+  {
+    "name": "Intel Arc A580",
+    "score": 21,
+    "vram": 8,
+    "rt": 0.55
+  },
+  {
+    "name": "NVIDIA GeForce GTX 980 Ti",
+    "score": 21,
+    "vram": 6,
+    "rt": 0.35
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3050",
+    "score": 21.9,
+    "vram": 8,
+    "rt": 0.82
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1660 Super",
+    "score": 22,
+    "vram": 6.0,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX Vega 56",
+    "score": 22,
+    "vram": 8,
+    "rt": 0.5
+  },
+  {
+    "name": "NVIDIA GeForce TITAN X",
+    "score": 23,
+    "vram": 8,
+    "rt": 0.5
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1070",
+    "score": 24,
+    "vram": 8,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 5600 XT",
+    "score": 25,
+    "vram": 6,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX Vega 64",
+    "score": 25,
+    "vram": 8,
+    "rt": 0.5
+  },
+  {
+    "name": "AMD Radeon RX 6600",
+    "score": 25.5,
+    "vram": 8.0,
+    "rt": 0.35
+  },
+  {
+    "name": "Intel Arc A750",
+    "score": 27,
+    "vram": 8.0,
+    "rt": 0.55
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1070 Ti",
+    "score": 28,
+    "vram": 8,
+    "rt": 0.35
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2060",
+    "score": 29,
+    "vram": 6.0,
+    "rt": 0.55
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1080",
+    "score": 30,
+    "vram": 8,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 5700",
+    "score": 30,
+    "vram": 8,
+    "rt": 0.35
+  },
+  {
+    "name": "AMD Radeon RX 6600 XT",
+    "score": 30.8,
+    "vram": 8,
+    "rt": 0.45
+  },
+  {
+    "name": "Intel Arc B570",
+    "score": 31.1,
+    "vram": 8,
+    "rt": 0.68
+  },
+  {
+    "name": "Intel Arc A770",
+    "score": 32,
+    "vram": 16,
+    "rt": 0.55
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2060 Super",
+    "score": 32,
+    "vram": 8,
+    "rt": 0.65
+  },
+  {
+    "name": "AMD Radeon RX 5700 XT",
+    "score": 33,
+    "vram": 8,
+    "rt": 0.35
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1080 Ti",
+    "score": 34,
+    "vram": 11,
+    "rt": 0.35
+  },
+  {
+    "name": "NVIDIA GeForce RTX 5050",
+    "score": 34.0,
+    "vram": 8,
+    "rt": 1.0
+  },
+  {
+    "name": "AMD Radeon RX 7600",
+    "score": 34.3,
+    "vram": 8.0,
+    "rt": 0.45
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4060",
+    "score": 35.1,
+    "vram": 8.0,
+    "rt": 0.82
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2070",
+    "score": 36,
+    "vram": 8,
+    "rt": 0.65
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3060",
+    "score": 36,
+    "vram": 12,
+    "rt": 0.82
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3060 Ti",
+    "score": 36.4,
+    "vram": 8.0,
+    "rt": 0.78
+  },
+  {
+    "name": "NVIDIA Titan Xp",
+    "score": 37,
+    "vram": 8,
+    "rt": 0.5
+  },
+  {
+    "name": "AMD Radeon RX 6700 XT",
+    "score": 38.9,
+    "vram": 12.0,
+    "rt": 0.42
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2070 Super",
+    "score": 40,
+    "vram": 8,
+    "rt": 0.65
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3070",
+    "score": 42.8,
+    "vram": 8.0,
+    "rt": 0.8
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4060 Ti 8GB",
+    "score": 43.2,
+    "vram": 8.0,
+    "rt": 0.86
+  },
+  {
+    "name": "NVIDIA GeForce RTX 5060",
+    "score": 43.4,
+    "vram": 8,
+    "rt": 1.0
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4060 Ti 16GB",
+    "score": 43.8,
+    "vram": 16.0,
+    "rt": 0.86
+  },
+  {
+    "name": "Intel Arc B580",
+    "score": 45,
+    "vram": 12.0,
+    "rt": 0.68
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2080 Super",
+    "score": 45,
+    "vram": 8,
+    "rt": 0.65
+  },
+  {
+    "name": "AMD Radeon RX 9060 XT 8GB",
+    "score": 45.7,
+    "vram": 16,
+    "rt": 0.72
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3070 Ti",
+    "score": 46.4,
+    "vram": 8,
+    "rt": 0.82
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2080 Ti",
+    "score": 48,
+    "vram": 11,
+    "rt": 0.65
+  },
+  {
+    "name": "AMD Radeon RX 9060 XT 16GB",
+    "score": 48.2,
+    "vram": 16.0,
+    "rt": 0.64
+  },
+  {
+    "name": "NVIDIA GeForce RTX 5060 Ti 8GB",
+    "score": 49.3,
+    "vram": 8,
+    "rt": 1.0
+  },
+  {
+    "name": "AMD Radeon RX 7600 XT",
+    "score": 50.1,
+    "vram": 8,
+    "rt": 0.58
+  },
+  {
+    "name": "AMD Radeon RX 7700 XT",
+    "score": 50.5,
+    "vram": 12.0,
+    "rt": 0.52
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "score": 51,
+    "vram": 8,
+    "rt": 0.95
+  },
+  {
+    "name": "NVIDIA GeForce RTX 5060 Ti 16GB",
+    "score": 51.6,
+    "vram": 8,
+    "rt": 1.0
+  },
+  {
+    "name": "NVIDIA TITAN RTX",
+    "score": 53,
+    "vram": 8,
+    "rt": 0.5
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4070",
+    "score": 54.7,
+    "vram": 12.0,
+    "rt": 0.91
+  },
+  {
+    "name": "AMD Radeon RX 6800 XT",
+    "score": 54.9,
+    "vram": 16,
+    "rt": 0.45
+  },
+  {
+    "name": "AMD Radeon RX 6800",
+    "score": 55,
+    "vram": 16,
+    "rt": 0.45
+  },
+  {
+    "name": "AMD Radeon RX 6900 XT",
+    "score": 57.4,
+    "vram": 16,
+    "rt": 0.45
+  },
+  {
+    "name": "AMD Radeon RX 9060 XT",
+    "score": 58,
+    "vram": 16,
+    "rt": 0.72
+  },
+  {
+    "name": "AMD Radeon RX 7800 XT",
+    "score": 58.1,
+    "vram": 16.0,
+    "rt": 0.55
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3080 Ti",
+    "score": 58.7,
+    "vram": 8,
+    "rt": 0.82
+  },
+  {
+    "name": "AMD Radeon RX 9070 GRE",
+    "score": 59.2,
+    "vram": 16,
+    "rt": 0.72
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3090",
+    "score": 60.3,
+    "vram": 8,
+    "rt": 0.82
+  },
+  {
+    "name": "AMD Radeon RX 6950 XT",
+    "score": 60.5,
+    "vram": 16,
+    "rt": 0.45
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3080 10GB",
+    "score": 62,
+    "vram": 8,
+    "rt": 0.82
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4070 Super",
+    "score": 62.2,
+    "vram": 12.0,
+    "rt": 0.95
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3090 Ti",
+    "score": 64.7,
+    "vram": 8,
+    "rt": 0.82
+  },
+  {
+    "name": "NVIDIA GeForce RTX 5070",
+    "score": 65.1,
+    "vram": 12.0,
+    "rt": 1.0
+  },
+  {
+    "name": "AMD Radeon RX 7900 GRE",
+    "score": 67,
+    "vram": 16.0,
+    "rt": 0.56
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4070 Ti Super",
+    "score": 69.3,
+    "vram": 16.0,
+    "rt": 0.98
+  },
+  {
+    "name": "AMD Radeon RX 7900 XT",
+    "score": 71.3,
+    "vram": 20.0,
+    "rt": 0.58
+  },
+  {
+    "name": "NVIDIA GeForce RTX 5070 Ti",
+    "score": 76.2,
+    "vram": 16.0,
+    "rt": 1.0
+  },
+  {
+    "name": "AMD Radeon RX 9070",
+    "score": 69.1,
+    "vram": 16.0,
+    "rt": 0.7
+  },
+  {
+    "name": "AMD Radeon RX 9070 XT",
+    "score": 76.9,
+    "vram": 16.0,
+    "rt": 0.73
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4080 Super",
+    "score": 78.0,
+    "vram": 16.0,
+    "rt": 1.0
+  },
+  {
+    "name": "AMD Radeon RX 7900 XTX",
+    "score": 79.3,
+    "vram": 24.0,
+    "rt": 0.6
+  },
+  {
+    "name": "NVIDIA GeForce RTX 5080 16GB",
+    "score": 81.9,
+    "vram": 16,
+    "rt": 1.0
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4090",
+    "score": 90.1,
+    "vram": 24.0,
+    "rt": 1.0
+  },
+  {
+    "name": "NVIDIA GeForce RTX 5090",
+    "score": 100.0,
+    "vram": 32.0,
+    "rt": 1.0
+  }
+];
 
     const state = {
       resolution:null,
@@ -1318,6 +2581,98 @@
 
     fillHardwareSelect("cpu", CPUs, "Select a CPU");
     fillHardwareSelect("gpu", GPUS, "Select a GPU");
+
+    
+function setupHardwarePicker(selectId, searchId, items, placeholder){
+  const picker = document.getElementById(selectId + "Picker");
+  const trigger = document.getElementById(selectId + "Trigger");
+  const label = document.getElementById(selectId + "Label");
+  const menu = document.getElementById(selectId + "Menu");
+  const search = document.getElementById(searchId);
+  const options = document.getElementById(selectId + "Options");
+  const select = document.getElementById(selectId);
+  if(!picker || !trigger || !label || !menu || !search || !options || !select) return;
+
+  function render(query=""){
+    const q = query.trim().toLowerCase();
+    options.innerHTML = "";
+    let count = 0;
+
+    items.forEach((item,index)=>{
+      const haystack = [
+        item.name,item.vendor,item.family,item.generation,item.tier
+      ].filter(Boolean).join(" ").toLowerCase();
+      if(q && !haystack.includes(q)) return;
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "hardware-picker-option";
+      button.textContent = item.name;
+      button.setAttribute("role","option");
+      button.setAttribute("aria-selected", String(String(select.value) === String(index)));
+      button.addEventListener("click", ()=>{
+        select.value = String(index);
+        select.dispatchEvent(new Event("change",{bubbles:true}));
+        label.textContent = item.name;
+        close();
+      });
+      options.appendChild(button);
+      count++;
+    });
+
+    if(!count){
+      const empty = document.createElement("div");
+      empty.className = "hardware-picker-empty";
+      empty.textContent = "No matching hardware found.";
+      options.appendChild(empty);
+    }
+  }
+
+  function open(){
+    document.querySelectorAll(".hardware-picker.is-open").forEach(other=>{
+      if(other !== picker) other.classList.remove("is-open");
+    });
+    picker.classList.add("is-open");
+    trigger.setAttribute("aria-expanded","true");
+    search.value = "";
+    render();
+    requestAnimationFrame(()=>search.focus());
+  }
+
+  function close(){
+    picker.classList.remove("is-open");
+    trigger.setAttribute("aria-expanded","false");
+  }
+
+  trigger.addEventListener("click",()=>{
+    picker.classList.contains("is-open") ? close() : open();
+  });
+
+  search.addEventListener("input",()=>render(search.value));
+
+  select.addEventListener("change",()=>{
+    const index = Number(select.value);
+    if(Number.isInteger(index) && items[index]) label.textContent = items[index].name;
+    else label.textContent = placeholder;
+    render(search.value);
+  });
+
+  document.addEventListener("click",(event)=>{
+    if(!picker.contains(event.target)) close();
+  });
+
+  document.addEventListener("keydown",(event)=>{
+    if(event.key === "Escape" && picker.classList.contains("is-open")){
+      close();
+      trigger.focus();
+    }
+  });
+
+  render();
+}
+
+setupHardwarePicker("cpu","cpuSearch",CPUs,"Select a CPU");
+setupHardwarePicker("gpu","gpuSearch",GPUS,"Select a GPU");
 
     function populateGameSelect(){
       const select = $("game");
@@ -1434,7 +2789,6 @@
       $(id).addEventListener("change",handleOptionChange);
     });
 
-    $("gameSearch").addEventListener("input",populateGameSelect);
     $("calculateBtn").addEventListener("click",run);
 
     function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
@@ -1505,9 +2859,33 @@
       else if (vramPct >= 78) vramStatus = "Watch VRAM";
       if (vramPct > 105) vramStatus = "Likely limit";
 
-      const scoreFps = clamp((avg / (state.resolution === 2160 ? 110 : state.resolution === 1440 ? 125 : 165))*65,0,65);
-      const scoreLow = clamp((low / (state.resolution === 2160 ? 70 : state.resolution === 1440 ? 80 : 110))*25,0,25);
-      const scoreVram = vramPct > 100 ? 0 : vramPct > 90 ? 4 : 10;
+      /*
+        SystemFit Score v2
+        The old score was too heavily anchored to high-refresh 1080p targets,
+        which made a perfectly playable 70–90 FPS AAA result look mediocre.
+        This version uses resolution-aware targets and diminishing returns:
+        FPS matters most, 1% lows matter next, and VRAM headroom is a smaller
+        quality-of-life factor. High FPS still reaches 100, but AAA performance
+        is judged against a more realistic target for the selected resolution.
+      */
+      const scoreTarget = state.resolution === 2160 ? 60 : state.resolution === 1440 ? 90 : 120;
+      const lowTarget = scoreTarget * 0.62;
+
+      // Keep Frame Generation from making the underlying render performance
+      // look stronger than it is. The score is based on base FPS before FG.
+      const fgEligible = gpu.rt >= .68 && gpu.score >= 34;
+      const scoreAvg = state.fg && fgEligible ? nativeAvg : avg;
+      const scoreLowValue = state.fg && fgEligible ? nativeAvg * lowRatio : low;
+
+      // ~1.45x the target reaches the high-90s instead of 100 too early.
+      const scoreFps = clamp(Math.pow(scoreAvg / (scoreTarget * 1.45), 0.55) * 65,0,65);
+      const scoreLow = clamp(Math.pow(scoreLowValue / (lowTarget * 1.45), 0.55) * 25,0,25);
+
+      let scoreVram = 10;
+      if (vramPct > 105) scoreVram = 0;
+      else if (vramPct > 92) scoreVram = 4;
+      else if (vramPct > 78) scoreVram = 7;
+
       const score = Math.round(clamp(scoreFps + scoreLow + scoreVram,1,100));
 
       let title="Needs tuning", tag="BELOW TARGET";
@@ -1522,7 +2900,7 @@
 
       return {
         game,cpu,gpu,avg,low,limit,vramPct,vramStatus,score,title,tag,confidence,
-        cpuPressure,gpuPressure,nativeAvg
+        cpuPressure,gpuPressure,nativeAvg,fgEligible
       };
     }
 
@@ -1575,6 +2953,7 @@ function showSetupReadyState(){
         $("vramBar").style.width = "0";
         $("balanceText").textContent = "—";
         $("resultNote").textContent = "Setup complete. Press Calculate FPS when you are ready to generate the estimate.";
+        $("fgBreakdown").hidden = true;
       } else {
         $("resultGame").textContent = "Choose your setup";
         $("score").textContent = "—";
@@ -1595,6 +2974,7 @@ function showSetupReadyState(){
         $("vramBar").style.width = "0";
         $("balanceText").textContent = "—";
         $("resultNote").textContent = "Choose your game, CPU, GPU, resolution and graphics preset. Results will appear after you press Calculate FPS.";
+        $("fgBreakdown").hidden = true;
       }
     }
 
@@ -1621,6 +3001,7 @@ function showSetupReadyState(){
         $("vramBar").style.width = "0";
         $("balanceText").textContent = "—";
         $("resultNote").textContent = "Choose your game, CPU, GPU, resolution and graphics preset. Results will appear after your full setup is selected.";
+        $("fgBreakdown").hidden = true;
         return;
       }
 
@@ -1633,12 +3014,21 @@ function showSetupReadyState(){
       $("scoreRing").style.setProperty("--score",e.score);
       $("scoreTitle").textContent = e.title;
       $("scoreText").textContent =
-        `Model score based on expected frame rate, 1% low behaviour and VRAM headroom. Confidence: ${e.confidence}.`;
+        `Model score based on base rendering performance, 1% low behaviour and VRAM headroom. Confidence: ${e.confidence}.`;
       $("performanceTag").textContent = e.tag;
 
       $("avg").textContent = fmtRange(e.avg,.11);
       $("low").textContent = fmtRange(e.low,.13);
       $("frameTime").textContent = `${(1000/e.avg).toFixed(1)} ms`;
+
+      if (state.fg){
+        $("fgBreakdown").hidden = false;
+        $("fgBase").textContent = fmtRange(e.nativeAvg,.11);
+        $("fgOutput").textContent = fmtRange(e.avg,.11);
+        $("fgBreakdownStatus").textContent = e.fgEligible ? "MODELED" : "NOT APPLIED";
+      } else {
+        $("fgBreakdown").hidden = true;
+      }
       $("limit").textContent = e.limit;
       $("vram").textContent = e.vramStatus;
 
