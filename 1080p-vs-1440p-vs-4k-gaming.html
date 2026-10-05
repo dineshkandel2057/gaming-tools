@@ -75,10 +75,10 @@
     @keyframes guideHeroIn{to{opacity:1;transform:none}}
     .quick-answer{position:relative;overflow:hidden}
     .quick-answer:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,#a892ff,#69caff);opacity:.9}
-    .reveal{opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
     .reveal.is-visible{opacity:1;transform:none}
     .accordion{margin-top:42px}
-    .accordion.reveal{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:border-color .25s ease,background .25s ease;opacity:1;transform:none}
+    .accordion.reveal{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:opacity .65s ease,transform .65s ease,border-color .25s ease,background .25s ease}
     .accordion.reveal.is-visible{opacity:1;transform:none}
     .accordion:has(.accordion-trigger[aria-expanded="true"]){border-color:rgba(157,139,255,.28);background:rgba(19,25,39,.52)}
     .accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;background:none;border:0;color:var(--text);font:700 30px/1.2 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em;text-align:left;cursor:pointer}
