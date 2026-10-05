@@ -966,9 +966,10 @@
 .hardware-picker-empty{padding:12px 11px;color:#78869d;font-size:12px}
 
     /* SystemFit universal scrollbar lock — FPS page only */
+    /* Let Chromium use the same WebKit scrollbar styling as the shared site rule. */
     html, body {
-      scrollbar-width: thin !important;
-      scrollbar-color: rgba(145,126,255,.72) rgba(9,12,20,.45) !important;
+      scrollbar-width: auto !important;
+      scrollbar-color: auto !important;
     }
     html::-webkit-scrollbar,
     body::-webkit-scrollbar {
