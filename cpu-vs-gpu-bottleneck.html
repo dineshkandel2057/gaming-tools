@@ -73,6 +73,38 @@
     .internal-link{color:#b8a9ff;font-weight:700}.sources{margin-top:38px;padding-top:25px;border-top:1px solid rgba(157,174,204,.12)}.sources p{font-size:12px;color:#8592a7}.sources a{color:#a99bff}
     footer{border-top:1px solid var(--border);padding:30px 20px;text-align:center;color:#8895aa;font-size:13px}footer p+p{margin-top:6px}footer a:hover{color:#fff}
     @media(max-width:700px){.sfp-nav{min-height:auto;padding:15px;flex-direction:column;gap:10px}.sfp-main-nav{flex-wrap:wrap;justify-content:center}.sfp-brand{gap:7px}.sfp-monogram{width:32px;height:32px;border-radius:10px}.sfp-wordmark{font-size:19px}.sfp-tool-menu{right:0}main{padding:48px 15px 70px}article{padding:23px 18px;border-radius:16px}h2{font-size:25px}.decision{grid-template-columns:1fr}}
+    /* Guide UX enhancements — matched to the RAM/VRAM guide layout */
+    .article-header>*{opacity:0;transform:translateY(12px);animation:guideHeroIn .55s ease forwards}
+    .article-header .eyebrow{animation-delay:.05s}.article-header h1{animation-delay:.12s}.article-header .dek{animation-delay:.19s}.article-header .meta{animation-delay:.26s}
+    @keyframes guideHeroIn{to{opacity:1;transform:none}}
+    .answer-box{position:relative;overflow:hidden}
+    .answer-box:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,#a892ff,#69caff);opacity:.9}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.is-visible{opacity:1;transform:none}
+    .accordion{margin:14px 0}
+    .accordion.reveal{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:border-color .25s ease,background .25s ease,opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1);opacity:0;transform:translateY(32px)}
+    .accordion.reveal:nth-of-type(2){transition-delay:.04s}.accordion.reveal:nth-of-type(3){transition-delay:.08s}.accordion.reveal:nth-of-type(4){transition-delay:.12s}.accordion.reveal:nth-of-type(5){transition-delay:.16s}.accordion.reveal:nth-of-type(6){transition-delay:.20s}
+    .accordion.reveal.is-visible{opacity:1;transform:translateY(0)}
+    .accordion.reveal:has(.accordion-trigger[aria-expanded="true"]){border-color:rgba(157,139,255,.28);background:rgba(19,25,39,.52)}
+    .accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;background:none;border:0;color:var(--text);font:700 30px/1.2 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em;text-align:left;cursor:pointer}
+    .accordion-trigger:focus-visible{outline:2px solid #8f7dff;outline-offset:5px;border-radius:6px}
+    .accordion-icon{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border:1px solid rgba(157,174,204,.18);border-radius:50%;color:#b9aaff;font:500 22px/1 "DM Sans",sans-serif;transition:transform .3s ease,background .3s ease,border-color .3s ease}
+    .accordion-trigger[aria-expanded="true"] .accordion-icon{transform:rotate(45deg);background:rgba(118,95,255,.12);border-color:rgba(157,139,255,.35)}
+    .accordion-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .42s cubic-bezier(.2,.75,.25,1),opacity .3s ease;opacity:0}
+    .accordion-panel-inner{min-height:0;overflow:hidden;padding:0 22px}
+    .accordion-panel-inner>*:last-child{margin-bottom:24px}
+    .accordion-panel.open{grid-template-rows:1fr;opacity:1}
+    .table-wrap table tbody tr{transition:background .2s ease}
+    .table-wrap table tbody tr:hover{background:rgba(118,95,255,.06)}
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .article-header>*{animation:none;opacity:1;transform:none}
+      .reveal,.accordion.reveal{transition:none;opacity:1;transform:none}
+      .accordion-panel,.accordion-icon{transition:none}
+    }
+    @media(max-width:700px){
+      .accordion-trigger{font-size:24px}
+    }
   </style>
 
 <meta property="og:title" content="CPU vs GPU Bottleneck: What It Means and How to Fix It | SystemFit PC">
@@ -128,13 +160,18 @@
     </header>
 
     <article>
-      <div class="answer-box">
+      <div class="answer-box reveal">
         <p><strong>Short answer:</strong> a bottleneck is simply the part of your PC that limits performance first in a particular game and scenario. A GPU being the limit is normal for many games; a CPU limit matters when it prevents you from reaching your target FPS or causes poor frame-time consistency.</p>
         <p>There is no single bottleneck percentage that stays true for every game. Resolution, graphics settings, game engine, frame-rate target, memory, drivers and even the scene you're playing can change which component is limiting performance.</p>
       </div>
 
-      <section>
-        <h2>What Is a PC Bottleneck?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>What Is a PC Bottleneck?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>A bottleneck is the component that reaches its practical performance limit first for a particular workload. In gaming, the CPU and GPU work together to produce each frame, but they do different jobs.</p>
         <ul>
           <li><strong>CPU:</strong> handles game logic, physics, AI, simulation, draw-call preparation and other game-side work.</li>
@@ -142,10 +179,18 @@
         </ul>
         <p>If the CPU cannot prepare frames quickly enough, the GPU can end up waiting. If the GPU needs more time to render each frame, the CPU may finish its work and wait for the GPU.</p>
         <p>That means every gaming PC is limited by something in a given scenario. The goal is not to eliminate bottlenecks completely. The goal is to have the right component doing the limiting for the performance you actually want.</p>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>CPU Bottleneck vs GPU Bottleneck</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>CPU Bottleneck vs GPU Bottleneck</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <div class="decision">
           <div class="decision-card"><b>CPU-limited</b><span>The processor cannot prepare the next frames quickly enough, so the GPU may be underused.</span></div>
           <div class="decision-card"><b>GPU-limited</b><span>The graphics card needs more time to render each frame, so GPU utilization is usually high.</span></div>
@@ -156,10 +201,18 @@
         <h3>What a GPU bottleneck looks like</h3>
         <p>A GPU bottleneck is more likely when the graphics card is consistently near full utilization and changing GPU-heavy settings changes your FPS substantially.</p>
         <p>This is often a perfectly normal result. If your GPU is running near 100% and delivering the FPS you want, you usually do not have a problem that needs fixing.</p>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>How to Tell Which Component Is Limiting Your FPS</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>How to Tell Which Component Is Limiting Your FPS</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>The best way to diagnose a bottleneck is to look at the game you're actually playing rather than relying only on a calculator number.</p>
         <h3>1. Watch GPU utilization</h3>
         <p>If the GPU sits around 95–100% during a repeatable gameplay section, it is probably doing most of the limiting work. High GPU utilization is generally desirable when you're getting the performance you want.</p>
@@ -173,10 +226,18 @@
         </ul>
         <h3>4. Watch frame times and 1% lows</h3>
         <p>Average FPS does not tell the whole story. A system can show a high average while still producing uneven frame times or poor 1% lows. If the game feels stuttery, investigate frame-time consistency rather than chasing a single average-FPS number.</p>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>Why Resolution Changes the Bottleneck</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Why Resolution Changes the Bottleneck</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>Resolution changes the amount of work the GPU has to perform. As resolution increases, the graphics card generally becomes more important to frame time.</p>
         <div class="table-wrap">
           <table>
@@ -190,24 +251,48 @@
           </table>
         </div>
         <p>This is why the same CPU and GPU can be CPU-limited at 1080p but GPU-limited at 1440p or 4K. A useful bottleneck estimate therefore needs context rather than treating a hardware pairing as having one permanent answer.</p>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>Is a GPU Bottleneck Actually Bad?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Is a GPU Bottleneck Actually Bad?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p><strong>Usually not.</strong> If your GPU is near 100% utilization and you are getting the frame rate you want, the graphics card is simply doing its job.</p>
         <p>For example, suppose your target is 90 FPS at 1440p and your GPU consistently delivers around 90 FPS while operating close to full load. There is no reason to upgrade the CPU just because the GPU is the limiting component.</p>
         <div class="callout"><strong>A GPU bottleneck is only a problem when the GPU is preventing you from achieving the performance, image quality or frame-rate target you actually care about.</strong></div>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>Is a CPU Bottleneck Actually Bad?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Is a CPU Bottleneck Actually Bad?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>A CPU bottleneck matters when the processor prevents your graphics card from delivering the performance you want, particularly at high frame rates.</p>
         <p>For example, a powerful GPU paired with an older CPU may produce a situation where lowering the resolution from 1440p to 1080p barely changes FPS. The GPU has plenty of rendering capability left, but the CPU is not feeding it frames quickly enough.</p>
         <p>CPU limitations can also show up as poor 1% lows, inconsistent frame times or slowdowns in busy areas even when average FPS looks acceptable.</p>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>What Does a Bottleneck Percentage Really Mean?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>What Does a Bottleneck Percentage Really Mean?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>Be careful with calculators that tell you a PC has a fixed value such as “17% CPU bottleneck.” That number should be treated as an estimate, not a measured amount of FPS loss.</p>
         <p>A bottleneck changes with:</p>
         <ul>
@@ -221,10 +306,18 @@
           <li>The exact scene being rendered</li>
         </ul>
         <p>Some current calculator methodologies explicitly treat bottleneck results as scenario-based estimates because a single universal percentage cannot represent every workload.</p>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>How to Reduce a CPU Bottleneck</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>How to Reduce a CPU Bottleneck</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <h3>Lower CPU-heavy settings</h3>
         <p>Depending on the game, settings such as crowd density, object distance, simulation quality, NPC count and physics can place more pressure on the processor. Lowering those settings can sometimes improve CPU-limited performance.</p>
         <h3>Close unnecessary background tasks</h3>
@@ -233,10 +326,18 @@
         <p>A CPU that is overheating or power-limited may not sustain its expected clocks. Check temperatures, clock speeds and throttling before assuming the hardware itself is simply too slow.</p>
         <h3>Upgrade the CPU when the limitation is consistent</h3>
         <p>If the same CPU limitation appears across the games you care about and prevents you from reaching your target FPS, a CPU/platform upgrade can make sense.</p>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>How to Reduce a GPU Bottleneck</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>How to Reduce a GPU Bottleneck</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <h3>Lower GPU-heavy settings</h3>
         <p>Shadows, reflections, volumetric effects, ray tracing and some lighting settings can have a large effect on GPU workload. Reducing them can increase FPS.</p>
         <h3>Use upscaling</h3>
@@ -245,10 +346,18 @@
         <p>Moving from 4K to 1440p, or 1440p to 1080p, can substantially reduce GPU workload when the graphics card is the limiting component.</p>
         <h3>Upgrade the GPU when it is the real limit</h3>
         <p>If your GPU is consistently near full load and still cannot deliver the image quality or FPS target you want, upgrading the graphics card is usually more useful than replacing a CPU that is already keeping up.</p>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>When Should You Upgrade?</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>When Should You Upgrade?</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>Do not upgrade just because a calculator says your parts are mismatched. First decide what performance you are trying to achieve.</p>
         <div class="decision">
           <div class="decision-card"><b>Upgrade the CPU</b><span>When CPU limits repeatedly hold FPS below your target, especially in high-FPS or CPU-heavy games.</span></div>
@@ -256,10 +365,18 @@
           <div class="decision-card"><b>Keep your current hardware</b><span>When your games already meet your FPS and visual-quality targets. A theoretical bottleneck is not automatically a problem.</span></div>
           <div class="decision-card"><b>Investigate first</b><span>When performance is unexpectedly poor. Check temperatures, clocks, RAM, drivers, power settings and background tasks before buying anything.</span></div>
         </div>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>Use the SystemFit PC Bottleneck Calculator</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Use the SystemFit PC Bottleneck Calculator</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <p>Our <a class="internal-link" href="bottleneck.html">CPU &amp; GPU Bottleneck Calculator</a> lets you select your CPU, GPU, resolution, game type and target FPS to get a practical estimate for your chosen scenario.</p>
         <p>Use the result as a starting point, then verify it in the actual game. Calculator estimates cannot reproduce every driver version, game patch, map, graphics setting, temperature or background workload.</p>
         <p>If you are also planning your system memory, see our guide to <a class="internal-link" href="how-much-ram-for-gaming-2026.html">how much RAM you need for gaming in 2026</a>.</p>
@@ -268,10 +385,18 @@
           <a class="tool-link" href="gpu-comparison.html"><b>GPU Comparison</b><span>Compare graphics cards before an upgrade.</span></a>
           <a class="tool-link" href="build-planner.html"><b>PC Build Planner</b><span>Check component fit and power for a build.</span></a>
         </div>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>CPU vs GPU Bottleneck: Quick Summary</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>CPU vs GPU Bottleneck: Quick Summary</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <div class="table-wrap">
           <table>
             <thead><tr><th>What you observe</th><th>Likely explanation</th></tr></thead>
@@ -285,18 +410,29 @@
             </tbody>
           </table>
         </div>
+      
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>FAQ</h2>
+      <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>FAQ</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+
         <div class="faq"><h3>Is a 100% GPU bottleneck bad?</h3><p>No. High GPU utilization is often normal and desirable when the GPU is delivering the FPS you want.</p></div>
         <div class="faq"><h3>Can a bottleneck change between games?</h3><p>Yes. Different game engines and workloads can put very different demands on the CPU and GPU.</p></div>
         <div class="faq"><h3>Can the same PC be CPU-bottlenecked at 1080p and GPU-bottlenecked at 4K?</h3><p>Yes. Increasing resolution generally increases GPU workload, so the limiting component can change.</p></div>
         <div class="faq"><h3>Does a stronger GPU always need a stronger CPU?</h3><p>Not automatically. The answer depends on your resolution, game, settings and FPS target. A powerful GPU can be perfectly reasonable with a mid-range CPU for 1440p or 4K gaming.</p></div>
         <div class="faq"><h3>Should I trust a bottleneck percentage?</h3><p>Use it as a rough directional estimate rather than a precise measurement. Real-world monitoring in the game you care about is more useful for an upgrade decision.</p></div>
+      
+          </div>
+        </div>
       </section>
 
-      <section class="sources">
+      <section class="sources reveal">
         <h2>Research &amp; methodology sources</h2>
         <p>This guide is based on current bottleneck-calculator methodology discussions and practical hardware guidance. It intentionally treats bottleneck results as scenario-dependent estimates rather than fixed measurements.</p>
         <p><a href="https://pcpartguide.com/methodology/" target="_blank" rel="noopener">PCPartGuide — Bottleneck Calculator Methodology</a></p>
@@ -305,7 +441,16 @@
         <p><a href="https://www.bottleneckcalculator.to/en/blog/cpu-vs-gpu-bottleneck-test/" target="_blank" rel="noopener">Bottleneck Calculator — CPU vs GPU bottleneck testing</a></p>
         <p><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener">Google Search Central — Creating helpful, reliable, people-first content</a></p>
       </section>
-    <section><h2>Related tools and guides</h2><p>Try the <a href="bottleneck.html">Bottleneck Calculator</a> or <a href="fps-calculator.html">FPS Calculator</a>, compare GPUs with the <a href="gpu-comparison.html">GPU Comparison Tool</a>, or read our <a href="how-much-vram-for-gaming-2026.html">VRAM guide</a>.</p></section></article>
+    <section class="accordion reveal">
+        <button class="accordion-trigger" type="button" aria-expanded="false">
+          <span>Related tools and guides</span><span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel" hidden>
+          <div class="accordion-panel-inner">
+<p>Try the <a href="bottleneck.html">Bottleneck Calculator</a> or <a href="fps-calculator.html">FPS Calculator</a>, compare GPUs with the <a href="gpu-comparison.html">GPU Comparison Tool</a>, or read our <a href="how-much-vram-for-gaming-2026.html">VRAM guide</a>.</p>
+          </div>
+        </div>
+      </section></article>
   </main>
 
   <footer>
@@ -313,6 +458,39 @@
     <p><a href="privacy-policy.html">Privacy Policy</a> · <a href="contact.html">Contact</a></p>
   </footer>
 
+  <script>
+  (()=>{
+    document.querySelectorAll(".accordion-trigger").forEach(trigger=>{
+      trigger.addEventListener("click",()=>{
+        const panel=trigger.nextElementSibling;
+        const open=trigger.getAttribute("aria-expanded")==="true";
+        trigger.setAttribute("aria-expanded",String(!open));
+        if(open){
+          panel.classList.remove("open");
+          panel.addEventListener("transitionend",()=>{if(!panel.classList.contains("open"))panel.hidden=true},{once:true});
+        }else{
+          panel.hidden=false;
+          requestAnimationFrame(()=>panel.classList.add("open"));
+        }
+      });
+    });
+
+    const items=document.querySelectorAll(".reveal");
+    if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+      const observer=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },{threshold:.08,rootMargin:"0px 0px -40px 0px"});
+      items.forEach(item=>observer.observe(item));
+    }else{
+      items.forEach(item=>item.classList.add("is-visible"));
+    }
+  })();
+  </script>
   <script src="header.js" defer></script>
 </body>
 </html>
