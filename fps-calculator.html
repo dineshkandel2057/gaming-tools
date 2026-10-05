@@ -965,29 +965,11 @@
 }
 .hardware-picker-empty{padding:12px 11px;color:#78869d;font-size:12px}
 
-    /* SystemFit universal scrollbar lock — FPS page only */
-    /* Let Chromium use the same WebKit scrollbar styling as the shared site rule. */
-    html, body {
-      scrollbar-width: auto !important;
-      scrollbar-color: auto !important;
-    }
-    html::-webkit-scrollbar,
-    body::-webkit-scrollbar {
-      width: 9px !important;
-    }
-    html::-webkit-scrollbar-track,
-    body::-webkit-scrollbar-track {
-      background: rgba(9,12,20,.45) !important;
-    }
-    html::-webkit-scrollbar-thumb,
-    body::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #a892ff, #69caff) !important;
-      border: 2px solid rgba(9,12,20,.45) !important;
-      border-radius: 999px !important;
-    }
-    html::-webkit-scrollbar-thumb:hover,
-    body::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, #b9a9ff, #82d6ff) !important;
+        /* Match the shared site-wide scrollbar exactly. */
+    html,
+    body {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(145,126,255,.72) rgba(9,12,20,.45);
     }
 </style>
 
