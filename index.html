@@ -145,6 +145,49 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 #brand-logo .brand-system{color:#f5f7fc}#brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}
 #brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
 @media(max-width:800px){#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}}
+
+/* ================= GUIDES CAROUSEL ================= */
+.guides-showcase{max-width:1180px;margin:92px auto 20px;padding:0 22px 10px}
+.guides-showcase .section-title{margin-bottom:30px}
+.guides-carousel{position:relative;min-height:390px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0 70px}
+.guides-stage{position:relative;width:min(610px,100%);height:300px;perspective:1200px}
+.guide-slide{position:absolute;inset:0;border:1px solid rgba(157,174,204,.17);border-radius:22px;padding:30px 32px;background:linear-gradient(145deg,rgba(27,34,54,.96),rgba(12,17,28,.97));box-shadow:0 24px 70px rgba(0,0,0,.28);display:flex;flex-direction:column;justify-content:center;overflow:hidden;opacity:0;pointer-events:none;transform:translateX(0) scale(.82);filter:blur(8px);transition:transform .55s cubic-bezier(.2,.75,.2,1),opacity .45s ease,filter .55s ease,border-color .35s ease,box-shadow .35s ease}
+.guide-slide:before{content:"";position:absolute;width:260px;height:260px;right:-90px;top:-100px;border-radius:50%;background:rgba(111,83,255,.18);filter:blur(70px);pointer-events:none}
+.guide-slide .guide-number{position:relative;color:#9b8cff;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin-bottom:14px}
+.guide-slide h3{position:relative;font-size:clamp(25px,3vw,34px);line-height:1.12;letter-spacing:-.045em;margin-bottom:12px;max-width:510px}
+.guide-slide p{position:relative;color:#aab5c8;font-size:14px;line-height:1.7;max-width:500px;margin-bottom:22px}
+.guide-slide .guide-read{position:relative;align-self:flex-start;padding:10px 15px;border-radius:9px;background:linear-gradient(135deg,#765dff,#604be8);font-size:13px;font-weight:800;box-shadow:0 10px 28px rgba(91,71,225,.2);transition:transform .2s,filter .2s}
+.guide-slide .guide-read:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.guide-slide.is-current{opacity:1;pointer-events:auto;transform:translateX(0) scale(1);filter:blur(0);z-index:3;border-color:rgba(151,132,255,.34);box-shadow:0 28px 80px rgba(0,0,0,.34),0 0 55px rgba(101,82,225,.08)}
+.guide-slide.is-prev,.guide-slide.is-next{opacity:.45;z-index:2;pointer-events:auto;cursor:pointer}
+.guide-slide.is-prev{transform:translateX(-78%) scale(.78);filter:blur(5px)}
+.guide-slide.is-next{transform:translateX(78%) scale(.78);filter:blur(5px)}
+.guide-slide.is-hidden{opacity:0;transform:translateX(0) scale(.7);filter:blur(10px);z-index:1}
+.guide-arrow{position:absolute;z-index:5;width:46px;height:46px;border:1px solid rgba(157,174,204,.2);border-radius:50%;background:rgba(13,18,29,.84);color:#edf1f9;font-size:31px;line-height:1;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(12px);transition:transform .2s,background .2s,border-color .2s}
+.guide-arrow:hover{transform:scale(1.06);background:rgba(118,95,255,.18);border-color:rgba(151,132,255,.38)}
+.guide-arrow:focus-visible{outline:2px solid #9b8aff;outline-offset:4px}
+.guide-arrow-prev{left:10px}.guide-arrow-next{right:10px}
+.guide-dots{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:7px}
+.guide-dot{width:7px;height:7px;border:0;border-radius:50%;padding:0;background:#495267;cursor:pointer;transition:width .25s,background .25s,transform .25s}
+.guide-dot.is-active{width:22px;border-radius:999px;background:#8d79ff}
+.guide-dot:focus-visible{outline:2px solid #9b8aff;outline-offset:4px}
+@media(max-width:800px){
+  .guides-showcase{margin-top:70px}
+  .guides-carousel{min-height:370px;padding:0 38px}
+  .guides-stage{height:290px}
+  .guide-slide{padding:26px 24px}
+  .guide-slide.is-prev{transform:translateX(-86%) scale(.7)}.guide-slide.is-next{transform:translateX(86%) scale(.7)}
+  .guide-arrow{width:40px;height:40px;font-size:27px}.guide-arrow-prev{left:2px}.guide-arrow-next{right:2px}
+}
+@media(max-width:520px){
+  .guides-carousel{min-height:355px;padding:0 18px}.guides-stage{height:285px}
+  .guide-slide{padding:24px 21px;border-radius:18px}.guide-slide h3{font-size:25px}.guide-slide p{font-size:13px}
+  .guide-slide.is-prev,.guide-slide.is-next{opacity:.18;filter:blur(6px)}
+  .guide-arrow{width:38px;height:38px}.guide-arrow-prev{left:-1px}.guide-arrow-next{right:-1px}
+}
+@media(prefers-reduced-motion:reduce){
+  .guide-slide,.guide-arrow,.guide-dot{transition:none}
+}
 </style>
 
 <meta property="og:title" content="SystemFit PC — Practical PC Planning Tools">
@@ -201,7 +244,18 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 </div></div>
 </section>
 
-<section class="tools" id="guides" aria-labelledby="guides-title"><div class="section-title"><h2 id="guides-title">PC Guides</h2><p>Understand your hardware and make more confident upgrade decisions.</p></div><div class="tools-grid"><a href="guides.html" class="tool-card"><div class="tool-icon" aria-hidden="true">📚</div><h3>Explore PC Guides</h3><p>Practical guides about RAM, VRAM, bottlenecks and gaming performance.</p><span class="tool-button">Browse Guides →</span></a></div></section><section class="about-section" id="about">
+<section class="guides-showcase" id="guides" aria-labelledby="guides-title">
+  <div class="section-title">
+    <h2 id="guides-title">PC Guides</h2>
+    <p>Understand your hardware and make more confident upgrade decisions.</p>
+  </div>
+  <div class="guides-carousel" data-guides-carousel>
+    <button class="guide-arrow guide-arrow-prev" type="button" aria-label="Previous article">‹</button>
+    <div class="guides-stage" aria-live="polite"></div>
+    <button class="guide-arrow guide-arrow-next" type="button" aria-label="Next article">›</button>
+    <div class="guide-dots" aria-label="Choose an article"></div>
+  </div>
+</section><section class="about-section" id="about">
     <div class="section-title"><h2>About SystemFit PC</h2><p class="about-intro">SystemFit PC makes computer decisions easier to understand. Our tools turn technical details into practical guidance for first-time builders and experienced PC users alike.</p></div>
     <div class="about-grid">
         <div class="about-item"><h3>⚡ Simple &amp; Practical</h3><p>Clear results and explanations without forcing you to understand complicated hardware terminology first.</p></div>
@@ -219,6 +273,68 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 </script>
 <script>
 (()=>{const dropdown=document.querySelector(".tool-dropdown");if(!dropdown)return;const summary=dropdown.querySelector("summary");let pinned=false;let closeTimer;const closeDelay=210;const cancelClose=()=>{clearTimeout(closeTimer);dropdown.classList.remove("is-closing")};const closeMenu=()=>{cancelClose();if(!dropdown.open)return;dropdown.classList.add("is-closing");closeTimer=setTimeout(()=>{dropdown.open=false;dropdown.classList.remove("is-closing")},150)};dropdown.addEventListener("pointerenter",()=>{cancelClose();if(!pinned)dropdown.open=true});dropdown.addEventListener("pointerleave",()=>{if(!pinned){clearTimeout(closeTimer);closeTimer=setTimeout(closeMenu,closeDelay)}});summary.addEventListener("click",event=>{event.preventDefault();cancelClose();if(pinned){pinned=false;closeMenu()}else{pinned=true;dropdown.open=true}});document.addEventListener("pointerdown",event=>{if(!dropdown.contains(event.target)){pinned=false;closeMenu()}});document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dropdown.open){pinned=false;closeMenu();summary.focus()}});dropdown.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{pinned=false;closeMenu()}));dropdown.addEventListener("focusout",event=>{if(!dropdown.contains(event.relatedTarget)&&!pinned)closeMenu()})})();
+</script>
+
+<script>
+(()=>{
+  const root=document.querySelector("[data-guides-carousel]");
+  if(!root)return;
+
+  // Add future articles here. The carousel layout and controls update automatically.
+  const articles=[
+    {title:"How Much RAM Do You Need for Gaming in 2026?",category:"Gaming Hardware · 2026",description:"Find the right amount of RAM for gaming, streaming and multitasking.",url:"how-much-ram-for-gaming-2026.html"},
+    {title:"How Much VRAM Do You Need for Gaming in 2026?",category:"Gaming Hardware · 2026",description:"Understand VRAM needs for 1080p, 1440p, 4K and demanding games.",url:"how-much-vram-for-gaming-2026.html"},
+    {title:"CPU vs GPU Bottleneck: What It Means and How to Fix It",category:"PC Performance",description:"Learn what limits gaming performance and when a CPU or GPU upgrade makes sense.",url:"cpu-vs-gpu-bottleneck.html"}
+  ];
+
+  const stage=root.querySelector(".guides-stage"),dots=root.querySelector(".guide-dots");
+  let current=0;
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  articles.forEach((article,index)=>{
+    const card=document.createElement("article");
+    card.className="guide-slide";
+    card.dataset.index=index;
+    card.innerHTML='<span class="guide-number">'+String(index+1).padStart(2,"0")+' · '+article.category+'</span><h3>'+article.title+'</h3><p>'+article.description+'</p><a class="guide-read" href="'+article.url+'">Read Article →</a>';
+    stage.appendChild(card);
+    const dot=document.createElement("button");
+    dot.type="button";dot.className="guide-dot";dot.dataset.index=index;dot.setAttribute("aria-label","Show "+article.title);
+    dots.appendChild(dot);
+  });
+
+  const cards=[...stage.children],dotButtons=[...dots.children];
+  const normalize=n=>(n+articles.length)%articles.length;
+  function render(){
+    cards.forEach((card,index)=>{
+      card.className="guide-slide";
+      const prev=normalize(current-1),next=normalize(current+1);
+      if(index===current)card.classList.add("is-current");
+      else if(index===prev)card.classList.add("is-prev");
+      else if(index===next)card.classList.add("is-next");
+      else card.classList.add("is-hidden");
+      card.setAttribute("aria-hidden",index===current?"false":"true");
+      card.tabIndex=index===current?0:-1;
+    });
+    dotButtons.forEach((dot,index)=>{
+      dot.classList.toggle("is-active",index===current);
+      dot.setAttribute("aria-current",index===current?"true":"false");
+    });
+  }
+  function move(step){current=normalize(current+step);render()}
+  root.querySelector(".guide-arrow-prev").addEventListener("click",()=>move(-1));
+  root.querySelector(".guide-arrow-next").addEventListener("click",()=>move(1));
+  dotButtons.forEach(dot=>dot.addEventListener("click",()=>{current=Number(dot.dataset.index);render()}));
+  stage.addEventListener("click",event=>{
+    const card=event.target.closest(".guide-slide");
+    if(!card||event.target.closest("a")||Number(card.dataset.index)===current)return;
+    const index=Number(card.dataset.index);current=normalize(index-current===1?current+1:current-1);render();
+  });
+  root.addEventListener("keydown",event=>{
+    if(event.key==="ArrowLeft"){event.preventDefault();move(-1)}
+    if(event.key==="ArrowRight"){event.preventDefault();move(1)}
+  });
+  render();
+})();
 </script>
 <script src="header.js" defer></script>
 </body>
