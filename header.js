@@ -623,7 +623,7 @@ body::-webkit-scrollbar-thumb:hover {
     const globalRevealStyle = document.createElement("style");
     globalRevealStyle.id = "sfp-global-scroll-reveal";
     globalRevealStyle.textContent = `
-      body.sfp-reveal-ready main section:not(.reveal):not(.accordion):not(.guides-showcase),
+      body.sfp-reveal-ready main section:not(.reveal):not(.accordion),
       body.sfp-reveal-ready main > article:not(.reveal),
       body.sfp-reveal-ready main > .card:not(.reveal),
       body.sfp-reveal-ready main > .panel:not(.reveal),
@@ -645,7 +645,7 @@ body::-webkit-scrollbar-thumb:hover {
       }
 
       @media(prefers-reduced-motion:reduce) {
-        body.sfp-reveal-ready main section:not(.reveal):not(.accordion):not(.guides-showcase),
+        body.sfp-reveal-ready main section:not(.reveal):not(.accordion),
         body.sfp-reveal-ready main > article:not(.reveal),
         body.sfp-reveal-ready main > .card:not(.reveal),
         body.sfp-reveal-ready main > .panel:not(.reveal),
@@ -660,7 +660,7 @@ body::-webkit-scrollbar-thumb:hover {
     document.head.appendChild(globalRevealStyle);
 
     const globalRevealItems = [...document.querySelectorAll(
-      "main section:not(.reveal):not(.accordion):not(.guides-showcase), main > article:not(.reveal), main > .card:not(.reveal), main > .panel:not(.reveal), main > .reference-links:not(.reveal)"
+      "main section:not(.reveal):not(.accordion), main > article:not(.reveal), main > .card:not(.reveal), main > .panel:not(.reveal), main > .reference-links:not(.reveal)"
     )];
 
     const revealAll = () => globalRevealItems.forEach((item) => item.classList.add("sfp-reveal-visible"));
