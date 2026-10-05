@@ -172,7 +172,159 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
     <div>
       <span class="eyebrow"><i></i> SystemFit PC Smart Build</span>
       <h1>Build a PC that <span>fits together.</span></h1>
-      <p>Start with gaming, productivity or both. Then choose a budget and parts one step at a time while…4343 tokens truncated…ket:"AM5",memory:"DDR5",form:"ATX",chipset:"B650",m2:2},
+      <p>Start with gaming, productivity or both. Then choose a budget and parts one step at a time while SystemFit PC checks fit and compatibility.</p>
+    </div>
+    <aside class="hero-note">
+      <strong>Built for real decisions, not just a parts list.</strong>
+      <p>Start with what you want to do and work through one choice at a time. Check compatibility as you go, then verify exact product revisions and dimensions before ordering.</p>
+    </aside>
+  </section>
+  <section class="preset-row" aria-label="Build starting points" hidden>
+    <button class="preset-btn primary" type="button" data-preset="value">Start with 1080p value</button>
+    <button class="preset-btn" type="button" data-preset="1440">Start with 1440p balanced</button>
+    <button class="preset-btn" type="button" data-preset="4k">Start with 4K high detail</button>
+    <button class="preset-btn" type="button" id="resetBuild">Start from scratch</button>
+  </section>
+  <div class="layout" id="layout">
+    <form class="builder" id="buildForm">
+      <div class="flow-header"><div><span class="eyebrow">Your guided build</span><h2 id="flowTitle">First, what are you building?</h2><p id="flowHint">Choose a direction. We’ll reveal one decision at a time.</p></div><span id="flowCount">Step 1 of 8</span></div>
+      <div class="flow-progress" aria-hidden="true"><i id="flowProgress"></i></div>
+      <section class="step wizard-step" id="modeStep" data-stage="1">
+        <div class="step-heading"><span class="step-number">01</span><div><h2>What will you use your PC for?</h2><p>We’ll tailor the next questions to what matters most to you.</p></div></div>
+        <div class="choice-grid">
+          <button type="button" class="choice-card" data-mode="gaming"><span class="choice-icon">🎮</span><b>Gaming</b><small>Choose resolution and gaming performance</small><span class="choice-arrow">Continue →</span></button>
+          <button type="button" class="choice-card" data-mode="productivity"><span class="choice-icon">✦</span><b>Productivity</b><small>For school, creative work, coding and more</small><span class="choice-arrow">Continue →</span></button>
+          <button type="button" class="choice-card" data-mode="mixed"><span class="choice-icon">◈</span><b>Gaming + productivity</b><small>A balanced everyday PC for both</small><span class="choice-arrow">Continue →</span></button>
+        </div>
+        <button type="button" class="resume-link" id="resumeBuild" hidden>Resume my saved build</button>
+      </section>
+      <section class="step wizard-step" id="budgetStep" data-stage="3" hidden>
+        <div class="step-heading"><span class="step-number">03</span><div><h2>What’s your budget for the tower?</h2><p>Pick a range to focus the suggestions. All component options remain available.</p></div></div>
+        <div class="choice-grid budget-grid">
+          <button type="button" class="choice-card" data-budget="starter"><b>Under $600</b><small>Essentials and careful value picks</small></button>
+          <button type="button" class="choice-card" data-budget="value"><b>$600–$900</b><small>Affordable all-rounder</small></button>
+          <button type="button" class="choice-card" data-budget="balanced"><b>$900–$1,500</b><small>More room for performance</small></button>
+          <button type="button" class="choice-card" data-budget="high"><b>$1,500+</b><small>Higher-end parts and expansion</small></button>
+        </div>
+        <p class="budget-note">Broad USD planning guides only. Local prices, taxes and used-part deals vary; SystemFit PC does not fetch live prices.</p>
+        <button type="button" class="step-back" data-back="2">← Change workload</button>
+      </section>
+      <section class="step wizard-step" id="workloadStep" data-stage="2" hidden>
+        <div class="step-heading"><span class="step-number">02</span><div><h2 id="workloadTitle">Pick your main goal</h2><p id="workloadHint">This helps us suggest parts that make sense for your use.</p></div></div>
+        <div class="choice-grid" id="workloadChoices"></div>
+        <button type="button" class="step-back" data-back="1">← Change PC purpose</button>
+      </section>
+      <section class="step wizard-step" id="cpuStep" data-stage="4" hidden>
+        <div class="step-heading"><span class="step-number">04</span><div><h2>Choose your processor</h2><p>Browse the full catalog, including affordable and previous-generation options.</p></div></div>
+        <div class="field"><label for="cpu">Processor</label><select id="cpu" required></select><div class="select-note" id="cpuNote"></div><small>Choose a CPU to reveal the graphics step.</small></div>
+        <button type="button" class="step-back" data-back="3">← Change your goal</button>
+      </section>
+      <section class="step wizard-step" id="gpuStep" data-stage="5" hidden>
+        <div class="step-heading"><span class="step-number">05</span><div><h2>Choose graphics</h2><p>Discrete graphics are optional for many study and office builds.</p></div></div>
+        <div class="field"><label for="gpu">Graphics card</label><div class="part-select"><span class="part-icon gpu" aria-hidden="true">▰</span><select id="gpu" required></select></div><div class="select-note" id="gpuNote"></div><small>Integrated graphics requires a CPU that includes it; the checklist flags mismatches.</small></div>
+        <button type="button" class="step-back" data-back="4">← Change processor</button>
+      </section>
+      <section class="step wizard-step" id="boardStep" data-stage="6" hidden>
+        <div class="step-heading"><span class="step-number">06</span><div><h2>Choose a motherboard</h2><p>Only the selected processor’s socket family is shown.</p></div></div>
+        <div class="field"><label for="motherboard">Motherboard family</label><select id="motherboard" required></select><div class="select-note" id="boardNote">Choose a CPU first.</div><small>Confirm exact board model, BIOS support and revision before buying.</small></div>
+        <button type="button" class="step-back" data-back="5">← Change graphics</button>
+      </section>
+      <section class="step wizard-step" id="memoryStep" data-stage="7" hidden>
+        <div class="step-heading"><span class="step-number">07</span><div><h2>Match your memory</h2><p>Memory generation follows your motherboard.</p></div></div>
+        <div class="field"><label for="memory">Memory kit</label><select id="memory" required></select><div class="select-note" id="memoryNote">Choose a motherboard first.</div></div>
+        <button type="button" class="step-back" data-back="6">← Change motherboard</button>
+      </section>
+      <section class="step wizard-step" id="detailsStep" data-stage="8" hidden>
+        <div class="step-heading"><span class="step-number">08</span><div><h2>Finish your build</h2><p>Select storage, cooling, case and power. Then review the compatibility checklist.</p></div></div>
+        <div class="fields two">
+          <div class="field"><label for="storage">Storage</label><div class="part-select"><span class="part-icon" aria-hidden="true">▤</span><select id="storage" required></select></div><small>NVMe drives use the motherboard’s M.2 slot.</small></div>
+          <div class="field"><label for="cooler">CPU cooler</label><select id="cooler" required></select><div class="select-note" id="coolerNote"></div></div>
+          <div class="field"><label for="case">Case size</label><div class="part-select"><span class="part-icon case" aria-hidden="true">▣</span><select id="case" required></select><div class="select-note" id="caseNote"></div></div></div>
+          <div class="field"><label for="psu">Power supply</label><div class="part-select"><span class="part-icon power" aria-hidden="true">ϟ</span><select id="psu" required></select><div class="select-note" id="psuNote"></div></div></div>
+        </div>
+        <div class="finish-row"><span id="finishHint">Choose all four to see your compatibility summary.</span><button type="button" class="step-back" data-back="7">← Change memory</button></div>
+      </section>
+      <input type="hidden" id="goalValue" value="1080">
+    </form>
+    <aside class="summary" id="buildSummary" aria-live="polite" hidden>
+      <section class="summary-card">
+        <div class="summary-header"><div><span class="eyebrow">Your build · final review</span><h2>Your PC build summary</h2><p>See what you chose, what fits, and what deserves another look.</p></div><div class="summary-header-actions"><span class="status-badge" id="overallStatus">Building your list</span><button type="button" class="step-back edit-build" id="editBuild">← Edit parts</button></div></div>
+        <div class="result-banner" id="resultBanner"><span class="result-symbol" id="resultSymbol">✓</span><div><strong id="verdictTitle">Build review</strong><p id="verdictCopy">Review the summary below.</p></div></div>
+        <div class="build-context" id="buildContext"></div>
+        <div class="review-progress"><div class="review-progress-label"><span>Checks reviewed</span><b id="reviewCheckCount">0 of 10</b></div><div class="progress-line"><i id="progressBar"></i></div></div>
+        <section class="review-section"><h3>Your selected components</h3><p class="section-helper">A quick guide to the parts in this build.</p><div class="selected-build" id="selectedBuild"></div></section>
+        <section class="review-section"><h3>Compatibility, in plain language</h3><p class="section-helper">Each check looks at one kind of fit. “Needs a change” items should be handled before buying.</p><div class="parts-list" id="checks"></div></section>
+        <div class="recommendation" id="recommendation"><strong>Start with your gaming goal</strong>Choose a goal or load a starting build above. Your selections stay in this browser.</div>
+        <div class="summary-actions">
+          <button type="button" class="action-btn save" id="saveBuild">Save this build</button>
+          <button type="button" class="action-btn" id="shareBuild">Copy share link</button>
+          <button type="button" class="action-btn" id="printBuild">Print summary</button>
+          <button type="button" class="action-btn" id="startNewBuild">Start a new build</button>
+        </div>
+        <p class="saved-note" id="savedNote" role="status"></p>
+      </section>
+      <section class="summary-card source-note">
+        <b style="color:#e4eafa">Before you buy:</b>
+        <ul class="tip-list" style="margin-top:9px">
+          <li>Some older motherboards need a BIOS update for newer CPUs.</li>
+          <li>DDR4 and DDR5 cannot be mixed; match the kit to the board.</li>
+          <li>GPU partner cards can be longer and thicker than reference cards.</li>
+          <li>Check your exact case, cooler and PSU connectors before ordering.</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+  <section class="step source-note" data-sfp-reveal style="margin-top:16px">
+    <b style="color:#e4eafa">How the checks work:</b> Platform and memory rules follow manufacturer-published socket and memory support. Power estimates use published GPU guidance where available; card lengths and generic case clearances are planning estimates. They do not account for every board revision, BIOS version, cooler mount, add-in-card model or transient load. Confirm those details with the part makers before purchase.
+    <br><br><b style="color:#e4eafa">Reference specs:</b>
+    <a href="https://www.intel.com/content/www/us/en/support/articles/000099723/processors.html" target="_blank" rel="noopener">Intel socket guidance</a> ·
+    <a href="https://www.amd.com/en/products/processors/chipsets/am5.html" target="_blank" rel="noopener">AMD AM5 compatibility</a> ·
+    <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/compare/" target="_blank" rel="noopener">NVIDIA reference GPU power/size</a> ·
+    <a href="https://www.amd.com/content/dam/amd/en/documents/partner-hub/radeon/radeon-rx-9000-series-quick-reference-guide-non-competitive.pdf" target="_blank" rel="noopener">AMD Radeon RX 9000 specifications</a>.
+  </section>
+</main>
+<footer class="sfp-site-footer">
+    <p>
+        SystemFit PC build planner · Compatibility checks are a starting point. Confirm the exact part specifications and BIOS support before purchase.
+    </p>
+
+    <p>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </p>
+</footer>
+<script>
+const CPU_DATA=[
+{id:"r3-4100",name:"AMD Ryzen 3 4100",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"entry",igpu:false},
+{id:"r5-4500",name:"AMD Ryzen 5 4500",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"entry",igpu:false},
+{id:"r5-5500",name:"AMD Ryzen 5 5500",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"value",igpu:false},
+{id:"r5-5600g",name:"AMD Ryzen 5 5600G · Radeon Graphics",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"value",igpu:true},
+{id:"r5-5600",name:"AMD Ryzen 5 5600",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:88,gaming:"value",igpu:false},
+{id:"r7-5700x3d",name:"AMD Ryzen 7 5700X3D",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:142,gaming:"value",igpu:false},
+{id:"r5-7500f",name:"AMD Ryzen 5 7500F",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:88,gaming:"value",igpu:false},
+{id:"r5-7600",name:"AMD Ryzen 5 7600",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:88,gaming:"value",igpu:true},
+{id:"r5-8400g",name:"AMD Ryzen 5 8400G · Radeon Graphics",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:88,gaming:"entry",igpu:true},
+{id:"r5-8600g",name:"AMD Ryzen 5 8600G · Radeon Graphics",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:88,gaming:"value",igpu:true},
+{id:"r7-7800x3d",name:"AMD Ryzen 7 7800X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:162,gaming:"balanced",igpu:true},
+{id:"r7-9800x3d",name:"AMD Ryzen 7 9800X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:162,gaming:"high",igpu:true},
+{id:"r9-9950x",name:"AMD Ryzen 9 9950X",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:230,gaming:"high",igpu:true},
+{id:"i3-12100",name:"Intel Core i3-12100 · UHD Graphics",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:89,gaming:"entry",igpu:true},
+{id:"i3-12100f",name:"Intel Core i3-12100F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:89,gaming:"entry",igpu:false},
+{id:"i5-12400",name:"Intel Core i5-12400 · UHD Graphics",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:117,gaming:"value",igpu:true},
+{id:"i5-12400f",name:"Intel Core i5-12400F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:117,gaming:"value",igpu:false},
+{id:"i5-13400f",name:"Intel Core i5-13400F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:148,gaming:"value",igpu:false},
+{id:"i5-14400f",name:"Intel Core i5-14400F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:148,gaming:"value",igpu:false},
+{id:"i5-13600k",name:"Intel Core i5-13600K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:181,gaming:"balanced",igpu:true},
+{id:"i7-14700k",name:"Intel Core i7-14700K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:253,gaming:"high",igpu:true},
+{id:"u5-245k",name:"Intel Core Ultra 5 245K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:159,gaming:"balanced",igpu:true},
+{id:"u7-265k",name:"Intel Core Ultra 7 265K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:250,gaming:"high",igpu:true},
+{id:"u9-285k",name:"Intel Core Ultra 9 285K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:250,gaming:"high",igpu:true}
+];
+const BOARD_DATA=[
+{id:"b550-matx",name:"B550 Micro-ATX · DDR4",socket:"AM4",memory:"DDR4",form:"Micro-ATX",chipset:"B550",m2:2},
+{id:"b550-atx",name:"B550 ATX · DDR4",socket:"AM4",memory:"DDR4",form:"ATX",chipset:"B550",m2:2},
+{id:"x570-atx",name:"X570 ATX · DDR4",socket:"AM4",memory:"DDR4",form:"ATX",chipset:"X570",m2:2},
+{id:"b650-matx",name:"B650 Micro-ATX · DDR5",socket:"AM5",memory:"DDR5",form:"Micro-ATX",chipset:"B650",m2:2},
+{id:"b650-atx",name:"B650 ATX · DDR5",socket:"AM5",memory:"DDR5",form:"ATX",chipset:"B650",m2:2},
 {id:"b850-atx",name:"B850 ATX · DDR5",socket:"AM5",memory:"DDR5",form:"ATX",chipset:"B850",m2:3},
 {id:"x870e-atx",name:"X870E ATX · DDR5",socket:"AM5",memory:"DDR5",form:"ATX",chipset:"X870E",m2:4},
 {id:"b760-ddr4",name:"B760 ATX · DDR4",socket:"LGA1700",memory:"DDR4",form:"ATX",chipset:"B760",m2:2},

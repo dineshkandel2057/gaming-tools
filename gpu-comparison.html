@@ -120,7 +120,196 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 
 <style id="individual-workload-card-refinement">
 .summary-card{position:relative;overflow:hidden;transition:background .2s ease,border-color .2s ease,box-shadow .2s ease}
-.summary-card.wo…8015 tokens truncated…,group:"mainstream",year:2018,ray:"Mid",work:"Older 1080p/1440p gaming",note:"Older performance"},
+.summary-card.workload-card-green{background:linear-gradient(145deg,rgba(105,228,173,.095),rgba(105,228,173,.018));border-color:rgba(105,228,173,.22)}
+.summary-card.workload-card-yellow{background:linear-gradient(145deg,rgba(255,210,122,.085),rgba(255,210,122,.018));border-color:rgba(255,210,122,.21)}
+.summary-card.workload-card-red{background:linear-gradient(145deg,rgba(255,127,145,.08),rgba(255,127,145,.016));border-color:rgba(255,127,145,.20)}
+.card-workload{margin-top:14px;padding-top:12px;border-top:1px solid rgba(157,174,204,.12)}
+.card-workload-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.card-workload-head span{font-size:11px;font-weight:850;color:#d9e1ed;letter-spacing:.01em}
+.card-workload-head small{font-size:8px;color:#8997ad;text-transform:uppercase;letter-spacing:.06em;font-weight:850}
+.card-workload-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.mini-workload{min-width:0;min-height:52px;padding:7px;border-radius:8px;border:1px solid transparent;display:grid;grid-template-columns:22px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:5px;row-gap:2px;text-align:left}
+.mini-workload-icon{font-size:14px!important;line-height:1;grid-row:1 / span 2;justify-self:center}
+.mini-workload strong{font-size:8px;line-height:1.15;font-weight:850;white-space:normal}
+.mini-workload b{font-size:8px;line-height:1.1;font-weight:900;white-space:nowrap}
+.mini-workload.tone-green{background:rgba(105,228,173,.11);border-color:rgba(105,228,173,.22);color:#9aefc7}
+.mini-workload.tone-yellow{background:rgba(255,210,122,.10);border-color:rgba(255,210,122,.20);color:#ffdc96}
+.mini-workload.tone-red{background:rgba(255,127,145,.10);border-color:rgba(255,127,145,.19);color:#ffadb9}
+@media(max-width:620px){
+  .summary-grid{gap:8px}
+  .summary-grid.selection-count-1{grid-template-columns:1fr}
+  .summary-grid.selection-count-2{grid-template-columns:1fr}
+  .summary-grid.selection-count-3,.summary-grid.selection-count-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .summary-grid.selection-count-5{display:flex}
+  .summary-grid.selection-count-5 .summary-card{flex-basis:270px;width:270px}
+  .card-workload-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+  .mini-workload{min-height:50px;padding:6px}
+  .mini-workload strong{font-size:7px}
+  .mini-workload b{font-size:7px}
+}
+</style>
+<style id="five-gpu-scroll-refinement">.summary-grid.selection-count-5::-webkit-scrollbar{height:7px}.summary-grid.selection-count-5::-webkit-scrollbar-thumb{background:rgba(157,174,204,.22);border-radius:999px}.summary-grid.selection-count-5::-webkit-scrollbar-track{background:rgba(157,174,204,.045);border-radius:999px}</style>
+<style id="all-selection-layout-refinement">
+@media(min-width:900px){
+  .summary-grid.selection-count-1 .summary-card{max-width:520px}
+  .summary-grid.selection-count-2 .summary-card{min-height:0}
+  .summary-grid.selection-count-3 .summary-card{min-width:0}
+  .summary-grid.selection-count-4 .summary-card{min-width:0}
+}
+@media(min-width:1250px){
+  .summary-grid.selection-count-2{grid-template-columns:repeat(2,minmax(300px,1fr))}
+  .summary-grid.selection-count-3{grid-template-columns:repeat(3,minmax(260px,1fr))}
+  .summary-grid.selection-count-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+</style>
+<style id="final-workload-method-note">.workload-method-note{font-size:8px;line-height:1.3;color:#77859b;margin:-3px 0 8px}</style>
+<meta property="og:title" content="GPU Comparison Tool | SystemFit PC">
+<meta property="og:description" content="Compare graphics cards by specifications, memory, power, performance class and workload fit.">
+<meta property="og:url" content="https://systemfitpc.vercel.app/gpu-comparison.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SystemFit PC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GPU Comparison Tool | SystemFit PC">
+<meta name="twitter:description" content="Compare graphics cards by specifications, memory, power, performance class and workload fit.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"GPU Comparison Tool","url":"https://systemfitpc.vercel.app/gpu-comparison.html","description":"A tool for comparing graphics card specifications, performance class, memory and power.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web browser","publisher":{"@type":"Organization","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/","logo":"https://systemfitpc.vercel.app/systemfit-favicon.png"}}</script>
+  <link rel="stylesheet" href="site-universal.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="main">
+<section class="hero" data-sfp-reveal>
+<div><span class="eyebrow">SystemFit PC · Hardware comparison</span><h1>Find the right <span class="gradient">graphics card</span></h1><p class="lede">Compare up to five GPUs in one clear view. See what matters for gaming, creative work, memory, power and workload fit—without needing to decode spec sheets first.</p><div class="quick-points"><span class="pill">NVIDIA · AMD · Intel</span><span class="pill">Budget to enthusiast</span><span class="pill">Compare 2–5 cards</span></div></div>
+
+</section>
+<div class="flow" data-sfp-reveal aria-label="Comparison steps"><div class="flow-step active" id="stepOne"><span class="num">1</span><span>Choose your GPUs</span></div><span class="flow-arrow" aria-hidden="true">→</span><div class="flow-step" id="stepTwo"><span class="num">2</span><span>Compare &amp; decide</span></div></div><p class="score-method" data-sfp-reveal>Compare GPUs by published specifications, performance class, memory, power and workload fit. This tool does not turn those specs into a single performance score or FPS promise. Results vary by game, resolution, settings, drivers and exact partner-card model.</p>
+<section class="panel chooser" aria-labelledby="choose-title">
+<div class="section-head" data-sfp-reveal><div><h2 id="choose-title">Pick the graphics cards</h2><p>Open a brand, search its models, and select 2 to 5 GPUs. You can compare cards across generations and brands.</p></div><span class="step-tag">STEP 1 · SELECT</span></div>
+<div id="brandDropdowns" class="brand-dropdowns" aria-live="polite">
+<details class="brand-dropdown" data-brand="NVIDIA">
+  <summary><span><strong>NVIDIA GeForce</strong><small>RTX &amp; GTX graphics cards</small></span><b class="brand-count" data-count="NVIDIA"></b></summary>
+  <div class="brand-dropdown-body">
+    <div class="brand-search-row"><label class="searchbox brand-search"><span aria-hidden="true">⌕</span><input class="brand-search-input" data-brand="NVIDIA" type="search" placeholder="Search NVIDIA models…" aria-label="Search NVIDIA graphics cards"></label>
+    <label class="selectbox brand-sort"><span aria-hidden="true">↕</span><select class="brand-sort-select" data-brand="NVIDIA" aria-label="Sort NVIDIA graphics cards"><option value="low-high">Low to high</option><option value="high-low">High to low</option><option value="newest">Newest</option><option value="popular">Popular</option><option value="most-vram">Most VRAM</option></select></label>
+    </div>
+    <div class="brand-gpu-grid" id="brandGridNVIDIA"></div>
+  </div>
+</details>
+<details class="brand-dropdown" data-brand="AMD">
+  <summary><span><strong>AMD Radeon</strong><small>Radeon RX graphics cards</small></span><b class="brand-count" data-count="AMD"></b></summary>
+  <div class="brand-dropdown-body">
+    <div class="brand-search-row"><label class="searchbox brand-search"><span aria-hidden="true">⌕</span><input class="brand-search-input" data-brand="AMD" type="search" placeholder="Search AMD models…" aria-label="Search AMD graphics cards"></label>
+    <label class="selectbox brand-sort"><span aria-hidden="true">↕</span><select class="brand-sort-select" data-brand="AMD" aria-label="Sort AMD graphics cards"><option value="low-high">Low to high</option><option value="high-low">High to low</option><option value="newest">Newest</option><option value="popular">Popular</option><option value="most-vram">Most VRAM</option></select></label>
+    </div>
+    <div class="brand-gpu-grid" id="brandGridAMD"></div>
+  </div>
+</details>
+<details class="brand-dropdown" data-brand="Intel">
+  <summary><span><strong>Intel Arc</strong><small>Arc B-Series &amp; A-Series graphics cards</small></span><b class="brand-count" data-count="Intel"></b></summary>
+  <div class="brand-dropdown-body">
+    <div class="brand-search-row"><label class="searchbox brand-search"><span aria-hidden="true">⌕</span><input class="brand-search-input" data-brand="Intel" type="search" placeholder="Search Intel Arc models…" aria-label="Search Intel graphics cards"></label>
+    <label class="selectbox brand-sort"><span aria-hidden="true">↕</span><select class="brand-sort-select" data-brand="Intel" aria-label="Sort Intel graphics cards"><option value="low-high">Low to high</option><option value="high-low">High to low</option><option value="newest">Newest</option><option value="popular">Popular</option><option value="most-vram">Most VRAM</option></select></label>
+    </div>
+    <div class="brand-gpu-grid" id="brandGridIntel"></div>
+  </div>
+</details>
+</div>
+<div class="selection-footer"><p id="selectionHint">Choose at least two GPUs to unlock the comparison.</p><div class="actions"><button class="btn" id="clearBtn" type="button">Clear selection</button><button class="btn primary" id="compareBtn" type="button" disabled>Compare selected <span aria-hidden="true">→</span></button></div></div>
+</section>
+<section class="compare-area" id="compareArea" aria-labelledby="compare-title">
+<div class="compare-top"><div><span class="eyebrow">Your comparison</span><h2 id="compare-title">Side-by-side GPU comparison</h2><p>Key comparison values are highlighted where relevant. Change the selections above and compare again any time.</p></div><button class="btn" id="backBtn" type="button">← Edit GPU selection</button></div>
+<div id="summaryGrid" class="summary-grid"></div>
+
+<div class="table-wrap" role="region" aria-label="GPU comparison table" tabindex="0"><table class="compare-table" id="compareTable"></table></div>
+<div class="summary-panel">
+<article class="panel insight"><h3>What this comparison suggests</h3><p id="insightText"></p><div class="guidance-list" id="guidanceList"></div></article>
+
+</div>
+<div class="footnote"><strong>How to use this comparison:</strong> The tool compares published specifications and broad performance classes; it does not produce a single synthetic score or promise FPS. Gaming results vary by game, resolution, settings, ray tracing, CPU, drivers, cooling and exact partner-card model. Specifications are typical/reference values and partner cards may differ. Confirm exact specifications and PSU guidance with the card maker before buying.</div>
+</section>
+<div class="compare-dock" id="compareDock" aria-live="polite" aria-hidden="true"><div class="compare-dock-copy"><strong id="dockCount">0 GPUs selected</strong><span>Ready to compare side by side</span></div><button class="btn primary" id="dockCompareBtn" type="button" disabled>Compare now <span aria-hidden="true">→</span></button></div>
+</main>
+<script>
+const gpus=[
+{id:"5090",name:"GeForce RTX 5090",brand:"NVIDIA",series:"RTX 50 · Blackwell",vram:32,type:"GDDR7",bus:512,power:575,psu:1000,tier:100,group:"enthusiast",year:2025,ray:"Very high",work:"AI · 3D · 4K/8K",note:"Flagship",popularityRank:51},
+{id:"5080",name:"GeForce RTX 5080",brand:"NVIDIA",series:"RTX 50 · Blackwell",vram:16,type:"GDDR7",bus:256,power:360,psu:850,tier:83,group:"enthusiast",year:2025,ray:"Very high",work:"AI · 3D · 4K",note:"Enthusiast",popularityRank:50},
+{id:"5070ti",name:"GeForce RTX 5070 Ti",brand:"NVIDIA",series:"RTX 50 · Blackwell",vram:16,type:"GDDR7",bus:256,power:300,psu:750,tier:75,group:"performance",year:2025,ray:"Very high",work:"AI · 3D · 1440p/4K",note:"High-end",popularityRank:49},
+{id:"5070",name:"GeForce RTX 5070",brand:"NVIDIA",series:"RTX 50 · Blackwell",vram:12,type:"GDDR7",bus:192,power:250,psu:650,tier:66,group:"performance",year:2025,ray:"High",work:"AI · Editing · 1440p",note:"Upper midrange",popularityRank:54},
+{id:"5060ti16",name:"GeForce RTX 5060 Ti 16GB",brand:"NVIDIA",series:"RTX 50 · Blackwell",vram:16,type:"GDDR7",bus:128,power:180,psu:600,tier:53,group:"mainstream",year:2025,ray:"High",work:"AI · Editing · 1080p/1440p",note:"Midrange",popularityRank:53},
+{id:"5060ti8",name:"GeForce RTX 5060 Ti 8GB",brand:"NVIDIA",series:"RTX 50 · Blackwell",vram:8,type:"GDDR7",bus:128,power:180,psu:600,tier:53,group:"mainstream",year:2025,ray:"High",work:"AI · Editing · 1080p",note:"Midrange · 8GB variant",popularityRank:1},
+{id:"5060",name:"GeForce RTX 5060",brand:"NVIDIA",series:"RTX 50 · Blackwell",vram:8,type:"GDDR7",bus:128,power:145,psu:550,tier:45,group:"mainstream",year:2025,ray:"High",work:"AI · 1080p gaming",note:"Mainstream",popularityRank:52},
+{id:"5050",name:"GeForce RTX 5050",brand:"NVIDIA",series:"RTX 50 · Blackwell",vram:8,type:"GDDR6",bus:128,power:130,psu:550,tier:34,group:"budget",year:2025,ray:"Entry",work:"Everyday · 1080p",note:"Entry level",popularityRank:48},
+{id:"4090",name:"GeForce RTX 4090",brand:"NVIDIA",series:"RTX 40 · Ada Lovelace",vram:24,type:"GDDR6X",bus:384,power:450,psu:850,tier:87,group:"enthusiast",year:2022,ray:"Very high",work:"AI · 3D · 4K",note:"Previous flagship",popularityRank:41},
+{id:"4080s",name:"GeForce RTX 4080 SUPER",brand:"NVIDIA",series:"RTX 40 · Ada Lovelace",vram:16,type:"GDDR6X",bus:256,power:320,psu:750,tier:73,group:"enthusiast",year:2024,ray:"Very high",work:"AI · 3D · 4K",note:"High-end",popularityRank:40},
+{id:"4070tis",name:"GeForce RTX 4070 Ti SUPER",brand:"NVIDIA",series:"RTX 40 · Ada Lovelace",vram:16,type:"GDDR6X",bus:256,power:285,psu:700,tier:68,group:"performance",year:2024,ray:"Very high",work:"AI · 3D · 1440p/4K",note:"Upper midrange",popularityRank:39},
+{id:"4070s",name:"GeForce RTX 4070 SUPER",brand:"NVIDIA",series:"RTX 40 · Ada Lovelace",vram:12,type:"GDDR6X",bus:192,power:220,psu:650,tier:62,group:"performance",year:2024,ray:"High",work:"AI · Editing · 1440p",note:"Upper midrange",popularityRank:47},
+{id:"4070",name:"GeForce RTX 4070",brand:"NVIDIA",series:"RTX 40 · Ada Lovelace",vram:12,type:"GDDR6X",bus:192,power:200,psu:650,tier:58,group:"performance",year:2023,ray:"High",work:"AI · Editing · 1440p",note:"Midrange",popularityRank:46},
+{id:"4060ti16",name:"GeForce RTX 4060 Ti 16GB",brand:"NVIDIA",series:"RTX 40 · Ada Lovelace",vram:16,type:"GDDR6",bus:128,power:165,psu:550,tier:47,group:"mainstream",year:2023,ray:"High",work:"AI · Editing · 1080p/1440p",note:"Midrange · 16GB",popularityRank:26},
+{id:"4060ti8",name:"GeForce RTX 4060 Ti 8GB",brand:"NVIDIA",series:"RTX 40 · Ada Lovelace",vram:8,type:"GDDR6",bus:128,power:160,psu:550,tier:47,group:"mainstream",year:2023,ray:"High",work:"AI · Editing · 1080p",note:"Midrange · 8GB",popularityRank:44},
+{id:"4060",name:"GeForce RTX 4060",brand:"NVIDIA",series:"RTX 40 · Ada Lovelace",vram:8,type:"GDDR6",bus:128,power:115,psu:550,tier:40,group:"mainstream",year:2023,ray:"High",work:"AI · Editing · 1080p",note:"Mainstream",popularityRank:45},
+{id:"3090",name:"GeForce RTX 3090",brand:"NVIDIA",series:"RTX 30 · Ampere",vram:24,type:"GDDR6X",bus:384,power:350,psu:750,tier:65,group:"enthusiast",year:2020,ray:"High",work:"AI · 3D · 4K",note:"Older high-end",popularityRank:3},
+{id:"3080",name:"GeForce RTX 3080 10GB",brand:"NVIDIA",series:"RTX 30 · Ampere",vram:10,type:"GDDR6X",bus:320,power:320,psu:750,tier:57,group:"performance",year:2020,ray:"High",work:"Gaming · 3D · 1440p",note:"Older high-end",popularityRank:25},
+{id:"3070",name:"GeForce RTX 3070",brand:"NVIDIA",series:"RTX 30 · Ampere",vram:8,type:"GDDR6",bus:256,power:220,psu:650,tier:48,group:"performance",year:2020,ray:"High",work:"Gaming · Editing · 1440p",note:"Older midrange",popularityRank:42},
+{id:"3060",name:"GeForce RTX 3060 12GB",brand:"NVIDIA",series:"RTX 30 · Ampere",vram:12,type:"GDDR6",bus:192,power:170,psu:550,tier:38,group:"mainstream",year:2021,ray:"Mid",work:"1080p · Editing · AI entry",note:"Popular budget",popularityRank:43},
+{id:"2080s",name:"GeForce RTX 2080 SUPER",brand:"NVIDIA",series:"RTX 20 · Turing",vram:8,type:"GDDR6",bus:256,power:250,psu:650,tier:42,group:"mainstream",year:2019,ray:"Mid",work:"1080p · 1440p gaming",note:"Older performance",popularityRank:24},
+{id:"2070s",name:"GeForce RTX 2070 SUPER",brand:"NVIDIA",series:"RTX 20 · Turing",vram:8,type:"GDDR6",bus:256,power:215,psu:650,tier:35,group:"mainstream",year:2019,ray:"Entry",work:"1080p gaming · Editing",note:"Older mainstream",popularityRank:23},
+{id:"2060",name:"GeForce RTX 2060 6GB",brand:"NVIDIA",series:"RTX 20 · Turing",vram:6,type:"GDDR6",bus:192,power:160,psu:550,tier:27,group:"budget",year:2019,ray:"Entry",work:"Everyday · 1080p",note:"Older entry level",popularityRank:22},
+{id:"1660s",name:"GeForce GTX 1660 SUPER",brand:"NVIDIA",series:"GTX 16 · Turing",vram:6,type:"GDDR6",bus:192,power:125,psu:450,tier:22,group:"budget",year:2019,ray:"—",work:"Everyday · esports",note:"No hardware RT",popularityRank:21},
+{id:"1650",name:"GeForce GTX 1650",brand:"NVIDIA",series:"GTX 16 · Turing",vram:4,type:"GDDR5",bus:128,power:75,psu:300,tier:13,group:"budget",year:2019,ray:"—",work:"Basic gaming · display",note:"Entry level",popularityRank:20},
+{id:"9070gre",name:"Radeon RX 9070 GRE",brand:"AMD",series:"RX 9000 · RDNA 4",vram:12,type:"GDDR6",bus:192,power:220,psu:650,tier:64,group:"performance",year:2026,ray:"High",work:"Gaming · 1440p",note:"Upper midrange",popularityRank:19},
+{id:"9060",name:"Radeon RX 9060",brand:"AMD",series:"RX 9000 · RDNA 4",vram:8,type:"GDDR6",bus:128,power:132,psu:450,tier:36,group:"mainstream",year:2026,ray:"Mid",work:"Gaming · 1080p",note:"Mainstream",popularityRank:18},
+{id:"9070xt",name:"Radeon RX 9070 XT",brand:"AMD",series:"RX 9000 · RDNA 4",vram:16,type:"GDDR6",bus:256,power:304,psu:750,tier:74,group:"performance",year:2025,ray:"High",work:"Gaming · 1440p/4K",note:"High-end",popularityRank:38},
+{id:"9070",name:"Radeon RX 9070",brand:"AMD",series:"RX 9000 · RDNA 4",vram:16,type:"GDDR6",bus:256,power:220,psu:650,tier:67,group:"performance",year:2025,ray:"High",work:"Gaming · 1440p/4K",note:"Upper midrange",popularityRank:37},
+{id:"9060xt16",name:"Radeon RX 9060 XT 16GB",brand:"AMD",series:"RX 9000 · RDNA 4",vram:16,type:"GDDR6",bus:128,power:160,psu:650,tier:52,group:"mainstream",year:2025,ray:"Mid",work:"Gaming · 1080p/1440p",note:"Mainstream · 16GB",popularityRank:36},
+{id:"9060xt8",name:"Radeon RX 9060 XT 8GB",brand:"AMD",series:"RX 9000 · RDNA 4",vram:8,type:"GDDR6",bus:128,power:150,psu:600,tier:52,group:"mainstream",year:2025,ray:"Mid",work:"Gaming · 1080p",note:"Mainstream · 8GB",popularityRank:35},
+{id:"7900xtx",name:"Radeon RX 7900 XTX",brand:"AMD",series:"RX 7000 · RDNA 3",vram:24,type:"GDDR6",bus:384,power:355,psu:800,tier:80,group:"enthusiast",year:2022,ray:"Mid",work:"Gaming · 4K · creative",note:"Enthusiast",popularityRank:31},
+{id:"7900xt",name:"Radeon RX 7900 XT",brand:"AMD",series:"RX 7000 · RDNA 3",vram:20,type:"GDDR6",bus:320,power:315,psu:750,tier:72,group:"enthusiast",year:2022,ray:"Mid",work:"Gaming · 1440p/4K",note:"High-end",popularityRank:30},
+{id:"7900gre",name:"Radeon RX 7900 GRE",brand:"AMD",series:"RX 7000 · RDNA 3",vram:16,type:"GDDR6",bus:256,power:260,psu:700,tier:63,group:"performance",year:2024,ray:"Mid",work:"Gaming · 1440p",note:"Performance",popularityRank:17},
+{id:"7800xt",name:"Radeon RX 7800 XT",brand:"AMD",series:"RX 7000 · RDNA 3",vram:16,type:"GDDR6",bus:256,power:263,psu:700,tier:60,group:"performance",year:2023,ray:"Mid",work:"Gaming · 1440p",note:"Upper midrange",popularityRank:33},
+{id:"7700xt",name:"Radeon RX 7700 XT",brand:"AMD",series:"RX 7000 · RDNA 3",vram:12,type:"GDDR6",bus:192,power:245,psu:700,tier:51,group:"performance",year:2023,ray:"Mid",work:"Gaming · 1440p",note:"Midrange",popularityRank:32},
+{id:"7600xt",name:"Radeon RX 7600 XT",brand:"AMD",series:"RX 7000 · RDNA 3",vram:16,type:"GDDR6",bus:128,power:190,psu:600,tier:42,group:"mainstream",year:2024,ray:"Entry",work:"Gaming · 1080p/1440p",note:"Mainstream · 16GB",popularityRank:16},
+{id:"7600",name:"Radeon RX 7600",brand:"AMD",series:"RX 7000 · RDNA 3",vram:8,type:"GDDR6",bus:128,power:165,psu:550,tier:37,group:"mainstream",year:2023,ray:"Entry",work:"Gaming · 1080p",note:"Mainstream",popularityRank:34},
+{id:"6950xt",name:"Radeon RX 6950 XT",brand:"AMD",series:"RX 6000 · RDNA 2",vram:16,type:"GDDR6",bus:256,power:335,psu:850,tier:62,group:"enthusiast",year:2022,ray:"Entry",work:"Gaming · 1440p/4K",note:"Older high-end",popularityRank:15},
+{id:"6900xt",name:"Radeon RX 6900 XT",brand:"AMD",series:"RX 6000 · RDNA 2",vram:16,type:"GDDR6",bus:256,power:300,psu:850,tier:59,group:"enthusiast",year:2020,ray:"Entry",work:"Gaming · 1440p/4K",note:"Older high-end",popularityRank:14},
+{id:"6800xt",name:"Radeon RX 6800 XT",brand:"AMD",series:"RX 6000 · RDNA 2",vram:16,type:"GDDR6",bus:256,power:300,psu:750,tier:55,group:"performance",year:2020,ray:"Entry",work:"Gaming · 1440p",note:"Older performance",popularityRank:13},
+{id:"6700xt",name:"Radeon RX 6700 XT",brand:"AMD",series:"RX 6000 · RDNA 2",vram:12,type:"GDDR6",bus:192,power:230,psu:650,tier:44,group:"mainstream",year:2021,ray:"Entry",work:"Gaming · 1080p/1440p",note:"Older mainstream",popularityRank:12},
+{id:"6600xt",name:"Radeon RX 6600 XT",brand:"AMD",series:"RX 6000 · RDNA 2",vram:8,type:"GDDR6",bus:128,power:160,psu:550,tier:34,group:"mainstream",year:2021,ray:"Entry",work:"Gaming · 1080p",note:"Budget gaming",popularityRank:11},
+{id:"6600",name:"Radeon RX 6600",brand:"AMD",series:"RX 6000 · RDNA 2",vram:8,type:"GDDR6",bus:128,power:132,psu:500,tier:30,group:"budget",year:2021,ray:"Entry",work:"Gaming · 1080p",note:"Budget-friendly",popularityRank:10},
+{id:"5700xt",name:"Radeon RX 5700 XT",brand:"AMD",series:"RX 5000 · RDNA",vram:8,type:"GDDR6",bus:256,power:225,psu:600,tier:29,group:"budget",year:2019,ray:"—",work:"Gaming · 1080p",note:"Older budget",popularityRank:9},
+{id:"5600xt",name:"Radeon RX 5600 XT",brand:"AMD",series:"RX 5000 · RDNA",vram:6,type:"GDDR6",bus:192,power:150,psu:550,tier:23,group:"budget",year:2020,ray:"—",work:"Gaming · 1080p",note:"Older entry",popularityRank:8},
+{id:"5500xt",name:"Radeon RX 5500 XT 8GB",brand:"AMD",series:"RX 5000 · RDNA",vram:8,type:"GDDR6",bus:128,power:130,psu:450,tier:16,group:"budget",year:2019,ray:"—",work:"Basic gaming · 1080p",note:"Entry level",popularityRank:7},
+{id:"b580",name:"Intel Arc B580",brand:"Intel",series:"Arc B · Xe2",vram:12,type:"GDDR6",bus:192,power:190,psu:600,tier:38,group:"mainstream",year:2024,ray:"Mid",work:"Gaming · 1080p/1440p",note:"Mainstream",popularityRank:29},
+{id:"b570",name:"Intel Arc B570",brand:"Intel",series:"Arc B · Xe2",vram:10,type:"GDDR6",bus:160,power:150,psu:550,tier:32,group:"budget",year:2025,ray:"Entry",work:"Gaming · 1080p",note:"Budget-friendly",popularityRank:28},
+{id:"a770",name:"Intel Arc A770 16GB",brand:"Intel",series:"Arc A · Xe HPG",vram:16,type:"GDDR6",bus:256,power:225,psu:600,tier:36,group:"mainstream",year:2022,ray:"Entry",work:"Gaming · creative · AI entry",note:"Older midrange",popularityRank:27},
+{id:"a750",name:"Intel Arc A750",brand:"Intel",series:"Arc A · Xe HPG",vram:8,type:"GDDR6",bus:256,power:225,psu:600,tier:31,group:"budget",year:2022,ray:"Entry",work:"Gaming · 1080p/1440p",note:"Budget gaming",popularityRank:6},
+{id:"a580",name:"Intel Arc A580",brand:"Intel",series:"Arc A · Xe HPG",vram:8,type:"GDDR6",bus:256,power:185,psu:550,tier:27,group:"budget",year:2023,ray:"Entry",work:"Gaming · 1080p",note:"Budget",popularityRank:5},
+{id:"a380",name:"Intel Arc A380",brand:"Intel",series:"Arc A · Xe HPG",vram:6,type:"GDDR6",bus:96,power:75,psu:350,tier:14,group:"budget",year:2022,ray:"Entry",work:"Everyday · media · light gaming",note:"Entry level",popularityRank:4}
+];
+gpus.push(
+{id:"580",name:"Radeon RX 580 8GB",brand:"AMD",series:"RX 500 · Polaris",vram:8,type:"GDDR5",bus:256,power:185,psu:500,tier:20,group:"budget",year:2017,ray:"—",work:"Older 1080p gaming",note:"Budget · RX 580 baseline",image:"https://cdn.prod.website-files.com/5d1911406ad3cbdb9924a753/5e04f74c5e658b80fd012bb1_580-3_web_fixed.jpg"},
+{id:"5804",name:"Radeon RX 580 4GB",brand:"AMD",series:"RX 500 · Polaris",vram:4,type:"GDDR5",bus:256,power:185,psu:500,tier:20,group:"budget",year:2017,ray:"—",work:"Older 1080p gaming",note:"Budget · 4GB variant"},
+{id:"570",name:"Radeon RX 570 8GB",brand:"AMD",series:"RX 500 · Polaris",vram:8,type:"GDDR5",bus:256,power:150,psu:450,tier:18,group:"budget",year:2017,ray:"—",work:"Older 1080p gaming",note:"Budget"},
+{id:"480",name:"Radeon RX 480 8GB",brand:"AMD",series:"RX 400 · Polaris",vram:8,type:"GDDR5",bus:256,power:150,psu:450,tier:19,group:"budget",year:2016,ray:"—",work:"Older 1080p gaming",note:"Budget"},
+{id:"590",name:"Radeon RX 590 8GB",brand:"AMD",series:"RX 500 · Polaris",vram:8,type:"GDDR5",bus:256,power:225,psu:500,tier:21,group:"budget",year:2018,ray:"—",work:"Older 1080p gaming",note:"Budget"},
+{id:"1060",name:"GeForce GTX 1060 6GB",brand:"NVIDIA",series:"GTX 10 · Pascal",vram:6,type:"GDDR5",bus:192,power:120,psu:400,tier:19,group:"budget",year:2016,ray:"—",work:"Older 1080p gaming",note:"Budget"},
+{id:"1070",name:"GeForce GTX 1070",brand:"NVIDIA",series:"GTX 10 · Pascal",vram:8,type:"GDDR5",bus:256,power:150,psu:500,tier:26,group:"budget",year:2016,ray:"—",work:"Older 1080p gaming",note:"Older performance"},
+{id:"1050ti",name:"GeForce GTX 1050 Ti",brand:"NVIDIA",series:"GTX 10 · Pascal",vram:4,type:"GDDR5",bus:128,power:75,psu:300,tier:12,group:"budget",year:2016,ray:"—",work:"Basic / esports",note:"Very low power"},
+{id:"1050",name:"GeForce GTX 1050",brand:"NVIDIA",series:"GTX 10 · Pascal",vram:2,type:"GDDR5",bus:128,power:75,psu:300,tier:10,group:"budget",year:2016,ray:"—",work:"Basic / esports",note:"Very low power"},
+{id:"970",name:"GeForce GTX 970",brand:"NVIDIA",series:"GTX 900 · Maxwell",vram:4,type:"GDDR5",bus:256,power:145,psu:500,tier:17,group:"budget",year:2014,ray:"—",work:"Older 1080p gaming",note:"Used-market option"},
+{id:"1660ti",name:"GeForce GTX 1660 Ti",brand:"NVIDIA",series:"GTX 16 · Turing",vram:6,type:"GDDR6",bus:192,power:120,psu:450,tier:23,group:"budget",year:2019,ray:"—",work:"1080p gaming",note:"No hardware RT"},
+{id:"1650s",name:"GeForce GTX 1650 SUPER",brand:"NVIDIA",series:"GTX 16 · Turing",vram:4,type:"GDDR6",bus:128,power:100,psu:350,tier:16,group:"budget",year:2019,ray:"—",work:"Basic 1080p gaming",note:"Entry gaming"},
+{id:"6500xt",name:"Radeon RX 6500 XT",brand:"AMD",series:"RX 6000 · RDNA 2",vram:4,type:"GDDR6",bus:64,power:107,psu:400,tier:17,group:"budget",year:2022,ray:"Entry",work:"Basic 1080p gaming",note:"Budget · 4GB"},
+{id:"6400",name:"Radeon RX 6400",brand:"AMD",series:"RX 6000 · RDNA 2",vram:4,type:"GDDR6",bus:64,power:53,psu:350,tier:13,group:"budget",year:2022,ray:"Entry",work:"Basic gaming · display",note:"Low-profile / low power"},
+{id:"5700",name:"Radeon RX 5700",brand:"AMD",series:"RX 5000 · RDNA",vram:8,type:"GDDR6",bus:256,power:180,psu:550,tier:25,group:"budget",year:2019,ray:"—",work:"Older 1080p/1440p gaming",note:"Older performance"},
+{id:"1080",name:"GeForce GTX 1080",brand:"NVIDIA",series:"GTX 10 · Pascal",vram:8,type:"GDDR5X",bus:256,power:180,psu:500,tier:28,group:"budget",year:2016,ray:"—",work:"Older 1080p/1440p gaming",note:"Older performance"},
+{id:"3090ti",name:"GeForce RTX 3090 Ti",brand:"NVIDIA",series:"RTX 30 · Ampere",vram:24,type:"GDDR6X",bus:384,power:450,psu:850,tier:75,group:"enthusiast",year:2022,ray:"High",work:"AI · 3D · 4K",note:"Previous flagship"},
+{id:"3080ti",name:"GeForce RTX 3080 Ti",brand:"NVIDIA",series:"RTX 30 · Ampere",vram:12,type:"GDDR6X",bus:384,power:350,psu:750,tier:58,group:"performance",year:2021,ray:"High",work:"Gaming · 3D · 1440p/4K",note:"Older high-end"},
+{id:"4070ti",name:"GeForce RTX 4070 Ti",brand:"NVIDIA",series:"RTX 40 · Ada Lovelace",vram:12,type:"GDDR6X",bus:192,power:285,psu:700,tier:63,group:"performance",year:2023,ray:"Very high",work:"AI · Editing · 1440p",note:"Upper midrange"},
+{id:"2060s",name:"GeForce RTX 2060 SUPER",brand:"NVIDIA",series:"RTX 20 · Turing",vram:8,type:"GDDR6",bus:256,power:175,psu:550,tier:32,group:"budget",year:2019,ray:"Entry",work:"1080p gaming · editing",note:"Older entry gaming"},
+{id:"6650xt",name:"Radeon RX 6650 XT",brand:"AMD",series:"RX 6000 · RDNA 2",vram:8,type:"GDDR6",bus:128,power:176,psu:500,tier:36,group:"mainstream",year:2022,ray:"Entry",work:"Gaming · 1080p",note:"Value 1080p"},
+{id:"6750xt",name:"Radeon RX 6750 XT",brand:"AMD",series:"RX 6000 · RDNA 2",vram:12,type:"GDDR6",bus:192,power:250,psu:650,tier:46,group:"mainstream",year:2022,ray:"Entry",work:"Gaming · 1080p/1440p",note:"Older mainstream"},
+{id:"6800",name:"Radeon RX 6800",brand:"AMD",series:"RX 6000 · RDNA 2",vram:16,type:"GDDR6",bus:256,power:250,psu:650,tier:52,group:"performance",year:2020,ray:"Entry",work:"Gaming · 1440p",note:"Older performance"},
+{id:"2080ti",name:"GeForce RTX 2080 Ti",brand:"NVIDIA",series:"RTX 20 · Turing",vram:11,type:"GDDR6",bus:352,power:250,psu:650,tier:52,group:"performance",year:2018,ray:"Mid",work:"Older 1440p gaming · 3D",note:"Older high-end"},
+{id:"2080",name:"GeForce RTX 2080",brand:"NVIDIA",series:"RTX 20 · Turing",vram:8,type:"GDDR6",bus:256,power:215,psu:650,tier:39,group:"mainstream",year:2018,ray:"Mid",work:"Older 1080p/1440p gaming",note:"Older performance"},
 {id:"2070",name:"GeForce RTX 2070",brand:"NVIDIA",series:"RTX 20 · Turing",vram:8,type:"GDDR6",bus:256,power:175,psu:550,tier:33,group:"mainstream",year:2018,ray:"Entry",work:"Older 1080p gaming",note:"Older mainstream"},
 {id:"1660",name:"GeForce GTX 1660",brand:"NVIDIA",series:"GTX 16 · Turing",vram:6,type:"GDDR5",bus:192,power:120,psu:450,tier:21,group:"budget",year:2019,ray:"—",work:"1080p gaming",note:"No hardware RT"},
 {id:"980",name:"GeForce GTX 980",brand:"NVIDIA",series:"GTX 900 · Maxwell",vram:4,type:"GDDR5",bus:256,power:165,psu:500,tier:18,group:"budget",year:2014,ray:"—",work:"Older 1080p gaming",note:"Used-market option"},
