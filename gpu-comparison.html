@@ -172,17 +172,18 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 <meta name="twitter:title" content="GPU Comparison Tool | SystemFit PC">
 <meta name="twitter:description" content="Compare graphics cards by specifications, memory, power, performance class and workload fit.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"GPU Comparison Tool","url":"https://systemfitpc.vercel.app/gpu-comparison.html","description":"A tool for comparing graphics card specifications, performance class, memory and power.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web browser","publisher":{"@type":"Organization","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/","logo":"https://systemfitpc.vercel.app/systemfit-favicon.png"}}</script>
+  <link rel="stylesheet" href="site-universal.css">
 </head>
 <body>
 <div id="site-header"></div>
 <main class="main">
-<section class="hero">
+<section class="hero" data-sfp-reveal>
 <div><span class="eyebrow">SystemFit PC · Hardware comparison</span><h1>Find the right <span class="gradient">graphics card</span></h1><p class="lede">Compare up to five GPUs in one clear view. See what matters for gaming, creative work, memory, power and workload fit—without needing to decode spec sheets first.</p><div class="quick-points"><span class="pill">NVIDIA · AMD · Intel</span><span class="pill">Budget to enthusiast</span><span class="pill">Compare 2–5 cards</span></div></div>
 
 </section>
-<div class="flow" aria-label="Comparison steps"><div class="flow-step active" id="stepOne"><span class="num">1</span><span>Choose your GPUs</span></div><span class="flow-arrow" aria-hidden="true">→</span><div class="flow-step" id="stepTwo"><span class="num">2</span><span>Compare &amp; decide</span></div></div><p class="score-method">Compare GPUs by published specifications, performance class, memory, power and workload fit. This tool does not turn those specs into a single performance score or FPS promise. Results vary by game, resolution, settings, drivers and exact partner-card model.</p>
+<div class="flow" data-sfp-reveal aria-label="Comparison steps"><div class="flow-step active" id="stepOne"><span class="num">1</span><span>Choose your GPUs</span></div><span class="flow-arrow" aria-hidden="true">→</span><div class="flow-step" id="stepTwo"><span class="num">2</span><span>Compare &amp; decide</span></div></div><p class="score-method" data-sfp-reveal>Compare GPUs by published specifications, performance class, memory, power and workload fit. This tool does not turn those specs into a single performance score or FPS promise. Results vary by game, resolution, settings, drivers and exact partner-card model.</p>
 <section class="panel chooser" aria-labelledby="choose-title">
-<div class="section-head"><div><h2 id="choose-title">Pick the graphics cards</h2><p>Open a brand, search its models, and select 2 to 5 GPUs. You can compare cards across generations and brands.</p></div><span class="step-tag">STEP 1 · SELECT</span></div>
+<div class="section-head" data-sfp-reveal><div><h2 id="choose-title">Pick the graphics cards</h2><p>Open a brand, search its models, and select 2 to 5 GPUs. You can compare cards across generations and brands.</p></div><span class="step-tag">STEP 1 · SELECT</span></div>
 <div id="brandDropdowns" class="brand-dropdowns" aria-live="polite">
 <details class="brand-dropdown" data-brand="NVIDIA">
   <summary><span><strong>NVIDIA GeForce</strong><small>RTX &amp; GTX graphics cards</small></span><b class="brand-count" data-count="NVIDIA"></b></summary>
@@ -494,7 +495,7 @@ document.querySelectorAll(".brand-sort-select").forEach(select=>{
 <script>
 (()=>{const dropdown=document.querySelector(".tool-dropdown");if(!dropdown)return;const summary=dropdown.querySelector("summary");let pinned=false;let closeTimer;const closeDelay=210;const cancelClose=()=>{clearTimeout(closeTimer);dropdown.classList.remove("is-closing")};const closeMenu=()=>{cancelClose();if(!dropdown.open)return;dropdown.classList.add("is-closing");closeTimer=setTimeout(()=>{dropdown.open=false;dropdown.classList.remove("is-closing")},150)};dropdown.addEventListener("pointerenter",()=>{cancelClose();if(!pinned)dropdown.open=true});dropdown.addEventListener("pointerleave",()=>{if(!pinned){clearTimeout(closeTimer);closeTimer=setTimeout(closeMenu,closeDelay)}});summary.addEventListener("click",event=>{event.preventDefault();cancelClose();if(pinned){pinned=false;closeMenu()}else{pinned=true;dropdown.open=true}});document.addEventListener("pointerdown",event=>{if(!dropdown.contains(event.target)){pinned=false;closeMenu()}});document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dropdown.open){pinned=false;closeMenu();summary.focus()}});dropdown.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{pinned=false;closeMenu()}));dropdown.addEventListener("focusout",event=>{if(!dropdown.contains(event.relatedTarget)&&!pinned)closeMenu()})})();
 </script>
-  <footer>
+  <footer class="sfp-site-footer">
     <p>
         © 2026 SystemFit PC. Practical tools for better PC decisions.
     </p>

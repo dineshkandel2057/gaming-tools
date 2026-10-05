@@ -178,15 +178,15 @@
     }
 
     /* Guide UX enhancements — matched to the approved RAM guide */
-    .article-header>*{opacity:0;transform:translateY(12px);animation:guideHeroIn .55s ease forwards}
+    .article-header>*{opacity:1;transform:none}html.sfp-motion-ready .article-header>*{opacity:0;transform:translateY(12px);animation:guideHeroIn .55s ease forwards}
     .article-header .eyebrow{animation-delay:.05s}.article-header h1{animation-delay:.12s}.article-header .dek{animation-delay:.19s}.article-header .meta{animation-delay:.26s}
     @keyframes guideHeroIn{to{opacity:1;transform:none}}
     .answer-box{position:relative;overflow:hidden}
     .answer-box:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,#a892ff,#69caff);opacity:.9}
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+    .reveal{opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease}
     .reveal.is-visible{opacity:1;transform:none}
     .accordion{margin:14px 0}
-    .accordion.reveal{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:border-color .25s ease,background .25s ease,opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1);opacity:0;transform:translateY(32px)}
+    .accordion.reveal{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:border-color .25s ease,background .25s ease,opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1);opacity:1;transform:none;}
     .accordion.reveal:nth-of-type(2){transition-delay:.04s}.accordion.reveal:nth-of-type(3){transition-delay:.08s}.accordion.reveal:nth-of-type(4){transition-delay:.12s}.accordion.reveal:nth-of-type(5){transition-delay:.16s}.accordion.reveal:nth-of-type(6){transition-delay:.20s}
     .accordion.reveal.is-visible{opacity:1;transform:translateY(0)}
     .accordion.reveal:has(.accordion-trigger[aria-expanded="true"]){border-color:rgba(157,139,255,.28);background:rgba(19,25,39,.52)}
@@ -209,7 +209,7 @@
     .tool-link b{display:block;margin-bottom:4px;color:#f4f6fb}.tool-link span{font-size:12px;color:#96a3b9}
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
-      .article-header>*{animation:none;opacity:1;transform:none}
+      .article-header>*,html.sfp-motion-ready .article-header>*{animation:none;opacity:1;transform:none}
       .reveal,.accordion.reveal{transition:none;opacity:1;transform:none}
       .accordion-panel,.accordion-icon{transition:none}
     }
@@ -228,6 +228,7 @@
 <meta name="twitter:title" content="How Much VRAM Do You Need for Gaming in 2026? | SystemFit PC">
 <meta name="twitter:description" content="Learn how 8GB, 12GB and 16GB of graphics memory fit 1080p, 1440p and 4K gaming.">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How Much VRAM Do You Need for Gaming in 2026?","description":"Learn how 8GB, 12GB and 16GB of graphics memory fit 1080p, 1440p and 4K gaming.","mainEntityOfPage":{"@type":"WebPage","@id":"https://systemfitpc.vercel.app/how-much-vram-for-gaming-2026.html"},"url":"https://systemfitpc.vercel.app/how-much-vram-for-gaming-2026.html","author":{"@type":"Organization","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/","logo":"https://systemfitpc.vercel.app/systemfit-favicon.png"},"publisher":{"@type":"Organization","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/","logo":"https://systemfitpc.vercel.app/systemfit-favicon.png"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://systemfitpc.vercel.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://systemfitpc.vercel.app/guides.html"},{"@type":"ListItem","position":3,"name":"How Much VRAM Do You Need for Gaming in 2026?","item":"https://systemfitpc.vercel.app/how-much-vram-for-gaming-2026.html"}]}]}</script>
+  <link rel="stylesheet" href="site-universal.css">
 </head>
 
 <body>
@@ -542,7 +543,7 @@
     <section><h2>Related tools and guides</h2><p>Compare cards with the <a href="gpu-comparison.html">GPU Comparison Tool</a>, estimate performance with the <a href="fps-calculator.html">FPS Calculator</a>, or read our <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU bottleneck guide</a>.</p></section></article>
   </main>
 
-  <footer>
+  <footer class="sfp-site-footer">
     <p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
     <p><a href="privacy-policy.html">Privacy Policy</a></p>
   </footer>

@@ -163,11 +163,12 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 <meta name="twitter:title" content="PC Build Planner | SystemFit PC">
 <meta name="twitter:description" content="Plan a gaming or productivity PC with guided part selection and practical compatibility checks.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"PC Build Planner","url":"https://systemfitpc.vercel.app/build-planner.html","description":"A guided PC build planning tool with practical component compatibility checks.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web browser","publisher":{"@type":"Organization","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/","logo":"https://systemfitpc.vercel.app/systemfit-favicon.png"}}</script>
+  <link rel="stylesheet" href="site-universal.css">
 </head>
 <body>
 <div id="site-header"></div>
 <main class="wrap">
-  <section class="hero">
+  <section class="hero" data-sfp-reveal>
     <div>
       <span class="eyebrow"><i></i> SystemFit PC Smart Build</span>
       <h1>Build a PC that <span>fits together.</span></h1>
@@ -273,7 +274,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       </section>
     </aside>
   </div>
-  <section class="step source-note" style="margin-top:16px">
+  <section class="step source-note" data-sfp-reveal style="margin-top:16px">
     <b style="color:#e4eafa">How the checks work:</b> Platform and memory rules follow manufacturer-published socket and memory support. Power estimates use published GPU guidance where available; card lengths and generic case clearances are planning estimates. They do not account for every board revision, BIOS version, cooler mount, add-in-card model or transient load. Confirm those details with the part makers before purchase.
     <br><br><b style="color:#e4eafa">Reference specs:</b>
     <a href="https://www.intel.com/content/www/us/en/support/articles/000099723/processors.html" target="_blank" rel="noopener">Intel socket guidance</a> ·
@@ -282,7 +283,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
     <a href="https://www.amd.com/content/dam/amd/en/documents/partner-hub/radeon/radeon-rx-9000-series-quick-reference-guide-non-competitive.pdf" target="_blank" rel="noopener">AMD Radeon RX 9000 specifications</a>.
   </section>
 </main>
-<footer>
+<footer class="sfp-site-footer">
     <p>
         SystemFit PC build planner · Compatibility checks are a starting point. Confirm the exact part specifications and BIOS support before purchase.
     </p>

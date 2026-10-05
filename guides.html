@@ -272,13 +272,14 @@
 <meta name="twitter:title" content="PC Gaming and Hardware Guides | SystemFit PC">
 <meta name="twitter:description" content="Read practical SystemFit PC guides about RAM, VRAM, bottlenecks and smarter PC upgrade decisions.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://systemfitpc.vercel.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://systemfitpc.vercel.app/guides.html"}]}</script>
+  <link rel="stylesheet" href="site-universal.css">
 </head>
 
 <body>
 <div id="site-header"></div>
 
 <main>
-  <div class="page-header">
+  <div class="page-header" data-sfp-reveal>
     <div class="eyebrow">SystemFit PC · Guides</div>
     <h1>Practical <span>PC Guides</span></h1>
     <p>Clear, practical guides to help you choose, build, upgrade and understand your gaming PC without unnecessary complexity.</p>
@@ -292,7 +293,7 @@
     <a class="guide-tool" href="bottleneck.html"><span>→</span> Bottleneck Calculator</a>
   </div>
 
-  <section class="guides-grid" aria-label="PC gaming guides">
+  <section class="guides-grid" data-sfp-reveal aria-label="PC gaming guides">
     <a class="guide-card" href="how-much-ram-for-gaming-2026.html">
       <span class="guide-tag">Gaming Hardware · 2026</span>
       <h2>How Much RAM Do You Need for Gaming in 2026?</h2>
@@ -321,7 +322,7 @@
   </div>
 </main>
 
-<footer>
+<footer class="sfp-site-footer">
   <p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
   <p><a href="privacy-policy.html">Privacy Policy</a></p>
 </footer>
