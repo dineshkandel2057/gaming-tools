@@ -65,6 +65,41 @@
     .tool-links{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px;margin-top:20px;background:rgba(13,18,29,.62)}.tool-link{padding:15px;border:1px solid rgba(157,174,204,.12);border-radius:12px;background:rgba(255,255,255,.025)}.tool-link:hover{background:rgba(118,95,255,.11);border-color:rgba(151,132,255,.25)}.tool-link b{display:block;color:#eee;font-size:13px}.tool-link span{display:block;color:#8f9db5;font-size:11px;margin-top:4px}
     .source-box{padding:20px 22px}.source-box a,.internal-link{color:#b9aaff}.source-box a:hover,.internal-link:hover{color:#fff}
     footer{border-top:1px solid var(--border);padding:30px 20px;text-align:center;color:#8895aa;font-size:13px}footer p+p{margin-top:6px}footer a:hover{color:#fff}
+    /* Guide UX enhancements — same presentation and motion pattern as the existing RAM/VRAM guides. */
+    .article-header>*{opacity:1;transform:none}
+    html.sfp-motion-ready .article-header>*{opacity:0;transform:translateY(12px);animation:guideHeroIn .55s ease forwards}
+    .article-header .eyebrow{animation-delay:.05s}
+    .article-header h1{animation-delay:.12s}
+    .article-header .article-intro{animation-delay:.19s}
+    .article-header .meta{animation-delay:.26s}
+    @keyframes guideHeroIn{to{opacity:1;transform:none}}
+    .quick-answer{position:relative;overflow:hidden}
+    .quick-answer:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,#a892ff,#69caff);opacity:.9}
+    .reveal{opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease}
+    .reveal.is-visible{opacity:1;transform:none}
+    .accordion{margin-top:42px}
+    .accordion.reveal{margin:14px 0;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(19,25,39,.38);overflow:hidden;transition:border-color .25s ease,background .25s ease;opacity:1;transform:none}
+    .accordion.reveal.is-visible{opacity:1;transform:none}
+    .accordion:has(.accordion-trigger[aria-expanded="true"]){border-color:rgba(157,139,255,.28);background:rgba(19,25,39,.52)}
+    .accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;background:none;border:0;color:var(--text);font:700 30px/1.2 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em;text-align:left;cursor:pointer}
+    .accordion-trigger:focus-visible{outline:2px solid #8f7dff;outline-offset:5px;border-radius:6px}
+    .accordion-icon{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border:1px solid rgba(157,174,204,.18);border-radius:50%;color:#b9aaff;font:500 22px/1 "DM Sans",sans-serif;transition:transform .3s ease,background .3s ease,border-color .3s ease}
+    .accordion-trigger[aria-expanded="true"] .accordion-icon{transform:rotate(45deg);background:rgba(118,95,255,.12);border-color:rgba(157,139,255,.35)}
+    .accordion-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .42s cubic-bezier(.2,.75,.25,1),opacity .3s ease;opacity:0}
+    .accordion-panel-inner{min-height:0;overflow:hidden;padding:0 22px}
+    .accordion-panel-inner>*:last-child{margin-bottom:24px}
+    .accordion-panel.open{grid-template-rows:1fr;opacity:1}
+    .table-wrap table tbody tr{transition:background .2s ease}
+    .table-wrap table tbody tr:hover{background:rgba(118,95,255,.06)}
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .article-header>*,html.sfp-motion-ready .article-header>*{animation:none;opacity:1;transform:none}
+      .reveal{transition:none;opacity:1;transform:none}
+      .accordion-panel{transition:none}
+      .accordion-icon{transition:none}
+    }
+    @media(max-width:700px){.accordion-trigger{font-size:24px}}
+
     @media(max-width:800px){.nav{min-height:auto;padding:15px;flex-direction:column;gap:10px}nav{flex-wrap:wrap;justify-content:center}.tool-menu{right:0}.metric-grid,.decision-grid,.tool-links{grid-template-columns:1fr}.article-header p{font-size:16px}main{padding-top:50px}.section-card{padding:21px}}
     @media(max-width:480px){#brand-logo{gap:7px}.brand-monogram{width:32px;height:32px}.brand-wordmark{font-size:19px}h1{font-size:37px}main{padding-left:15px;padding-right:15px}.intro{padding:20px}.section-card{padding:18px}}
   </style>
@@ -81,16 +116,23 @@
   <header class="article-header" data-sfp-reveal>
     <div class="eyebrow">SystemFit PC · Gaming Resolution · 2026</div>
     <h1>1080p vs 1440p vs <span>4K Gaming</span> in 2026</h1>
-    <p>Which resolution should you choose? Compare image quality, GPU demand, FPS targets and monitor size before deciding where your next PC upgrade should go.</p>
+    <p class="article-intro">Which resolution should you choose? Compare image quality, GPU demand, FPS targets and monitor size before deciding where your next PC upgrade should go.</p>
+    <p class="meta">Updated October 2026 · SystemFit PC</p>
   </header>
 
   <article>
-    <div class="intro" data-sfp-reveal>
+    <div class="quick-answer reveal">
       <p><strong>Short answer:</strong> For most PC gamers in 2026, <strong>1440p is the best overall balance</strong> between image quality and performance. 1080p remains excellent for competitive gaming and budget systems, while 4K makes the most sense when visual quality is the priority and your GPU has enough performance.</p>
     </div>
 
-    <section class="section-card" data-sfp-reveal>
-      <h2>1080p vs 1440p vs 4K at a glance</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>1080p vs 1440p vs 4K at a glance</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <div class="table-wrap">
         <table>
           <thead><tr><th>Resolution</th><th>Pixels per frame</th><th>Best suited for</th><th>GPU demand</th></tr></thead>
@@ -102,10 +144,19 @@
         </table>
       </div>
       <p>These categories are guidelines, not fixed hardware requirements. Your actual FPS depends on the game, GPU, CPU, graphics settings, ray tracing, upscaling and your target frame rate.</p>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>What is 1080p gaming?</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>What is 1080p gaming?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>1080p, or Full HD, uses a resolution of <strong>1920 × 1080</strong>. It is still the most common primary PC display resolution in the current Steam Hardware &amp; Software Survey, although 1440p has been gaining share. Steam's September 2026 survey reports 49.10% for 1920 × 1080 and 27.76% for 2560 × 1440 among surveyed Windows primary displays. <a class="internal-link" href="https://store.steampowered.com/hwsurvey/display/" target="_blank" rel="noopener">View the current Steam survey</a>.</p>
       <h3>Why choose 1080p?</h3>
       <ul>
@@ -117,10 +168,19 @@
       </ul>
       <h3>The downside of 1080p</h3>
       <p>The image is less sharp than 1440p or 4K. On a larger 27-inch or bigger display, the lower pixel density can be easier to notice, especially when reading text or looking at distant details.</p>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>What is 1440p gaming?</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>What is 1440p gaming?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>1440p, also called QHD, uses <strong>2560 × 1440</strong>. It renders about 78% more pixels per frame than 1080p, but substantially fewer than 4K.</p>
       <h3>Why 1440p is the sweet spot for many gamers</h3>
       <ul>
@@ -131,10 +191,19 @@
         <li>It gives a strong balance between image quality and performance.</li>
       </ul>
       <div class="callout"><strong>SystemFit recommendation:</strong> If you are building a new gaming PC and do not have a specific reason to stay at 1080p or jump to 4K, 1440p is the resolution to investigate first.</div>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>What is 4K gaming?</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>What is 4K gaming?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>4K uses <strong>3840 × 2160</strong>, or about 8.29 million pixels per frame. That is four times the pixel count of 1080p and more than twice the pixel count of 1440p.</p>
       <h3>Why choose 4K?</h3>
       <ul>
@@ -145,10 +214,19 @@
       </ul>
       <h3>The downside</h3>
       <p>Rendering more than twice as many pixels as 1440p can place substantially more load on the GPU. Ray tracing and other demanding effects can push that workload even higher. Upscaling and frame-generation technologies can help, but they do not make raw GPU performance irrelevant.</p>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>How much does resolution affect FPS?</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>How much does resolution affect FPS?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>When the GPU is the limiting component, higher resolution generally means more rendering work and lower FPS. The relationship is not perfectly linear because game engines, settings, CPU limits and rendering techniques all matter.</p>
       <div class="metric-grid">
         <div class="metric"><b>1080p</b><span>1920 × 1080 · 2.07M pixels</span></div>
@@ -156,41 +234,86 @@
         <div class="metric"><b>4K</b><span>3840 × 2160 · 8.29M pixels</span></div>
       </div>
       <p>If your GPU is already near full utilization, moving down from 4K to 1440p or 1440p to 1080p can produce a substantial FPS increase. If your CPU is already limiting the game, however, the FPS increase may be much smaller.</p>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>1080p vs 1440p for competitive gaming</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>1080p vs 1440p for competitive gaming</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>Competitive players often care more about frame rate, latency and refresh rate than maximum image quality. That makes 1080p a perfectly sensible choice even when the PC can render higher resolutions.</p>
       <p>If your goal is extremely high FPS on a 240Hz or higher monitor, reducing the rendering workload can make it easier to keep frame times low. The right choice depends on the game and your hardware, not on resolution alone.</p>
       <div class="callout"><strong>Choose 1080p when:</strong> maximum competitive FPS is more important to you than additional image sharpness.</div>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>1440p vs 4K: which is better?</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>1440p vs 4K: which is better?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>Neither is universally better. They optimize for different priorities.</p>
       <div class="decision-grid">
         <div class="decision"><b>Choose 1440p</b><span>You want high FPS, a high-refresh monitor and a strong balance of quality and performance.</span></div>
         <div class="decision"><b>Choose 4K</b><span>You prioritize image quality, use a large display and have enough GPU performance.</span></div>
         <div class="decision"><b>Choose 1080p</b><span>You prioritize competitive FPS, lower hardware cost or compatibility with a less powerful GPU.</span></div>
       </div>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>Does monitor size matter?</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>Does monitor size matter?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>Yes. Resolution and screen size should be considered together. A higher resolution generally provides greater pixel density at the same screen size.</p>
       <p>For example, 1440p is a particularly popular match for 27-inch monitors because it provides a useful step up in sharpness without the GPU workload of 4K. 4K becomes more compelling as screen size increases or when you sit close enough to see the additional detail.</p>
       <p>There is no universal viewing-distance rule that makes one resolution automatically correct. Your eyesight, monitor size, scaling and distance all affect what you actually notice.</p>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>What about VRAM?</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>What about VRAM?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>Higher resolutions can increase memory requirements, particularly when combined with high-resolution textures and demanding graphics settings. But VRAM capacity is only one part of GPU performance.</p>
       <p>A graphics card with more VRAM is not automatically faster. You need enough memory for the workload <em>and</em> enough GPU processing power to render it at your target FPS.</p>
       <p>For a deeper look at memory capacity, read our <a class="internal-link" href="how-much-vram-for-gaming-2026.html">VRAM guide for gaming in 2026</a>.</p>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>Resolution can change your bottleneck</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>Resolution can change your bottleneck</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>The same PC can behave differently at different resolutions. A system that is CPU-limited at 1080p can become GPU-limited at 1440p or 4K because the graphics card has much more rendering work to perform.</p>
       <p>This is why a CPU/GPU pairing should not be judged with one permanent bottleneck percentage. The game, resolution, settings and target FPS all matter.</p>
       <div class="table-wrap">
@@ -204,10 +327,19 @@
         </table>
       </div>
       <p>For more detail, read our <a class="internal-link" href="cpu-vs-gpu-bottleneck.html">CPU vs GPU Bottleneck guide</a>.</p>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>What resolution should you choose in 2026?</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>What resolution should you choose in 2026?</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <div class="table-wrap">
         <table>
           <thead><tr><th>If your priority is...</th><th>Start with...</th></tr></thead>
@@ -221,10 +353,19 @@
         </table>
       </div>
       <p>Current Steam data reinforces that 1080p is still the largest single primary display resolution among surveyed Windows systems, while 1440p has a substantial and growing share. That makes the 1440p middle ground particularly relevant for new PC builds. <a class="internal-link" href="https://store.steampowered.com/hwsurvey/display/" target="_blank" rel="noopener">Steam Hardware &amp; Software Survey</a>.</p>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>Don't guess your FPS</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>Don't guess your FPS</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>Do not choose a monitor resolution first and then assume your PC will handle it. Start with the performance you actually want:</p>
       <p><strong>Game + resolution + graphics settings + target FPS</strong></p>
       <p>Then evaluate the hardware against that scenario. SystemFit's tools can help you do that before spending money on an upgrade.</p>
@@ -233,26 +374,56 @@
         <a class="tool-link" href="bottleneck.html"><b>Bottleneck Calculator</b><span>Check CPU/GPU balance for your target.</span></a>
         <a class="tool-link" href="gpu-comparison.html"><b>GPU Comparison</b><span>Compare graphics cards before upgrading.</span></a>
       </div>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>Final verdict</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>Final verdict</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p><strong>1080p</strong> remains the practical choice for competitive gaming, budget systems and very high frame rates.</p>
       <p><strong>1440p</strong> is the best all-around starting point for many gamers because it delivers a clear image-quality improvement without the full GPU workload of 4K.</p>
       <p><strong>4K</strong> is the choice for gamers who prioritize sharpness and visual quality and have enough GPU performance to support their target FPS.</p>
       <div class="callout"><strong>The important part:</strong> choose your target FPS first, then match your GPU and CPU to the resolution and settings that can realistically deliver it.</div>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="source-box">
-      <h2>Sources &amp; methodology</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>Sources &amp; methodology</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>The current resolution figures in this guide use Valve's Steam Hardware &amp; Software Survey as a real-world reference. The survey is optional and anonymous, so it should be treated as a snapshot of participating Steam users rather than a census of every PC gamer.</p>
       <p><a href="https://store.steampowered.com/hwsurvey/display/" target="_blank" rel="noopener">Valve — Steam Hardware &amp; Software Survey: Display Resolution</a></p>
       <p><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener">Google Search Central — Creating helpful, reliable, people-first content</a></p>
+    
+        </div>
+      </div>
     </section>
 
-    <section class="section-card">
-      <h2>Related guides</h2>
+    
+    <section class="accordion reveal">
+      <button class="accordion-trigger" type="button" aria-expanded="false">
+        <span>Related guides</span><span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel" hidden>
+        <div class="accordion-panel-inner">
+
       <p>Continue with our <a class="internal-link" href="how-much-ram-for-gaming-2026.html">RAM guide</a>, <a class="internal-link" href="how-much-vram-for-gaming-2026.html">VRAM guide</a> or <a class="internal-link" href="cpu-vs-gpu-bottleneck.html">CPU vs GPU Bottleneck guide</a>.</p>
+    
+        </div>
+      </div>
     </section>
   </article>
 </main>
@@ -262,6 +433,39 @@
   <p><a href="privacy-policy.html">Privacy Policy</a> · <a href="contact.html">Contact</a></p>
 </footer>
 
+<script>
+(()=>{
+  document.querySelectorAll(".accordion-trigger").forEach(trigger=>{
+    trigger.addEventListener("click",()=>{
+      const panel=trigger.nextElementSibling;
+      const open=trigger.getAttribute("aria-expanded")==="true";
+      trigger.setAttribute("aria-expanded",String(!open));
+      if(open){
+        panel.classList.remove("open");
+        panel.addEventListener("transitionend",()=>{if(!panel.classList.contains("open"))panel.hidden=true},{once:true});
+      }else{
+        panel.hidden=false;
+        requestAnimationFrame(()=>panel.classList.add("open"));
+      }
+    });
+  });
+
+  const items=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.08,rootMargin:"0px 0px -40px 0px"});
+    items.forEach(item=>observer.observe(item));
+  }else{
+    items.forEach(item=>item.classList.add("is-visible"));
+  }
+})();
+</script>
 <script src="header.js" defer></script>
 </body>
 </html>
