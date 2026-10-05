@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090c14">
 <title>GPU Comparison Tool | SystemFit PC</title>
-<meta name="description" content="Compare up to five graphics cards side by side. Explore GPU memory, power, relative gaming tiers, workloads and value in a clear, beginner-friendly guide.">
+<meta name="description" content="Compare graphics cards by specifications, memory, power, performance class and workload fit.">
 <link rel="canonical" href="https://systemfitpc.vercel.app/gpu-comparison.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -162,7 +162,17 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
   .summary-grid.selection-count-4{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
 </style>
-<style id="final-workload-method-note">.workload-method-note{font-size:8px;line-height:1.3;color:#77859b;margin:-3px 0 8px}</style></head>
+<style id="final-workload-method-note">.workload-method-note{font-size:8px;line-height:1.3;color:#77859b;margin:-3px 0 8px}</style>
+<meta property="og:title" content="GPU Comparison Tool | SystemFit PC">
+<meta property="og:description" content="Compare graphics cards by specifications, memory, power, performance class and workload fit.">
+<meta property="og:url" content="https://systemfitpc.vercel.app/gpu-comparison.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SystemFit PC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GPU Comparison Tool | SystemFit PC">
+<meta name="twitter:description" content="Compare graphics cards by specifications, memory, power, performance class and workload fit.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"GPU Comparison Tool","url":"https://systemfitpc.vercel.app/gpu-comparison.html","description":"A tool for comparing graphics card specifications, performance class, memory and power.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web browser","publisher":{"@type":"Organization","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/"}}</script>
+</head>
 <body>
 <div id="site-header"></div>
 <main class="main">
@@ -215,7 +225,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 </div>
 <div class="footnote"><strong>How to use this comparison:</strong> The tool compares published specifications and broad performance classes; it does not produce a single synthetic score or promise FPS. Gaming results vary by game, resolution, settings, ray tracing, CPU, drivers, cooling and exact partner-card model. Specifications are typical/reference values and partner cards may differ. Confirm exact specifications and PSU guidance with the card maker before buying.</div>
 </section>
-<div class="compare-dock" id="compareDock" aria-live="polite" aria-hidden="true"><div class="compare-dock-copy"><strong id="dockCount">0 GPUs selected</strong><span>Ready to compare side by side</span></div><button class="btn primary" id="dockCompareBtn" type="button" disabled>Compare now <span aria-hidden="true">→</span></button></div>
+<section class="panel"><h2>Related tools and guides</h2><p>Estimate performance with the <a href="fps-calculator.html">FPS Calculator</a>, plan parts with the <a href="build-planner.html">PC Build Planner</a>, or read our <a href="how-much-vram-for-gaming-2026.html">VRAM guide</a>.</p></section><div class="compare-dock" id="compareDock" aria-live="polite" aria-hidden="true"><div class="compare-dock-copy"><strong id="dockCount">0 GPUs selected</strong><span>Ready to compare side by side</span></div><button class="btn primary" id="dockCompareBtn" type="button" disabled>Compare now <span aria-hidden="true">→</span></button></div>
 </main>
 <script>
 const gpus=[
