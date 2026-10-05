@@ -1,367 +1,1759 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH7D3F7VV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH7D3F7VV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CSH7D3F7VV');
+  </script>
 
-  gtag('config', 'G-CSH7D3F7VV');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Estimate gaming FPS for popular games based on your CPU, GPU, resolution and graphics settings with SystemFit PC's practical FPS calculator.">
-<link rel="canonical" href="https://systemfitpc.vercel.app/fps-calculator.html">
-<title>SystemFit PC — FPS Calculator</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#0b0d12;--panel:#171a22;--panel2:#111319;--border:#2b3040;
-  --text:#f3f5f8;--muted:#91a0b8;--purple:#7357ff;--cpu:#8b5cf6;
-  --gpu:#19a8e8;--good:#36d77a;--warn:#f4a62a;--bad:#ff4d5d;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Estimate gaming FPS for hundreds of popular PC games using your CPU, GPU, resolution, graphics settings, upscaling, ray tracing and frame generation.">
+  <link rel="canonical" href="https://systemfitpc.vercel.app/fps-calculator.html">
+  <title>FPS Calculator — Gaming Performance Estimator | SystemFit PC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#070a11;
+      --bg2:#0b1020;
+      --panel:rgba(15,21,35,.86);
+      --panel2:rgba(10,15,27,.92);
+      --panel3:#11192a;
+      --border:rgba(158,178,214,.16);
+      --border2:rgba(130,111,255,.28);
+      --text:#f6f8ff;
+      --muted:#a6b2c7;
+      --dim:#718099;
+      --purple:#765cff;
+      --purple2:#9c88ff;
+      --cyan:#5bc8ff;
+      --green:#54e59a;
+      --yellow:#ffc56e;
+      --red:#ff7180;
+      --shadow:0 26px 90px rgba(0,0,0,.34);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(116,83,255,.20),transparent 30%),
+        radial-gradient(circle at 90% 15%,rgba(33,161,229,.13),transparent 30%),
+        linear-gradient(180deg,#070a11 0%,#080c15 45%,#070a11 100%);
+      font-family:"DM Sans",Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-1;
+      background:
+        linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+      background-size:52px 52px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.5),transparent 70%);
+    }
+    a{color:inherit}
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    :focus-visible{outline:2px solid #a797ff;outline-offset:3px}
+
+    .wrap{max-width:1220px;margin:auto;padding:34px 22px 70px}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--border);
+      border-radius:26px;
+      padding:clamp(25px,5vw,54px);
+      background:
+        radial-gradient(circle at 85% 25%,rgba(80,191,255,.12),transparent 27%),
+        radial-gradient(circle at 15% 0%,rgba(118,92,255,.20),transparent 35%),
+        linear-gradient(145deg,rgba(20,28,47,.94),rgba(9,14,25,.94));
+      box-shadow:var(--shadow);
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      width:360px;height:360px;
+      right:-130px;bottom:-220px;
+      border-radius:50%;
+      border:1px solid rgba(113,203,255,.18);
+      box-shadow:0 0 0 40px rgba(113,203,255,.025),0 0 0 80px rgba(113,203,255,.015);
+    }
+    .eyebrow{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:7px 11px;
+      border:1px solid rgba(143,126,255,.28);
+      border-radius:999px;
+      color:#c2b8ff;
+      background:rgba(118,92,255,.09);
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.12em;
+    }
+    .eyebrow i{
+      width:7px;height:7px;border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 12px rgba(84,229,154,.8);
+    }
+    h1{
+      position:relative;
+      z-index:1;
+      max-width:820px;
+      margin:17px 0 13px;
+      font:700 clamp(36px,6vw,66px)/1 "Space Grotesk",sans-serif;
+      letter-spacing:-.055em;
+    }
+    .hero h1 span{
+      background:linear-gradient(105deg,#fff 15%,#b6a8ff 55%,#66d1ff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero-copy{
+      position:relative;z-index:1;
+      max-width:760px;
+      margin:0;
+      color:#aebbd0;
+      font-size:15px;
+      line-height:1.75;
+    }
+    .hero-stats{
+      position:relative;z-index:1;
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:25px;
+    }
+    .hero-stat{
+      padding:9px 12px;
+      border:1px solid rgba(158,178,214,.14);
+      border-radius:10px;
+      background:rgba(255,255,255,.035);
+      color:#c9d3e4;
+      font-size:11px;
+    }
+    .hero-stat b{color:#fff}
+
+    .calculator{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:minmax(0,1.08fr) minmax(390px,.92fr);
+      gap:18px;
+      align-items:start;
+    }
+    .card{
+      border:1px solid var(--border);
+      border-radius:20px;
+      background:linear-gradient(145deg,rgba(18,26,43,.91),rgba(9,14,25,.94));
+      box-shadow:0 18px 65px rgba(0,0,0,.20);
+    }
+    .controls{padding:24px}
+    .card-heading{
+      display:flex;
+      justify-content:space-between;
+      gap:15px;
+      align-items:flex-start;
+      margin-bottom:20px;
+    }
+    .card-heading h2{
+      margin:0;
+      font:700 22px/1.15 "Space Grotesk",sans-serif;
+      letter-spacing:-.035em;
+    }
+    .card-heading p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+    .live-dot{
+      flex:none;
+      display:inline-flex;align-items:center;gap:7px;
+      color:#92a0b8;font-size:10px;font-weight:700;
+      text-transform:uppercase;letter-spacing:.08em;
+    }
+    .live-dot i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(84,229,154,.8)}
+
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .field{min-width:0}
+    .field.full{grid-column:1/-1}
+    label{
+      display:flex;
+      justify-content:space-between;
+      gap:8px;
+      margin-bottom:8px;
+      color:#dbe2ef;
+      font-size:12px;
+      font-weight:800;
+    }
+    label span{color:var(--dim);font-size:10px;font-weight:600}
+    select,input{
+      width:100%;
+      height:48px;
+      color:#f4f7ff;
+      background:rgba(5,9,17,.78);
+      border:1px solid rgba(157,176,211,.19);
+      border-radius:11px;
+      padding:0 13px;
+      outline:none;
+      transition:border-color .18s,box-shadow .18s,background .18s;
+    }
+    select:hover,input:hover{border-color:rgba(145,125,255,.42)}
+    select:invalid{color:#74829a}
+    select:focus,input:focus{
+      border-color:#8c79ff;
+      box-shadow:0 0 0 3px rgba(118,92,255,.13);
+      background:#0b1120;
+    }
+    .game-picker{position:relative}
+    .game-picker-trigger{
+      width:100%;
+      min-height:58px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:10px 13px;
+      text-align:left;
+      color:#f4f7ff;
+      background:rgba(5,9,17,.78);
+      border:1px solid rgba(157,176,211,.19);
+      border-radius:11px;
+      transition:border-color .18s,box-shadow .18s,background .18s;
+    }
+    .game-picker-trigger:hover,.game-picker.open .game-picker-trigger{
+      border-color:rgba(145,125,255,.50);
+      background:#0b1120;
+    }
+    .game-picker-trigger small{
+      display:block;
+      color:#74829a;
+      font-size:8px;
+      font-weight:900;
+      letter-spacing:.10em;
+    }
+    .game-picker-trigger strong{
+      display:block;
+      margin-top:4px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      font-size:13px;
+    }
+    .picker-chevron{
+      color:#9e8cff;
+      font-size:18px;
+      line-height:1;
+      transition:transform .18s;
+    }
+    .game-picker.open .picker-chevron{transform:rotate(180deg)}
+    .game-picker-menu{
+      position:absolute;
+      z-index:100;
+      left:0;
+      right:0;
+      top:calc(100% + 8px);
+      display:none;
+      padding:10px;
+      border:1px solid rgba(157,176,211,.20);
+      border-radius:15px;
+      background:rgba(10,16,28,.98);
+      box-shadow:0 24px 70px rgba(0,0,0,.50);
+      backdrop-filter:blur(20px);
+    }
+    .game-picker.open .game-picker-menu{display:block}
+    .game-picker-search{position:relative}
+    .game-picker-search input{padding-right:40px}
+    .game-picker-count{
+      padding:8px 4px 7px;
+      color:#718099;
+      font-size:9px;
+      font-weight:800;
+    }
+    .game-picker-list{
+      max-height:310px;
+      overflow:auto;
+      display:grid;
+      gap:4px;
+      padding-right:2px;
+    }
+    .game-picker-option{
+      width:100%;
+      min-height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:8px 10px;
+      border:1px solid transparent;
+      border-radius:9px;
+      text-align:left;
+      color:#b9c5d8;
+      background:rgba(255,255,255,.025);
+    }
+    .game-picker-option:hover,.game-picker-option.selected{
+      color:#fff;
+      background:rgba(118,92,255,.12);
+      border-color:rgba(145,125,255,.22);
+    }
+    .game-picker-option b{
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      font-size:10px;
+    }
+    .game-picker-option small{
+      flex:none;
+      color:#6f7d94;
+      font-size:8px;
+    }
+    .game-picker-empty{
+      padding:24px 10px;
+      text-align:center;
+      color:#74829a;
+      font-size:10px;
+    }
+
+    .game-search{
+      position:relative;
+    }
+    .game-search input{padding-right:40px}
+    .search-icon{
+      position:absolute;right:13px;top:50%;transform:translateY(-50%);
+      color:#7d8aa1;font-size:16px;pointer-events:none;
+    }
+    .hint{margin-top:6px;color:#728097;font-size:10px;line-height:1.4}
+
+    .chip-group{display:flex;flex-wrap:wrap;gap:7px}
+    .chip{
+      min-width:76px;
+      height:38px;
+      padding:0 12px;
+      border:1px solid rgba(157,176,211,.15);
+      border-radius:10px;
+      color:#aebbd0;
+      background:rgba(255,255,255,.035);
+      font-size:11px;
+      font-weight:800;
+      transition:.18s;
+    }
+    .chip:hover{border-color:rgba(145,125,255,.42);color:#fff}
+    .chip.active{
+      border-color:rgba(145,125,255,.55);
+      color:#fff;
+      background:linear-gradient(135deg,rgba(118,92,255,.25),rgba(72,193,255,.08));
+      box-shadow:inset 0 0 20px rgba(118,92,255,.08);
+    }
+
+    .toggle-row{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+    }
+    .toggle{
+      position:relative;
+      min-height:52px;
+      padding:9px 10px;
+      text-align:left;
+      border:1px solid rgba(157,176,211,.15);
+      border-radius:11px;
+      color:#aebbd0;
+      background:rgba(255,255,255,.035);
+      transition:.18s;
+    }
+    .toggle b{display:block;color:#dfe6f2;font-size:11px}
+    .toggle small{display:block;margin-top:3px;color:#718099;font-size:9px}
+    .toggle.active{
+      border-color:rgba(145,125,255,.45);
+      background:rgba(118,92,255,.12);
+    }
+    .toggle.active:after{
+      content:"ON";
+      position:absolute;top:8px;right:8px;
+      color:#72e6af;font-size:8px;font-weight:900;
+    }
+
+    .calculate:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+  filter:grayscale(.3);
 }
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
-.site-header{height:72px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:#0c0e14;position:sticky;top:0;z-index:20}
-.logo{font-size:22px;font-weight:800}.logo span{color:#765cff}
-.nav{display:flex;gap:8px}.nav a{color:#aeb7c8;text-decoration:none;padding:10px 14px;border-radius:8px;font-size:14px}.nav a.active{background:#202431;color:#fff}
-.wrap{max-width:1180px;margin:0 auto;padding:26px 22px 60px}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px}
-h1{font-size:30px;margin:0 0 8px}.subtitle{color:#9eabc0;font-size:14px;line-height:1.6;margin-bottom:26px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-label{display:block;font-weight:700;font-size:13px;margin-bottom:8px}
-input,select{width:100%;height:42px;background:#0d0f15;border:1px solid #323849;color:#f4f6fa;border-radius:8px;padding:0 12px;outline:none}
-input:focus,select:focus{border-color:#6370ff}
-.search-row{margin-bottom:16px}
-.field-help{font-size:10px;color:#76839a;margin-top:6px}
-.brand-name{font-size:10px;color:#9ba7bb;font-weight:800;letter-spacing:1px}
-.hw-score{font-size:10px;color:#8490a6}
-.scenario-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.scenario-grid > div{min-width:0}
-.full{grid-column:1/-1}.select-row{margin-top:4px}
-.btn{height:44px;border:0;border-radius:8px;background:var(--purple);color:white;font-weight:800;width:100%;cursor:pointer;margin-top:18px}
-.btn:hover{filter:brightness(1.08)}
-.result{margin-top:18px;background:#0f1117;border:1px solid #2a3040;border-radius:12px;padding:20px}
-.result-head{display:flex;justify-content:space-between;align-items:center;gap:15px}.result-title{font-size:22px;font-weight:800}.pill{padding:8px 12px;border-radius:20px;background:#252a3b;font-size:12px;font-weight:800}
-.pill.cpu{color:#c3a7ff}.pill.gpu{color:#48baff}.pill.balanced{color:#52e28a}
-.pair{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:12px;margin:18px 0}
-.pair-card{background:#191d26;border:1px solid #303748;border-radius:10px;padding:14px}.pair-card.cpu{border-left:3px solid var(--cpu)}.pair-card.gpu{border-left:3px solid var(--gpu)}
-.vs{text-align:center;color:#9aa4b6;font-size:11px;font-weight:800}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#191d26;border:1px solid #292f3c;border-radius:9px;padding:13px}.stat small{color:#8290a7;display:block;font-size:10px}.stat strong{display:block;font-size:24px;margin-top:5px}.stat span{font-size:10px;color:#76839a}
-.section{background:#191d26;border:1px solid #2a3040;border-radius:10px;padding:16px;margin-top:14px}.section h3{font-size:14px;margin:0 0 15px}
-.bar-row{margin:12px 0}.bar-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px}.bar{height:8px;background:#292f3d;border-radius:20px;overflow:hidden}.fill{height:100%;border-radius:20px}.fill.cpu{background:var(--cpu)}.fill.gpu{background:var(--gpu)}.fill.good{background:var(--good)}.fill.warn{background:var(--warn)}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.info{background:#191d26;border:1px solid #292f3c;border-radius:9px;padding:12px}.info small{display:block;color:#8290a7;font-size:10px}.info strong{font-size:14px;margin-top:4px;display:block}
-.disclaimer{font-size:10px;color:#6f7c91;line-height:1.55;margin-top:16px}
-.hidden{display:none}
-@media(max-width:800px){.grid2,.stats,.scenario-grid,.info-grid{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.vs{display:none}.site-header{padding:0 18px}.nav a{padding:8px}.wrap{padding:18px 12px}.result-head{align-items:flex-start;flex-direction:column}}
+.calculate{
+      width:100%;
+      height:54px;
+      margin-top:18px;
+      border:0;
+      border-radius:12px;
+      color:#fff;
+      background:linear-gradient(105deg,#765cff,#634be0 55%,#3aaee8);
+      box-shadow:0 15px 32px rgba(93,75,221,.22);
+      font-weight:900;
+      letter-spacing:.01em;
+      transition:transform .18s,filter .18s;
+    }
+    .calculate:hover{transform:translateY(-1px);filter:brightness(1.09)}
+    .calculate:active{transform:translateY(0)}
 
-/* SystemFit PC visual refresh */
-:root{--bg:#090c14;--panel:rgba(20,26,40,.78);--panel2:rgba(13,18,29,.9);--border:rgba(157,174,204,.17);--text:#f5f7fc;--muted:#aab5c8;--purple:#765fff;--cpu:#a78bfa;--gpu:#63c7ff;--good:#5ce0a2;--warn:#ffc06b;--bad:#ff7d86}
-body{font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 12% 0%,rgba(110,78,255,.19),transparent 34%),radial-gradient(ellipse at 90% 18%,rgba(28,157,218,.13),transparent 32%),var(--bg)}
-body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 65% 75%,rgba(59,105,180,.08),transparent 36%);filter:blur(35px)}
-h1,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
-.site-header{background:rgba(9,12,20,.74);border-color:var(--border);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.logo span{color:#a591ff}
-.nav a{border:1px solid transparent;transition:background .2s,border-color .2s,color .2s}
-.nav a:hover,.nav a.active{background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
-.wrap{padding-top:38px}
-.card{background:linear-gradient(145deg,rgba(22,29,45,.88),rgba(13,18,29,.86));border-color:var(--border);border-radius:20px;padding:clamp(20px,3vw,34px);box-shadow:0 24px 80px rgba(0,0,0,.23);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-h1{font-size:clamp(29px,4vw,40px);line-height:1.12}
-.subtitle{max-width:760px;font-size:15px;line-height:1.75;color:#adbad0}
-label{font-size:13px;letter-spacing:.01em}
-input,select{height:48px;background:rgba(7,11,19,.72);border-color:rgba(159,176,207,.2);border-radius:10px;font:inherit;transition:border-color .2s,box-shadow .2s,background .2s}
-input:hover,select:hover{border-color:rgba(153,134,255,.46)}
-input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,255,.15);background:#0c1120}
-.field-help{font-size:11px;color:#8d9cb5}
-.brand-name{display:inline-flex;align-items:center;width:max-content;padding:5px 9px;margin-bottom:8px;border:1px solid currentColor;border-radius:999px;background:rgba(255,255,255,.04);font-size:10px;letter-spacing:.06em}
-.vendor-intel{color:#66c4ff}.vendor-amd{color:#ff927d}.vendor-nvidia{color:#7fe3a0}.vendor-other{color:#b6c2d8}
-.hw-score{font-size:11px;line-height:1.55;color:#a1aec4}
-.btn{height:50px;border-radius:11px;background:linear-gradient(115deg,#795fff,#654de7);box-shadow:0 12px 28px rgba(93,74,227,.22);font:700 15px "DM Sans",sans-serif;transition:transform .2s,filter .2s}
-.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
-.result{background:rgba(8,12,20,.76);border-color:rgba(150,169,200,.2);border-radius:16px;padding:clamp(16px,2.5vw,26px)}
-.result-title{font-family:"Space Grotesk",sans-serif;font-size:clamp(22px,3vw,29px);letter-spacing:-.04em}
-.pill{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.055)}
-.pair{gap:14px}
-.pair-card{min-width:0;min-height:116px;display:flex;align-items:center;gap:15px;padding:17px;border-radius:14px;background:linear-gradient(145deg,rgba(29,36,55,.86),rgba(15,21,34,.9));border-color:rgba(156,174,205,.16)}
-.pair-card.cpu{border-left:3px solid var(--cpu);background:linear-gradient(145deg,rgba(84,61,150,.19),rgba(15,21,34,.9))}
-.pair-card.gpu{border-left:3px solid var(--gpu);background:linear-gradient(145deg,rgba(37,104,145,.2),rgba(15,21,34,.9))}
-.pair-card b{display:block;font-size:15px;line-height:1.35;overflow-wrap:anywhere}
-.pair-info{min-width:0}
-.hardware-icon{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:15px;background:rgba(167,139,250,.11);color:#b7a2ff;border:1px solid rgba(167,139,250,.19)}
-.pair-card.gpu .hardware-icon{width:74px;flex-basis:74px;background:rgba(99,199,255,.1);color:#7bd5ff;border-color:rgba(99,199,255,.2)}
-.hardware-icon svg{width:48px;height:48px}
-.pair-card.gpu .hardware-icon svg{width:66px;height:48px}
-.vs{color:#7e8ca4}
-.stats{gap:12px}
-.stat{background:rgba(20,27,42,.75);border-color:var(--border);border-radius:13px;padding:16px}
-.stat:nth-child(1){border-top:2px solid var(--cpu)}.stat:nth-child(2){border-top:2px solid var(--gpu)}.stat:nth-child(3){border-top:2px solid var(--good)}
-.stat small{font-size:11px;color:#aab7cd}.stat strong{font-family:"Space Grotesk",sans-serif;font-size:28px}
-.section{background:rgba(19,26,40,.76);border-color:var(--border);border-radius:14px;padding:18px}
-.section h3{font-size:16px;letter-spacing:-.02em}
-.bar{height:10px;background:rgba(147,163,189,.14)}
-.fill{transition:width .45s ease}
-.info{background:rgba(12,18,30,.75);border-color:rgba(157,174,204,.12);border-radius:11px;padding:14px}
-.info small{font-size:11px}.info strong{font-size:14px;line-height:1.4}
-.disclaimer{font-size:11px;color:#9aa8bf;line-height:1.75;padding:14px 15px;border:1px solid rgba(157,174,204,.12);border-radius:12px;background:rgba(255,255,255,.025)}
-:focus-visible{outline:2px solid #9b8aff;outline-offset:3px}
-@media(max-width:800px){.wrap{padding:22px 14px 42px}.pair{grid-template-columns:1fr;gap:10px}.pair-card{min-height:100px}.vs{display:none}.grid2,.stats,.scenario-grid,.info-grid{grid-template-columns:1fr}}
-@media(max-width:480px){.site-header{height:auto;min-height:68px;align-items:flex-start;flex-direction:column;gap:6px;padding:12px 16px}.nav{width:100%;justify-content:space-between;gap:2px}.nav a{font-size:12px;padding:8px 9px}.card{padding:18px}.pair-card{gap:11px;padding:13px}.hardware-icon{width:48px;height:48px;flex-basis:48px}.pair-card.gpu .hardware-icon{width:62px;flex-basis:62px}.hardware-icon svg{width:40px;height:40px}.pair-card.gpu .hardware-icon svg{width:54px;height:40px}.stat{padding:13px}}
+    /* Results */
+    .results{
+      padding:22px;
+      position:sticky;
+      top:92px;
+    }
+    .result-top{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+      padding-bottom:17px;
+      border-bottom:1px solid rgba(157,176,211,.12);
+    }
+    .result-kicker{
+      color:#7f8da5;
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .result-game{
+      margin-top:5px;
+      font:700 18px/1.25 "Space Grotesk",sans-serif;
+      letter-spacing:-.025em;
+    }
+    .estimate-badge{
+      flex:none;
+      padding:7px 9px;
+      border-radius:8px;
+      color:#c9c0ff;
+      background:rgba(118,92,255,.10);
+      border:1px solid rgba(145,125,255,.22);
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:.08em;
+    }
 
+    .score-row{
+      display:grid;
+      grid-template-columns:126px 1fr;
+      gap:18px;
+      align-items:center;
+      margin:20px 0;
+    }
+    .score-ring{
+      --score:72;
+      width:118px;height:118px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:conic-gradient(var(--purple) calc(var(--score)*1%),rgba(132,151,185,.12) 0);
+      position:relative;
+    }
+    .score-ring:before{
+      content:"";
+      position:absolute;
+      inset:8px;
+      border-radius:50%;
+      background:#0b111d;
+      border:1px solid rgba(157,176,211,.12);
+    }
+    .score-inner{position:relative;text-align:center}
+    .score-num{font:700 34px/1 "Space Grotesk",sans-serif}
+    .score-label{margin-top:5px;color:#75839b;font-size:8px;font-weight:900;letter-spacing:.1em}
+    .score-copy h3{margin:0;font:700 17px "Space Grotesk",sans-serif}
+    .score-copy p{margin:7px 0 0;color:#98a6bc;font-size:11px;line-height:1.55}
+    .performance-tag{
+      display:inline-flex;
+      margin-top:10px;
+      padding:5px 8px;
+      border-radius:7px;
+      background:rgba(84,229,154,.08);
+      border:1px solid rgba(84,229,154,.16);
+      color:#75e6af;
+      font-size:9px;
+      font-weight:900;
+    }
 
-/* Expandable tools menu */
-.tool-dropdown{position:relative}
-.tool-dropdown summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;color:var(--muted);padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;transition:background .2s,border-color .2s,color .2s;user-select:none}
-.tool-dropdown summary::-webkit-details-marker{display:none}
-.tool-dropdown summary:after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s}
-.tool-dropdown[open] summary:after{transform:rotate(225deg) translate(-1px,-1px)}
-.tool-dropdown summary:hover,.tool-dropdown[open] summary,.tool-dropdown.summary-active summary{color:#fff;background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
-.tool-menu{position:absolute;z-index:1001;top:calc(100% + 12px);left:50%;transform:translateX(-50%);width:min(355px,calc(100vw - 28px));max-height:min(70vh,560px);overflow:auto;padding:10px;border:1px solid rgba(157,174,204,.2);border-radius:16px;background:rgba(13,18,29,.96);box-shadow:0 24px 70px rgba(0,0,0,.48);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);animation:menu-in .16s ease-out}
-@keyframes menu-in{from{opacity:0;transform:translate(-50%,-5px)}to{opacity:1;transform:translate(-50%,0)}}
-.tool-menu-label{padding:8px 10px 6px;color:#8f9db5;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
-.tool-menu-label.planned-label{margin-top:7px;border-top:1px solid rgba(157,174,204,.12);padding-top:14px}
-.tool-menu-item{display:flex;align-items:center;gap:11px;padding:10px;border:1px solid transparent;border-radius:11px;color:#edf1f9;text-decoration:none;transition:background .18s,border-color .18s}
-.tool-menu-item>span:nth-child(2){min-width:0;flex:1}
-.tool-menu-item b{display:block;font-size:12px;line-height:1.35;font-weight:700}
-.tool-menu-item small{display:block;margin-top:3px;color:#96a3b9;font-size:10px;line-height:1.3}
-a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255,.13);border-color:rgba(151,132,255,.25);outline:none}
-.tool-menu-item.current-tool{background:linear-gradient(110deg,rgba(118,95,255,.12),rgba(66,157,210,.07));border-color:rgba(142,128,239,.17)}
-.tool-menu-item.planned-tool{cursor:default;color:#c1cada}
-.tool-menu-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);color:#b6c2d8;font-family:"Space Grotesk",sans-serif;font-size:10px;font-weight:700}
-.cpu-menu-icon{background:rgba(137,111,255,.16);color:#c2adff}.fps-menu-icon{background:rgba(72,182,255,.12);color:#77cbff}.build-menu-icon{background:rgba(68,212,150,.12);color:#71e5b0}.upgrade-menu-icon{background:rgba(255,170,98,.12);color:#ffc080}.compare-menu-icon{background:rgba(255,126,145,.12);color:#ff9baa}.power-menu-icon{background:rgba(255,204,92,.12);color:#ffda7d}
-.tool-menu-arrow{color:#9d8cff;font-size:15px}
-.soon-tag{padding:4px 7px;border:1px solid rgba(157,174,204,.13);border-radius:999px;color:#8c99af;font-size:9px;font-weight:700}
-@media(max-width:800px){.tool-dropdown{width:max-content}.tool-dropdown summary{padding:8px 11px}.tool-menu{left:auto;right:-60px;transform:none}@keyframes menu-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}}
-@media(prefers-reduced-motion:reduce){.tool-menu{animation:none}.tool-dropdown summary:after{transition:none}}
+    .fps-hero{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:9px;
+      margin-bottom:10px;
+    }
+    .fps-box{
+      padding:15px;
+      border-radius:13px;
+      background:linear-gradient(145deg,rgba(23,34,55,.86),rgba(12,19,32,.9));
+      border:1px solid rgba(157,176,211,.13);
+    }
+    .fps-box.primary{border-top:2px solid var(--cyan)}
+    .fps-box.low{border-top:2px solid var(--purple2)}
+    .fps-box small{display:block;color:#7e8ca4;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .fps-box strong{display:block;margin-top:6px;font:700 29px/1 "Space Grotesk",sans-serif}
+    .fps-box span{display:block;margin-top:4px;color:#77859d;font-size:9px}
 
-@keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}@media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}
-/* SystemFit PC wordmark */
-#brand-logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap}
-#brand-logo .brand-monogram{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(159,142,255,.38);border-radius:12px;background:linear-gradient(145deg,rgba(119,94,255,.3),rgba(63,179,231,.15));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 18px rgba(73,62,170,.16);font:800 12px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.09em;color:#f8f7ff}
-#brand-logo .brand-monogram span{color:#86dcff}
-#brand-logo .brand-wordmark{display:inline-flex;align-items:center;font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.055em;color:#f5f7fc}
-#brand-logo .brand-system{color:#f5f7fc}
-#brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}
-#brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
-@media(max-width:800px){#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}}
-</style>
-<style id="homepage-header-system">
-/* Shared SystemFit PC homepage header */
-header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bottom:1px solid rgba(157,174,204,.16);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}header .nav{max-width:1180px;min-height:76px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;flex-direction:row;gap:0}header .logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap;font:700 25px/1 "Space Grotesk","DM Sans",sans-serif}header .logo span{color:#a591ff}header nav{display:flex;align-items:center;gap:8px}header nav>a{color:#aab5c8;padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;text-decoration:none;transition:background .2s,border-color .2s,color .2s}header nav>a:hover,header nav>a.active{background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2);color:#fff}
-#brand-logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap}#brand-logo .brand-monogram{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(159,142,255,.38);border-radius:12px;background:linear-gradient(145deg,rgba(119,94,255,.3),rgba(63,179,231,.15));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 18px rgba(73,62,170,.16);font:800 12px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.09em;color:#f8f7ff}#brand-logo .brand-monogram span{color:#86dcff}#brand-logo .brand-wordmark{display:inline-flex;align-items:center;font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.055em;color:#f5f7fc}#brand-logo .brand-system{color:#f5f7fc!important}#brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}#brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
-.tool-dropdown{position:relative;--menu-duration:190ms}.tool-dropdown summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;color:#aab5c8;padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;transition:background .2s,border-color .2s,color .2s;user-select:none}.tool-dropdown summary::-webkit-details-marker{display:none}.tool-dropdown summary:after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s}.tool-dropdown[open] summary:after{transform:rotate(225deg) translate(-1px,-1px)}.tool-dropdown summary:hover,.tool-dropdown[open] summary,.tool-dropdown.summary-active summary{color:#fff;background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
-.tool-menu{position:absolute;z-index:1001;top:calc(100% + 12px);left:auto;right:0;transform:none;transform-origin:top right;width:min(355px,calc(100vw - 28px));max-height:min(70vh,560px);overflow:auto;padding:10px;border:1px solid rgba(157,174,204,.2);border-radius:16px;background:rgba(13,18,29,.96);box-shadow:0 24px 70px rgba(0,0,0,.48);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);animation:tools-expand 190ms cubic-bezier(.2,.75,.2,1) both}.tool-menu-label{padding:8px 10px 6px;color:#8f9db5;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.tool-menu-label.planned-label{margin-top:7px;border-top:1px solid rgba(157,174,204,.12);padding-top:14px}.tool-menu-item{display:flex;align-items:center;gap:11px;padding:10px;border:1px solid transparent;border-radius:11px;color:#edf1f9;text-decoration:none;transition:background .18s,border-color .18s}.tool-menu-item>span:nth-child(2){min-width:0;flex:1}.tool-menu-item b{display:block;font-size:12px;line-height:1.35;font-weight:700}.tool-menu-item small{display:block;margin-top:3px;color:#96a3b9;font-size:10px;line-height:1.3}a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255,.13);border-color:rgba(151,132,255,.25);outline:none}.tool-menu-item.current-tool{background:linear-gradient(110deg,rgba(118,95,255,.12),rgba(66,157,210,.07));border-color:rgba(142,128,239,.17)}.tool-menu-item.planned-tool{cursor:default;color:#c1cada}.tool-menu-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);color:#b6c2d8;font:700 10px "Space Grotesk",sans-serif}.cpu-menu-icon{background:rgba(137,111,255,.16);color:#c2adff}.fps-menu-icon{background:rgba(72,182,255,.12);color:#77cbff}.build-menu-icon{background:rgba(68,212,150,.12);color:#71e5b0}.upgrade-menu-icon{background:rgba(255,170,98,.12);color:#ffc080}.compare-menu-icon{background:rgba(255,126,145,.12);color:#ff9baa}.power-menu-icon{background:rgba(255,204,92,.12);color:#ffda7d}.tool-menu-arrow{color:#9d8cff;font-size:15px}.soon-tag{padding:4px 7px;border:1px solid rgba(157,174,204,.13);border-radius:999px;color:#8c99af;font-size:9px;font-weight:700}
-@keyframes tools-expand{from{opacity:0;transform:translateY(-9px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}.tool-dropdown.is-closing .tool-menu{animation:tools-collapse 150ms cubic-bezier(.4,0,.8,.5) both}@keyframes tools-collapse{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}
-@media(max-width:800px){header .nav{min-height:auto;padding:15px;flex-direction:column;gap:10px}header nav{flex-wrap:wrap;justify-content:center}#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}.tool-dropdown{width:max-content}.tool-menu{left:auto;right:0;transform:none;transform-origin:top right;animation-name:tools-expand-mobile}@keyframes tools-expand-mobile{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}.tool-dropdown.is-closing .tool-menu{animation-name:tools-collapse-mobile}@keyframes tools-collapse-mobile{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-6px) scale(.985)}}}
-@media(prefers-reduced-motion:reduce){.tool-menu,.tool-dropdown.is-closing .tool-menu{animation:none}.tool-dropdown summary:after{transition:none}}
-</style>
+    .metrics{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+      margin-top:10px;
+    }
+    .metric{
+      padding:11px;
+      border:1px solid rgba(157,176,211,.11);
+      border-radius:11px;
+      background:rgba(255,255,255,.025);
+    }
+    .metric small{display:block;color:#75839b;font-size:8px;text-transform:uppercase;letter-spacing:.08em}
+    .metric strong{display:block;margin-top:5px;color:#eaf0fa;font-size:12px;line-height:1.25}
+
+    .balance{
+      margin-top:10px;
+      padding:14px;
+      border:1px solid rgba(157,176,211,.11);
+      border-radius:13px;
+      background:rgba(255,255,255,.025);
+    }
+    .balance-head{display:flex;justify-content:space-between;gap:10px;margin-bottom:13px}
+    .balance-head h3{margin:0;font-size:11px}
+    .balance-head span{color:#7e8ca4;font-size:9px}
+    .balance-row{margin:10px 0}
+    .balance-label{display:flex;justify-content:space-between;margin-bottom:5px;color:#98a6bc;font-size:9px}
+    .bar{height:7px;border-radius:99px;overflow:hidden;background:rgba(142,160,191,.12)}
+    .fill{height:100%;border-radius:99px;transition:width .45s ease}
+    .fill.cpu{background:linear-gradient(90deg,#7a5df1,#b296ff)}
+    .fill.gpu{background:linear-gradient(90deg,#329fd2,#71d7ff)}
+    .fill.vram{background:linear-gradient(90deg,#d89a43,#ffd27d)}
+
+    .result-note{
+      margin:11px 0 0;
+      padding:10px 11px;
+      color:#77869e;
+      border:1px solid rgba(157,176,211,.10);
+      border-radius:10px;
+      background:rgba(255,255,255,.02);
+      font-size:9px;
+      line-height:1.6;
+    }
+
+    /* Library */
+    .library{
+      margin-top:18px;
+      padding:25px;
+    }
+    .library-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:20px;
+      margin-bottom:17px;
+    }
+    .library-head h2{margin:0;font:700 25px "Space Grotesk",sans-serif;letter-spacing:-.035em}
+    .library-head p{margin:6px 0 0;color:#8e9cb3;font-size:11px}
+    .count-badge{
+      flex:none;
+      padding:8px 10px;
+      border-radius:8px;
+      color:#b9c5d8;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(157,176,211,.12);
+      font-size:10px;font-weight:800;
+    }
+    .library-tools{
+      display:grid;
+      grid-template-columns:minmax(220px,1fr) auto;
+      gap:9px;
+      margin-bottom:12px;
+    }
+    .category-tabs{display:flex;flex-wrap:wrap;gap:7px}
+    .category{
+      height:34px;
+      padding:0 10px;
+      border:1px solid rgba(157,176,211,.12);
+      border-radius:9px;
+      color:#8f9db4;
+      background:rgba(255,255,255,.025);
+      font-size:9px;font-weight:800;
+    }
+    .category.active{color:#fff;border-color:rgba(145,125,255,.35);background:rgba(118,92,255,.11)}
+    .game-list{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:7px;
+    }
+    .game-card{
+      min-width:0;
+      padding:11px;
+      text-align:left;
+      border:1px solid rgba(157,176,211,.09);
+      border-radius:10px;
+      color:#bac5d7;
+      background:rgba(255,255,255,.018);
+      transition:.16s;
+    }
+    .game-card:hover{border-color:rgba(145,125,255,.34);background:rgba(118,92,255,.06);color:#fff}
+    .game-card b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px}
+    .game-card small{display:block;margin-top:4px;color:#69778e;font-size:8px}
+    .library-pagination{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin-top:15px;
+      padding-top:15px;
+      border-top:1px solid rgba(157,176,211,.09);
+    }
+    .page-btn{
+      min-width:105px;
+      height:36px;
+      padding:0 12px;
+      border:1px solid rgba(157,176,211,.13);
+      border-radius:9px;
+      color:#aebbd0;
+      background:rgba(255,255,255,.025);
+      font-size:9px;
+      font-weight:800;
+    }
+    .page-btn:hover:not(:disabled){
+      color:#fff;
+      border-color:rgba(145,125,255,.34);
+      background:rgba(118,92,255,.08);
+    }
+    .page-btn:disabled{opacity:.35;cursor:not-allowed}
+    .page-status{
+      min-width:80px;
+      text-align:center;
+      color:#7f8da5;
+      font-size:9px;
+      font-weight:800;
+    }
+    .empty{grid-column:1/-1;padding:28px;text-align:center;color:#78869e;font-size:11px}
+
+    .method{
+      margin-top:18px;
+      padding:20px 22px;
+      border:1px solid rgba(157,176,211,.12);
+      border-radius:16px;
+      background:rgba(11,16,27,.78);
+    }
+    .method h2{margin:0 0 8px;font:700 17px "Space Grotesk",sans-serif}
+    .method p{margin:0;color:#8593aa;font-size:10px;line-height:1.7}
+    .method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+    .method-item{padding:12px;border:1px solid rgba(157,176,211,.09);border-radius:10px;background:rgba(255,255,255,.018)}
+    .method-item b{display:block;font-size:10px}
+    .method-item span{display:block;margin-top:4px;color:#74829a;font-size:9px;line-height:1.45}
+
+    footer{
+      max-width:1220px;
+      margin:0 auto;
+      padding:0 22px 45px;
+      color:#6f7d94;
+      font-size:10px;
+      line-height:1.7;
+    }
+    footer p{margin:5px 0}
+    footer a{color:#9aa7bc;text-decoration:none}
+    footer a:hover{color:#fff}
+
+    .hidden{display:none!important}
+
+    @media(max-width:980px){
+      .calculator{grid-template-columns:1fr}
+      .results{position:static}
+      .game-list{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:700px){
+      .wrap{padding:18px 12px 48px}
+      .hero{padding:27px 20px;border-radius:20px}
+      .field-grid{grid-template-columns:1fr}
+      .field.full{grid-column:auto}
+      .toggle-row{grid-template-columns:1fr}
+      .score-row{grid-template-columns:105px 1fr}
+      .score-ring{width:100px;height:100px}
+      .game-list{grid-template-columns:repeat(2,1fr)}
+      .library-tools{grid-template-columns:1fr}
+      .method-grid{grid-template-columns:1fr}
+      .library{padding:19px}
+      .controls,.results{padding:18px}
+    }
+    @media(max-width:430px){
+      .fps-hero{grid-template-columns:1fr}
+      .metrics{grid-template-columns:1fr 1fr}
+      .score-row{grid-template-columns:1fr;justify-items:center;text-align:center}
+      .score-copy{text-align:center}
+      .game-list{grid-template-columns:1fr}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *{transition:none!important}
+    }
+  </style>
 </head>
+
 <body>
-<div id="site-header"></div>
+  <div id="site-header"></div>
 
-<div class="wrap">
-  <div class="card">
-    <h1>FPS Calculator</h1>
-    <p class="sub">Select a popular game and your hardware to get an estimated average FPS. This is a relative estimate for planning — real results vary with drivers, settings and system load.</p>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow"><i></i> SYSTEMFIT PC · GAMING PERFORMANCE LAB</div>
+      <h1>How many FPS can your PC <span>actually push?</span></h1>
+      <p class="hero-copy">
+        Pick a game, your CPU and GPU, then tune the settings you actually play with.
+        SystemFit combines hardware performance tiers with each game's workload profile to produce a practical FPS estimate, 1% low range and performance score.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat"><b id="heroGameCount">200+</b> PC games</div>
+        <div class="hero-stat">1080p · 1440p · 4K</div>
+        <div class="hero-stat">Upscaling · RT · Frame Gen</div>
+        <div class="hero-stat">Average FPS + 1% Low</div>
+      </div>
+    </section>
 
-    <div class="layout">
-      <div>
-        <div class="field">
-          <label>Game</label>
-          <select id="game"></select>
+    <section class="calculator">
+      <div class="card controls">
+        <div class="card-heading">
+          <div>
+            <h2>Build your gaming scenario</h2>
+            <p>Use your closest real-world settings for a more useful estimate.</p>
+          </div>
+          <div class="live-dot"><i></i> Instant</div>
         </div>
-        <div class="field">
-          <label>CPU</label>
-          <select id="cpu"></select>
+
+        <div class="field-grid">
+          <div class="field full">
+            <label>Game</label>
+            <div class="game-picker" id="gamePicker">
+              <button class="game-picker-trigger" id="gamePickerTrigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span>
+                  <small>SELECT GAME</small>
+                  <strong id="selectedGameLabel">Counter-Strike 2</strong>
+                </span>
+                <b class="picker-chevron">⌄</b>
+              </button>
+              <div class="game-picker-menu" id="gamePickerMenu">
+                <div class="game-picker-search">
+                  <input id="gameSearch" type="search" placeholder="Search Cyberpunk, Valorant, GTA..." autocomplete="off" aria-label="Search games">
+                  <span class="search-icon">⌕</span>
+                </div>
+                <div class="game-picker-count" id="gameCountLabel"></div>
+                <div class="game-picker-list" id="gamePickerList" role="listbox" aria-label="Available games"></div>
+              </div>
+            </div>
+            <select id="game" class="hidden" aria-hidden="true" tabindex="-1"></select>
+            <div class="hint">Open the selector to search or browse every available game.</div>
+          </div>
+
+          <div class="field">
+            <label for="cpu">CPU</label>
+            <select id="cpu" aria-label="CPU"></select>
+          </div>
+
+          <div class="field">
+            <label for="gpu">GPU</label>
+            <select id="gpu" aria-label="GPU"></select>
+          </div>
+
+          <div class="field">
+            <label>Resolution</label>
+            <div class="chip-group" id="resolutionChips">
+              <button class="chip" data-value="720" type="button">720p</button>
+              <button class="chip" data-value="1080" type="button">1080p</button>
+              <button class="chip" data-value="1440" type="button">1440p</button>
+              <button class="chip" data-value="2160" type="button">4K</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Graphics preset</label>
+            <div class="chip-group" id="presetChips">
+              <button class="chip" data-value="low" type="button">Low</button>
+              <button class="chip" data-value="medium" type="button">Medium</button>
+              <button class="chip" data-value="high" type="button">High</button>
+              <button class="chip" data-value="ultra" type="button">Ultra</button>
+            </div>
+          </div>
+
+          <div class="field full">
+            <label>Advanced rendering <span>optional</span></label>
+            <div class="toggle-row">
+              <button class="toggle" id="upscalingToggle" type="button" aria-pressed="false">
+                <b>Upscaling</b><small>DLSS / FSR / XeSS</small>
+              </button>
+              <button class="toggle" id="rtToggle" type="button" aria-pressed="false">
+                <b>Ray tracing</b><small>RT workload enabled</small>
+              </button>
+              <button class="toggle" id="fgToggle" type="button" aria-pressed="false">
+                <b>Frame generation</b><small>Supported hardware only</small>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="field">
-          <label>GPU</label>
-          <select id="gpu"></select>
+
+        <button class="calculate" id="calculateBtn" type="button" disabled aria-disabled="true">⚡ CALCULATE FPS</button>
+      </div>
+
+      <aside class="card results" aria-live="polite">
+        <div class="result-top">
+          <div>
+            <div class="result-kicker">Performance estimate</div>
+            <div class="result-game" id="resultGame">Choose your setup</div>
+          </div>
+          <div class="estimate-badge">ESTIMATE</div>
+        </div>
+
+        <div class="score-row">
+          <div class="score-ring" id="scoreRing" style="--score:0">
+            <div class="score-inner">
+              <div class="score-num" id="score">—</div>
+              <div class="score-label">/ 100</div>
+            </div>
+          </div>
+          <div class="score-copy">
+            <h3 id="scoreTitle">Ready to calculate</h3>
+            <p id="scoreText">Your performance score will combine expected FPS, 1% lows and the selected target resolution.</p>
+            <span class="performance-tag" id="performanceTag">WAITING FOR SETUP</span>
+          </div>
+        </div>
+
+        <div class="fps-hero">
+          <div class="fps-box primary">
+            <small>Expected average</small>
+            <strong id="avg">—</strong>
+            <span>FPS range</span>
+          </div>
+          <div class="fps-box low">
+            <small>Estimated 1% low</small>
+            <strong id="low">—</strong>
+            <span>FPS range</span>
+          </div>
+        </div>
+
+        <div class="metrics">
+          <div class="metric"><small>Frame time</small><strong id="frameTime">—</strong></div>
+          <div class="metric"><small>Limiting side</small><strong id="limit">—</strong></div>
+          <div class="metric"><small>VRAM outlook</small><strong id="vram">—</strong></div>
+        </div>
+
+        <div class="balance">
+          <div class="balance-head">
+            <h3>Workload balance</h3>
+            <span id="balanceText">—</span>
+          </div>
+          <div class="balance-row">
+            <div class="balance-label"><span>CPU pressure</span><b id="cpuPct">—</b></div>
+            <div class="bar"><div class="fill cpu" id="cpuBar" style="width:0"></div></div>
+          </div>
+          <div class="balance-row">
+            <div class="balance-label"><span>GPU pressure</span><b id="gpuPct">—</b></div>
+            <div class="bar"><div class="fill gpu" id="gpuBar" style="width:0"></div></div>
+          </div>
+          <div class="balance-row">
+            <div class="balance-label"><span>Estimated VRAM load</span><b id="vramPct">—</b></div>
+            <div class="bar"><div class="fill vram" id="vramBar" style="width:0"></div></div>
+          </div>
+        </div>
+
+        <p class="result-note" id="resultNote">
+          Modelled estimate — not a direct benchmark. Actual FPS varies with game patches, drivers, temperatures, background processes and exact in-game settings.
+        </p>
+      </aside>
+    </section>
+
+    <section class="card library">
+      <div class="library-head">
+        <div>
+          <h2>Game library</h2>
+          <p>Major PC releases, competitive games and demanding modern titles.</p>
+        </div>
+        <div class="count-badge"><span id="libraryCount">0</span> titles</div>
+      </div>
+
+      <div class="library-tools">
+        <input id="librarySearch" type="search" placeholder="Search the library..." autocomplete="off">
+        <div class="category-tabs" id="categoryTabs">
+          <button class="category active" data-category="All" type="button">All</button>
+          <button class="category" data-category="AAA" type="button">AAA</button>
+          <button class="category" data-category="Competitive" type="button">Competitive</button>
+          <button class="category" data-category="Open World" type="button">Open World</button>
+          <button class="category" data-category="RPG" type="button">RPG</button>
+          <button class="category" data-category="Survival" type="button">Survival</button>
+          <button class="category" data-category="Simulation" type="button">Simulation</button>
         </div>
       </div>
-      <div>
-        <div class="field">
-          <label>Resolution</label>
-          <select id="res">
-            <option value="1.2">720p</option>
-            <option value="1.0" selected>1080p</option>
-            <option value="0.72">1440p</option>
-            <option value="0.42">4K</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Graphics Preset</label>
-          <select id="preset">
-            <option value="1.35">Low</option>
-            <option value="1.15">Medium</option>
-            <option value="1.0" selected>High</option>
-            <option value="0.82">Ultra</option>
-          </select>
-        </div>
-        <button class="btn" onclick="run()">Estimate FPS</button>
+      <div class="game-list" id="gameList"></div>
+      <div class="library-pagination" id="libraryPagination">
+        <button class="page-btn" id="prevPage" type="button">← Previous</button>
+        <div class="page-status" id="pageStatus">Page 1 of 1</div>
+        <button class="page-btn" id="nextPage" type="button">Next →</button>
       </div>
-    </div>
+    </section>
 
-    <div class="result" id="out">
-      <div style="font-size:14px;color:var(--muted)" id="gameName">—</div>
-      <div class="fps-num" id="avg">—</div>
-      <div class="fps-label">Estimated average FPS</div>
-      <span class="rating good" id="rating">—</span>
-      <div class="meta">
-        <div><small>1% Low (est.)</small><strong id="low">—</strong></div>
-        <div><small>Limiting side</small><strong id="limit">—</strong></div>
-        <div><small>Frame time</small><strong id="ft">—</strong></div>
+    <section class="method">
+      <h2>How this calculator works</h2>
+      <p>
+        SystemFit currently uses a transparent performance model rather than pretending every result is a measured benchmark.
+        Each game has a workload profile, while CPUs and GPUs are placed into relative performance tiers. Resolution, preset,
+        ray tracing, upscaling and frame generation then adjust the estimate. Results are deliberately shown as ranges because
+        real-world FPS can move significantly between patches, scenes and settings.
+      </p>
+      <div class="method-grid">
+        <div class="method-item"><b>Game workload</b><span>CPU/GPU demand, VRAM tendency and rendering sensitivity are profiled per title.</span></div>
+        <div class="method-item"><b>Hardware tiers</b><span>CPU and GPU relative scores determine the likely limiting component.</span></div>
+        <div class="method-item"><b>Confidence</b><span>Broad estimates are safer than fake decimal-level benchmark precision.</span></div>
       </div>
-      <p class="note">Relative estimate only. Actual FPS depends on drivers, in-game settings, temperatures and background apps.</p>
-    </div>
-  </div>
-</div>
+    </section>
+  </main>
 
-<script>
-/* Popular games with demand profile (gpuBias 0-1, higher = more GPU heavy) */
-const GAMES = [
-  {name:"Counter-Strike 2", gpuBias:0.30, base:420},
-  {name:"Valorant", gpuBias:0.25, base:500},
-  {name:"Fortnite", gpuBias:0.45, base:220},
-  {name:"League of Legends", gpuBias:0.25, base:450},
-  {name:"Apex Legends", gpuBias:0.50, base:200},
-  {name:"Call of Duty: Warzone", gpuBias:0.55, base:160},
-  {name:"Overwatch 2", gpuBias:0.40, base:280},
-  {name:"Rainbow Six Siege", gpuBias:0.40, base:260},
-  {name:"Minecraft (Java)", gpuBias:0.35, base:300},
-  {name:"Roblox", gpuBias:0.30, base:280},
-  {name:"GTA V", gpuBias:0.55, base:160},
-  {name:"GTA VI (est.)", gpuBias:0.72, base:85},
-  {name:"Cyberpunk 2077", gpuBias:0.75, base:110},
-  {name:"Alan Wake 2", gpuBias:0.78, base:95},
-  {name:"Black Myth: Wukong", gpuBias:0.72, base:105},
-  {name:"Elden Ring", gpuBias:0.60, base:130},
-  {name:"Red Dead Redemption 2", gpuBias:0.68, base:115},
-  {name:"Hogwarts Legacy", gpuBias:0.70, base:105},
-  {name:"Starfield", gpuBias:0.65, base:115},
-  {name:"The Witcher 3", gpuBias:0.60, base:140},
-  {name:"Assassin's Creed Valhalla", gpuBias:0.65, base:120},
-  {name:"Forza Horizon 5", gpuBias:0.60, base:150},
-  {name:"Microsoft Flight Simulator", gpuBias:0.55, base:95},
-  {name:"Baldur's Gate 3", gpuBias:0.50, base:140},
-  {name:"Destiny 2", gpuBias:0.55, base:160},
-  {name:"World of Warcraft", gpuBias:0.45, base:180},
-  {name:"Final Fantasy XIV", gpuBias:0.50, base:150},
-  {name:"Path of Exile 2", gpuBias:0.55, base:140},
-  {name:"Diablo IV", gpuBias:0.58, base:145},
-  {name:"Monster Hunter Wilds", gpuBias:0.70, base:100},
-  {name:"Resident Evil 4 Remake", gpuBias:0.62, base:135},
-  {name:"Spider-Man Remastered", gpuBias:0.65, base:140},
-  {name:"God of War", gpuBias:0.63, base:135},
-  {name:"Horizon Forbidden West", gpuBias:0.68, base:120}
-];
-
-const CPUs = [
-  {name:"Intel Core i3-12100F",score:40},
-  {name:"Intel Core i5-12400F",score:50},
-  {name:"Intel Core i5-13400F",score:62},
-  {name:"Intel Core i5-14400F",score:64},
-  {name:"Intel Core i5-14600K",score:72},
-  {name:"Intel Core i7-13700K",score:75},
-  {name:"Intel Core i7-14700K",score:76},
-  {name:"Intel Core i9-13900K",score:77},
-  {name:"Intel Core i9-14900K",score:78},
-  {name:"AMD Ryzen 5 5600",score:50},
-  {name:"AMD Ryzen 5 7600",score:60},
-  {name:"AMD Ryzen 5 9600X",score:70},
-  {name:"AMD Ryzen 7 5700X3D",score:70},
-  {name:"AMD Ryzen 7 5800X3D",score:74},
-  {name:"AMD Ryzen 7 7800X3D",score:86},
-  {name:"AMD Ryzen 7 9800X3D",score:97},
-  {name:"AMD Ryzen 7 9850X3D",score:100},
-  {name:"AMD Ryzen 9 7950X3D",score:84},
-  {name:"AMD Ryzen 9 9950X3D",score:96}
-];
-
-const GPUs = [
-  {name:"NVIDIA GeForce GTX 1660 SUPER",score:18},
-  {name:"NVIDIA GeForce RTX 3060 12GB",score:28},
-  {name:"NVIDIA GeForce RTX 3060 Ti",score:36},
-  {name:"NVIDIA GeForce RTX 3070",score:42},
-  {name:"NVIDIA GeForce RTX 4060",score:32},
-  {name:"NVIDIA GeForce RTX 4060 Ti",score:38},
-  {name:"NVIDIA GeForce RTX 4070",score:48},
-  {name:"NVIDIA GeForce RTX 4070 SUPER",score:54},
-  {name:"NVIDIA GeForce RTX 4070 Ti SUPER",score:62},
-  {name:"NVIDIA GeForce RTX 4080 SUPER",score:75},
-  {name:"NVIDIA GeForce RTX 4090",score:88},
-  {name:"NVIDIA GeForce RTX 5070",score:58},
-  {name:"NVIDIA GeForce RTX 5070 Ti",score:70},
-  {name:"NVIDIA GeForce RTX 5080",score:80},
-  {name:"NVIDIA GeForce RTX 5090",score:100},
-  {name:"AMD Radeon RX 6600",score:26},
-  {name:"AMD Radeon RX 6700 XT",score:38},
-  {name:"AMD Radeon RX 7600",score:30},
-  {name:"AMD Radeon RX 7800 XT",score:52},
-  {name:"AMD Radeon RX 7900 XTX",score:76},
-  {name:"AMD Radeon RX 9070 XT",score:74},
-  {name:"Intel Arc B580",score:34}
-];
-
-function fill(id, arr, key){
-  const s = document.getElementById(id);
-  arr.forEach((x,i)=>{const o=document.createElement("option");o.value=i;o.textContent=x[key||"name"];s.appendChild(o)});
-}
-fill("game", GAMES); fill("cpu", CPUs); fill("gpu", GPUs);
-
-function run(){
-  const g = GAMES[+document.getElementById("game").value];
-  const cpu = CPUs[+document.getElementById("cpu").value];
-  const gpu = GPUs[+document.getElementById("gpu").value];
-  const res = +document.getElementById("res").value;
-  const preset = +document.getElementById("preset").value;
-
-  const gpuW = g.gpuBias;
-  const cpuW = 1 - gpuW;
-
-  // Hardware contribution scaled to real-world relative scores
-  const cpuFactor = Math.pow(cpu.score/100, 0.85);
-  const gpuFactor = Math.pow(gpu.score/100, 0.90);
-  const cpuPart = cpuFactor * g.base * (0.55 + cpuW*0.7);
-  const gpuPart = gpuFactor * g.base * (0.55 + gpuW*0.7);
-  let avg = Math.min(cpuPart, gpuPart) * res * preset;
-  avg = Math.max(12, Math.round(avg));
-
-  const low = Math.max(8, Math.round(avg * 0.74));
-  const ft = (1000/avg).toFixed(1) + " ms";
-
-  let limit = "Balanced";
-  if (cpuPart < gpuPart * 0.88) limit = "CPU";
-  else if (gpuPart < cpuPart * 0.88) limit = "GPU";
-
-  let rating = "Playable", cls = "ok";
-  if (avg >= 144) { rating = "Excellent (High refresh)"; cls = "good"; }
-  else if (avg >= 90) { rating = "Great / Smooth"; cls = "good"; }
-  else if (avg >= 60) { rating = "Good / Playable"; cls = "good"; }
-  else if (avg >= 40) { rating = "Acceptable"; cls = "ok"; }
-  else { rating = "Low / Struggle"; cls = "bad"; }
-
-  document.getElementById("gameName").textContent = g.name;
-  document.getElementById("avg").textContent = avg;
-  document.getElementById("low").textContent = low;
-  document.getElementById("limit").textContent = limit;
-  document.getElementById("ft").textContent = ft;
-  const r = document.getElementById("rating");
-  r.textContent = rating; r.className = "rating " + cls;
-  document.getElementById("out").classList.add("show");
-}
-</script>
   <footer>
-    <p>
-        © 2026 SystemFit PC. Practical tools for better PC decisions.
-    </p>
+    <p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
+    <p><a href="privacy-policy.html">Privacy Policy</a></p>
+  </footer>
 
-    <p>
-        <a href="privacy-policy.html">Privacy Policy</a>
-    </p>
-</footer>
-<script src="header.js" defer></script></body>
+  <script>
+    /*
+      SystemFit FPS Calculator
+      IMPORTANT: This is a modelled estimate, not a database of measured benchmark results.
+      Game profiles use relative workload characteristics; hardware scores are relative tiers.
+    */
+
+    const G = (name, cat, gpu, cpu, base, vram=6, rt=1.0) => ({
+      name, cat, gpu, cpu, base, vram, rt
+    });
+
+    /* Broad curated PC game library. Values are workload profiles, not benchmark FPS. */
+    const GAMES = [
+      G("Counter-Strike 2","Competitive",.34,.78,430,4),
+      G("Valorant","Competitive",.25,.82,520,4),
+      G("League of Legends","Competitive",.22,.78,500,3),
+      G("Dota 2","Competitive",.38,.72,390,4),
+      G("Overwatch 2","Competitive",.40,.64,290,4),
+      G("Rainbow Six Siege","Competitive",.42,.72,300,4),
+      G("Apex Legends","Competitive",.56,.58,205,6),
+      G("Fortnite","Competitive",.55,.60,230,6),
+      G("The Finals","Competitive",.68,.58,150,8),
+      G("PUBG: Battlegrounds","Competitive",.55,.63,190,6),
+      G("Rocket League","Competitive",.22,.55,420,3),
+      G("Deadlock","Competitive",.48,.62,210,6),
+      G("Marvel Rivals","Competitive",.65,.55,145,8),
+      G("Call of Duty: Warzone","Competitive",.67,.68,150,8),
+      G("Call of Duty: Black Ops 6","AAA",.66,.63,155,8),
+      G("Call of Duty: Black Ops 7","AAA",.70,.65,145,8),
+      G("Battlefield 2042","AAA",.65,.66,145,8),
+      G("Battlefield 6","AAA",.72,.70,125,8),
+      G("Destiny 2","AAA",.58,.61,175,6),
+      G("Halo Infinite","AAA",.62,.63,155,6),
+      G("Halo: The Master Chief Collection","AAA",.48,.58,220,5),
+
+      G("Cyberpunk 2077","AAA",.86,.56,112,8,1.45),
+      G("Cyberpunk 2077: Phantom Liberty","AAA",.90,.58,96,8,1.55),
+      G("Alan Wake 2","AAA",.93,.54,86,10,1.70),
+      G("Black Myth: Wukong","AAA",.90,.53,95,10,1.55),
+      G("The Last of Us Part I","AAA",.82,.61,112,10,1.20),
+      G("The Last of Us Part II","AAA",.84,.59,108,10,1.18),
+      G("Hogwarts Legacy","AAA",.77,.58,118,8,1.10),
+      G("Starfield","AAA",.72,.78,118,8,1.10),
+      G("Red Dead Redemption 2","Open World",.76,.65,125,8,1.00),
+      G("Grand Theft Auto V","Open World",.58,.64,185,6),
+      G("Grand Theft Auto VI","Open World",.90,.80,82,10,1.15),
+      G("The Witcher 3: Wild Hunt","RPG",.68,.58,145,6),
+      G("The Witcher 3 Next-Gen","RPG",.78,.58,108,8,1.22),
+      G("Elden Ring","RPG",.62,.66,135,6),
+      G("Elden Ring Nightreign","RPG",.68,.69,120,8),
+      G("Baldur's Gate 3","RPG",.56,.74,150,6),
+      G("Dragon's Dogma 2","RPG",.78,.82,95,8,1.15),
+      G("Kingdom Come: Deliverance II","RPG",.76,.75,98,8,1.12),
+      G("Avowed","RPG",.76,.62,105,8,1.18),
+      G("Fable","RPG",.78,.66,98,8,1.18),
+      G("Final Fantasy VII Rebirth","RPG",.76,.62,105,8,1.10),
+      G("Final Fantasy XVI","RPG",.79,.60,104,8,1.12),
+      G("Final Fantasy XIV","RPG",.54,.68,165,6),
+      G("Path of Exile 2","RPG",.72,.72,118,8,1.05),
+      G("Diablo IV","RPG",.60,.63,155,6),
+      G("Monster Hunter: World","RPG",.64,.62,145,6),
+      G("Monster Hunter Wilds","RPG",.83,.75,88,10,1.20),
+      G("Monster Hunter Stories 3","RPG",.62,.61,120,8),
+      G("Dragon Age: The Veilguard","RPG",.72,.61,115,8,1.08),
+      G("Assassin's Creed Shadows","Open World",.78,.72,104,8,1.10),
+      G("Assassin's Creed Valhalla","Open World",.68,.69,130,8),
+      G("Assassin's Creed Mirage","Open World",.58,.65,155,6),
+      G("Assassin's Creed Odyssey","Open World",.66,.66,130,6),
+      G("Assassin's Creed Origins","Open World",.63,.65,135,6),
+      G("Assassin's Creed Black Flag Resynced","Open World",.66,.63,125,8),
+      G("Avatar: Frontiers of Pandora","AAA",.86,.55,92,10,1.25),
+      G("Star Wars Outlaws","AAA",.84,.58,94,10,1.20),
+      G("Indiana Jones and the Great Circle","AAA",.88,.58,88,10,1.35),
+      G("Doom Eternal","AAA",.55,.54,235,6),
+      G("DOOM: The Dark Ages","AAA",.82,.59,105,10,1.20),
+      G("Resident Evil 4","AAA",.67,.57,145,6),
+      G("Resident Evil Village","AAA",.59,.55,165,6),
+      G("Resident Evil Requiem","AAA",.88,.60,90,10,1.25),
+      G("Resident Evil 2","AAA",.54,.53,190,5),
+      G("Resident Evil 3","AAA",.55,.52,185,5),
+      G("Silent Hill 2","AAA",.84,.57,90,10,1.20),
+      G("Lies of P","RPG",.62,.54,150,6),
+      G("Armored Core VI","RPG",.64,.57,145,6),
+      G("Sekiro: Shadows Die Twice","RPG",.48,.54,210,5),
+      G("Dark Souls III","RPG",.43,.52,230,5),
+      G("Dark Souls Remastered","RPG",.32,.50,300,4),
+      G("Horizon Forbidden West","AAA",.79,.60,112,8,1.12),
+      G("Horizon Zero Dawn Remastered","AAA",.72,.57,125,8,1.08),
+      G("God of War","AAA",.69,.59,128,8),
+      G("God of War Ragnarök","AAA",.76,.60,112,8,1.08),
+      G("Marvel's Spider-Man Remastered","AAA",.74,.60,132,8),
+      G("Marvel's Spider-Man 2","AAA",.83,.63,105,10,1.10),
+      G("Ghost of Tsushima Director's Cut","AAA",.72,.59,122,8),
+      G("Days Gone Remastered","AAA",.70,.58,128,8),
+      G("Death Stranding Director's Cut","AAA",.62,.58,145,6),
+      G("Death Stranding 2: On the Beach","AAA",.78,.61,102,10,1.10),
+      G("Uncharted: Legacy of Thieves","AAA",.69,.59,130,8),
+      G("Ratchet & Clank: Rift Apart","AAA",.78,.57,112,8,1.12),
+      G("Returnal","AAA",.81,.61,102,8,1.10),
+      G("Control","AAA",.74,.55,120,8,1.35),
+      G("Control Ultimate Edition","AAA",.76,.56,112,8,1.40),
+      G("Metro Exodus Enhanced Edition","AAA",.87,.54,100,8,1.60),
+      G("Metro Awakening","AAA",.89,.54,82,10,1.55),
+      G("Atomic Heart","AAA",.69,.55,130,8),
+      G("S.T.A.L.K.E.R. 2","AAA",.84,.70,88,10,1.18),
+      G("The Outer Worlds 2","RPG",.80,.62,95,10,1.15),
+      G("Mass Effect Legendary Edition","RPG",.50,.57,185,6),
+      G("Dragon Age: Inquisition","RPG",.57,.59,160,6),
+      G("Banishers: Ghosts of New Eden","RPG",.72,.59,110,8),
+      G("GreedFall 2","RPG",.64,.68,120,8),
+      G("Black Desert","RPG",.65,.72,135,6),
+      G("Throne and Liberty","RPG",.70,.70,115,8),
+      G("Lost Ark","RPG",.54,.65,175,6),
+      G("New World: Aeternum","RPG",.67,.72,120,8),
+      G("World of Warcraft","RPG",.52,.76,185,5),
+      G("Guild Wars 2","RPG",.48,.76,175,5),
+      G("The Elder Scrolls Online","RPG",.50,.70,180,5),
+
+      G("Forza Horizon 5","AAA",.66,.59,155,8),
+      G("Forza Motorsport","AAA",.72,.66,125,8),
+      G("F1 24","AAA",.59,.60,165,6),
+      G("F1 25","AAA",.62,.62,150,8),
+      G("Farming Simulator 25","Simulation",.58,.66,135,6),
+      G("Microsoft Flight Simulator","Simulation",.66,.86,95,8),
+      G("Microsoft Flight Simulator 2024","Simulation",.72,.90,78,10,1.05),
+      G("Cities: Skylines II","Simulation",.64,.90,70,8),
+      G("Transport Fever 2","Simulation",.45,.70,130,5),
+      G("Euro Truck Simulator 2","Simulation",.35,.63,180,4),
+      G("American Truck Simulator","Simulation",.37,.64,170,4),
+
+      G("Rust","Survival",.67,.75,120,8),
+      G("DayZ","Survival",.56,.73,145,6),
+      G("ARK: Survival Evolved","Survival",.68,.72,115,8),
+      G("ARK: Survival Ascended","Survival",.88,.74,78,10,1.18),
+      G("Valheim","Survival",.48,.68,155,6),
+      G("Enshrouded","Survival",.69,.67,118,8),
+      G("Sons of the Forest","Survival",.67,.66,118,8),
+      G("The Forest","Survival",.48,.61,165,6),
+      G("Palworld","Survival",.62,.72,125,8),
+      G("Dune: Awakening","Survival",.76,.72,98,8,1.10),
+      G("Subnautica","Survival",.46,.58,180,5),
+      G("Subnautica 2","Survival",.72,.68,100,8,1.05),
+      G("Raft","Survival",.43,.60,175,5),
+      G("Grounded","Survival",.48,.61,165,6),
+      G("7 Days to Die","Survival",.61,.72,125,6),
+      G("V Rising","Survival",.51,.64,160,6),
+      G("Don't Starve Together","Survival",.25,.50,300,3),
+
+      G("Helldivers 2","AAA",.73,.75,105,8,1.08),
+      G("Warhammer 40,000: Space Marine 2","AAA",.83,.79,92,10,1.10),
+      G("Warhammer 40,000: Darktide","AAA",.76,.79,100,8,1.10),
+      G("Deep Rock Galactic","AAA",.48,.60,190,5),
+      G("Ready or Not","AAA",.67,.72,120,8),
+      G("Escape from Tarkov","AAA",.63,.88,105,8),
+      G("Hunt: Showdown 1896","AAA",.70,.68,120,8),
+      G("Insurgency: Sandstorm","AAA",.55,.65,160,6),
+      G("Squad","AAA",.62,.80,125,6),
+      G("BattleBit Remastered","Competitive",.35,.66,280,4),
+      G("Gray Zone Warfare","AAA",.82,.78,75,10,1.15),
+      G("ARC Raiders","AAA",.78,.70,100,8,1.10),
+      G("Marathon","AAA",.70,.67,125,8,1.08),
+
+      G("Minecraft Java","Survival",.35,.86,270,4),
+      G("Minecraft Java + Shaders","Survival",.72,.74,105,8,1.12),
+      G("Roblox","Competitive",.30,.60,280,4),
+      G("Terraria","Survival",.18,.45,500,3),
+      G("Stardew Valley","RPG",.12,.35,500,2),
+      G("Hades","RPG",.25,.42,300,3),
+      G("Hades II","RPG",.32,.45,260,4),
+      G("Hollow Knight","RPG",.14,.38,400,2),
+      G("Silksong","RPG",.16,.40,360,2),
+      G("Dead Cells","RPG",.13,.36,450,2),
+
+      G("Genshin Impact","RPG",.48,.58,150,6),
+      G("Honkai: Star Rail","RPG",.52,.55,140,6),
+      G("Zenless Zone Zero","RPG",.56,.55,135,6),
+      G("Wuthering Waves","RPG",.58,.58,125,6),
+      G("Tower of Fantasy","RPG",.50,.56,145,6),
+
+      G("Baldur's Gate 3","RPG",.56,.74,150,6),
+      G("Divinity: Original Sin 2","RPG",.38,.62,220,4),
+      G("Persona 5 Royal","RPG",.36,.50,250,4),
+      G("Persona 3 Reload","RPG",.48,.53,190,6),
+      G("Metaphor: ReFantazio","RPG",.52,.58,165,6),
+      G("Like a Dragon: Infinite Wealth","RPG",.55,.61,155,6),
+      G("Yakuza: Like a Dragon","RPG",.47,.58,180,6),
+
+      G("Star Wars Jedi: Survivor","AAA",.78,.66,100,8,1.10),
+      G("Star Wars Jedi: Fallen Order","AAA",.62,.59,140,6),
+      G("Uncharted: Legacy of Thieves Collection","AAA",.69,.59,130,8),
+      G("A Plague Tale: Requiem","AAA",.82,.58,95,8,1.10),
+      G("A Plague Tale: Innocence","AAA",.61,.55,145,6),
+      G("Kena: Bridge of Spirits","AAA",.56,.52,160,6),
+      G("Stray","AAA",.57,.52,170,6),
+      G("The Callisto Protocol","AAA",.72,.56,110,8,1.20),
+      G("Dead Space","AAA",.77,.57,112,8,1.18),
+      G("Dead Space 2","AAA",.40,.50,250,4),
+      G("Mortal Kombat 1","AAA",.70,.58,130,8),
+      G("Tekken 8","AAA",.68,.58,135,8),
+      G("Street Fighter 6","AAA",.57,.55,170,6),
+      G("EA Sports FC 26","AAA",.43,.56,220,6),
+      G("FIFA 23","AAA",.40,.54,240,5),
+
+      G("Marvel's Guardians of the Galaxy","AAA",.66,.55,135,8),
+      G("The Division 2","AAA",.62,.66,150,6),
+      G("The Division 2: Warlords","AAA",.64,.67,145,6),
+      G("Far Cry 6","Open World",.67,.62,140,8),
+      G("Far Cry 5","Open World",.56,.58,175,6),
+      G("Watch Dogs: Legion","Open World",.73,.66,115,8),
+      G("Watch Dogs 2","Open World",.60,.62,155,6),
+      G("Deathloop","AAA",.68,.62,130,8),
+      G("Prey","AAA",.48,.54,200,5),
+      G("Dishonored 2","AAA",.59,.57,150,6),
+
+      G("Hogwarts Legacy","AAA",.77,.58,118,8),
+      G("Immortals of Aveum","AAA",.86,.60,88,10,1.20),
+      G("Forspoken","AAA",.82,.62,92,10,1.10),
+      G("Lords of the Fallen","RPG",.79,.61,92,10,1.18),
+      G("Remnant II","RPG",.78,.65,100,8,1.10),
+      G("Remnant: From the Ashes","RPG",.61,.58,150,6),
+      G("The First Descendant","AAA",.79,.68,105,8,1.10),
+      G("Once Human","Survival",.63,.73,115,8),
+      G("Nightingale","Survival",.69,.71,100,8,1.05),
+      G("Enshrouded","Survival",.69,.67,118,8),
+
+      G("Sea of Thieves","AAA",.54,.62,170,6),
+      G("No Man's Sky","AAA",.65,.67,135,8),
+      G("Star Citizen","Simulation",.72,.88,85,10),
+      G("Elite Dangerous","Simulation",.52,.70,170,6),
+      G("Kerbal Space Program","Simulation",.40,.72,170,4),
+      G("Kerbal Space Program 2","Simulation",.60,.80,95,8),
+      G("Planet Zoo","Simulation",.52,.76,130,6),
+      G("Planet Coaster 2","Simulation",.56,.78,115,8),
+
+      G("Age of Empires IV","Strategy",.42,.70,185,5),
+      G("Civilization VI","Strategy",.34,.73,230,4),
+      G("Civilization VII","Strategy",.48,.76,165,6),
+      G("Total War: Warhammer III","Strategy",.63,.86,105,8),
+      G("Total War: Three Kingdoms","Strategy",.57,.83,120,6),
+      G("Crusader Kings III","Strategy",.28,.82,260,4),
+      G("Europa Universalis IV","Strategy",.20,.80,330,3),
+
+      G("Stellaris","Strategy",.25,.86,280,4),
+      G("RimWorld","Strategy",.15,.74,380,3),
+      G("Factorio","Strategy",.13,.82,450,3),
+      G("Satisfactory","Simulation",.62,.76,135,8),
+      G("Dyson Sphere Program","Simulation",.42,.76,165,6),
+      G("Manor Lords","Strategy",.68,.82,105,8),
+      G("Frostpunk 2","Strategy",.72,.84,92,8),
+      G("Anno 1800","Strategy",.58,.84,120,8),
+      G("Age of Mythology: Retold","Strategy",.43,.68,185,5),
+
+      G("Palworld","Survival",.62,.72,125,8),
+      G("Lethal Company","Survival",.24,.54,300,3),
+      G("Phasmophobia","Survival",.30,.55,260,4),
+      G("Content Warning","Survival",.28,.52,280,4),
+      G("Sons of the Forest","Survival",.67,.66,118,8),
+      G("Project Zomboid","Survival",.24,.76,300,3),
+      G("The Long Dark","Survival",.35,.56,220,4),
+
+      G("Path of Exile","RPG",.49,.72,175,6),
+      G("Grim Dawn","RPG",.34,.61,240,4),
+      G("Last Epoch","RPG",.46,.68,185,6),
+      G("Torchlight II","RPG",.28,.52,330,3),
+      G("Warframe","RPG",.49,.62,220,5),
+      G("Warframe 1999","RPG",.59,.65,175,6),
+
+      G("Resident Evil 7","AAA",.48,.51,190,5),
+      G("Resident Evil Village","AAA",.59,.55,165,6),
+      G("Devil May Cry 5","AAA",.53,.53,205,5),
+      G("Final Fantasy XV","RPG",.67,.58,125,8),
+      G("NieR:Automata","RPG",.42,.50,220,4),
+      G("NieR Replicant","RPG",.39,.49,230,4),
+
+      G("Valheim","Survival",.48,.68,155,6),
+      G("Enshrouded","Survival",.69,.67,118,8),
+      G("Rust","Survival",.67,.75,120,8),
+      G("ARK: Survival Ascended","Survival",.88,.74,78,10,1.18),
+      G("Dune: Awakening","Survival",.76,.72,98,8,1.10),
+      G("ARC Raiders","AAA",.78,.70,100,8,1.10),
+      G("Marathon","AAA",.70,.67,125,8,1.08)
+    ];
+
+    /* Remove accidental duplicate game names while preserving first profile. */
+    const seenGames = new Set();
+    const UNIQUE_GAMES = GAMES.filter(g => {
+      const key = g.name.toLowerCase();
+      if (seenGames.has(key)) return false;
+      seenGames.add(key);
+      return true;
+    });
+
+    const CPUs = [
+      {name:"Intel Core i3-12100F",score:40,cores:4},
+      {name:"Intel Core i5-12400F",score:50,cores:6},
+      {name:"Intel Core i5-12600K",score:58,cores:10},
+      {name:"Intel Core i5-13400F",score:62,cores:10},
+      {name:"Intel Core i5-14400F",score:64,cores:10},
+      {name:"Intel Core i5-14600K",score:72,cores:14},
+      {name:"Intel Core i7-12700K",score:66,cores:12},
+      {name:"Intel Core i7-13700K",score:75,cores:16},
+      {name:"Intel Core i7-14700K",score:78,cores:20},
+      {name:"Intel Core i9-13900K",score:80,cores:24},
+      {name:"Intel Core i9-14900K",score:81,cores:24},
+      {name:"Intel Core i5-9600K",score:38,cores:6},
+      {name:"Intel Core i7-9700K",score:47,cores:8},
+      {name:"Intel Core i7-10700K",score:54,cores:8},
+      {name:"AMD Ryzen 5 3600",score:39,cores:6},
+      {name:"AMD Ryzen 5 5600",score:50,cores:6},
+      {name:"AMD Ryzen 5 7600",score:60,cores:6},
+      {name:"AMD Ryzen 5 9600X",score:71,cores:6},
+      {name:"AMD Ryzen 7 5700X3D",score:70,cores:8},
+      {name:"AMD Ryzen 7 5800X3D",score:74,cores:8},
+      {name:"AMD Ryzen 7 7700X",score:69,cores:8},
+      {name:"AMD Ryzen 7 7800X3D",score:86,cores:8},
+      {name:"AMD Ryzen 7 9800X3D",score:97,cores:8},
+      {name:"AMD Ryzen 7 9850X3D",score:100,cores:8},
+      {name:"AMD Ryzen 9 7950X3D",score:88,cores:16},
+      {name:"AMD Ryzen 9 9950X3D",score:97,cores:16}
+    ];
+
+    const GPUS = [
+      {name:"NVIDIA GeForce GTX 1660 SUPER",score:18,vram:6,rt:.35},
+      {name:"NVIDIA GeForce RTX 2060",score:22,vram:6,rt:.55},
+      {name:"NVIDIA GeForce RTX 3060 12GB",score:29,vram:12,rt:.70},
+      {name:"NVIDIA GeForce RTX 3060 Ti",score:36,vram:8,rt:.78},
+      {name:"NVIDIA GeForce RTX 3070",score:43,vram:8,rt:.80},
+      {name:"NVIDIA GeForce RTX 4060",score:34,vram:8,rt:.82},
+      {name:"NVIDIA GeForce RTX 4060 Ti 8GB",score:40,vram:8,rt:.86},
+      {name:"NVIDIA GeForce RTX 4060 Ti 16GB",score:41,vram:16,rt:.86},
+      {name:"NVIDIA GeForce RTX 4070",score:50,vram:12,rt:.91},
+      {name:"NVIDIA GeForce RTX 4070 SUPER",score:57,vram:12,rt:.95},
+      {name:"NVIDIA GeForce RTX 4070 Ti SUPER",score:65,vram:16,rt:.98},
+      {name:"NVIDIA GeForce RTX 4080 SUPER",score:78,vram:16,rt:1.0},
+      {name:"NVIDIA GeForce RTX 4090",score:92,vram:24,rt:1.0},
+      {name:"NVIDIA GeForce RTX 5070",score:61,vram:12,rt:1.0},
+      {name:"NVIDIA GeForce RTX 5070 Ti",score:72,vram:16,rt:1.0},
+      {name:"NVIDIA GeForce RTX 5080",score:84,vram:16,rt:1.0},
+      {name:"NVIDIA GeForce RTX 5090",score:100,vram:32,rt:1.0},
+      {name:"AMD Radeon RX 6600",score:26,vram:8,rt:.35},
+      {name:"AMD Radeon RX 6650 XT",score:30,vram:8,rt:.38},
+      {name:"AMD Radeon RX 6700 XT",score:39,vram:12,rt:.42},
+      {name:"AMD Radeon RX 6750 XT",score:42,vram:12,rt:.44},
+      {name:"AMD Radeon RX 7600",score:31,vram:8,rt:.45},
+      {name:"AMD Radeon RX 7700 XT",score:48,vram:12,rt:.52},
+      {name:"AMD Radeon RX 7800 XT",score:55,vram:16,rt:.55},
+      {name:"AMD Radeon RX 7900 GRE",score:59,vram:16,rt:.56},
+      {name:"AMD Radeon RX 7900 XT",score:69,vram:20,rt:.58},
+      {name:"AMD Radeon RX 7900 XTX",score:79,vram:24,rt:.60},
+      {name:"AMD Radeon RX 9060 XT 16GB",score:48,vram:16,rt:.64},
+      {name:"AMD Radeon RX 9070",score:69,vram:16,rt:.70},
+      {name:"AMD Radeon RX 9070 XT",score:76,vram:16,rt:.73},
+      {name:"Intel Arc A750",score:27,vram:8,rt:.55},
+      {name:"Intel Arc B580",score:38,vram:12,rt:.68}
+    ];
+
+    const state = {
+      resolution:null,
+      preset:null,
+      upscaling:false,
+      rt:false,
+      fg:false,
+      category:"All"
+    };
+
+    const presetFactor = {low:1.38,medium:1.15,high:1.0,ultra:.82};
+    const resolutionFactor = {720:1.30,1080:1.0,1440:.72,2160:.43};
+
+    const $ = id => document.getElementById(id);
+
+    function fillSelect(id, arr){
+      const el = $(id);
+      el.innerHTML = "";
+      arr.forEach((x,i)=>{
+        const o = document.createElement("option");
+        o.value = i;
+        o.textContent = x.name;
+        el.appendChild(o);
+      });
+    }
+
+    function fillHardwareSelect(id, arr, placeholderText){
+      const el = $(id);
+      el.innerHTML = "";
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = placeholderText;
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      el.appendChild(placeholder);
+      arr.forEach((x,i)=>{
+        const o = document.createElement("option");
+        o.value = i;
+        o.textContent = x.name;
+        el.appendChild(o);
+      });
+      el.value = "";
+    }
+
+    fillHardwareSelect("cpu", CPUs, "Select a CPU");
+    fillHardwareSelect("gpu", GPUS, "Select a GPU");
+
+    function populateGameSelect(){
+      const select = $("game");
+      select.innerHTML = "";
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = "Select a game";
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      select.appendChild(placeholder);
+
+      UNIQUE_GAMES.forEach((g,i)=>{
+        const o=document.createElement("option");
+        o.value=i;
+        o.textContent=g.name;
+        select.appendChild(o);
+      });
+
+      select.value = "";
+      $("selectedGameLabel").textContent = "Select a game";
+    }
+
+    let hasCalculated = false;
+
+    function handleOptionChange(){
+      if (hasCalculated){
+        run();
+      } else {
+        showSetupReadyState();
+      }
+    }
+
+    function renderGamePicker(){
+      const q = $("gameSearch").value.trim().toLowerCase();
+      const selected = $("game").value === "" ? -1 : Number($("game").value);
+      const filtered = UNIQUE_GAMES.filter(g => !q || g.name.toLowerCase().includes(q));
+      const list = $("gamePickerList");
+      list.innerHTML = "";
+      $("gameCountLabel").textContent = `${filtered.length} game${filtered.length === 1 ? "" : "s"}`;
+
+      if (!filtered.length){
+        list.innerHTML = '<div class="game-picker-empty">No games match your search.</div>';
+        return;
+      }
+
+      filtered.forEach(g=>{
+        const index = UNIQUE_GAMES.indexOf(g);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "game-picker-option" + (index === selected ? " selected" : "");
+        btn.setAttribute("role","option");
+        btn.setAttribute("aria-selected",String(index === selected));
+        btn.innerHTML = `<b>${g.name}</b><small>${g.cat}</small>`;
+        btn.addEventListener("click",()=>{
+          $("game").value = String(index);
+          $("selectedGameLabel").textContent = g.name;
+          $("gameSearch").value = "";
+          renderGamePicker();
+          closeGamePicker();
+          handleOptionChange();
+        });
+        list.appendChild(btn);
+      });
+    }
+
+    function openGamePicker(){
+      $("gamePicker").classList.add("open");
+      $("gamePickerTrigger").setAttribute("aria-expanded","true");
+      renderGamePicker();
+      setTimeout(()=>$("gameSearch").focus(),0);
+    }
+
+    function closeGamePicker(){
+      $("gamePicker").classList.remove("open");
+      $("gamePickerTrigger").setAttribute("aria-expanded","false");
+    }
+
+    $("gamePickerTrigger").addEventListener("click",()=>{
+      $("gamePicker").classList.contains("open") ? closeGamePicker() : openGamePicker();
+    });
+    $("gameSearch").addEventListener("input",renderGamePicker);
+    document.addEventListener("click",(event)=>{
+      if (!$("gamePicker").contains(event.target)) closeGamePicker();
+    });
+    document.addEventListener("keydown",(event)=>{
+      if(event.key === "Escape") closeGamePicker();
+    });
+
+    function activateChips(containerId, key){
+      document.querySelectorAll("#"+containerId+" .chip").forEach(btn=>{
+        btn.addEventListener("click",()=>{
+          document.querySelectorAll("#"+containerId+" .chip").forEach(x=>x.classList.remove("active"));
+          btn.classList.add("active");
+          state[key] = key === "resolution" ? Number(btn.dataset.value) : btn.dataset.value;
+          handleOptionChange();
+        });
+      });
+    }
+
+    activateChips("resolutionChips","resolution");
+    activateChips("presetChips","preset");
+
+    ["upscaling","rt","fg"].forEach(key=>{
+      const id = key === "upscaling" ? "upscalingToggle" : key === "rt" ? "rtToggle" : "fgToggle";
+      $(id).addEventListener("click",()=>{
+        state[key] = !state[key];
+        $(id).classList.toggle("active",state[key]);
+        $(id).setAttribute("aria-pressed",String(state[key]));
+        handleOptionChange();
+      });
+    });
+
+    ["cpu","gpu"].forEach(id=>{
+      $(id).addEventListener("change",handleOptionChange);
+    });
+
+    $("gameSearch").addEventListener("input",populateGameSelect);
+    $("calculateBtn").addEventListener("click",run);
+
+    function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
+
+    function estimate(){
+      if ($("game").value === "" || $("cpu").value === "" || $("gpu").value === "" ||
+          state.resolution === null || state.preset === null) return null;
+
+      const game = UNIQUE_GAMES[Number($("game").value)];
+      const cpu = CPUs[Number($("cpu").value)];
+      const gpu = GPUS[Number($("gpu").value)];
+
+      const rFactor = resolutionFactor[state.resolution];
+      const pFactor = presetFactor[state.preset];
+
+      const cpuPressure = clamp((game.cpu * 0.62 + (1-cpu.score/100) * 0.38) * 100,18,98);
+      const gpuPressure = clamp((game.gpu * 0.68 + (1-gpu.score/100) * 0.32) * 100,18,99);
+
+      const cpuFactor = Math.pow(cpu.score/100, .86);
+      const gpuFactor = Math.pow(gpu.score/100, .92);
+
+      const cpuPart = game.base * cpuFactor * (.55 + game.cpu*.72);
+      const gpuPart = game.base * gpuFactor * (.55 + game.gpu*.72);
+
+      let avg = Math.min(cpuPart,gpuPart) * rFactor * pFactor;
+
+      if (state.rt){
+        avg *= (0.74 + 0.18 * gpu.rt) / game.rt;
+        avg = Math.max(avg,8);
+      }
+
+      if (state.upscaling){
+        const uplift = state.resolution === 2160 ? 1.48 : state.resolution === 1440 ? 1.34 : 1.18;
+        avg *= uplift;
+      }
+
+      const nativeAvg = avg;
+
+      if (state.fg){
+        const eligible = gpu.rt >= .68 && (gpu.score >= 34);
+        if (eligible) avg *= 1.42;
+      }
+
+      avg = clamp(avg,8,1000);
+
+      let lowRatio = .70;
+      if (game.cpu > .72) lowRatio -= .05;
+      if (game.gpu > .78) lowRatio -= .03;
+      if (state.upscaling) lowRatio += .02;
+      if (state.fg) lowRatio -= .02;
+
+      const low = clamp(avg * lowRatio,5,avg*.88);
+
+      let limit = "Balanced";
+      const ratio = cpuPart / Math.max(gpuPart,.01);
+      if (ratio < .88) limit = "GPU";
+      else if (ratio > 1.14) limit = "CPU";
+
+      const vramNeed = game.vram
+        + (state.resolution === 2160 ? 3 : state.resolution === 1440 ? 1.5 : 0)
+        + (state.preset === "ultra" ? 1.5 : state.preset === "high" ? .6 : 0)
+        + (state.rt ? 1.5 : 0);
+
+      const vramPct = clamp(vramNeed / gpu.vram * 100,10,120);
+
+      let vramStatus = "Comfortable";
+      if (vramPct >= 92) vramStatus = "Tight";
+      else if (vramPct >= 78) vramStatus = "Watch VRAM";
+      if (vramPct > 105) vramStatus = "Likely limit";
+
+      const scoreFps = clamp((avg / (state.resolution === 2160 ? 110 : state.resolution === 1440 ? 125 : 165))*65,0,65);
+      const scoreLow = clamp((low / (state.resolution === 2160 ? 70 : state.resolution === 1440 ? 80 : 110))*25,0,25);
+      const scoreVram = vramPct > 100 ? 0 : vramPct > 90 ? 4 : 10;
+      const score = Math.round(clamp(scoreFps + scoreLow + scoreVram,1,100));
+
+      let title="Needs tuning", tag="BELOW TARGET";
+      if (score >= 90){title="Excellent gaming headroom";tag="HIGH PERFORMANCE";}
+      else if(score >= 78){title="Very strong gaming setup";tag="SMOOTH & FAST";}
+      else if(score >= 65){title="Solid gaming performance";tag="PLAYABLE";}
+      else if(score >= 48){title="Playable with some tuning";tag="TUNE SETTINGS";}
+
+      let confidence = "Moderate";
+      if (game.base >= 120 && game.gpu < .78 && game.cpu < .78) confidence = "Moderate-high";
+      if (game.rt > 1.35 || game.cpu > .84 || game.gpu > .86) confidence = "Moderate";
+
+      return {
+        game,cpu,gpu,avg,low,limit,vramPct,vramStatus,score,title,tag,confidence,
+        cpuPressure,gpuPressure,nativeAvg
+      };
+    }
+
+    function fmtRange(value, spread=.10){
+      const lo = Math.max(1,Math.round(value*(1-spread)));
+      const hi = Math.max(lo+1,Math.round(value*(1+spread)));
+      return `${lo}–${hi}`;
+    }
+
+    function updateCalculateButtonState(){
+  const btn = document.getElementById('calculateBtn');
+  if(!btn) return;
+  const ready = !!(
+    $("game").value !== "" &&
+    $("cpu").value !== "" &&
+    $("gpu").value !== "" &&
+    state.resolution !== null &&
+    state.preset !== null
+  );
+  btn.disabled = !ready;
+  btn.setAttribute('aria-disabled', String(!ready));
+}
+
+function showSetupReadyState(){
+  updateCalculateButtonState();
+      const complete =
+        $("game").value !== "" &&
+        $("cpu").value !== "" &&
+        $("gpu").value !== "" &&
+        state.resolution !== null &&
+        state.preset !== null;
+
+      if (complete){
+        $("resultGame").textContent = "Setup ready";
+        $("score").textContent = "—";
+        $("scoreRing").style.setProperty("--score",0);
+        $("scoreTitle").textContent = "Ready to calculate";
+        $("scoreText").textContent = "Your setup is complete. Press Calculate FPS to generate the estimate.";
+        $("performanceTag").textContent = "PRESS CALCULATE FPS";
+        $("avg").textContent = "—";
+        $("low").textContent = "—";
+        $("frameTime").textContent = "—";
+        $("limit").textContent = "—";
+        $("vram").textContent = "—";
+        $("cpuPct").textContent = "—";
+        $("gpuPct").textContent = "—";
+        $("vramPct").textContent = "—";
+        $("cpuBar").style.width = "0";
+        $("gpuBar").style.width = "0";
+        $("vramBar").style.width = "0";
+        $("balanceText").textContent = "—";
+        $("resultNote").textContent = "Setup complete. Press Calculate FPS when you are ready to generate the estimate.";
+      } else {
+        $("resultGame").textContent = "Choose your setup";
+        $("score").textContent = "—";
+        $("scoreRing").style.setProperty("--score",0);
+        $("scoreTitle").textContent = "Ready to calculate";
+        $("scoreText").textContent = "Select your game, CPU, GPU, resolution and graphics preset.";
+        $("performanceTag").textContent = "WAITING FOR SETUP";
+        $("avg").textContent = "—";
+        $("low").textContent = "—";
+        $("frameTime").textContent = "—";
+        $("limit").textContent = "—";
+        $("vram").textContent = "—";
+        $("cpuPct").textContent = "—";
+        $("gpuPct").textContent = "—";
+        $("vramPct").textContent = "—";
+        $("cpuBar").style.width = "0";
+        $("gpuBar").style.width = "0";
+        $("vramBar").style.width = "0";
+        $("balanceText").textContent = "—";
+        $("resultNote").textContent = "Choose your game, CPU, GPU, resolution and graphics preset. Results will appear after you press Calculate FPS.";
+      }
+    }
+
+    function run(){
+      const e = estimate();
+
+      if (!e){
+        $("resultGame").textContent = "Choose a game";
+        $("score").textContent = "—";
+        $("scoreRing").style.setProperty("--score",0);
+        $("scoreTitle").textContent = "Ready to calculate";
+        $("scoreText").textContent = "Select a game, CPU and GPU to generate your FPS estimate.";
+        $("performanceTag").textContent = "WAITING FOR SETUP";
+        $("avg").textContent = "—";
+        $("low").textContent = "—";
+        $("frameTime").textContent = "—";
+        $("limit").textContent = "—";
+        $("vram").textContent = "—";
+        $("cpuPct").textContent = "—";
+        $("gpuPct").textContent = "—";
+        $("vramPct").textContent = "—";
+        $("cpuBar").style.width = "0";
+        $("gpuBar").style.width = "0";
+        $("vramBar").style.width = "0";
+        $("balanceText").textContent = "—";
+        $("resultNote").textContent = "Choose your game, CPU, GPU, resolution and graphics preset. Results will appear after your full setup is selected.";
+        return;
+      }
+
+      hasCalculated = true;
+
+      $("resultGame").textContent =
+        `${e.game.name} · ${state.resolution === 2160 ? "4K" : state.resolution+"p"} · ${state.preset[0].toUpperCase()+state.preset.slice(1)}`;
+
+      $("score").textContent = e.score;
+      $("scoreRing").style.setProperty("--score",e.score);
+      $("scoreTitle").textContent = e.title;
+      $("scoreText").textContent =
+        `Model score based on expected frame rate, 1% low behaviour and VRAM headroom. Confidence: ${e.confidence}.`;
+      $("performanceTag").textContent = e.tag;
+
+      $("avg").textContent = fmtRange(e.avg,.11);
+      $("low").textContent = fmtRange(e.low,.13);
+      $("frameTime").textContent = `${(1000/e.avg).toFixed(1)} ms`;
+      $("limit").textContent = e.limit;
+      $("vram").textContent = e.vramStatus;
+
+      $("cpuPct").textContent = Math.round(e.cpuPressure)+"%";
+      $("gpuPct").textContent = Math.round(e.gpuPressure)+"%";
+      $("vramPct").textContent = Math.round(e.vramPct)+"%";
+      $("cpuBar").style.width = clamp(e.cpuPressure,0,100)+"%";
+      $("gpuBar").style.width = clamp(e.gpuPressure,0,100)+"%";
+      $("vramBar").style.width = clamp(e.vramPct,0,100)+"%";
+
+      $("balanceText").textContent = e.limit === "Balanced"
+        ? "Good balance"
+        : `${e.limit}-limited`;
+
+      let note = `Modelled estimate with ${e.confidence.toLowerCase()} confidence.`;
+      if (state.fg && !(e.gpu.rt >= .68 && e.gpu.score >= 34))
+        note += " Frame generation was selected, but this GPU may not support the modeled feature reliably.";
+      if (e.vramPct > 100)
+        note += " Estimated VRAM demand exceeds the selected GPU capacity; expect stutter or settings compromises.";
+      note += " Actual FPS varies with patches, drivers, temperatures, background load and exact game settings.";
+      $("resultNote").textContent = note;
+    }
+
+    const gameList = $("gameList");
+    const librarySearch = $("librarySearch");
+    const LIBRARY_PAGE_SIZE = 24;
+    let libraryPage = 1;
+
+    function renderLibrary(){
+      const q = librarySearch.value.trim().toLowerCase();
+      const cat = state.category;
+      const filtered = UNIQUE_GAMES.filter(g=>{
+        const matchSearch = !q || g.name.toLowerCase().includes(q);
+        const matchCat = cat === "All" || g.cat === cat;
+        return matchSearch && matchCat;
+      });
+
+      const totalPages = Math.max(1,Math.ceil(filtered.length/LIBRARY_PAGE_SIZE));
+      libraryPage = Math.min(libraryPage,totalPages);
+      const start = (libraryPage-1)*LIBRARY_PAGE_SIZE;
+      const list = filtered.slice(start,start+LIBRARY_PAGE_SIZE);
+
+      $("libraryCount").textContent = filtered.length;
+      $("pageStatus").textContent = `Page ${libraryPage} of ${totalPages}`;
+      $("prevPage").disabled = libraryPage <= 1;
+      $("nextPage").disabled = libraryPage >= totalPages;
+      gameList.innerHTML = "";
+
+      if (!list.length){
+        gameList.innerHTML = '<div class="empty">No games match that search.</div>';
+        return;
+      }
+
+      list.forEach(g=>{
+        const btn = document.createElement("button");
+        btn.className = "game-card";
+        btn.type = "button";
+        btn.innerHTML = `<b>${g.name}</b><small>${g.cat} · ${g.vram} GB profile</small>`;
+        btn.addEventListener("click",()=>{
+          $("game").value = String(UNIQUE_GAMES.indexOf(g));
+          $("selectedGameLabel").textContent = g.name;
+          closeGamePicker();
+          handleOptionChange();
+          window.scrollTo({top:document.querySelector(".calculator").offsetTop-20,behavior:"smooth"});
+        });
+        gameList.appendChild(btn);
+      });
+    }
+
+    $("prevPage").addEventListener("click",()=>{
+      if(libraryPage > 1){
+        libraryPage--;
+        renderLibrary();
+        document.querySelector(".library").scrollIntoView({behavior:"smooth",block:"start"});
+      }
+    });
+
+    $("nextPage").addEventListener("click",()=>{
+      const q = librarySearch.value.trim().toLowerCase();
+      const cat = state.category;
+      const count = UNIQUE_GAMES.filter(g=>{
+        const matchSearch = !q || g.name.toLowerCase().includes(q);
+        const matchCat = cat === "All" || g.cat === cat;
+        return matchSearch && matchCat;
+      }).length;
+      const totalPages = Math.max(1,Math.ceil(count/LIBRARY_PAGE_SIZE));
+      if(libraryPage < totalPages){
+        libraryPage++;
+        renderLibrary();
+        document.querySelector(".library").scrollIntoView({behavior:"smooth",block:"start"});
+      }
+    });
+
+    document.querySelectorAll("#categoryTabs .category").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        document.querySelectorAll("#categoryTabs .category").forEach(x=>x.classList.remove("active"));
+        btn.classList.add("active");
+        state.category = btn.dataset.category;
+        libraryPage = 1;
+        renderLibrary();
+      });
+    });
+
+    librarySearch.addEventListener("input",()=>{
+      libraryPage = 1;
+      renderLibrary();
+    });
+
+    $("heroGameCount").textContent = UNIQUE_GAMES.length + "+";
+    populateGameSelect();
+    renderGamePicker();
+    renderLibrary();
+    showSetupReadyState();
+  </script>
+
+  <script src="header.js" defer></script>
+</body>
 </html>
