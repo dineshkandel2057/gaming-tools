@@ -972,6 +972,12 @@
       scrollbar-color: rgb(107 94 189) rgb(9 12 20);
     }
 
+    /* Keep the FPS viewport scrollbar locked to the site's universal appearance. */
+    html,
+    body {
+      scrollbar-width: thin !important;
+      scrollbar-color: rgba(145,126,255,.72) rgba(9,12,20,.45) !important;
+    }
 </style>
 
 <meta property="og:title" content="FPS Calculator | SystemFit PC">
@@ -983,6 +989,7 @@
 <meta name="twitter:title" content="FPS Calculator | SystemFit PC">
 <meta name="twitter:description" content="Estimate gaming FPS from your CPU, GPU, game, resolution, graphics settings and rendering options.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FPS Calculator","url":"https://systemfitpc.vercel.app/fps-calculator.html","description":"A gaming performance estimator that provides practical FPS ranges from hardware tiers and game workload profiles.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web browser","publisher":{"@type":"Organization","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/","logo":"https://systemfitpc.vercel.app/systemfit-favicon.png"}}</script>
+  
   <link rel="stylesheet" href="site-universal.css">
 </head>
 
