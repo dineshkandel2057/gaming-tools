@@ -466,6 +466,233 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
   .sfp-ambient-bg .sfp-streak{animation:none}
 }
 
+
+/* ================= TRENDING BUILDS HERO ================= */
+.trending-builds-hero{
+  position:relative;
+  min-height:500px;
+  padding:25px 25px 18px;
+  overflow:hidden;
+  isolation:isolate;
+  border-radius:28px;
+  border:1px solid rgba(157,174,204,.18);
+  background:
+    radial-gradient(circle at 70% 30%,rgba(116,87,255,.18),transparent 35%),
+    radial-gradient(circle at 28% 78%,rgba(48,172,255,.08),transparent 30%),
+    linear-gradient(145deg,rgba(24,31,50,.91),rgba(9,15,26,.94));
+  box-shadow:0 28px 90px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.055);
+}
+.trending-builds-hero:before{
+  content:"";position:absolute;inset:-30%;z-index:-1;pointer-events:none;
+  background:conic-gradient(from 210deg at 50% 50%,transparent 0 24%,rgba(132,105,255,.08) 28%,transparent 34% 62%,rgba(73,191,255,.055) 68%,transparent 75%);
+  animation:tb-ambient 12s linear infinite;
+}
+.tb-head{
+  position:relative;z-index:20;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:15px;
+}
+.tb-kicker{
+  display:flex;align-items:center;gap:7px;
+  color:#a8b4ca;font-size:8px;font-weight:800;letter-spacing:.14em;
+}
+.tb-kicker i{width:6px;height:6px;border-radius:50%;background:#62e4aa;box-shadow:0 0 12px #62e4aa}
+.tb-head h2{margin-top:6px;font:700 25px/1.08 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.045em;color:#f4f6fb}
+.tb-live{
+  margin-top:3px;padding:7px 9px;border:1px solid rgba(157,174,204,.13);
+  border-radius:999px;background:rgba(255,255,255,.035);
+  color:#7e8da5;font-size:6px;font-weight:800;letter-spacing:.1em;white-space:nowrap;
+}
+.tb-stack{
+  position:relative;height:370px;margin-top:12px;
+  perspective:1200px;
+}
+.tb-card{
+  position:absolute;left:50%;top:5px;width:min(330px,88%);
+  height:335px;display:flex;flex-direction:column;overflow:hidden;
+  border-radius:20px;border:1px solid rgba(177,191,220,.17);
+  background:linear-gradient(155deg,rgba(25,34,54,.97),rgba(9,16,29,.98));
+  color:#f4f6fb;text-decoration:none;
+  box-shadow:0 28px 55px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.065);
+  transform-origin:50% 90%;
+  transition:transform .48s cubic-bezier(.18,.78,.18,1),box-shadow .38s,border-color .35s,filter .38s;
+}
+.tb-card:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(125deg,rgba(255,255,255,.05),transparent 32%,transparent 70%,rgba(115,90,255,.055));
+}
+.tb-card-back{transform:translateX(-50%) translateY(27px) rotate(-5deg) scale(.89);filter:saturate(.78) brightness(.76);z-index:1;opacity:.72}
+.tb-card-mid{transform:translateX(-50%) translateY(14px) rotate(3.5deg) scale(.94);filter:saturate(.86) brightness(.86);z-index:2;opacity:.88}
+.tb-card-front{transform:translateX(-50%) rotate(-1deg);z-index:3}
+.tb-stack:hover .tb-card-back{transform:translateX(-50%) translate(-96px,17px) rotate(-8deg) scale(.91)}
+.tb-stack:hover .tb-card-mid{transform:translateX(-50%) translate(82px,10px) rotate(7deg) scale(.95)}
+.tb-stack:hover .tb-card-front{transform:translateX(-50%) translateY(-13px) rotate(0deg) scale(1.015);box-shadow:0 38px 75px rgba(0,0,0,.46),0 0 50px rgba(103,80,255,.13),inset 0 1px 0 rgba(255,255,255,.09);border-color:rgba(158,139,255,.4)}
+.tb-card:hover{filter:none!important;opacity:1!important;border-color:rgba(164,146,255,.5)}
+.tb-card-top{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:15px 16px 0}
+.tb-number{color:#697992;font:700 9px/1 "Space Grotesk";letter-spacing:.08em}
+.tb-tag{padding:5px 7px;border-radius:999px;background:rgba(70,209,157,.09);border:1px solid rgba(91,213,177,.17);color:#76dfb4;font-size:6px;font-weight:800;letter-spacing:.1em}
+.tb-tag-blue{color:#73cbff;background:rgba(67,170,255,.09);border-color:rgba(89,184,255,.18)}
+.tb-tag-purple{color:#c1b1ff;background:rgba(129,101,255,.12);border-color:rgba(148,126,255,.22)}
+.tb-build-visual{
+  position:relative;height:112px;margin:9px 15px 0;border-radius:14px;overflow:hidden;
+  border:1px solid rgba(157,174,204,.10);
+  background:
+    radial-gradient(circle at 72% 50%,rgba(108,84,255,.20),transparent 31%),
+    linear-gradient(145deg,rgba(22,31,50,.9),rgba(8,14,25,.96));
+}
+.tb-build-visual:before,.tb-build-visual:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(137,119,255,.15)}
+.tb-build-visual:before{width:160px;height:160px;left:50%;top:50%;transform:translate(-50%,-50%)}
+.tb-build-visual:after{width:105px;height:105px;left:50%;top:50%;transform:translate(-50%,-50%);border-color:rgba(79,195,255,.12)}
+.tb-gpu-shape{
+  position:absolute;right:23px;top:36px;width:105px;height:46px;border-radius:7px;
+  border:1px solid rgba(107,194,255,.65);background:linear-gradient(90deg,rgba(37,65,91,.8),rgba(15,27,45,.96));
+  box-shadow:0 0 28px rgba(72,174,255,.10),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.tb-gpu-shape:before,.tb-gpu-shape:after{content:"";position:absolute;width:25px;height:25px;top:9px;border-radius:50%;border:2px solid #65c8ff;background:radial-gradient(circle,#6dcfff 0 18%,transparent 20% 42%,rgba(89,193,255,.12) 44% 100%)}
+.tb-gpu-shape:before{left:17px}.tb-gpu-shape:after{right:17px}
+.tb-cpu-shape{position:absolute;left:28px;top:34px;width:47px;height:47px;border-radius:9px;border:1px solid rgba(168,143,255,.65);background:linear-gradient(145deg,rgba(105,80,190,.5),rgba(13,23,39,.95));box-shadow:0 0 24px rgba(117,87,255,.14)}
+.tb-cpu-shape:after{content:"";position:absolute;inset:10px;border-radius:5px;border:1px solid rgba(205,194,255,.4);background:linear-gradient(145deg,rgba(165,139,255,.7),rgba(62,143,255,.28))}
+.tb-creator-visual{background:radial-gradient(circle at 32% 50%,rgba(55,205,163,.12),transparent 30%),linear-gradient(145deg,rgba(20,38,48,.9),rgba(8,15,25,.96))}
+.tb-creator-visual .tb-cpu-shape{border-color:rgba(92,224,180,.62)}.tb-creator-visual .tb-cpu-shape:after{background:linear-gradient(145deg,rgba(77,219,171,.7),rgba(62,143,255,.25))}
+.tb-creator-visual .tb-gpu-shape{border-color:rgba(112,222,255,.58)}
+.tb-esports-visual{background:radial-gradient(circle at 70% 50%,rgba(58,168,255,.13),transparent 32%),linear-gradient(145deg,rgba(18,31,50,.9),rgba(8,15,25,.96))}.tb-trending-now{display:flex;align-items:center;gap:7px;color:#ffb15c;font-size:11px;font-weight:800;letter-spacing:.04em}.tb-combo-label{position:absolute;z-index:4;padding:4px 7px;border:1px solid rgba(157,174,204,.16);border-radius:999px;background:rgba(5,11,20,.72);backdrop-filter:blur(8px);color:#dce7f7;font-size:9px;font-weight:800;letter-spacing:.08em;white-space:nowrap}.tb-combo-cpu{left:17px;top:11px}.tb-combo-gpu{right:14px;top:11px}.tb-combo-link{position:absolute;z-index:4;left:50%;top:51px;transform:translate(-50%,-50%);width:20px;height:20px;display:grid;place-items:center;border:1px solid rgba(96,190,255,.3);border-radius:50%;background:rgba(10,22,36,.9);color:#8ed9ff;font-size:11px;font-weight:900;box-shadow:0 0 20px rgba(67,181,255,.16)}.tb-combo-caption{position:absolute;z-index:4;left:50%;bottom:8px;transform:translateX(-50%);color:#7fb8db;font-size:7px;font-weight:900;letter-spacing:.13em;white-space:nowrap}
+.tb-creator-visual .tb-combo-label,.tb-sweet-spot-visual .tb-combo-label{font-size:9px}.tb-creator-visual .tb-combo-cpu,.tb-sweet-spot-visual .tb-combo-cpu{left:17px;top:11px}.tb-creator-visual .tb-combo-gpu,.tb-sweet-spot-visual .tb-combo-gpu{right:14px;top:11px}.tb-esports-visual .tb-cpu-shape{border-color:rgba(87,188,255,.6)}.tb-esports-visual .tb-cpu-shape:after{background:linear-gradient(145deg,rgba(85,186,255,.68),rgba(126,99,255,.25))}
+.tb-build-glow{position:absolute;right:0;bottom:-50px;width:160px;height:120px;background:rgba(119,88,255,.15);filter:blur(35px);border-radius:50%}
+.tb-card-body{position:relative;z-index:4;padding:12px 16px 15px;display:flex;flex-direction:column;flex:1}
+.tb-eyebrow{color:#8594ac;font-size:7px;font-weight:800;letter-spacing:.12em}
+.tb-card h3{margin-top:5px;font:700 19px/1.14 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.04em;color:#f3f5fa}
+.tb-specs{display:flex;gap:7px;margin-top:9px;flex-wrap:wrap}
+.tb-specs b{padding:5px 7px;border-radius:6px;background:rgba(255,255,255,.045);border:1px solid rgba(157,174,204,.1);color:#b8c4d7;font-size:7px}
+.tb-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto;padding-top:12px}
+.tb-stats span{padding:8px;border-radius:8px;background:rgba(4,9,17,.42);border:1px solid rgba(157,174,204,.08);color:#71819a;font-size:6px;font-weight:800;letter-spacing:.08em}
+.tb-stats strong{display:block;margin-top:3px;color:#e8edf6;font-size:9px;letter-spacing:0}
+.tb-action{display:flex;justify-content:space-between;align-items:center;margin-top:9px;color:#a995ff;font-size:8px;font-weight:800}
+.tb-action b{font-size:13px}
+.tb-foot{position:relative;z-index:20;display:flex;justify-content:space-between;gap:12px;color:#6f7f97;font-size:6px;letter-spacing:.04em}
+@keyframes tb-ambient{to{transform:rotate(360deg)}}
+@media(max-width:900px){.trending-builds-hero{min-height:490px}.tb-stack{height:360px}}
+@media(max-width:700px){
+  .trending-builds-hero{min-height:455px;padding:19px}
+  .tb-head h2{font-size:22px}.tb-live{display:none}
+  .tb-stack{height:340px}.tb-card{width:min(300px,86%);height:310px}
+  .tb-stack:hover .tb-card-back{transform:translateX(-50%) translate(-67px,17px) rotate(-8deg) scale(.88)}
+  .tb-stack:hover .tb-card-mid{transform:translateX(-50%) translate(57px,10px) rotate(7deg) scale(.92)}
+  .tb-stack:hover .tb-card-front{transform:translateX(-50%) translateY(-10px) rotate(0deg) scale(1.01)}
+}
+@media(max-width:480px){
+  .trending-builds-hero{min-height:430px;border-radius:21px;padding:16px}
+  .tb-stack{height:318px}.tb-card{width:84%;height:295px}
+  .tb-build-visual{height:92px}.tb-gpu-shape{right:14px;top:29px;transform:scale(.85);transform-origin:right}.tb-cpu-shape{left:18px;top:27px;transform:scale(.85);transform-origin:left}
+  .tb-card h3{font-size:17px}.tb-specs b{font-size:6px}.tb-foot{display:block}.tb-foot span:last-child{display:block;margin-top:3px}
+}
+@media(prefers-reduced-motion:reduce){
+  .trending-builds-hero:before{animation:none}
+  .tb-card{transition:none}
+}
+
+
+/* ================= TRENDING BUILDS — SCROLL SWITCH ================= */
+.tb-stack.tb-scroll-ready .tb-card{
+  transition:
+    transform .58s cubic-bezier(.2,.82,.2,1),
+    opacity .42s ease,
+    filter .42s ease,
+    box-shadow .42s ease,
+    border-color .35s ease;
+  cursor:pointer;
+}
+.tb-stack.tb-scroll-ready .tb-card.tb-active{
+  transform:translateX(-50%) translateY(-10px) rotate(0deg) scale(1.02);
+  opacity:1;
+  filter:none;
+  z-index:10;
+  border-color:rgba(164,146,255,.46);
+  box-shadow:
+    0 34px 76px rgba(0,0,0,.46),
+    0 0 52px rgba(103,80,255,.14),
+    inset 0 1px 0 rgba(255,255,255,.09);
+}
+.tb-stack.tb-scroll-ready .tb-card.tb-next{
+  transform:translateX(-50%) translate(76px,13px) rotate(5deg) scale(.94);
+  opacity:.82;
+  filter:saturate(.88) brightness(.86);
+  z-index:5;
+}
+.tb-stack.tb-scroll-ready .tb-card.tb-prev{
+  transform:translateX(-50%) translate(-76px,18px) rotate(-5deg) scale(.90);
+  opacity:.64;
+  filter:saturate(.78) brightness(.76);
+  z-index:4;
+}
+.tb-stack.tb-scroll-ready:hover .tb-card.tb-active{
+  transform:translateX(-50%) translateY(-17px) rotate(0deg) scale(1.025);
+}
+.tb-stack.tb-scroll-ready:hover .tb-card.tb-next{
+  transform:translateX(-50%) translate(96px,10px) rotate(7deg) scale(.95);
+}
+.tb-stack.tb-scroll-ready:hover .tb-card.tb-prev{
+  transform:translateX(-50%) translate(-96px,17px) rotate(-7deg) scale(.91);
+}
+.tb-stack.tb-scroll-ready:focus-visible{
+  outline:2px solid #9b8aff;
+  outline-offset:5px;
+}
+.tb-scroll-hint{
+  position:absolute;
+  left:50%;
+  bottom:24px;
+  transform:translateX(-50%);
+  z-index:30;
+  padding:7px 11px;
+  border:1px solid rgba(157,174,204,.14);
+  border-radius:999px;
+  background:rgba(8,13,23,.66);
+  backdrop-filter:blur(12px);
+  color:#8e9bb1;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  opacity:.9;
+  pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease;
+}
+.tb-scroll-hint.is-hidden{
+  opacity:0;
+  transform:translateX(-50%) translateY(5px);
+}
+@media(max-width:700px){
+  .tb-stack.tb-scroll-ready .tb-card.tb-next{
+    transform:translateX(-50%) translate(57px,10px) rotate(6deg) scale(.92);
+  }
+  .tb-stack.tb-scroll-ready .tb-card.tb-prev{
+    transform:translateX(-50%) translate(-57px,15px) rotate(-6deg) scale(.89);
+  }
+  .tb-stack.tb-scroll-ready:hover .tb-card.tb-next{
+    transform:translateX(-50%) translate(67px,8px) rotate(7deg) scale(.93);
+  }
+  .tb-stack.tb-scroll-ready:hover .tb-card.tb-prev{
+    transform:translateX(-50%) translate(-67px,14px) rotate(-7deg) scale(.90);
+  }
+}
+@media(max-width:480px){
+  .tb-stack.tb-scroll-ready .tb-card.tb-next{
+    transform:translateX(-50%) translate(39px,9px) rotate(5deg) scale(.91);
+  }
+  .tb-stack.tb-scroll-ready .tb-card.tb-prev{
+    transform:translateX(-50%) translate(-39px,12px) rotate(-5deg) scale(.88);
+  }
+  .tb-stack.tb-scroll-ready:hover .tb-card.tb-next{
+    transform:translateX(-50%) translate(45px,7px) rotate(6deg) scale(.92);
+  }
+  .tb-stack.tb-scroll-ready:hover .tb-card.tb-prev{
+    transform:translateX(-50%) translate(-45px,11px) rotate(-6deg) scale(.89);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .tb-stack.tb-scroll-ready .tb-card{transition:none}
+  .tb-scroll-hint{transition:none}
+}
+
 </style>
 
 <meta property="og:title" content="SystemFit PC — Practical PC Planning Tools">
@@ -508,20 +735,89 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
       <a href="#tools" class="primary-button">Explore Tools <span aria-hidden="true">→</span></a>
     </div>
   </div>
-  <div class="hero-visual" role="img" aria-label="Illustrations of a processor and graphics card from Intel, AMD, NVIDIA and Radeon">
-    <div class="visual-top"><span>PC hardware, made clearer</span><span><i class="live-dot"></i>Gaming tools</span></div>
-    <div class="visual-components">
-      <div class="component-illustration cpu-art">
-        <svg viewBox="0 0 220 190" aria-hidden="true"><defs><linearGradient id="chipMetal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dce8ff"/><stop offset=".45" stop-color="#667998"/><stop offset="1" stop-color="#24334b"/></linearGradient><linearGradient id="chipCore" x1="0" x2="1"><stop stop-color="#a795ff"/><stop offset="1" stop-color="#6cbcff"/></linearGradient></defs><g stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".75"><path d="M62 29v16M86 23v22M110 20v25M134 23v22M158 29v16M62 145v16M86 145v22M110 145v25M134 145v22M158 145v16M39 52h16M39 76h16M39 100h16M39 124h16M165 52h16M165 76h16M165 100h16M165 124h16"/></g><rect x="52" y="39" width="116" height="116" rx="17" fill="url(#chipMetal)" stroke="#d7e5ff" stroke-opacity=".55"/><rect x="68" y="55" width="84" height="84" rx="11" fill="#111a2b" stroke="currentColor" stroke-width="2"/><rect x="78" y="65" width="64" height="64" rx="8" fill="url(#chipCore)" opacity=".9"/><path d="M91 84h38M91 95h38M91 106h22" stroke="#131a2c" stroke-width="5" stroke-linecap="round" opacity=".7"/><circle cx="110" cy="97" r="39" fill="none" stroke="#fff" stroke-opacity=".16"/></svg>
-        <span class="visual-caption">Processor</span>
-      </div>
-      <div class="component-illustration gpu-art">
-        <svg viewBox="0 0 320 190" aria-hidden="true"><defs><linearGradient id="gpuShell" x1="0" x2="1"><stop stop-color="#283b58"/><stop offset=".55" stop-color="#17263d"/><stop offset="1" stop-color="#0e1728"/></linearGradient><radialGradient id="fanGlow"><stop stop-color="#72d9ff" stop-opacity=".25"/><stop offset="1" stop-color="#72d9ff" stop-opacity="0"/></radialGradient></defs><path d="M36 47h235a17 17 0 0 1 17 17v67a17 17 0 0 1-17 17H36z" fill="url(#gpuShell)" stroke="#8dcfff" stroke-opacity=".6" stroke-width="2"/><path d="M52 56h191v84H52z" fill="#0e1829" stroke="#5e88b2" stroke-opacity=".55"/><g fill="url(#fanGlow)" stroke="currentColor" stroke-width="2"><circle cx="107" cy="98" r="31"/><circle cx="188" cy="98" r="31"/></g><g fill="currentColor" opacity=".83"><path d="M107 73c7 11 8 17 1 24-5 5-11 5-18 1 0-12 5-20 17-25M132 98c-11 7-17 8-24 1-5-5-5-11-1-18 12 0 20 5 25 17M107 123c-7-11-8-17-1-24 5-5 11-5 18-1 0 12-5 20-17 25M82 98c11-7 17-8 24-1 5 5 5 11 1 18-12 0-20-5-25-17M188 73c7 11 8 17 1 24-5 5-11 5-18 1 0-12 5-20 17-25M213 98c-11 7-17 8-24 1-5-5-5-11-1-18 12 0 20 5 25 17M188 123c-7-11-8-17-1-24 5-5 11-5 18-1 0 12-5 20-17 25M163 98c11-7 17-8 24-1 5 5 5 11 1 18-12 0-20 5-25-17"/></g><circle cx="107" cy="98" r="7" fill="#d9f3ff"/><circle cx="188" cy="98" r="7" fill="#d9f3ff"/><path d="M282 77h15v50h-15M65 150v10h34v-10" fill="none" stroke="#b7c6da" stroke-width="4"/></svg>
-        <span class="visual-caption">Graphics card</span>
-      </div>
+  
+<div class="hero-visual trending-builds-hero" aria-label="Trending PC builds">
+  <div class="tb-head">
+    <div>
+      <span class="tb-trending-now">Trending PC Build Right Now 🔥</span>
+      <h2>What can you build?</h2>
     </div>
-    <div class="brand-strip" aria-label="Hardware brands"><span class="brand-chip intel">Intel Core</span><span class="brand-chip amd">AMD Ryzen</span><span class="brand-chip nvidia">GeForce</span><span class="brand-chip radeon">Radeon</span><span class="brand-chip arc">Intel Arc</span></div>
+    <span class="tb-live">REAL-WORLD STARTING POINTS</span>
   </div>
+
+  <div class="tb-stack">
+    <a class="tb-card tb-card-back" href="build-planner.html?build=eyJjcHUiOiJyNy03ODAweDNkIiwibW90aGVyYm9hcmQiOiJiNjUwLWF0eCIsIm1lbW9yeSI6ImQ1LTMyLTYwMDAiLCJncHUiOiJncHUtZ2Vmb3JjZS1ydHgtNDA4MC1zdXBlciIsImNvb2xlciI6ImFpci0yNTAiLCJjYXNlIjoibGFyZ2UtbWlkIiwicHN1IjoicHN1LTg1MCIsInN0b3JhZ2UiOiJudm1lLTIiLCJnb2FsIjoiMTQ0MCIsIm1vZGUiOiJnYW1pbmciLCJidWRnZXQiOiJoaWdoIiwid29ya2xvYWQiOiIxNDQwcCBjcmVhdG9yICsgZ2FtaW5nIn0=">
+      <div class="tb-card-top">
+        <span class="tb-number">03</span>
+        <span class="tb-tag">HYBRID</span>
+      </div>
+      <div class="tb-build-visual tb-creator-visual">
+        <span class="tb-combo-label tb-combo-cpu">RYZEN 7 7800X3D</span>
+        <span class="tb-cpu-shape"></span>
+        <span class="tb-combo-link">+</span>
+        <span class="tb-gpu-shape"></span>
+        <span class="tb-combo-label tb-combo-gpu">RTX 4080 SUPER</span>
+        <span class="tb-combo-caption">CREATOR + GAMING COMBO</span>
+      </div>
+      <div class="tb-card-body">
+        <span class="tb-eyebrow">CREATOR + GAMING</span>
+        <h3>Creator Powerhouse</h3>
+        <div class="tb-specs"><b>Ryzen 7 7800X3D</b><b>RTX 4080 Super</b></div>
+        <div class="tb-stats"><span>EST. PRICE <strong>~$1,900</strong></span><span>1440p <strong>160+ FPS*</strong></span></div>
+      </div>
+    </a>
+
+    <a class="tb-card tb-card-mid" href="build-planner.html?build=eyJjcHUiOiJyNS01NjAwIiwibW90aGVyYm9hcmQiOiJiNTUwLWF0eCIsIm1lbW9yeSI6ImQ0LTMyLTMyMDAiLCJncHUiOiJyeC02NjAwIiwiY29vbGVyIjoiYWlyLTEyMCIsImNhc2UiOiJhaXJmbG93LW1pZCIsInBzdSI6InBzdS01NTAiLCJzdG9yYWdlIjoibnZtZS0xIiwiZ29hbCI6IjEwODAiLCJtb2RlIjoiZ2FtaW5nIiwiYnVkZ2V0IjoidmFsdWUiLCJ3b3JrbG9hZCI6IjEwODBwIGVzcG9ydHMifQ==">
+      <div class="tb-card-top">
+        <span class="tb-number">02</span>
+        <span class="tb-tag tb-tag-blue">ESPORTS</span>
+      </div>
+      <div class="tb-build-visual tb-esports-visual">
+        <span class="tb-combo-label tb-combo-cpu">RYZEN 5 5600</span>
+        <span class="tb-cpu-shape"></span>
+        <span class="tb-combo-link">+</span>
+        <span class="tb-gpu-shape"></span>
+        <span class="tb-combo-label tb-combo-gpu">RX 6600</span>
+        <span class="tb-combo-caption">SMART 1080P COMBO</span>
+      </div>
+      <div class="tb-card-body">
+        <span class="tb-eyebrow">HIGH FPS / LOW COST</span>
+        <h3>Budget Esports Rig</h3>
+        <div class="tb-specs"><b>Ryzen 5 5600</b><b>Radeon RX 6600</b></div>
+        <div class="tb-stats"><span>EST. PRICE <strong>~$650</strong></span><span>1080p <strong>200+ FPS*</strong></span></div>
+      </div>
+    </a>
+
+    <a class="tb-card tb-card-front" href="build-planner.html?build=eyJjcHUiOiJyNS03NjAwIiwibW90aGVyYm9hcmQiOiJiNjUwLWF0eCIsIm1lbW9yeSI6ImQ1LTMyLTYwMDAiLCJncHUiOiJncHUtZ2Vmb3JjZS1ydHgtNDA3MCIsImNvb2xlciI6ImFpci0xODAiLCJjYXNlIjoiYWlyZmxvdy1taWQiLCJwc3UiOiJwc3UtNjUwIiwic3RvcmFnZSI6Im52bWUtMSIsImdvYWwiOiIxNDQwIiwibW9kZSI6ImdhbWluZyIsImJ1ZGdldCI6ImJhbGFuY2VkIiwid29ya2xvYWQiOiIxNDQwcCBnYW1pbmcifQ==">
+      <div class="tb-card-top">
+        <span class="tb-number">01</span>
+        <span class="tb-tag tb-tag-purple">POPULAR</span>
+      </div>
+      <div class="tb-build-visual tb-sweet-spot-visual">
+        <span class="tb-combo-label tb-combo-cpu">RYZEN 5 7600</span>
+        <span class="tb-cpu-shape"></span>
+        <span class="tb-combo-link">+</span>
+        <span class="tb-gpu-shape"></span>
+        <span class="tb-combo-label tb-combo-gpu">RTX 4070</span>
+        <span class="tb-combo-caption">1440P SWEET SPOT COMBO</span>
+        <span class="tb-build-glow"></span>
+      </div>
+      <div class="tb-card-body">
+        <span class="tb-eyebrow">1440P GAMING</span>
+        <h3>The 1440p Sweet Spot</h3>
+        <div class="tb-specs"><b>AMD Ryzen 5</b><b>GeForce RTX 4070</b></div>
+        <div class="tb-stats"><span>EST. PRICE <strong>~$1,150</strong></span><span>1440p <strong>120+ FPS*</strong></span></div>
+        <span class="tb-action">Build this setup <b>→</b></span>
+      </div>
+    </a>
+  </div>
+
+  <div class="tb-foot">
+    <span>Hover a build to bring it forward</span>
+    <span>*FPS varies by game, settings &amp; system configuration</span>
+  </div>
+</div>
+
 </div>
 
 <div class="tools" id="tools">
@@ -702,7 +998,3 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
   render();
 })();
 </script>
-
-<script src="header.js" defer></script>
-</body>
-</html>
