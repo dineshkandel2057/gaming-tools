@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="systemfit-favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Use the free SystemFit PC Game Settings Optimizer to get a practical graphics preset, FPS range and settings recommendations for your PC and target resolution.">
+  <link rel="canonical" href="https://systemfitpc.vercel.app/game-settings.html">
+  <title>Game Settings Optimizer | SystemFit PC</title>
+  <meta property="og:title" content="Game Settings Optimizer | SystemFit PC">
+  <meta property="og:description" content="Get a practical starting graphics preset and FPS estimate for your PC, game and target resolution.">
+  <meta property="og:url" content="https://systemfitpc.vercel.app/game-settings.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SystemFit PC">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Game Settings Optimizer | SystemFit PC">
+  <meta name="twitter:description" content="Get a practical starting graphics preset and FPS estimate for your PC, game and target resolution.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"SystemFit PC Game Settings Optimizer","url":"https://systemfitpc.vercel.app/game-settings.html","applicationCategory":"GameApplication","operatingSystem":"Web","description":"A practical rule-based game settings helper that suggests a starting graphics preset and FPS range from selected PC hardware, game and resolution.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <link rel="stylesheet" href="site-universal.css">
+  <style>
+    :root{--bg:#090c14;--panel:rgba(19,25,39,.84);--border:rgba(157,174,204,.16);--text:#f5f7fc;--muted:#aab5c8;--purple:#735dff;--cyan:#69caff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{min-height:100vh;background:radial-gradient(ellipse at 15% 3%,rgba(102,77,255,.18),transparent 34%),radial-gradient(ellipse at 88% 18%,rgba(33,162,219,.12),transparent 33%),var(--bg);color:var(--text);font-family:"DM Sans",Inter,system-ui,sans-serif;line-height:1.6}
+    h1,h2,h3{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
+    main{max-width:1060px;margin:auto;padding:70px 22px 90px}
+    .hero{text-align:center;max-width:780px;margin:0 auto 38px}
+    .eyebrow{display:inline-block;margin-bottom:14px;padding:7px 11px;border:1px solid rgba(157,139,255,.24);border-radius:999px;background:rgba(118,95,255,.1);color:#b9aaff;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(40px,6vw,58px);line-height:1.08;margin-bottom:16px}
+    h1 span{background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{color:var(--muted);font-size:17px;line-height:1.8}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(310px,.82fr);gap:20px;align-items:start}
+    .card{border:1px solid var(--border);border-radius:18px;background:linear-gradient(145deg,rgba(24,31,47,.82),rgba(15,20,32,.9));padding:25px}
+    .card h2{font-size:22px;margin-bottom:5px}.card-intro{color:#929fb4;font-size:13px;margin-bottom:20px}
+    .field{margin-bottom:16px}.field label{display:block;margin-bottom:7px;color:#dfe6f3;font-size:12px;font-weight:800}
+    select{width:100%;padding:12px 13px;border:1px solid rgba(157,174,204,.18);border-radius:10px;background:#101625;color:#eef2fa;font:500 13px "DM Sans",sans-serif;outline:none}
+    select:focus{border-color:rgba(151,132,255,.55);box-shadow:0 0 0 3px rgba(118,95,255,.1)}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .actions{display:flex;gap:10px;margin-top:6px}.btn{flex:1;border:0;border-radius:10px;padding:12px 15px;font:800 13px "DM Sans",sans-serif;cursor:pointer}
+    .primary{background:linear-gradient(100deg,#735dff,#4fa9e8);color:#fff}.secondary{background:rgba(255,255,255,.06);border:1px solid rgba(157,174,204,.16);color:#dfe6f3}
+    .results{position:sticky;top:100px}.result-top{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:20px}
+    .fps-label{color:#94a1b7;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.fps{font:700 clamp(34px,5vw,52px)/1 "Space Grotesk";margin-top:5px}
+    .preset{padding:8px 11px;border:1px solid rgba(105,202,255,.2);border-radius:999px;background:rgba(105,202,255,.08);color:#8edbff;font-size:11px;font-weight:800;white-space:nowrap}
+    .metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{padding:13px;border:1px solid rgba(157,174,204,.11);border-radius:11px;background:rgba(255,255,255,.025)}.metric span{display:block;color:#8997ad;font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:800}.metric b{display:block;margin-top:4px;font-size:13px;color:#e8edf7}
+    .settings{margin-top:18px;border-top:1px solid rgba(157,174,204,.11);padding-top:18px}.settings h3{font-size:16px;margin-bottom:11px}.setting-row{display:flex;justify-content:space-between;gap:15px;padding:9px 0;border-bottom:1px solid rgba(157,174,204,.08);font-size:12px}.setting-row:last-child{border:0}.setting-row span{color:#9da9bc}.setting-row b{color:#e9eef8;text-align:right}
+    .note{margin-top:15px;padding:13px 14px;border-radius:11px;background:rgba(118,95,255,.07);border:1px solid rgba(151,132,255,.12);color:#aab6c9;font-size:11px;line-height:1.65}
+    .below{margin-top:20px}.below h2{font-size:22px;margin-bottom:10px}.below p{color:#aab5c8;font-size:13px;line-height:1.8}.below a{color:#b8a9ff;font-weight:800}
+    @media(max-width:820px){.layout{grid-template-columns:1fr}.results{position:static}}
+    @media(max-width:520px){main{padding:48px 15px 70px}.card{padding:20px}.grid2{grid-template-columns:1fr}.result-top{align-items:start}.actions{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" data-sfp-reveal>
+      <div class="eyebrow">Free SystemFit PC Tool</div>
+      <h1>Game Settings <span>Optimizer</span></h1>
+      <p>Choose your game, hardware and target. Get a practical starting preset, estimated FPS range and settings to prioritize.</p>
+    </section>
+
+    <div class="layout">
+      <section class="card" data-sfp-reveal>
+        <h2>Your setup</h2>
+        <p class="card-intro">This is a V1 rule-based estimator, not a benchmark database.</p>
+
+        <div class="field"><label for="game">Game</label><select id="game"></select></div>
+        <div class="grid2">
+          <div class="field"><label for="cpu">CPU</label><select id="cpu"></select></div>
+          <div class="field"><label for="gpu">GPU</label><select id="gpu"></select></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="ram">RAM</label><select id="ram"><option value="8">8 GB</option><option value="16" selected>16 GB</option><option value="32">32 GB</option><option value="64">64 GB</option></select></div>
+          <div class="field"><label for="resolution">Gaming resolution</label><select id="resolution"><option value="">Select gaming resolution</option><option value="1080">1080p</option><option value="1440">1440p</option><option value="2160">4K</option></select></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="priority">Priority</label><select id="priority"><option value="fps">Higher FPS</option><option value="quality" selected>Image quality</option><option value="balanced">Balanced</option></select></div>
+          <div class="field"><label for="target">Target FPS</label><select id="target"><option value="">Select target FPS</option><option value="60">60 FPS</option><option value="90">90 FPS</option><option value="120">120 FPS</option><option value="144">144 FPS</option><option value="165">165 FPS</option><option value="240">240 FPS</option></select></div>
+        </div>
+        <div class="field"><label for="rt">Ray tracing</label><select id="rt"><option value="off" selected>Off / not required</option><option value="on">On</option></select></div>
+        <div class="actions"><button class="btn primary" id="optimize">Optimize settings</button><button class="btn secondary" id="reset">Reset</button></div>
+      </section>
+
+      <section class="card results" id="results" data-sfp-reveal>
+        <div class="result-top">
+          <div><div class="fps-label">Estimated FPS</div><div class="fps" id="fps">—</div></div>
+          <div class="preset" id="preset">Choose a setup</div>
+        </div>
+        <div class="metrics">
+          <div class="metric"><span>Likely limit</span><b id="limit">—</b></div>
+          <div class="metric"><span>VRAM headroom</span><b id="vram">—</b></div>
+          <div class="metric"><span>RAM</span><b id="ramOut">—</b></div>
+          <div class="metric"><span>Confidence</span><b id="confidence">—</b></div>
+        </div>
+        <div class="settings">
+          <h3>Recommended starting point</h3>
+          <div class="setting-row"><span>Textures</span><b id="textures">—</b></div>
+          <div class="setting-row"><span>Shadows</span><b id="shadows">—</b></div>
+          <div class="setting-row"><span>Ray tracing</span><b id="rtOut">—</b></div>
+          <div class="setting-row"><span>Upscaling</span><b id="upscale">—</b></div>
+          <div class="setting-row"><span>Frame generation</span><b id="fg">—</b></div>
+          <div class="setting-row"><span>Effects / volumetrics</span><b id="effects">—</b></div>
+        </div>
+        <div class="note" id="explanation">Select your setup and run the optimizer. Use the result as a starting point, then adjust in-game while watching FPS and frame-time consistency.</div>
+      </section>
+    </div>
+
+    <section class="card below" data-sfp-reveal>
+      <h2>How to use the result</h2>
+      <p>Start with the suggested preset, then change one setting at a time. If GPU usage is near full load, lower GPU-heavy options such as resolution, ray tracing, shadows and volumetrics. If GPU usage is low while one or more CPU threads are heavily loaded, the game may be CPU-limited and lowering graphics quality may not add much FPS.</p>
+      <p style="margin-top:10px">For a more focused diagnosis, try the <a href="fps-calculator.html">FPS Calculator</a>, <a href="bottleneck.html">Bottleneck Calculator</a> or read the <a href="graphics-settings-that-affect-fps.html">graphics settings guide</a>.</p>
+    </section>
+  </main>
+  <footer class="sfp-site-footer">
+    <p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
+    <p><a href="privacy-policy.html">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+  (() => {
+    const games = {
+      "Cyberpunk 2077":{gpu:1.18,cpu:1.05,vram:1.15,heavy:1.18,fg:true},
+      "Red Dead Redemption 2":{gpu:1.10,cpu:1.02,vram:1.05,heavy:1.10,fg:false},
+      "Hogwarts Legacy":{gpu:1.12,cpu:1.04,vram:1.12,heavy:1.12,fg:true},
+      "Elden Ring":{gpu:.78,cpu:.92,vram:.88,heavy:.82,fg:false},
+      "Starfield":{gpu:1.15,cpu:1.15,vram:1.08,heavy:1.16,fg:true},
+      "Forza Horizon 5":{gpu:.92,cpu:.90,vram:.90,heavy:.88,fg:false},
+      "Call of Duty: Warzone":{gpu:1.02,cpu:1.10,vram:1.00,heavy:1.00,fg:true},
+      "Fortnite":{gpu:.78,cpu:1.04,vram:.76,heavy:.75,fg:true},
+      "Counter-Strike 2":{gpu:.52,cpu:.76,vram:.55,heavy:.48,fg:false},
+      "Valorant":{gpu:.40,cpu:.62,vram:.42,heavy:.35,fg:false},
+      "Minecraft Java":{gpu:.55,cpu:.78,vram:.55,heavy:.48,fg:false},
+      "The Last of Us Part I":{gpu:1.22,cpu:1.08,vram:1.20,heavy:1.22,fg:true}
+    };
+    const cpus = {
+      "Intel Core i3-12100F":.58,"Ryzen 5 3600":.62,"Ryzen 5 5600":.72,"Core i5-12400F":.76,
+      "Ryzen 5 7600":.86,"Core i5-13400F":.84,"Core i5-14600K":1.00,"Ryzen 7 7800X3D":1.08,
+      "Ryzen 7 9800X3D":1.15,"Core i7-13700K":1.03,"Core i7-14700K":1.08,"Ryzen 9 9950X3D":1.12
+    };
+    const gpus = {
+      "GTX 1650":.38,"RTX 2060":.55,"RTX 3060 12GB":.67,"RX 6600":.65,"RTX 4060":.72,"RX 7600":.73,
+      "RTX 4060 Ti 16GB":.84,"RTX 4070":1.00,"RX 7800 XT":1.04,"RTX 4070 Super":1.08,
+      "RTX 5070":1.18,"RTX 5070 Ti":1.34,"RTX 5080":1.60,"RX 7900 XTX":1.42
+    };
+    const gpuVram = {"GTX 1650":4,"RTX 2060":6,"RTX 3060 12GB":12,"RX 6600":8,"RTX 4060":8,"RX 7600":8,"RTX 4060 Ti 16GB":16,"RTX 4070":12,"RX 7800 XT":16,"RTX 4070 Super":12,"RTX 5070":12,"RTX 5070 Ti":16,"RTX 5080":16,"RX 7900 XTX":24};
+    const $=id=>document.getElementById(id);
+    Object.keys(games).forEach(x=>$("game").add(new Option(x,x)));
+    Object.keys(cpus).forEach(x=>$("cpu").add(new Option(x,x)));
+    Object.keys(gpus).forEach(x=>$("gpu").add(new Option(x,x)));
+    $("game").value="Cyberpunk 2077"; $("cpu").value="Ryzen 5 5600"; $("gpu").value="RTX 4060";
+
+    function baseEstimate(g,cpu,gpu,res){
+      const resFactor = res==="1080"?1.00:res==="1440"?.72:.46;
+      const game=g;
+      const gpuScore=gpus[gpu], cpuScore=cpus[cpu];
+      const gpuFPS=112*gpuScore/(game.gpu)*resFactor;
+      const cpuFPS=168*cpuScore/(game.cpu)*(res==="1080"?1:.88);
+      return Math.max(18,Math.round(Math.min(gpuFPS,cpuFPS)));
+    }
+    function run(){
+      const game=games[$("game").value], cpu=$("cpu").value, gpu=$("gpu").value, res=$("resolution").value;
+      if(!res){$("fps").textContent="—";$("preset").textContent="Select resolution";$("explanation").textContent="Choose a gaming resolution and target FPS, then run the optimizer.";return}
+      const ram=+$("ram").value, target=+$("target").value||60, priority=$("priority").value, rt=$("rt").value==="on";
+      let fps=baseEstimate(game,cpus[cpu],gpu,res);
+      if(ram<16)fps*=.88;
+      if(rt)fps*=.70*game.heavy;
+      if(priority==="fps")fps*=1.08;
+      if(priority==="quality")fps*=.94;
+      fps=Math.max(18,Math.round(fps));
+      const range=Math.max(8,Math.round(fps*.11));
+      const preset=fps>=target*1.12?"High / Ultra":fps>=target*.9?"High":fps>=target*.72?"Medium":"Low / Performance";
+      const limit=(gpus[gpu]/game.gpu* (res==="1080"?1:.9)) < (cpus[cpu]/game.cpu*.9)?"GPU":"CPU";
+      const vramNeed=res==="2160"?10:res==="1440"?7:5;
+      const vramHead=gpuVram[gpu]-vramNeed-(rt?2:0);
+      let up="Off / Native";
+      if(fps<target){up=res==="1080"?"Quality or native":res==="1440"?"Quality": "Balanced";}
+      const fg=game.fg&&fps>=45?"Recommended if supported":"Off / unavailable";
+      $("fps").textContent=range+"–"+Math.round(fps+range)+" FPS";
+      $("preset").textContent=preset;
+      $("limit").textContent=limit+"-limited";
+      $("vram").textContent=vramHead>=3?"Healthy":vramHead>=1?"Tight":"Low";
+      $("ramOut").textContent=ram<16?"Upgrade to 16GB+":ram+" GB is adequate";
+      $("confidence").textContent="Medium";
+      $("textures").textContent=gpuVram[gpu]>=12?"High / Ultra":gpuVram[gpu]>=8?"High":"Medium";
+      $("shadows").textContent=limit==="GPU"?"Medium":"High";
+      $("rtOut").textContent=rt?"On — expect lower FPS":"Off";
+      $("upscale").textContent=up;
+      $("fg").textContent=fg;
+      $("effects").textContent=limit==="GPU"?"Medium":"High";
+      $("explanation").textContent="Starting point only: estimated performance is based on a transparent rule set, not a measured benchmark of your exact PC. Actual FPS varies with drivers, patches, game areas, thermals, background load and in-game settings. If you miss the target, lower the most GPU-heavy settings first.";
+    }
+    $("optimize").addEventListener("click",run);
+    $("reset").addEventListener("click",()=>{ $("resolution").value="";$("target").value="";$("ram").value="16";$("priority").value="balanced";$("rt").value="off";$("fps").textContent="—";$("preset").textContent="Choose a setup";["limit","vram","ramOut","confidence","textures","shadows","rtOut","upscale","fg","effects"].forEach(id=>$(id).textContent="—");$("explanation").textContent="Select your setup and run the optimizer. Use the result as a starting point, then adjust in-game while watching FPS and frame-time consistency.";});
+  })();
+  </script>
+  <script src="header.js" defer></script>
+</body>
+</html>
