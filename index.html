@@ -189,6 +189,34 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 @media(prefers-reduced-motion:reduce){
   .guide-slide,.guide-arrow,.guide-dot{transition:none}
 }
+
+/* ================= 3D PC HERO VIEWER ================= */
+.hero-visual.pc3d-hero{
+  position:relative;min-height:500px;padding:18px;display:flex;flex-direction:column;
+  background:radial-gradient(circle at 52% 45%,rgba(113,87,255,.16),transparent 40%),
+             linear-gradient(145deg,rgba(20,28,47,.92),rgba(7,12,22,.97));
+}
+.pc3d-top{position:relative;z-index:4;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:2px 4px 10px;color:#aab7cc;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.pc3d-live{display:inline-flex;align-items:center;gap:7px;color:#9eabc0}.pc3d-live i{width:6px;height:6px;border-radius:50%;background:#54e59a;box-shadow:0 0 12px #54e59a}
+.pc3d-stage{position:relative;flex:1;min-height:355px;border:1px solid rgba(157,174,204,.13);border-radius:20px;overflow:hidden;background:radial-gradient(circle at 50% 42%,rgba(67,115,192,.10),transparent 48%),linear-gradient(180deg,rgba(9,14,25,.24),rgba(6,10,18,.72))}
+.pc3d-stage canvas{display:block;width:100%!important;height:100%!important;cursor:grab}
+.pc3d-stage canvas:active{cursor:grabbing}
+.pc3d-hint{position:absolute;left:14px;top:13px;z-index:3;padding:7px 10px;border:1px solid rgba(157,174,204,.13);border-radius:999px;background:rgba(8,13,23,.62);backdrop-filter:blur(10px);color:#8f9db4;font-size:9px;font-weight:700;pointer-events:none}
+.pc3d-info{position:absolute;z-index:5;left:16px;bottom:16px;width:min(245px,calc(100% - 32px));padding:14px;border:1px solid rgba(153,135,255,.30);border-radius:14px;background:rgba(10,16,28,.91);box-shadow:0 18px 45px rgba(0,0,0,.35);backdrop-filter:blur(16px);opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .2s,transform .2s}
+.pc3d-info.is-visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.pc3d-info small{display:block;color:#9d8cff;font-size:8px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.pc3d-info h3{margin:4px 0 4px;font-size:17px;color:#f6f8ff}.pc3d-info p{margin:0 0 10px;color:#9eabc0;font-size:10px;line-height:1.5}
+.pc3d-info a{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:8px;background:linear-gradient(135deg,#765dff,#604be8);font-size:10px;font-weight:800;color:#fff}
+.pc3d-controls{position:absolute;right:14px;top:50px;z-index:4;display:flex;flex-direction:column;gap:6px}
+.pc3d-control{width:34px;height:34px;border:1px solid rgba(157,174,204,.17);border-radius:9px;background:rgba(8,13,23,.72);color:#d9e1ef;font-size:15px;cursor:pointer;backdrop-filter:blur(10px);transition:.18s}
+.pc3d-control:hover{border-color:rgba(151,132,255,.45);background:rgba(118,95,255,.14);transform:translateY(-1px)}
+.pc3d-nav{position:relative;z-index:4;display:flex;gap:6px;overflow:auto;padding-top:10px;scrollbar-width:none}
+.pc3d-nav::-webkit-scrollbar{display:none}
+.pc3d-part{flex:1 0 auto;min-width:66px;padding:8px 9px;border:1px solid rgba(157,174,204,.13);border-radius:9px;background:rgba(255,255,255,.025);color:#98a6bc;font-size:9px;font-weight:800;cursor:pointer;transition:.18s}
+.pc3d-part:hover,.pc3d-part.is-active{color:#fff;border-color:rgba(145,125,255,.42);background:rgba(118,92,255,.13)}
+@media(max-width:800px){.hero-visual.pc3d-hero{min-height:440px}.pc3d-stage{min-height:300px}.pc3d-info{bottom:12px;left:12px}.pc3d-controls{right:10px;top:46px}}
+@media(max-width:480px){.hero-visual.pc3d-hero{min-height:410px;padding:13px}.pc3d-stage{min-height:270px}.pc3d-top{font-size:8px}.pc3d-part{min-width:62px;font-size:8px}}
+
 </style>
 
 <meta property="og:title" content="SystemFit PC — Practical PC Planning Tools">
@@ -214,20 +242,34 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
       <a href="#tools" class="primary-button">Explore Tools <span aria-hidden="true">→</span></a>
     </div>
   </div>
-  <div class="hero-visual" role="img" aria-label="Illustrations of a processor and graphics card from Intel, AMD, NVIDIA and Radeon">
-    <div class="visual-top"><span>PC hardware, made clearer</span><span><i class="live-dot"></i>Gaming tools</span></div>
-    <div class="visual-components">
-      <div class="component-illustration cpu-art">
-        <svg viewBox="0 0 220 190" aria-hidden="true"><defs><linearGradient id="chipMetal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#dce8ff"/><stop offset=".45" stop-color="#667998"/><stop offset="1" stop-color="#24334b"/></linearGradient><linearGradient id="chipCore" x1="0" x2="1"><stop stop-color="#a795ff"/><stop offset="1" stop-color="#6cbcff"/></linearGradient></defs><g stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".75"><path d="M62 29v16M86 23v22M110 20v25M134 23v22M158 29v16M62 145v16M86 145v22M110 145v25M134 145v22M158 145v16M39 52h16M39 76h16M39 100h16M39 124h16M165 52h16M165 76h16M165 100h16M165 124h16"/></g><rect x="52" y="39" width="116" height="116" rx="17" fill="url(#chipMetal)" stroke="#d7e5ff" stroke-opacity=".55"/><rect x="68" y="55" width="84" height="84" rx="11" fill="#111a2b" stroke="currentColor" stroke-width="2"/><rect x="78" y="65" width="64" height="64" rx="8" fill="url(#chipCore)" opacity=".9"/><path d="M91 84h38M91 95h38M91 106h22" stroke="#131a2c" stroke-width="5" stroke-linecap="round" opacity=".7"/><circle cx="110" cy="97" r="39" fill="none" stroke="#fff" stroke-opacity=".16"/></svg>
-        <span class="visual-caption">Processor</span>
-      </div>
-      <div class="component-illustration gpu-art">
-        <svg viewBox="0 0 320 190" aria-hidden="true"><defs><linearGradient id="gpuShell" x1="0" x2="1"><stop stop-color="#283b58"/><stop offset=".55" stop-color="#17263d"/><stop offset="1" stop-color="#0e1728"/></linearGradient><radialGradient id="fanGlow"><stop stop-color="#72d9ff" stop-opacity=".25"/><stop offset="1" stop-color="#72d9ff" stop-opacity="0"/></radialGradient></defs><path d="M36 47h235a17 17 0 0 1 17 17v67a17 17 0 0 1-17 17H36z" fill="url(#gpuShell)" stroke="#8dcfff" stroke-opacity=".6" stroke-width="2"/><path d="M52 56h191v84H52z" fill="#0e1829" stroke="#5e88b2" stroke-opacity=".55"/><g fill="url(#fanGlow)" stroke="currentColor" stroke-width="2"><circle cx="107" cy="98" r="31"/><circle cx="188" cy="98" r="31"/></g><g fill="currentColor" opacity=".83"><path d="M107 73c7 11 8 17 1 24-5 5-11 5-18 1 0-12 5-20 17-25M132 98c-11 7-17 8-24 1-5-5-5-11-1-18 12 0 20 5 25 17M107 123c-7-11-8-17-1-24 5-5 11-5 18-1 0 12-5 20-17 25M82 98c11-7 17-8 24-1 5 5 5 11 1 18-12 0-20-5-25-17M188 73c7 11 8 17 1 24-5 5-11 5-18 1 0-12 5-20 17-25M213 98c-11 7-17 8-24 1-5-5-5-11-1-18 12 0 20 5 25 17M188 123c-7-11-8-17-1-24 5-5 11-5 18-1 0 12-5 20-17 25M163 98c11-7 17-8 24-1 5 5 5 11 1 18-12 0-20 5-25-17"/></g><circle cx="107" cy="98" r="7" fill="#d9f3ff"/><circle cx="188" cy="98" r="7" fill="#d9f3ff"/><path d="M282 77h15v50h-15M65 150v10h34v-10" fill="none" stroke="#b7c6da" stroke-width="4"/></svg>
-        <span class="visual-caption">Graphics card</span>
-      </div>
+  
+<div class="hero-visual pc3d-hero" aria-label="Interactive 3D PC hardware viewer">
+  <div class="pc3d-top"><span>PC hardware, made clearer</span><span class="pc3d-live"><i></i>Interactive 3D</span></div>
+  <div class="pc3d-stage" id="pc3dStage">
+    <div class="pc3d-hint">Drag to rotate · Scroll to zoom · Click a component</div>
+    <div class="pc3d-controls">
+      <button class="pc3d-control" id="pc3dReset" type="button" aria-label="Reset view">↺</button>
+      <button class="pc3d-control" id="pc3dAuto" type="button" aria-label="Toggle auto rotation">◌</button>
+      <button class="pc3d-control" id="pc3dZoomIn" type="button" aria-label="Zoom in">+</button>
+      <button class="pc3d-control" id="pc3dZoomOut" type="button" aria-label="Zoom out">−</button>
     </div>
-    <div class="brand-strip" aria-label="Hardware brands"><span class="brand-chip intel">Intel Core</span><span class="brand-chip amd">AMD Ryzen</span><span class="brand-chip nvidia">GeForce</span><span class="brand-chip radeon">Radeon</span><span class="brand-chip arc">Intel Arc</span></div>
+    <div class="pc3d-info" id="pc3dInfo">
+      <small id="pc3dInfoType">Hardware</small>
+      <h3 id="pc3dInfoTitle">Select a component</h3>
+      <p id="pc3dInfoText">Click a highlighted part to learn what it does and open the most relevant SystemFit tool.</p>
+      <a id="pc3dInfoLink" href="build-planner.html">Open tool →</a>
+    </div>
   </div>
+  <div class="pc3d-nav" aria-label="3D component shortcuts">
+    <button class="pc3d-part" data-part="CPU" type="button">CPU</button>
+    <button class="pc3d-part" data-part="GPU" type="button">GPU</button>
+    <button class="pc3d-part" data-part="RAM" type="button">RAM</button>
+    <button class="pc3d-part" data-part="Storage" type="button">Storage</button>
+    <button class="pc3d-part" data-part="Cooling" type="button">Cooling</button>
+    <button class="pc3d-part" data-part="Motherboard" type="button">Motherboard</button>
+    <button class="pc3d-part" data-part="PSU" type="button">PSU</button>
+  </div>
+</div>
 </div>
 
 <div class="tools" id="tools">
@@ -338,5 +380,151 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 })();
 </script>
 <script src="header.js" defer></script>
+
+<script type="module">
+import * as THREE from "https://cdn.jsdelivr.net/npm/[email protected]/build/three.module.js";
+import { OrbitControls } from "https://cdn.jsdelivr.net/npm/[email protected]/examples/jsm/controls/OrbitControls.js";
+
+(()=> {
+  const stage=document.getElementById("pc3dStage");
+  if(!stage)return;
+  const canvas=document.createElement("canvas");
+  stage.prepend(canvas);
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:"high-performance"});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setClearColor(0x000000,0);
+  renderer.outputColorSpace=THREE.SRGBColorSpace;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.12;
+
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(30,1,.1,100);
+  camera.position.set(5.5,3.4,7.5);
+  const controls=new OrbitControls(camera,canvas);
+  controls.enableDamping=true;controls.dampingFactor=.055;controls.enablePan=false;
+  controls.minDistance=5;controls.maxDistance=11;controls.target.set(0,1.65,0);
+  controls.autoRotate=true;controls.autoRotateSpeed=.7;
+
+  scene.add(new THREE.HemisphereLight(0x9bbcff,0x080b13,2.2));
+  const key=new THREE.DirectionalLight(0xffffff,3.1);key.position.set(4,7,6);scene.add(key);
+  const rim=new THREE.PointLight(0x735dff,18,9);rim.position.set(-3,3,2);scene.add(rim);
+  const cyan=new THREE.PointLight(0x35a7ff,12,8);cyan.position.set(3,2,-3);scene.add(cyan);
+
+  const root=new THREE.Group();root.position.y=-1.55;scene.add(root);
+  const pickables=[];
+  const materials={
+    case:new THREE.MeshStandardMaterial({color:0x101722,metalness:.72,roughness:.27}),
+    glass:new THREE.MeshPhysicalMaterial({color:0x07111d,metalness:.1,roughness:.08,transmission:.12,transparent:true,opacity:.38}),
+    metal:new THREE.MeshStandardMaterial({color:0x2a3446,metalness:.85,roughness:.3}),
+    pcb:new THREE.MeshStandardMaterial({color:0x122b2a,metalness:.25,roughness:.55}),
+    black:new THREE.MeshStandardMaterial({color:0x080d15,metalness:.65,roughness:.34}),
+    silver:new THREE.MeshStandardMaterial({color:0x9ba9bd,metalness:.82,roughness:.22}),
+    purple:new THREE.MeshStandardMaterial({color:0x5d46c9,emissive:0x24145f,emissiveIntensity:1.2,metalness:.4,roughness:.3}),
+    cyan:new THREE.MeshStandardMaterial({color:0x35a7ff,emissive:0x0b4c8b,emissiveIntensity:1.4,metalness:.35,roughness:.28}),
+    ram:new THREE.MeshStandardMaterial({color:0x8a7cff,emissive:0x2c1f7c,emissiveIntensity:1.1,metalness:.4,roughness:.25}),
+    fan:new THREE.MeshStandardMaterial({color:0x151d2b,emissive:0x173d62,emissiveIntensity:1,metalness:.45,roughness:.25})
+  };
+  const data={
+    CPU:{title:"CPU",type:"Processing",text:"The CPU handles general instructions and can become the limiting side in CPU-heavy games.",href:"bottleneck.html",label:"Open Bottleneck Calculator"},
+    GPU:{title:"GPU",type:"Graphics",text:"The GPU drives most of the rendering workload. Compare graphics cards or inspect VRAM needs.",href:"gpu-comparison.html",label:"Compare GPUs"},
+    RAM:{title:"RAM",type:"Memory",text:"System memory affects multitasking, asset streaming and some CPU-limited workloads.",href:"how-much-ram-for-gaming-2026.html",label:"Read RAM Guide"},
+    Storage:{title:"Storage",type:"Storage",text:"Fast storage reduces loading and improves responsiveness, while capacity determines how much you can keep installed.",href:"build-planner.html",label:"Plan a Build"},
+    Cooling:{title:"Cooling",type:"Thermals",text:"Cooling keeps sustained clocks stable and helps the CPU and GPU maintain performance.",href:"build-planner.html",label:"Plan Cooling"},
+    Motherboard:{title:"Motherboard",type:"Platform",text:"The motherboard connects the core components and determines platform, expansion and compatibility.",href:"build-planner.html",label:"Check Compatibility"},
+    PSU:{title:"Power Supply",type:"Power",text:"The PSU supplies stable power to the entire system and needs appropriate capacity and connectors.",href:"build-planner.html",label:"Plan Your Build"}
+  };
+
+  function box(name,size,pos,mat,comp,bevel=0){
+    const geo=bevel?new THREE.BoxGeometry(...size,3,3,3):new THREE.BoxGeometry(...size);
+    const m=new THREE.Mesh(geo,mat);m.position.set(...pos);m.userData.component=comp;root.add(m);if(comp)pickables.push(m);return m;
+  }
+  function cyl(name,r,h,pos,mat,comp,seg=32,rot=null){
+    const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,seg),mat);m.position.set(...pos);if(rot)m.rotation.set(...rot);m.userData.component=comp;root.add(m);if(comp)pickables.push(m);return m;
+  }
+
+  // Case frame and glass
+  box("case",[3.55,.16,3.15],[0,1.35,0],materials.case,null);
+  box("top",[3.55,.16,3.15],[0,4.55,0],materials.case,null);
+  box("left",[.16,3.35,3.15],[-1.70,2.95,0],materials.case,null);
+  box("right",[.16,3.35,3.15],[1.70,2.95,0],materials.case,null);
+  box("back",[3.55,3.35,.16],[0,2.95,-1.48],materials.case,null);
+  const glass=box("glass",[3.12,3.0,.045],[0,2.95,1.59],materials.glass,null);
+  glass.renderOrder=2;
+
+  // Motherboard
+  box("motherboard",[.12,2.55,2.55],[-1.34,3.0,-1.22],materials.pcb,"Motherboard");
+  // CPU socket + cooler
+  box("socket",[.72,.10,.72],[-1.18,3.85,-.92],materials.silver,"CPU");
+  cyl("cooler",.47,.22,[-1.18,4.10,-.92],materials.black,"Cooling",40,[Math.PI/2,0,0]);
+  cyl("coolerGlow",.28,.24,[-1.18,4.10,-.92],materials.cyan,"Cooling",40,[Math.PI/2,0,0]);
+  // RAM
+  [-.72,-.30].forEach(x=>{box("ram",[.10,.12,.42],[x,4.0,-.92],materials.ram,"RAM");});
+  // GPU
+  box("gpu",[2.45,.48,.78],[.18,2.70,.05],materials.black,"GPU");
+  box("gpuTop",[2.15,.12,.72],[.18,2.98,.05],materials.purple,"GPU");
+  // GPU fans
+  [-.62,.18,.98].forEach(x=>cyl("gpuFan",.28,.08,[x,2.72,.48],materials.fan,"GPU",32,[Math.PI/2,0,0]));
+  // Storage
+  box("ssd",[.72,.08,.28],[-.98,2.68,-.75],materials.silver,"Storage");
+  // PSU
+  box("psu",[2.15,.86,1.18],[.48,1.88,-.78],materials.black,"PSU");
+  // PSU label glow
+  box("psuLabel",[.72,.04,.20],[.48,2.08,-1.39],materials.cyan,"PSU");
+  // Front intake fans
+  const fanGroups=[];
+  [1.55,2.55,3.55].forEach(y=>{
+    const g=new THREE.Group();g.position.set(1.05,y,1.18);root.add(g);fanGroups.push(g);
+    const ring=new THREE.Mesh(new THREE.TorusGeometry(.42,.06,10,32),materials.cyan);ring.rotation.x=Math.PI/2;g.add(ring);
+    for(let i=0;i<5;i++){const b=new THREE.Mesh(new THREE.BoxGeometry(.08,.34,.04),materials.fan);b.position.y=.18;b.rotation.z=i*1.256;g.add(b);}
+  });
+  // Rear fan
+  const rear=new THREE.Group();rear.position.set(-1.18,2.75,-1.28);root.add(rear);fanGroups.push(rear);
+  const rr=new THREE.Mesh(new THREE.TorusGeometry(.43,.06,10,32),materials.purple);rr.rotation.x=Math.PI/2;rear.add(rr);
+  for(let i=0;i<5;i++){const b=new THREE.Mesh(new THREE.BoxGeometry(.08,.35,.04),materials.fan);b.position.y=.18;b.rotation.z=i*1.256;rear.add(b);}
+
+  // Subtle floor glow
+  const floor=new THREE.Mesh(new THREE.CircleGeometry(3.6,64),new THREE.MeshBasicMaterial({color:0x24185e,transparent:true,opacity:.16}));
+  floor.rotation.x=-Math.PI/2;floor.position.y=-.02;floor.scale.set(1.1,.75,1);scene.add(floor);
+
+  const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2();
+  let selected=null;
+  const info=document.getElementById("pc3dInfo"),title=document.getElementById("pc3dInfoTitle"),type=document.getElementById("pc3dInfoType"),copy=document.getElementById("pc3dInfoText"),link=document.getElementById("pc3dInfoLink");
+  const nav=[...document.querySelectorAll(".pc3d-part")];
+
+  function select(part){
+    selected=part;
+    const d=data[part];if(!d)return;
+    title.textContent=d.title;type.textContent=d.type;copy.textContent=d.text;link.href=d.href;link.textContent=d.label+" →";
+    info.classList.add("is-visible");nav.forEach(b=>b.classList.toggle("is-active",b.dataset.part===part));
+    pickables.forEach(m=>m.scale.setScalar(m.userData.component===part?1.035:1));
+  }
+  function resetSelection(){selected=null;info.classList.remove("is-visible");nav.forEach(b=>b.classList.remove("is-active"));pickables.forEach(m=>m.scale.setScalar(1));}
+
+  canvas.addEventListener("pointerdown",e=>{
+    const r=canvas.getBoundingClientRect();mouse.x=((e.clientX-r.left)/r.width)*2-1;mouse.y=-((e.clientY-r.top)/r.height)*2+1;
+    raycaster.setFromCamera(mouse,camera);const hit=raycaster.intersectObjects(pickables,true)[0];
+    if(hit&&hit.object.userData.component)select(hit.object.userData.component);
+  });
+  nav.forEach(b=>b.addEventListener("click",()=>select(b.dataset.part)));
+  document.getElementById("pc3dReset").addEventListener("click",()=>{camera.position.set(5.5,3.4,7.5);controls.target.set(0,1.65,0);controls.update();resetSelection()});
+  document.getElementById("pc3dAuto").addEventListener("click",()=>{controls.autoRotate=!controls.autoRotate});
+  document.getElementById("pc3dZoomIn").addEventListener("click",()=>{camera.position.multiplyScalar(.88);controls.update()});
+  document.getElementById("pc3dZoomOut").addEventListener("click",()=>{camera.position.multiplyScalar(1.12);controls.update()});
+
+  const resize=()=>{const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()};
+  new ResizeObserver(resize).observe(stage);resize();
+
+  const clock=new THREE.Clock();
+  function animate(){
+    requestAnimationFrame(animate);
+    const t=clock.getElapsedTime();
+    fanGroups.forEach((g,i)=>g.rotation.z=t*(i%2?1:-1)*2.2);
+    materials.cyan.emissiveIntensity=1.05+Math.sin(t*2)*.18;
+    materials.purple.emissiveIntensity=1.0+Math.sin(t*1.7+.8)*.16;
+    controls.update();renderer.render(scene,camera);
+  }
+  animate();
+})();
+</script>
 </body>
 </html>
