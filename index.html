@@ -51,6 +51,123 @@ nav a:hover,nav a.active{color:white;background:#1d202b}
 .tool-button:hover{background:var(--purple2)}.coming-card{opacity:.75}
 .coming-card .tool-button{background:#282c38;color:#9ca4b5;cursor:default}
 
+
+/* ================= TOOLS UX POLISH ================= */
+.tools{position:relative}
+.tools .section-title{margin-bottom:30px}
+.tools .section-title h2{margin-bottom:9px}
+.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.tool-card{
+  min-height:248px;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease,background .25s ease;
+}
+.tool-card:before{
+  content:"";
+  position:absolute;
+  width:180px;height:180px;
+  right:-72px;top:-80px;
+  border-radius:50%;
+  background:var(--tool-glow,rgba(126,105,255,.16));
+  filter:blur(42px);
+  opacity:.7;
+  z-index:-1;
+  transition:transform .35s ease,opacity .35s ease;
+}
+.tool-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--tool-border,rgba(151,132,255,.42));
+  box-shadow:0 20px 50px rgba(0,0,0,.24),0 0 35px var(--tool-shadow,rgba(118,95,255,.07));
+}
+.tool-card:hover:before{transform:scale(1.25);opacity:1}
+.tool-card-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:19px}
+.tool-icon{
+  width:50px;height:50px;
+  flex:0 0 50px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  margin:0;
+  background:linear-gradient(145deg,rgba(126,105,255,.18),rgba(255,255,255,.045));
+  border:1px solid rgba(157,139,255,.25);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 8px 24px rgba(0,0,0,.16);
+}
+.tool-icon svg{
+  width:29px;height:29px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.22));
+}
+.tool-status{
+  padding:6px 9px;
+  border:1px solid rgba(157,174,204,.13);
+  border-radius:999px;
+  background:rgba(255,255,255,.035);
+  color:#9eabc0;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.tool-card h3{font-size:21px;line-height:1.25;margin-bottom:9px}
+.tool-card p{font-size:13.5px;line-height:1.72;margin-bottom:0}
+.tool-card-footer{
+  margin-top:auto;
+  padding-top:21px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.tool-meta{font-size:10px;color:#8492aa;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.tool-card .tool-button{
+  padding:10px 14px;
+  border-radius:10px;
+  white-space:nowrap;
+  box-shadow:0 8px 24px rgba(91,71,225,.16);
+}
+.tools-group-heading{
+  min-height:50px;
+  margin:8px 0 -1px;
+  padding:12px 16px;
+  border-radius:14px;
+  background:linear-gradient(100deg,rgba(19,26,41,.72),rgba(16,22,35,.45));
+  backdrop-filter:blur(10px);
+}
+.tool-card-bottleneck{--tool-glow:rgba(126,105,255,.23);--tool-border:rgba(151,132,255,.48);--tool-shadow:rgba(126,105,255,.12)}
+.tool-card-bottleneck .tool-icon{color:#b8aaff}
+.build-tool-card{--tool-glow:rgba(61,211,164,.19);--tool-border:rgba(89,206,176,.44);--tool-shadow:rgba(61,211,164,.10)}
+.build-tool-card .tool-icon{color:#6fe5bd;background:linear-gradient(145deg,rgba(61,211,164,.16),rgba(255,255,255,.035));border-color:rgba(89,206,176,.25)}
+.gpu-tool-card{--tool-glow:rgba(74,157,255,.2);--tool-border:rgba(100,164,255,.45);--tool-shadow:rgba(74,157,255,.10)}
+.gpu-tool-card .tool-icon{color:#73c7ff;background:linear-gradient(145deg,rgba(74,157,255,.16),rgba(255,255,255,.035));border-color:rgba(100,164,255,.25)}
+.fps-tool-card{--tool-glow:rgba(159,118,255,.18);--tool-border:rgba(151,132,255,.42)}
+.fps-tool-card .tool-icon{color:#b09aff}
+.upgrade-tool-card .tool-icon{color:#ffc27d}
+.game-tool-card .tool-icon{color:#9a8cff}
+.power-tool-card .tool-icon{color:#ffda7d}
+.cpu-tool-card .tool-icon{color:#72d8ff}
+.coming-card .tool-button{box-shadow:none}
+.coming-card:hover{transform:translateY(-3px)}
+@media(max-width:800px){
+  .tools-grid{grid-template-columns:1fr}
+  .tool-card{min-height:230px}
+}
+@media(max-width:480px){
+  .tool-card{padding:20px;border-radius:18px}
+  .tool-card h3{font-size:19px}
+  .tool-card-footer{align-items:flex-end}
+  .tool-meta{font-size:9px}
+}
+
 /* ================= FOOTER ================= */
 footer{border-top:1px solid var(--border);padding:30px 20px;text-align:center;color:#737c91;font-size:13px}
 
@@ -411,15 +528,39 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
     <div class="section-title"><h2>PC Tools</h2><p>Choose a tool below.</p></div>
     <div class="tools-grid">
 <div class="tools-group-heading"><span>Available now</span><small>Ready to use</small></div>
-<div class="tool-card" data-sfp-reveal><div class="tool-icon">⚙️</div><h3>CPU &amp; GPU Bottleneck Calculator</h3><p>Estimate CPU and GPU workload balance based on your hardware, resolution, game type and target FPS.</p><a href="bottleneck.html" class="tool-button">Open Calculator →</a></div>
-<a href="build-planner.html" class="tool-card build-tool-card" data-sfp-reveal><div class="tool-icon">🧩</div><h3>PC Build Planner</h3><p>Choose your parts and get clear checks for motherboard, memory, case fit, cooling and power.</p><span class="tool-button">Open Build Planner →</span></a>
-<a href="gpu-comparison.html" class="tool-card gpu-tool-card" data-sfp-reveal><div class="tool-icon">🎨</div><h3>GPU Comparison Tool</h3><p>Compare up to five cards side by side, including VRAM, power, workloads and optional local prices.</p><span class="tool-button">Compare GPUs →</span></a>
-<a href="fps-calculator.html" class="tool-card" data-sfp-reveal><div class="tool-icon">📊</div><h3>FPS Calculator</h3><p>Estimate gaming FPS based on your hardware, resolution and target settings.</p><span class="tool-button">Open FPS Calculator →</span></a>
+<div class="tool-card tool-card-bottleneck" data-sfp-reveal>
+  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="13" y="13" width="38" height="38" rx="8"/><rect x="21" y="21" width="22" height="22" rx="4"/><path d="M25 5v8M32 5v8M39 5v8M25 51v8M32 51v8M39 51v8M5 25h8M5 32h8M5 39h8M51 25h8M51 32h8M51 39h8"/><path d="M27 28h10M27 34h7"/></svg></div><span class="tool-status">Performance</span></div>
+  <h3>CPU &amp; GPU Bottleneck Calculator</h3><p>Estimate CPU and GPU workload balance based on your hardware, resolution, game type and target FPS.</p><div class="tool-card-footer"><span class="tool-meta">CPU + GPU</span><a href="bottleneck.html" class="tool-button">Open Calculator <span aria-hidden="true">→</span></a></div>
+</div>
+<a href="build-planner.html" class="tool-card build-tool-card" data-sfp-reveal>
+  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M19 8h18v18H19zM27 26v12M37 17h8v18h-8M45 26h8v18H35"/><path d="M8 35h18v18H8z"/><path d="M26 44h9"/></svg></div><span class="tool-status">Build</span></div>
+  <h3>PC Build Planner</h3><p>Choose your parts and get clear checks for motherboard, memory, case fit, cooling and power.</p><div class="tool-card-footer"><span class="tool-meta">Components</span><span class="tool-button">Open Build Planner <span aria-hidden="true">→</span></span></div>
+</a>
+<a href="gpu-comparison.html" class="tool-card gpu-tool-card" data-sfp-reveal>
+  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="9" y="16" width="46" height="32" rx="6"/><circle cx="25" cy="32" r="9"/><path d="M25 25l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M39 24h9M39 31h9M39 38h6M55 25h4v14h-4M15 48v7h34v-7"/></svg></div><span class="tool-status">Compare</span></div>
+  <h3>GPU Comparison Tool</h3><p>Compare up to five cards side by side, including VRAM, power, workloads and optional local prices.</p><div class="tool-card-footer"><span class="tool-meta">Up to 5 GPUs</span><span class="tool-button">Compare GPUs <span aria-hidden="true">→</span></span></div>
+</a>
+<a href="fps-calculator.html" class="tool-card fps-tool-card" data-sfp-reveal>
+  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 50V14M10 50h44"/><path d="M17 42l9-11 8 5 13-19"/><path d="M44 17h4v4"/></svg></div><span class="tool-status">Gaming</span></div>
+  <h3>FPS Calculator</h3><p>Estimate gaming FPS based on your hardware, resolution and target settings.</p><div class="tool-card-footer"><span class="tool-meta">FPS estimate</span><span class="tool-button">Open FPS Calculator <span aria-hidden="true">→</span></span></div>
+</a>
 <div class="tools-group-heading soon"><span>Coming soon</span><small>More tools are on the way</small></div>
-<div class="tool-card coming-card" data-sfp-reveal><div class="tool-icon">💰</div><h3>PC Upgrade Calculator</h3><p>Understand which component may be worth upgrading for your gaming setup.</p><span class="tool-button">Coming Soon</span></div>
-<div class="tool-card coming-card" data-sfp-reveal><div class="tool-icon">🎮</div><h3>Game FPS Estimator</h3><p>Estimate expected performance for games using your selected hardware and settings.</p><span class="tool-button">Coming Soon</span></div>
-<div class="tool-card coming-card" data-sfp-reveal><div class="tool-icon">🔌</div><h3>PSU &amp; Power Calculator</h3><p>Estimate system power requirements and explore an appropriate PSU capacity.</p><span class="tool-button">Coming Soon</span></div>
-<div class="tool-card coming-card" data-sfp-reveal><div class="tool-icon">🧠</div><h3>CPU Comparison Tool</h3><p>Compare processors and understand their relative gaming performance.</p><span class="tool-button">Coming Soon</span></div>
+<div class="tool-card coming-card upgrade-tool-card" data-sfp-reveal>
+  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="13" y="18" width="38" height="30" rx="6"/><path d="M25 18v-7h14v7M32 29v15M25 37l7 7 7-7"/><path d="M20 54h24"/></svg></div><span class="tool-status">Planned</span></div>
+  <h3>PC Upgrade Calculator</h3><p>Understand which component may be worth upgrading for your gaming setup.</p><div class="tool-card-footer"><span class="tool-meta">Upgrade path</span><span class="tool-button">Coming Soon</span></div>
+</div>
+<div class="tool-card coming-card game-tool-card" data-sfp-reveal>
+  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M17 23h30c7 0 11 6 11 14l-3 13c-1 5-7 6-10 2l-7-8H26l-7 8c-3 4-9 3-10-2L6 37c0-8 4-14 11-14z"/><path d="M18 31v10M13 36h10M42 33h.5M48 39h.5"/></svg></div><span class="tool-status">Planned</span></div>
+  <h3>Game FPS Estimator</h3><p>Estimate expected performance for games using your selected hardware and settings.</p><div class="tool-card-footer"><span class="tool-meta">Game + hardware</span><span class="tool-button">Coming Soon</span></div>
+</div>
+<div class="tool-card coming-card power-tool-card" data-sfp-reveal>
+  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="14" y="9" width="36" height="46" rx="7"/><path d="M32 18v10M26 23h12M22 37h20M25 44h14"/></svg></div><span class="tool-status">Planned</span></div>
+  <h3>PSU &amp; Power Calculator</h3><p>Estimate system power requirements and explore an appropriate PSU capacity.</p><div class="tool-card-footer"><span class="tool-meta">System wattage</span><span class="tool-button">Coming Soon</span></div>
+</div>
+<div class="tool-card coming-card cpu-tool-card" data-sfp-reveal>
+  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="14" y="14" width="36" height="36" rx="7"/><rect x="23" y="23" width="18" height="18" rx="3"/><path d="M23 6v8M32 6v8M41 6v8M23 50v8M32 50v8M41 50v8M6 23h8M6 32h8M6 41h8M50 23h8M50 32h8M50 41h8"/></svg></div><span class="tool-status">Planned</span></div>
+  <h3>CPU Comparison Tool</h3><p>Compare processors and understand their relative gaming performance.</p><div class="tool-card-footer"><span class="tool-meta">CPU lineup</span><span class="tool-button">Coming Soon</span></div>
+</div>
 </div></div>
 </section>
 
