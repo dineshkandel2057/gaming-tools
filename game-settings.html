@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="systemfit-favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SystemFit Game Settings Optimizer recommends practical PC graphics settings for your game, CPU, GPU, RAM, resolution and target FPS.">
+  <link rel="canonical" href="https://systemfitpc.vercel.app/game-settings.html">
+  <title>Game Settings Optimizer | SystemFit PC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#080b13;
+      --panel:rgba(17,23,37,.84);
+      --panel2:rgba(12,17,29,.92);
+      --line:rgba(157,174,204,.16);
+      --line2:rgba(157,139,255,.28);
+      --text:#f4f7fb;
+      --muted:#9eabc0;
+      --soft:#c5cfdf;
+      --purple:#a892ff;
+      --blue:#69caff;
+      --green:#71e5b0;
+      --danger:#ff8f9b;
+      --shadow:0 24px 70px rgba(0,0,0,.34);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 0%,rgba(126,105,255,.13),transparent 32rem),
+        radial-gradient(circle at 88% 8%,rgba(72,182,255,.10),transparent 28rem),
+        var(--bg);
+      font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      line-height:1.55;
+    }
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    .wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+    .hero{padding:72px 0 28px;text-align:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid var(--line2);
+      border-radius:999px;background:rgba(126,105,255,.08);color:#c9bdff;
+      font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase
+    }
+    .eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(113,229,176,.6)}
+    h1{
+      margin:18px auto 12px;max-width:850px;font:700 clamp(38px,6vw,68px)/1.02 "Space Grotesk",sans-serif;
+      letter-spacing:-.055em;
+    }
+    .gradient{background:linear-gradient(105deg,#fff 15%,#bcaeff 55%,#7edcff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{max-width:760px;margin:0 auto;color:var(--muted);font-size:17px}
+    .notice{
+      margin:22px auto 0;max-width:860px;padding:12px 15px;border:1px solid rgba(105,202,255,.18);
+      border-radius:14px;background:rgba(105,202,255,.05);color:#b9c8db;font-size:12px
+    }
+    .tool-shell{
+      display:grid;grid-template-columns:minmax(0,1.02fr) minmax(360px,.98fr);gap:18px;align-items:start;margin:22px 0 52px
+    }
+    .card{
+      border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(24,31,49,.88),rgba(9,14,25,.94));
+      box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.035)
+    }
+    .form-card{padding:24px}
+    .card-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:20px}
+    .card-head h2{margin:0;font:700 22px/1.2 "Space Grotesk",sans-serif;letter-spacing:-.03em}
+    .card-head p{margin:5px 0 0;color:var(--muted);font-size:12px}
+    .step{
+      display:inline-flex;align-items:center;justify-content:center;width:29px;height:29px;border-radius:9px;
+      background:rgba(126,105,255,.13);border:1px solid rgba(157,139,255,.22);color:#c9bdff;font-weight:800;font-size:12px
+    }
+    .field{margin-top:17px}
+    .field label{display:block;margin-bottom:8px;color:#dbe3ef;font-size:12px;font-weight:800;letter-spacing:.01em}
+    .field small{display:block;margin-top:6px;color:#7f8da5;font-size:11px}
+    select,input[type="number"]{
+      width:100%;height:48px;padding:0 13px;border:1px solid rgba(157,174,204,.19);border-radius:12px;
+      background:#0b111d;color:var(--text);outline:none
+    }
+    select:focus,input[type="number"]:focus{border-color:rgba(157,139,255,.62);box-shadow:0 0 0 3px rgba(126,105,255,.10)}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .seg button,.goal-grid button{
+      min-height:46px;border:1px solid rgba(157,174,204,.17);border-radius:12px;background:rgba(255,255,255,.025);
+      color:#aebbd0;font-weight:700;font-size:12px;transition:.18s
+    }
+    .seg button:hover,.goal-grid button:hover{border-color:rgba(157,139,255,.4);color:#fff}
+    .seg button.active,.goal-grid button.active{
+      color:#fff;border-color:rgba(157,139,255,.55);background:linear-gradient(100deg,rgba(126,105,255,.20),rgba(72,182,255,.08));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05)
+    }
+    .goal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .goal-grid button span{display:block;font-size:11px;color:#7f8da5;font-weight:500;margin-top:2px}
+    .goal-grid button.active span{color:#b8c9dd}
+    .target-row{display:grid;grid-template-columns:1fr 130px;gap:12px;align-items:end}
+    .target-row .toggle{
+      height:48px;display:flex;align-items:center;gap:8px;padding:0 12px;border:1px solid rgba(157,174,204,.17);
+      border-radius:12px;background:rgba(255,255,255,.025);color:#aebbd0;font-size:12px;font-weight:700
+    }
+    .toggle input{accent-color:#9d8cff}
+    .primary{
+      width:100%;height:52px;margin-top:21px;border:0;border-radius:13px;color:#fff;font-weight:800;
+      background:linear-gradient(105deg,#7561ee,#4bb8e9);box-shadow:0 12px 30px rgba(88,105,229,.23)
+    }
+    .primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
+    .primary:disabled{opacity:.45;cursor:not-allowed;transform:none}
+    .result-card{padding:24px;position:sticky;top:94px}
+    .result-empty{min-height:510px;display:grid;place-items:center;text-align:center;padding:28px}
+    .result-empty .icon{width:62px;height:62px;display:grid;place-items:center;border-radius:18px;margin:auto;background:rgba(126,105,255,.11);border:1px solid rgba(157,139,255,.2);font-size:28px}
+    .result-empty h3{margin:15px 0 6px;font:700 23px "Space Grotesk",sans-serif}
+    .result-empty p{margin:0;color:var(--muted);font-size:13px;max-width:340px}
+    .result{display:none}
+    .result.show{display:block}
+    .result-title{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .result-title h2{margin:0;font:700 23px/1.2 "Space Grotesk",sans-serif}
+    .badge{padding:6px 9px;border:1px solid rgba(113,229,176,.25);border-radius:999px;background:rgba(113,229,176,.07);color:#86e8bb;font-size:10px;font-weight:800;white-space:nowrap}
+    .summary{margin:17px 0;padding:16px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.02)}
+    .summary-main{display:flex;justify-content:space-between;gap:15px;align-items:flex-end}
+    .fps-label{color:var(--muted);font-size:11px;font-weight:700}
+    .fps-value{margin-top:3px;font:700 34px/1 "Space Grotesk",sans-serif;letter-spacing:-.04em}
+    .fps-sub{color:#8e9bb0;font-size:11px;margin-top:5px}
+    .quality{text-align:right}
+    .quality strong{display:block;color:#c7d1df;font-size:12px}
+    .quality span{color:#7f8da5;font-size:10px}
+    .settings{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}
+    .setting{padding:11px 12px;border:1px solid rgba(157,174,204,.12);border-radius:12px;background:rgba(255,255,255,.018)}
+    .setting span{display:block;color:#7f8da5;font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:800}
+    .setting b{display:block;margin-top:2px;color:#edf2f8;font-size:13px}
+    .why{margin-top:14px;padding:14px;border-left:2px solid #9d8cff;border-radius:0 12px 12px 0;background:rgba(126,105,255,.06)}
+    .why b{font-size:11px;color:#d9d0ff}.why p{margin:5px 0 0;color:#aab6c9;font-size:12px}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+    .metric{padding:11px;border:1px solid rgba(157,174,204,.12);border-radius:12px;text-align:center}
+    .metric span{display:block;color:#7f8da5;font-size:10px}.metric b{display:block;margin-top:2px;font-size:13px}
+    .disclaimer{margin-top:13px;color:#707f96;font-size:10px;line-height:1.55}
+    .section{margin:0 0 52px}
+    .section h2{margin:0 0 8px;font:700 30px/1.15 "Space Grotesk",sans-serif;letter-spacing:-.035em}
+    .section-intro{margin:0 0 18px;color:var(--muted);max-width:760px;font-size:14px}
+    .games{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .game-card{
+      text-align:left;padding:15px;border:1px solid var(--line);border-radius:15px;background:rgba(16,22,36,.72);color:var(--text);
+      transition:.18s
+    }
+    .game-card:hover{border-color:rgba(157,139,255,.4);transform:translateY(-2px);background:rgba(24,31,49,.85)}
+    .game-card b{display:block;font-size:13px}.game-card small{display:block;margin-top:4px;color:#7f8da5;font-size:10px}
+    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .info{padding:18px;border:1px solid var(--line);border-radius:17px;background:rgba(16,22,36,.58)}
+    .info h3{margin:0 0 6px;font:700 16px "Space Grotesk",sans-serif}.info p{margin:0;color:var(--muted);font-size:12px}
+    .disclaimer-box{padding:18px;border:1px solid rgba(255,193,92,.18);border-radius:17px;background:rgba(255,193,92,.035);color:#9eabc0;font-size:12px}
+    .disclaimer-box strong{color:#e5c58e}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:900px){.tool-shell{grid-template-columns:1fr}.result-card{position:static}.games{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:650px){
+      .wrap{width:min(100% - 20px,1180px)}.hero{padding-top:48px}.hero p{font-size:15px}
+      .grid2,.target-row,.settings{grid-template-columns:1fr}.goal-grid{grid-template-columns:1fr}.games{grid-template-columns:repeat(2,1fr)}.info-grid{grid-template-columns:1fr}
+      .form-card,.result-card{padding:17px}.result-empty{min-height:390px}.metrics{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">New SystemFit Tool</div>
+        <h1>Game Settings <span class="gradient">Optimizer</span></h1>
+        <p>Tell SystemFit what you're playing, what hardware you have and what you want from the game. Get a practical graphics-settings starting point instead of changing 30 options one by one.</p>
+        <div class="notice">V1 uses a transparent rules-and-performance model. FPS ranges are estimates, not benchmark guarantees. More games and benchmark data will be added after validation.</div>
+      </div>
+    </section>
+
+    <section class="wrap tool-shell" aria-label="Game settings optimizer">
+      <div class="card form-card">
+        <div class="card-head">
+          <div><h2>Build your setup</h2><p>Choose the closest match to your real PC.</p></div>
+          <span class="step">01</span>
+        </div>
+
+        <div class="field">
+          <label for="game">Game</label>
+          <select id="game">
+            <option value="">Select a game</option>
+          </select>
+          <small>V1 includes a focused library of popular PC games.</small>
+        </div>
+
+        <div class="field grid2">
+          <div>
+            <label for="cpu">CPU</label>
+            <select id="cpu"><option value="">Select a CPU</option></select>
+          </div>
+          <div>
+            <label for="gpu">GPU</label>
+            <select id="gpu"><option value="">Select a GPU</option></select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="ram">System RAM</label>
+          <select id="ram">
+            <option value="8">8 GB</option>
+            <option value="16" selected>16 GB</option>
+            <option value="32">32 GB</option>
+            <option value="64">64 GB</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Gaming resolution</label>
+          <div class="seg" id="resolution">
+            <button type="button" data-value="1080">1080p</button>
+            <button type="button" data-value="1440">1440p</button>
+            <button type="button" data-value="2160">4K</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>What matters most?</label>
+          <div class="goal-grid" id="goal">
+            <button type="button" data-value="fps">Maximum FPS<span>Prioritize smoothness</span></button>
+            <button type="button" data-value="balanced" class="active">Balanced<span>Quality + performance</span></button>
+            <button type="button" data-value="quality">Best Quality<span>Prioritize visuals</span></button>
+          </div>
+        </div>
+
+        <div class="field target-row">
+          <div>
+            <label for="target">Target FPS</label>
+            <input id="target" type="number" min="30" max="360" step="1" value="60" inputmode="numeric">
+          </div>
+          <label class="toggle"><input id="rtPreference" type="checkbox"> Ray tracing wanted</label>
+        </div>
+
+        <button class="primary" id="optimize" type="button" disabled>Optimize Settings</button>
+      </div>
+
+      <div class="card result-card">
+        <div class="result-empty" id="empty">
+          <div>
+            <div class="icon">⚙</div>
+            <h3>Your recommendation will appear here</h3>
+            <p>Select your game, CPU, GPU, resolution and goal, then run the optimizer.</p>
+          </div>
+        </div>
+
+        <div class="result" id="result">
+          <div class="result-title">
+            <div><h2 id="resultGame">Recommended setup</h2><div id="resultProfile" class="fps-sub"></div></div>
+            <span class="badge" id="resultBadge">MODELLED</span>
+          </div>
+
+          <div class="summary">
+            <div class="summary-main">
+              <div>
+                <div class="fps-label">Estimated FPS range</div>
+                <div class="fps-value" id="fpsRange">—</div>
+                <div class="fps-sub" id="fpsTargetText">Target: — FPS</div>
+              </div>
+              <div class="quality"><strong id="presetOut">—</strong><span>overall preset</span></div>
+            </div>
+            <div class="settings">
+              <div class="setting"><span>Textures</span><b id="textures">—</b></div>
+              <div class="setting"><span>Shadows</span><b id="shadows">—</b></div>
+              <div class="setting"><span>Ray tracing</span><b id="rtOut">—</b></div>
+              <div class="setting"><span>Upscaling</span><b id="upscaling">—</b></div>
+              <div class="setting"><span>Frame generation</span><b id="fg">—</b></div>
+              <div class="setting"><span>Effects / volumetrics</span><b id="effects">—</b></div>
+            </div>
+            <div class="why"><b>Why SystemFit chose this</b><p id="why">—</p></div>
+            <div class="metrics">
+              <div class="metric"><span>Likely limit</span><b id="limit">—</b></div>
+              <div class="metric"><span>VRAM headroom</span><b id="vram">—</b></div>
+              <div class="metric"><span>Confidence</span><b id="confidence">—</b></div>
+            </div>
+          </div>
+
+          <div class="disclaimer" id="disclaimer">Actual performance varies with game patches, drivers, temperatures, background processes and exact settings. Treat this as a starting point, not a benchmark result.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <h2>Games in V1</h2>
+      <p class="section-intro">We're deliberately starting with a manageable library. Expanding slowly lets us validate the recommendation model instead of pretending every game has equally reliable data.</p>
+      <div class="games" id="games"></div>
+    </section>
+
+    <section class="wrap section">
+      <h2>How the recommendation works</h2>
+      <p class="section-intro">The tool is designed to be explainable. It should tell the user why a setting was lowered or raised instead of returning an unexplained AI answer.</p>
+      <div class="info-grid">
+        <article class="info"><h3>1. Hardware pressure</h3><p>GPU tier, CPU tier and available VRAM influence which settings are sensible at the selected resolution.</p></article>
+        <article class="info"><h3>2. Game profile</h3><p>Each supported game has a lightweight performance profile for CPU load, GPU load, VRAM demand and visual-costly features.</p></article>
+        <article class="info"><h3>3. Your goal</h3><p>Maximum FPS, balanced quality and best visual quality intentionally produce different recommendations from the same PC.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="disclaimer-box"><strong>About the estimates:</strong> SystemFit is not claiming that one formula can replace real-world benchmarks. V1 uses modeled ranges so the tool can be useful while remaining honest about uncertainty. As we collect better benchmark data, the model can be calibrated and expanded.</div>
+    </section>
+  </main>
+
+  <script>
+    const GAMES = [
+      {name:"Cyberpunk 2077",cat:"AAA / RPG",gpu:0.90,cpu:0.76,vram:7,rt:1.40,base:115},
+      {name:"Red Dead Redemption 2",cat:"AAA / Open World",gpu:0.82,cpu:0.70,vram:6,rt:1.00,base:105},
+      {name:"Hogwarts Legacy",cat:"AAA / RPG",gpu:0.84,cpu:0.70,vram:7,rt:1.18,base:110},
+      {name:"Elden Ring",cat:"AAA / Action",gpu:0.68,cpu:0.62,vram:5,rt:1.00,base:120},
+      {name:"Starfield",cat:"AAA / RPG",gpu:0.94,cpu:0.90,vram:8,rt:1.00,base:100},
+      {name:"Forza Horizon 5",cat:"Racing",gpu:0.76,cpu:0.67,vram:6,rt:1.00,base:125},
+      {name:"Call of Duty: Warzone",cat:"FPS / Competitive",gpu:0.78,cpu:0.82,vram:7,rt:1.00,base:145},
+      {name:"Fortnite",cat:"FPS / Competitive",gpu:0.50,cpu:0.70,vram:4,rt:1.08,base:220},
+      {name:"Counter-Strike 2",cat:"FPS / Competitive",gpu:0.38,cpu:0.88,vram:3,rt:1.00,base:260},
+      {name:"Valorant",cat:"FPS / Competitive",gpu:0.25,cpu:0.52,vram:2,rt:1.00,base:360},
+      {name:"Minecraft Java",cat:"Sandbox",gpu:0.34,cpu:0.82,vram:3,rt:1.00,base:220},
+      {name:"The Last of Us Part I",cat:"AAA / Story",gpu:0.91,cpu:0.76,vram:8,rt:1.00,base:95}
+    ];
+
+    const CPUS = [
+      {name:"Intel Core i3-12100F",score:36},{name:"Ryzen 5 3600",score:40},{name:"Ryzen 5 5600",score:53},
+      {name:"Core i5-12400F",score:57},{name:"Ryzen 5 7600",score:70},{name:"Core i5-13400F",score:67},
+      {name:"Core i5-14600K",score:82},{name:"Ryzen 7 7800X3D",score:94},{name:"Ryzen 7 9800X3D",score:100},
+      {name:"Core i7-13700K",score:91},{name:"Core i7-14700K",score:96},{name:"Ryzen 9 9950X3D",score:100}
+    ];
+
+    const GPUS = [
+      {name:"GTX 1650",score:22,vram:4,rt:.10},{name:"RTX 2060",score:35,vram:6,rt:.42},{name:"RTX 3060 12GB",score:47,vram:12,rt:.58},
+      {name:"RX 6600",score:45,vram:8,rt:.32},{name:"RTX 4060",score:52,vram:8,rt:.66},{name:"RX 7600",score:50,vram:8,rt:.58},
+      {name:"RTX 4060 Ti 16GB",score:61,vram:16,rt:.70},{name:"RTX 4070",score:72,vram:12,rt:.84},
+      {name:"RX 7800 XT",score:73,vram:16,rt:.68},{name:"RTX 4070 Super",score:79,vram:12,rt:.90},
+      {name:"RTX 5070",score:84,vram:12,rt:.96},{name:"RTX 5070 Ti",score:91,vram:16,rt:1.00},
+      {name:"RTX 5080",score:98,vram:16,rt:1.00},{name:"RX 7900 XTX",score:91,vram:24,rt:.78}
+    ];
+
+    const $ = id => document.getElementById(id);
+    let state = {game:"",cpu:"",gpu:"",ram:16,resolution:null,goal:"balanced",target:60,rtWanted:false};
+
+    function fillSelect(id,items){
+      const s=$(id);
+      items.forEach((item,i)=>{const o=document.createElement("option");o.value=i;o.textContent=item.name;s.appendChild(o)});
+    }
+    fillSelect("game",GAMES); fillSelect("cpu",CPUS); fillSelect("gpu",GPUS);
+
+    function refreshButton(){
+      $("optimize").disabled = !(state.game !== "" && state.cpu !== "" && state.gpu !== "" && state.resolution);
+    }
+    function bindSelect(id,key){
+      $(id).addEventListener("change",e=>{state[key]=e.target.value;refreshButton()});
+    }
+    bindSelect("game","game");bindSelect("cpu","cpu");bindSelect("gpu","gpu");
+    $("ram").addEventListener("change",e=>state.ram=Number(e.target.value));
+    $("target").addEventListener("input",e=>state.target=Math.max(30,Math.min(360,Number(e.target.value)||60)));
+    $("rtPreference").addEventListener("change",e=>state.rtWanted=e.target.checked);
+
+    document.querySelectorAll("#resolution button").forEach(btn=>btn.addEventListener("click",()=>{
+      document.querySelectorAll("#resolution button").forEach(x=>x.classList.remove("active"));
+      btn.classList.add("active"); state.resolution=Number(btn.dataset.value); refreshButton();
+    }));
+    document.querySelectorAll("#goal button").forEach(btn=>btn.addEventListener("click",()=>{
+      document.querySelectorAll("#goal button").forEach(x=>x.classList.remove("active"));
+      btn.classList.add("active"); state.goal=btn.dataset.value;
+    }));
+
+    function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+    function resolutionFactor(r){return r===2160?.56:r===1440?.77:1}
+    function qualityFactor(goal){return goal==="fps"?1.08:goal==="quality"?.91:1}
+    function roundRange(v){const low=Math.max(10,Math.round(v*.89));const high=Math.max(low+2,Math.round(v*1.11));return low+"–"+high}
+
+    function optimize(){
+      const game=GAMES[Number(state.game)], cpu=CPUS[Number(state.cpu)], gpu=GPUS[Number(state.gpu)];
+      const r=resolutionFactor(state.resolution);
+      const cpuScore=cpu.score/100, gpuScore=gpu.score/100;
+      const cpuPerf=game.base*Math.pow(cpuScore,.86)*(0.58+game.cpu*.58);
+      const gpuPerf=game.base*Math.pow(gpuScore,.92)*(0.58+game.gpu*.62);
+      let avg=Math.min(cpuPerf,gpuPerf)*r*qualityFactor(state.goal);
+
+      const cpuLimited=cpuPerf < gpuPerf*.88;
+      const gpuLimited=gpuPerf < cpuPerf*.88;
+      const ramPenalty=state.ram<game.vram+4 ? (state.ram<16?0.78:0.91) : 1;
+      avg*=ramPenalty;
+
+      const target=state.target;
+      const rtAllowed=gpu.rt>=.55 && state.resolution<=1440;
+      let rt=state.rtWanted && rtAllowed;
+      if(rt) avg*=game.rt>1.2?.73:.84;
+
+      let preset="High",textures="High",shadows="Medium",effects="High",upscaling="Native",fg="Off";
+      if(state.goal==="fps"){preset="Medium–High";textures="High";shadows="Medium";effects="Medium"}
+      if(state.goal==="quality"){preset="High";textures=gpu.vram>=12?"Ultra":"High";shadows="High";effects="High"}
+      if(avg<target*.82){preset="Medium";shadows="Low–Medium";effects="Medium";upscaling=state.resolution===2160?"Performance":state.resolution===1440?"Balanced":"Quality"}
+      else if(avg<target*.98){preset="Medium–High";shadows="Medium";effects="Medium";upscaling=state.resolution===2160?"Balanced":state.resolution===1440?"Quality":"Native"}
+      else if(avg<target*1.18 && state.goal==="quality"){upscaling=state.resolution===2160?"Balanced":"Quality"}
+
+      const vramNeed=game.vram+(state.resolution===2160?2.5:state.resolution===1440?1:0)+(preset==="Ultra"?1.5:0)+(rt?1.4:0);
+      if(vramNeed>gpu.vram*1.03){textures="Medium–High";upscaling=state.resolution===2160?"Performance":upscaling}
+      const fgEligible=gpu.rt>=.70 && gpu.score>=60;
+      if(target>=100 && fgEligible && state.resolution!==1080) fg="Recommended";
+      if(target<90) fg="Optional";
+
+      if(rt && avg<target*.88){rt="On (quality mode)";upscaling=state.resolution===2160?"Performance":state.resolution===1440?"Balanced":upscaling}
+      else if(!rt){rt="Off"}
+
+      const confidence=(game.gpu>=.88||game.cpu>=.88)?"Moderate":"Moderate-high";
+      let limit="Balanced";
+      if(cpuLimited) limit="CPU";
+      else if(gpuLimited) limit="GPU";
+
+      let why;
+      if(vramNeed>gpu.vram*1.03) why="Your selected resolution and game profile put VRAM under pressure, so SystemFit lowers texture demand first. That usually protects frame pacing better than cutting every setting equally.";
+      else if(cpuLimited) why="The CPU is the tighter part of this setup for this game. SystemFit keeps textures relatively high but reduces CPU-heavy settings such as shadows, effects or simulation where appropriate.";
+      else if(gpuLimited) why="The GPU is the main constraint at this resolution. SystemFit protects image quality where the performance cost is low and targets the heavier GPU settings first.";
+      else why="Your CPU and GPU are reasonably balanced for this game. SystemFit keeps the visual baseline high and only uses heavier compromises when the estimated range falls below your target.";
+
+      $("resultGame").textContent=game.name;
+      $("resultProfile").textContent=state.resolution+"p · "+state.target+" FPS target · "+state.goal;
+      $("fpsRange").textContent=roundRange(avg);
+      $("fpsTargetText").textContent="Target: "+target+" FPS";
+      $("presetOut").textContent=preset;
+      $("textures").textContent=textures;
+      $("shadows").textContent=shadows;
+      $("rtOut").textContent=rt;
+      $("upscaling").textContent=upscaling;
+      $("fg").textContent=fg;
+      $("effects").textContent=effects;
+      $("limit").textContent=limit;
+      $("vram").textContent=(vramNeed<=gpu.vram*.78?"Comfortable":vramNeed<=gpu.vram?"Watch":"Tight");
+      $("confidence").textContent=confidence;
+      $("why").textContent=why;
+      $("empty").style.display="none";
+      $("result").classList.add("show");
+    }
+    $("optimize").addEventListener("click",optimize);
+
+    const gamesHost=$("games");
+    GAMES.forEach((g,i)=>{
+      const b=document.createElement("button");b.type="button";b.className="game-card";
+      b.innerHTML="<b>"+g.name+"</b><small>"+g.cat+" · V1 profile</small>";
+      b.addEventListener("click",()=>{
+        $("game").value=i;state.game=String(i);refreshButton();
+        window.scrollTo({top:document.querySelector(".tool-shell").offsetTop-25,behavior:"smooth"});
+      });
+      gamesHost.appendChild(b);
+    });
+  </script>
+  <script src="header.js" defer></script>
+</body>
+</html>
