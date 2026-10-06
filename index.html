@@ -15,8 +15,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<title>SystemFit PC — Practical PC Planning Tools</title>
-<meta name="description" content="Explore practical PC tools for estimating gaming performance, comparing GPUs, planning a build and understanding PC hardware.">
+<title>Free PC Gaming Tools &amp; Hardware Guides | SystemFit PC</title>
+<meta name="description" content="Use free PC gaming tools and practical hardware guides to estimate FPS, check bottlenecks, compare GPUs, plan builds and decide what to upgrade.">
 <link rel="canonical" href="https://systemfitpc.vercel.app/">
 
 <style>
@@ -167,6 +167,17 @@ nav a:hover,nav a.active{color:white;background:#1d202b}
   .tool-card-footer{align-items:flex-end}
   .tool-meta{font-size:9px}
 }
+.homepage-guide{max-width:1120px;margin:72px auto 0;padding:0 22px}
+.homepage-guide-card{padding:30px;border:1px solid var(--border);border-radius:22px;background:linear-gradient(145deg,rgba(24,31,47,.72),rgba(13,18,29,.82));backdrop-filter:blur(14px)}
+.homepage-guide-head{max-width:760px;margin:0 auto 24px;text-align:center}
+.homepage-guide-head h2{font-size:clamp(27px,3.2vw,36px);margin-bottom:10px}
+.homepage-guide-head p{color:var(--muted);font-size:15px;line-height:1.8}
+.homepage-guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.homepage-guide-item{padding:18px;border:1px solid rgba(157,174,204,.12);border-radius:14px;background:rgba(255,255,255,.025)}
+.homepage-guide-item h3{font-size:17px;margin-bottom:7px}
+.homepage-guide-item p{color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:12px}
+.homepage-guide-item a{color:#b9aaff;font-size:12px;font-weight:700}
+@media(max-width:800px){.homepage-guide{margin-top:58px}.homepage-guide-grid{grid-template-columns:1fr}.homepage-guide-card{padding:23px}}
 
 /* ================= FOOTER ================= */
 footer{border-top:1px solid var(--border);padding:30px 20px;text-align:center;color:#737c91;font-size:13px}
@@ -1192,7 +1203,33 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
     <button class="guide-arrow guide-arrow-next" type="button" aria-label="Next article">›</button>
     <div class="guide-dots" aria-label="Choose an article"></div>
   </div>
-</section><section class="about-section" data-sfp-reveal id="about">
+</section><section class="homepage-guide" aria-labelledby="systemfit-decisions-title">
+  <div class="homepage-guide-card">
+    <div class="homepage-guide-head">
+      <h2 id="systemfit-decisions-title">Make Better PC Decisions</h2>
+      <p>SystemFit PC is built around the questions that matter before you buy, build or upgrade. Start with your goal, check the hardware that affects it, then use the tools and guides to make a more informed decision.</p>
+    </div>
+    <div class="homepage-guide-grid">
+      <div class="homepage-guide-item">
+        <h3>Check gaming performance</h3>
+        <p>Estimate FPS for a specific game, resolution and target before changing hardware.</p>
+        <a href="fps-calculator.html">Use the FPS Calculator →</a>
+      </div>
+      <div class="homepage-guide-item">
+        <h3>Find the limiting component</h3>
+        <p>Understand whether your CPU or GPU is more likely to limit performance in your scenario.</p>
+        <a href="bottleneck.html">Check the Bottleneck Calculator →</a>
+      </div>
+      <div class="homepage-guide-item">
+        <h3>Choose your next upgrade</h3>
+        <p>Use practical guides to decide which component deserves attention instead of upgrading blindly.</p>
+        <a href="which-pc-component-to-upgrade-first.html">Read the Upgrade Guide →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" data-sfp-reveal id="about">
     <div class="section-title"><h2>About SystemFit PC</h2><p class="about-intro">SystemFit PC makes computer decisions easier to understand. Our tools turn technical details into practical guidance for first-time builders and experienced PC users alike.</p></div>
     <div class="about-grid">
         <div class="about-item" data-sfp-reveal><h3>⚡ Simple &amp; Practical</h3><p>Clear results and explanations without forcing you to understand complicated hardware terminology first.</p></div>
