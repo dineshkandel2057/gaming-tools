@@ -8,6 +8,7 @@
   const isHome = current === "" || current === "index.html";
   const isGuides = current === "guides.html";
   const isContact = current === "contact.html";
+  const isGameSettings = current === "game-settings.html";
 
   const headerCSS = `
     .sfp-scroll-progress {
@@ -463,6 +464,14 @@
                 "FPS Calculator",
                 "Estimate performance",
                 current === "fps-calculator.html"
+              ${toolLink(
+                "game-settings.html",
+                "sfp-fps",
+                `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8.5h10a3 3 0 0 1 2.9 3.75l-1.05 4.2a2.2 2.2 0 0 1-4.12.42L14 15h-4l-.73 1.87a2.2 2.2 0 0 1-4.12-.42l-1.05-4.2A3 3 0 0 1 7 8.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 11.5v3M6.5 13h3M16 12.2h.01M18 14.2h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+                "Game Settings Optimizer",
+                "Find better graphics settings",
+                isGameSettings
+              )}
               )}
 
             </div>
