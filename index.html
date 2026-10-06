@@ -186,6 +186,55 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
   .guide-slide.is-prev,.guide-slide.is-next{opacity:.18;filter:blur(6px)}
   .guide-arrow{width:38px;height:38px}.guide-arrow-prev{left:-1px}.guide-arrow-next{right:-1px}
 }
+
+/* SystemFit PC — smooth guide-carousel edges */
+.guides-carousel{
+  -webkit-mask-image:linear-gradient(to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%);
+  mask-image:linear-gradient(to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%);
+}
+.guides-carousel:before,
+.guides-carousel:after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:120px;
+  z-index:4;
+  pointer-events:none;
+}
+.guides-carousel:before{
+  left:0;
+  background:linear-gradient(to right,var(--bg),transparent);
+}
+.guides-carousel:after{
+  right:0;
+  background:linear-gradient(to left,var(--bg),transparent);
+}
+@media(max-width:800px){
+  .guides-carousel{
+    -webkit-mask-image:linear-gradient(to right,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%);
+    mask-image:linear-gradient(to right,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%);
+  }
+  .guides-carousel:before,
+  .guides-carousel:after{width:55px}
+}
+
 @media(prefers-reduced-motion:reduce){
   .guide-slide,.guide-arrow,.guide-dot{transition:none}
 }
