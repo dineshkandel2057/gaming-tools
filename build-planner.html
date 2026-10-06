@@ -82,7 +82,7 @@ select option{background:#111827;color:#f5f7fc}
 .goal-choice label{height:100%;min-height:74px;display:flex;flex-direction:column;justify-content:center;margin:0;padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025);cursor:pointer;transition:.18s}
 .goal-choice label b{font-size:12px;color:#f1f4fa}.goal-choice label span{font-size:10px;color:#98a7bd;font-weight:500;margin-top:3px}
 .goal-choice input:checked+label{border-color:rgba(142,121,255,.55);background:rgba(126,105,255,.13);box-shadow:0 0 0 2px rgba(126,105,255,.08)}
-.part-select{display:flex;gap:9px;align-items:center}
+.component-picker{position:relative;width:100%}.component-picker-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;padding:11px 12px;border:1px solid rgba(157,174,204,.18);border-radius:10px;background:rgba(255,255,255,.035);color:#eef2f8;font:inherit;text-align:left;cursor:pointer}.component-picker-trigger:hover{border-color:rgba(142,121,255,.4)}.component-picker-menu{position:relative;z-index:30;width:100%;box-sizing:border-box;margin-top:6px;padding:8px;border:1px solid rgba(157,174,204,.18);border-radius:12px;background:#111827;box-shadow:0 16px 35px rgba(0,0,0,.35)}.component-picker-search{width:100%;box-sizing:border-box;padding:10px 11px;margin-bottom:7px;border:1px solid rgba(157,174,204,.18);border-radius:9px;background:rgba(255,255,255,.045);color:#eef2f8;outline:none}.component-picker-search:focus{border-color:rgba(142,121,255,.55)}.component-picker-options{max-height:260px;overflow-y:auto;display:grid;gap:2px}.component-picker-option{width:100%;padding:9px 10px;border:0;border-radius:8px;background:transparent;color:#dfe6f2;text-align:left;cursor:pointer;font:inherit}.component-picker-option:hover{background:rgba(126,105,255,.14)}.component-picker-empty{padding:12px 10px;color:#8f9db2;font-size:12px}.part-select{display:flex;gap:9px;align-items:center}
 .part-icon{width:35px;height:35px;flex:0 0 35px;display:grid;place-items:center;border-radius:10px;background:rgba(126,105,255,.12);color:#c6b7ff;font-size:13px}
 .part-icon.gpu{background:rgba(69,185,235,.12);color:#81d8ff}
 .part-icon.power{background:rgba(255,192,107,.12);color:#ffd28a}
@@ -217,12 +217,28 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       </section>
       <section class="step wizard-step" id="cpuStep" data-stage="4" hidden>
         <div class="step-heading"><span class="step-number">04</span><div><h2>Choose your processor</h2><p>Browse the full catalog, including affordable and previous-generation options.</p></div></div>
-        <div class="field"><label for="cpu">Processor</label><select id="cpu" required></select><div class="select-note" id="cpuNote"></div><small>Choose a CPU to reveal the graphics step.</small></div>
+        <div class="field"><label for="cpu">Processor</label>
+          <div class="component-picker" id="cpuPicker">
+            <button type="button" class="component-picker-trigger" aria-expanded="false">Select processor <span>⌄</span></button>
+            <div class="component-picker-menu" hidden>
+              <input type="search" class="component-picker-search" placeholder="Search CPUs..." autocomplete="off" aria-label="Search CPUs">
+              <div class="component-picker-options"></div>
+            </div>
+          </div>
+          <select id="cpu" required hidden></select><div class="select-note" id="cpuNote"></div><small>Choose a CPU to reveal the graphics step.</small></div>
         <button type="button" class="step-back" data-back="3">← Change your goal</button>
       </section>
       <section class="step wizard-step" id="gpuStep" data-stage="5" hidden>
         <div class="step-heading"><span class="step-number">05</span><div><h2>Choose graphics</h2><p>Discrete graphics are optional for many study and office builds.</p></div></div>
-        <div class="field"><label for="gpu">Graphics card</label><div class="part-select"><span class="part-icon gpu" aria-hidden="true">▰</span><select id="gpu" required></select></div><div class="select-note" id="gpuNote"></div><small>Integrated graphics requires a CPU that includes it; the checklist flags mismatches.</small></div>
+        <div class="field"><label for="gpu">Graphics card</label>
+          <div class="component-picker" id="gpuPicker">
+            <button type="button" class="component-picker-trigger" aria-expanded="false">Select graphics card <span>⌄</span></button>
+            <div class="component-picker-menu" hidden>
+              <input type="search" class="component-picker-search" placeholder="Search GPUs..." autocomplete="off" aria-label="Search GPUs">
+              <div class="component-picker-options"></div>
+            </div>
+          </div>
+          <select id="gpu" required hidden></select><div class="select-note" id="gpuNote"></div><small>Integrated graphics requires a CPU that includes it; the checklist flags mismatches.</small></div>
         <button type="button" class="step-back" data-back="4">← Change processor</button>
       </section>
       <section class="step wizard-step" id="boardStep" data-stage="6" hidden>
@@ -318,8 +334,114 @@ const CPU_DATA=[
 {id:"i7-14700k",name:"Intel Core i7-14700K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4","DDR5"],power:253,gaming:"high",igpu:true},
 {id:"u5-245k",name:"Intel Core Ultra 5 245K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:159,gaming:"balanced",igpu:true},
 {id:"u7-265k",name:"Intel Core Ultra 7 265K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:250,gaming:"high",igpu:true},
-{id:"u9-285k",name:"Intel Core Ultra 9 285K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:250,gaming:"high",igpu:true}
-];
+{id:"u9-285k",name:"Intel Core Ultra 9 285K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:250,gaming:"high",igpu:true},
+{id:"cpu-pentium-g4560",name:"Pentium G4560",brand:"Intel Pentium",socket:"LGA1151",memory:["DDR4"],power:65,gaming:"value",igpu:true},
+{id:"cpu-core-i3-6100",name:"Core i3-6100",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:65,gaming:"entry",igpu:true},
+{id:"cpu-core-i3-7100",name:"Core i3-7100",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:65,gaming:"entry",igpu:true},
+{id:"cpu-ryzen-3-1200",name:"Ryzen 3 1200",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"entry",igpu:true},
+{id:"cpu-ryzen-3-1300x",name:"Ryzen 3 1300X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"entry",igpu:true},
+{id:"cpu-core-i5-6400",name:"Core i5-6400",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:125,gaming:"value",igpu:true},
+{id:"cpu-ryzen-3-2200g",name:"Ryzen 3 2200G",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"entry",igpu:true},
+{id:"cpu-core-i5-6500",name:"Core i5-6500",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:125,gaming:"value",igpu:true},
+{id:"cpu-ryzen-5-1400",name:"Ryzen 5 1400",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"value",igpu:true},
+{id:"cpu-core-i5-7400",name:"Core i5-7400",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:125,gaming:"value",igpu:true},
+{id:"cpu-core-i3-8100",name:"Core i3-8100",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:65,gaming:"entry",igpu:true},
+{id:"cpu-core-i5-7500",name:"Core i5-7500",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:125,gaming:"value",igpu:true},
+{id:"cpu-core-i5-6600k",name:"Core i5-6600K",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:125,gaming:"value",igpu:true},
+{id:"cpu-ryzen-5-1600",name:"Ryzen 5 1600",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"value",igpu:true},
+{id:"cpu-ryzen-5-2400g",name:"Ryzen 5 2400G",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"value",igpu:true},
+{id:"cpu-ryzen-5-1600x",name:"Ryzen 5 1600X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"value",igpu:true},
+{id:"cpu-core-i7-6700",name:"Core i7-6700",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-7-1700",name:"Ryzen 7 1700",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-core-i7-6700k",name:"Core i7-6700K",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-3-3100",name:"Ryzen 3 3100",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"entry",igpu:true},
+{id:"cpu-ryzen-5-2600",name:"Ryzen 5 2600",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"value",igpu:true},
+{id:"cpu-ryzen-7-1700x",name:"Ryzen 7 1700X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-core-i3-10100",name:"Core i3-10100",brand:"Intel Core",socket:"LGA1200",memory:["DDR4"],power:65,gaming:"entry",igpu:true},
+{id:"cpu-core-i7-7700",name:"Core i7-7700",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-7-1800x",name:"Ryzen 7 1800X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-core-i5-8400",name:"Core i5-8400",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:125,gaming:"value",igpu:true},
+{id:"cpu-ryzen-5-2600x",name:"Ryzen 5 2600X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"value",igpu:true},
+{id:"cpu-core-i3-10300",name:"Core i3-10300",brand:"Intel Core",socket:"LGA1200",memory:["DDR4"],power:65,gaming:"entry",igpu:true},
+{id:"cpu-core-i5-8500",name:"Core i5-8500",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:125,gaming:"value",igpu:true},
+{id:"cpu-ryzen-3-3300x",name:"Ryzen 3 3300X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"entry",igpu:true},
+{id:"cpu-core-i7-7700k",name:"Core i7-7700K",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-core-i5-9400f",name:"Core i5-9400F",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:125,gaming:"value",igpu:false},
+{id:"cpu-core-i7-7740x",name:"Core i7-7740X",brand:"Intel Core",socket:"LGA2066",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-7-2700",name:"Ryzen 7 2700",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-core-i5-8600k",name:"Core i5-8600K",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:125,gaming:"value",igpu:true},
+{id:"cpu-ryzen-7-2700x",name:"Ryzen 7 2700X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-core-i5-9600k",name:"Core i5-9600K",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:125,gaming:"value",igpu:true},
+{id:"cpu-core-i7-8700",name:"Core i7-8700",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-core-i7-7820x",name:"Core i7-7820X",brand:"Intel Core",socket:"LGA2066",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-core-i7-8700k",name:"Core i7-8700K",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-core-i5-10400f",name:"Core i5-10400F",brand:"Intel Core",socket:"LGA1200",memory:["DDR4"],power:125,gaming:"value",igpu:false},
+{id:"cpu-core-i9-7900x",name:"Core i9-7900X",brand:"Intel Core",socket:"LGA2066",memory:["DDR4"],power:180,gaming:"high",igpu:true},
+{id:"cpu-ryzen-5-3600",name:"Ryzen 5 3600",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"value",igpu:true},
+{id:"cpu-core-i5-11400f",name:"Core i5-11400F",brand:"Intel Core",socket:"LGA1200",memory:["DDR4"],power:125,gaming:"value",igpu:false},
+{id:"cpu-core-i7-9700k",name:"Core i7-9700K",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-5-3600x",name:"Ryzen 5 3600X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"value",igpu:true},
+{id:"cpu-core-i5-10600k",name:"Core i5-10600K",brand:"Intel Core",socket:"LGA1200",memory:["DDR4"],power:125,gaming:"value",igpu:true},
+{id:"cpu-core-i3-12300",name:"Core i3-12300",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:65,gaming:"entry",igpu:true},
+{id:"cpu-core-i9-9900k",name:"Core i9-9900K",brand:"Intel Core",socket:"LGA1151",memory:["DDR4"],power:180,gaming:"high",igpu:true},
+{id:"cpu-core-i3-13100f",name:"Core i3-13100F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:65,gaming:"entry",igpu:false},
+{id:"cpu-core-i5-11600k",name:"Core i5-11600K",brand:"Intel Core",socket:"LGA1200",memory:["DDR4"],power:125,gaming:"value",igpu:true},
+{id:"cpu-core-i9-9980xe",name:"Core i9-9980XE",brand:"Intel Core",socket:"LGA2066",memory:["DDR4"],power:180,gaming:"high",igpu:true},
+{id:"cpu-ryzen-7-3700x",name:"Ryzen 7 3700X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-7-3800x",name:"Ryzen 7 3800X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-core-i7-10700k",name:"Core i7-10700K",brand:"Intel Core",socket:"LGA1200",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-7-3800xt",name:"Ryzen 7 3800XT",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-9-3900x",name:"Ryzen 9 3900X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:170,gaming:"high",igpu:true},
+{id:"cpu-core-i3-14100f",name:"Core i3-14100F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:65,gaming:"entry",igpu:false},
+{id:"cpu-core-i7-11700",name:"Core i7-11700",brand:"Intel Core",socket:"LGA1200",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-9-3950x",name:"Ryzen 9 3950X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:170,gaming:"high",igpu:true},
+{id:"cpu-core-i7-11700k",name:"Core i7-11700K",brand:"Intel Core",socket:"LGA1200",memory:["DDR4"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-core-i9-10900k",name:"Core i9-10900K",brand:"Intel Core",socket:"LGA1200",memory:["DDR4"],power:180,gaming:"high",igpu:true},
+{id:"cpu-ryzen-5-5600",name:"Ryzen 5 5600",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"value",igpu:true},
+{id:"cpu-core-i9-11900k",name:"Core i9-11900K",brand:"Intel Core",socket:"LGA1200",memory:["DDR4"],power:180,gaming:"high",igpu:true},
+{id:"cpu-ryzen-5-5600x",name:"Ryzen 5 5600X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"value",igpu:true},
+{id:"cpu-core-i5-13400f",name:"Core i5-13400F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:125,gaming:"balanced",igpu:false},
+{id:"cpu-ryzen-5-5500",name:"Ryzen 5 5500",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"value",igpu:true},
+{id:"cpu-ryzen-5-7500f",name:"Ryzen 5 7500F",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:105,gaming:"value",igpu:false},
+{id:"cpu-core-i5-14400f",name:"Core i5-14400F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:125,gaming:"balanced",igpu:false},
+{id:"cpu-core-i5-12600k",name:"Core i5-12600K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:125,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-7-5800x",name:"Ryzen 7 5800X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-7-5800x3d",name:"Ryzen 7 5800X3D",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-5-7600",name:"Ryzen 5 7600",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:105,gaming:"value",igpu:true},
+{id:"cpu-ryzen-9-5900x",name:"Ryzen 9 5900X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:170,gaming:"high",igpu:true},
+{id:"cpu-ryzen-7-5700x",name:"Ryzen 7 5700X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-5-5600x3d",name:"Ryzen 5 5600X3D",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"value",igpu:true},
+{id:"cpu-ryzen-5-7600x",name:"Ryzen 5 7600X",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:105,gaming:"value",igpu:true},
+{id:"cpu-ryzen-9-5950x",name:"Ryzen 9 5950X",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:170,gaming:"high",igpu:true},
+{id:"cpu-core-i5-12400f",name:"Core i5-12400F",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:125,gaming:"value",igpu:false},
+{id:"cpu-core-i7-12700k",name:"Core i7-12700K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-core-i9-12900k",name:"Core i9-12900K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:180,gaming:"high",igpu:true},
+{id:"cpu-ryzen-9-9900x",name:"Ryzen 9 9900X",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:170,gaming:"high",igpu:true},
+{id:"cpu-core-i5-13600k",name:"Core i5-13600K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:125,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-5-9600x",name:"Ryzen 5 9600X",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:105,gaming:"value",igpu:true},
+{id:"cpu-core-i7-13700k",name:"Core i7-13700K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-core-ultra-5-245k",name:"Core Ultra 5 245K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:125,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-7-7700x",name:"Ryzen 7 7700X",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-core-i7-14700k",name:"Core i7-14700K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-core-i9-13900k",name:"Core i9-13900K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:180,gaming:"high",igpu:true},
+{id:"cpu-core-ultra-7-270k-plus",name:"Core Ultra 7 270K Plus",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:150,gaming:"value",igpu:true},
+{id:"cpu-core-i5-14600k",name:"Core i5-14600K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:125,gaming:"balanced",igpu:true},
+{id:"cpu-core-i9-14900k",name:"Core i9-14900K",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:180,gaming:"high",igpu:true},
+{id:"cpu-ryzen-9-7900x",name:"Ryzen 9 7900X",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:170,gaming:"high",igpu:true},
+{id:"cpu-ryzen-7-9700x",name:"Ryzen 7 9700X",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-9-7950x3d",name:"Ryzen 9 7950X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:170,gaming:"high",igpu:true},
+{id:"cpu-core-ultra-7-265k",name:"Core Ultra 7 265K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:150,gaming:"balanced",igpu:true},
+{id:"cpu-ryzen-9-7950x",name:"Ryzen 9 7950X",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:170,gaming:"high",igpu:true},
+{id:"cpu-ryzen-7-7800x3d",name:"Ryzen 7 7800X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:105,gaming:"balanced",igpu:true},
+{id:"cpu-core-i9-13900ks",name:"Core i9-13900KS",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:180,gaming:"high",igpu:true},
+{id:"cpu-ryzen-9-9900x3d",name:"Ryzen 9 9900X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:170,gaming:"high",igpu:true},
+{id:"cpu-core-ultra-9-285k",name:"Core Ultra 9 285K",brand:"Intel Core Ultra",socket:"LGA1851",memory:["DDR5"],power:180,gaming:"value",igpu:true},
+{id:"cpu-core-i9-14900ks",name:"Core i9-14900KS",brand:"Intel Core",socket:"LGA1700",memory:["DDR4", "DDR5"],power:180,gaming:"high",igpu:true},
+{id:"cpu-ryzen-9-9950x3d",name:"Ryzen 9 9950X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:170,gaming:"high",igpu:true},
+{id:"cpu-ryzen-7-9800x3d",name:"Ryzen 7 9800X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:105,gaming:"high",igpu:true},
+{id:"cpu-ryzen-9-9950x3d2",name:"Ryzen 9 9950X3D2",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:170,gaming:"high",igpu:true},
+{id:"cpu-ryzen-7-9850x3d",name:"Ryzen 7 9850X3D",brand:"AMD Ryzen",socket:"AM5",memory:["DDR5"],power:105,gaming:"high",igpu:true}
+]
 const BOARD_DATA=[
 {id:"b550-matx",name:"B550 Micro-ATX · DDR4",socket:"AM4",memory:"DDR4",form:"Micro-ATX",chipset:"B550",m2:2},
 {id:"b550-atx",name:"B550 ATX · DDR4",socket:"AM4",memory:"DDR4",form:"ATX",chipset:"B550",m2:2},
@@ -334,15 +456,52 @@ const BOARD_DATA=[
 {id:"z790-ddr5",name:"Z790 ATX · DDR5",socket:"LGA1700",memory:"DDR5",form:"ATX",chipset:"Z790",m2:4},
 {id:"b860-atx",name:"B860 ATX · DDR5",socket:"LGA1851",memory:"DDR5",form:"ATX",chipset:"B860",m2:3},
 {id:"b860-matx",name:"B860 Micro-ATX · DDR5",socket:"LGA1851",memory:"DDR5",form:"Micro-ATX",chipset:"B860",m2:2},
-{id:"z890-atx",name:"Z890 ATX · DDR5",socket:"LGA1851",memory:"DDR5",form:"ATX",chipset:"Z890",m2:4}
-];
+{id:"z890-atx",name:"Z890 ATX · DDR5",socket:"LGA1851",memory:"DDR5",form:"ATX",chipset:"Z890",m2:4},
+{id:"a520-matx",name:"A520 Micro-ATX · DDR4",socket:"AM4",memory:"DDR4",form:"Micro-ATX",chipset:"A520",m2:2},
+{id:"b450-matx",name:"B450 Micro-ATX · DDR4",socket:"AM4",memory:"DDR4",form:"Micro-ATX",chipset:"B450",m2:2},
+{id:"b450-atx",name:"B450 ATX · DDR4",socket:"AM4",memory:"DDR4",form:"ATX",chipset:"B450",m2:2},
+{id:"b650e-atx",name:"B650E ATX · DDR5",socket:"AM5",memory:"DDR5",form:"ATX",chipset:"B650E",m2:3},
+{id:"a620-matx",name:"A620 Micro-ATX · DDR5",socket:"AM5",memory:"DDR5",form:"Micro-ATX",chipset:"A620",m2:2},
+{id:"x670e-atx",name:"X670E ATX · DDR5",socket:"AM5",memory:"DDR5",form:"ATX",chipset:"X670E",m2:4},
+{id:"x870-atx",name:"X870 ATX · DDR5",socket:"AM5",memory:"DDR5",form:"ATX",chipset:"X870",m2:4},
+{id:"h610-matx",name:"H610 Micro-ATX · DDR4",socket:"LGA1700",memory:"DDR4",form:"Micro-ATX",chipset:"H610",m2:1},
+{id:"b660-ddr4",name:"B660 ATX · DDR4",socket:"LGA1700",memory:"DDR4",form:"ATX",chipset:"B660",m2:2},
+{id:"b660-ddr5",name:"B660 ATX · DDR5",socket:"LGA1700",memory:"DDR5",form:"ATX",chipset:"B660",m2:2},
+{id:"h770-atx",name:"H770 ATX · DDR5",socket:"LGA1700",memory:"DDR5",form:"ATX",chipset:"H770",m2:3},
+{id:"z690-ddr4",name:"Z690 ATX · DDR4",socket:"LGA1700",memory:"DDR4",form:"ATX",chipset:"Z690",m2:3},
+{id:"z690-ddr5",name:"Z690 ATX · DDR5",socket:"LGA1700",memory:"DDR5",form:"ATX",chipset:"Z690",m2:4},
+{id:"z790-ddr4-2",name:"Z790 ATX · DDR4 (expanded)",socket:"LGA1700",memory:"DDR4",form:"ATX",chipset:"Z790",m2:3},
+{id:"b560-atx",name:"B560 ATX · DDR4",socket:"LGA1200",memory:"DDR4",form:"ATX",chipset:"B560",m2:2},
+{id:"b460-matx",name:"B460 Micro-ATX · DDR4",socket:"LGA1200",memory:"DDR4",form:"Micro-ATX",chipset:"B460",m2:2},
+{id:"z490-atx",name:"Z490 ATX · DDR4",socket:"LGA1200",memory:"DDR4",form:"ATX",chipset:"Z490",m2:3},
+{id:"z590-atx",name:"Z590 ATX · DDR4",socket:"LGA1200",memory:"DDR4",form:"ATX",chipset:"Z590",m2:3},
+{id:"b250-atx",name:"B250 ATX · DDR4",socket:"LGA1151",memory:"DDR4",form:"ATX",chipset:"B250",m2:1},
+{id:"h270-matx",name:"H270 Micro-ATX · DDR4",socket:"LGA1151",memory:"DDR4",form:"Micro-ATX",chipset:"H270",m2:1},
+{id:"z270-atx",name:"Z270 ATX · DDR4",socket:"LGA1151",memory:"DDR4",form:"ATX",chipset:"Z270",m2:2},
+{id:"b360-matx",name:"B360 Micro-ATX · DDR4",socket:"LGA1151",memory:"DDR4",form:"Micro-ATX",chipset:"B360",m2:2},
+{id:"z390-atx",name:"Z390 ATX · DDR4",socket:"LGA1151",memory:"DDR4",form:"ATX",chipset:"Z390",m2:2},
+{id:"x299-atx",name:"X299 ATX · DDR4",socket:"LGA2066",memory:"DDR4",form:"ATX",chipset:"X299",m2:4},
+{id:"b860-atx-2",name:"B860 ATX · DDR5 (expanded)",socket:"LGA1851",memory:"DDR5",form:"ATX",chipset:"B860",m2:3},
+{id:"b860-matx-2",name:"B860 Micro-ATX · DDR5 (expanded)",socket:"LGA1851",memory:"DDR5",form:"Micro-ATX",chipset:"B860",m2:2},
+{id:"z890-atx-2",name:"Z890 ATX · DDR5 (expanded)",socket:"LGA1851",memory:"DDR5",form:"ATX",chipset:"Z890",m2:4}
+]
 const MEMORY_DATA=[
 {id:"d4-16",name:"16 GB · DDR4-3200 · 2×8 GB",type:"DDR4",capacity:16},
 {id:"d4-32",name:"32 GB · DDR4-3600 · 2×16 GB",type:"DDR4",capacity:32},
 {id:"d5-32-6000",name:"32 GB · DDR5-6000 · 2×16 GB",type:"DDR5",capacity:32},
 {id:"d5-32-6400",name:"32 GB · DDR5-6400 · 2×16 GB",type:"DDR5",capacity:32},
-{id:"d5-64",name:"64 GB · DDR5-6000 · 2×32 GB",type:"DDR5",capacity:64}
-];
+{id:"d5-64",name:"64 GB · DDR5-6000 · 2×32 GB",type:"DDR5",capacity:64},
+{id:"d4-32-3200",name:"32 GB · DDR4-3200 · 2×16 GB",type:"DDR4",capacity:32},
+{id:"d4-64-3200",name:"64 GB · DDR4-3200 · 2×32 GB",type:"DDR4",capacity:64},
+{id:"d4-64-3600",name:"64 GB · DDR4-3600 · 2×32 GB",type:"DDR4",capacity:64},
+{id:"d5-16-5600",name:"16 GB · DDR5-5600 · 2×8 GB",type:"DDR5",capacity:16},
+{id:"d5-32-5200",name:"32 GB · DDR5-5200 · 2×16 GB",type:"DDR5",capacity:32},
+{id:"d5-32-5600",name:"32 GB · DDR5-5600 · 2×16 GB",type:"DDR5",capacity:32},
+{id:"d5-32-6000-2",name:"32 GB · DDR5-6000 · 2×16 GB (expanded)",type:"DDR5",capacity:32},
+{id:"d5-64-5600",name:"64 GB · DDR5-5600 · 2×32 GB",type:"DDR5",capacity:64},
+{id:"d5-96-6000",name:"96 GB · DDR5-6000 · 2×48 GB",type:"DDR5",capacity:96},
+{id:"d5-128-5600",name:"128 GB · DDR5-5600 · 4×32 GB",type:"DDR5",capacity:128}
+]
 const GPU_DATA=[
 {id:"gtx-1650",name:"NVIDIA GeForce GTX 1650",brand:"NVIDIA GeForce",power:75,psu:300,length:180,tier:1080,discrete:true},
 {id:"gtx-1660s",name:"NVIDIA GeForce GTX 1660 Super",brand:"NVIDIA GeForce",power:125,psu:450,length:230,tier:1080,discrete:true},
@@ -364,20 +523,123 @@ const GPU_DATA=[
 {id:"rtx-5090",name:"NVIDIA GeForce RTX 5090",brand:"NVIDIA GeForce",power:575,psu:1000,length:313,tier:2160},
 {id:"rx-9060xt",name:"AMD Radeon RX 9060 XT",brand:"AMD Radeon",power:160,psu:650,length:280,tier:1080,discrete:true},
 {id:"rx-9070",name:"AMD Radeon RX 9070",brand:"AMD Radeon",power:220,psu:650,length:267,tier:1440},
-{id:"rx-9070xt",name:"AMD Radeon RX 9070 XT",brand:"AMD Radeon",power:304,psu:750,length:304,tier:2160}
-];
+{id:"rx-9070xt",name:"AMD Radeon RX 9070 XT",brand:"AMD Radeon",power:304,psu:750,length:304,tier:2160},
+{id:"gpu-radeon-rx-550",name:"Radeon RX 550",brand:"AMD Radeon",power:50,psu:300,length:180,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-460",name:"Radeon RX 460",brand:"AMD Radeon",power:75,psu:350,length:200,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-950",name:"GeForce GTX 950",brand:"NVIDIA GeForce",power:90,psu:350,length:210,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-560",name:"Radeon RX 560",brand:"AMD Radeon",power:80,psu:350,length:210,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-1050",name:"GeForce GTX 1050",brand:"NVIDIA GeForce",power:75,psu:300,length:145,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-960",name:"GeForce GTX 960",brand:"NVIDIA GeForce",power:120,psu:400,length:200,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-6400",name:"Radeon RX 6400",brand:"AMD Radeon",power:53,psu:350,length:182,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-1050-ti",name:"GeForce GTX 1050 Ti",brand:"NVIDIA GeForce",power:75,psu:350,length:145,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-470",name:"Radeon RX 470",brand:"AMD Radeon",power:120,psu:450,length:240,tier:1080,discrete:true},
+{id:"gpu-arc-a380",name:"Arc A380",brand:"Intel Arc",power:75,psu:350,length:190,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-570",name:"Radeon RX 570",brand:"AMD Radeon",power:150,psu:550,length:250,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-1650",name:"GeForce GTX 1650",brand:"NVIDIA GeForce",power:75,psu:300,length:180,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-480",name:"Radeon RX 480",brand:"AMD Radeon",power:150,psu:550,length:250,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-970",name:"GeForce GTX 970",brand:"NVIDIA GeForce",power:145,psu:500,length:267,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-6500-xt",name:"Radeon RX 6500 XT",brand:"AMD Radeon",power:107,psu:400,length:190,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-1060-3gb",name:"GeForce GTX 1060 3GB",brand:"NVIDIA GeForce",power:120,psu:400,length:250,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-580",name:"Radeon RX 580",brand:"AMD Radeon",power:185,psu:550,length:232,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-5500-xt",name:"Radeon RX 5500 XT",brand:"AMD Radeon",power:130,psu:450,length:230,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-980",name:"GeForce GTX 980",brand:"NVIDIA GeForce",power:165,psu:500,length:267,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-590",name:"Radeon RX 590",brand:"AMD Radeon",power:150,psu:550,length:250,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-1060-6gb",name:"GeForce GTX 1060 6GB",brand:"NVIDIA GeForce",power:120,psu:400,length:250,tier:1080,discrete:true},
+{id:"gpu-arc-a580",name:"Arc A580",brand:"Intel Arc",power:185,psu:550,length:232,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-980-ti",name:"GeForce GTX 980 Ti",brand:"NVIDIA GeForce",power:250,psu:600,length:267,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-3050",name:"GeForce RTX 3050",brand:"NVIDIA GeForce",power:130,psu:450,length:242,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-1660-super",name:"GeForce GTX 1660 Super",brand:"NVIDIA GeForce",power:125,psu:450,length:230,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-vega-56",name:"Radeon RX Vega 56",brand:"AMD Radeon",power:210,psu:650,length:267,tier:1080,discrete:true},
+{id:"gpu-geforce-titan-x",name:"GeForce TITAN X",brand:"NVIDIA GeForce",power:250,psu:600,length:267,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-1070",name:"GeForce GTX 1070",brand:"NVIDIA GeForce",power:150,psu:500,length:267,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-5600-xt",name:"Radeon RX 5600 XT",brand:"AMD Radeon",power:150,psu:500,length:230,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-vega-64",name:"Radeon RX Vega 64",brand:"AMD Radeon",power:295,psu:750,length:280,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-6600",name:"Radeon RX 6600",brand:"AMD Radeon",power:132,psu:450,length:193,tier:1080,discrete:true},
+{id:"gpu-arc-a750",name:"Arc A750",brand:"Intel Arc",power:225,psu:600,length:270,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-1070-ti",name:"GeForce GTX 1070 Ti",brand:"NVIDIA GeForce",power:180,psu:500,length:267,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-2060",name:"GeForce RTX 2060",brand:"NVIDIA GeForce",power:160,psu:500,length:230,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-1080",name:"GeForce GTX 1080",brand:"NVIDIA GeForce",power:180,psu:500,length:267,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-5700",name:"Radeon RX 5700",brand:"AMD Radeon",power:180,psu:550,length:272,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-6600-xt",name:"Radeon RX 6600 XT",brand:"AMD Radeon",power:160,psu:550,length:243,tier:1080,discrete:true},
+{id:"gpu-arc-b570",name:"Arc B570",brand:"Intel Arc",power:150,psu:550,length:270,tier:1080,discrete:true},
+{id:"gpu-arc-a770",name:"Arc A770",brand:"Intel Arc",power:225,psu:600,length:280,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-2060-super",name:"GeForce RTX 2060 Super",brand:"NVIDIA GeForce",power:175,psu:550,length:230,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-5700-xt",name:"Radeon RX 5700 XT",brand:"AMD Radeon",power:225,psu:600,length:279,tier:1080,discrete:true},
+{id:"gpu-geforce-gtx-1080-ti",name:"GeForce GTX 1080 Ti",brand:"NVIDIA GeForce",power:250,psu:600,length:290,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-5050",name:"GeForce RTX 5050",brand:"NVIDIA GeForce",power:130,psu:450,length:220,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-7600",name:"Radeon RX 7600",brand:"AMD Radeon",power:165,psu:550,length:240,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-4060",name:"GeForce RTX 4060",brand:"NVIDIA GeForce",power:115,psu:450,length:240,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-2070",name:"GeForce RTX 2070",brand:"NVIDIA GeForce",power:175,psu:550,length:270,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-3060",name:"GeForce RTX 3060",brand:"NVIDIA GeForce",power:170,psu:550,length:242,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-3060-ti",name:"GeForce RTX 3060 Ti",brand:"NVIDIA GeForce",power:200,psu:600,length:242,tier:1440,discrete:true},
+{id:"gpu-titan-xp",name:"Titan Xp",brand:"NVIDIA GeForce",power:250,psu:650,length:267,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-6700-xt",name:"Radeon RX 6700 XT",brand:"AMD Radeon",power:230,psu:650,length:267,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-2070-super",name:"GeForce RTX 2070 Super",brand:"NVIDIA GeForce",power:215,psu:650,length:270,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-3070",name:"GeForce RTX 3070",brand:"NVIDIA GeForce",power:220,psu:650,length:242,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-4060-ti-8gb",name:"GeForce RTX 4060 Ti 8GB",brand:"NVIDIA GeForce",power:160,psu:550,length:245,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-5060",name:"GeForce RTX 5060",brand:"NVIDIA GeForce",power:145,psu:550,length:240,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-4060-ti-16gb",name:"GeForce RTX 4060 Ti 16GB",brand:"NVIDIA GeForce",power:160,psu:550,length:245,tier:1080,discrete:true},
+{id:"gpu-arc-b580",name:"Arc B580",brand:"Intel Arc",power:185,psu:550,length:232,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-2080-super",name:"GeForce RTX 2080 Super",brand:"NVIDIA GeForce",power:250,psu:650,length:267,tier:1440,discrete:true},
+{id:"gpu-radeon-rx-9060-xt-8gb",name:"Radeon RX 9060 XT 8GB",brand:"AMD Radeon",power:160,psu:550,length:280,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-3070-ti",name:"GeForce RTX 3070 Ti",brand:"NVIDIA GeForce",power:290,psu:750,length:267,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-2080-ti",name:"GeForce RTX 2080 Ti",brand:"NVIDIA GeForce",power:250,psu:650,length:267,tier:1440,discrete:true},
+{id:"gpu-radeon-rx-9060-xt-16gb",name:"Radeon RX 9060 XT 16GB",brand:"AMD Radeon",power:160,psu:550,length:280,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-5060-ti-8gb",name:"GeForce RTX 5060 Ti 8GB",brand:"NVIDIA GeForce",power:180,psu:600,length:267,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-7600-xt",name:"Radeon RX 7600 XT",brand:"AMD Radeon",power:190,psu:600,length:280,tier:1080,discrete:true},
+{id:"gpu-radeon-rx-7700-xt",name:"Radeon RX 7700 XT",brand:"AMD Radeon",power:245,psu:700,length:280,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-4060-ti",name:"GeForce RTX 4060 Ti",brand:"NVIDIA GeForce",power:160,psu:550,length:245,tier:1080,discrete:true},
+{id:"gpu-geforce-rtx-5060-ti-16gb",name:"GeForce RTX 5060 Ti 16GB",brand:"NVIDIA GeForce",power:180,psu:600,length:267,tier:1080,discrete:true},
+{id:"gpu-titan-rtx",name:"TITAN RTX",brand:"NVIDIA GeForce",power:280,psu:650,length:267,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-4070",name:"GeForce RTX 4070",brand:"NVIDIA GeForce",power:200,psu:650,length:244,tier:1440,discrete:true},
+{id:"gpu-radeon-rx-6800-xt",name:"Radeon RX 6800 XT",brand:"AMD Radeon",power:300,psu:750,length:308,tier:1440,discrete:true},
+{id:"gpu-radeon-rx-6800",name:"Radeon RX 6800",brand:"AMD Radeon",power:250,psu:650,length:305,tier:1440,discrete:true},
+{id:"gpu-radeon-rx-6900-xt",name:"Radeon RX 6900 XT",brand:"AMD Radeon",power:300,psu:850,length:267,tier:2160,discrete:true},
+{id:"gpu-radeon-rx-9060-xt",name:"Radeon RX 9060 XT",brand:"AMD Radeon",power:160,psu:550,length:280,tier:1440,discrete:true},
+{id:"gpu-radeon-rx-7800-xt",name:"Radeon RX 7800 XT",brand:"AMD Radeon",power:263,psu:700,length:302,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-3080-ti",name:"GeForce RTX 3080 Ti",brand:"NVIDIA GeForce",power:350,psu:750,length:313,tier:1440,discrete:true},
+{id:"gpu-radeon-rx-9070-gre",name:"Radeon RX 9070 GRE",brand:"AMD Radeon",power:220,psu:650,length:310,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-3090",name:"GeForce RTX 3090",brand:"NVIDIA GeForce",power:350,psu:750,length:313,tier:2160,discrete:true},
+{id:"gpu-radeon-rx-6950-xt",name:"Radeon RX 6950 XT",brand:"AMD Radeon",power:335,psu:850,length:331,tier:2160,discrete:true},
+{id:"gpu-geforce-rtx-3080-10gb",name:"GeForce RTX 3080 10GB",brand:"NVIDIA GeForce",power:320,psu:750,length:285,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-4070-super",name:"GeForce RTX 4070 Super",brand:"NVIDIA GeForce",power:220,psu:650,length:244,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-3090-ti",name:"GeForce RTX 3090 Ti",brand:"NVIDIA GeForce",power:450,psu:850,length:336,tier:2160,discrete:true},
+{id:"gpu-geforce-rtx-5070",name:"GeForce RTX 5070",brand:"NVIDIA GeForce",power:250,psu:650,length:267,tier:1440,discrete:true},
+{id:"gpu-radeon-rx-7900-gre",name:"Radeon RX 7900 GRE",brand:"AMD Radeon",power:260,psu:700,length:310,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-4070-ti-super",name:"GeForce RTX 4070 Ti Super",brand:"NVIDIA GeForce",power:285,psu:700,length:285,tier:1440,discrete:true},
+{id:"gpu-radeon-rx-7900-xt",name:"Radeon RX 7900 XT",brand:"AMD Radeon",power:315,psu:750,length:320,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-5070-ti",name:"GeForce RTX 5070 Ti",brand:"NVIDIA GeForce",power:300,psu:750,length:304,tier:1440,discrete:true},
+{id:"gpu-radeon-rx-9070",name:"Radeon RX 9070",brand:"AMD Radeon",power:220,psu:650,length:310,tier:1440,discrete:true},
+{id:"gpu-radeon-rx-9070-xt",name:"Radeon RX 9070 XT",brand:"AMD Radeon",power:304,psu:750,length:330,tier:1440,discrete:true},
+{id:"gpu-geforce-rtx-4080-super",name:"GeForce RTX 4080 Super",brand:"NVIDIA GeForce",power:320,psu:750,length:304,tier:2160,discrete:true},
+{id:"gpu-radeon-rx-7900-xtx",name:"Radeon RX 7900 XTX",brand:"AMD Radeon",power:355,psu:850,length:345,tier:2160,discrete:true},
+{id:"gpu-geforce-rtx-5080-16gb",name:"GeForce RTX 5080 16GB",brand:"NVIDIA GeForce",power:360,psu:850,length:304,tier:2160,discrete:true},
+{id:"gpu-geforce-rtx-4090",name:"GeForce RTX 4090",brand:"NVIDIA GeForce",power:450,psu:850,length:304,tier:2160,discrete:true},
+{id:"gpu-geforce-rtx-5090",name:"GeForce RTX 5090",brand:"NVIDIA GeForce",power:575,psu:1000,length:313,tier:2160,discrete:true}
+]
 const COOLER_DATA=[
 {id:"air-stock",name:"Stock / compact air cooler · up to 90 W",type:"air",capacity:90,height:155,sockets:["AM4","AM5","LGA1700","LGA1851"]},
 {id:"air-120",name:"Compact air cooler · 120 W class",type:"air",capacity:120,height:145,sockets:["AM4","AM5","LGA1700","LGA1851"]},
 {id:"air-180",name:"Tower air cooler · 180 W class",type:"air",capacity:180,height:158,sockets:["AM4","AM5","LGA1700","LGA1851"]},
 {id:"air-250",name:"Large dual-tower air cooler · 250 W class",type:"air",capacity:250,height:165,sockets:["AM4","AM5","LGA1700","LGA1851"]},
-{id:"aio-240",name:"240 mm liquid cooler · 250 W class",type:"aio",capacity:250,radiator:240,sockets:["AM4","AM5","LGA1700","LGA1851"]}
-];
+{id:"aio-240",name:"240 mm liquid cooler · 250 W class",type:"aio",capacity:250,radiator:240,sockets:["AM4","AM5","LGA1700","LGA1851"]},
+{id:"air-low-100",name:"Basic air cooler · 100 W class",type:"air",capacity:100,height:150,sockets:["AM4", "AM5", "LGA1151", "LGA1200", "LGA1700", "LGA1851", "LGA2066"]},
+{id:"air-140",name:"Tower air cooler · 140 W class",type:"air",capacity:140,height:155,sockets:["AM4", "AM5", "LGA1151", "LGA1200", "LGA1700", "LGA1851", "LGA2066"]},
+{id:"air-220",name:"Tower air cooler · 220 W class",type:"air",capacity:220,height:160,sockets:["AM4", "AM5", "LGA1151", "LGA1200", "LGA1700", "LGA1851", "LGA2066"]},
+{id:"air-280",name:"Dual-tower air cooler · 280 W class",type:"air",capacity:280,height:170,sockets:["AM4", "AM5", "LGA1151", "LGA1200", "LGA1700", "LGA1851", "LGA2066"]},
+{id:"aio-120",name:"120 mm liquid cooler · 180 W class",type:"aio",capacity:180,radiator:180,sockets:["AM4", "AM5", "LGA1700", "LGA1851", "LGA1200"]},
+{id:"aio-360",name:"360 mm liquid cooler · 300 W class",type:"aio",capacity:300,radiator:360,sockets:["AM4", "AM5", "LGA1700", "LGA1851", "LGA1200"]}
+]
 const CASE_DATA=[
 {id:"compact-matx",name:"Compact Micro-ATX case",forms:["Micro-ATX","Mini-ITX"],maxGpu:310,maxCooler:155,maxPsu:160,radiators:[120,240]},
 {id:"airflow-mid",name:"Airflow Mid-Tower",forms:["ATX","Micro-ATX","Mini-ITX"],maxGpu:360,maxCooler:170,maxPsu:180,radiators:[120,240,360]},
-{id:"large-mid",name:"Roomy Mid-Tower",forms:["ATX","Micro-ATX","Mini-ITX"],maxGpu:400,maxCooler:180,maxPsu:200,radiators:[120,240,360]}
-];
+{id:"large-mid",name:"Roomy Mid-Tower",forms:["ATX","Micro-ATX","Mini-ITX"],maxGpu:400,maxCooler:180,maxPsu:200,radiators:[120,240,360]},
+{id:"mini-itx-airflow",name:"Airflow Mini-ITX case",forms:["Mini-ITX"],maxGpu:300,maxCooler:145,maxPsu:150,radiators:[120, 240]},
+{id:"budget-atx",name:"Budget ATX Mid-Tower",forms:["ATX", "Micro-ATX", "Mini-ITX"],maxGpu:330,maxCooler:165,maxPsu:180,radiators:[120, 240]},
+{id:"compact-atx",name:"Compact ATX Mid-Tower",forms:["ATX", "Micro-ATX", "Mini-ITX"],maxGpu:340,maxCooler:170,maxPsu:180,radiators:[120, 240, 360]},
+{id:"mesh-full",name:"High-Airflow Full-Tower",forms:["ATX", "Micro-ATX", "Mini-ITX"],maxGpu:430,maxCooler:190,maxPsu:220,radiators:[120, 240, 360]},
+{id:"dual-chamber",name:"Dual-Chamber ATX Case",forms:["ATX", "Micro-ATX", "Mini-ITX"],maxGpu:400,maxCooler:185,maxPsu:220,radiators:[120, 240, 360]}
+]
 const PSU_DATA=[
 {id:"psu-450",name:"450 W · 80+ Bronze class",watts:450,length:140},
 {id:"psu-550",name:"550 W · 80+ Bronze class",watts:550,length:140},
@@ -385,14 +647,32 @@ const PSU_DATA=[
 {id:"psu-750",name:"750 W · 80+ Gold class",watts:750,length:160},
 {id:"psu-850",name:"850 W · 80+ Gold class",watts:850,length:160},
 {id:"psu-1000",name:"1000 W · 80+ Gold class",watts:1000,length:180},
-{id:"psu-1200",name:"1200 W · 80+ Gold class",watts:1200,length:180}
-];
+{id:"psu-1200",name:"1200 W · 80+ Gold class",watts:1200,length:180},
+{id:"psu-500",name:"500 W · 80+ Bronze class",watts:500,length:140},
+{id:"psu-600",name:"600 W · 80+ Bronze class",watts:600,length:150},
+{id:"psu-700",name:"700 W · 80+ Gold class",watts:700,length:160},
+{id:"psu-750-pcie5",name:"750 W · 80+ Gold · modern GPU class",watts:750,length:160},
+{id:"psu-850-pcie5",name:"850 W · 80+ Gold · modern GPU class",watts:850,length:160},
+{id:"psu-1000-pcie5",name:"1000 W · 80+ Gold · modern GPU class",watts:1000,length:180},
+{id:"psu-1200-pcie5",name:"1200 W · 80+ Gold · modern GPU class",watts:1200,length:180},
+{id:"psu-1600",name:"1600 W · 80+ Platinum class",watts:1600,length:200}
+]
 const STORAGE_DATA=[
 {id:"nvme-1",name:"1 TB PCIe 4.0 NVMe SSD",type:"nvme",capacity:1},
 {id:"nvme-2",name:"2 TB PCIe 4.0 NVMe SSD",type:"nvme",capacity:2},
 {id:"nvme-4",name:"4 TB PCIe 4.0 NVMe SSD",type:"nvme",capacity:4},
-{id:"sata-1",name:"1 TB SATA SSD",type:"sata",capacity:1}
-];
+{id:"sata-1",name:"1 TB SATA SSD",type:"sata",capacity:1},
+{id:"nvme-500",name:"500 GB PCIe 4.0 NVMe SSD",type:"nvme",capacity:0.5},
+{id:"nvme-1-gen3",name:"1 TB PCIe 3.0 NVMe SSD",type:"nvme",capacity:1},
+{id:"nvme-2-gen3",name:"2 TB PCIe 3.0 NVMe SSD",type:"nvme",capacity:2},
+{id:"nvme-2-gen5",name:"2 TB PCIe 5.0 NVMe SSD",type:"nvme",capacity:2},
+{id:"nvme-4-gen5",name:"4 TB PCIe 5.0 NVMe SSD",type:"nvme",capacity:4},
+{id:"sata-2",name:"2 TB SATA SSD",type:"sata",capacity:2},
+{id:"sata-4",name:"4 TB SATA SSD",type:"sata",capacity:4},
+{id:"hdd-2",name:"2 TB HDD",type:"sata",capacity:2},
+{id:"hdd-4",name:"4 TB HDD",type:"sata",capacity:4},
+{id:"hdd-8",name:"8 TB HDD",type:"sata",capacity:8}
+]
 const $=id=>document.getElementById(id);
 let wizardMode="",wizardBudget="",wizardWorkload="",wizardStage=1;
 function addOptions(selectId,list,label,selected){
@@ -584,6 +864,56 @@ function decodeShared(){
  if(!encoded)return null;
  try{return JSON.parse(decodeURIComponent(escape(atob(encoded))))}catch(e){return null}
 }
+
+function setupComponentPicker(pickerId, selectId){
+  const picker=document.getElementById(pickerId);
+  const select=document.getElementById(selectId);
+  if(!picker||!select)return;
+  const trigger=picker.querySelector(".component-picker-trigger");
+  const menu=picker.querySelector(".component-picker-menu");
+  const search=picker.querySelector(".component-picker-search");
+  const optionsBox=picker.querySelector(".component-picker-options");
+
+  function renderOptions(){
+    const q=search.value.trim().toLowerCase();
+    optionsBox.innerHTML="";
+    const matches=Array.from(select.options).filter(o=>!q||o.textContent.toLowerCase().includes(q));
+    if(!matches.length){
+      optionsBox.innerHTML='<div class="component-picker-empty">No matches found</div>';
+      return;
+    }
+    matches.forEach(option=>{
+      const button=document.createElement("button");
+      button.type="button";
+      button.className="component-picker-option";
+      button.textContent=option.textContent;
+      button.addEventListener("click",()=>{
+        select.value=option.value;
+        select.dispatchEvent(new Event("change",{bubbles:true}));
+        trigger.firstChild.textContent=option.textContent+" ";
+        trigger.setAttribute("aria-expanded","false");
+        menu.hidden=true;
+        search.value="";
+      });
+      optionsBox.appendChild(button);
+    });
+  }
+
+  trigger.addEventListener("click",()=>{
+    const opening=menu.hidden;
+    menu.hidden=!opening;
+    trigger.setAttribute("aria-expanded",String(opening));
+    if(opening){ renderOptions(); search.focus(); }
+  });
+  search.addEventListener("input",renderOptions);
+  document.addEventListener("click",e=>{
+    if(!picker.contains(e.target)){
+      menu.hidden=true;
+      trigger.setAttribute("aria-expanded","false");
+    }
+  });
+  renderOptions();
+}
 const stored=(()=>{try{return JSON.parse(localStorage.getItem("pcpilot-build-v1")||"null")}catch(e){return null}})();
 addOptions("cpu",CPU_DATA,"processor");
 addOptions("gpu",GPU_DATA,"graphics card");
@@ -595,6 +925,8 @@ updatePlatformOptions();updateGraphicsOptions();workloadOptions();
 if(stored&&stored.cpu)$("resumeBuild").hidden=false;
 const shared=decodeShared();
 if(shared)selectValues(shared);else showWizardStep(1,false);
+setupComponentPicker("cpuPicker","cpu");
+setupComponentPicker("gpuPicker","gpu");
 renderBuild();
 </script>
 <script>
