@@ -212,9 +212,9 @@ body:has(.upgrade-page) > footer.sfp-site-footer{max-width:none;margin:0;backgro
     }
 
     function syncProfileHeight(){
-      const profile=$("profile-card"), diagnosis=$("diagnosis-card");
-      if(!profile||!diagnosis)return;
-      if(window.innerWidth>820){profile.style.height=diagnosis.offsetHeight+"px";}else{profile.style.height="auto";}
+      const profile=$("profile-card"), stack=document.querySelector(".right-stack");
+      if(!profile||!stack)return;
+      if(window.innerWidth>820){profile.style.height=stack.offsetHeight+"px";}else{profile.style.height="auto";}
     }
 
     function run(){
@@ -237,7 +237,6 @@ body:has(.upgrade-page) > footer.sfp-site-footer{max-width:none;margin:0;backgro
       $("path").innerHTML=r.first==="None" ? '<div class="road-item"><span class="road-num">1</span><strong>Keep current setup</strong><p>Your PC is already capable for your target.</p></div><span class="road-arrow">→</span><div class="road-item"><span class="road-num">2</span><strong>Save budget</strong><p>Save for a bigger upgrade when needed (e.g. next-gen GPU).</p></div><span class="road-arrow">→</span><div class="road-item"><span class="road-num">3</span><strong>Consider RAM upgrade</strong><p>Upgrade to 32GB if you play newer AAA games or multitask.</p></div>' : r.path.map((x,i)=>'<div class="road-item"><span class="road-num">'+(i+1)+'</span><strong>'+x+'</strong><p>Follow this step before spending on another component.</p></div>').join('<span class="road-arrow">→</span>');
     }
 
-    function syncProfileHeight(){const p=$("profile-card"),d=$("diagnosis-card");if(!p||!d)return;p.style.height=window.innerWidth>820?d.offsetHeight+"px":"auto";}
 
     $("analyze").addEventListener("click",run);
     run();
