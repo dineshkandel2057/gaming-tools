@@ -134,8 +134,6 @@ body{min-height:100%;background:#060a12;color:#f6f8ff;font-family:"DM Sans",Inte
     const cpuNames=Object.keys(CPUs),gpuNames=Object.keys(GPUs);
     cpuNames.forEach(x=>$("cpu").add(new Option(x,x)));
     gpuNames.forEach(x=>$("gpu").add(new Option(x,x)));
-    $("cpu").value="Ryzen 5 7600";
-    $("gpu").value="RTX 4070";
 
     function classify(){
       const cpu=CPUs[$("cpu").value], gpu=GPUs[$("gpu").value], ram=+$("ram").value;
