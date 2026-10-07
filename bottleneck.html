@@ -395,183 +395,434 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 
   <button class="btn" onclick="calculate()">Calculate Bottleneck</button>
 
-  <div class="result hidden" id="result">
-    <div class="result-head">
-      <div><div class="result-title" id="resultTitle">Result</div><div style="font-size:11px;color:#8d9ab0;margin-top:4px" id="resultPair"></div></div>
-      <div class="pill estimated" id="limitPill">• Estimated</div>
-    </div>
+  
+<div class="result hidden" id="result">
+  <div id="bottleneck-results-container">
+    <style>
+      #bottleneck-results-container{
+        --br-bg:#080d16;--br-panel:#101827;--br-panel-2:#0d1420;--br-line:rgba(157,174,204,.14);
+        --br-text:#f5f7fc;--br-muted:#91a0b6;--br-purple:#765fff;--br-cpu:#a78bfa;--br-gpu:#63c7ff;
+        --br-good:#5ce0a2;--br-warn:#ffc06b;--br-bad:#ff7d86;
+        display:block;width:100%;color:var(--br-text);
+      }
+      #bottleneck-results-container *{box-sizing:border-box}
+      #bottleneck-results-container button,
+      #bottleneck-results-container summary{font:inherit}
+      #bottleneck-results-container .br-step{
+        display:flex;align-items:center;gap:10px;margin:0 0 12px;color:#8f9db4;font-size:11px;
+        font-weight:800;letter-spacing:.11em;text-transform:uppercase;
+      }
+      #bottleneck-results-container .br-step span{
+        display:grid;place-items:center;width:24px;height:24px;border-radius:8px;
+        background:rgba(118,95,255,.13);border:1px solid rgba(147,132,255,.2);color:#bcb2ff;font-size:11px;
+      }
+      #bottleneck-results-container .br-hero{
+        position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,.75fr);
+        gap:18px;padding:24px;border:1px solid var(--br-line);border-radius:18px;
+        background:linear-gradient(135deg,rgba(118,95,255,.10),rgba(16,24,39,.96) 42%,rgba(10,16,27,.98));
+      }
+      #bottleneck-results-container .br-hero:before{
+        content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--br-purple);
+      }
+      #bottleneck-results-container[data-limit="cpu"] .br-hero:before{background:var(--br-cpu)}
+      #bottleneck-results-container[data-limit="gpu"] .br-hero:before{background:var(--br-gpu)}
+      #bottleneck-results-container[data-limit="balanced"] .br-hero:before{background:var(--br-good)}
+      #bottleneck-results-container .br-eyebrow{color:#9da9bd;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+      #bottleneck-results-container .br-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-top:7px}
+      #bottleneck-results-container .br-title{
+        margin:0;font:700 clamp(25px,3.2vw,34px)/1.08 "Space Grotesk",sans-serif;letter-spacing:-.045em;
+      }
+      #bottleneck-results-container .br-pair{margin-top:7px;color:#8997ad;font-size:12px;line-height:1.5}
+      #bottleneck-results-container .br-pill{
+        flex:0 0 auto;padding:7px 10px;border:1px solid rgba(255,255,255,.1);border-radius:999px;
+        background:rgba(255,255,255,.045);color:#c7d0df;font-size:10px;font-weight:800;
+      }
+      #bottleneck-results-container .br-message{
+        margin-top:18px;padding:13px 14px;border-radius:12px;background:rgba(5,10,18,.46);
+        border:1px solid rgba(157,174,204,.12);color:#c5cfdd;font-size:13px;line-height:1.6;
+      }
+      #bottleneck-results-container .br-message strong{color:#fff}
+      #bottleneck-results-container .br-hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+      #bottleneck-results-container .br-big-stat{
+        padding:15px;border-radius:13px;background:rgba(5,10,18,.46);border:1px solid rgba(157,174,204,.12);
+      }
+      #bottleneck-results-container .br-big-stat small{display:block;color:#8492a8;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}
+      #bottleneck-results-container .br-big-stat strong{display:block;margin-top:6px;font:700 27px/1 "Space Grotesk",sans-serif;letter-spacing:-.04em}
+      #bottleneck-results-container .br-big-stat span{display:block;margin-top:6px;color:#8290a6;font-size:10px;line-height:1.4}
+      #bottleneck-results-container .br-pressure{
+        grid-column:1/-1;padding:15px;border-radius:13px;background:rgba(5,10,18,.46);border:1px solid rgba(157,174,204,.12);
+      }
+      #bottleneck-results-container .br-pressure-head{display:flex;justify-content:space-between;gap:10px;margin-bottom:12px}
+      #bottleneck-results-container .br-pressure-head b{font-size:11px}.br-pressure-head span{color:#8492a8;font-size:10px}
+      #bottleneck-results-container .br-meter{margin-top:10px}
+      #bottleneck-results-container .br-meter:first-of-type{margin-top:0}
+      #bottleneck-results-container .br-meter-label{display:flex;justify-content:space-between;margin-bottom:5px;color:#9eabbe;font-size:10px}
+      #bottleneck-results-container .br-meter-track{height:7px;border-radius:999px;background:#202a39;overflow:hidden}
+      #bottleneck-results-container .br-meter-fill{height:100%;width:0;border-radius:999px;transition:width .45s ease}
+      #bottleneck-results-container .br-meter-fill.cpu{background:var(--br-cpu)}
+      #bottleneck-results-container .br-meter-fill.gpu{background:var(--br-gpu)}
+      #bottleneck-results-container .br-meter-fill.good{background:var(--br-good)}
+      #bottleneck-results-container .br-hero-actions{margin-top:14px;display:flex;align-items:center;gap:8px;color:#7f8da4;font-size:10px}
+      #bottleneck-results-container .br-hero-actions:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--br-good);box-shadow:0 0 10px rgba(92,224,162,.35)}
+      
+      #bottleneck-results-container .br-section{margin-top:22px}
+      #bottleneck-results-container .br-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin-bottom:12px}
+      #bottleneck-results-container .br-section-title{margin:0;font:700 18px/1.2 "Space Grotesk",sans-serif;letter-spacing:-.025em}
+      #bottleneck-results-container .br-section-copy{margin:4px 0 0;color:#8290a6;font-size:11px;line-height:1.55}
+      
+      #bottleneck-results-container .br-target-row{display:grid;grid-template-columns:1.4fr .8fr;gap:10px;margin-bottom:12px}
+      #bottleneck-results-container .br-target-card{
+        padding:17px;border:1px solid var(--br-line);border-radius:14px;background:linear-gradient(145deg,#121b2a,#0d1420);
+      }
+      #bottleneck-results-container .br-target-card small{display:block;color:#8492a8;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}
+      #bottleneck-results-container .br-target-card strong{display:block;margin-top:6px;font:700 29px/1 "Space Grotesk",sans-serif;letter-spacing:-.04em}
+      #bottleneck-results-container .br-target-card span{display:block;margin-top:6px;color:#8795aa;font-size:10px;line-height:1.45}
+      
+      #bottleneck-results-container .br-tabs{
+        display:flex;gap:6px;overflow:auto;padding:4px;margin-bottom:10px;border:1px solid var(--br-line);
+        border-radius:12px;background:#0c131f;
+      }
+      #bottleneck-results-container .br-tab{
+        flex:1 0 100px;border:0;border-radius:9px;background:transparent;color:#8997ad;padding:9px 12px;
+        cursor:pointer;font-size:11px;font-weight:800;transition:.18s ease;
+      }
+      #bottleneck-results-container .br-tab:hover{color:#fff;background:rgba(118,95,255,.08)}
+      #bottleneck-results-container .br-tab[aria-selected="true"]{background:rgba(118,95,255,.15);color:#fff;box-shadow:inset 0 0 0 1px rgba(147,132,255,.16)}
+      #bottleneck-results-container .br-resolution-panel{display:none}
+      #bottleneck-results-container .br-resolution-panel.is-active{display:block}
+      #bottleneck-results-container .resolution-card{
+        position:relative;padding:18px;border-radius:14px;border:1px solid var(--br-line);
+        background:linear-gradient(145deg,#111a29,#0c1420);overflow:hidden;
+      }
+      #bottleneck-results-container .resolution-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#5ce0a2}
+      #bottleneck-results-container .resolution-card.warn:before{background:#ffc06b}
+      #bottleneck-results-container .resolution-card.bad:before{background:#ff7d86}
+      #bottleneck-results-container .resolution-card small{display:block;color:#8b99ae;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+      #bottleneck-results-container .resolution-card strong{display:block;margin-top:7px;font:700 21px/1.15 "Space Grotesk",sans-serif}
+      #bottleneck-results-container .resolution-card span{display:block;margin-top:6px;color:#8d9aaf;font-size:11px}
+      #bottleneck-results-container .resolution-card b{display:inline-flex;margin-top:12px;padding:6px 8px;border-radius:7px;background:rgba(92,224,162,.08);color:#7de8b4;font-size:10px}
+      #bottleneck-results-container .resolution-card.warn b{background:rgba(255,192,107,.08);color:#ffd18d}
+      #bottleneck-results-container .resolution-card.bad b{background:rgba(255,125,134,.08);color:#ff9da5}
+      
+      #bottleneck-results-container .br-data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+      #bottleneck-results-container .br-data-card{padding:14px;border:1px solid var(--br-line);border-radius:12px;background:#0e1724}
+      #bottleneck-results-container .br-data-card small{display:block;color:#8290a6;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+      #bottleneck-results-container .br-data-card strong{display:block;margin-top:6px;font:700 22px/1 "Space Grotesk",sans-serif}
+      #bottleneck-results-container .br-data-card span{display:block;margin-top:5px;color:#7f8da3;font-size:10px;line-height:1.45}
+      
+      #bottleneck-results-container .br-roadmap{
+        padding:20px;border:1px solid rgba(118,95,255,.2);border-radius:16px;
+        background:linear-gradient(135deg,rgba(118,95,255,.12),rgba(14,22,36,.96) 50%);
+      }
+      #bottleneck-results-container .br-roadmap-main{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center}
+      #bottleneck-results-container .br-roadmap-label{color:#a69cff;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.09em}
+      #bottleneck-results-container .br-roadmap h4{margin:5px 0 0;font:700 clamp(18px,2.4vw,24px)/1.25 "Space Grotesk",sans-serif}
+      #bottleneck-results-container .br-roadmap p{margin:7px 0 0;color:#9ba8bc;font-size:11px;line-height:1.6;max-width:72ch}
+      #bottleneck-results-container .br-gain{
+        min-width:150px;padding:14px 16px;border-radius:12px;text-align:center;background:rgba(5,10,18,.48);
+        border:1px solid rgba(157,174,204,.13);
+      }
+      #bottleneck-results-container .br-gain small{display:block;color:#8290a6;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}
+      #bottleneck-results-container .br-gain strong{display:block;margin-top:5px;font:700 24px/1 "Space Grotesk",sans-serif;color:#fff}
+      #bottleneck-results-container .br-upgrade-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+      #bottleneck-results-container .br-upgrade-option{padding:13px 14px;border:1px solid var(--br-line);border-radius:11px;background:rgba(7,12,20,.4)}
+      #bottleneck-results-container .br-upgrade-option small{display:block;color:#8290a6;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}
+      #bottleneck-results-container .br-upgrade-option strong{display:block;margin-top:5px;font:700 18px/1 "Space Grotesk",sans-serif}
+      #bottleneck-results-container .br-upgrade-option span{display:block;margin-top:5px;color:#8593a8;font-size:10px}
+      
+      #bottleneck-results-container details.br-advanced{
+        margin-top:10px;border:1px solid var(--br-line);border-radius:13px;background:#0d1521;overflow:hidden;
+      }
+      #bottleneck-results-container details.br-advanced summary{
+        display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;padding:14px 15px;
+        color:#e9edf5;font-size:12px;font-weight:800;
+      }
+      #bottleneck-results-container details.br-advanced summary::-webkit-details-marker{display:none}
+      #bottleneck-results-container details.br-advanced summary:after{content:"+";color:#8492a8;font-size:18px;font-weight:400}
+      #bottleneck-results-container details.br-advanced[open] summary:after{content:"−"}
+      #bottleneck-results-container .br-advanced-body{padding:0 15px 15px;border-top:1px solid rgba(157,174,204,.1)}
+      #bottleneck-results-container .br-advanced-body .section{margin-top:12px}
+      #bottleneck-results-container .br-advanced-body .section:first-child{margin-top:14px}
+      #bottleneck-results-container .br-advanced-body .game-profile-grid,
+      #bottleneck-results-container .br-advanced-body .benchmark-anchor-grid,
+      #bottleneck-results-container .br-advanced-body .health-grid,
+      #bottleneck-results-container .br-advanced-body .upgrade-sim-grid,
+      #bottleneck-results-container .br-advanced-body .estimate-grid,
+      #bottleneck-results-container .br-advanced-body .info-grid{display:grid;gap:10px}
+      #bottleneck-results-container .br-advanced-body .game-profile-grid{grid-template-columns:repeat(3,1fr)}
+      #bottleneck-results-container .br-advanced-body .benchmark-anchor-grid{grid-template-columns:repeat(4,1fr)}
+      #bottleneck-results-container .br-advanced-body .health-grid{grid-template-columns:repeat(3,1fr)}
+      #bottleneck-results-container .br-advanced-body .upgrade-sim-grid{grid-template-columns:1fr 1fr}
+      #bottleneck-results-container .br-advanced-body .estimate-grid{grid-template-columns:1fr 1fr}
+      #bottleneck-results-container .br-advanced-body .info-grid{grid-template-columns:repeat(4,1fr)}
+      #bottleneck-results-container .br-advanced-body .section{
+        background:rgba(19,26,40,.72);border-color:var(--br-line);border-radius:12px;padding:15px;
+      }
+      #bottleneck-results-container .br-advanced-body .section h3{margin:0 0 11px;font-size:14px}
+      #bottleneck-results-container .br-advanced-body .section-subtext{margin:-2px 0 12px;color:#8290a6;font-size:10px;line-height:1.5}
+      #bottleneck-results-container .br-advanced-body .game-profile-grid>div,
+      #bottleneck-results-container .br-advanced-body .benchmark-anchor-card,
+      #bottleneck-results-container .br-advanced-body .health-card,
+      #bottleneck-results-container .br-advanced-body .sim-card,
+      #bottleneck-results-container .br-advanced-body .info{
+        padding:12px;border:1px solid rgba(157,174,204,.1);border-radius:10px;background:rgba(7,12,20,.34);
+      }
+      #bottleneck-results-container .br-advanced-body small{color:#8290a6;font-size:9px}
+      #bottleneck-results-container .br-advanced-body strong{font-size:13px}
+      #bottleneck-results-container .br-advanced-body span,
+      #bottleneck-results-container .br-advanced-body p{color:#8e9bb0;font-size:10px;line-height:1.55}
+      #bottleneck-results-container .br-advanced-body .bar-row{margin:10px 0}
+      #bottleneck-results-container .br-advanced-body .bar{height:8px}
+      #bottleneck-results-container .br-disclaimer{
+        margin-top:10px;padding:12px 14px;border:1px solid rgba(157,174,204,.1);border-radius:11px;background:rgba(255,255,255,.02);
+        color:#77859b;font-size:9px;line-height:1.65;
+      }
+      #bottleneck-results-container .br-sources{margin-top:10px;color:#758299;font-size:9px;line-height:1.55}
+      #bottleneck-results-container .br-sources a{color:#9d8fff}
+      
+      @media(max-width:850px){
+        #bottleneck-results-container .br-hero{grid-template-columns:1fr}
+        #bottleneck-results-container .br-target-row{grid-template-columns:1fr 1fr}
+        #bottleneck-results-container .br-roadmap-main{grid-template-columns:1fr}
+        #bottleneck-results-container .br-gain{width:max-content}
+        #bottleneck-results-container .br-advanced-body .benchmark-anchor-grid{grid-template-columns:1fr 1fr}
+        #bottleneck-results-container .br-advanced-body .info-grid{grid-template-columns:1fr 1fr}
+      }
+      @media(max-width:650px){
+        #bottleneck-results-container .br-title-row{flex-direction:column}
+        #bottleneck-results-container .br-hero{padding:18px}
+        #bottleneck-results-container .br-target-row,
+        #bottleneck-results-container .br-data-grid,
+        #bottleneck-results-container .br-upgrade-grid{grid-template-columns:1fr}
+        #bottleneck-results-container .br-hero-stats{grid-template-columns:1fr 1fr}
+        #bottleneck-results-container .br-advanced-body .game-profile-grid,
+        #bottleneck-results-container .br-advanced-body .health-grid,
+        #bottleneck-results-container .br-advanced-body .upgrade-sim-grid,
+        #bottleneck-results-container .br-advanced-body .estimate-grid,
+        #bottleneck-results-container .br-advanced-body .info-grid,
+        #bottleneck-results-container .br-advanced-body .benchmark-anchor-grid{grid-template-columns:1fr}
+      }
+      @media(prefers-reduced-motion:reduce){
+        #bottleneck-results-container .br-meter-fill{transition:none}
+      }
+    </style>
 
-    <div class="pair">
-      <div class="pair-card cpu">
-        <div class="hardware-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><rect x="15" y="15" width="34" height="34" rx="7" stroke="currentColor" stroke-width="3"/><rect x="23" y="23" width="18" height="18" rx="3" fill="currentColor" opacity=".3" stroke="currentColor" stroke-width="2"/><path d="M22 7v8m10-8v8m10-8v8M22 49v8m10-8v8m10-8v8M7 22h8m-8 10h8m-8 10h8m34-20h8m-8 10h8m-8 10h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
-        <div class="pair-info"><div class="brand-name" id="pairCpuVendor"></div><b id="pairCpu"></b><div class="hw-score" id="pairCpuScore"></div></div>
-      </div>
-      <div class="vs">VS</div>
-      <div class="pair-card gpu">
-        <div class="hardware-icon" aria-hidden="true"><svg viewBox="0 0 100 64" fill="none"><rect x="7" y="10" width="80" height="42" rx="8" stroke="currentColor" stroke-width="3"/><circle cx="35" cy="31" r="13" stroke="currentColor" stroke-width="2"/><circle cx="35" cy="31" r="4" fill="currentColor"/><path d="M35 18c6 4 7 8 1 13-5 4-9 1-13-1 1-7 5-11 12-12ZM48 31c-4 6-8 7-13 1-4-5-1-9 1-13 7 1 11 5 12 12ZM35 44c-6-4-7-8-1-13 5-4 9-1 13 1-1 7-5 11-12 12ZM22 31c4-6 8-7 13-1 4 5 1 9-1 13-7-1-11-5-12-12Z" fill="currentColor" opacity=".65"/><circle cx="65" cy="31" r="13" stroke="currentColor" stroke-width="2"/><circle cx="65" cy="31" r="4" fill="currentColor"/><path d="M65 18c6 4 7 8 1 13-5 4-9 1-13-1 1-7 5-11 12-12ZM78 31c-4 6-8 7-13 1-4-5-1-9 1-13 7 1 11 5 12 12ZM65 44c-6-4-7-8-1-13 5-4 9-1 13 1-1 7-5 11-12 12ZM52 31c4-6 8-7 13-1 4 5 1 9-1 13-7-1-11-5-12-12Z" fill="currentColor" opacity=".65"/><path d="M87 21h7v20h-7M22 52v7h17v-7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
-        <div class="pair-info"><div class="brand-name" id="pairGpuVendor"></div><b id="pairGpu"></b><div class="hw-score" id="pairGpuScore"></div></div>
-      </div>
-    </div>
+    <div class="br-step"><span>1</span> Hero diagnosis</div>
+    <section class="br-hero" aria-labelledby="resultTitle">
+      <div>
+        <div class="br-eyebrow">SystemFit bottleneck diagnosis</div>
+        <div class="br-title-row">
+          <div>
+            <h2 class="br-title" id="resultTitle">Result</h2>
+            <div class="br-pair" id="resultPair">—</div>
+          </div>
+          <div class="br-pill" id="limitPill">• Estimated</div>
+        </div>
 
-    <div class="scoreboard" aria-label="Beginner-friendly result scoreboard">
-      <div class="score-card" id="limitScoreCard">
-        <div class="score-kicker">Likely Limiting Component</div>
-        <div class="score-main"><strong id="infoLimitScore">—</strong></div>
-        <div class="score-tier" id="limitTier">—</div>
-        <p id="limitSimple">Which side is under more modeled pressure in this scenario.</p>
+        <div class="br-message">
+          <strong>What this means:</strong>
+          <span id="limitSimple">The calculator is evaluating the selected CPU/GPU pressure.</span>
+          <div class="br-hero-actions"><span id="heroAction">Run the result through the upgrade roadmap below.</span></div>
+        </div>
       </div>
-      <div class="score-card" id="targetFitCard">
-        <div class="score-kicker">Target Fit</div>
-        <div class="score-main"><strong id="targetFit">—</strong><span>/ 100</span></div>
-        <div class="score-tier" id="targetFitTier">—</div>
-        <p id="targetFitText">How comfortably the modeled system capacity compares with your target FPS.</p>
-      </div>
-      <div class="score-card" id="balanceCard">
-        <div class="score-kicker">Pairing Balance</div>
-        <div class="score-main"><strong id="balanceScore">—</strong><span>/ 100</span></div>
-        <div class="score-tier" id="balanceTier">—</div>
-        <p>How close the modeled CPU and GPU pressure are. It is not an FPS score or bottleneck percentage.</p>
-      </div>
-      <div class="score-card" id="confidenceCard">
-        <div class="score-kicker">Estimate Confidence</div>
-        <div class="score-main"><strong id="confidenceScore">—</strong></div>
-        <div class="score-tier" id="confidenceTier">—</div>
-        <p id="confidenceText">How much direct benchmark coverage supports the selected hardware.</p>
-      </div>
-    </div>
-    <div class="score-legend" aria-label="Score color guide">
-      <span><i></i>Clear result / healthy target fit</span>
-      <span class="yellow"><i></i>Balanced or close to the limit</span>
-      <span class="red"><i></i>Target is unlikely / uneven pairing</span>
-    </div>
 
-    <div class="section" data-sfp-reveal>
-      <h3>🧭 How to read this scoreboard</h3>
-      <div class="score-guide">
-        <div><b>🚦 Likely Limiting Component — “What is more likely to hold me back?”</b><span>CPU or GPU means that side has more modeled pressure in this scenario. Balanced means the two sides are close enough that neither clearly dominates.</span></div>
-        <div><b>🎯 Target Fit — “Can I hit my FPS goal?”</b><span>This compares the modeled system capacity with your selected FPS target. Higher means more modeled room above the target; it does not guarantee the same FPS in every game.</span></div>
-        <div><b>⚖️ Pairing Balance — “Are CPU and GPU close?”</b><span>100 means their modeled pressure is very close. A lower score means one side is carrying more of the workload. It is not a speed rating or bottleneck percentage.</span></div>
+      <div class="br-hero-stats">
+        <div class="br-big-stat">
+          <small>Modeled pressure gap</small>
+          <strong id="diagnosisImpact">—</strong>
+          <span>Percentage difference between the modeled CPU/GPU pressure balance. Not a literal bottleneck percentage.</span>
+        </div>
+        <div class="br-big-stat">
+          <small>Target fit</small>
+          <strong><span id="targetFit">—</span><span>/100</span></strong>
+          <span id="targetFitText">—</span>
+        </div>
+        <div class="br-pressure">
+          <div class="br-pressure-head"><b>Pressure overview</b><span>Higher = more modeled load</span></div>
+          <div class="br-meter">
+            <div class="br-meter-label"><span>CPU pressure</span><b id="cpuPressureText">—</b></div>
+            <div class="br-meter-track"><div class="br-meter-fill cpu" id="cpuPressure"></div></div>
+          </div>
+          <div class="br-meter">
+            <div class="br-meter-label"><span>GPU pressure</span><b id="gpuPressureText">—</b></div>
+            <div class="br-meter-track"><div class="br-meter-fill gpu" id="gpuPressure"></div></div>
+          </div>
+        </div>
       </div>
-      <div class="score-note"><b>Easy rule:</b> Check <strong>Target Fit</strong> first → then <strong>Likely Limiting Component</strong> → use <strong>Pairing Balance</strong> for extra context. <strong>Green/yellow/red describe the result type, not whether your PC is “good” or “bad.”</strong></div>
-    </div>
+    </section>
 
-    <div class="stats">
-      <div class="stat"><small>CPU Gaming Index</small><strong id="cpuPerf">—</strong><span>Benchmark-normalized CPU reference</span></div>
-      <div class="stat"><small>GPU Scenario Index</small><strong id="gpuPerf">—</strong><span>Resolution-specific GPU reference</span></div>
-      <div class="stat stat-capacity"><small>Estimated FPS Capacity</small><strong id="capacityPerf">—</strong><span>Model-estimated ceiling for this scenario</span></div>
-    </div>
-
-    <div class="section game-profile" id="gameProfileSummary">
-      <h3>🎮 Game-Specific Profile</h3>
-      <div class="game-profile-grid">
-        <div><small>Selected game</small><strong id="profileGameName">Game-type profile</strong></div>
-        <div><small>Workload profile</small><strong id="profileWorkload">General</strong></div>
-        <div><small>Profile confidence</small><strong id="profileConfidence">Directional</strong></div>
+    <div class="br-section">
+      <div class="br-step"><span>2</span> Performance metrics &amp; benchmarks</div>
+      <div class="br-section-head">
+        <div>
+          <h3 class="br-section-title">Performance at a glance</h3>
+          <p class="br-section-copy">Focus on the selected resolution first. The other resolutions stay one click away instead of creating another long wall of cards.</p>
+        </div>
       </div>
-      <p id="profileExplanation">No specific game selected. The calculator uses the broader game-type profile above.</p>
-    </div>
 
-    <div class="section benchmark-anchor">
-      <h3>📊 Benchmark Anchor</h3>
-      <p class="section-subtext">This is the benchmark-backed reference behind the GPU side of the model. It is separate from the selected game's directional workload profile.</p>
-      <div class="benchmark-anchor-grid">
-        <div class="benchmark-anchor-card"><small>Benchmark Resolution</small><strong id="benchmarkResolution">—</strong><span>Native raster reference</span></div>
-        <div class="benchmark-anchor-card"><small>Reference GPU FPS</small><strong id="benchmarkReferenceFps">—</strong><span>RTX 5090 baseline</span></div>
-        <div class="benchmark-anchor-card"><small>Selected GPU Index</small><strong id="benchmarkGpuIndex">—</strong><span id="benchmarkGpuStatus">—</span></div>
-        <div class="benchmark-anchor-card"><small>Model Version</small><strong id="benchmarkModelVersion">—</strong><span>SystemFit calculation model</span></div>
+      <div class="br-target-row">
+        <div class="br-target-card"><small>Estimated model capacity</small><strong id="capacityBig">—</strong><span id="capacityContext">—</span></div>
+        <div class="br-target-card"><small>Your target</small><strong id="targetBig">—</strong><span id="targetGapText">—</span></div>
       </div>
-      <div class="benchmark-anchor-note">Source: Tom's Hardware GPU Hierarchy 2026. Its native-raster results use high/ultra settings at 1080p, 1440p and 4K. SystemFit uses those resolution references where direct GPU coverage exists, then applies its own CPU/GPU scenario model. Game-specific profiles remain directional rather than measured FPS.</div>
-    </div>
 
-    <div class="section result-snapshot">
-      <h3>🎯 Estimated FPS vs Your Target</h3>
-      <div class="fps-snapshot">
-        <div class="fps-main"><small>Estimated model capacity</small><strong id="capacityBig">—</strong><span id="capacityContext">Estimated model capacity · game profile is directional, not measured FPS</span></div>
-        <div class="fps-target"><small>Your target</small><strong id="targetBig">—</strong><span id="targetGapText">—</span></div>
+      <div class="br-tabs" role="tablist" aria-label="Resolution benchmark view">
+        <button class="br-tab" type="button" role="tab" aria-selected="true" data-resolution-tab="1080">1080p</button>
+        <button class="br-tab" type="button" role="tab" aria-selected="false" data-resolution-tab="1440">1440p</button>
+        <button class="br-tab" type="button" role="tab" aria-selected="false" data-resolution-tab="2160">4K</button>
       </div>
-    </div>
 
-    <div class="section resolution-compare">
-      <h3>🖥️ How the Result Changes by Resolution</h3>
-      <p class="section-subtext">The same CPU and GPU can have a different limiting component as resolution changes. This is a modeled comparison, not measured FPS at each resolution.</p>
-      <div class="resolution-grid" id="resolutionComparison">
-        <div class="resolution-card" data-resolution="720"><small>720p</small><strong>—</strong><span>—</span><b>Target Fit —</b></div>
+      <div class="br-resolution-panel is-active" role="tabpanel" data-resolution-panel="1080">
         <div class="resolution-card" data-resolution="1080"><small>1080p</small><strong>—</strong><span>—</span><b>Target Fit —</b></div>
+      </div>
+      <div class="br-resolution-panel" role="tabpanel" data-resolution-panel="1440">
         <div class="resolution-card" data-resolution="1440"><small>1440p</small><strong>—</strong><span>—</span><b>Target Fit —</b></div>
+      </div>
+      <div class="br-resolution-panel" role="tabpanel" data-resolution-panel="2160">
         <div class="resolution-card" data-resolution="2160"><small>4K</small><strong>—</strong><span>—</span><b>Target Fit —</b></div>
       </div>
-    </div>
 
-    <div class="section upgrade-guidance" id="upgradeGuidance">
-      <h3>💡 What Should I Upgrade?</h3>
-      <div class="upgrade-result" id="upgradeResult">—</div>
-      <p id="upgradeReason">—</p>
-      <div class="upgrade-note">This is a planning recommendation based on the selected scenario. It does not account for component prices, motherboard compatibility, PSU capacity, or game-specific benchmark results.</div>
-    </div>
-
-    <div class="section system-health">
-      <h3>🧩 System Health Checks</h3>
-      <p class="section-subtext">These checks look for common non-CPU/GPU limits. They do not invent an FPS penalty when the available evidence is not strong enough to quantify one.</p>
-      <div class="health-grid">
-        <div class="health-card"><small>RAM Capacity</small><strong id="ramHealth">—</strong><span id="ramHealthText">—</span></div>
-        <div class="health-card"><small>Storage</small><strong id="storageHealth">—</strong><span id="storageHealthText">—</span></div>
-        <div class="health-card"><small>Background Load</small><strong id="backgroundHealth">—</strong><span id="backgroundHealthText">—</span></div>
+      <div class="br-data-grid">
+        <div class="br-data-card"><small>CPU gaming index</small><strong id="cpuPerf">—</strong><span>Benchmark-normalized CPU reference</span></div>
+        <div class="br-data-card"><small>GPU scenario index</small><strong id="gpuPerf">—</strong><span>Resolution-specific GPU reference</span></div>
+        <div class="br-data-card"><small>System balance</small><strong id="balanceScore">—</strong><span id="balanceTier">—</span></div>
       </div>
     </div>
 
-    <div class="section upgrade-sim">
-      <h3>🔬 Upgrade Impact Simulator</h3>
-      <p class="section-subtext">Instead of recommending a random product, this tests the model with a hypothetical 15% performance increase on each side. It shows which type of upgrade has more room to help your selected target.</p>
-      <div class="upgrade-sim-grid">
-        <div class="sim-card">
-          <small>CPU +15% performance</small>
-          <strong id="cpuSimFps">—</strong>
-          <span id="cpuSimTarget">—</span>
+    <div class="br-section">
+      <div class="br-step"><span>3</span> Upgrade roadmap</div>
+      <div class="br-roadmap">
+        <div class="br-roadmap-main">
+          <div>
+            <div class="br-roadmap-label">Best first move</div>
+            <h3 id="upgradeResult">—</h3>
+            <p id="upgradeReason">—</p>
+          </div>
+          <div class="br-gain">
+            <small>Modeled performance elevation</small>
+            <strong id="upgradeGain">—</strong>
+          </div>
         </div>
-        <div class="sim-card">
-          <small>GPU +15% performance</small>
-          <strong id="gpuSimFps">—</strong>
-          <span id="gpuSimTarget">—</span>
+        <div class="br-upgrade-grid">
+          <div class="br-upgrade-option"><small>CPU +15% model</small><strong id="cpuSimFps">—</strong><span id="cpuSimTarget">—</span></div>
+          <div class="br-upgrade-option"><small>GPU +15% model</small><strong id="gpuSimFps">—</strong><span id="gpuSimTarget">—</span></div>
         </div>
       </div>
-      <div class="sim-verdict" id="simVerdict">—</div>
     </div>
 
-    <div class="section">
-      <h3>Performance Breakdown</h3>
-      <div class="bar-row"><div class="bar-label"><span>CPU Pressure</span><b id="cpuPressureText"></b></div><div class="bar"><div class="fill cpu" id="cpuPressure"></div></div></div>
-      <div class="bar-row"><div class="bar-label"><span>GPU Pressure</span><b id="gpuPressureText"></b></div><div class="bar"><div class="fill gpu" id="gpuPressure"></div></div></div>
-      <div class="bar-row"><div class="bar-label"><span>System Balance</span><b id="balanceText"></b></div><div class="bar"><div class="fill good" id="balanceBar"></div></div></div>
-    </div>
+    <details class="br-advanced">
+      <summary>Advanced diagnostics &amp; model details</summary>
+      <div class="br-advanced-body">
+        <div class="section game-profile" id="gameProfileSummary">
+          <h3>🎮 Game-Specific Profile</h3>
+          <div class="game-profile-grid">
+            <div><small>Selected game</small><strong id="profileGameName">Game-type profile</strong></div>
+            <div><small>Workload profile</small><strong id="profileWorkload">General</strong></div>
+            <div><small>Profile confidence</small><strong id="profileConfidence">Directional</strong></div>
+          </div>
+          <p id="profileExplanation">No specific game selected. The calculator uses the broader game-type profile above.</p>
+        </div>
 
-    <div class="info-grid">
-      <div class="info"><small>CPU Headroom</small><strong id="cpuHeadroom"></strong></div>
-      <div class="info"><small>GPU Headroom</small><strong id="gpuHeadroom"></strong></div>
-      <div class="info"><small>Resolution</small><strong id="infoResolution"></strong></div>
-      <div class="info"><small>Target FPS</small><strong id="infoTarget"></strong></div>
-      <div class="info"><small>Game Type</small><strong id="infoGame"></strong></div>
-      <div class="info"><small>Likely Limiting Component</small><strong id="infoLimit"></strong></div>
-      <div class="info"><small>Can Probably Sustain Target FPS?</small><strong id="infoSustain"></strong></div>
-      <div class="info"><small>Modeled Capacity</small><strong id="infoCapacity"></strong></div>
-    </div>
+        <div class="section benchmark-anchor">
+          <h3>📊 Benchmark Anchor</h3>
+          <p class="section-subtext">Benchmark reference behind the GPU side of the model.</p>
+          <div class="benchmark-anchor-grid">
+            <div class="benchmark-anchor-card"><small>Benchmark Resolution</small><strong id="benchmarkResolution">—</strong><span>Native raster reference</span></div>
+            <div class="benchmark-anchor-card"><small>Reference GPU FPS</small><strong id="benchmarkReferenceFps">—</strong><span>RTX 5090 baseline</span></div>
+            <div class="benchmark-anchor-card"><small>Selected GPU Index</small><strong id="benchmarkGpuIndex">—</strong><span id="benchmarkGpuStatus">—</span></div>
+            <div class="benchmark-anchor-card"><small>Model Version</small><strong id="benchmarkModelVersion">—</strong><span>SystemFit calculation model</span></div>
+          </div>
+        </div>
 
-    <div class="section">
-      <h3>💡 What does this mean?</h3>
-      <div style="font-size:12px;color:#9aa7bb;line-height:1.6" id="meaning"></div>
-    </div>
-    <div class="section estimate-method" data-sfp-reveal>
-      <h3>How this estimate works</h3>
-      <div class="estimate-grid">
-        <div><b>1. Benchmark-normalized scores</b><span>CPU scores use Tom’s Hardware’s 2026 1080p gaming hierarchy. GPU scores use its 2026 native-raster hierarchy with the RTX 5090 as the 100-point reference.</span></div>
-        <div><b>2. Resolution-aware GPU data</b><span>For benchmarked GPUs, 1080p, 1440p, and 4K values come directly from the same 2026 hierarchy. Older/unbenchmarked models use clearly marked estimates rather than pretending to have direct measurements.</span></div>
-        <div><b>3. Target-FPS fit</b><span>The model compares the requested FPS with a scenario capacity estimate. Higher targets increase modeled demand, while CPU and GPU scaling are treated differently because high-FPS limits are often more CPU-sensitive.</span></div>
-        <div><b>4. System context is a health check</b><span>RAM, storage, and background load can affect stutter and frame-time consistency, but their exact FPS impact varies too much to fake as one universal multiplier. SystemFit flags them separately instead.</span></div>
-        <div><b>5. What this cannot know</b><span>No general calculator can identify the exact bottleneck for every game. Engine behavior, graphics settings, ray tracing, upscaling, frame generation, RAM configuration, drivers, thermals, background load, and the specific game can change the result.</span></div>
+        <div class="section">
+          <h3>🧩 System Health Checks</h3>
+          <div class="health-grid">
+            <div class="health-card"><small>RAM Capacity</small><strong id="ramHealth">—</strong><span id="ramHealthText">—</span></div>
+            <div class="health-card"><small>Storage</small><strong id="storageHealth">—</strong><span id="storageHealthText">—</span></div>
+            <div class="health-card"><small>Background Load</small><strong id="backgroundHealth">—</strong><span id="backgroundHealthText">—</span></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>📈 Detailed pressure &amp; headroom</h3>
+          <div class="bar-row"><div class="bar-label"><span>CPU Pressure</span><b id="cpuPressureTextAdvanced"></b></div><div class="bar"><div class="fill cpu" id="cpuPressureAdvanced"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>GPU Pressure</span><b id="gpuPressureTextAdvanced"></b></div><div class="bar"><div class="fill gpu" id="gpuPressureAdvanced"></div></div></div>
+          <div class="info-grid">
+            <div class="info"><small>CPU Headroom</small><strong id="cpuHeadroom"></strong></div>
+            <div class="info"><small>GPU Headroom</small><strong id="gpuHeadroom"></strong></div>
+            <div class="info"><small>Resolution</small><strong id="infoResolution"></strong></div>
+            <div class="info"><small>Target FPS</small><strong id="infoTarget"></strong></div>
+            <div class="info"><small>Game Type</small><strong id="infoGame"></strong></div>
+            <div class="info"><small>Likely Limiting Component</small><strong id="infoLimit"></strong></div>
+            <div class="info"><small>Can Probably Sustain Target FPS?</small><strong id="infoSustain"></strong></div>
+            <div class="info"><small>Modeled Capacity</small><strong id="infoCapacity"></strong></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>⚖️ Balance &amp; confidence</h3>
+          <div class="info-grid">
+            <div class="info"><small>Likely Limiter</small><strong id="infoLimitScore">—</strong><span id="limitTier">—</span></div>
+            <div class="info"><small>Target Fit</small><strong id="targetFitAdvanced">—</strong><span id="targetFitTier">—</span></div>
+            <div class="info"><small>Estimate Confidence</small><strong id="confidenceScore">—</strong><span id="confidenceTier">—</span></div>
+            <div class="info"><small>Pressure Balance</small><strong id="balanceText">—</strong><span id="balanceTextAdvanced">—</span></div>
+          </div>
+          <p id="confidenceText">How much direct benchmark coverage supports the selected hardware.</p>
+        </div>
+
+        <div class="section">
+          <h3>🔬 Upgrade Impact Simulator</h3>
+          <p class="section-subtext">Hypothetical 15% performance increase on each side. This is a planning model, not a promise of a specific product upgrade.</p>
+          <div class="upgrade-sim-grid">
+            <div class="sim-card"><small>CPU +15% performance</small><strong id="cpuSimFpsAdvanced">—</strong><span id="cpuSimTargetAdvanced">—</span></div>
+            <div class="sim-card"><small>GPU +15% performance</small><strong id="gpuSimFpsAdvanced">—</strong><span id="gpuSimTargetAdvanced">—</span></div>
+          </div>
+          <div class="sim-verdict" id="simVerdict">—</div>
+        </div>
+
+        <div class="section">
+          <h3>💡 What does this mean?</h3>
+          <p id="meaning">—</p>
+        </div>
+
+        <div class="section estimate-method" data-sfp-reveal>
+          <h3>How this estimate works</h3>
+          <div class="estimate-grid">
+            <div><b>1. Benchmark-normalized scores</b><span>CPU scores use Tom’s Hardware’s 2026 1080p gaming hierarchy. GPU scores use its 2026 native-raster hierarchy with the RTX 5090 as the 100-point reference.</span></div>
+            <div><b>2. Resolution-aware GPU data</b><span>For benchmarked GPUs, 1080p, 1440p, and 4K values come directly from the same 2026 hierarchy. Older/unbenchmarked models use clearly marked estimates.</span></div>
+            <div><b>3. Target-FPS fit</b><span>The model compares requested FPS with a scenario capacity estimate. Higher targets increase modeled demand, while CPU and GPU scaling are treated differently.</span></div>
+            <div><b>4. System context is a health check</b><span>RAM, storage, and background load can affect stutter and frame-time consistency, but their exact FPS impact varies too much to fake as one universal multiplier.</span></div>
+            <div><b>5. What this cannot know</b><span>Engine behavior, graphics settings, ray tracing, upscaling, frame generation, RAM configuration, drivers, thermals, background load, and the specific game can change the result.</span></div>
+          </div>
+          <div class="br-sources">Sources: <a href="https://www.tomshardware.com/reviews/cpu-hierarchy,4312.html" target="_blank" rel="noopener">Tom’s Hardware CPU Hierarchy 2026</a> · <a href="https://www.tomshardware.com/reviews/gpu-hierarchy,4388.html" target="_blank" rel="noopener">Tom’s Hardware GPU Hierarchy 2026</a> · <a href="https://www.tomshardware.com/video-games/pc-gaming/32gb-ram-config-hits-top-spot-in-steam-survey" target="_blank" rel="noopener">2026 Steam RAM usage trend</a> · Related: <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU Bottleneck guide</a> · <a href="fps-calculator.html">FPS Calculator</a> · <a href="gpu-comparison.html">GPU Comparison</a></div>
+        </div>
+
+        <div class="br-disclaimer"><b>SystemFit model v2:</b> Game-specific profiles describe workload tendencies and are not substitutes for measured FPS benchmarks. This is a benchmark-informed planning tool, not a live hardware test. Direct benchmark values are used where available; older hardware may use bridged or estimated values. CPU and GPU indices use separate reference hardware and are not equivalent to each other or to FPS. Native-resolution raster data does not account for DLSS/FSR/XeSS, frame generation, ray-tracing mode changes, or every game engine. Use the result as a planning estimate, not a guarantee.</div>
       </div>
-      <div class="source-links">Sources: <a href="https://www.tomshardware.com/reviews/cpu-hierarchy,4312.html" target="_blank" rel="noopener">Tom’s Hardware CPU Hierarchy 2026</a> · <a href="https://www.tomshardware.com/reviews/gpu-hierarchy,4388.html" target="_blank" rel="noopener">Tom’s Hardware GPU Hierarchy 2026</a> · <a href="https://www.tomshardware.com/video-games/pc-gaming/32gb-ram-config-hits-top-spot-in-steam-survey" target="_blank" rel="noopener">2026 Steam RAM usage trend</a> · Related: <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU Bottleneck guide</a> · <a href="fps-calculator.html">FPS Calculator</a> · <a href="gpu-comparison.html">GPU Comparison</a></div>
-    </div>
-    <div class="disclaimer"><b>SystemFit model v2:</b> Game-specific profiles describe workload tendencies and are not substitutes for measured FPS benchmarks. This is a benchmark-informed planning tool, not a live hardware test. <b>Estimated result:</b> This tool is a benchmark-informed heuristic, not a game-specific benchmark and not a literal “bottleneck percentage” measurement. Direct benchmark values are used where available; older hardware may use bridged or estimated values. CPU and GPU indices use separate reference hardware and are not equivalent to each other or to FPS. Native-resolution raster data does not account for DLSS/FSR/XeSS, frame generation, ray-tracing mode changes, or every game engine. Use the result as a planning estimate, not a guarantee.</div>
+    </details>
+
+    <script>
+      (() => {
+        const root=document.getElementById("bottleneck-results-container");
+        if(!root||root.dataset.tabsReady)return;
+        root.dataset.tabsReady="1";
+        root.querySelectorAll("[data-resolution-tab]").forEach(tab=>{
+          tab.addEventListener("click",()=>{
+            const key=tab.dataset.resolutionTab;
+            root.querySelectorAll("[data-resolution-tab]").forEach(t=>t.setAttribute("aria-selected",t===tab?"true":"false"));
+            root.querySelectorAll("[data-resolution-panel]").forEach(panel=>panel.classList.toggle("is-active",panel.dataset.resolutionPanel===key));
+          });
+        });
+        root.querySelectorAll("[data-resolution-tab]").forEach(tab=>tab.addEventListener("keydown",event=>{
+          if(event.key!=="ArrowRight"&&event.key!=="ArrowLeft")return;
+          event.preventDefault();
+          const tabs=[...root.querySelectorAll("[data-resolution-tab]")],index=tabs.indexOf(tab);
+          const next=tabs[(index+(event.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length];
+          next.click();next.focus();
+        }));
+      })();
+    </script>
   </div>
+</div>
 </section>
 </main>
 
@@ -3315,6 +3566,8 @@ function calculate(){
 
 
  document.getElementById("result").classList.remove("hidden");
+ const resultRoot=document.getElementById("bottleneck-results-container");
+ resultRoot.dataset.limit=limit.toLowerCase();
  document.getElementById("resultTitle").textContent=`Estimated result: ${limit==="Balanced"?"Balanced pairing":`Likely ${limit}-Limited`}`;
  document.getElementById("resultPair").textContent=c.name+" + "+g.name;
  const profileName=document.getElementById("profileGameName");
@@ -3379,9 +3632,15 @@ function calculate(){
  document.getElementById("gpuSimFps").textContent="~"+Math.round(gpuUpgrade.sustainableFps)+" FPS";
  document.getElementById("cpuSimTarget").textContent="Target fit "+Math.round(cpuUpgrade.targetFit)+"/100";
  document.getElementById("gpuSimTarget").textContent="Target fit "+Math.round(gpuUpgrade.targetFit)+"/100";
+ document.getElementById("cpuSimFpsAdvanced").textContent="~"+Math.round(cpuUpgrade.sustainableFps)+" FPS";
+ document.getElementById("gpuSimFpsAdvanced").textContent="~"+Math.round(gpuUpgrade.sustainableFps)+" FPS";
+ document.getElementById("cpuSimTargetAdvanced").textContent="Target fit "+Math.round(cpuUpgrade.targetFit)+"/100";
+ document.getElementById("gpuSimTargetAdvanced").textContent="Target fit "+Math.round(gpuUpgrade.targetFit)+"/100";
  const cpuGain=cpuUpgrade.sustainableFps-scenario.sustainableFps;
  const gpuGain=gpuUpgrade.sustainableFps-scenario.sustainableFps;
  document.getElementById("simVerdict").textContent=cpuGain>gpuGain+2?"A CPU-side performance increase has more modeled upside for this scenario.":gpuGain>cpuGain+2?"A GPU-side performance increase has more modeled upside for this scenario.":"CPU and GPU upgrades produce similar modeled gains; check price, compatibility, and the games you actually play before choosing.";
+ document.getElementById("upgradeGain").textContent=(Math.max(cpuGain,gpuGain)>0?"+":"")+Math.max(0,Math.round(Math.max(cpuGain,gpuGain)))+" FPS";
+ document.getElementById("heroAction").textContent=document.getElementById("upgradeResult").textContent;
 
  const resolutionChecks=[{key:"720",label:"720p"},{key:"1080",label:"1080p"},{key:"1440",label:"1440p"},{key:"2160",label:"4K"}];
  resolutionChecks.forEach(item=>{
@@ -3420,6 +3679,13 @@ function calculate(){
  document.getElementById("limitTier").textContent=limit==="Balanced"?"Yellow = close match":"Green = clear limiting side";
  document.getElementById("limitSimple").textContent=limitSimple;
  document.getElementById("balanceScore").textContent=Math.round(balance);
+ document.getElementById("diagnosisImpact").textContent=Math.round(100-balance)+"%";
+ document.getElementById("targetFitAdvanced").textContent=Math.round(scenario.targetFit)+"/100";
+ document.getElementById("balanceTextAdvanced").textContent=balanceTier;
+ document.getElementById("cpuPressureAdvanced").style.width=Math.max(0,Math.min(100,cpuPressure))+"%";
+ document.getElementById("gpuPressureAdvanced").style.width=Math.max(0,Math.min(100,gpuPressure))+"%";
+ document.getElementById("cpuPressureTextAdvanced").textContent=Math.round(cpuPressure)+"%";
+ document.getElementById("gpuPressureTextAdvanced").textContent=Math.round(gpuPressure)+"%";
  document.getElementById("balanceTier").textContent=balanceTier;
  document.getElementById("targetFitTier").textContent=targetTier;
 
