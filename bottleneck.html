@@ -563,17 +563,13 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       </div>
     </section>
 
-    <section class="sb-section sb-upgrade" aria-labelledby="sbUpgradeTitle">
+    <section class="sb-section sb-upgrade" aria-label="Upgrade performance impact">
       <div class="sb-upgrade-main">
-        <div>
-          <span class="sb-label" style="text-align:left;margin-bottom:7px">UPGRADE FIRST</span>
-          <h3 class="sb-upgrade-title" id="sbUpgradeTitle">No upgrade needed</h3>
-        </div>
         <div class="sb-upgrade-gain"><strong id="sbUpgradeGain">+0 FPS</strong><span>EXPECTED ELEVATION</span></div>
       </div>
       <div class="sb-upgrade-grid">
-        <div class="sb-upgrade-option"><strong id="sbCpuUpgradeFps">0 FPS</strong><span id="sbCpuUpgradeGain">CPU +15% MODEL · +0 FPS</span></div>
-        <div class="sb-upgrade-option"><strong id="sbGpuUpgradeFps">0 FPS</strong><span id="sbGpuUpgradeGain">GPU +15% MODEL · +0 FPS</span></div>
+        <div class="sb-upgrade-option"><strong id="sbCpuUpgradeFps">0 FPS</strong><span id="sbCpuUpgradeGain">CPU NEXT TIER · +0 FPS</span></div>
+        <div class="sb-upgrade-option"><strong id="sbGpuUpgradeFps">0 FPS</strong><span id="sbGpuUpgradeGain">GPU NEXT TIER · +0 FPS</span></div>
       </div>
     </section>
 
@@ -3298,6 +3294,24 @@ function safeDelta(value){
 function resolutionLabel(resolution){
   return String(resolution)==="2160"?"4K":String(resolution)+"P";
 }
+function getNextTierScore(list,record){
+  const current=safeClamp(record?.score,0,100,0);
+  const tierOrder={"Low-End":1,"Mid-Range":2,"High-End":3};
+  const currentTier=tierOrder[record?.tier]||1;
+  const higherTierScores=list
+    .filter(item=>(tierOrder[item.tier]||1)>currentTier && safeFinite(item.score,0)>current)
+    .map(item=>safeFinite(item.score,0))
+    .filter(score=>score>current)
+    .sort((a,b)=>a-b);
+  if(higherTierScores.length)return Math.min(100,higherTierScores[0]);
+  const higherScores=list
+    .map(item=>safeFinite(item.score,0))
+    .filter(score=>score>current)
+    .sort((a,b)=>a-b);
+  if(higherScores.length)return Math.min(100,higherScores[0]);
+  return Math.min(100,Math.max(current+1,current*1.15));
+}
+
 function modelScenario(cpuScore,gpuScore,resolution,gameType,target,gpuRecord,context={},gameProfile=null){
   const baseDemand=gameDemand(gameType);
   const profile=gameProfile||{cpu:1,gpu:1};
@@ -3310,26 +3324,33 @@ function modelScenario(cpuScore,gpuScore,resolution,gameType,target,gpuRecord,co
   const gpuScenarioScore=safeClamp(getGpuScenarioScore(gpuRecord,resolution),0,100,0);
   const gpuReferenceFps=Math.max(1,safeFinite(GPU_REFERENCE_FPS[String(resolution)]||GPU_REFERENCE_FPS["1080"],60));
 
-  const cpuTargetFactor=Math.max(.2,Math.pow(targetFps/60,.94));
-  const gpuTargetFactor=Math.max(.2,Math.pow(targetFps/60,.72));
   const cpuCapacity=Math.max(0,CPU_REFERENCE_FPS_1080*(cpuIndex/100)/demand.cpu);
   const gpuCapacity=Math.max(0,gpuReferenceFps*(gpuScenarioScore/100)/demand.gpu);
-
-  const cpuPressure=cpuCapacity>0?100*cpuTargetFactor*(60/cpuCapacity):100;
-  const gpuPressure=gpuCapacity>0?100*gpuTargetFactor*(60/gpuCapacity):100;
-  const cpuSafe=Math.max(.01,safeFinite(cpuPressure,100));
-  const gpuSafe=Math.max(.01,safeFinite(gpuPressure,100));
-  const ratio=cpuSafe/gpuSafe;
-  const limiting=ratio>1.25?"CPU":ratio<.80?"GPU":"Balanced";
-  const balance=safeClamp(100-Math.abs(Math.log(ratio))*45,0,100,0);
   const sustainableFps=Math.max(0,Math.min(cpuCapacity,gpuCapacity));
+
+  const minCapacity=Math.max(.01,sustainableFps);
+  const maxCapacity=Math.max(minCapacity,Math.max(cpuCapacity,gpuCapacity));
+  const capabilityRatio=Math.max(.01,Math.min(1,minCapacity/maxCapacity));
+  const cpuIsLimiter=cpuCapacity<gpuCapacity*0.96;
+  const gpuIsLimiter=gpuCapacity<cpuCapacity*0.96;
+  const limiting=cpuIsLimiter?"CPU":gpuIsLimiter?"GPU":"Balanced";
+
+  const targetStress=safeClamp(targetFps/minCapacity,.25,2.5,1);
+  const limitingPressure=safeClamp(55+(targetStress*17),55,98,75);
+  const nonLimitingPressure=safeClamp(limitingPressure*Math.pow(capabilityRatio,.65),25,94,55);
+  const balancedPressure=safeClamp(55+(targetStress*17),55,92,75);
+
+  const cpuPressure=limiting==="CPU"?limitingPressure:limiting==="GPU"?nonLimitingPressure:balancedPressure;
+  const gpuPressure=limiting==="GPU"?limitingPressure:limiting==="CPU"?nonLimitingPressure:balancedPressure;
+
+  const balance=safeClamp(capabilityRatio*100,0,100,0);
   const targetRatio=targetFps>0?sustainableFps/targetFps:0;
   const targetFit=safeClamp(targetRatio*85,0,100,0);
   const targetStatus=targetRatio>=1.15?"GOOD":targetRatio>=.90?"CLOSE":"LOW";
 
   return {
-    cpuLoad:safeClamp(cpuPressure,0,100,100),
-    gpuLoad:safeClamp(gpuPressure,0,100,100),
+    cpuLoad:safeClamp(cpuPressure,0,100,55),
+    gpuLoad:safeClamp(gpuPressure,0,100,55),
     balance,limiting,sustainableFps,targetFit,targetStatus,
     cpuCapacity:Math.max(0,safeFinite(cpuCapacity,0)),
     gpuCapacity:Math.max(0,safeFinite(gpuCapacity,0)),
@@ -3383,8 +3404,10 @@ function calculate(){
   const limiter=scenario.limiting==="Balanced"?"OPTIMAL":scenario.limiting.toUpperCase()+" BOTTLENECK";
   const diagnosis=scenario.limiting==="Balanced"?"OPTIMAL BALANCE":limiter;
 
-  const cpuUpgrade=modelScenario(Math.min(100,cpuScore*1.15),gpuScore,r,gt,targetFps,g,context,gameProfile);
-  const gpuUpgrade=modelScenario(cpuScore,Math.min(100,gpuScore*1.15),r,gt,targetFps,g,context,gameProfile);
+  const cpuUpgradeScore=getNextTierScore(CPUs,c);
+  const gpuUpgradeScore=getNextTierScore(GPUs,g);
+  const cpuUpgrade=modelScenario(cpuUpgradeScore,gpuScore,r,gt,targetFps,g,context,gameProfile);
+  const gpuUpgrade=modelScenario(cpuScore,gpuUpgradeScore,r,gt,targetFps,g,context,gameProfile);
   const cpuUpgradeFps=safeFps(cpuUpgrade.sustainableFps);
   const gpuUpgradeFps=safeFps(gpuUpgrade.sustainableFps);
   const cpuGain=safeDelta(cpuUpgradeFps-capacity);
@@ -3438,15 +3461,11 @@ function calculate(){
     card.classList.add(fit>=85?"good":fit>=65?"warn":"bad");
   });
 
-  document.getElementById("sbUpgradeTitle").textContent=
-    upgradeSide==="CPU"?"UPGRADE CPU FIRST":
-    upgradeSide==="GPU"?"UPGRADE GPU FIRST":
-    "NO CLEAR WINNER";
   document.getElementById("sbUpgradeGain").textContent="+"+bestGain+" FPS";
   document.getElementById("sbCpuUpgradeFps").textContent=cpuUpgradeFps+" FPS";
   document.getElementById("sbGpuUpgradeFps").textContent=gpuUpgradeFps+" FPS";
-  document.getElementById("sbCpuUpgradeGain").textContent="CPU +15% MODEL · +"+cpuGain+" FPS";
-  document.getElementById("sbGpuUpgradeGain").textContent="GPU +15% MODEL · +"+gpuGain+" FPS";
+  document.getElementById("sbCpuUpgradeGain").textContent="CPU NEXT TIER · +"+cpuGain+" FPS";
+  document.getElementById("sbGpuUpgradeGain").textContent="GPU NEXT TIER · +"+gpuGain+" FPS";
 
   rootTabsInit(resultRoot);
   updateVisibleResolution(resultRoot,r);
