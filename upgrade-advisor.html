@@ -261,10 +261,13 @@ body{min-height:100%;background:#060a12;color:#f6f8ff;font-family:"DM Sans",Inte
     requestAnimationFrame(syncProfileHeight);
     window.addEventListener("resize",syncProfileHeight);
     $("reset").addEventListener("click",()=>{
-      $("cpu").value="Ryzen 5 7600";$("gpu").value="RTX 4070";$("ram").value="16";$("storage").value="nvme";
-      $("resolution").value="1440";$("target").value="60";$("game").value="rdr2";$("budget").value="250";
-      $("verdict").textContent="Choose your target";$("priority").textContent="Waiting for input";$("priority").className="priority low";
-      $("reason").textContent="Enter your current hardware and gaming target. The advisor will compare the likely limitation, target resolution and FPS goal before recommending where to spend first.";
+      ["cpu","gpu","ram","storage","resolution","target","game","budget"].forEach(id=>{
+        $(id).value="";
+        $(id).selectedIndex=0;
+      });
+      updateAnalyzeState();
+      $("verdict").textContent="Choose your setup";$("priority").textContent="Waiting for input";$("priority").className="priority low";
+      $("reason").textContent="Select your PC hardware, gaming resolution, target FPS and budget, then analyze your PC.";
       ["cpuStatus","gpuStatus","ramStatus","storageStatus"].forEach(id=>$(id).textContent="—");["cpuNote","gpuNote","ramNote","storageNote"].forEach(id=>$(id).textContent="");$("path").innerHTML="";
     });
   })();
