@@ -230,8 +230,12 @@ h1,h2,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-
 .bento-engine:after{background:rgba(63,214,150,.13)}
 .bento-label{position:relative;z-index:1;color:#929eb3;font-size:9px;font-weight:800;letter-spacing:.14em;line-height:1.35;text-transform:uppercase}
 .bento-metric{position:relative;z-index:1;display:block;margin-top:12px;color:#fff;font-size:clamp(22px,2.25vw,31px);line-height:1.12;letter-spacing:-.035em}
+.bento-index .bento-label{text-align:center;font-size:11px}
+.bento-index .bento-metric{text-align:center}
 .bento-hardware-link{cursor:pointer;text-decoration:none;transition:color .22s ease,text-shadow .22s ease,transform .22s ease}
 .bento-hardware-link:hover,.bento-hardware-link:focus-visible{color:#b8a4ff;text-shadow:0 0 22px rgba(168,85,247,.45);transform:translateY(-1px);outline:none}
+.bento-full-build-button{position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;align-self:flex-end;margin-top:auto;padding:10px 16px;border:1px solid rgba(168,85,247,.42);border-radius:10px;background:linear-gradient(135deg,rgba(115,93,255,.9),rgba(63,132,255,.82));color:#fff;font-size:11px;font-weight:800;line-height:1;text-decoration:none;letter-spacing:.025em;box-shadow:0 8px 22px rgba(91,71,225,.2);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+.bento-full-build-button:hover,.bento-full-build-button:focus-visible{transform:translateY(-2px);box-shadow:0 12px 28px rgba(91,71,225,.3),0 0 22px rgba(168,85,247,.2);filter:brightness(1.08);outline:none}
 .bento-submetrics{position:relative;z-index:1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:12px;border-top:1px solid rgba(157,174,204,.12);color:#aeb8c9;font-size:10px;font-weight:700;letter-spacing:.035em}
 .bento-snapshot-badge{position:relative;z-index:1;display:inline-flex;align-self:flex-start;margin-top:auto;padding:8px 11px;border:1px solid rgba(161,139,255,.24);border-radius:9px;background:rgba(115,93,255,.12);color:#cfc5ff;font-size:10px;font-weight:700;line-height:1.35;letter-spacing:.025em}
 .bento-bottleneck{position:relative;z-index:1;margin-top:auto;color:#62e4a3;font-size:clamp(23px,2.5vw,34px);font-weight:900;line-height:1.05;letter-spacing:-.045em;text-shadow:0 0 24px rgba(76,222,155,.14)}
@@ -559,8 +563,8 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
   <div class="hero-visual hero-bento" aria-label="SystemFit PC hardware snapshot">
     <div class="bento-card bento-index">
       <span class="bento-label">🔥 TRENDING MATCHUP CHECK</span>
-      <a class="bento-metric bento-hardware-link" href="build-planner.html?build=eyJjcHUiOiJyNy03ODAweDNkIiwiZ3B1IjoiZ3B1LWdlZm9yY2UtcnR4LTQwODAtc3VwZXIiLCJnb2FsIjoiMTQ0MCIsIm1vZGUiOiJnYW1pbmciLCJidWRnZXQiOiJiYWxhbmNlZCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="Open prebuilt Ryzen 7 7800X3D and GeForce RTX 4080 Super configuration">Ryzen 7 7800X3D + RTX 4080 Super</a>
-      <span class="bento-snapshot-badge">Verified Setup • Desktop Gaming Target Profile</span>
+      <span class="bento-metric">Ryzen 7 7800X3D + RTX 4080 Super</span>
+      <a class="bento-full-build-button" href="pc-builder?cpu=Ryzen-7-7800X3D&amp;gpu=RTX-4080-Super&amp;motherboard=X670E-AM5&amp;ram=32GB-DDR5-6000&amp;storage=2TB-NVMe-Gen4&amp;psu=850W-80-Plus-Gold" aria-label="See full Ryzen 7 7800X3D and RTX 4080 Super build">See Full Build</a>
     </div>
     <div class="bento-card bento-guide bento-calculation">
       <span class="bento-label">📊 CALCULATION ENGINE RESPONSE</span>
