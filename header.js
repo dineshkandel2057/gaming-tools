@@ -324,6 +324,11 @@
       color: #ffc080;
     }
 
+    .sfp-settings {
+      background: rgba(118,95,255,.12);
+      color: #b9aaff;
+    }
+
                 @media(max-width:800px) {
       .sfp-nav {
         min-height: auto;
@@ -470,6 +475,14 @@
                 current === "upgrade-advisor.html"
               )}
 
+              ${toolLink(
+                "game-settings.html",
+                "sfp-settings",
+                `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="17" cy="12" r="2.2" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="7" r="2.2" stroke="currentColor" stroke-width="1.6"/><circle cx="14" cy="17" r="2.2" stroke="currentColor" stroke-width="1.6"/></svg>`,
+                "Game Settings Optimizer",
+                "Optimize graphics settings",
+                current === "game-settings.html"
+              )}
               ${toolLink(
                 "fps-calculator.html",
                 "sfp-fps",
