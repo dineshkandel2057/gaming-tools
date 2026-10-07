@@ -148,7 +148,6 @@ html body .sfp-reveal-target.sfp-reveal-visible {
 .part-select>.sfp-select-slot{flex:1;min-width:0}
 @media(max-width:600px){
   .sfp-select-trigger{min-height:42px;font-size:12px}
-  .sfp-select-panel{max-width:calc(100vw - 20px)}
 }
 @media(prefers-reduced-motion:reduce){
   .sfp-select-trigger,.sfp-select-arrow,.sfp-select-option{transition:none}
@@ -211,4 +210,29 @@ html body .sfp-reveal-target.sfp-reveal-visible {
   .hardware-picker-trigger,
   .game-picker-trigger,
   .component-picker-trigger{min-height:42px!important;font-size:12px!important}
+}
+
+
+/* The universal popup is the single option-menu surface.
+   Legacy page-specific picker shells remain in the DOM only for compatibility with
+   their existing data/selection scripts; their visible trigger/menu is suppressed. */
+.sfp-legacy-picker-host > .picker-trigger,
+.sfp-legacy-picker-host > .game-profile-trigger,
+.sfp-legacy-picker-host > .hardware-picker-trigger,
+.sfp-legacy-picker-host > .game-picker-trigger,
+.sfp-legacy-picker-host > .component-picker-trigger,
+.sfp-legacy-picker-host > .picker-panel,
+.sfp-legacy-picker-host > .game-profile-panel,
+.sfp-legacy-picker-host > .hardware-picker-menu,
+.sfp-legacy-picker-host > .game-picker-menu,
+.sfp-legacy-picker-host > .component-picker-menu{
+  display:none!important;
+}
+.sfp-legacy-picker-host > .sfp-special-slot{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+}
+.sfp-legacy-picker-host > .sfp-special-slot > .sfp-select-trigger{
+  width:100%!important;
 }
