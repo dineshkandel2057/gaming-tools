@@ -95,7 +95,7 @@ html body .sfp-reveal-target.sfp-reveal-visible {
 .sfp-select-host{min-width:0;position:relative}
 .sfp-select-slot{display:block;width:100%;min-width:0}
 .sfp-select-host>.sfp-select-slot{width:100%}
-.sfp-select-host>.sfp-select-slot>.sfp-select-native-mirror{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+.sfp-select-native-mirror{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important;opacity:0!important;pointer-events:none!important}
 .sfp-select-host>.sfp-select-slot{position:relative}
 .sfp-select-host:after{display:none!important}
 .sfp-select-trigger{
