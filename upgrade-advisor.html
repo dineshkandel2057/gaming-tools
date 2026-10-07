@@ -88,11 +88,20 @@
 
         <div class="grid2">
           <div class="field"><label for="target">Target FPS</label><select id="target"><option value="">Select target FPS</option><option value="60">60 FPS</option><option value="90">90 FPS</option><option value="120">120 FPS</option><option value="144">144 FPS</option><option value="165">165 FPS</option><option value="240">240 FPS</option></select></div>
-          <div class="field"><label for="game">Main game type</label><select id="game">
-            <option value="modern">Modern AAA / demanding</option>
-            <option value="competitive">Competitive / esports</option>
+          <div class="field"><label for="game">Main game</label><select id="game">
+            <option value="cyberpunk">Cyberpunk 2077</option>
+            <option value="rdr2">Red Dead Redemption 2</option>
+            <option value="hogwarts">Hogwarts Legacy</option>
+            <option value="starfield">Starfield</option>
+            <option value="forza">Forza Horizon 5</option>
+            <option value="warzone">Call of Duty: Warzone</option>
+            <option value="fortnite">Fortnite</option>
+            <option value="cs2">Counter-Strike 2</option>
+            <option value="valorant">Valorant</option>
+            <option value="minecraft">Minecraft Java</option>
+            <option value="elden">Elden Ring</option>
+            <option value="lastofus">The Last of Us Part I</option>
             <option value="mixed">Mixed games</option>
-            <option value="older">Older / lighter games</option>
           </select></div>
         </div>
 
@@ -174,20 +183,30 @@
 
     function classify(){
       const cpu=CPUs[$("cpu").value], gpu=GPUs[$("gpu").value], ram=+$("ram").value;
-      const res=$("resolution").value, target=+$("target").value||60, type=$("game").value;
+      const res=$("resolution").value, target=+$("target").value||60, game=$("game").value;
       const budget=+$("budget").value, storage=$("storage").value;
       if(!res||!$("target").value)return null;
 
+      const profiles={
+        cyberpunk:{gpu:1.18,cpu:1.05},rdr2:{gpu:1.10,cpu:1.02},hogwarts:{gpu:1.12,cpu:1.04},
+        starfield:{gpu:1.15,cpu:1.15},forza:{gpu:.92,cpu:.90},warzone:{gpu:1.02,cpu:1.10},
+        fortnite:{gpu:.78,cpu:1.04},cs2:{gpu:.52,cpu:.76},valorant:{gpu:.40,cpu:.62},
+        minecraft:{gpu:.55,cpu:.78},elden:{gpu:.78,cpu:.92},lastofus:{gpu:1.22,cpu:1.08},
+        mixed:{gpu:1.00,cpu:1.00}
+      };
+      const profile=profiles[game]||profiles.mixed;
+      const competitive=["cs2","valorant"].includes(game);
+      const demanding=["cyberpunk","rdr2","hogwarts","starfield","lastofus"].includes(game);
       const resolutionWeight=res==="1080"?0.80:res==="1440"?1.00:1.28;
       const fpsWeight=target>=240?1.30:target>=165?1.18:target>=120?1.08:1;
-      const cpuPressure=(1-cpu)*fpsWeight*(res==="1080"?1.28:res==="1440"?0.94:0.68);
-      const gpuPressure=(1-gpu)*resolutionWeight*(type==="modern"?1.16:type==="competitive"?0.76:type==="older"?0.62:1);
+      const cpuPressure=(1-cpu)*fpsWeight*(res==="1080"?1.28:res==="1440"?0.94:0.68)*profile.cpu;
+      const gpuPressure=(1-gpu)*resolutionWeight*(demanding?1.16:competitive?0.76:game==="mixed"?1:0.92)*profile.gpu;
       const ramPressure=ram<16?0.95:ram===16?0.18:0;
       const storagePressure=storage==="hdd"?0.68:storage==="sata"?0.10:0;
 
       let scores={CPU:cpuPressure,GPU:gpuPressure,RAM:ramPressure,Storage:storagePressure};
-      if(type==="competitive"){scores.CPU+=0.14;scores.GPU-=0.05}
-      if(type==="modern"){scores.GPU+=0.10}
+      if(competitive){scores.CPU+=0.14;scores.GPU-=0.05}
+      if(demanding){scores.GPU+=0.10}
       if(res==="2160"){scores.GPU+=0.18;scores.CPU-=0.08}
       if(target>=165){scores.CPU+=0.12}
       if(ram===8)scores.RAM+=0.35;
