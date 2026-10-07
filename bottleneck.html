@@ -3687,6 +3687,7 @@ function calculate(){
  document.getElementById("limitTier").textContent=limit==="Balanced"?"Yellow = close match":"Green = clear limiting side";
  document.getElementById("limitSimple").textContent=limitSimple;
  document.getElementById("balanceScore").textContent=Math.round(balance);
+ document.getElementById("balanceSummary").textContent=Math.round(balance)+"/100";
  document.getElementById("diagnosisImpact").textContent=Math.round(100-balance)+"%";
  document.getElementById("targetFitAdvanced").textContent=Math.round(scenario.targetFit)+"/100";
  document.getElementById("balanceTextAdvanced").textContent=balanceTier;
