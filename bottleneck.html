@@ -462,6 +462,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       #bottleneck-results-container .sb-metric:last-child{border-right:0}
       #bottleneck-results-container .sb-metric strong{display:block;color:#fff;font:700 clamp(22px,3vw,30px)/1 "Space Grotesk",sans-serif;white-space:nowrap}
       #bottleneck-results-container .sb-metric span{display:block;margin-top:7px;color:#98a6bb;font-size:11px;font-weight:700;white-space:nowrap}
+      #bottleneck-results-container #sbMetricGap.shortfall{color:#ff8b94;border:1px solid rgba(255,102,117,.32);background:rgba(255,102,117,.08);border-radius:8px;padding:7px 8px;box-sizing:border-box}
       #bottleneck-results-container .sb-gauges{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
       #bottleneck-results-container .sb-gauge{padding:16px;border:1px solid var(--sb-line);border-radius:14px;background:#0a111c}
       #bottleneck-results-container .sb-gauge-head{display:flex;justify-content:space-between;gap:12px;align-items:center}
@@ -3411,11 +3412,23 @@ function calculate(){
   const gpuUpgradeScore=getNextTierScore(GPUs,g);
   const cpuUpgrade=modelScenario(cpuUpgradeScore,gpuScore,r,gt,targetFps,g,context,gameProfile);
   const gpuUpgrade=modelScenario(cpuScore,gpuUpgradeScore,r,gt,targetFps,g,context,gameProfile);
-  const cpuUpgradeFps=safeFps(cpuUpgrade.sustainableFps);
-  const gpuUpgradeFps=safeFps(gpuUpgrade.sustainableFps);
-  const cpuGain=safeDelta(cpuUpgradeFps-capacity);
-  const gpuGain=safeDelta(gpuUpgradeFps-capacity);
+  const cpuUpgradeRawFps=Math.max(0,safeFinite(cpuUpgrade.sustainableFps,0));
+  const gpuUpgradeRawFps=Math.max(0,safeFinite(gpuUpgrade.sustainableFps,0));
+  const currentRawFps=Math.max(0,safeFinite(scenario.sustainableFps,0));
+  const cpuUpgradeFps=safeFps(cpuUpgradeRawFps);
+  const gpuUpgradeFps=safeFps(gpuUpgradeRawFps);
+  const cpuGain=Math.max(0,cpuUpgradeRawFps-currentRawFps);
+  const gpuGain=Math.max(0,gpuUpgradeRawFps-currentRawFps);
+  const formatPositiveFpsDelta=value=>{
+    const delta=Math.max(0,safeFinite(value,0));
+    if(delta<=0)return "0";
+    if(delta<1)return Math.max(.1,Math.round(delta*10)/10).toFixed(1);
+    return String(Math.round(delta));
+  };
+  const cpuGainDisplay=formatPositiveFpsDelta(cpuGain);
+  const gpuGainDisplay=formatPositiveFpsDelta(gpuGain);
   const bestGain=Math.max(cpuGain,gpuGain);
+  const bestGainDisplay=formatPositiveFpsDelta(bestGain);
   const upgradeSide=cpuGain>gpuGain+1?"CPU":gpuGain>cpuGain+1?"GPU":scenario.limiting==="CPU"?"CPU":scenario.limiting==="GPU"?"GPU":"NONE";
 
   const action=upgradeSide==="CPU"?"UPGRADE CPU FIRST":upgradeSide==="GPU"?"UPGRADE GPU FIRST":bestGain>0?"COMPARE CPU VS GPU VALUE":"NO UPGRADE NEEDED";
@@ -3435,11 +3448,22 @@ function calculate(){
   document.getElementById("sbGpuIndex").textContent=safeFps(gpuScore)+" INDEX";
 
   const active=modelScenario(cpuScore,gpuScore,r,gt,targetFps,g,context,gameProfile);
-  const activeFps=safeFps(active.sustainableFps);
-  const activeGap=safeDelta(activeFps-target);
+  const activeRawFps=Math.max(0,safeFinite(active.sustainableFps,0));
+  const activeFps=safeFps(activeRawFps);
+  const activeGap=activeRawFps-targetFps;
+  const metricGap=document.getElementById("sbMetricGap");
+  const metricGapLabel=metricGap.parentElement?.querySelector("span");
+  metricGap.classList.remove("shortfall");
+  if(activeGap>=0){
+    metricGap.textContent="+"+formatPositiveFpsDelta(activeGap)+" FPS";
+    if(metricGapLabel)metricGapLabel.textContent="HEADROOM";
+  }else{
+    metricGap.textContent="-"+formatPositiveFpsDelta(Math.abs(activeGap))+" FPS";
+    if(metricGapLabel)metricGapLabel.textContent="SHORTFALL";
+    metricGap.classList.add("shortfall");
+  }
   document.getElementById("sbMetricFps").textContent=activeFps+" FPS";
   document.getElementById("sbMetricTarget").textContent=target+" FPS";
-  document.getElementById("sbMetricGap").textContent="+"+activeGap+" FPS";
   document.getElementById("sbMetricLimit").textContent=active.limiting==="Balanced"?"OPTIMAL":active.limiting.toUpperCase();
 
   const cpuPressure=Math.round(safeClamp(active.cpuLoad,0,100,0));
@@ -3464,11 +3488,11 @@ function calculate(){
     card.classList.add(fit>=85?"good":fit>=65?"warn":"bad");
   });
 
-  document.getElementById("sbUpgradeGain").textContent="+"+bestGain+" FPS";
+  document.getElementById("sbUpgradeGain").textContent="+"+bestGainDisplay+" FPS";
   document.getElementById("sbCpuUpgradeFps").textContent=cpuUpgradeFps+" FPS";
   document.getElementById("sbGpuUpgradeFps").textContent=gpuUpgradeFps+" FPS";
-  document.getElementById("sbCpuUpgradeGain").textContent="CPU NEXT TIER · +"+cpuGain+" FPS";
-  document.getElementById("sbGpuUpgradeGain").textContent="GPU NEXT TIER · +"+gpuGain+" FPS";
+  document.getElementById("sbCpuUpgradeGain").textContent="CPU NEXT TIER · +"+cpuGainDisplay+" FPS";
+  document.getElementById("sbGpuUpgradeGain").textContent="GPU NEXT TIER · +"+gpuGainDisplay+" FPS";
 
   rootTabsInit(resultRoot);
   updateVisibleResolution(resultRoot,r);
