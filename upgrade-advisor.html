@@ -2720,8 +2720,8 @@ body{min-height:100%;background:#060a12;color:#f6f8ff;font-family:"DM Sans",Inte
         updateAnalyzeState();
        $("verdict").textContent="Choose your setup";
         $("priority").textContent="Waiting for input";$("priority").className="priority low";
-        $("reason").textContent="Select a gaming resolution and target FPS, then analyze your PC.";
-        $("cpuStatus").textContent="—";$("gpuStatus").textContent="—";$("ramStatus").textContent="—";$("storageStatus").textContent="—";$("path").innerHTML="";
+        $("reason").textContent="Select your PC hardware, gaming resolution, target FPS and budget, then analyze your PC.";
+        $("cpuStatus").textContent="—";$("gpuStatus").textContent="—";$("ramStatus").textContent="—";$("storageStatus").textContent="—";$("path").innerHTML="<div class=\"road-item\"><span class=\"road-num\">1</span><strong>Choose your hardware</strong><p>Select your CPU, GPU, RAM and storage to start the diagnosis.</p></div><span class=\"road-arrow\">→</span><div class=\"road-item\"><span class=\"road-num\">2</span><strong>Set your gaming target</strong><p>Choose resolution, target FPS and an optional main game.</p></div><span class=\"road-arrow\">→</span><div class=\"road-item\"><span class=\"road-num\">3</span><strong>Get your upgrade path</strong><p>We’ll identify which component should be upgraded first.</p></div>";
         return;
       }
       $("verdict").textContent=r.first==="None"?"No urgent upgrade needed":r.first+" first";
@@ -2745,7 +2745,7 @@ body{min-height:100%;background:#060a12;color:#f6f8ff;font-family:"DM Sans",Inte
         ["cpuStatus","gpuStatus","ramStatus","storageStatus"].forEach(id=>$(id).textContent="—");
         ["cpuNote","gpuNote","ramNote","storageNote"].forEach(id=>$(id).textContent="Select your hardware to see status");
         ["cpuDot","gpuDot","ramDot","storageDot"].forEach(id=>$(id).textContent="—");
-        $("path").innerHTML="";
+        $("path").innerHTML="<div class=\"road-item\"><span class=\"road-num\">1</span><strong>Choose your hardware</strong><p>Select your CPU, GPU, RAM and storage to start the diagnosis.</p></div><span class=\"road-arrow\">→</span><div class=\"road-item\"><span class=\"road-num\">2</span><strong>Set your gaming target</strong><p>Choose resolution, target FPS and an optional main game.</p></div><span class=\"road-arrow\">→</span><div class=\"road-item\"><span class=\"road-num\">3</span><strong>Get your upgrade path</strong><p>We’ll identify which component should be upgraded first.</p></div>";
       }
     }
 
@@ -2771,7 +2771,7 @@ body{min-height:100%;background:#060a12;color:#f6f8ff;font-family:"DM Sans",Inte
       updateAnalyzeState();
       $("verdict").textContent="Choose your setup";$("priority").textContent="Waiting for input";$("priority").className="priority low";
       $("reason").textContent="Select your PC hardware, gaming resolution, target FPS and budget, then analyze your PC.";
-      ["cpuStatus","gpuStatus","ramStatus","storageStatus"].forEach(id=>$(id).textContent="—");["cpuNote","gpuNote","ramNote","storageNote"].forEach(id=>$(id).textContent="");$("path").innerHTML="";
+      ["cpuStatus","gpuStatus","ramStatus","storageStatus"].forEach(id=>$(id).textContent="—");["cpuNote","gpuNote","ramNote","storageNote"].forEach(id=>$(id).textContent="Select your hardware to see status");$("path").innerHTML="<div class=\"road-item\"><span class=\"road-num\">1</span><strong>Choose your hardware</strong><p>Select your CPU, GPU, RAM and storage to start the diagnosis.</p></div><span class=\"road-arrow\">→</span><div class=\"road-item\"><span class=\"road-num\">2</span><strong>Set your gaming target</strong><p>Choose resolution, target FPS and an optional main game.</p></div><span class=\"road-arrow\">→</span><div class=\"road-item\"><span class=\"road-num\">3</span><strong>Get your upgrade path</strong><p>We’ll identify which component should be upgraded first.</p></div>";
     });
   })();
   </script>
