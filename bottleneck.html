@@ -619,6 +619,12 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
           <div class="br-pill" id="limitPill">• Estimated</div>
         </div>
 
+        <div class="br-hardware" aria-label="Selected hardware">
+          <div class="br-hardware-item"><span>CPU</span><strong id="pairCpu">—</strong><small id="pairCpuScore">—</small><i id="pairCpuVendor"></i></div>
+          <div class="br-hardware-vs">VS</div>
+          <div class="br-hardware-item"><span>GPU</span><strong id="pairGpu">—</strong><small id="pairGpuScore">—</small><i id="pairGpuVendor"></i></div>
+        </div>
+
         <div class="br-message">
           <strong>What this means:</strong>
           <span id="limitSimple">The calculator is evaluating the selected CPU/GPU pressure.</span>
@@ -685,6 +691,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
         <div class="br-data-card"><small>CPU gaming index</small><strong id="cpuPerf">—</strong><span>Benchmark-normalized CPU reference</span></div>
         <div class="br-data-card"><small>GPU scenario index</small><strong id="gpuPerf">—</strong><span>Resolution-specific GPU reference</span></div>
         <div class="br-data-card"><small>System balance</small><strong id="balanceScore">—</strong><span id="balanceTier">—</span></div>
+        <div class="br-data-card"><small>Estimated FPS capacity</small><strong id="capacityPerf">—</strong><span>Model-estimated ceiling for this scenario</span></div>
       </div>
     </div>
 
@@ -3613,9 +3620,7 @@ function calculate(){
  document.getElementById("targetGapText").textContent=fpsDelta>=0?"~"+fpsDelta+" FPS of modeled headroom":"~"+Math.abs(fpsDelta)+" FPS below target in the model";
 
  const confidenceScore=document.getElementById("confidenceScore");
- const confidenceCard=document.getElementById("confidenceCard");
  confidenceScore.textContent=confidence;
- confidenceCard.className="score-card "+(confidence==="High"?"balance-good":confidence==="Medium"?"balance-warn":"balance-bad");
  document.getElementById("confidenceTier").textContent=confidence==="High"?"Strong direct coverage":confidence==="Medium"?"Mixed direct / bridged coverage":"More estimation required";
  document.getElementById("confidenceText").textContent=confidence==="High"?"Both selected parts have direct benchmark-backed coverage for this model.":"One or more selected parts rely on bridged or estimated data, so treat the result as directional.";
 
@@ -3669,12 +3674,7 @@ function calculate(){
  const balanceTier=balance>=90?"Excellent balance":balance>=75?"Good balance":balance>=60?"Mixed balance":"Uneven pairing";
  const targetTier=scenario.targetFit>=95?"Strong headroom":scenario.targetFit>=85?"Close to the model limit":scenario.targetFit>=65?"Below target range":"Well below target range";
  const limitSimple=limit==="CPU"?"The CPU has more modeled pressure in this scenario.":limit==="GPU"?"The GPU has more modeled pressure in this scenario.":"CPU and GPU pressure are close, so neither clearly dominates.";
- const limitCard=document.getElementById("limitScoreCard");
- const targetCard=document.getElementById("targetFitCard");
- const balanceCard=document.getElementById("balanceCard");
- limitCard.className="score-card "+(limit==="Balanced"?"status-balanced":"status-limited");
- targetCard.className="score-card "+(scenario.targetFit>=85?"target-good":scenario.targetFit>=65?"target-warn":"target-bad");
- balanceCard.className="score-card "+(balance>=75?"balance-good":balance>=60?"balance-warn":"balance-bad");
+
  document.getElementById("infoLimitScore").textContent=limit==="Balanced"?"Balanced":limit+"-Limited";
  document.getElementById("limitTier").textContent=limit==="Balanced"?"Yellow = close match":"Green = clear limiting side";
  document.getElementById("limitSimple").textContent=limitSimple;
