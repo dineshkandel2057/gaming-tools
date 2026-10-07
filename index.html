@@ -550,22 +550,26 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 .tb-tag-purple{color:#c1b1ff;background:rgba(129,101,255,.12);border-color:rgba(148,126,255,.22)}
 .tb-build-visual{
   position:relative;height:112px;margin:9px 15px 0;border-radius:14px;overflow:hidden;
-  border:1px solid rgba(157,174,204,.10);
+  border:1px solid rgba(108,221,255,.24);
   background:
-    radial-gradient(circle at 72% 50%,rgba(108,84,255,.20),transparent 31%),
-    linear-gradient(145deg,rgba(22,31,50,.9),rgba(8,14,25,.96));
+    radial-gradient(circle at 28% 50%,rgba(92,224,180,.12),transparent 29%),
+    radial-gradient(circle at 72% 50%,rgba(84,190,255,.16),transparent 31%),
+    linear-gradient(145deg,rgba(14,28,42,.96),rgba(5,12,22,.98));
+  box-shadow:0 0 30px rgba(57,193,255,.08),inset 0 1px 0 rgba(255,255,255,.08);
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
 }
-.tb-build-visual:before,.tb-build-visual:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(137,119,255,.15)}
+.tb-build-visual:before,.tb-build-visual:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(111,235,255,.22);box-shadow:0 0 22px rgba(69,207,255,.08)}
 .tb-build-visual:before{width:160px;height:160px;left:50%;top:50%;transform:translate(-50%,-50%)}
-.tb-build-visual:after{width:105px;height:105px;left:50%;top:50%;transform:translate(-50%,-50%);border-color:rgba(79,195,255,.12)}
+.tb-build-visual:after{width:105px;height:105px;left:50%;top:50%;transform:translate(-50%,-50%);border-color:rgba(92,224,180,.22)}
+.tb-card:hover .tb-build-visual{transform:scale(1.018);border-color:rgba(91,224,255,.5);box-shadow:0 0 38px rgba(67,199,255,.14),inset 0 1px 0 rgba(255,255,255,.1)}
 .tb-gpu-shape{
   position:absolute;right:23px;top:36px;width:105px;height:46px;border-radius:7px;
-  border:1px solid rgba(107,194,255,.65);background:linear-gradient(90deg,rgba(37,65,91,.8),rgba(15,27,45,.96));
-  box-shadow:0 0 28px rgba(72,174,255,.10),inset 0 1px 0 rgba(255,255,255,.07);
+  border:1px solid rgba(101,224,255,.88);background:linear-gradient(90deg,rgba(30,73,91,.72),rgba(8,26,40,.96));
+  box-shadow:0 0 26px rgba(72,208,255,.28),inset 0 1px 0 rgba(255,255,255,.1);
 }
 .tb-gpu-shape:before,.tb-gpu-shape:after{content:"";position:absolute;width:25px;height:25px;top:9px;border-radius:50%;border:2px solid #65c8ff;background:radial-gradient(circle,#6dcfff 0 18%,transparent 20% 42%,rgba(89,193,255,.12) 44% 100%)}
 .tb-gpu-shape:before{left:17px}.tb-gpu-shape:after{right:17px}
-.tb-cpu-shape{position:absolute;left:28px;top:34px;width:47px;height:47px;border-radius:9px;border:1px solid rgba(168,143,255,.65);background:linear-gradient(145deg,rgba(105,80,190,.5),rgba(13,23,39,.95));box-shadow:0 0 24px rgba(117,87,255,.14)}
+.tb-cpu-shape{position:absolute;left:28px;top:34px;width:47px;height:47px;border-radius:9px;border:1px solid rgba(91,238,190,.88);background:linear-gradient(145deg,rgba(43,128,105,.42),rgba(7,23,28,.96));box-shadow:0 0 26px rgba(72,232,180,.28),inset 0 1px 0 rgba(255,255,255,.1);transition:transform .35s ease,box-shadow .35s ease}
 .tb-cpu-shape:after{content:"";position:absolute;inset:10px;border-radius:5px;border:1px solid rgba(205,194,255,.4);background:linear-gradient(145deg,rgba(165,139,255,.7),rgba(62,143,255,.28))}
 .tb-creator-visual{background:radial-gradient(circle at 32% 50%,rgba(55,205,163,.12),transparent 30%),linear-gradient(145deg,rgba(20,38,48,.9),rgba(8,15,25,.96))}
 .tb-creator-visual .tb-cpu-shape{border-color:rgba(92,224,180,.62)}.tb-creator-visual .tb-cpu-shape:after{background:linear-gradient(145deg,rgba(77,219,171,.7),rgba(62,143,255,.25))}
@@ -579,9 +583,13 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 .tb-specs{display:flex;align-items:center;gap:7px;margin-top:9px;flex-wrap:wrap}
 .tb-specs b{padding:5px 7px;border-radius:6px;background:rgba(255,255,255,.045);border:1px solid rgba(157,174,204,.1);color:#b8c4d7;font-size:7px;white-space:nowrap}
 .tb-spec-separator{color:#8d9ab0;font-size:8px;font-weight:800;line-height:1}
-.tb-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto;padding-top:12px}
-.tb-stats span{padding:8px;border-radius:8px;background:rgba(4,9,17,.42);border:1px solid rgba(157,174,204,.08);color:#71819a;font-size:6px;font-weight:800;letter-spacing:.08em}
-.tb-stats strong{display:block;margin-top:3px;color:#e8edf6;font-size:9px;letter-spacing:0}
+.tb-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:14px}
+.tb-stats span{padding:10px;border-radius:10px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(86,111,150,.055));border:1px solid rgba(174,201,235,.18);box-shadow:0 10px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.08);color:#dce7f7;font-size:7px;font-weight:800;letter-spacing:.08em;backdrop-filter:blur(12px)}
+.tb-stats strong{display:block;margin-top:4px;color:#fff;font-size:11px;letter-spacing:0;text-shadow:0 0 12px rgba(255,255,255,.12)}
+.tb-load-build{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;box-sizing:border-box;margin-top:10px;padding:10px 13px;border-radius:11px;background:linear-gradient(110deg,#735dff 0%,#8d6cff 48%,#55b9ff 100%);border:1px solid rgba(202,191,255,.42);box-shadow:0 12px 28px rgba(87,69,210,.28),inset 0 1px 0 rgba(255,255,255,.2);color:#fff;font-size:10px;font-weight:900;letter-spacing:.02em;text-align:center;transition:transform .2s ease,filter .2s ease,box-shadow .2s ease}
+.tb-load-build b{font-size:15px;line-height:1;transition:transform .2s ease}
+.tb-card:hover .tb-load-build{filter:brightness(1.08);box-shadow:0 15px 32px rgba(87,69,210,.34),inset 0 1px 0 rgba(255,255,255,.24)}
+.tb-card:hover .tb-load-build b{transform:translateX(3px)}
 .tb-action{display:flex;justify-content:space-between;align-items:center;margin-top:9px;color:#a995ff;font-size:8px;font-weight:800}
 .tb-action b{font-size:13px}
 .tb-foot{position:relative;z-index:20;display:flex;justify-content:space-between;gap:12px;color:#6f7f97;font-size:6px;letter-spacing:.04em}
@@ -810,6 +818,8 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 .tb-card:hover{
   border-color:rgba(164,146,255,.42);
 }
+.tb-stack.tb-scroll-ready .tb-card.tb-active .tb-cpu-shape{transform:scale(1.045);box-shadow:0 0 32px rgba(72,232,180,.34),inset 0 1px 0 rgba(255,255,255,.12)}
+.tb-stack.tb-scroll-ready .tb-card.tb-active .tb-gpu-shape{box-shadow:0 0 34px rgba(72,208,255,.34),inset 0 1px 0 rgba(255,255,255,.12)}
 .tb-stack.tb-scroll-ready .tb-card.tb-active{
   border-radius:30px;
 }
@@ -1107,6 +1117,7 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
         <h3>Creator Powerhouse</h3>
         <div class="tb-specs"><b>Ryzen 7 7800X3D</b><span class="tb-spec-separator">/</span><b>RTX 4080 Super</b></div>
         <div class="tb-stats"><span>EST. PRICE <strong>~$1,900</strong></span><span>1440p <strong>160+ FPS*</strong></span></div>
+        <span class="tb-load-build" aria-hidden="true">Load Build Into Planner <b>→</b></span>
       </div>
     </a>
 
@@ -1128,6 +1139,7 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
         <h3>Budget Esports Rig</h3>
         <div class="tb-specs"><b>Ryzen 5 5600</b><span class="tb-spec-separator">/</span><b>Radeon RX 6600</b></div>
         <div class="tb-stats"><span>EST. PRICE <strong>~$650</strong></span><span>1080p <strong>200+ FPS*</strong></span></div>
+        <span class="tb-load-build" aria-hidden="true">Load Build Into Planner <b>→</b></span>
       </div>
     </a>
 
@@ -1149,6 +1161,7 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
         <h3>The 1440p Sweet Spot</h3>
         <div class="tb-specs"><b>AMD Ryzen 5</b><span class="tb-spec-separator">/</span><b>GeForce RTX 4070</b></div>
         <div class="tb-stats"><span>EST. PRICE <strong>~$1,150</strong></span><span>1440p <strong>120+ FPS*</strong></span></div>
+        <span class="tb-load-build" aria-hidden="true">Load Build Into Planner <b>→</b></span>
         <span class="tb-action">Build this setup <b>→</b></span>
       </div>
     </a>
@@ -1471,3 +1484,6 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 
 </body>
 </html>
+@media(max-width:480px){
+  .tb-load-build{padding:9px 10px;font-size:9px}
+}
