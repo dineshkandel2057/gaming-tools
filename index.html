@@ -1050,33 +1050,245 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 
 
 /* ================= TRENDING BUILDS — WIDESCREEN SYSTEM SPEC BANNER ================= */
-.trending-builds-hero{width:100%;min-height:430px;padding:0;background:transparent;border:0;box-shadow:none;display:flex;align-items:stretch}
-.tb-banner{width:100%;min-height:430px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:34px;align-items:stretch;padding:34px;border:1px solid rgba(168,85,247,.7);border-radius:26px;background:linear-gradient(135deg,rgba(12,15,28,.98),rgba(6,10,20,.99));box-shadow:0 0 20px rgba(168,85,247,.8),0 24px 60px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.07)}
-.tb-banner-left{min-width:0;display:flex;flex-direction:column;justify-content:center;padding:6px 4px}
-.tb-pill{align-self:flex-start;display:inline-flex;align-items:center;max-width:100%;box-sizing:border-box;padding:9px 14px;border:1px solid rgba(185,148,255,.35);border-radius:999px;background:rgba(5,9,18,.82);color:#fff;font-size:10px;line-height:1.2;font-weight:900;letter-spacing:.035em;box-shadow:0 8px 22px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.07);backdrop-filter:blur(12px)}
-.tb-banner-left .tb-eyebrow{margin-top:28px;color:#a793ff;font-size:9px;font-weight:900;letter-spacing:.16em}
-.tb-banner-left h2{margin:7px 0 0;color:#fff;font-size:clamp(32px,4vw,50px);line-height:1.05;letter-spacing:-.035em;font-weight:900;text-shadow:0 4px 24px rgba(0,0,0,.4)}
-.tb-banner-copy{max-width:540px;margin:14px 0 24px;color:#8f9db3;font-size:13px;line-height:1.7}
-.tb-banner-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:560px}
-.tb-metric{min-width:0;display:flex;align-items:center;gap:9px;padding:14px;border:1px solid rgba(174,201,235,.18);border-radius:12px;background:rgba(255,255,255,.045);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 10px 25px rgba(0,0,0,.2);color:#dce5f2;font-size:8px;line-height:1.35;font-weight:800;letter-spacing:.06em;backdrop-filter:blur(10px)}
-.tb-metric-icon{flex:none;display:grid;place-items:center;width:27px;height:27px;border-radius:8px;font-size:12px}
-.tb-money{color:#63e6ad;background:rgba(64,226,163,.1);border:1px solid rgba(64,226,163,.22);text-shadow:0 0 12px rgba(64,226,163,.7)}
-.tb-game{color:#5fddff;background:rgba(65,207,255,.1);border:1px solid rgba(65,207,255,.24);text-shadow:0 0 12px rgba(65,207,255,.7)}
-.tb-metric strong{display:block;margin-top:4px;color:#fff;font-size:12px;letter-spacing:0}
-.tb-metric-performance{color:#66ddff}.tb-metric-performance strong{color:#62e4ff;text-shadow:0 0 12px rgba(65,218,255,.35)}
-.tb-banner-action{align-self:flex-start;margin-top:18px;padding:11px 16px;border:1px solid rgba(176,150,255,.35);border-radius:10px;background:linear-gradient(110deg,#6e57e9,#8468f7 55%,#4eaedb);color:#fff;text-decoration:none;font-size:9px;font-weight:900;box-shadow:0 10px 25px rgba(92,69,210,.25);transition:transform .2s ease,filter .2s ease}
-.tb-banner-action b{margin-left:6px;font-size:13px}.tb-banner-action:hover{transform:translateY(-2px);filter:brightness(1.08)}
-.tb-banner-right{min-width:0;width:100%;height:100%;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:28px;border:1px solid rgba(100,154,211,.16);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(31,48,75,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
-.tb-dashboard-title{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:22px;color:#72839c;font-size:9px;font-weight:900;letter-spacing:.13em}
-.tb-dashboard-title span{min-width:0}.tb-dashboard-title span:last-child{flex:0 0 auto;padding:5px 8px;border-radius:999px;color:#bca9ff;background:rgba(132,103,255,.1);border:1px solid rgba(155,130,255,.2);font-size:7px}
-.tb-spec-table{width:100%;min-width:0;border-top:1px solid rgba(157,174,204,.12)}
-.tb-spec-row{width:100%;min-width:0;display:grid;grid-template-columns:minmax(118px,.38fr) minmax(0,1fr);gap:24px;align-items:center;padding:25px 0;border-bottom:1px solid rgba(157,174,204,.14)}
-.tb-spec-label{min-width:0;color:#7f8da3;font-size:8px;line-height:1.5;font-weight:800;letter-spacing:.12em;white-space:nowrap}
-.tb-spec-value{min-width:0;color:#fff;font-size:clamp(14px,1.55vw,18px);line-height:1.45;font-weight:800;letter-spacing:-.01em;white-space:normal;overflow-wrap:anywhere}
-@media(max-width:980px){.tb-banner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;padding:26px}.tb-banner-right{padding:24px}.tb-spec-row{grid-template-columns:minmax(104px,.34fr) minmax(0,1fr);gap:18px;padding:22px 0}.tb-spec-value{font-size:clamp(14px,1.8vw,17px)}}
-@media(max-width:800px){.trending-builds-hero{min-height:0}.tb-banner{min-height:0;grid-template-columns:1fr;gap:24px;padding:22px}.tb-banner-left{padding:0}.tb-banner-right{height:auto;padding:22px}.tb-banner-left h2{font-size:34px}.tb-banner-metrics{max-width:none}.tb-banner-action{margin-bottom:2px}}
-@media(max-width:560px){.tb-banner{padding:18px;border-radius:20px;gap:20px}.tb-pill{font-size:8px;padding:8px 10px}.tb-banner-left .tb-eyebrow{margin-top:20px}.tb-banner-left h2{font-size:29px}.tb-banner-copy{font-size:11px;margin:11px 0 17px}.tb-banner-metrics{grid-template-columns:1fr;gap:8px}.tb-metric{padding:11px}.tb-banner-right{padding:18px;border-radius:16px}.tb-dashboard-title{margin-bottom:16px;font-size:8px}.tb-spec-row{grid-template-columns:1fr;gap:7px;padding:18px 0}.tb-spec-label{font-size:7px}.tb-spec-value{font-size:15px;line-height:1.4}}
-@media(prefers-reduced-motion:reduce){.tb-banner-action{transition:none}.tb-banner-action:hover{transform:none}}
+.trending-builds-hero{
+  width:100%;
+  min-height:430px;
+  margin:0;
+  padding:0;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+.tb-banner{
+  width:100%;
+  min-height:430px;
+  margin:0;
+  padding:36px;
+  box-sizing:border-box;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:36px;
+  align-items:stretch;
+  border:1px solid rgba(168,85,247,.7);
+  border-radius:26px;
+  background:linear-gradient(135deg,rgba(12,15,28,.98),rgba(6,10,20,.99));
+  box-shadow:0 0 20px rgba(168,85,247,.8),0 24px 60px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.tb-banner-left{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:8px 4px;
+}
+.tb-pill{
+  align-self:flex-start;
+  display:inline-flex;
+  align-items:center;
+  max-width:100%;
+  padding:9px 14px;
+  box-sizing:border-box;
+  border:1px solid rgba(185,148,255,.35);
+  border-radius:999px;
+  background:rgba(5,9,18,.82);
+  color:#fff;
+  font-size:10px;
+  line-height:1.2;
+  font-weight:900;
+  letter-spacing:.035em;
+  box-shadow:0 8px 22px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.tb-banner-left .tb-eyebrow{
+  margin-top:28px;
+  color:#a793ff;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+.tb-banner-left h2{
+  margin:7px 0 0;
+  color:#fff;
+  font-size:clamp(32px,4vw,50px);
+  line-height:1.05;
+  letter-spacing:-.035em;
+  font-weight:900;
+}
+.tb-banner-copy{
+  margin:14px 0 24px;
+  color:#8f9db3;
+  font-size:13px;
+  line-height:1.7;
+}
+.tb-banner-metrics{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  width:100%;
+}
+.tb-metric{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:14px;
+  border:1px solid rgba(174,201,235,.18);
+  border-radius:12px;
+  background:rgba(255,255,255,.045);
+  color:#dce5f2;
+  font-size:8px;
+  line-height:1.35;
+  font-weight:800;
+  letter-spacing:.06em;
+}
+.tb-metric-icon{
+  flex:0 0 27px;
+  display:grid;
+  place-items:center;
+  width:27px;
+  height:27px;
+  border-radius:8px;
+  font-size:12px;
+}
+.tb-money{color:#63e6ad;background:rgba(64,226,163,.1);border:1px solid rgba(64,226,163,.22)}
+.tb-game{color:#5fddff;background:rgba(65,207,255,.1);border:1px solid rgba(65,207,255,.24)}
+.tb-metric strong{
+  display:block;
+  margin-top:4px;
+  color:#fff;
+  font-size:12px;
+}
+.tb-metric-performance{color:#66ddff}
+.tb-metric-performance strong{color:#62e4ff}
+.tb-banner-action{
+  align-self:flex-start;
+  margin-top:18px;
+  padding:11px 16px;
+  border:1px solid rgba(176,150,255,.35);
+  border-radius:10px;
+  background:linear-gradient(110deg,#6e57e9,#8468f7 55%,#4eaedb);
+  color:#fff;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:900;
+  box-shadow:0 10px 25px rgba(92,69,210,.25);
+}
+.tb-banner-action b{margin-left:6px;font-size:13px}
+
+.tb-banner-right{
+  width:100%;
+  min-width:0;
+  min-height:100%;
+  display:block;
+  box-sizing:border-box;
+  padding:30px;
+  margin:0;
+  border:1px solid rgba(100,154,211,.16);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(31,48,75,.035));
+  overflow:visible;
+}
+.tb-dashboard-title{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin:0 0 24px;
+  color:#72839c;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.13em;
+}
+.tb-dashboard-title span{
+  display:block;
+  min-width:0;
+  white-space:nowrap;
+}
+.tb-dashboard-title span:last-child{
+  flex:0 0 auto;
+  padding:5px 8px;
+  border-radius:999px;
+  color:#bca9ff;
+  background:rgba(132,103,255,.1);
+  border:1px solid rgba(155,130,255,.2);
+  font-size:7px;
+}
+.tb-spec-table{
+  display:block;
+  width:100%;
+  min-width:0;
+  margin:0;
+  padding:0;
+  border-top:1px solid rgba(157,174,204,.12);
+  overflow-x:auto;
+  overflow-y:hidden;
+}
+.tb-spec-row{
+  width:100%;
+  min-width:650px;
+  box-sizing:border-box;
+  display:grid;
+  grid-template-columns:180px minmax(470px,1fr);
+  gap:28px;
+  align-items:center;
+  padding:26px 0;
+  border-bottom:1px solid rgba(157,174,204,.14);
+}
+.tb-spec-label{
+  display:block;
+  width:180px;
+  margin:0;
+  color:#7f8da3;
+  font-size:8px;
+  line-height:1.5;
+  font-weight:800;
+  letter-spacing:.12em;
+  white-space:nowrap;
+}
+.tb-spec-value{
+  display:block;
+  width:auto;
+  min-width:470px;
+  margin:0;
+  color:#fff;
+  font-size:clamp(14px,1.55vw,18px);
+  line-height:1.45;
+  font-weight:800;
+  letter-spacing:-.01em;
+  white-space:nowrap;
+  word-break:normal;
+  overflow-wrap:normal;
+  overflow:visible;
+}
+@media(max-width:980px){
+  .tb-banner{
+    grid-template-columns:1fr;
+    gap:24px;
+    padding:28px;
+  }
+  .tb-banner-right{
+    min-height:0;
+    padding:26px;
+  }
+}
+@media(max-width:700px){
+  .tb-banner{padding:22px}
+  .tb-banner-right{padding:20px}
+  .tb-spec-row{
+    grid-template-columns:160px minmax(470px,1fr);
+    min-width:658px;
+    gap:22px;
+    padding:22px 0;
+  }
+  .tb-spec-label{width:160px}
+  .tb-spec-value{min-width:470px;font-size:15px}
+}
+@media(max-width:560px){
+  .tb-banner{padding:18px;border-radius:20px}
+  .tb-banner-metrics{grid-template-columns:1fr}
+  .tb-banner-left h2{font-size:29px}
+  .tb-banner-right{padding:18px;border-radius:16px}
+}
 </style>
 
 <meta property="og:title" content="SystemFit PC — Practical PC Planning Tools">
@@ -1137,8 +1349,14 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
     <div class="tb-banner-right" aria-label="System Specifications">
       <div class="tb-dashboard-title"><span>SYSTEM SPECIFICATIONS</span><span>1440P CLASS</span></div>
       <div class="tb-spec-table" role="table" aria-label="Trending build system specifications">
-        <div class="tb-spec-row" role="row"><span class="tb-spec-label" role="rowheader">COMPONENT: CPU</span><strong class="tb-spec-value" role="cell">AMD Ryzen 5 7600 (6-Core / 12-Thread)</strong></div>
-        <div class="tb-spec-row" role="row"><span class="tb-spec-label" role="rowheader">COMPONENT: GPU</span><strong class="tb-spec-value" role="cell">NVIDIA GeForce RTX 4070 (12GB VRAM)</strong></div>
+        <div class="tb-spec-row" role="row">
+          <span class="tb-spec-label" role="rowheader">COMPONENT: CPU</span>
+          <strong class="tb-spec-value" role="cell">AMD Ryzen 5 7600 (6-Core / 12-Thread)</strong>
+        </div>
+        <div class="tb-spec-row" role="row">
+          <span class="tb-spec-label" role="rowheader">COMPONENT: GPU</span>
+          <strong class="tb-spec-value" role="cell">NVIDIA GeForce RTX 4070 (12GB VRAM)</strong>
+        </div>
       </div>
     </div>
   </div>
