@@ -106,6 +106,15 @@ input:focus,select:focus{border-color:#6370ff}
 @media(max-width:1050px){.resolution-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.scoreboard,.score-guide{grid-template-columns:1fr}.score-card{min-height:auto}.fps-snapshot,.resolution-grid{grid-template-columns:1fr}}
 .estimate-method{border-color:rgba(118,95,255,.18);background:linear-gradient(145deg,rgba(22,29,45,.92),rgba(13,18,29,.9))}.estimate-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.estimate-grid div{background:rgba(9,12,20,.28);border:1px solid rgba(157,174,204,.1);border-radius:9px;padding:12px}.estimate-grid b{display:block;font-size:11px;margin-bottom:5px}.estimate-grid span{display:block;color:#8e9bb0;font-size:10px;line-height:1.55}.source-links{margin-top:12px;color:#748197;font-size:10px}.source-links a{color:#9f8dff}.source-links a:hover{color:#c1b7ff}@media(max-width:800px){.estimate-grid{grid-template-columns:1fr}}
+.benchmark-anchor{border-color:rgba(99,199,255,.16);background:linear-gradient(145deg,rgba(17,29,43,.94),rgba(11,18,28,.92))}
+.benchmark-anchor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.benchmark-anchor-card{background:rgba(7,11,19,.34);border:1px solid rgba(157,174,204,.11);border-radius:10px;padding:13px}
+.benchmark-anchor-card small{display:block;color:#8491a7;font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
+.benchmark-anchor-card strong{display:block;margin-top:6px;font-family:"Space Grotesk",sans-serif;font-size:18px;color:#f5f7fc}
+.benchmark-anchor-card span{display:block;margin-top:4px;color:#909db1;font-size:10px;line-height:1.45}
+.benchmark-anchor-note{margin-top:11px;color:#8996aa;font-size:10px;line-height:1.55}
+@media(max-width:800px){.benchmark-anchor-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.benchmark-anchor-grid{grid-template-columns:1fr}}
 .health-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}\n.game-profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .game-profile-grid>div{background:rgba(7,11,19,.34);border:1px solid rgba(157,174,204,.12);border-radius:11px;padding:13px}
 .game-profile-grid small{display:block;color:#8491a7;font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
@@ -456,6 +465,18 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
         <div><small>Profile confidence</small><strong id="profileConfidence">Directional</strong></div>
       </div>
       <p id="profileExplanation">No specific game selected. The calculator uses the broader game-type profile above.</p>
+    </div>
+
+    <div class="section benchmark-anchor">
+      <h3>📊 Benchmark Anchor</h3>
+      <p class="section-subtext">This is the benchmark-backed reference behind the GPU side of the model. It is separate from the selected game's directional workload profile.</p>
+      <div class="benchmark-anchor-grid">
+        <div class="benchmark-anchor-card"><small>Benchmark Resolution</small><strong id="benchmarkResolution">—</strong><span>Native raster reference</span></div>
+        <div class="benchmark-anchor-card"><small>Reference GPU FPS</small><strong id="benchmarkReferenceFps">—</strong><span>RTX 5090 baseline</span></div>
+        <div class="benchmark-anchor-card"><small>Selected GPU Index</small><strong id="benchmarkGpuIndex">—</strong><span id="benchmarkGpuStatus">—</span></div>
+        <div class="benchmark-anchor-card"><small>Model Version</small><strong id="benchmarkModelVersion">—</strong><span>SystemFit calculation model</span></div>
+      </div>
+      <div class="benchmark-anchor-note">Source: Tom's Hardware GPU Hierarchy 2026. Its native-raster results use high/ultra settings at 1080p, 1440p and 4K. SystemFit uses those resolution references where direct GPU coverage exists, then applies its own CPU/GPU scenario model. Game-specific profiles remain directional rather than measured FPS.</div>
     </div>
 
     <div class="section result-snapshot">
@@ -3234,6 +3255,12 @@ function calculate(){
  document.getElementById("targetBig").textContent=target+" FPS";
  const fpsDelta=Math.round(scenario.sustainableFps-target);
  document.getElementById("capacityContext").textContent=scenario.targetStatus+" · estimate for this selected scenario";
+ const benchmarkReference=GPU_REFERENCE_FPS[String(r)]||GPU_REFERENCE_FPS["1080"];
+ document.getElementById("benchmarkResolution").textContent=r==="2160"?"4K":r+"p";
+ document.getElementById("benchmarkReferenceFps").textContent=benchmarkReference+" FPS";
+ document.getElementById("benchmarkGpuIndex").textContent=Math.round(scenario.gpuScenarioScore*10)/10;
+ document.getElementById("benchmarkGpuStatus").textContent=(g.resolutionScores? "Direct 2026 hierarchy data" : "Estimated / fallback coverage")+" · "+g.name;
+ document.getElementById("benchmarkModelVersion").textContent=MODEL_VERSION.replace("bottleneck-model-","v");
  document.getElementById("targetGapText").textContent=fpsDelta>=0?"~"+fpsDelta+" FPS of modeled headroom":"~"+Math.abs(fpsDelta)+" FPS below target in the model";
 
  const confidenceScore=document.getElementById("confidenceScore");
