@@ -649,6 +649,15 @@
 
     updateScrollProgress();
 
+    // Load the shared custom select layer after the common header is ready.
+    if (!document.querySelector('script[data-sfp-select-engine="true"]')) {
+      const selectEngine = document.createElement("script");
+      selectEngine.src = "select-enhancer.js";
+      selectEngine.defer = true;
+      selectEngine.dataset.sfpSelectEngine = "true";
+      document.head.appendChild(selectEngine);
+    }
+
     const dropdown = document.getElementById("sfpTools");
 
     if (!dropdown) return;
