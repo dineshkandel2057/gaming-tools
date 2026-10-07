@@ -223,6 +223,20 @@ a.tool-menu-item:hover,a.tool-menu-item:focus-visible{background:rgba(118,95,255
 
 /* Inline searchable hardware pickers */
 .hardware-picker{position:relative}.picker-trigger{height:48px;padding:0 12px;border:1px solid rgba(159,176,207,.2);border-radius:10px;background:rgba(7,11,19,.72);color:var(--text);font:inherit;transition:border-color .2s,box-shadow .2s,background .2s}.picker-trigger:hover{border-color:rgba(153,134,255,.46)}.picker-trigger:focus-visible{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,255,.15);outline:none}.picker-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;cursor:pointer}.picker-panel{display:none;position:absolute;z-index:30;top:calc(100% + 6px);left:0;right:0;padding:9px;border:1px solid var(--border);border-radius:12px;background:#111827;box-shadow:0 16px 40px rgba(0,0,0,.38)}.picker-panel.is-open{display:block}.picker-search{width:100%;margin-bottom:7px}.picker-options{max-height:250px;overflow-y:auto}.picker-option{display:block;width:100%;padding:9px 10px;border:0;border-radius:7px;background:transparent;color:var(--text);text-align:left;cursor:pointer;font:inherit;font-size:13px}.picker-option:hover,.picker-option:focus-visible{background:rgba(118,95,255,.18);outline:none}.picker-empty{padding:10px;color:var(--muted);font-size:12px}.native-hardware-select{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.game-profile-picker{position:relative}
+.game-profile-trigger{width:100%;height:48px;padding:0 12px;border:1px solid rgba(159,176,207,.2);border-radius:10px;background:rgba(7,11,19,.72);color:var(--text);font:inherit;display:flex;align-items:center;justify-content:space-between;text-align:left;cursor:pointer;transition:border-color .2s,box-shadow .2s,background .2s}
+.game-profile-trigger:hover{border-color:rgba(153,134,255,.46)}
+.game-profile-trigger:focus-visible{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,255,.15);outline:none}
+.game-profile-picker.is-open .game-profile-trigger{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,255,.15);background:#0c1120}
+.game-profile-panel{display:none;position:absolute;z-index:60;top:calc(100% + 8px);left:0;right:0;padding:9px;border:1px solid var(--border);border-radius:12px;background:#111827;box-shadow:0 18px 46px rgba(0,0,0,.48)}
+.game-profile-panel.is-open{display:block}
+.game-profile-search{width:100%;height:42px;margin:0 0 8px}
+.game-profile-options{max-height:280px;overflow-y:auto;overscroll-behavior:contain}
+.game-profile-option{display:block;width:100%;padding:9px 10px;border:0;border-radius:7px;background:transparent;color:var(--text);text-align:left;cursor:pointer;font:inherit;font-size:13px}
+.game-profile-option:hover,.game-profile-option:focus-visible{background:rgba(118,95,255,.18);outline:none}
+.game-profile-empty{padding:10px;color:var(--muted);font-size:12px}
+.native-game-profile-select{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:800px){.game-profile-panel{max-height:60vh}.game-profile-options{max-height:calc(60vh - 68px)}}
 </style>
 <style id="homepage-header-system">
 /* Shared SystemFit PC homepage header */
@@ -316,31 +330,21 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       </div>
       
       <div>
-        <label>Specific Game (optional)</label>
-        <select id="gameProfile">
+        <label for="gameProfileButton">Specific Game (optional)</label>
+        <div class="game-profile-picker" id="gameProfilePicker">
+          <button class="game-profile-trigger" id="gameProfileButton" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span id="gameProfileButtonText">— Use game-type profile only —</span><span aria-hidden="true">⌄</span>
+          </button>
+          <div class="game-profile-panel">
+            <input id="gameProfileSearch" class="game-profile-search" type="search" placeholder="Search 792 games..." autocomplete="off" aria-label="Search games">
+            <div id="gameProfileOptions" class="game-profile-options" role="listbox" aria-label="Available games"></div>
+            <div id="gameProfileEmpty" class="game-profile-empty" hidden>No matching games found.</div>
+          </div>
+        </div>
+        <select id="gameProfile" class="native-game-profile-select" aria-hidden="true" tabindex="-1">
           <option value="">— Use game-type profile only —</option>
-          <option value="cs2">Counter-Strike 2</option>
-          <option value="valorant">VALORANT</option>
-          <option value="fortnite">Fortnite</option>
-          <option value="apex">Apex Legends</option>
-          <option value="warzone">Call of Duty: Warzone</option>
-          <option value="pubg">PUBG: BATTLEGROUNDS</option>
-          <option value="overwatch2">Overwatch 2</option>
-          <option value="rainbow6">Rainbow Six Siege</option>
-          <option value="cyberpunk">Cyberpunk 2077</option>
-          <option value="hogwarts">Hogwarts Legacy</option>
-          <option value="starfield">Starfield</option>
-          <option value="alanwake2">Alan Wake 2</option>
-          <option value="blackmyth">Black Myth: Wukong</option>
-          <option value="monsterhunter">Monster Hunter Wilds</option>
-          <option value="eldenring">Elden Ring</option>
-          <option value="baldursgate3">Baldur's Gate 3</option>
-          <option value="helldivers2">Helldivers 2</option>
-          <option value="gta5">Grand Theft Auto V</option>
-          <option value="minecraft">Minecraft Java</option>
-          <option value="cities2">Cities: Skylines II</option>
         </select>
-        <div class="field-help">Applies a transparent game profile; it is not a measured FPS result.</div>
+        <div class="field-help">792 popular and historically notable PC games · profiles are directional until benchmark-backed data is added.</div>
       </div>
 
       <div>
@@ -3143,18 +3147,83 @@ GAME_CATALOG.forEach(name=>{
 function getGameProfile(id){return GAME_PROFILES[String(id)]||null;}
 function populateGameProfiles(){
   const select=document.getElementById("gameProfile");
-  if(!select)return;
+  const root=document.getElementById("gameProfilePicker");
+  const trigger=document.getElementById("gameProfileButton");
+  const triggerText=document.getElementById("gameProfileButtonText");
+  const panel=root&&root.querySelector(".game-profile-panel");
+  const search=document.getElementById("gameProfileSearch");
+  const options=document.getElementById("gameProfileOptions");
+  const empty=document.getElementById("gameProfileEmpty");
+  if(!select||!root||!trigger||!triggerText||!panel||!search||!options||!empty)return;
+
   select.innerHTML='<option value="">— Use game-type profile only —</option>';
-  const fragment=document.createDocumentFragment();
   GAME_CATALOG.forEach(name=>{
     const option=document.createElement("option");
     option.value=name;
     option.textContent=name;
-    fragment.appendChild(option);
+    select.appendChild(option);
   });
-  select.appendChild(fragment);
-  const help=select.parentElement&&select.parentElement.querySelector(".field-help");
-  if(help)help.textContent=GAME_CATALOG.length+" popular and historically notable PC games · profiles are directional until benchmark-backed data is added.";
+
+  const close=()=>{
+    root.classList.remove("is-open");
+    panel.classList.remove("is-open");
+    trigger.setAttribute("aria-expanded","false");
+  };
+
+  const render=(query="")=>{
+    const q=query.trim().toLocaleLowerCase();
+    const fragment=document.createDocumentFragment();
+    let count=0;
+    GAME_CATALOG.forEach(name=>{
+      if(q&&!name.toLocaleLowerCase().includes(q))return;
+      const option=document.createElement("button");
+      option.type="button";
+      option.className="game-profile-option";
+      option.setAttribute("role","option");
+      option.textContent=name;
+      option.addEventListener("click",()=>{
+        select.value=name;
+        select.dispatchEvent(new Event("change",{bubbles:true}));
+        triggerText.textContent=name;
+        close();
+        search.value="";
+        render("");
+        trigger.focus();
+      });
+      fragment.appendChild(option);
+      count++;
+    });
+    options.replaceChildren(fragment);
+    empty.hidden=count!==0;
+  };
+
+  trigger.addEventListener("click",event=>{
+    event.preventDefault();
+    const open=!root.classList.contains("is-open");
+    document.querySelectorAll(".game-profile-picker.is-open").forEach(other=>{
+      other.classList.remove("is-open");
+      other.querySelector(".game-profile-panel")?.classList.remove("is-open");
+      other.querySelector(".game-profile-trigger")?.setAttribute("aria-expanded","false");
+    });
+    root.classList.toggle("is-open",open);
+    panel.classList.toggle("is-open",open);
+    trigger.setAttribute("aria-expanded",String(open));
+    if(open){render(search.value);requestAnimationFrame(()=>search.focus());}
+  });
+
+  search.addEventListener("input",()=>render(search.value));
+  search.addEventListener("keydown",event=>{
+    if(event.key==="Escape"){event.preventDefault();close();trigger.focus();}
+    else if(event.key==="ArrowDown"){event.preventDefault();options.querySelector("button")?.focus();}
+  });
+  options.addEventListener("keydown",event=>{
+    if(event.key==="Escape"){event.preventDefault();close();trigger.focus();}
+  });
+  document.addEventListener("click",event=>{
+    if(!root.contains(event.target))close();
+  });
+
+  render();
 }
 document.addEventListener("DOMContentLoaded",populateGameProfiles);
 
