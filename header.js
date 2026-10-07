@@ -319,6 +319,11 @@
       color: #71e5b0;
     }
 
+    .sfp-upgrade {
+      background: rgba(255,170,98,.12);
+      color: #ffc080;
+    }
+
                 @media(max-width:800px) {
       .sfp-nav {
         min-height: auto;
@@ -454,6 +459,15 @@
                 "GPU Comparison",
                 "Compare up to five graphics cards",
                 current === "gpu-comparison.html"
+              )}
+
+              ${toolLink(
+                "upgrade-advisor.html",
+                "sfp-upgrade",
+                `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20V5M12 5 6.8 10.2M12 5l5.2 5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 20h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".55"/></svg>`,
+                "PC Upgrade Advisor",
+                "Decide what to upgrade first",
+                current === "upgrade-advisor.html"
               )}
 
               ${toolLink(
