@@ -106,7 +106,12 @@ input:focus,select:focus{border-color:#6370ff}
 @media(max-width:1050px){.resolution-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.scoreboard,.score-guide{grid-template-columns:1fr}.score-card{min-height:auto}.fps-snapshot,.resolution-grid{grid-template-columns:1fr}}
 .estimate-method{border-color:rgba(118,95,255,.18);background:linear-gradient(145deg,rgba(22,29,45,.92),rgba(13,18,29,.9))}.estimate-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.estimate-grid div{background:rgba(9,12,20,.28);border:1px solid rgba(157,174,204,.1);border-radius:9px;padding:12px}.estimate-grid b{display:block;font-size:11px;margin-bottom:5px}.estimate-grid span{display:block;color:#8e9bb0;font-size:10px;line-height:1.55}.source-links{margin-top:12px;color:#748197;font-size:10px}.source-links a{color:#9f8dff}.source-links a:hover{color:#c1b7ff}@media(max-width:800px){.estimate-grid{grid-template-columns:1fr}}
-.health-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.health-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}\n.game-profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.game-profile-grid>div{background:rgba(7,11,19,.34);border:1px solid rgba(157,174,204,.12);border-radius:11px;padding:13px}
+.game-profile-grid small{display:block;color:#8491a7;font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
+.game-profile-grid strong{display:block;margin-top:6px;font-size:14px}
+#profileExplanation{margin:11px 0 0;color:#909db1;font-size:12px;line-height:1.55}
+@media(max-width:800px){.game-profile-grid{grid-template-columns:1fr}}
 .health-card{background:rgba(7,11,19,.34);border:1px solid rgba(157,174,204,.12);border-radius:11px;padding:14px}
 .health-card small,.sim-card small{display:block;color:#8491a7;font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
 .health-card strong{display:block;margin-top:6px;font-size:16px}
@@ -300,6 +305,34 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
           <option value="cpu">CPU-Heavy / Simulation</option>
         </select>
       </div>
+      
+      <div>
+        <label>Specific Game (optional)</label>
+        <select id="gameProfile">
+          <option value="">— Use game-type profile only —</option>
+          <option value="cs2">Counter-Strike 2</option>
+          <option value="valorant">VALORANT</option>
+          <option value="fortnite">Fortnite</option>
+          <option value="apex">Apex Legends</option>
+          <option value="warzone">Call of Duty: Warzone</option>
+          <option value="pubg">PUBG: BATTLEGROUNDS</option>
+          <option value="overwatch2">Overwatch 2</option>
+          <option value="rainbow6">Rainbow Six Siege</option>
+          <option value="cyberpunk">Cyberpunk 2077</option>
+          <option value="hogwarts">Hogwarts Legacy</option>
+          <option value="starfield">Starfield</option>
+          <option value="alanwake2">Alan Wake 2</option>
+          <option value="blackmyth">Black Myth: Wukong</option>
+          <option value="monsterhunter">Monster Hunter Wilds</option>
+          <option value="eldenring">Elden Ring</option>
+          <option value="baldursgate3">Baldur's Gate 3</option>
+          <option value="helldivers2">Helldivers 2</option>
+          <option value="gta5">Grand Theft Auto V</option>
+          <option value="minecraft">Minecraft Java</option>
+          <option value="cities2">Cities: Skylines II</option>
+        </select>
+        <div class="field-help">Applies a transparent game profile; it is not a measured FPS result.</div>
+      </div>
 
       <div>
         <label>Target FPS</label>
@@ -415,10 +448,20 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       <div class="stat stat-capacity"><small>Estimated FPS Capacity</small><strong id="capacityPerf">—</strong><span>Model-estimated ceiling for this scenario</span></div>
     </div>
 
+    <div class="section game-profile" id="gameProfileSummary">
+      <h3>🎮 Game-Specific Profile</h3>
+      <div class="game-profile-grid">
+        <div><small>Selected game</small><strong id="profileGameName">Game-type profile</strong></div>
+        <div><small>Workload profile</small><strong id="profileWorkload">General</strong></div>
+        <div><small>Profile confidence</small><strong id="profileConfidence">Directional</strong></div>
+      </div>
+      <p id="profileExplanation">No specific game selected. The calculator uses the broader game-type profile above.</p>
+    </div>
+
     <div class="section result-snapshot">
       <h3>🎯 Estimated FPS vs Your Target</h3>
       <div class="fps-snapshot">
-        <div class="fps-main"><small>Estimated model capacity</small><strong id="capacityBig">—</strong><span id="capacityContext">Estimated — not a game-specific benchmark</span></div>
+        <div class="fps-main"><small>Estimated model capacity</small><strong id="capacityBig">—</strong><span id="capacityContext">Estimated model capacity · game profile is directional, not measured FPS</span></div>
         <div class="fps-target"><small>Your target</small><strong id="targetBig">—</strong><span id="targetGapText">—</span></div>
       </div>
     </div>
@@ -502,7 +545,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       </div>
       <div class="source-links">Sources: <a href="https://www.tomshardware.com/reviews/cpu-hierarchy,4312.html" target="_blank" rel="noopener">Tom’s Hardware CPU Hierarchy 2026</a> · <a href="https://www.tomshardware.com/reviews/gpu-hierarchy,4388.html" target="_blank" rel="noopener">Tom’s Hardware GPU Hierarchy 2026</a> · <a href="https://www.tomshardware.com/video-games/pc-gaming/32gb-ram-config-hits-top-spot-in-steam-survey" target="_blank" rel="noopener">2026 Steam RAM usage trend</a> · Related: <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU Bottleneck guide</a> · <a href="fps-calculator.html">FPS Calculator</a> · <a href="gpu-comparison.html">GPU Comparison</a></div>
     </div>
-    <div class="disclaimer"><b>SystemFit model v2:</b> This is a benchmark-informed planning tool, not a live hardware test. <b>Estimated result:</b> This tool is a benchmark-informed heuristic, not a game-specific benchmark and not a literal “bottleneck percentage” measurement. Direct benchmark values are used where available; older hardware may use bridged or estimated values. CPU and GPU indices use separate reference hardware and are not equivalent to each other or to FPS. Native-resolution raster data does not account for DLSS/FSR/XeSS, frame generation, ray-tracing mode changes, or every game engine. Use the result as a planning estimate, not a guarantee.</div>
+    <div class="disclaimer"><b>SystemFit model v2:</b> Game-specific profiles describe workload tendencies and are not substitutes for measured FPS benchmarks. This is a benchmark-informed planning tool, not a live hardware test. <b>Estimated result:</b> This tool is a benchmark-informed heuristic, not a game-specific benchmark and not a literal “bottleneck percentage” measurement. Direct benchmark values are used where available; older hardware may use bridged or estimated values. CPU and GPU indices use separate reference hardware and are not equivalent to each other or to FPS. Native-resolution raster data does not account for DLSS/FSR/XeSS, frame generation, ray-tracing mode changes, or every game engine. Use the result as a planning estimate, not a guarantee.</div>
   </div>
 </section>
 </main>
@@ -3040,6 +3083,33 @@ const GPU_REFERENCE_FPS = {720:220,1080:203.8,1440:167.3,2160:110.8};
 const CPU_REFERENCE_FPS_1080 = 200;
 const LEGACY_GPU_RESOLUTION_RATIO = {1080:1,1440:0.8627,2160:0.6973};
 
+const GAME_PROFILES = {
+  cs2:{name:"Counter-Strike 2",workload:"High-FPS / CPU-sensitive",cpu:1.14,gpu:0.90,confidence:"Directional",note:"Competitive settings and high-FPS targets tend to expose CPU/game-engine limits more strongly."},
+  valorant:{name:"VALORANT",workload:"Very high-FPS / CPU-sensitive",cpu:1.20,gpu:0.84,confidence:"Directional",note:"High-refresh competitive play is commonly more CPU-sensitive than a GPU-heavy AAA workload."},
+  fortnite:{name:"Fortnite",workload:"Mixed / scalable",cpu:1.08,gpu:1.02,confidence:"Directional",note:"Performance varies substantially with Performance Mode, DX12, view distance, and visual settings."},
+  apex:{name:"Apex Legends",workload:"Competitive / mixed",cpu:1.10,gpu:0.96,confidence:"Directional",note:"High-FPS competitive scenarios can increase CPU pressure while higher visual settings shift more work to the GPU."},
+  warzone:{name:"Call of Duty: Warzone",workload:"Heavy / mixed",cpu:1.08,gpu:1.12,confidence:"Directional",note:"Large scenes and high visual settings can stress both CPU and GPU; the balance changes with resolution and settings."},
+  pubg:{name:"PUBG: BATTLEGROUNDS",workload:"Competitive / CPU-sensitive",cpu:1.12,gpu:0.96,confidence:"Directional",note:"High-FPS play can expose CPU limits, while higher resolutions and quality settings increase GPU demand."},
+  overwatch2:{name:"Overwatch 2",workload:"High-FPS / mixed",cpu:1.12,gpu:0.94,confidence:"Directional",note:"Competitive high-refresh targets generally put more emphasis on CPU frame delivery."},
+  rainbow6:{name:"Rainbow Six Siege",workload:"Very high-FPS / CPU-sensitive",cpu:1.16,gpu:0.88,confidence:"Directional",note:"High-refresh competitive scenarios are typically more CPU-sensitive than cinematic AAA workloads."},
+  cyberpunk:{name:"Cyberpunk 2077",workload:"GPU-heavy AAA",cpu:0.92,gpu:1.20,confidence:"Directional",note:"Native high-quality and ray-traced workloads can become strongly GPU-bound; upscaling changes the balance."},
+  hogwarts:{name:"Hogwarts Legacy",workload:"AAA / mixed",cpu:1.00,gpu:1.16,confidence:"Directional",note:"The workload can be GPU-heavy and can also show CPU/streaming pressure in busy areas."},
+  starfield:{name:"Starfield",workload:"CPU-sensitive AAA",cpu:1.16,gpu:1.04,confidence:"Directional",note:"Large simulation-heavy areas can expose CPU limits, especially at lower resolutions and high FPS targets."},
+  alanwake2:{name:"Alan Wake 2",workload:"GPU-heavy AAA",cpu:0.90,gpu:1.24,confidence:"Directional",note:"Modern lighting and ray-tracing features can place substantial load on the GPU."},
+  blackmyth:{name:"Black Myth: Wukong",workload:"GPU-heavy AAA",cpu:0.94,gpu:1.22,confidence:"Directional",note:"High-fidelity rendering and demanding visual settings tend to push GPU workload."},
+  monsterhunter:{name:"Monster Hunter Wilds",workload:"Heavy / mixed",cpu:1.10,gpu:1.16,confidence:"Directional",note:"Large scenes and demanding rendering can pressure both sides; settings and resolution matter heavily."},
+  eldenring:{name:"Elden Ring",workload:"Mixed / frame-limited",cpu:1.00,gpu:1.00,confidence:"Directional",note:"The game's frame-rate behavior and engine limits mean raw hardware balance alone cannot predict every scenario."},
+  baldursgate3:{name:"Baldur's Gate 3",workload:"CPU-sensitive simulation",cpu:1.18,gpu:0.98,confidence:"Directional",note:"Dense late-game areas can become CPU/simulation sensitive, especially at lower resolutions."},
+  helldivers2:{name:"Helldivers 2",workload:"CPU/GPU heavy",cpu:1.14,gpu:1.12,confidence:"Directional",note:"Large enemy counts and effects can load both CPU and GPU, with the limiting side changing by settings."},
+  gta5:{name:"Grand Theft Auto V",workload:"CPU-sensitive / scalable",cpu:1.12,gpu:0.94,confidence:"Directional",note:"Population, traffic, view distance and high-FPS targets can increase CPU-side pressure."},
+  minecraft:{name:"Minecraft Java",workload:"CPU / simulation-sensitive",cpu:1.22,gpu:0.78,confidence:"Directional",note:"Simulation, entity count, chunk distance and mods can dominate; shaders can shift the workload strongly toward the GPU."},
+  cities2:{name:"Cities: Skylines II",workload:"CPU / simulation heavy",cpu:1.28,gpu:0.92,confidence:"Directional",note:"Large city simulations can become heavily CPU-bound; population and simulation complexity matter."}
+};
+
+function getGameProfile(id){
+  return GAME_PROFILES[id]||null;
+}
+
 function gameDemand(type){
   return {
     esports:{cpu:1.10,gpu:0.82},
@@ -3064,8 +3134,9 @@ function getGpuScenarioScore(record,resolution){
   return Number(record.score)*LEGACY_GPU_RESOLUTION_RATIO[r||"1080"]||Number(record.score);
 }
 
-function modelScenario(cpuScore,gpuScore,resolution,gameType,target,gpuRecord,context={}){
-  const demand=gameDemand(gameType);
+function modelScenario(cpuScore,gpuScore,resolution,gameType,target,gpuRecord,context={},gameProfile=null){
+  const baseDemand=gameDemand(gameType);
+  const demand=gameProfile?{cpu:baseDemand.cpu*gameProfile.cpu,gpu:baseDemand.gpu*gameProfile.gpu}:baseDemand;
   const ram=String(context.ram||"");
   const storage=String(context.storage||"");
   const background=String(context.background||"");
@@ -3109,6 +3180,7 @@ function calculate(){
  const r=document.getElementById("resolution").value;
  const target=parseInt(document.getElementById("targetFps").value,10);
  const gt=document.getElementById("gameType").value;
+ const gameProfile=getGameProfile(document.getElementById("gameProfile").value);
  const ram=document.getElementById("ram").value;
  const storage=document.getElementById("storage").value;
  const background=document.getElementById("backgroundLoad").value;
@@ -3116,7 +3188,7 @@ function calculate(){
  const c=CPUs[ci],g=GPUs[gi];
  const context={ram,storage,background};
  const cpuScore=getHardwareScore(c),gpuScore=getHardwareScore(g);
- const scenario=modelScenario(cpuScore,gpuScore,r,gt,target,g,context);
+ const scenario=modelScenario(cpuScore,gpuScore,r,gt,target,g,context,gameProfile);
  const confidenceParts=[c.status,g.status,g.resolutionScores?("direct-resolution"):("fallback-resolution")];
  const estimatedCount=confidenceParts.filter(x=>x==="estimated"||x==="fallback-resolution").length;
  const bridgedCount=confidenceParts.filter(x=>x==="bridged").length;
@@ -3128,6 +3200,21 @@ function calculate(){
  document.getElementById("result").classList.remove("hidden");
  document.getElementById("resultTitle").textContent=`Estimated result: ${limit==="Balanced"?"Balanced pairing":`Likely ${limit}-Limited`}`;
  document.getElementById("resultPair").textContent=c.name+" + "+g.name;
+ const profileName=document.getElementById("profileGameName");
+ const profileWorkload=document.getElementById("profileWorkload");
+ const profileConfidence=document.getElementById("profileConfidence");
+ const profileExplanation=document.getElementById("profileExplanation");
+ if(gameProfile){
+   profileName.textContent=gameProfile.name;
+   profileWorkload.textContent=gameProfile.workload;
+   profileConfidence.textContent=gameProfile.confidence;
+   profileExplanation.textContent=gameProfile.note+" This profile changes the CPU/GPU workload weighting; it does not claim to reproduce a measured FPS benchmark for your exact settings.";
+ }else{
+   profileName.textContent="Game-type profile";
+   profileWorkload.textContent=document.getElementById("gameType").selectedOptions[0].text;
+   profileConfidence.textContent="Directional";
+   profileExplanation.textContent="No specific game selected. The calculator uses the broader game-type profile. Select a game above for a more specific workload model.";
+ }
  const pill=document.getElementById("limitPill");
  pill.textContent="• Estimated";
  pill.className="pill estimated";
@@ -3163,8 +3250,8 @@ function calculate(){
  document.getElementById("backgroundHealth").textContent=scenario.backgroundStatus;
  document.getElementById("backgroundHealthText").textContent=background==="heavy"?"Streaming/recording can reduce available CPU headroom, especially in CPU-limited scenarios.":background==="typical"?"Browser/Discord adds some background work but is not modeled as a fixed FPS penalty.":"Minimal background activity.";
 
- const cpuUpgrade=modelScenario(cpuScore*1.15,gpuScore,r,gt,target,g,context);
- const gpuUpgrade=modelScenario(cpuScore,gpuScore*1.15,r,gt,target,g,context);
+ const cpuUpgrade=modelScenario(cpuScore*1.15,gpuScore,r,gt,target,g,context,gameProfile);
+ const gpuUpgrade=modelScenario(cpuScore,gpuScore*1.15,r,gt,target,g,context,gameProfile);
  document.getElementById("cpuSimFps").textContent="~"+Math.round(cpuUpgrade.sustainableFps)+" FPS";
  document.getElementById("gpuSimFps").textContent="~"+Math.round(gpuUpgrade.sustainableFps)+" FPS";
  document.getElementById("cpuSimTarget").textContent="Target fit "+Math.round(cpuUpgrade.targetFit)+"/100";
@@ -3176,7 +3263,7 @@ function calculate(){
  const resolutionChecks=[{key:"720",label:"720p"},{key:"1080",label:"1080p"},{key:"1440",label:"1440p"},{key:"2160",label:"4K"}];
  resolutionChecks.forEach(item=>{
    const card=document.querySelector('.resolution-card[data-resolution="'+item.key+'"]');
-   const check=modelScenario(cpuScore,gpuScore,item.key,gt,target,g,context);
+   const check=modelScenario(cpuScore,gpuScore,item.key,gt,target,g,context,gameProfile);
    const tier=check.targetFit>=85?"good":check.targetFit>=65?"warn":"bad";
    card.className="resolution-card "+tier;
    card.querySelector("strong").textContent=check.limiting==="Balanced"?"Balanced":check.limiting+"-Limited";
@@ -3220,7 +3307,7 @@ function calculate(){
  document.getElementById("gpuHeadroom").textContent=Math.max(0,Math.round(100-gpuPressure))+"%";
  document.getElementById("infoResolution").textContent=r==="2160"?"4K":r+"p";
  document.getElementById("infoTarget").textContent=target+" FPS";
- document.getElementById("infoGame").textContent=document.getElementById("gameType").selectedOptions[0].text;
+ document.getElementById("infoGame").textContent=gameProfile?gameProfile.name:document.getElementById("gameType").selectedOptions[0].text;
  document.getElementById("infoLimit").textContent=limit;
  document.getElementById("infoSustain").textContent=scenario.targetStatus;
  document.getElementById("infoCapacity").textContent=Math.round(scenario.sustainableFps)+" FPS model capacity";
