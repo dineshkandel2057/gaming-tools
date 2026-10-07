@@ -171,7 +171,9 @@
         path=["Keep your current core components","Save the budget for a larger, clearly useful upgrade"];
       }
 
-      return {first,priority,reason,icon,pressure,ramStatus,storageStatus,path};
+      const cpuStatus=first==="CPU"?"Needs upgrade":cpuPressure>0.34?"Moderate load":"Balanced";
+      const gpuStatus=first==="GPU"?"Needs upgrade":gpuPressure>0.34?"Moderate load":"Balanced";
+      return {first,priority,reason,icon,pressure,cpuStatus,gpuStatus,ramStatus,storageStatus,path};
     }
 
     function run(){
@@ -186,8 +188,8 @@
       $("verdict").textContent=r.first==="None"?"No urgent upgrade":r.first+" first";
       $("priority").textContent=r.priority+" priority";$("priority").className="priority "+r.priority.toLowerCase();
       $("icon").textContent=r.icon;$("reason").textContent=r.reason;
-      $("limit").textContent=r.first==="None"?"Balanced":r.first+"-leaning";
-      $("pressure").textContent=r.pressure;$("ramStatus").textContent=r.ramStatus;$("storageStatus").textContent=r.storageStatus;
+      $("limit").textContent=r.cpuStatus;
+      $("pressure").textContent=r.gpuStatus;$("ramStatus").textContent=r.ramStatus;$("storageStatus").textContent=r.storageStatus;
       $("path").innerHTML=r.path.map((x,i)=>'<div class="road-item '+(i===0?'active':'')+'"><span class="road-num">'+(i+1)+'</span><p>'+x+'</p></div>').join("");
     }
 
