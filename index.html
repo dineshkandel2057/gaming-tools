@@ -172,11 +172,16 @@ nav a:hover,nav a.active{color:white;background:#1d202b}
 .homepage-guide-head{max-width:760px;margin:0 auto 24px;text-align:center}
 .homepage-guide-head h2{font-size:clamp(27px,3.2vw,36px);margin-bottom:10px}
 .homepage-guide-head p{color:var(--muted);font-size:15px;line-height:1.8}
-.homepage-guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.homepage-guide-item{padding:18px;border:1px solid rgba(157,174,204,.12);border-radius:14px;background:rgba(255,255,255,.025)}
-.homepage-guide-item h3{font-size:17px;margin-bottom:7px}
-.homepage-guide-item p{color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:12px}
-.homepage-guide-item a{color:#b9aaff;font-size:12px;font-weight:700}
+.homepage-guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.homepage-guide-item{display:flex;flex-direction:column;min-height:190px;padding:22px;border:1px solid rgba(157,174,204,.14);border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));color:inherit;text-decoration:none;box-shadow:0 12px 32px rgba(0,0,0,.12);transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}
+.homepage-guide-item:hover{transform:translateY(-4px) scale(1.012);border-color:rgba(151,132,255,.38);background:linear-gradient(145deg,rgba(118,95,255,.1),rgba(255,255,255,.025));box-shadow:0 18px 42px rgba(0,0,0,.2),0 0 28px rgba(101,82,225,.08)}
+.homepage-guide-item:focus-visible{outline:2px solid #9b8aff;outline-offset:4px}
+.homepage-guide-kicker{display:block;margin-bottom:13px;color:#9b8cff;font-size:9px;font-weight:800;letter-spacing:.14em}
+.homepage-guide-item h3{font-size:17px;margin-bottom:8px}
+.homepage-guide-item p{color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:16px}
+.homepage-guide-action{display:flex;justify-content:space-between;align-items:center;margin-top:auto;color:#b9aaff;font-size:12px;font-weight:800}
+.homepage-guide-action span{font-size:16px;transition:transform .2s ease}
+.homepage-guide-item:hover .homepage-guide-action span{transform:translateX(3px)}
 @media(max-width:800px){.homepage-guide{margin-top:58px}.homepage-guide-grid{grid-template-columns:1fr}.homepage-guide-card{padding:23px}}
 
 /* ================= FOOTER ================= */
@@ -278,8 +283,8 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 /* ================= GUIDES CAROUSEL ================= */
 .guides-showcase{max-width:1180px;margin:92px auto 20px;padding:0 22px 10px}
 .guides-showcase .section-title{margin-bottom:30px}
-.guides-carousel{position:relative;min-height:390px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0 70px}
-.guides-stage{position:relative;width:min(610px,100%);height:300px;perspective:1200px}
+.guides-carousel{position:relative;min-height:390px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0 82px}
+.guides-stage{position:relative;width:min(760px,100%);height:300px;perspective:1200px}
 .guide-slide{position:absolute;inset:0;border:1px solid rgba(157,174,204,.17);border-radius:22px;padding:30px 32px;background:linear-gradient(145deg,rgba(27,34,54,.96),rgba(12,17,28,.97));box-shadow:0 24px 70px rgba(0,0,0,.28);display:flex;flex-direction:column;justify-content:center;overflow:hidden;opacity:0;pointer-events:none;transform:translateX(0) scale(.82);filter:blur(8px);transition:transform .55s cubic-bezier(.2,.75,.2,1),opacity .45s ease,filter .55s ease,border-color .35s ease,box-shadow .35s ease}
 .guide-slide:before{content:"";position:absolute;width:260px;height:260px;right:-90px;top:-100px;border-radius:50%;background:rgba(111,83,255,.18);filter:blur(70px);pointer-events:none}
 .guide-slide .guide-number{position:relative;color:#9b8cff;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin-bottom:14px}
@@ -295,24 +300,24 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 .guide-arrow{position:absolute;z-index:5;width:46px;height:46px;border:1px solid rgba(157,174,204,.2);border-radius:50%;background:rgba(13,18,29,.84);color:#edf1f9;font-size:31px;line-height:1;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(12px);transition:transform .2s,background .2s,border-color .2s}
 .guide-arrow:hover{transform:scale(1.06);background:rgba(118,95,255,.18);border-color:rgba(151,132,255,.38)}
 .guide-arrow:focus-visible{outline:2px solid #9b8aff;outline-offset:4px}
-.guide-arrow-prev{left:10px}.guide-arrow-next{right:10px}
+.guide-arrow-prev{left:24px}.guide-arrow-next{right:24px}
 .guide-dots{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:7px}
 .guide-dot{width:7px;height:7px;border:0;border-radius:50%;padding:0;background:#495267;cursor:pointer;transition:width .25s,background .25s,transform .25s}
 .guide-dot.is-active{width:22px;border-radius:999px;background:#8d79ff}
 .guide-dot:focus-visible{outline:2px solid #9b8aff;outline-offset:4px}
 @media(max-width:800px){
   .guides-showcase{margin-top:70px}
-  .guides-carousel{min-height:370px;padding:0 38px}
-  .guides-stage{height:290px}
+  .guides-carousel{min-height:370px;padding:0 58px}
+  .guides-stage{width:min(700px,100%);height:290px}
   .guide-slide{padding:26px 24px}
   .guide-slide.is-prev{transform:translateX(-86%) scale(.7)}.guide-slide.is-next{transform:translateX(86%) scale(.7)}
-  .guide-arrow{width:40px;height:40px;font-size:27px}.guide-arrow-prev{left:2px}.guide-arrow-next{right:2px}
+  .guide-arrow{width:40px;height:40px;font-size:27px}.guide-arrow-prev{left:8px}.guide-arrow-next{right:8px}
 }
 @media(max-width:520px){
-  .guides-carousel{min-height:355px;padding:0 18px}.guides-stage{height:285px}
+  .guides-carousel{min-height:355px;padding:0 48px}.guides-stage{width:100%;height:285px}
   .guide-slide{padding:24px 21px;border-radius:18px}.guide-slide h3{font-size:25px}.guide-slide p{font-size:13px}
   .guide-slide.is-prev,.guide-slide.is-next{opacity:.18;filter:blur(6px)}
-  .guide-arrow{width:38px;height:38px}.guide-arrow-prev{left:-1px}.guide-arrow-next{right:-1px}
+  .guide-arrow{width:38px;height:38px}.guide-arrow-prev{left:5px}.guide-arrow-next{right:5px}
 }
 
 /* SystemFit PC — smooth guide-carousel edges */
@@ -571,8 +576,9 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 .tb-card-body{position:relative;z-index:4;padding:12px 16px 15px;display:flex;flex-direction:column;flex:1}
 .tb-eyebrow{color:#8594ac;font-size:7px;font-weight:800;letter-spacing:.12em}
 .tb-card h3{margin-top:5px;font:700 19px/1.14 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.04em;color:#f3f5fa}
-.tb-specs{display:flex;gap:7px;margin-top:9px;flex-wrap:wrap}
-.tb-specs b{padding:5px 7px;border-radius:6px;background:rgba(255,255,255,.045);border:1px solid rgba(157,174,204,.1);color:#b8c4d7;font-size:7px}
+.tb-specs{display:flex;align-items:center;gap:7px;margin-top:9px;flex-wrap:wrap}
+.tb-specs b{padding:5px 7px;border-radius:6px;background:rgba(255,255,255,.045);border:1px solid rgba(157,174,204,.1);color:#b8c4d7;font-size:7px;white-space:nowrap}
+.tb-spec-separator{color:#8d9ab0;font-size:8px;font-weight:800;line-height:1}
 .tb-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto;padding-top:12px}
 .tb-stats span{padding:8px;border-radius:8px;background:rgba(4,9,17,.42);border:1px solid rgba(157,174,204,.08);color:#71819a;font-size:6px;font-weight:800;letter-spacing:.08em}
 .tb-stats strong{display:block;margin-top:3px;color:#e8edf6;font-size:9px;letter-spacing:0}
@@ -1099,7 +1105,7 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
       <div class="tb-card-body">
         <span class="tb-eyebrow">CREATOR + GAMING</span>
         <h3>Creator Powerhouse</h3>
-        <div class="tb-specs"><b>Ryzen 7 7800X3D</b><b>RTX 4080 Super</b></div>
+        <div class="tb-specs"><b>Ryzen 7 7800X3D</b><span class="tb-spec-separator">/</span><b>RTX 4080 Super</b></div>
         <div class="tb-stats"><span>EST. PRICE <strong>~$1,900</strong></span><span>1440p <strong>160+ FPS*</strong></span></div>
       </div>
     </a>
@@ -1120,7 +1126,7 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
       <div class="tb-card-body">
         <span class="tb-eyebrow">HIGH FPS / LOW COST</span>
         <h3>Budget Esports Rig</h3>
-        <div class="tb-specs"><b>Ryzen 5 5600</b><b>Radeon RX 6600</b></div>
+        <div class="tb-specs"><b>Ryzen 5 5600</b><span class="tb-spec-separator">/</span><b>Radeon RX 6600</b></div>
         <div class="tb-stats"><span>EST. PRICE <strong>~$650</strong></span><span>1080p <strong>200+ FPS*</strong></span></div>
       </div>
     </a>
@@ -1141,7 +1147,7 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
       <div class="tb-card-body">
         <span class="tb-eyebrow">1440P GAMING</span>
         <h3>The 1440p Sweet Spot</h3>
-        <div class="tb-specs"><b>AMD Ryzen 5</b><b>GeForce RTX 4070</b></div>
+        <div class="tb-specs"><b>AMD Ryzen 5</b><span class="tb-spec-separator">/</span><b>GeForce RTX 4070</b></div>
         <div class="tb-stats"><span>EST. PRICE <strong>~$1,150</strong></span><span>1440p <strong>120+ FPS*</strong></span></div>
         <span class="tb-action">Build this setup <b>→</b></span>
       </div>
@@ -1210,21 +1216,24 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
       <p>SystemFit PC is built around the questions that matter before you buy, build or upgrade. Start with your goal, check the hardware that affects it, then use the tools and guides to make a more informed decision.</p>
     </div>
     <div class="homepage-guide-grid">
-      <div class="homepage-guide-item">
+      <a class="homepage-guide-item" href="fps-calculator.html">
+        <span class="homepage-guide-kicker">PERFORMANCE</span>
         <h3>Check gaming performance</h3>
         <p>Estimate FPS for a specific game, resolution and target before changing hardware.</p>
-        <a href="fps-calculator.html">Use the FPS Calculator →</a>
-      </div>
-      <div class="homepage-guide-item">
+        <span class="homepage-guide-action">Use the FPS Calculator <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="homepage-guide-item" href="bottleneck.html">
+        <span class="homepage-guide-kicker">DIAGNOSIS</span>
         <h3>Find the limiting component</h3>
         <p>Understand whether your CPU or GPU is more likely to limit performance in your scenario.</p>
-        <a href="bottleneck.html">Check the Bottleneck Calculator →</a>
-      </div>
-      <div class="homepage-guide-item">
+        <span class="homepage-guide-action">Check the Bottleneck Calculator <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="homepage-guide-item" href="which-pc-component-to-upgrade-first.html">
+        <span class="homepage-guide-kicker">UPGRADE PATH</span>
         <h3>Choose your next upgrade</h3>
         <p>Use practical guides to decide which component deserves attention instead of upgrading blindly.</p>
-        <a href="which-pc-component-to-upgrade-first.html">Read the Upgrade Guide →</a>
-      </div>
+        <span class="homepage-guide-action">Read the Upgrade Guide <span aria-hidden="true">→</span></span>
+      </a>
     </div>
   </div>
 </section>
