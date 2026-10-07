@@ -159,3 +159,56 @@ html body .sfp-reveal-target.sfp-reveal-visible {
   .sfp-select-option.is-active{outline:2px solid Highlight}
   .sfp-select-panel{border:1px solid ButtonText;background:Canvas;color:CanvasText}
 }
+
+
+/* Keep page-specific searchable pickers visually consistent with the universal selector. */
+.picker-trigger,
+.game-profile-trigger,
+.hardware-picker-trigger,
+.game-picker-trigger,
+.component-picker-trigger{
+  width:100%!important;
+  min-height:40px!important;
+  height:auto!important;
+  padding:9px 38px 9px 12px!important;
+  border:1px solid rgba(83,118,166,.28)!important;
+  border-radius:9px!important;
+  background:linear-gradient(180deg,rgba(12,21,34,.98),rgba(8,15,25,.98))!important;
+  color:#edf2fb!important;
+  font:600 13px/1.35 "DM Sans",Inter,ui-sans-serif,system-ui,sans-serif!important;
+  box-sizing:border-box!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:10px!important;
+  text-align:left!important;
+  cursor:pointer!important;
+  outline:0!important;
+  appearance:none!important;
+}
+.picker-trigger:hover,
+.game-profile-trigger:hover,
+.hardware-picker-trigger:hover,
+.game-picker-trigger:hover,
+.component-picker-trigger:hover{
+  border-color:rgba(142,121,255,.52)!important;
+  background:linear-gradient(180deg,rgba(15,25,41,.99),rgba(9,16,28,.99))!important;
+}
+.picker-trigger:focus-visible,
+.game-profile-trigger:focus-visible,
+.hardware-picker-trigger:focus-visible,
+.game-picker-trigger:focus-visible,
+.component-picker-trigger:focus-visible,
+.game-profile-picker.is-open .game-profile-trigger,
+.hardware-picker.is-open .hardware-picker-trigger,
+.game-picker.open .game-picker-trigger{
+  border-color:#8066ff!important;
+  box-shadow:0 0 0 3px rgba(126,92,255,.13),0 10px 30px rgba(0,0,0,.16)!important;
+}
+@media(max-width:600px){
+  .picker-trigger,
+  .game-profile-trigger,
+  .hardware-picker-trigger,
+  .game-picker-trigger,
+  .component-picker-trigger{min-height:42px!important;font-size:12px!important}
+}
