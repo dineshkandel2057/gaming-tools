@@ -690,12 +690,12 @@ function setSelect(id,list,label,selected){addOptions(id,list,label,selected)}
 function updatePlatformOptions(){
  const cpu=getById(CPU_DATA,$("cpu").value);
  const oldBoard=$("motherboard").value,oldMemory=$("memory").value;
- const boards=cpu?BOARD_DATA.filter(x=>x.socket===cpu.socket):[];
+ const boards=cpu?BOARD_DATA.filter(x=>x.socket===cpu.socket):BOARD_DATA;
  setSelect("motherboard",boards,"motherboard",oldBoard);
  const board=getById(boards,$("motherboard").value);
  const kits=board?MEMORY_DATA.filter(x=>x.type===board.memory):[];
  setSelect("memory",kits,"memory kit",oldMemory);
- $("boardNote").textContent=cpu?(boards.length+" motherboard families shown for "+cpu.socket+". Check the exact BIOS support list before buying."):"Choose a CPU first.";
+ $("boardNote").textContent=cpu?(boards.length+" motherboard families shown for "+cpu.socket+". Check the exact BIOS support list before buying."):"Choose a CPU to filter the motherboard list to compatible socket families.";
  $("memoryNote").textContent=board?board.memory+" kits only; memory kits are not interchangeable across DDR generations.":"Choose a compatible motherboard first.";
 }
 function getValue(id,list){return getById(list,$(id).value)}
