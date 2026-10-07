@@ -760,6 +760,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
           <h3>📈 Detailed pressure &amp; headroom</h3>
           <div class="bar-row"><div class="bar-label"><span>CPU Pressure</span><b id="cpuPressureTextAdvanced"></b></div><div class="bar"><div class="fill cpu" id="cpuPressureAdvanced"></div></div></div>
           <div class="bar-row"><div class="bar-label"><span>GPU Pressure</span><b id="gpuPressureTextAdvanced"></b></div><div class="bar"><div class="fill gpu" id="gpuPressureAdvanced"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>System Balance</span><b id="balanceText">—</b></div><div class="bar"><div class="fill good" id="balanceBar"></div></div></div>
           <div class="info-grid">
             <div class="info"><small>CPU Headroom</small><strong id="cpuHeadroom"></strong></div>
             <div class="info"><small>GPU Headroom</small><strong id="gpuHeadroom"></strong></div>
@@ -3652,7 +3653,6 @@ function calculate(){
  const gpuGain=gpuUpgrade.sustainableFps-scenario.sustainableFps;
  document.getElementById("simVerdict").textContent=cpuGain>gpuGain+2?"A CPU-side performance increase has more modeled upside for this scenario.":gpuGain>cpuGain+2?"A GPU-side performance increase has more modeled upside for this scenario.":"CPU and GPU upgrades produce similar modeled gains; check price, compatibility, and the games you actually play before choosing.";
  document.getElementById("upgradeGain").textContent=(Math.max(cpuGain,gpuGain)>0?"+":"")+Math.max(0,Math.round(Math.max(cpuGain,gpuGain)))+" FPS";
- document.getElementById("heroAction").textContent=document.getElementById("upgradeResult").textContent;
 
  const resolutionChecks=[{key:"720",label:"720p"},{key:"1080",label:"1080p"},{key:"1440",label:"1440p"},{key:"2160",label:"4K"}];
  resolutionChecks.forEach(item=>{
@@ -3677,6 +3677,7 @@ function calculate(){
    upgradeResult.textContent="Neither upgrade is clearly favored by this scenario.";
    upgradeReason.textContent="CPU and GPU pressure are close. If the target is already met, keep the system as-is; if you need more FPS, compare the resolution-specific result and your actual games before choosing which part to replace.";
  }
+ document.getElementById("heroAction").textContent=document.getElementById("upgradeResult").textContent;
 
  const balanceTier=balance>=90?"Excellent balance":balance>=75?"Good balance":balance>=60?"Mixed balance":"Uneven pairing";
  const targetTier=scenario.targetFit>=95?"Strong headroom":scenario.targetFit>=85?"Close to the model limit":scenario.targetFit>=65?"Below target range":"Well below target range";
