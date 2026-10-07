@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="systemfit-favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Use the free SystemFit PC Upgrade Advisor to decide whether your CPU, GPU, RAM or storage should be upgraded first for your games, resolution, FPS target and budget.">
+  <link rel="canonical" href="https://systemfitpc.vercel.app/upgrade-advisor.html">
+  <meta property="og:title" content="PC Upgrade Advisor | SystemFit PC">
+  <meta property="og:description" content="Find the PC upgrade that should come first based on your hardware, games, resolution, target FPS and budget.">
+  <meta property="og:url" content="https://systemfitpc.vercel.app/upgrade-advisor.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SystemFit PC">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PC Upgrade Advisor | SystemFit PC">
+  <meta name="twitter:description" content="Find the PC upgrade that should come first based on your hardware, games, resolution, target FPS and budget.">
+  <title>PC Upgrade Advisor | SystemFit PC</title>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"SystemFit PC Upgrade Advisor",
+    "url":"https://systemfitpc.vercel.app/upgrade-advisor.html",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"Web",
+    "description":"A transparent rule-based gaming PC upgrade advisor that recommends which component to upgrade first based on current hardware, gaming target and budget.",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+  }
+  </script>
+  <link rel="stylesheet" href="site-universal.css">
+  <style>
+    :root{--bg:#090c14;--panel:rgba(19,25,39,.84);--border:rgba(157,174,204,.16);--text:#f5f7fc;--muted:#aab5c8;--purple:#735dff;--cyan:#69caff;--green:#5ce0a2;--amber:#ffc27d;--red:#ff7c71}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{min-height:100vh;background:radial-gradient(ellipse at 15% 3%,rgba(102,77,255,.18),transparent 34%),radial-gradient(ellipse at 88% 18%,rgba(33,162,219,.12),transparent 33%),var(--bg);color:var(--text);font-family:"DM Sans",Inter,system-ui,sans-serif;line-height:1.6}
+    h1,h2,h3{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
+    main{max-width:1080px;margin:auto;padding:68px 22px 90px}
+    .hero{text-align:center;max-width:820px;margin:0 auto 38px}
+    .eyebrow{display:inline-block;margin-bottom:14px;padding:7px 11px;border:1px solid rgba(157,139,255,.24);border-radius:999px;background:rgba(118,95,255,.1);color:#b9aaff;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(40px,6vw,60px);line-height:1.06;margin-bottom:15px}
+    h1 span{background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{color:var(--muted);font-size:17px;line-height:1.8}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.8fr);gap:20px;align-items:start}
+    .card{border:1px solid var(--border);border-radius:20px;background:linear-gradient(145deg,rgba(24,31,47,.84),rgba(15,20,32,.92));padding:25px}
+    .card h2{font-size:22px;margin-bottom:5px}.intro{color:#929fb4;font-size:13px;margin-bottom:21px}
+    .field{margin-bottom:15px}.field label{display:block;margin-bottom:7px;color:#dfe6f3;font-size:12px;font-weight:800}
+    select{width:100%;padding:12px 13px;border:1px solid rgba(157,174,204,.18);border-radius:10px;background:#101625;color:#eef2fa;font:500 13px "DM Sans",sans-serif;outline:none}
+    select:focus{border-color:rgba(151,132,255,.55);box-shadow:0 0 0 3px rgba(118,95,255,.1)}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .actions{display:flex;gap:10px;margin-top:7px}.btn{flex:1;border:0;border-radius:10px;padding:12px 15px;font:800 13px "DM Sans",sans-serif;cursor:pointer}
+    .primary{background:linear-gradient(100deg,#735dff,#4fa9e8);color:#fff}.secondary{background:rgba(255,255,255,.06);border:1px solid rgba(157,174,204,.16);color:#dfe6f3}
+    .results{position:sticky;top:100px}.result-label{color:#94a1b7;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .verdict{display:flex;align-items:center;gap:15px;margin:9px 0 18px}.verdict-icon{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;border-radius:14px;background:rgba(118,95,255,.12);border:1px solid rgba(151,132,255,.2);font-size:22px}.verdict h2{font-size:27px;line-height:1.1;margin:0}
+    .verdict-copy{color:#aab5c8;font-size:13px;line-height:1.7}
+    .priority{display:inline-block;margin-top:10px;padding:5px 9px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+    .high{color:#ffaaa1;background:rgba(255,124,113,.1);border:1px solid rgba(255,124,113,.2)}.medium{color:#ffd09a;background:rgba(255,194,125,.09);border:1px solid rgba(255,194,125,.18)}.low{color:#9ceabd;background:rgba(92,224,162,.08);border:1px solid rgba(92,224,162,.18)}
+    .metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:19px}.metric{padding:13px;border:1px solid rgba(157,174,204,.11);border-radius:11px;background:rgba(255,255,255,.025)}.metric span{display:block;color:#8997ad;font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:800}.metric b{display:block;margin-top:4px;font-size:13px;color:#e8edf7}
+    .path{margin-top:18px;border-top:1px solid rgba(157,174,204,.11);padding-top:18px}.path h3{font-size:16px;margin-bottom:10px}.path-item{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid rgba(157,174,204,.08);font-size:12px}.path-item:last-child{border:0}.path-num{width:22px;height:22px;display:grid;place-items:center;border-radius:7px;background:rgba(118,95,255,.12);color:#b8a9ff;font-weight:800;flex:0 0 22px}.path-item span:last-child{color:#c4cede}.note{margin-top:15px;padding:13px 14px;border-radius:11px;background:rgba(118,95,255,.07);border:1px solid rgba(151,132,255,.12);color:#aab6c9;font-size:11px;line-height:1.65}
+    .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.links a{padding:8px 10px;border:1px solid rgba(157,174,204,.13);border-radius:9px;color:#b8a9ff;font-size:11px;font-weight:800;background:rgba(255,255,255,.025)}
+    .below{margin-top:20px}.below h2{font-size:22px;margin-bottom:10px}.below p{color:#aab5c8;font-size:13px;line-height:1.8}.below ul{margin:13px 0 0 18px;color:#aab5c8;font-size:13px;line-height:1.8}
+    @media(max-width:850px){.layout{grid-template-columns:1fr}.results{position:static}}
+    @media(max-width:520px){main{padding:48px 15px 70px}.card{padding:20px}.grid2{grid-template-columns:1fr}.actions{flex-direction:column}.verdict h2{font-size:23px}}
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" data-sfp-reveal>
+      <div class="eyebrow">Free SystemFit PC Tool</div>
+      <h1>PC Upgrade <span>Advisor</span></h1>
+      <p>Tell us what you have, what you play and what you want to achieve. We’ll identify the upgrade that should come first instead of blindly telling you to buy the newest part.</p>
+    </section>
+
+    <div class="layout">
+      <section class="card" data-sfp-reveal>
+        <h2>Your current PC</h2>
+        <p class="intro">Choose the closest match. This is a planning model, not a measured benchmark of your exact system.</p>
+
+        <div class="grid2">
+          <div class="field"><label for="cpu">CPU</label><select id="cpu"></select></div>
+          <div class="field"><label for="gpu">GPU</label><select id="gpu"></select></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="ram">RAM</label><select id="ram"><option value="8">8 GB</option><option value="16" selected>16 GB</option><option value="32">32 GB</option><option value="64">64 GB</option></select></div>
+          <div class="field"><label for="storage">Storage</label><select id="storage"><option value="hdd">HDD</option><option value="sata">SATA SSD</option><option value="nvme" selected>NVMe SSD</option></select></div>
+        </div>
+
+        <div class="field"><label for="resolution">Gaming resolution</label><select id="resolution"><option value="">Select gaming resolution</option><option value="1080">1080p</option><option value="1440">1440p</option><option value="2160">4K</option></select></div>
+
+        <div class="grid2">
+          <div class="field"><label for="target">Target FPS</label><select id="target"><option value="">Select target FPS</option><option value="60">60 FPS</option><option value="90">90 FPS</option><option value="120">120 FPS</option><option value="144">144 FPS</option><option value="165">165 FPS</option><option value="240">240 FPS</option></select></div>
+          <div class="field"><label for="game">Main game type</label><select id="game">
+            <option value="modern">Modern AAA / demanding</option>
+            <option value="competitive">Competitive / esports</option>
+            <option value="mixed">Mixed games</option>
+            <option value="older">Older / lighter games</option>
+          </select></div>
+        </div>
+
+        <div class="field"><label for="budget">Upgrade budget</label><select id="budget"><option value="100">Under $100</option><option value="250">$100–$250</option><option value="500">$250–$500</option><option value="1000">$500–$1,000</option><option value="1001">$1,000+</option></select></div>
+
+        <div class="actions"><button class="btn primary" id="analyze">Analyze my PC</button><button class="btn secondary" id="reset">Reset</button></div>
+      </section>
+
+      <section class="card results" data-sfp-reveal>
+        <div class="result-label">Recommended first upgrade</div>
+        <div class="verdict">
+          <div class="verdict-icon" id="icon">?</div>
+          <div><h2 id="verdict">Choose your target</h2><span class="priority low" id="priority">Waiting for input</span></div>
+        </div>
+        <p class="verdict-copy" id="reason">Enter your current hardware and gaming target. The advisor will compare the likely limitation, target resolution and FPS goal before recommending where to spend first.</p>
+
+        <div class="metrics">
+          <div class="metric"><span>Likely limit</span><b id="limit">—</b></div>
+          <div class="metric"><span>Target pressure</span><b id="pressure">—</b></div>
+          <div class="metric"><span>RAM status</span><b id="ramStatus">—</b></div>
+          <div class="metric"><span>Storage status</span><b id="storageStatus">—</b></div>
+        </div>
+
+        <div class="path">
+          <h3>Suggested upgrade path</h3>
+          <div id="path"></div>
+        </div>
+
+        <div class="links">
+          <a href="gpu-comparison.html">Compare GPUs →</a>
+          <a href="fps-calculator.html">Check FPS →</a>
+          <a href="bottleneck.html">Check bottleneck →</a>
+          <a href="build-planner.html">Plan a build →</a>
+        </div>
+
+        <div class="note" id="note">The result is a transparent rule-based recommendation. Exact gains depend on the game, settings, drivers, thermals, power limits and your other components.</div>
+      </section>
+    </div>
+
+    <section class="card below" data-sfp-reveal>
+      <h2>How the advisor decides</h2>
+      <p>There is no universal “upgrade this first” answer. A 4K gamer and a 240 FPS esports player can have the same PC and need completely different upgrades. SystemFit weighs your resolution, frame-rate target, game type, current CPU/GPU balance, RAM capacity, storage type and budget.</p>
+      <ul>
+        <li><strong>GPU first:</strong> usually favored when higher resolution, demanding games or graphics-heavy targets put the graphics card under the most pressure.</li>
+        <li><strong>CPU first:</strong> more likely for high-refresh 1080p gaming or when a strong GPU is paired with a comparatively weak processor.</li>
+        <li><strong>RAM first:</strong> prioritized when 8GB is the current capacity or memory pressure is likely to cause stutter and background-task problems.</li>
+        <li><strong>Storage first:</strong> mainly when the system still runs games from an HDD. An SSD improves loading and asset streaming, not average FPS.</li>
+        <li><strong>No immediate upgrade:</strong> sometimes the smartest answer when the current PC is already a reasonable match for the stated target and budget.</li>
+      </ul>
+      <p style="margin-top:12px">Use the <a href="which-pc-component-to-upgrade-first.html" style="color:#b8a9ff;font-weight:800">Upgrade First guide</a> for the reasoning behind the recommendations.</p>
+    </section>
+  </main>
+
+  <footer class="sfp-site-footer">
+    <p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
+    <p><a href="privacy-policy.html">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+  (() => {
+    const CPUs = {
+      "Intel Core i3-12100F":0.58,"Ryzen 5 3600":0.62,"Ryzen 5 5600":0.72,
+      "Core i5-12400F":0.76,"Ryzen 5 7600":0.86,"Core i5-13400F":0.84,
+      "Core i5-14600K":1.00,"Ryzen 7 7800X3D":1.08,"Ryzen 7 9800X3D":1.15,
+      "Core i7-13700K":1.03,"Core i7-14700K":1.08,"Ryzen 9 9950X3D":1.12
+    };
+    const GPUs = {
+      "GTX 1650":0.38,"RTX 2060":0.55,"RTX 3060 12GB":0.67,"RX 6600":0.65,
+      "RTX 4060":0.72,"RX 7600":0.73,"RTX 4060 Ti 16GB":0.84,"RTX 4070":1.00,
+      "RX 7800 XT":1.04,"RTX 4070 Super":1.08,"RTX 5070":1.18,"RTX 5070 Ti":1.34,
+      "RTX 5080":1.60,"RX 7900 XTX":1.42
+    };
+    const $=id=>document.getElementById(id);
+    const cpuNames=Object.keys(CPUs),gpuNames=Object.keys(GPUs);
+    cpuNames.forEach(x=>$("cpu").add(new Option(x,x)));
+    gpuNames.forEach(x=>$("gpu").add(new Option(x,x)));
+    $("cpu").value="Ryzen 5 5600";
+    $("gpu").value="RTX 4060";
+
+    function classify(){
+      const cpu=CPUs[$("cpu").value], gpu=GPUs[$("gpu").value], ram=+$("ram").value;
+      const res=$("resolution").value, target=+$("target").value||60, type=$("game").value;
+      const budget=+$("budget").value, storage=$("storage").value;
+      if(!res||!$("target").value)return null;
+
+      const resolutionWeight=res==="1080"?0.80:res==="1440"?1.00:1.28;
+      const fpsWeight=target>=240?1.30:target>=165?1.18:target>=120?1.08:1;
+      const cpuPressure=(1-cpu)*fpsWeight*(res==="1080"?1.28:res==="1440"?0.94:0.68);
+      const gpuPressure=(1-gpu)*resolutionWeight*(type==="modern"?1.16:type==="competitive"?0.76:type==="older"?0.62:1);
+      const ramPressure=ram<16?0.95:ram===16?0.18:0;
+      const storagePressure=storage==="hdd"?0.68:storage==="sata"?0.10:0;
+
+      let scores={CPU:cpuPressure,GPU:gpuPressure,RAM:ramPressure,Storage:storagePressure};
+      if(type==="competitive"){scores.CPU+=0.14;scores.GPU-=0.05}
+      if(type==="modern"){scores.GPU+=0.10}
+      if(res==="2160"){scores.GPU+=0.18;scores.CPU-=0.08}
+      if(target>=165){scores.CPU+=0.12}
+      if(ram===8)scores.RAM+=0.35;
+      if(storage==="hdd")scores.Storage+=0.35;
+
+      let ranked=Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+      let first=ranked[0][0];
+      const gap=ranked[0][1]-ranked[1][1];
+      const totalPressure=ranked[0][1];
+
+      // Avoid calling a tiny difference a definitive upgrade.
+      if(totalPressure<0.20 && gap<0.08) first="None";
+      let priority=totalPressure>=0.75?"High":totalPressure>=0.42?"Medium":"Low";
+      if(first==="None")priority="Low";
+
+      let reason="",icon="✓";
+      if(first==="GPU"){icon="GPU";reason=res==="2160"?"Your 4K target puts much more pressure on the graphics card. A stronger GPU is the most direct way to increase graphics performance.":"Your selected resolution/game target is more graphics-heavy than your current GPU tier. Upgrade the GPU before spending on a faster CPU."}
+      if(first==="CPU"){icon="CPU";reason=target>=165||res==="1080"?"Your high-refresh/1080p target makes CPU frame delivery more important. A stronger GPU may not be fully utilized until the CPU can feed it consistently.":"Your CPU is the weaker side of this pairing for the target you selected. A CPU upgrade is more likely to improve consistency and high-FPS performance."}
+      if(first==="RAM"){icon="RAM";reason="8GB is now a major capacity constraint for modern gaming and multitasking. Move to at least 16GB before chasing a faster CPU or GPU."}
+      if(first==="Storage"){icon="SSD";reason="Your games are still running from a hard drive. Moving the game library to an SSD is the first quality-of-life upgrade; it improves loading and asset streaming rather than average FPS."}
+      if(first==="None"){icon="✓";reason="Your selected hardware is reasonably balanced for the target. If performance is acceptable, saving your budget may be smarter than upgrading immediately."}
+
+      // Budget-aware safety: do not recommend an expensive class when the budget is tiny.
+      if(first==="GPU" && budget<=100 && ram>=16 && storage!=="hdd"){priority="Medium";reason+=" Your current budget is small for a meaningful GPU jump, so compare prices carefully or save for a larger upgrade."}
+      if(first==="CPU" && budget<=100){priority="Medium";reason+=" With a small budget, a CPU platform upgrade may not be worthwhile; check for a compatible drop-in processor first."}
+
+      const ramStatus=ram<16?"Upgrade recommended":ram===16?"16GB baseline":"32GB+ comfortable";
+      const storageStatus=storage==="hdd"?"Upgrade recommended":storage==="sata"?"Fine for gaming":"Good";
+      const pressure=totalPressure>=0.75?"High":totalPressure>=0.42?"Moderate":"Low";
+
+      let path=[];
+      if(first==="GPU"){
+        path=["GPU first","Re-check CPU/GPU balance after the GPU upgrade"];
+        if(ram<16)path.push("Move to 16GB RAM if stutter remains");
+      } else if(first==="CPU"){
+        path=["CPU first","Keep the current GPU unless it is also limiting the target","Re-check performance before replacing more parts"];
+      } else if(first==="RAM"){
+        path=["RAM first → 16GB minimum","Then reassess CPU/GPU usage in your games"];
+      } else if(first==="Storage"){
+        path=["Move active games from HDD to SSD","Then reassess FPS/stutter before buying performance hardware"];
+      } else {
+        path=["Keep your current core components","Save the budget for a larger, clearly useful upgrade"];
+      }
+
+      return {first,priority,reason,icon,pressure,ramStatus,storageStatus,path};
+    }
+
+    function run(){
+      const r=classify();
+      if(!r){
+        $("verdict").textContent="Choose your target";
+        $("priority").textContent="Waiting for input";$("priority").className="priority low";
+        $("icon").textContent="?";$("reason").textContent="Select a gaming resolution and target FPS, then analyze your PC.";
+        $("limit").textContent="—";$("pressure").textContent="—";$("ramStatus").textContent="—";$("storageStatus").textContent="—";$("path").innerHTML="";
+        return;
+      }
+      $("verdict").textContent=r.first==="None"?"No urgent upgrade":r.first+" first";
+      $("priority").textContent=r.priority+" priority";$("priority").className="priority "+r.priority.toLowerCase();
+      $("icon").textContent=r.icon;$("reason").textContent=r.reason;
+      $("limit").textContent=r.first==="None"?"Balanced":r.first+"-leaning";
+      $("pressure").textContent=r.pressure;$("ramStatus").textContent=r.ramStatus;$("storageStatus").textContent=r.storageStatus;
+      $("path").innerHTML=r.path.map((x,i)=>'<div class="path-item"><span class="path-num">'+(i+1)+'</span><span>'+x+'</span></div>').join("");
+    }
+
+    $("analyze").addEventListener("click",run);
+    $("reset").addEventListener("click",()=>{
+      $("cpu").value="Ryzen 5 5600";$("gpu").value="RTX 4060";$("ram").value="16";$("storage").value="nvme";
+      $("resolution").value="";$("target").value="";
+      $("verdict").textContent="Choose your target";$("priority").textContent="Waiting for input";$("priority").className="priority low";
+      $("icon").textContent="?";$("reason").textContent="Enter your current hardware and gaming target. The advisor will compare the likely limitation, target resolution and FPS goal before recommending where to spend first.";
+      ["limit","pressure","ramStatus","storageStatus"].forEach(id=>$(id).textContent="—");$("path").innerHTML="";
+    });
+  })();
+  </script>
+  <script src="header.js" defer></script>
+</body>
+</html>
