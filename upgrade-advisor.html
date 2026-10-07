@@ -237,8 +237,12 @@ body:has(.upgrade-page) > footer.sfp-site-footer{max-width:none;margin:0;backgro
       $("path").innerHTML=r.first==="None" ? '<div class="road-item"><span class="road-num">1</span><strong>Keep current setup</strong><p>Your PC is already capable for your target.</p></div><span class="road-arrow">→</span><div class="road-item"><span class="road-num">2</span><strong>Save budget</strong><p>Save for a bigger upgrade when needed (e.g. next-gen GPU).</p></div><span class="road-arrow">→</span><div class="road-item"><span class="road-num">3</span><strong>Consider RAM upgrade</strong><p>Upgrade to 32GB if you play newer AAA games or multitask.</p></div>' : r.path.map((x,i)=>'<div class="road-item"><span class="road-num">'+(i+1)+'</span><strong>'+x+'</strong><p>Follow this step before spending on another component.</p></div>').join('<span class="road-arrow">→</span>');
     }
 
+    function syncProfileHeight(){const p=$("profile-card"),d=$("diagnosis-card");if(!p||!d)return;p.style.height=window.innerWidth>820?d.offsetHeight+"px":"auto";}
+
     $("analyze").addEventListener("click",run);
     run();
+    requestAnimationFrame(syncProfileHeight);
+    window.addEventListener("resize",syncProfileHeight);
     $("reset").addEventListener("click",()=>{
       $("cpu").value="Ryzen 5 7600";$("gpu").value="RTX 4070";$("ram").value="16";$("storage").value="nvme";
       $("resolution").value="1440";$("target").value="60";$("game").value="rdr2";$("budget").value="250";
