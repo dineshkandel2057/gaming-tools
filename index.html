@@ -230,6 +230,16 @@ h1,h2,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-
 .bento-label{position:relative;z-index:1;color:#929eb3;font-size:9px;font-weight:800;letter-spacing:.14em;line-height:1.35;text-transform:uppercase}
 .bento-metric{position:relative;z-index:1;display:block;margin-top:12px;color:#fff;font-size:clamp(22px,2.25vw,31px);line-height:1.12;letter-spacing:-.035em}
 .bento-submetrics{position:relative;z-index:1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:12px;border-top:1px solid rgba(157,174,204,.12);color:#aeb8c9;font-size:10px;font-weight:700;letter-spacing:.035em}
+.bento-snapshot-badge{position:relative;z-index:1;display:inline-flex;align-self:flex-start;margin-top:auto;padding:8px 11px;border:1px solid rgba(161,139,255,.24);border-radius:9px;background:rgba(115,93,255,.12);color:#cfc5ff;font-size:10px;font-weight:700;line-height:1.35;letter-spacing:.025em}
+.bento-bottleneck{position:relative;z-index:1;margin-top:auto;color:#62e4a3;font-size:clamp(23px,2.5vw,34px);font-weight:900;line-height:1.05;letter-spacing:-.045em;text-shadow:0 0 24px rgba(76,222,155,.14)}
+.bento-calculation-detail{position:relative;z-index:1;margin-top:8px;color:#f1f4f9;font-size:10px;font-weight:400;line-height:1.45;letter-spacing:.025em}
+.bento-action{color:inherit}
+.bento-action:after{background:linear-gradient(135deg,rgba(123,91,255,.32),rgba(56,173,255,.22));filter:blur(34px)}
+.bento-action:hover,.bento-action:focus-visible{transform:translateY(-3px);border-color:rgba(151,188,255,.58);background:linear-gradient(135deg,rgba(113,78,236,.94),rgba(39,143,224,.9));box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 22px 50px rgba(0,0,0,.3),0 0 38px rgba(103,119,255,.22);outline:none}
+.bento-action-link{position:relative;z-index:1;display:block;margin-top:auto;color:#fff;font-size:clamp(19px,2vw,25px);font-weight:900;line-height:1.15;letter-spacing:-.03em;text-shadow:0 3px 16px rgba(0,0,0,.25)}
+.bento-action-link span{display:inline-block;color:#e7f5ff;transition:transform .2s ease}.bento-action:hover .bento-action-link span{transform:translateX(4px)}
+.bento-action .bento-label{color:rgba(255,255,255,.72)}
+
 .bento-guide-title{position:relative;z-index:1;margin-top:auto;color:#f4f6fb;font-size:clamp(15px,1.55vw,19px);font-weight:800;line-height:1.35;letter-spacing:-.02em}
 .bento-guide-title span{color:#a18bff;transition:transform .2s ease,color .2s ease;display:inline-block}.bento-guide:hover .bento-guide-title span{color:#70c9ff;transform:translateX(3px)}
 .bento-status{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;margin-top:auto;width:max-content;max-width:100%;padding:9px 11px;border:1px solid rgba(77,220,155,.28);border-radius:10px;background:rgba(20,53,42,.3);color:#dffcef;font-size:12px;font-weight:800;line-height:1.3;box-shadow:0 0 20px rgba(63,214,150,.08)}
@@ -543,22 +553,21 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
       <a href="guides.html" class="secondary-button">Read PC Guides <span aria-hidden="true">→</span></a>
     </div>
   </div>
-  <div class="hero-visual hero-bento" aria-label="SystemFit PC hardware dashboard">
+  <div class="hero-visual hero-bento" aria-label="SystemFit PC hardware snapshot">
     <div class="bento-card bento-index">
-      <span class="bento-label">SYSTEM HARDWARE INDEX</span>
-      <strong class="bento-metric">792+ Game Profiles Live</strong>
-      <div class="bento-submetrics" aria-label="Database coverage">
-        <span>113 CPUs Cached</span><span aria-hidden="true">•</span><span>92 GPUs Profiled</span>
-      </div>
+      <span class="bento-label">🔥 TRENDING MATCHUP CHECK</span>
+      <strong class="bento-metric">Ryzen 7 7800X3D + RTX 4080 Super</strong>
+      <span class="bento-snapshot-badge">Verified Setup • Desktop Gaming Target Profile</span>
     </div>
-    <a class="bento-card bento-guide" href="how-much-ram-for-gaming-2026.html">
-      <span class="bento-label">TRENDING TECH GUIDE</span>
-      <span class="bento-guide-title">Is 16GB RAM Dead in 2026? <span aria-hidden="true">→</span></span>
-    </a>
-    <div class="bento-card bento-engine">
+    <div class="bento-card bento-guide bento-calculation">
+      <span class="bento-label">📊 CALCULATION ENGINE RESPONSE</span>
+      <strong class="bento-bottleneck">0% CPU Bottleneck</strong>
+      <span class="bento-calculation-detail">1440p Ultra Settings • Balanced Flow</span>
+    </div>
+    <a class="bento-card bento-engine bento-action" href="bottleneck.html" aria-label="Test your setup with the Bottleneck Calculator">
       <span class="bento-label">ENGINE ARCHITECTURE</span>
-      <span class="bento-status">Status: Optimal <span aria-hidden="true">⚡</span></span>
-    </div>
+      <span class="bento-action-link">Test Your Setup <span aria-hidden="true">→</span></span>
+    </a>
   </div>
 
 </div>
