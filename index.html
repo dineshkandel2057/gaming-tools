@@ -223,12 +223,14 @@ h1,h2,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-
 .hero-bento:before{pointer-events:none}
 .bento-card{position:relative;min-width:0;min-height:0;padding:22px;border:1px solid rgba(157,174,204,.15);border-radius:20px;background:linear-gradient(145deg,rgba(29,35,50,.88),rgba(14,19,30,.92));box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 16px 40px rgba(0,0,0,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;transition:border-color .22s ease,transform .22s ease,box-shadow .22s ease,background .22s ease}
 .bento-card:after{content:"";position:absolute;width:150px;height:150px;right:-70px;top:-75px;border-radius:50%;background:rgba(112,83,255,.13);filter:blur(48px);pointer-events:none}
-.bento-index{grid-column:1/-1;justify-content:space-between}.bento-guide,.bento-engine{text-decoration:none}
+.bento-index{grid-column:1/-1;justify-content:space-between;padding:26px 28px;transform:scale(1.015);border-color:rgba(168,85,247,.42);box-shadow:0 0 20px rgba(168, 85, 247, 0.5),inset 0 1px 0 rgba(255,255,255,.035),0 16px 40px rgba(0,0,0,.18)}.bento-guide,.bento-engine{text-decoration:none}
 .bento-guide:hover,.bento-guide:focus-visible{transform:translateY(-2px);border-color:rgba(161,139,255,.42);background:linear-gradient(145deg,rgba(37,40,69,.9),rgba(14,19,30,.94));box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 18px 44px rgba(0,0,0,.22),0 0 28px rgba(115,93,255,.08);outline:none}
 .bento-engine{border-color:rgba(77,220,155,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 16px 40px rgba(0,0,0,.18),0 0 28px rgba(63,214,150,.08)}
 .bento-engine:after{background:rgba(63,214,150,.13)}
 .bento-label{position:relative;z-index:1;color:#929eb3;font-size:9px;font-weight:800;letter-spacing:.14em;line-height:1.35;text-transform:uppercase}
 .bento-metric{position:relative;z-index:1;display:block;margin-top:12px;color:#fff;font-size:clamp(22px,2.25vw,31px);line-height:1.12;letter-spacing:-.035em}
+.bento-hardware-link{cursor:pointer;text-decoration:none;transition:color .22s ease,text-shadow .22s ease,transform .22s ease}
+.bento-hardware-link:hover,.bento-hardware-link:focus-visible{color:#b8a4ff;text-shadow:0 0 22px rgba(168,85,247,.45);transform:translateY(-1px);outline:none}
 .bento-submetrics{position:relative;z-index:1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:12px;border-top:1px solid rgba(157,174,204,.12);color:#aeb8c9;font-size:10px;font-weight:700;letter-spacing:.035em}
 .bento-snapshot-badge{position:relative;z-index:1;display:inline-flex;align-self:flex-start;margin-top:auto;padding:8px 11px;border:1px solid rgba(161,139,255,.24);border-radius:9px;background:rgba(115,93,255,.12);color:#cfc5ff;font-size:10px;font-weight:700;line-height:1.35;letter-spacing:.025em}
 .bento-bottleneck{position:relative;z-index:1;margin-top:auto;color:#62e4a3;font-size:clamp(23px,2.5vw,34px);font-weight:900;line-height:1.05;letter-spacing:-.045em;text-shadow:0 0 24px rgba(76,222,155,.14)}
@@ -556,7 +558,7 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
   <div class="hero-visual hero-bento" aria-label="SystemFit PC hardware snapshot">
     <div class="bento-card bento-index">
       <span class="bento-label">🔥 TRENDING MATCHUP CHECK</span>
-      <strong class="bento-metric">Ryzen 7 7800X3D + RTX 4080 Super</strong>
+      <a class="bento-metric bento-hardware-link" href="build-planner.html?build=eyJjcHUiOiJyNy03ODAweDNkIiwiZ3B1IjoiZ3B1LWdlZm9yY2UtcnR4LTQwODAtc3VwZXIiLCJnb2FsIjoiMTQ0MCIsIm1vZGUiOiJnYW1pbmciLCJidWRnZXQiOiJiYWxhbmNlZCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="Open prebuilt Ryzen 7 7800X3D and GeForce RTX 4080 Super configuration">Ryzen 7 7800X3D + RTX 4080 Super</a>
       <span class="bento-snapshot-badge">Verified Setup • Desktop Gaming Target Profile</span>
     </div>
     <div class="bento-card bento-guide bento-calculation">
