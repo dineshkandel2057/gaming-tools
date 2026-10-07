@@ -155,7 +155,7 @@ body{min-height:100%;background:#060a12;color:#f6f8ff;font-family:"DM Sans",Inte
       const fpsWeight=target>=240?1.30:target>=165?1.18:target>=120?1.08:1;
       const cpuPressure=(1-cpu)*fpsWeight*(res==="1080"?1.28:res==="1440"?0.94:0.68)*profile.cpu;
       const gpuPressure=(1-gpu)*resolutionWeight*(demanding?1.16:competitive?0.76:game==="mixed"?1:0.92)*profile.gpu;
-      const ramPressure=ram<16?0.95:ram===16?0.18:0;
+      const ramPressure=ram<16?0.95:0;
       const storagePressure=storage==="hdd"?0.68:storage==="sata"?0.10:0;
 
       let scores={CPU:cpuPressure,GPU:gpuPressure,RAM:ramPressure,Storage:storagePressure};
@@ -250,9 +250,23 @@ body{min-height:100%;background:#060a12;color:#f6f8ff;font-family:"DM Sans",Inte
     }
 
 
+    function clearDiagnosisForIncompleteInput(){
+      if($("analyze").disabled){
+        $("verdict").textContent="Choose your setup";
+        $("priority").textContent="Waiting for input";
+        $("priority").className="priority low";
+        $("reason").textContent="Select your PC hardware, gaming resolution, target FPS and budget, then analyze your PC.";
+        ["cpuStatus","gpuStatus","ramStatus","storageStatus"].forEach(id=>$(id).textContent="—");
+        ["cpuNote","gpuNote","ramNote","storageNote"].forEach(id=>$(id).textContent="Select your hardware to see status");
+        ["cpuDot","gpuDot","ramDot","storageDot"].forEach(id=>$(id).textContent="—");
+        $("path").innerHTML="";
+      }
+    }
+
     ["cpu","gpu","ram","storage","resolution","target","budget","game"].forEach(id=>{
       $(id).addEventListener("change",()=>{
         updateAnalyzeState();
+        clearDiagnosisForIncompleteInput();
       });
     });
     $("analyze").addEventListener("click",run);
