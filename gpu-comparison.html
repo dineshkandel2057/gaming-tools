@@ -283,7 +283,7 @@ const classOrder={budget:0,mainstream:1,performance:2,enthusiast:3};
 function filteredBrand(brand){
   const q=($(`.brand-search-input[data-brand="${brand}"]`)?.value||"").trim().toLowerCase();
   const sort=$(`.brand-sort-select[data-brand="${brand}"]`)?.value||"low-high";
-  let list=gpus.filter(g=>g.brand===brand&&(!q||(g.name+" "+g.brand+" "+g.series+" "+g.work).toLowerCase().includes(q)));
+  let list=gpus.filter(g=>(g.brand===brand||g.brand.startsWith(brand+" "))&&(!q||(g.name+" "+g.brand+" "+g.series+" "+g.work).toLowerCase().includes(q)));
   list.sort((a,b)=>{
     if(sort==="newest") return b.year-a.year||a.name.localeCompare(b.name);
     if(sort==="high-low") return (b.tier??0)-(a.tier??0)||b.year-a.year||a.name.localeCompare(b.name);
