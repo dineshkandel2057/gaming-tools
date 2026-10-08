@@ -2824,8 +2824,8 @@ setupHardwarePicker("gpu","gpuSearch",GPUS,"Select a GPU");
       const rFactor = resolutionFactor[state.resolution];
       const pFactor = presetFactor[state.preset];
 
-      const cpuPressure = clamp((game.cpu * 0.62 + (1-cpu.score/100) * 0.38) * 100,18,98);
-      const gpuPressure = clamp((game.gpu * 0.68 + (1-gpu.score/100) * 0.32) * 100,18,99);
+      let cpuPressure = 0;
+      let gpuPressure = 0;
 
       const cpuFactor = Math.pow(cpu.score/100, .86);
       const gpuFactor = Math.pow(gpu.score/100, .92);
@@ -2864,8 +2864,21 @@ setupHardwarePicker("gpu","gpuSearch",GPUS,"Select a GPU");
 
       let limit = "Balanced";
       const ratio = cpuPart / Math.max(gpuPart,.01);
-      if (ratio < .88) limit = "GPU";
-      else if (ratio > 1.14) limit = "CPU";
+      if (ratio < .88) limit = "CPU";
+      else if (ratio > 1.14) limit = "GPU";
+
+      const limitingPressure = clamp(90 + 8 * clamp(Math.abs(Math.log(Math.max(ratio,.01))),0,1),90,98);
+      if (limit === "CPU"){
+        cpuPressure = limitingPressure;
+        gpuPressure = clamp(limitingPressure * ratio,18,89);
+      } else if (limit === "GPU"){
+        gpuPressure = limitingPressure;
+        cpuPressure = clamp(limitingPressure / ratio,18,89);
+      } else {
+        const totalParts = Math.max(cpuPart + gpuPart,.01);
+        cpuPressure = clamp(50 + 40 * (cpuPart / totalParts),18,89);
+        gpuPressure = clamp(50 + 40 * (gpuPart / totalParts),18,89);
+      }
 
       const vramNeed = game.vram
         + (state.resolution === 2160 ? 3 : state.resolution === 1440 ? 1.5 : 0)
