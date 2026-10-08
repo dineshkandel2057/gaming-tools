@@ -2626,23 +2626,25 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Enlisted",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "AAA",
+      "gpu": 0.58,
+      "cpu": 0.62,
+      "base": 190,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from player hardware reports and PC performance coverage; GPU demand is moderate-to-high with battlefield scene complexity affecting CPU load."
     },
     {
       "name": "Delta Force",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.67,
+      "cpu": 0.65,
+      "base": 145,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from measured 2026 benchmark data and PC performance analysis; demanding modern multiplayer workload with substantial GPU/CPU scaling."
     },
     {
       "name": "Arena Breakout: Infinite",
@@ -2941,23 +2943,25 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Mortal Kombat 11",
-      "cat": "General",
+      "cat": "Competitive",
       "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cpu": 0.52,
+      "base": 180,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance coverage; moderately demanding fighting-game renderer with a stable CPU requirement."
     },
     {
       "name": "Guilty Gear -Strive-",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.38,
+      "cpu": 0.52,
+      "base": 300,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance behavior; comparatively light GPU workload with high frame-rate headroom."
     },
     {
       "name": "Dragon Ball FighterZ",
@@ -2972,13 +2976,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "The King of Fighters XV",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.35,
+      "cpu": 0.5,
+      "base": 320,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance behavior; light-to-moderate renderer and high frame-rate target."
     },
     {
       "name": "Street Fighter V",
@@ -3004,13 +3009,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Smite 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Competitive",
+      "gpu": 0.52,
+      "cpu": 0.68,
+      "base": 220,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from current Unreal Engine performance coverage; moderate GPU demand with meaningful CPU load in busy matches."
     },
     {
       "name": "SMITE",
@@ -3269,13 +3275,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Grand Theft Auto IV",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Open World",
+      "gpu": 0.25,
+      "cpu": 0.9,
+      "base": 185,
+      "vram": 2,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from Tom's Hardware built-in benchmark testing; unusually CPU/system-limited with relatively low GPU pressure."
     },
     {
       "name": "Red Dead Redemption 2",
@@ -3288,13 +3295,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Red Dead Redemption",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.6,
+      "cpu": 0.62,
+      "base": 155,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC port performance coverage; moderate-to-high GPU workload with balanced CPU demand."
     },
     {
       "name": "The Witcher 3: Wild Hunt",
@@ -3307,23 +3315,25 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "The Witcher 2: Assassins of Kings",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.62,
+      "cpu": 0.58,
+      "base": 165,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; demanding legacy DX11 renderer, especially at high settings."
     },
     {
       "name": "The Witcher",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.25,
+      "cpu": 0.5,
+      "base": 430,
+      "vram": 2,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from legacy PC performance behavior; light modern GPU workload with high achievable FPS."
     },
     {
       "name": "Kingdom Come: Deliverance II",
@@ -3336,13 +3346,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Kingdom Come: Deliverance",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.72,
+      "cpu": 0.72,
+      "base": 120,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from ComputerBase and DSOGaming CPU/GPU benchmarks; demanding GPU and multi-core CPU workload."
     },
     {
       "name": "Assassin's Creed Shadows",
@@ -3391,73 +3402,80 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Assassin's Creed Unity",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.72,
+      "cpu": 0.72,
+      "base": 105,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; demanding open-world renderer with substantial CPU overhead."
     },
     {
       "name": "Assassin's Creed Syndicate",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.62,
+      "cpu": 0.68,
+      "base": 125,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; moderately demanding GPU workload with meaningful CPU scaling."
     },
     {
       "name": "Assassin's Creed IV Black Flag",
-      "cat": "General",
+      "cat": "Open World",
       "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cpu": 0.6,
+      "base": 155,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; moderate GPU load with CPU demand in dense scenes."
     },
     {
       "name": "Assassin's Creed III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Open World",
+      "gpu": 0.45,
+      "cpu": 0.58,
+      "base": 200,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance coverage; older renderer with moderate GPU demand."
     },
     {
       "name": "Assassin's Creed II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Open World",
+      "gpu": 0.25,
+      "cpu": 0.5,
+      "base": 400,
+      "vram": 2,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from legacy PC performance behavior; light modern GPU workload."
     },
     {
       "name": "Assassin's Creed Brotherhood",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Open World",
+      "gpu": 0.28,
+      "cpu": 0.52,
+      "base": 350,
+      "vram": 2,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from legacy PC performance behavior; light-to-moderate workload."
     },
     {
       "name": "Assassin's Creed Revelations",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Open World",
+      "gpu": 0.3,
+      "cpu": 0.54,
+      "base": 330,
+      "vram": 2,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from legacy PC performance behavior; relatively light GPU demand."
     },
     {
       "name": "Far Cry 6",
@@ -3479,53 +3497,58 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Far Cry New Dawn",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.62,
+      "cpu": 0.68,
+      "base": 145,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; demanding Dunia workload with balanced CPU/GPU scaling."
     },
     {
       "name": "Far Cry 4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Open World",
+      "gpu": 0.52,
+      "cpu": 0.62,
+      "base": 175,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; moderate GPU load and meaningful CPU scaling."
     },
     {
       "name": "Far Cry 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Open World",
+      "gpu": 0.42,
+      "cpu": 0.58,
+      "base": 220,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; moderate legacy GPU workload."
     },
     {
       "name": "Far Cry 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Open World",
+      "gpu": 0.25,
+      "cpu": 0.55,
+      "base": 390,
+      "vram": 2,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from legacy PC benchmark behavior; light modern GPU demand."
     },
     {
       "name": "Far Cry",
-      "cat": "General",
-      "gpu": 0.55,
+      "cat": "Open World",
+      "gpu": 0.18,
       "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "base": 600,
+      "vram": 2,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from legacy PC performance behavior; very light modern GPU workload."
     },
     {
       "name": "Watch Dogs: Legion",
@@ -3547,13 +3570,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Watch Dogs",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.58,
+      "cpu": 0.72,
+      "base": 150,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; demanding open-world streaming and CPU/GPU workload."
     },
     {
       "name": "Avatar: Frontiers of Pandora",
@@ -3593,33 +3617,36 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Star Wars Battlefront II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "AAA",
+      "gpu": 0.6,
+      "cpu": 0.6,
+      "base": 175,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC GPU benchmark data; Frostbite renderer is moderately GPU-demanding with balanced CPU load."
     },
     {
       "name": "Star Wars Battlefront",
-      "cat": "General",
+      "cat": "AAA",
       "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cpu": 0.58,
+      "base": 190,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; Frostbite workload with moderate GPU and CPU demand."
     },
     {
       "name": "Star Wars Squadrons",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "AAA",
+      "gpu": 0.58,
+      "cpu": 0.58,
+      "base": 175,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance coverage; moderate GPU workload with stable CPU requirements."
     },
     {
       "name": "Indiana Jones and the Great Circle",
@@ -3650,53 +3677,58 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "DOOM",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.4,
+      "cpu": 0.55,
+      "base": 300,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; highly optimized id Tech renderer with high frame-rate potential."
     },
     {
       "name": "DOOM 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.25,
+      "cpu": 0.48,
+      "base": 450,
+      "vram": 2,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from legacy PC performance behavior; light modern GPU workload."
     },
     {
       "name": "Wolfenstein: The New Order",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.4,
+      "cpu": 0.55,
+      "base": 300,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; efficient id Tech 5 renderer with high FPS potential."
     },
     {
       "name": "Wolfenstein II: The New Colossus",
-      "cat": "General",
+      "cat": "AAA",
       "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cpu": 0.58,
+      "base": 210,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from Notebookcheck and PC benchmark data; demanding but well-scaled id Tech 6 workload."
     },
     {
       "name": "Wolfenstein: Youngblood",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "AAA",
+      "gpu": 0.52,
+      "cpu": 0.6,
+      "base": 220,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; moderately demanding id Tech workload with balanced CPU/GPU use."
     },
     {
       "name": "Prey",
@@ -3727,13 +3759,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Dishonored",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.32,
+      "cpu": 0.52,
+      "base": 340,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance coverage; relatively light Unreal Engine 3 workload."
     },
     {
       "name": "Death Stranding Director's Cut",
@@ -3746,13 +3779,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Death Stranding",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "AAA",
+      "gpu": 0.62,
+      "cpu": 0.62,
+      "base": 170,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; GPU-heavy Decima workload with moderate CPU demand."
     },
     {
       "name": "Control",
@@ -3774,33 +3808,36 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Quantum Break",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.68,
+      "cpu": 0.62,
+      "base": 115,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; demanding renderer with substantial GPU load and high memory requirements."
     },
     {
       "name": "Alan Wake Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "AAA",
+      "gpu": 0.58,
+      "cpu": 0.58,
+      "base": 165,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance coverage; remastered renderer adds moderate GPU demand."
     },
     {
       "name": "Alan Wake",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.38,
+      "cpu": 0.52,
+      "base": 270,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark behavior; older renderer with moderate GPU demand."
     },
     {
       "name": "Resident Evil 4",
@@ -3849,43 +3886,47 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Resident Evil 6",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.3,
+      "cpu": 0.52,
+      "base": 350,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark behavior; efficient MT Framework renderer with high FPS potential."
     },
     {
       "name": "Resident Evil 5",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.25,
+      "cpu": 0.48,
+      "base": 400,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark behavior; light modern GPU workload and high frame-rate potential."
     },
     {
       "name": "Resident Evil Revelations 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.42,
+      "cpu": 0.55,
+      "base": 250,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance coverage; moderate GPU workload."
     },
     {
       "name": "Resident Evil Revelations",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.35,
+      "cpu": 0.52,
+      "base": 300,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance behavior; moderate legacy renderer."
     },
     {
       "name": "Devil May Cry 5",
@@ -3898,73 +3939,80 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Devil May Cry 4 Special Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.28,
+      "cpu": 0.5,
+      "base": 400,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance behavior; highly optimized MT Framework renderer."
     },
     {
       "name": "Devil May Cry 3 Special Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.18,
+      "cpu": 0.42,
+      "base": 600,
+      "vram": 2,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from legacy PC performance behavior; very light modern GPU workload."
     },
     {
       "name": "Metal Gear Solid V: The Phantom Pain",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.5,
+      "cpu": 0.62,
+      "base": 210,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; efficient Fox Engine with moderate GPU and CPU demand."
     },
     {
       "name": "Metal Gear Solid V: Ground Zeroes",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.48,
+      "cpu": 0.58,
+      "base": 230,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark behavior; efficient Fox Engine workload."
     },
     {
       "name": "Metal Gear Rising: Revengeance",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.28,
+      "cpu": 0.48,
+      "base": 400,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance behavior; relatively light renderer with high FPS potential."
     },
     {
       "name": "Nioh 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.65,
+      "cpu": 0.62,
+      "base": 135,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance coverage; demanding action-RPG workload with substantial GPU load."
     },
     {
       "name": "Nioh",
-      "cat": "General",
+      "cat": "RPG",
       "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cpu": 0.58,
+      "base": 165,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance coverage; moderate-to-high GPU demand."
     },
     {
       "name": "Lies of P",
@@ -3986,13 +4034,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Wo Long: Fallen Dynasty",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.68,
+      "cpu": 0.62,
+      "base": 125,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance coverage; demanding action-RPG renderer with significant GPU requirements."
     },
     {
       "name": "Sekiro: Shadows Die Twice",
@@ -4014,13 +4063,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Dark Souls II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.28,
+      "cpu": 0.52,
+      "base": 360,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance behavior; comparatively light GPU workload and high FPS potential."
     },
     {
       "name": "Dark Souls Remastered",
