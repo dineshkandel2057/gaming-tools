@@ -3486,6 +3486,7 @@ function calculate(){
   const gpuGainDisplay=formatPositiveFpsDelta(gpuGain);
   const bestGain=Math.max(cpuGain,gpuGain);
   const bestGainDisplay=formatPositiveFpsDelta(bestGain);
+  const bestGainPercent=Math.round((bestGain/Math.max(currentRawFps,.01))*100);
   const cpuQualified=Boolean(cpuUpgradeChoice);
   const gpuQualified=Boolean(gpuUpgradeChoice);
   const upgradeSide=cpuQualified&&gpuQualified?(cpuGain>=gpuGain?"CPU":"GPU"):cpuQualified?"CPU":gpuQualified?"GPU":"NONE";
@@ -3552,7 +3553,7 @@ function calculate(){
   const gpuRecommendation=gpuUpgradeChoice
     ? ("Recommended Upgrade: "+gpuUpgradeChoice.item.name+" • +"+gpuGainDisplay+" FPS ("+Math.round((gpuGain/Math.max(currentRawFps,.01))*100)+"%) • Check Price")
     : "No worthwhile upgrade found";
-  document.getElementById("sbUpgradeGain").textContent="+"+bestGainDisplay+" FPS";
+  document.getElementById("sbUpgradeGain").textContent="+"+bestGainDisplay+" FPS ("+bestGainPercent+"%)";
   document.getElementById("sbCpuUpgradeFps").textContent=cpuUpgradeFps+" FPS";
   document.getElementById("sbGpuUpgradeFps").textContent=gpuUpgradeFps+" FPS";
   document.getElementById("sbCpuUpgradeGain").textContent=cpuRecommendation;
