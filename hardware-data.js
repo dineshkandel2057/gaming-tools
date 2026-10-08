@@ -1,7 +1,7 @@
 /* SystemFit PC canonical hardware database.
  * Master selection set: 130 CPUs + 113 GPUs from Build Planner.
  * Existing scores are preserved. Newly scored CPUs use researched gaming-relative values.
- * The generic integrated-graphics placeholder is intentionally non-scored.
+ * GPU comparison metadata is attached to the same canonical GPU records.
  */
 const SFP_HARDWARE_DATA = {
   "CPUs": [
@@ -2482,7 +2482,17 @@ const SFP_HARDWARE_DATA = {
       "power": 75,
       "psu": 300,
       "length": 180,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "1650",
+      "group": "budget",
+      "series": "GTX 16 · Turing",
+      "type": "GDDR5",
+      "bus": 128,
+      "year": 2019,
+      "ray": "—",
+      "work": "Basic gaming · display",
+      "note": "Entry level",
+      "popularityRank": 20
     },
     {
       "id": "gtx-1660s",
@@ -2500,7 +2510,17 @@ const SFP_HARDWARE_DATA = {
       "power": 125,
       "psu": 450,
       "length": 230,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "1660s",
+      "group": "budget",
+      "series": "GTX 16 · Turing",
+      "type": "GDDR6",
+      "bus": 192,
+      "year": 2019,
+      "ray": "—",
+      "work": "Everyday · esports",
+      "note": "No hardware RT",
+      "popularityRank": 21
     },
     {
       "id": "rtx-2060",
@@ -2518,7 +2538,17 @@ const SFP_HARDWARE_DATA = {
       "power": 160,
       "psu": 500,
       "length": 230,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "2060",
+      "group": "budget",
+      "series": "RTX 20 · Turing",
+      "type": "GDDR6",
+      "bus": 192,
+      "year": 2019,
+      "ray": "Entry",
+      "work": "Everyday · 1080p",
+      "note": "Older entry level",
+      "popularityRank": 22
     },
     {
       "id": "rtx-3050",
@@ -2541,7 +2571,16 @@ const SFP_HARDWARE_DATA = {
       "power": 70,
       "psu": 300,
       "length": 200,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "rtx-3050",
+      "group": "budget",
+      "series": "RTX 30 Ampere",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "High",
+      "work": "Gaming",
+      "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
     },
     {
       "id": "rtx-3060",
@@ -2559,7 +2598,17 @@ const SFP_HARDWARE_DATA = {
       "power": 170,
       "psu": 550,
       "length": 242,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "3060",
+      "group": "mainstream",
+      "series": "RTX 30 · Ampere",
+      "type": "GDDR6",
+      "bus": 192,
+      "year": 2021,
+      "ray": "Mid",
+      "work": "1080p · Editing · AI entry",
+      "note": "Popular budget",
+      "popularityRank": 43
     },
     {
       "id": "rx-580",
@@ -2577,7 +2626,16 @@ const SFP_HARDWARE_DATA = {
       "power": 185,
       "psu": 550,
       "length": 240,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "rx-580",
+      "group": "budget",
+      "series": "RX 500 Polaris",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; RX 500 Polaris · Mid-Range"
     },
     {
       "id": "rx-6600",
@@ -2600,7 +2658,17 @@ const SFP_HARDWARE_DATA = {
       "power": 132,
       "psu": 450,
       "length": 193,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "6600",
+      "group": "budget",
+      "series": "RX 6000 · RDNA 2",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2021,
+      "ray": "Entry",
+      "work": "Gaming · 1080p",
+      "note": "Budget-friendly",
+      "popularityRank": 10
     },
     {
       "id": "rx-7600",
@@ -2623,7 +2691,17 @@ const SFP_HARDWARE_DATA = {
       "power": 165,
       "psu": 550,
       "length": 240,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "7600",
+      "group": "mainstream",
+      "series": "RX 7000 · RDNA 3",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2023,
+      "ray": "Entry",
+      "work": "Gaming · 1080p",
+      "note": "Mainstream",
+      "popularityRank": 34
     },
     {
       "id": "arc-a380",
@@ -2641,7 +2719,17 @@ const SFP_HARDWARE_DATA = {
       "power": 75,
       "psu": 350,
       "length": 190,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "a380",
+      "group": "budget",
+      "series": "Arc A · Xe HPG",
+      "type": "GDDR6",
+      "bus": 96,
+      "year": 2022,
+      "ray": "Entry",
+      "work": "Everyday · media · light gaming",
+      "note": "Entry level",
+      "popularityRank": 4
     },
     {
       "id": "arc-a580",
@@ -2659,7 +2747,17 @@ const SFP_HARDWARE_DATA = {
       "power": 185,
       "psu": 600,
       "length": 270,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "a580",
+      "group": "budget",
+      "series": "Arc A · Xe HPG",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2023,
+      "ray": "Entry",
+      "work": "Gaming · 1080p",
+      "note": "Budget",
+      "popularityRank": 5
     },
     {
       "id": "arc-b570",
@@ -2682,7 +2780,17 @@ const SFP_HARDWARE_DATA = {
       "power": 150,
       "psu": 550,
       "length": 270,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "b570",
+      "group": "budget",
+      "series": "Arc B · Xe2",
+      "type": "GDDR6",
+      "bus": 160,
+      "year": 2025,
+      "ray": "Entry",
+      "work": "Gaming · 1080p",
+      "note": "Budget-friendly",
+      "popularityRank": 28
     },
     {
       "id": "integrated",
@@ -2695,7 +2803,15 @@ const SFP_HARDWARE_DATA = {
       "discrete": false,
       "score": 0,
       "status": "not_applicable",
-      "scoreNote": "Generic integrated-graphics placeholder; no single GPU model or benchmark score."
+      "scoreNote": "Generic integrated-graphics placeholder; no single GPU model or benchmark score.",
+      "comparisonId": "integrated",
+      "group": "budget",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Integrated graphics placeholder"
     },
     {
       "id": "rtx-5060",
@@ -2718,7 +2834,17 @@ const SFP_HARDWARE_DATA = {
       "power": 145,
       "psu": 550,
       "length": 240,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5060",
+      "group": "mainstream",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 128,
+      "year": 2025,
+      "ray": "High",
+      "work": "AI · 1080p gaming",
+      "note": "Mainstream",
+      "popularityRank": 52
     },
     {
       "id": "rtx-5060-ti",
@@ -2741,7 +2867,17 @@ const SFP_HARDWARE_DATA = {
       "power": 180,
       "psu": 600,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5060ti8",
+      "group": "mainstream",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 128,
+      "year": 2025,
+      "ray": "High",
+      "work": "AI · Editing · 1080p",
+      "note": "Midrange · 8GB variant",
+      "popularityRank": 1
     },
     {
       "id": "rtx-5070",
@@ -2764,7 +2900,17 @@ const SFP_HARDWARE_DATA = {
       "power": 250,
       "psu": 650,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5070",
+      "group": "performance",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 192,
+      "year": 2025,
+      "ray": "High",
+      "work": "AI · Editing · 1440p",
+      "note": "Upper midrange",
+      "popularityRank": 54
     },
     {
       "id": "rtx-5070-ti",
@@ -2786,7 +2932,17 @@ const SFP_HARDWARE_DATA = {
       "brand": "NVIDIA GeForce",
       "power": 300,
       "psu": 750,
-      "length": 304
+      "length": 304,
+      "comparisonId": "5070ti",
+      "group": "performance",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 256,
+      "year": 2025,
+      "ray": "Very high",
+      "work": "AI · 3D · 1440p/4K",
+      "note": "High-end",
+      "popularityRank": 49
     },
     {
       "id": "rtx-5080",
@@ -2808,7 +2964,17 @@ const SFP_HARDWARE_DATA = {
       "brand": "NVIDIA GeForce",
       "power": 360,
       "psu": 850,
-      "length": 304
+      "length": 304,
+      "comparisonId": "5080",
+      "group": "enthusiast",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 256,
+      "year": 2025,
+      "ray": "Very high",
+      "work": "AI · 3D · 4K",
+      "note": "Enthusiast",
+      "popularityRank": 50
     },
     {
       "id": "rtx-5090",
@@ -2830,7 +2996,17 @@ const SFP_HARDWARE_DATA = {
       "brand": "NVIDIA GeForce",
       "power": 575,
       "psu": 1000,
-      "length": 313
+      "length": 313,
+      "comparisonId": "5090",
+      "group": "enthusiast",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 512,
+      "year": 2025,
+      "ray": "Very high",
+      "work": "AI · 3D · 4K/8K",
+      "note": "Flagship",
+      "popularityRank": 51
     },
     {
       "id": "rx-9060xt",
@@ -2848,7 +3024,17 @@ const SFP_HARDWARE_DATA = {
       "power": 160,
       "psu": 650,
       "length": 280,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "9060xt8",
+      "group": "mainstream",
+      "series": "RX 9000 · RDNA 4",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2025,
+      "ray": "Mid",
+      "work": "Gaming · 1080p",
+      "note": "Mainstream · 8GB",
+      "popularityRank": 35
     },
     {
       "id": "rx-9070",
@@ -2870,7 +3056,17 @@ const SFP_HARDWARE_DATA = {
       "brand": "AMD Radeon",
       "power": 220,
       "psu": 650,
-      "length": 267
+      "length": 267,
+      "comparisonId": "9070",
+      "group": "performance",
+      "series": "RX 9000 · RDNA 4",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2025,
+      "ray": "High",
+      "work": "Gaming · 1440p/4K",
+      "note": "Upper midrange",
+      "popularityRank": 37
     },
     {
       "id": "rx-9070xt",
@@ -2892,7 +3088,17 @@ const SFP_HARDWARE_DATA = {
       "brand": "AMD Radeon",
       "power": 304,
       "psu": 750,
-      "length": 304
+      "length": 304,
+      "comparisonId": "9070xt",
+      "group": "performance",
+      "series": "RX 9000 · RDNA 4",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2025,
+      "ray": "High",
+      "work": "Gaming · 1440p/4K",
+      "note": "High-end",
+      "popularityRank": 38
     },
     {
       "id": "gpu-radeon-rx-550",
@@ -2910,7 +3116,16 @@ const SFP_HARDWARE_DATA = {
       "power": 50,
       "psu": 300,
       "length": 180,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-550",
+      "group": "budget",
+      "series": "RX 500 Polaris",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; RX 500 Polaris · Low-End"
     },
     {
       "id": "gpu-radeon-rx-460",
@@ -2928,7 +3143,16 @@ const SFP_HARDWARE_DATA = {
       "power": 75,
       "psu": 350,
       "length": 200,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-460",
+      "group": "budget",
+      "series": "RX 400 Polaris",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Database score; RX 400 Polaris · Low-End"
     },
     {
       "id": "gpu-geforce-gtx-950",
@@ -2946,7 +3170,16 @@ const SFP_HARDWARE_DATA = {
       "power": 90,
       "psu": 350,
       "length": 210,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-950",
+      "group": "budget",
+      "series": "GTX 900 Maxwell",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 900 Maxwell · Low-End"
     },
     {
       "id": "gpu-radeon-rx-560",
@@ -2964,7 +3197,16 @@ const SFP_HARDWARE_DATA = {
       "power": 80,
       "psu": 350,
       "length": 210,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-560",
+      "group": "budget",
+      "series": "RX 500 Polaris",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; RX 500 Polaris · Low-End"
     },
     {
       "id": "gpu-geforce-gtx-1050",
@@ -2982,7 +3224,16 @@ const SFP_HARDWARE_DATA = {
       "power": 75,
       "psu": 300,
       "length": 145,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-1050",
+      "group": "budget",
+      "series": "GTX 10 Pascal",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 10 Pascal · Low-End"
     },
     {
       "id": "gpu-geforce-gtx-960",
@@ -3000,7 +3251,16 @@ const SFP_HARDWARE_DATA = {
       "power": 120,
       "psu": 400,
       "length": 200,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-960",
+      "group": "budget",
+      "series": "GTX 900 Maxwell",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 900 Maxwell · Low-End"
     },
     {
       "id": "gpu-radeon-rx-6400",
@@ -3018,7 +3278,16 @@ const SFP_HARDWARE_DATA = {
       "power": 53,
       "psu": 350,
       "length": 182,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-6400",
+      "group": "budget",
+      "series": "RX 6000 RDNA 2",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; RX 6000 RDNA 2 · Low-End"
     },
     {
       "id": "gpu-geforce-gtx-1050-ti",
@@ -3036,7 +3305,16 @@ const SFP_HARDWARE_DATA = {
       "power": 75,
       "psu": 350,
       "length": 145,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-1050-ti",
+      "group": "budget",
+      "series": "GTX 10 Pascal",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 10 Pascal · Low-End"
     },
     {
       "id": "gpu-radeon-rx-470",
@@ -3054,7 +3332,16 @@ const SFP_HARDWARE_DATA = {
       "power": 120,
       "psu": 450,
       "length": 240,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-470",
+      "group": "budget",
+      "series": "RX 400 Polaris",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Database score; RX 400 Polaris · Mid-Range"
     },
     {
       "id": "gpu-arc-a380",
@@ -3072,7 +3359,17 @@ const SFP_HARDWARE_DATA = {
       "power": 75,
       "psu": 350,
       "length": 190,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "a380",
+      "group": "budget",
+      "series": "Arc A · Xe HPG",
+      "type": "GDDR6",
+      "bus": 96,
+      "year": 2022,
+      "ray": "Entry",
+      "work": "Everyday · media · light gaming",
+      "note": "Entry level",
+      "popularityRank": 4
     },
     {
       "id": "gpu-radeon-rx-570",
@@ -3090,7 +3387,16 @@ const SFP_HARDWARE_DATA = {
       "power": 150,
       "psu": 550,
       "length": 250,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-570",
+      "group": "budget",
+      "series": "RX 500 Polaris",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; RX 500 Polaris · Mid-Range"
     },
     {
       "id": "gpu-geforce-gtx-1650",
@@ -3108,7 +3414,17 @@ const SFP_HARDWARE_DATA = {
       "power": 75,
       "psu": 300,
       "length": 180,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "1650",
+      "group": "budget",
+      "series": "GTX 16 · Turing",
+      "type": "GDDR5",
+      "bus": 128,
+      "year": 2019,
+      "ray": "—",
+      "work": "Basic gaming · display",
+      "note": "Entry level",
+      "popularityRank": 20
     },
     {
       "id": "gpu-radeon-rx-480",
@@ -3126,7 +3442,16 @@ const SFP_HARDWARE_DATA = {
       "power": 150,
       "psu": 550,
       "length": 250,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-480",
+      "group": "budget",
+      "series": "RX 400 Polaris",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Database score; RX 400 Polaris · Mid-Range"
     },
     {
       "id": "gpu-geforce-gtx-970",
@@ -3144,7 +3469,16 @@ const SFP_HARDWARE_DATA = {
       "power": 145,
       "psu": 500,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-970",
+      "group": "budget",
+      "series": "GTX 900 Maxwell",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 900 Maxwell · Mid-Range"
     },
     {
       "id": "gpu-radeon-rx-6500-xt",
@@ -3162,7 +3496,16 @@ const SFP_HARDWARE_DATA = {
       "power": 107,
       "psu": 400,
       "length": 190,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-6500-xt",
+      "group": "budget",
+      "series": "RX 6000 RDNA 2",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; RX 6000 RDNA 2 · Low-End"
     },
     {
       "id": "gpu-geforce-gtx-1060-3gb",
@@ -3180,7 +3523,16 @@ const SFP_HARDWARE_DATA = {
       "power": 120,
       "psu": 400,
       "length": 250,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-1060-3gb",
+      "group": "budget",
+      "series": "GTX 10 Pascal",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 10 Pascal · Mid-Range"
     },
     {
       "id": "gpu-radeon-rx-580",
@@ -3198,7 +3550,16 @@ const SFP_HARDWARE_DATA = {
       "power": 185,
       "psu": 550,
       "length": 232,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-580",
+      "group": "budget",
+      "series": "RX 500 Polaris",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; RX 500 Polaris · Mid-Range"
     },
     {
       "id": "gpu-radeon-rx-5500-xt",
@@ -3216,7 +3577,17 @@ const SFP_HARDWARE_DATA = {
       "power": 130,
       "psu": 450,
       "length": 230,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5500xt",
+      "group": "budget",
+      "series": "RX 5000 · RDNA",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2019,
+      "ray": "—",
+      "work": "Basic gaming · 1080p",
+      "note": "Entry level",
+      "popularityRank": 7
     },
     {
       "id": "gpu-geforce-gtx-980",
@@ -3234,7 +3605,16 @@ const SFP_HARDWARE_DATA = {
       "power": 165,
       "psu": 500,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-980",
+      "group": "budget",
+      "series": "GTX 900 Maxwell",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 900 Maxwell · Mid-Range"
     },
     {
       "id": "gpu-radeon-rx-590",
@@ -3252,7 +3632,16 @@ const SFP_HARDWARE_DATA = {
       "power": 150,
       "psu": 550,
       "length": 250,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-590",
+      "group": "budget",
+      "series": "RX 500 Polaris",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; RX 500 Polaris · Mid-Range"
     },
     {
       "id": "gpu-geforce-gtx-1060-6gb",
@@ -3270,7 +3659,16 @@ const SFP_HARDWARE_DATA = {
       "power": 120,
       "psu": 400,
       "length": 250,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-1060-6gb",
+      "group": "budget",
+      "series": "GTX 10 Pascal",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 10 Pascal · Mid-Range"
     },
     {
       "id": "gpu-arc-a580",
@@ -3288,7 +3686,17 @@ const SFP_HARDWARE_DATA = {
       "power": 185,
       "psu": 550,
       "length": 232,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "a580",
+      "group": "budget",
+      "series": "Arc A · Xe HPG",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2023,
+      "ray": "Entry",
+      "work": "Gaming · 1080p",
+      "note": "Budget",
+      "popularityRank": 5
     },
     {
       "id": "gpu-geforce-gtx-980-ti",
@@ -3306,7 +3714,16 @@ const SFP_HARDWARE_DATA = {
       "power": 250,
       "psu": 600,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-980-ti",
+      "group": "budget",
+      "series": "GTX 900 Maxwell",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 900 Maxwell · High-End"
     },
     {
       "id": "gpu-geforce-rtx-3050",
@@ -3329,7 +3746,16 @@ const SFP_HARDWARE_DATA = {
       "power": 130,
       "psu": 450,
       "length": 242,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-rtx-3050",
+      "group": "budget",
+      "series": "RTX 30 Ampere",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "High",
+      "work": "Gaming",
+      "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
     },
     {
       "id": "gpu-geforce-gtx-1660-super",
@@ -3347,7 +3773,17 @@ const SFP_HARDWARE_DATA = {
       "power": 125,
       "psu": 450,
       "length": 230,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "1660s",
+      "group": "budget",
+      "series": "GTX 16 · Turing",
+      "type": "GDDR6",
+      "bus": 192,
+      "year": 2019,
+      "ray": "—",
+      "work": "Everyday · esports",
+      "note": "No hardware RT",
+      "popularityRank": 21
     },
     {
       "id": "gpu-radeon-rx-vega-56",
@@ -3365,7 +3801,16 @@ const SFP_HARDWARE_DATA = {
       "power": 210,
       "psu": 650,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-vega-56",
+      "group": "budget",
+      "series": "RX Vega",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Database score; RX Vega · Mid-Range"
     },
     {
       "id": "gpu-geforce-titan-x",
@@ -3383,7 +3828,16 @@ const SFP_HARDWARE_DATA = {
       "power": 250,
       "psu": 600,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-titan-x",
+      "group": "budget",
+      "series": "GTX 900 HEDT",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Database score; GTX 900 HEDT · High-End"
     },
     {
       "id": "gpu-geforce-gtx-1070",
@@ -3401,7 +3855,16 @@ const SFP_HARDWARE_DATA = {
       "power": 150,
       "psu": 500,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-1070",
+      "group": "budget",
+      "series": "GTX 10 Pascal",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 10 Pascal · Mid-Range"
     },
     {
       "id": "gpu-radeon-rx-5600-xt",
@@ -3419,7 +3882,17 @@ const SFP_HARDWARE_DATA = {
       "power": 150,
       "psu": 500,
       "length": 230,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5600xt",
+      "group": "budget",
+      "series": "RX 5000 · RDNA",
+      "type": "GDDR6",
+      "bus": 192,
+      "year": 2020,
+      "ray": "—",
+      "work": "Gaming · 1080p",
+      "note": "Older entry",
+      "popularityRank": 8
     },
     {
       "id": "gpu-radeon-rx-vega-64",
@@ -3437,7 +3910,16 @@ const SFP_HARDWARE_DATA = {
       "power": 295,
       "psu": 750,
       "length": 280,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-vega-64",
+      "group": "budget",
+      "series": "RX Vega",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Database score; RX Vega · High-End"
     },
     {
       "id": "gpu-radeon-rx-6600",
@@ -3460,7 +3942,17 @@ const SFP_HARDWARE_DATA = {
       "power": 132,
       "psu": 450,
       "length": 193,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "6600",
+      "group": "budget",
+      "series": "RX 6000 · RDNA 2",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2021,
+      "ray": "Entry",
+      "work": "Gaming · 1080p",
+      "note": "Budget-friendly",
+      "popularityRank": 10
     },
     {
       "id": "gpu-arc-a750",
@@ -3478,7 +3970,17 @@ const SFP_HARDWARE_DATA = {
       "power": 225,
       "psu": 600,
       "length": 270,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "a750",
+      "group": "budget",
+      "series": "Arc A · Xe HPG",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2022,
+      "ray": "Entry",
+      "work": "Gaming · 1080p/1440p",
+      "note": "Budget gaming",
+      "popularityRank": 6
     },
     {
       "id": "gpu-geforce-gtx-1070-ti",
@@ -3496,7 +3998,16 @@ const SFP_HARDWARE_DATA = {
       "power": 180,
       "psu": 500,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-1070-ti",
+      "group": "budget",
+      "series": "GTX 10 Pascal",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 10 Pascal · Mid-Range"
     },
     {
       "id": "gpu-geforce-rtx-2060",
@@ -3514,7 +4025,17 @@ const SFP_HARDWARE_DATA = {
       "power": 160,
       "psu": 500,
       "length": 230,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "2060",
+      "group": "budget",
+      "series": "RTX 20 · Turing",
+      "type": "GDDR6",
+      "bus": 192,
+      "year": 2019,
+      "ray": "Entry",
+      "work": "Everyday · 1080p",
+      "note": "Older entry level",
+      "popularityRank": 22
     },
     {
       "id": "gpu-geforce-gtx-1080",
@@ -3532,7 +4053,16 @@ const SFP_HARDWARE_DATA = {
       "power": 180,
       "psu": 500,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-1080",
+      "group": "budget",
+      "series": "GTX 10 Pascal",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 10 Pascal · High-End"
     },
     {
       "id": "gpu-radeon-rx-5700",
@@ -3550,7 +4080,16 @@ const SFP_HARDWARE_DATA = {
       "power": 180,
       "psu": 550,
       "length": 272,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-5700",
+      "group": "budget",
+      "series": "RX 5000 RDNA 1",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; RX 5000 RDNA 1 · Mid-Range"
     },
     {
       "id": "gpu-radeon-rx-6600-xt",
@@ -3573,7 +4112,17 @@ const SFP_HARDWARE_DATA = {
       "power": 160,
       "psu": 550,
       "length": 243,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "6600xt",
+      "group": "mainstream",
+      "series": "RX 6000 · RDNA 2",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2021,
+      "ray": "Entry",
+      "work": "Gaming · 1080p",
+      "note": "Budget gaming",
+      "popularityRank": 11
     },
     {
       "id": "gpu-arc-b570",
@@ -3596,7 +4145,17 @@ const SFP_HARDWARE_DATA = {
       "power": 150,
       "psu": 550,
       "length": 270,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "b570",
+      "group": "budget",
+      "series": "Arc B · Xe2",
+      "type": "GDDR6",
+      "bus": 160,
+      "year": 2025,
+      "ray": "Entry",
+      "work": "Gaming · 1080p",
+      "note": "Budget-friendly",
+      "popularityRank": 28
     },
     {
       "id": "gpu-arc-a770",
@@ -3614,7 +4173,17 @@ const SFP_HARDWARE_DATA = {
       "power": 225,
       "psu": 600,
       "length": 280,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "a770",
+      "group": "mainstream",
+      "series": "Arc A · Xe HPG",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2022,
+      "ray": "Entry",
+      "work": "Gaming · creative · AI entry",
+      "note": "Older midrange",
+      "popularityRank": 27
     },
     {
       "id": "gpu-geforce-rtx-2060-super",
@@ -3632,7 +4201,16 @@ const SFP_HARDWARE_DATA = {
       "power": 175,
       "psu": 550,
       "length": 230,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-rtx-2060-super",
+      "group": "budget",
+      "series": "RTX 20 Turing",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Database score; RTX 20 Turing · Mid-Range"
     },
     {
       "id": "gpu-radeon-rx-5700-xt",
@@ -3650,7 +4228,17 @@ const SFP_HARDWARE_DATA = {
       "power": 225,
       "psu": 600,
       "length": 279,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5700xt",
+      "group": "budget",
+      "series": "RX 5000 · RDNA",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2019,
+      "ray": "—",
+      "work": "Gaming · 1080p",
+      "note": "Older budget",
+      "popularityRank": 9
     },
     {
       "id": "gpu-geforce-gtx-1080-ti",
@@ -3668,7 +4256,16 @@ const SFP_HARDWARE_DATA = {
       "power": 250,
       "psu": 600,
       "length": 290,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-gtx-1080-ti",
+      "group": "budget",
+      "series": "GTX 10 Pascal",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; GTX 10 Pascal · High-End"
     },
     {
       "id": "gpu-geforce-rtx-5050",
@@ -3691,7 +4288,17 @@ const SFP_HARDWARE_DATA = {
       "power": 130,
       "psu": 450,
       "length": 220,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5050",
+      "group": "budget",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2025,
+      "ray": "Entry",
+      "work": "Everyday · 1080p",
+      "note": "Entry level",
+      "popularityRank": 48
     },
     {
       "id": "gpu-radeon-rx-7600",
@@ -3714,7 +4321,17 @@ const SFP_HARDWARE_DATA = {
       "power": 165,
       "psu": 550,
       "length": 240,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "7600",
+      "group": "mainstream",
+      "series": "RX 7000 · RDNA 3",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2023,
+      "ray": "Entry",
+      "work": "Gaming · 1080p",
+      "note": "Mainstream",
+      "popularityRank": 34
     },
     {
       "id": "gpu-geforce-rtx-4060",
@@ -3737,7 +4354,17 @@ const SFP_HARDWARE_DATA = {
       "power": 115,
       "psu": 450,
       "length": 240,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "4060",
+      "group": "mainstream",
+      "series": "RTX 40 · Ada Lovelace",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2023,
+      "ray": "High",
+      "work": "AI · Editing · 1080p",
+      "note": "Mainstream",
+      "popularityRank": 45
     },
     {
       "id": "gpu-geforce-rtx-2070",
@@ -3755,7 +4382,16 @@ const SFP_HARDWARE_DATA = {
       "power": 175,
       "psu": 550,
       "length": 270,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-rtx-2070",
+      "group": "budget",
+      "series": "RTX 20 Turing",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Database score; RTX 20 Turing · Mid-Range"
     },
     {
       "id": "gpu-geforce-rtx-3060",
@@ -3773,7 +4409,17 @@ const SFP_HARDWARE_DATA = {
       "power": 170,
       "psu": 550,
       "length": 242,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "3060",
+      "group": "mainstream",
+      "series": "RTX 30 · Ampere",
+      "type": "GDDR6",
+      "bus": 192,
+      "year": 2021,
+      "ray": "Mid",
+      "work": "1080p · Editing · AI entry",
+      "note": "Popular budget",
+      "popularityRank": 43
     },
     {
       "id": "gpu-geforce-rtx-3060-ti",
@@ -3796,7 +4442,16 @@ const SFP_HARDWARE_DATA = {
       "power": 200,
       "psu": 600,
       "length": 242,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-rtx-3060-ti",
+      "group": "budget",
+      "series": "RTX 30 Ampere",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
     },
     {
       "id": "gpu-titan-xp",
@@ -3814,7 +4469,16 @@ const SFP_HARDWARE_DATA = {
       "power": 250,
       "psu": 650,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-titan-xp",
+      "group": "budget",
+      "series": "GTX 10 HEDT",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Database score; GTX 10 HEDT · High-End"
     },
     {
       "id": "gpu-radeon-rx-6700-xt",
@@ -3837,7 +4501,17 @@ const SFP_HARDWARE_DATA = {
       "power": 230,
       "psu": 650,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "6700xt",
+      "group": "mainstream",
+      "series": "RX 6000 · RDNA 2",
+      "type": "GDDR6",
+      "bus": 192,
+      "year": 2021,
+      "ray": "Entry",
+      "work": "Gaming · 1080p/1440p",
+      "note": "Older mainstream",
+      "popularityRank": 12
     },
     {
       "id": "gpu-geforce-rtx-2070-super",
@@ -3855,7 +4529,17 @@ const SFP_HARDWARE_DATA = {
       "power": 215,
       "psu": 650,
       "length": 270,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "2070s",
+      "group": "mainstream",
+      "series": "RTX 20 · Turing",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2019,
+      "ray": "Entry",
+      "work": "1080p gaming · Editing",
+      "note": "Older mainstream",
+      "popularityRank": 23
     },
     {
       "id": "gpu-geforce-rtx-3070",
@@ -3878,7 +4562,17 @@ const SFP_HARDWARE_DATA = {
       "power": 220,
       "psu": 650,
       "length": 242,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "3070",
+      "group": "performance",
+      "series": "RTX 30 · Ampere",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2020,
+      "ray": "High",
+      "work": "Gaming · Editing · 1440p",
+      "note": "Older midrange",
+      "popularityRank": 42
     },
     {
       "id": "gpu-geforce-rtx-4060-ti-8gb",
@@ -3896,7 +4590,17 @@ const SFP_HARDWARE_DATA = {
       "power": 160,
       "psu": 550,
       "length": 245,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "4060ti8",
+      "group": "mainstream",
+      "series": "RTX 40 · Ada Lovelace",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2023,
+      "ray": "High",
+      "work": "AI · Editing · 1080p",
+      "note": "Midrange · 8GB",
+      "popularityRank": 44
     },
     {
       "id": "gpu-geforce-rtx-5060",
@@ -3919,7 +4623,17 @@ const SFP_HARDWARE_DATA = {
       "power": 145,
       "psu": 550,
       "length": 240,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5060",
+      "group": "mainstream",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 128,
+      "year": 2025,
+      "ray": "High",
+      "work": "AI · 1080p gaming",
+      "note": "Mainstream",
+      "popularityRank": 52
     },
     {
       "id": "gpu-geforce-rtx-4060-ti-16gb",
@@ -3937,7 +4651,17 @@ const SFP_HARDWARE_DATA = {
       "power": 160,
       "psu": 550,
       "length": 245,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "4060ti8",
+      "group": "mainstream",
+      "series": "RTX 40 · Ada Lovelace",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2023,
+      "ray": "High",
+      "work": "AI · Editing · 1080p",
+      "note": "Midrange · 8GB",
+      "popularityRank": 44
     },
     {
       "id": "gpu-arc-b580",
@@ -3955,7 +4679,17 @@ const SFP_HARDWARE_DATA = {
       "power": 185,
       "psu": 550,
       "length": 232,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "b580",
+      "group": "mainstream",
+      "series": "Arc B · Xe2",
+      "type": "GDDR6",
+      "bus": 192,
+      "year": 2024,
+      "ray": "Mid",
+      "work": "Gaming · 1080p/1440p",
+      "note": "Mainstream",
+      "popularityRank": 29
     },
     {
       "id": "gpu-geforce-rtx-2080-super",
@@ -3973,7 +4707,17 @@ const SFP_HARDWARE_DATA = {
       "power": 250,
       "psu": 650,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "2080s",
+      "group": "mainstream",
+      "series": "RTX 20 · Turing",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2019,
+      "ray": "Mid",
+      "work": "1080p · 1440p gaming",
+      "note": "Older performance",
+      "popularityRank": 24
     },
     {
       "id": "gpu-radeon-rx-9060-xt-8gb",
@@ -3991,7 +4735,17 @@ const SFP_HARDWARE_DATA = {
       "power": 160,
       "psu": 550,
       "length": 280,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "9060xt8",
+      "group": "mainstream",
+      "series": "RX 9000 · RDNA 4",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2025,
+      "ray": "Mid",
+      "work": "Gaming · 1080p",
+      "note": "Mainstream · 8GB",
+      "popularityRank": 35
     },
     {
       "id": "gpu-geforce-rtx-3070-ti",
@@ -4014,7 +4768,16 @@ const SFP_HARDWARE_DATA = {
       "power": 290,
       "psu": 750,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-rtx-3070-ti",
+      "group": "mainstream",
+      "series": "RTX 30 Ampere",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "High",
+      "work": "Gaming",
+      "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
     },
     {
       "id": "gpu-geforce-rtx-2080-ti",
@@ -4032,7 +4795,16 @@ const SFP_HARDWARE_DATA = {
       "power": 250,
       "psu": 650,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-rtx-2080-ti",
+      "group": "mainstream",
+      "series": "RTX 20 Turing",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Database score; RTX 20 Turing · High-End"
     },
     {
       "id": "gpu-radeon-rx-9060-xt-16gb",
@@ -4050,7 +4822,17 @@ const SFP_HARDWARE_DATA = {
       "power": 160,
       "psu": 550,
       "length": 280,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "9060xt8",
+      "group": "mainstream",
+      "series": "RX 9000 · RDNA 4",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2025,
+      "ray": "Mid",
+      "work": "Gaming · 1080p",
+      "note": "Mainstream · 8GB",
+      "popularityRank": 35
     },
     {
       "id": "gpu-geforce-rtx-5060-ti-8gb",
@@ -4073,7 +4855,17 @@ const SFP_HARDWARE_DATA = {
       "power": 180,
       "psu": 600,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5060ti8",
+      "group": "mainstream",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 128,
+      "year": 2025,
+      "ray": "High",
+      "work": "AI · Editing · 1080p",
+      "note": "Midrange · 8GB variant",
+      "popularityRank": 1
     },
     {
       "id": "gpu-radeon-rx-7600-xt",
@@ -4096,7 +4888,17 @@ const SFP_HARDWARE_DATA = {
       "power": 190,
       "psu": 600,
       "length": 280,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "7600xt",
+      "group": "mainstream",
+      "series": "RX 7000 · RDNA 3",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2024,
+      "ray": "Entry",
+      "work": "Gaming · 1080p/1440p",
+      "note": "Mainstream · 16GB",
+      "popularityRank": 16
     },
     {
       "id": "gpu-radeon-rx-7700-xt",
@@ -4119,7 +4921,17 @@ const SFP_HARDWARE_DATA = {
       "power": 245,
       "psu": 700,
       "length": 280,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "7700xt",
+      "group": "performance",
+      "series": "RX 7000 · RDNA 3",
+      "type": "GDDR6",
+      "bus": 192,
+      "year": 2023,
+      "ray": "Mid",
+      "work": "Gaming · 1440p",
+      "note": "Midrange",
+      "popularityRank": 32
     },
     {
       "id": "gpu-geforce-rtx-4060-ti",
@@ -4137,7 +4949,17 @@ const SFP_HARDWARE_DATA = {
       "power": 160,
       "psu": 550,
       "length": 245,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "4060ti8",
+      "group": "mainstream",
+      "series": "RTX 40 · Ada Lovelace",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2023,
+      "ray": "High",
+      "work": "AI · Editing · 1080p",
+      "note": "Midrange · 8GB",
+      "popularityRank": 44
     },
     {
       "id": "gpu-geforce-rtx-5060-ti-16gb",
@@ -4160,7 +4982,17 @@ const SFP_HARDWARE_DATA = {
       "power": 180,
       "psu": 600,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5060ti8",
+      "group": "mainstream",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 128,
+      "year": 2025,
+      "ray": "High",
+      "work": "AI · Editing · 1080p",
+      "note": "Midrange · 8GB variant",
+      "popularityRank": 1
     },
     {
       "id": "gpu-titan-rtx",
@@ -4178,7 +5010,16 @@ const SFP_HARDWARE_DATA = {
       "power": 280,
       "psu": 650,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-titan-rtx",
+      "group": "mainstream",
+      "series": "RTX 20 HEDT",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Medium",
+      "work": "Gaming",
+      "note": "Database score; RTX 20 HEDT · High-End"
     },
     {
       "id": "gpu-geforce-rtx-4070",
@@ -4201,7 +5042,17 @@ const SFP_HARDWARE_DATA = {
       "power": 200,
       "psu": 650,
       "length": 244,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "4070",
+      "group": "performance",
+      "series": "RTX 40 · Ada Lovelace",
+      "type": "GDDR6X",
+      "bus": 192,
+      "year": 2023,
+      "ray": "High",
+      "work": "AI · Editing · 1440p",
+      "note": "Midrange",
+      "popularityRank": 46
     },
     {
       "id": "gpu-radeon-rx-6800-xt",
@@ -4224,7 +5075,17 @@ const SFP_HARDWARE_DATA = {
       "power": 300,
       "psu": 750,
       "length": 308,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "6800xt",
+      "group": "performance",
+      "series": "RX 6000 · RDNA 2",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2020,
+      "ray": "Entry",
+      "work": "Gaming · 1440p",
+      "note": "Older performance",
+      "popularityRank": 13
     },
     {
       "id": "gpu-radeon-rx-6800",
@@ -4242,7 +5103,16 @@ const SFP_HARDWARE_DATA = {
       "power": 250,
       "psu": 650,
       "length": 305,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-radeon-rx-6800",
+      "group": "mainstream",
+      "series": "RX 6000 RDNA 2",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "Low",
+      "work": "Gaming",
+      "note": "Database score; RX 6000 RDNA 2 · High-End"
     },
     {
       "id": "gpu-radeon-rx-6900-xt",
@@ -4265,7 +5135,17 @@ const SFP_HARDWARE_DATA = {
       "power": 300,
       "psu": 850,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "6900xt",
+      "group": "enthusiast",
+      "series": "RX 6000 · RDNA 2",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2020,
+      "ray": "Entry",
+      "work": "Gaming · 1440p/4K",
+      "note": "Older high-end",
+      "popularityRank": 14
     },
     {
       "id": "gpu-radeon-rx-9060-xt",
@@ -4283,7 +5163,17 @@ const SFP_HARDWARE_DATA = {
       "power": 160,
       "psu": 550,
       "length": 280,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "9060xt8",
+      "group": "mainstream",
+      "series": "RX 9000 · RDNA 4",
+      "type": "GDDR6",
+      "bus": 128,
+      "year": 2025,
+      "ray": "Mid",
+      "work": "Gaming · 1080p",
+      "note": "Mainstream · 8GB",
+      "popularityRank": 35
     },
     {
       "id": "gpu-radeon-rx-7800-xt",
@@ -4306,7 +5196,17 @@ const SFP_HARDWARE_DATA = {
       "power": 263,
       "psu": 700,
       "length": 302,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "7800xt",
+      "group": "performance",
+      "series": "RX 7000 · RDNA 3",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2023,
+      "ray": "Mid",
+      "work": "Gaming · 1440p",
+      "note": "Upper midrange",
+      "popularityRank": 33
     },
     {
       "id": "gpu-geforce-rtx-3080-ti",
@@ -4329,7 +5229,16 @@ const SFP_HARDWARE_DATA = {
       "power": 350,
       "psu": 750,
       "length": 313,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-rtx-3080-ti",
+      "group": "mainstream",
+      "series": "RTX 30 Ampere",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "High",
+      "work": "Gaming",
+      "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
     },
     {
       "id": "gpu-radeon-rx-9070-gre",
@@ -4352,7 +5261,17 @@ const SFP_HARDWARE_DATA = {
       "power": 220,
       "psu": 650,
       "length": 310,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "9070gre",
+      "group": "performance",
+      "series": "RX 9000 · RDNA 4",
+      "type": "GDDR6",
+      "bus": 192,
+      "year": 2026,
+      "ray": "High",
+      "work": "Gaming · 1440p",
+      "note": "Upper midrange",
+      "popularityRank": 19
     },
     {
       "id": "gpu-geforce-rtx-3090",
@@ -4375,7 +5294,17 @@ const SFP_HARDWARE_DATA = {
       "power": 350,
       "psu": 750,
       "length": 313,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "3090",
+      "group": "enthusiast",
+      "series": "RTX 30 · Ampere",
+      "type": "GDDR6X",
+      "bus": 384,
+      "year": 2020,
+      "ray": "High",
+      "work": "AI · 3D · 4K",
+      "note": "Older high-end",
+      "popularityRank": 3
     },
     {
       "id": "gpu-radeon-rx-6950-xt",
@@ -4398,7 +5327,17 @@ const SFP_HARDWARE_DATA = {
       "power": 335,
       "psu": 850,
       "length": 331,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "6950xt",
+      "group": "enthusiast",
+      "series": "RX 6000 · RDNA 2",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2022,
+      "ray": "Entry",
+      "work": "Gaming · 1440p/4K",
+      "note": "Older high-end",
+      "popularityRank": 15
     },
     {
       "id": "gpu-geforce-rtx-3080-10gb",
@@ -4416,7 +5355,17 @@ const SFP_HARDWARE_DATA = {
       "power": 320,
       "psu": 750,
       "length": 285,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "3080",
+      "group": "performance",
+      "series": "RTX 30 · Ampere",
+      "type": "GDDR6X",
+      "bus": 320,
+      "year": 2020,
+      "ray": "High",
+      "work": "Gaming · 3D · 1440p",
+      "note": "Older high-end",
+      "popularityRank": 25
     },
     {
       "id": "gpu-geforce-rtx-4070-super",
@@ -4439,7 +5388,17 @@ const SFP_HARDWARE_DATA = {
       "power": 220,
       "psu": 650,
       "length": 244,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "4070s",
+      "group": "performance",
+      "series": "RTX 40 · Ada Lovelace",
+      "type": "GDDR6X",
+      "bus": 192,
+      "year": 2024,
+      "ray": "High",
+      "work": "AI · Editing · 1440p",
+      "note": "Upper midrange",
+      "popularityRank": 47
     },
     {
       "id": "gpu-geforce-rtx-3090-ti",
@@ -4462,7 +5421,16 @@ const SFP_HARDWARE_DATA = {
       "power": 450,
       "psu": 850,
       "length": 336,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "gpu-geforce-rtx-3090-ti",
+      "group": "mainstream",
+      "series": "RTX 30 Ampere",
+      "type": "Not listed",
+      "bus": "Not listed",
+      "year": null,
+      "ray": "High",
+      "work": "Gaming",
+      "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
     },
     {
       "id": "gpu-geforce-rtx-5070",
@@ -4485,7 +5453,17 @@ const SFP_HARDWARE_DATA = {
       "power": 250,
       "psu": 650,
       "length": 267,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5070",
+      "group": "performance",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 192,
+      "year": 2025,
+      "ray": "High",
+      "work": "AI · Editing · 1440p",
+      "note": "Upper midrange",
+      "popularityRank": 54
     },
     {
       "id": "gpu-radeon-rx-7900-gre",
@@ -4503,7 +5481,17 @@ const SFP_HARDWARE_DATA = {
       "power": 260,
       "psu": 700,
       "length": 310,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "7900gre",
+      "group": "performance",
+      "series": "RX 7000 · RDNA 3",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2024,
+      "ray": "Mid",
+      "work": "Gaming · 1440p",
+      "note": "Performance",
+      "popularityRank": 17
     },
     {
       "id": "gpu-geforce-rtx-4070-ti-super",
@@ -4526,7 +5514,17 @@ const SFP_HARDWARE_DATA = {
       "power": 285,
       "psu": 700,
       "length": 285,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "4070tis",
+      "group": "performance",
+      "series": "RTX 40 · Ada Lovelace",
+      "type": "GDDR6X",
+      "bus": 256,
+      "year": 2024,
+      "ray": "Very high",
+      "work": "AI · 3D · 1440p/4K",
+      "note": "Upper midrange",
+      "popularityRank": 39
     },
     {
       "id": "gpu-radeon-rx-7900-xt",
@@ -4549,7 +5547,17 @@ const SFP_HARDWARE_DATA = {
       "power": 315,
       "psu": 750,
       "length": 320,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "7900xt",
+      "group": "enthusiast",
+      "series": "RX 7000 · RDNA 3",
+      "type": "GDDR6",
+      "bus": 320,
+      "year": 2022,
+      "ray": "Mid",
+      "work": "Gaming · 1440p/4K",
+      "note": "High-end",
+      "popularityRank": 30
     },
     {
       "id": "gpu-geforce-rtx-5070-ti",
@@ -4572,7 +5580,17 @@ const SFP_HARDWARE_DATA = {
       "power": 300,
       "psu": 750,
       "length": 304,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5070ti",
+      "group": "performance",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 256,
+      "year": 2025,
+      "ray": "Very high",
+      "work": "AI · 3D · 1440p/4K",
+      "note": "High-end",
+      "popularityRank": 49
     },
     {
       "id": "gpu-radeon-rx-9070",
@@ -4595,7 +5613,17 @@ const SFP_HARDWARE_DATA = {
       "power": 220,
       "psu": 650,
       "length": 310,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "9070",
+      "group": "performance",
+      "series": "RX 9000 · RDNA 4",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2025,
+      "ray": "High",
+      "work": "Gaming · 1440p/4K",
+      "note": "Upper midrange",
+      "popularityRank": 37
     },
     {
       "id": "gpu-radeon-rx-9070-xt",
@@ -4618,7 +5646,17 @@ const SFP_HARDWARE_DATA = {
       "power": 304,
       "psu": 750,
       "length": 330,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "9070xt",
+      "group": "performance",
+      "series": "RX 9000 · RDNA 4",
+      "type": "GDDR6",
+      "bus": 256,
+      "year": 2025,
+      "ray": "High",
+      "work": "Gaming · 1440p/4K",
+      "note": "High-end",
+      "popularityRank": 38
     },
     {
       "id": "gpu-geforce-rtx-4080-super",
@@ -4641,7 +5679,17 @@ const SFP_HARDWARE_DATA = {
       "power": 320,
       "psu": 750,
       "length": 304,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "4080s",
+      "group": "enthusiast",
+      "series": "RTX 40 · Ada Lovelace",
+      "type": "GDDR6X",
+      "bus": 256,
+      "year": 2024,
+      "ray": "Very high",
+      "work": "AI · 3D · 4K",
+      "note": "High-end",
+      "popularityRank": 40
     },
     {
       "id": "gpu-radeon-rx-7900-xtx",
@@ -4664,7 +5712,17 @@ const SFP_HARDWARE_DATA = {
       "power": 355,
       "psu": 850,
       "length": 345,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "7900xtx",
+      "group": "enthusiast",
+      "series": "RX 7000 · RDNA 3",
+      "type": "GDDR6",
+      "bus": 384,
+      "year": 2022,
+      "ray": "Mid",
+      "work": "Gaming · 4K · creative",
+      "note": "Enthusiast",
+      "popularityRank": 31
     },
     {
       "id": "gpu-geforce-rtx-5080-16gb",
@@ -4687,7 +5745,17 @@ const SFP_HARDWARE_DATA = {
       "power": 360,
       "psu": 850,
       "length": 304,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5080",
+      "group": "enthusiast",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 256,
+      "year": 2025,
+      "ray": "Very high",
+      "work": "AI · 3D · 4K",
+      "note": "Enthusiast",
+      "popularityRank": 50
     },
     {
       "id": "gpu-geforce-rtx-4090",
@@ -4710,7 +5778,17 @@ const SFP_HARDWARE_DATA = {
       "power": 450,
       "psu": 850,
       "length": 304,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "4090",
+      "group": "enthusiast",
+      "series": "RTX 40 · Ada Lovelace",
+      "type": "GDDR6X",
+      "bus": 384,
+      "year": 2022,
+      "ray": "Very high",
+      "work": "AI · 3D · 4K",
+      "note": "Previous flagship",
+      "popularityRank": 41
     },
     {
       "id": "gpu-geforce-rtx-5090",
@@ -4733,7 +5811,17 @@ const SFP_HARDWARE_DATA = {
       "power": 575,
       "psu": 1000,
       "length": 313,
-      "discrete": true
+      "discrete": true,
+      "comparisonId": "5090",
+      "group": "enthusiast",
+      "series": "RTX 50 · Blackwell",
+      "type": "GDDR7",
+      "bus": 512,
+      "year": 2025,
+      "ray": "Very high",
+      "work": "AI · 3D · 4K/8K",
+      "note": "Flagship",
+      "popularityRank": 51
     }
   ]
 };
