@@ -176,7 +176,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
   <link rel="stylesheet" href="site-universal.css">
 </head>
 <body>
-<div id="site-header"></div>
+<div id="site-header"><noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/#tools">Tools</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></noscript></div>
 <main class="main">
 <section class="hero" data-sfp-reveal>
 <div><span class="eyebrow">SystemFit PC · Hardware comparison</span><h1>Find the right <span class="gradient">graphics card</span></h1><p class="lede">Compare up to five GPUs in one clear view. See what matters for gaming, creative work, memory, power and workload fit—without needing to decode spec sheets first.</p><div class="quick-points"><span class="pill">NVIDIA · AMD · Intel</span><span class="pill">Budget to enthusiast</span><span class="pill">Compare 2–5 cards</span></div></div>
@@ -504,7 +504,10 @@ document.querySelectorAll(".brand-sort-select").forEach(select=>{
     <p>
         <a href="privacy-policy.html">Privacy Policy</a>
     </p>
-</footer>
+
+<nav aria-label="Footer navigation">
+  <a href="/">Home</a> · <a href="/#tools">Tools</a> · <a href="guides.html">Guides</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy-policy.html">Privacy Policy</a>
+</nav></footer>
 <script src="header.js" defer></script>
 </body>
 </html>
