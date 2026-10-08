@@ -1,7 +1,7 @@
 /* SystemFit PC canonical game database.
  * Master selection set: 792 games from the Bottleneck catalog.
- * Existing FPS workload profiles are preserved; games without a measured/modelled
- * profile use an explicitly marked generic estimate until a dedicated profile is researched.
+ * Existing FPS workload profiles are preserved; games without a dedicated profile
+ * use an explicitly marked generic estimate until researched individually.
  */
 const SFP_GAME_DATA = {
   "games": [
@@ -2397,7 +2397,7 @@ const SFP_GAME_DATA = {
       "rt": 1
     },
     {
-      "name": "Valorant",
+      "name": "VALORANT",
       "cat": "Competitive",
       "gpu": 0.25,
       "cpu": 0.82,
@@ -2433,7 +2433,7 @@ const SFP_GAME_DATA = {
       "rt": 1
     },
     {
-      "name": "PUBG: Battlegrounds",
+      "name": "PUBG: BATTLEGROUNDS",
       "cat": "Competitive",
       "gpu": 0.55,
       "cpu": 0.63,
@@ -3064,7 +3064,7 @@ const SFP_GAME_DATA = {
       "profileStatus": "default-estimate"
     },
     {
-      "name": "Total War: Warhammer III",
+      "name": "Total War: WARHAMMER III",
       "cat": "Strategy",
       "gpu": 0.63,
       "cpu": 0.86,
@@ -3574,7 +3574,7 @@ const SFP_GAME_DATA = {
       "rt": 1.2
     },
     {
-      "name": "Doom Eternal",
+      "name": "DOOM Eternal",
       "cat": "AAA",
       "gpu": 0.55,
       "cpu": 0.54,
@@ -4607,7 +4607,7 @@ const SFP_GAME_DATA = {
       "profileStatus": "default-estimate"
     },
     {
-      "name": "Ghost of Tsushima Director's Cut",
+      "name": "Ghost of Tsushima DIRECTOR'S CUT",
       "cat": "AAA",
       "gpu": 0.72,
       "cpu": 0.59,
@@ -7747,7 +7747,7 @@ const SFP_GAME_DATA = {
       "profileStatus": "default-estimate"
     },
     {
-      "name": "EA Sports FC 26",
+      "name": "EA SPORTS FC 26",
       "cat": "AAA",
       "gpu": 0.43,
       "cpu": 0.56,
