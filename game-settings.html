@@ -160,7 +160,7 @@
       const game=games[$("game").value], cpu=$("cpu").value, gpu=$("gpu").value, res=$("resolution").value;
       if(!res){$("fps").textContent="—";$("preset").textContent="Select resolution";$("explanation").textContent="Choose a gaming resolution and target FPS, then run the optimizer.";return}
       const ram=+$("ram").value, target=+$("target").value||60, priority=$("priority").value, rt=$("rt").value==="on";
-      let fps=baseEstimate(game,cpus[cpu],gpu,res);
+      let fps=baseEstimate(game,cpu,gpu,res);
       if(ram<16)fps*=.88;
       if(rt)fps*=.70*game.heavy;
       if(priority==="fps")fps*=1.08;
@@ -174,7 +174,7 @@
       let up="Off / Native";
       if(fps<target){up=res==="1080"?"Quality or native":res==="1440"?"Quality": "Balanced";}
       const fg=game.fg&&fps>=45?"Recommended if supported":"Off / unavailable";
-      $("fps").textContent=range+"–"+Math.round(fps+range)+" FPS";
+      $("fps").textContent=Math.max(1,Math.round(fps-range))+"–"+Math.round(fps+range)+" FPS";
       $("preset").textContent=preset;
       $("limit").textContent=limit+"-limited";
       $("vram").textContent=vramHead>=3?"Healthy":vramHead>=1?"Tight":"Low";
