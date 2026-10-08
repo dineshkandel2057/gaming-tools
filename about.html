@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH7D3F7VV"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-CSH7D3F7VV');
-  </script>
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="systemfit-favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About SystemFit PC</title>
-  <meta name="description" content="Learn about SystemFit PC and its practical tools and guides for better PC building and gaming decisions.">
+  <meta name="description" content="Learn who runs SystemFit PC, why it exists, and how the site helps people make clearer PC building and gaming decisions.">
+  <link rel="canonical" href="https://systemfitpc.vercel.app/about.html">
   <link rel="stylesheet" href="site-universal.css">
   <style>
     :root{--bg:#0d0f15;--panel:#171a23;--border:#2d3240;--text:#f4f6fb;--muted:#a9b0c0;--purple:#6c5cff}
@@ -21,44 +14,53 @@
     body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
     main{max-width:900px;margin:0 auto;padding:96px 22px 80px}
     .about-card{padding:32px;border:1px solid var(--border);border-radius:18px;background:var(--panel);box-shadow:0 20px 60px rgba(0,0,0,.18)}
+    h1,h2{font-family:"Space Grotesk",Arial,sans-serif;letter-spacing:-.03em}
     h1{margin:0 0 14px;font-size:clamp(32px,5vw,52px);line-height:1.05}
     h1 span{color:#806fff}
+    h2{margin:30px 0 10px;font-size:24px}
     p{margin:0 0 16px;color:var(--muted);font-size:16px}
     .about-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
     .about-links a{padding:10px 14px;border:1px solid rgba(108,92,255,.3);border-radius:10px;color:#d9d5ff;text-decoration:none;background:rgba(108,92,255,.08)}
     .about-links a:hover{color:#fff;background:rgba(108,92,255,.14)}
+    .fill{color:#ffd27a}
   </style>
 </head>
 <body>
   <div id="site-header">
-    <noscript>
-      <nav aria-label="Main navigation">
-        <a href="/">Home</a>
-        <a href="/#tools">Tools</a>
-        <a href="guides.html">Guides</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </noscript>
+    <noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/#tools">Tools</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></noscript>
   </div>
-
   <main>
-    <section class="about-card">
+    <section class="about-card" data-sfp-reveal>
       <h1>About <span>SystemFit PC</span></h1>
-      <p>SystemFit PC provides practical tools and guides to help PC builders and gamers make clearer hardware and performance decisions.</p>
-      <p>The site focuses on useful comparisons, calculators, upgrade guidance and straightforward explanations without unnecessary complexity.</p>
+      <p>SystemFit PC is built to make PC building, gaming performance and upgrade decisions easier to understand. The site combines practical calculators, comparison tools and hardware guides so visitors can investigate a question before spending money or changing a working system.</p>
+
+      <h2>Who runs SystemFit PC?</h2>
+      <p>SystemFit PC is run by <span class="fill">[FILL IN: your name or the name you want publicly associated with SystemFit PC]</span>.</p>
+      <p>The project is based in <span class="fill">[FILL IN: country/region, or remove this sentence if you do not want to publish a location]</span>. The site is an independent project and is not presented as an official website for any CPU, GPU, PC manufacturer, game publisher or other hardware brand.</p>
+
+      <h2>Why SystemFit PC exists</h2>
+      <p>PC hardware decisions can become unnecessarily complicated. A component can look good on paper but still be a poor fit for a particular game, resolution, budget or existing build. SystemFit PC exists to turn those questions into practical checks: what is likely to limit performance, whether parts fit together, what FPS range to expect, and which upgrade deserves attention first.</p>
+      <p>The goal is to provide useful starting points without pretending that an estimate is the same thing as a measured benchmark. When a tool produces an estimate, its methodology and limitations should be clear enough for visitors to understand what the result can and cannot tell them.</p>
+
+      <h2>What we focus on</h2>
+      <p>SystemFit PC focuses on gaming performance, component compatibility, GPU comparisons, upgrade decisions, graphics settings and practical PC hardware education. The tools are designed to support a decision, while the guides provide additional context for people who want to understand the reasoning behind that decision.</p>
+
+      <h2>A note about accuracy</h2>
+      <p>Hardware and game performance change over time. Results can vary with drivers, patches, exact component models, cooling, settings and the workload being tested. For that reason, SystemFit PC should be used as a planning and research aid. Before buying hardware, confirm exact specifications with the manufacturer or retailer.</p>
+
       <div class="about-links" aria-label="Explore SystemFit PC">
         <a href="/#tools">Explore Tools</a>
+        <a href="methodology.html">Read the Methodology</a>
+        <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
         <a href="guides.html">Read Guides</a>
         <a href="contact.html">Contact</a>
       </div>
     </section>
   </main>
-
   <footer class="sfp-site-footer">
     <p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
     <nav aria-label="Footer navigation">
-      <a href="/">Home</a> · <a href="/#tools">Tools</a> · <a href="guides.html">Guides</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="/">Home</a> · <a href="/#tools">Tools</a> · <a href="guides.html">Guides</a> · <a href="about.html">About</a> · <a href="methodology.html">Methodology</a> · <a href="affiliate-disclosure.html">Affiliate Disclosure</a> · <a href="contact.html">Contact</a> · <a href="privacy-policy.html">Privacy Policy</a>
     </nav>
   </footer>
   <script src="header.js" defer></script>
