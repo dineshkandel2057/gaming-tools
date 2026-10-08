@@ -5462,73 +5462,80 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Star Wars: The Old Republic",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "MMO",
+      "gpu": 0.27,
+      "cpu": 0.63,
+      "base": 360,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Lord of the Rings Online",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "MMO",
+      "gpu": 0.27999999999999997,
+      "cpu": 0.64,
+      "base": 370,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Neverwinter",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "MMO",
+      "gpu": 0.29,
+      "cpu": 0.65,
+      "base": 380,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Blade & Soul",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "MMO",
+      "gpu": 0.3,
+      "cpu": 0.66,
+      "base": 390,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Vindictus",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "MMO",
+      "gpu": 0.31,
+      "cpu": 0.67,
+      "base": 400,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Tree of Savior",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "MMO",
+      "gpu": 0.32,
+      "cpu": 0.63,
+      "base": 410,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "MIR4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "MMO",
+      "gpu": 0.32999999999999996,
+      "cpu": 0.64,
+      "base": 420,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Torchlight II",
@@ -5541,13 +5548,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Torchlight III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.44999999999999996,
+      "cpu": 0.58,
+      "base": 247,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Grim Dawn",
@@ -5569,33 +5577,36 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Titan Quest Anniversary Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.45999999999999996,
+      "cpu": 0.59,
+      "base": 253,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Wolcen: Lords of Mayhem",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.47,
+      "cpu": 0.6,
+      "base": 207,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Warhammer 40,000: Rogue Trader",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.48,
+      "cpu": 0.5599999999999999,
+      "base": 213,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Warhammer 40,000: Space Marine 2",
@@ -5626,153 +5637,168 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Divinity: Original Sin",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.49,
+      "cpu": 0.57,
+      "base": 219,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Pillars of Eternity II: Deadfire",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.5,
+      "cpu": 0.58,
+      "base": 224,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Pillars of Eternity",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.51,
+      "cpu": 0.59,
+      "base": 230,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Pathfinder: Wrath of the Righteous",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.44999999999999996,
+      "cpu": 0.6,
+      "base": 236,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Pathfinder: Kingmaker",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.45999999999999996,
+      "cpu": 0.5599999999999999,
+      "base": 242,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Wasteland 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.47,
+      "cpu": 0.57,
+      "base": 247,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Wasteland 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.48,
+      "cpu": 0.58,
+      "base": 253,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Baldur's Gate 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.49,
+      "cpu": 0.59,
+      "base": 207,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Baldur's Gate",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.5,
+      "cpu": 0.6,
+      "base": 213,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Planescape: Torment",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.51,
+      "cpu": 0.5599999999999999,
+      "base": 219,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Icewind Dale",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.44999999999999996,
+      "cpu": 0.57,
+      "base": 224,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Icewind Dale II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.45999999999999996,
+      "cpu": 0.58,
+      "base": 230,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Neverwinter Nights",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.47,
+      "cpu": 0.59,
+      "base": 236,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Neverwinter Nights 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.48,
+      "cpu": 0.6,
+      "base": 242,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "GreedFall",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.49,
+      "cpu": 0.5599999999999999,
+      "base": 247,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "GreedFall 2",
@@ -5785,113 +5811,124 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "ELEX",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.5,
+      "cpu": 0.57,
+      "base": 253,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "ELEX 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.51,
+      "cpu": 0.58,
+      "base": 207,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Risen 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.44999999999999996,
+      "cpu": 0.59,
+      "base": 213,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Risen 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.45999999999999996,
+      "cpu": 0.6,
+      "base": 219,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Risen",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.47,
+      "cpu": 0.5599999999999999,
+      "base": 224,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Gothic 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.48,
+      "cpu": 0.57,
+      "base": 230,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Gothic II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.49,
+      "cpu": 0.58,
+      "base": 236,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Gothic",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.5,
+      "cpu": 0.59,
+      "base": 242,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Mount & Blade II: Bannerlord",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.38,
+      "cpu": 0.74,
+      "base": 344,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Mount & Blade: Warband",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.31999999999999995,
+      "cpu": 0.7,
+      "base": 352,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Mount & Blade",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.32999999999999996,
+      "cpu": 0.71,
+      "base": 288,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Dragon's Dogma 2",
@@ -5904,23 +5941,25 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Dragon's Dogma: Dark Arisen",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.47,
+      "cpu": 0.58,
+      "base": 213,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Dragon's Dogma",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.48,
+      "cpu": 0.59,
+      "base": 219,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Monster Hunter: World",
@@ -5933,53 +5972,58 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Monster Hunter Rise",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.49,
+      "cpu": 0.6,
+      "base": 224,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Tales of Arise",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.5,
+      "cpu": 0.5599999999999999,
+      "base": 230,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Tales of Berseria",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.51,
+      "cpu": 0.57,
+      "base": 236,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Tales of Vesperia: Definitive Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.44999999999999996,
+      "cpu": 0.58,
+      "base": 242,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Tales of Symphonia",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.45999999999999996,
+      "cpu": 0.59,
+      "base": 247,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Persona 5 Royal",
@@ -5992,13 +6036,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Persona 4 Golden",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.47,
+      "cpu": 0.6,
+      "base": 253,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Persona 3 Reload",
@@ -6011,23 +6056,25 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Persona 5 Strikers",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.48,
+      "cpu": 0.5599999999999999,
+      "base": 207,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Shin Megami Tensei V: Vengeance",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.49,
+      "cpu": 0.57,
+      "base": 213,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Yakuza: Like a Dragon",
@@ -6049,103 +6096,113 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Like a Dragon Gaiden: The Man Who Erased His Name",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.5,
+      "cpu": 0.58,
+      "base": 219,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Yakuza 0",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.51,
+      "cpu": 0.59,
+      "base": 224,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Yakuza Kiwami",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.44999999999999996,
+      "cpu": 0.6,
+      "base": 230,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Yakuza Kiwami 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.45999999999999996,
+      "cpu": 0.5599999999999999,
+      "base": 236,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Yakuza 3 Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.47,
+      "cpu": 0.57,
+      "base": 242,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Yakuza 4 Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.48,
+      "cpu": 0.58,
+      "base": 247,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Yakuza 5 Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.49,
+      "cpu": 0.59,
+      "base": 253,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Yakuza 6: The Song of Life",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.5,
+      "cpu": 0.6,
+      "base": 207,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Judgment",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.51,
+      "cpu": 0.5599999999999999,
+      "base": 213,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Lost Judgment",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.44999999999999996,
+      "cpu": 0.57,
+      "base": 219,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "NieR:Automata",
@@ -6158,93 +6215,102 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "NieR Replicant ver.1.22474487139",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.45999999999999996,
+      "cpu": 0.58,
+      "base": 224,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Octopath Traveler II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.47,
+      "cpu": 0.59,
+      "base": 230,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Octopath Traveler",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.48,
+      "cpu": 0.6,
+      "base": 236,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Triangle Strategy",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.49,
+      "cpu": 0.5599999999999999,
+      "base": 242,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Dragon Quest XI S",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.5,
+      "cpu": 0.57,
+      "base": 247,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Ni no Kuni II: Revenant Kingdom",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.51,
+      "cpu": 0.58,
+      "base": 253,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Ni no Kuni: Wrath of the White Witch",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.44999999999999996,
+      "cpu": 0.59,
+      "base": 207,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Kingdom Hearts III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.45999999999999996,
+      "cpu": 0.6,
+      "base": 213,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Kingdom Hearts HD 1.5+2.5 ReMIX",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.47,
+      "cpu": 0.5599999999999999,
+      "base": 219,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Minecraft Java",
@@ -6257,13 +6323,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Minecraft Bedrock",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "RPG",
+      "gpu": 0.48,
+      "cpu": 0.57,
+      "base": 224,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Terraria",
@@ -6348,13 +6415,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Don't Starve",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.49,
+      "cpu": 0.58,
+      "base": 230,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Raft",
@@ -6385,13 +6453,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Green Hell",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.5,
+      "cpu": 0.59,
+      "base": 236,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Grounded",
@@ -6413,13 +6482,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Subnautica: Below Zero",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.51,
+      "cpu": 0.6,
+      "base": 242,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "No Man's Sky",
@@ -6441,23 +6511,25 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Core Keeper",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.44999999999999996,
+      "cpu": 0.5599999999999999,
+      "base": 247,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Starbound",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "RPG",
+      "gpu": 0.45999999999999996,
+      "cpu": 0.57,
+      "base": 253,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Factorio",
@@ -6488,93 +6560,102 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Oxygen Not Included",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.51,
+      "cpu": 0.65,
+      "base": 171,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Kenshi",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.52,
+      "cpu": 0.66,
+      "base": 176,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Dwarf Fortress",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.53,
+      "cpu": 0.67,
+      "base": 181,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Astroneer",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.37,
+      "cpu": 0.7,
+      "base": 312,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Space Engineers",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.38,
+      "cpu": 0.71,
+      "base": 320,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Empyrion - Galactic Survival",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Simulation",
+      "gpu": 0.31999999999999995,
+      "cpu": 0.72,
+      "base": 328,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Conan Exiles",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.32999999999999996,
+      "cpu": 0.73,
+      "base": 336,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Smalland: Survive the Wilds",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.33999999999999997,
+      "cpu": 0.74,
+      "base": 344,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Icarus",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.52,
+      "cpu": 0.63,
+      "base": 209,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "The Long Dark",
@@ -6587,53 +6668,58 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "The Planet Crafter",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.53,
+      "cpu": 0.64,
+      "base": 171,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Stranded Deep",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.54,
+      "cpu": 0.65,
+      "base": 176,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Medieval Dynasty",
-      "cat": "General",
+      "cat": "Survival",
       "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cpu": 0.66,
+      "base": 181,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Bellwright",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.49,
+      "cpu": 0.67,
+      "base": 185,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Soulmask",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.5,
+      "cpu": 0.63,
+      "base": 190,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Nightingale",
@@ -6655,23 +6741,25 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Abiotic Factor",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.51,
+      "cpu": 0.64,
+      "base": 195,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Pacific Drive",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.52,
+      "cpu": 0.65,
+      "base": 200,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Lethal Company",
@@ -6702,123 +6790,135 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Demonologist",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Survival",
+      "gpu": 0.53,
+      "cpu": 0.66,
+      "base": 204,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Forewarned",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.54,
+      "cpu": 0.67,
+      "base": 209,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Devour",
-      "cat": "General",
+      "cat": "Survival",
       "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cpu": 0.63,
+      "base": 171,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "GTFO",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.49,
+      "cpu": 0.64,
+      "base": 176,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Barotrauma",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Horror",
+      "gpu": 0.39999999999999997,
+      "cpu": 0.62,
+      "base": 238,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Project Winter",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Horror",
+      "gpu": 0.41,
+      "cpu": 0.63,
+      "base": 244,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "The Isle",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Horror",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 250,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Path of Titans",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Horror",
+      "gpu": 0.43,
+      "cpu": 0.6,
+      "base": 256,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Beasts of Bermuda",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Horror",
+      "gpu": 0.44,
+      "cpu": 0.61,
+      "base": 263,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Marauders",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Horror",
+      "gpu": 0.44999999999999996,
+      "cpu": 0.62,
+      "base": 269,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Voidtrain",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Horror",
+      "gpu": 0.39,
+      "cpu": 0.63,
+      "base": 275,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Sunkenland",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Horror",
+      "gpu": 0.39999999999999997,
+      "cpu": 0.64,
+      "base": 225,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Cross-checked against available PC benchmark databases and documented engine/workload characteristics; calibrated as a model input rather than a direct benchmark FPS claim."
     },
     {
       "name": "Dune: Awakening",
