@@ -2636,12 +2636,12 @@ body{min-height:100%;background:#060a12;color:#f6f8ff;font-family:"DM Sans",Inte
       };
       const gameKey=GAME_PROFILE_OVERRIDES[game]||"mixed";
       const profile=profiles[gameKey]||profiles.mixed;
-      const competitive=["cs2","valorant"].includes(game);
-      const demanding=["cyberpunk","rdr2","hogwarts","starfield","lastofus"].includes(game);
+      const competitive=["cs2","valorant"].includes(gameKey);
+      const demanding=["cyberpunk","rdr2","hogwarts","starfield","lastofus"].includes(gameKey);
       const resolutionWeight=res==="1080"?0.80:res==="1440"?1.00:1.28;
       const fpsWeight=target>=240?1.30:target>=165?1.18:target>=120?1.08:1;
       const cpuPressure=(1-cpu)*fpsWeight*(res==="1080"?1.28:res==="1440"?0.94:0.68)*profile.cpu;
-      const gpuPressure=(1-gpu)*resolutionWeight*(demanding?1.16:competitive?0.76:game==="mixed"?1:0.92)*profile.gpu;
+      const gpuPressure=(1-gpu)*resolutionWeight*(demanding?1.16:competitive?0.76:gameKey==="mixed"?1:0.92)*profile.gpu;
       const ramPressure=ram<16?0.95:0;
       const storagePressure=storage==="hdd"?0.68:storage==="sata"?0.10:0;
 
@@ -2663,6 +2663,9 @@ body{min-height:100%;background:#060a12;color:#f6f8ff;font-family:"DM Sans",Inte
       let priority=totalPressure>=0.75?"High":totalPressure>=0.42?"Medium":"Low";
       if(first==="None")priority="Low";
 
+      // Low priority means the current setup does not justify a CPU/GPU purchase.
+      if(priority==="Low") first="None";
+
       let reason="",icon="✓";
       if(first==="GPU"){icon="GPU";reason=res==="2160"?"Your 4K target puts much more pressure on the graphics card. A stronger GPU is the most direct way to increase graphics performance.":"Your selected resolution/game target is more graphics-heavy than your current GPU tier. Upgrade the GPU before spending on a faster CPU."}
       if(first==="CPU"){icon="CPU";reason=target>=165||res==="1080"?"Your high-refresh/1080p target makes CPU frame delivery more important. A stronger GPU may not be fully utilized until the CPU can feed it consistently.":"Your CPU is the weaker side of this pairing for the target you selected. A CPU upgrade is more likely to improve consistency and high-FPS performance."}
@@ -2670,9 +2673,21 @@ body{min-height:100%;background:#060a12;color:#f6f8ff;font-family:"DM Sans",Inte
       if(first==="Storage"){icon="SSD";reason="Your games are still running from a hard drive. Moving the game library to an SSD is the first quality-of-life upgrade; it improves loading and asset streaming rather than average FPS."}
       if(first==="None"){icon="✓";reason="Your selected hardware is reasonably balanced for the target. If performance is acceptable, saving your budget may be smarter than upgrading immediately."}
 
-      // Budget-aware safety: do not recommend an expensive class when the budget is tiny.
-      if(first==="GPU" && budget<=100 && ram>=16 && storage!=="hdd"){priority="Medium";reason+=" Your current budget is small for a meaningful GPU jump, so compare prices carefully or save for a larger upgrade."}
-      if(first==="CPU" && budget<=100){priority="Medium";reason+=" With a small budget, a CPU platform upgrade may not be worthwhile; check for a compatible drop-in processor first."}
+      // Budget guard: only recommend a CPU/GPU class when the selected budget can
+      // reasonably cover a meaningful upgrade. Otherwise prioritize lower-cost parts or saving.
+      if((first==="GPU" || first==="CPU") && budget<=100){
+        const fallback=ram<16?"RAM":storage==="hdd"?"Storage":"None";
+        first=fallback;
+        priority="Low";
+        icon=fallback==="RAM"?"RAM":fallback==="Storage"?"SSD":"✓";
+        reason=fallback==="RAM"?"Your budget is too small for a meaningful CPU/GPU-class upgrade. Move to at least 16GB RAM first.":fallback==="Storage"?"Your budget is too small for a meaningful CPU/GPU-class upgrade. Move active games to an SSD first.":"Your budget is too small for a meaningful CPU/GPU-class upgrade. Save your budget for a larger upgrade.";
+      } else if(first==="GPU" && budget<=250){
+        const fallback=ram<16?"RAM":storage==="hdd"?"Storage":"None";
+        first=fallback;
+        priority="Low";
+        icon=fallback==="RAM"?"RAM":fallback==="Storage"?"SSD":"✓";
+        reason=fallback==="RAM"?"Your budget is below the level for a clearly worthwhile GPU-class upgrade. Move to at least 16GB RAM first.":fallback==="Storage"?"Your budget is below the level for a clearly worthwhile GPU-class upgrade. Move active games to an SSD first.":"Your budget is below the level for a clearly worthwhile GPU-class upgrade. Save your budget for a larger upgrade.";
+      }
 
       const ramStatus=ram<16?"Upgrade recommended":ram===16?"16GB baseline":"32GB+ comfortable";
       const storageStatus=storage==="hdd"?"Upgrade recommended":storage==="sata"?"Fine for gaming":"Good";
