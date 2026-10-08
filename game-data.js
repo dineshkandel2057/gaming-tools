@@ -2470,13 +2470,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Team Fortress 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.22,
+      "cpu": 0.58,
+      "base": 500,
+      "vram": 3,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from Source-engine performance characteristics and current PC benchmark behavior; primarily CPU-sensitive at high frame rates."
     },
     {
       "name": "League of Legends",
@@ -2559,7 +2560,7 @@ const SFP_GAME_DATA = {
       "vram": 6,
       "rt": 1,
       "profileStatus": "researched",
-      "profileNote": "Researched from TechSpot Battlefield V GPU testing at 1080p/1440p/4K Ultra and its 60-FPS GPU thresholds; CPU/DX11 behavior also considered."
+      "profileNote": "Researched from TechSpot and ComputerBase GPU/CPU testing; demanding Frostbite workload with notable CPU scaling."
     },
     {
       "name": "Battlefield 1",
@@ -2570,7 +2571,7 @@ const SFP_GAME_DATA = {
       "vram": 6,
       "rt": 1,
       "profileStatus": "researched",
-      "profileNote": "Researched from PC Gamer, GamersNexus and Notebookcheck Battlefield 1 testing; multiplayer shows materially higher CPU demand than single-player."
+      "profileNote": "Researched from TechSpot, GamersNexus and Tom's Hardware testing; multiplayer is substantially more CPU-intensive."
     },
     {
       "name": "Battlefield 6",
@@ -2599,7 +2600,7 @@ const SFP_GAME_DATA = {
       "vram": 4,
       "rt": 1,
       "profileStatus": "researched",
-      "profileNote": "Researched from current War Thunder benchmark data plus 1080p gameplay testing; profile reflects moderate GPU demand with meaningful CPU influence."
+      "profileNote": "Researched from current gameplay benchmark data; moderate GPU load with meaningful CPU influence."
     },
     {
       "name": "World of Tanks",
@@ -2610,7 +2611,7 @@ const SFP_GAME_DATA = {
       "vram": 4,
       "rt": 1,
       "profileStatus": "researched",
-      "profileNote": "Researched from ComputerBase and CheckFPS World of Tanks testing; 1080p is relatively CPU-sensitive while higher resolutions shift toward GPU limits."
+      "profileNote": "Researched from ComputerBase and current real-game benchmark data; high-FPS CPU sensitivity is significant."
     },
     {
       "name": "World of Warships",
@@ -2621,7 +2622,7 @@ const SFP_GAME_DATA = {
       "vram": 4,
       "rt": 1,
       "profileStatus": "researched",
-      "profileNote": "Researched from Notebookcheck World of Warships desktop/notebook benchmarks; relatively light GPU workload with strong high-FPS scaling."
+      "profileNote": "Researched from desktop/notebook benchmark data; comparatively light GPU workload with strong high-FPS scaling."
     },
     {
       "name": "Enlisted",
@@ -2645,22 +2646,25 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Arena Breakout: Infinite",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
+      "cat": "Competitive",
+      "gpu": 0.68,
+      "cpu": 0.63,
       "base": 140,
-      "vram": 6,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from current PC performance testing; Unreal Engine 5 workload with substantial GPU and CPU demand."
     },
     {
       "name": "Escape from Tarkov",
-      "cat": "AAA",
-      "gpu": 0.63,
-      "cpu": 0.88,
-      "base": 105,
+      "cat": "Competitive",
+      "gpu": 0.52,
+      "cpu": 0.82,
+      "base": 135,
       "vram": 8,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from current gameplay benchmarks; strongly CPU-sensitive with large map/AI variability."
     },
     {
       "name": "Hunt: Showdown 1896",
@@ -2673,232 +2677,267 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Squad",
-      "cat": "AAA",
-      "gpu": 0.62,
+      "cat": "Competitive",
+      "gpu": 0.55,
       "cpu": 0.8,
-      "base": 125,
-      "vram": 6,
-      "rt": 1
+      "base": 135,
+      "vram": 8,
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from current gameplay testing; heavily CPU-sensitive in large multiplayer engagements."
     },
     {
       "name": "Insurgency: Sandstorm",
-      "cat": "AAA",
+      "cat": "Competitive",
       "gpu": 0.55,
-      "cpu": 0.65,
-      "base": 160,
+      "cpu": 0.68,
+      "base": 180,
       "vram": 6,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; moderate-to-high GPU demand with notable CPU scaling."
     },
     {
       "name": "Hell Let Loose",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.58,
+      "cpu": 0.76,
+      "base": 145,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from current gameplay testing; large multiplayer maps create significant CPU demand."
     },
     {
       "name": "Ready or Not",
       "cat": "AAA",
-      "gpu": 0.67,
-      "cpu": 0.72,
-      "base": 120,
+      "gpu": 0.62,
+      "cpu": 0.7,
+      "base": 125,
       "vram": 8,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from current PC performance testing; Unreal Engine workload with high GPU and CPU demand."
     },
     {
       "name": "Arma 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.4,
+      "cpu": 0.9,
+      "base": 190,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from CPU benchmark coverage and long-standing Arma performance behavior; strongly CPU-limited."
     },
     {
       "name": "Arma Reforger",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.68,
+      "cpu": 0.82,
+      "base": 105,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from current PC testing; Enfusion engine workload is demanding on both CPU and GPU."
     },
     {
       "name": "DayZ",
       "cat": "Survival",
-      "gpu": 0.56,
-      "cpu": 0.73,
-      "base": 145,
+      "gpu": 0.48,
+      "cpu": 0.78,
+      "base": 190,
       "vram": 6,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from current gameplay benchmarks; CPU-sensitive open-world survival workload."
     },
     {
       "name": "Rust",
       "cat": "Survival",
-      "gpu": 0.67,
-      "cpu": 0.75,
-      "base": 120,
+      "gpu": 0.6,
+      "cpu": 0.82,
+      "base": 125,
       "vram": 8,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from current PC benchmark coverage; CPU-heavy simulation plus substantial GPU load."
     },
     {
       "name": "SCUM",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Survival",
+      "gpu": 0.62,
+      "cpu": 0.72,
+      "base": 120,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from current gameplay performance testing; demanding survival/open-world workload."
     },
     {
       "name": "V Rising",
-      "cat": "Survival",
-      "gpu": 0.51,
-      "cpu": 0.64,
-      "base": 160,
+      "cat": "RPG",
+      "gpu": 0.48,
+      "cpu": 0.68,
+      "base": 210,
       "vram": 6,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance testing; moderate GPU load with increased CPU demand during simulation-heavy scenes."
     },
     {
       "name": "Deadlock",
       "cat": "Competitive",
-      "gpu": 0.48,
-      "cpu": 0.62,
-      "base": 210,
+      "gpu": 0.52,
+      "cpu": 0.72,
+      "base": 190,
       "vram": 6,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from current Source 2 performance testing; CPU-sensitive competitive workload."
     },
     {
       "name": "Garry's Mod",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.25,
+      "cpu": 0.65,
+      "base": 500,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from Source-engine behavior and community benchmark data; CPU dominates at high FPS."
     },
     {
       "name": "FiveM",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Open World",
+      "gpu": 0.52,
+      "cpu": 0.82,
+      "base": 125,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from current FiveM gameplay testing; CPU and server/script load can dominate performance."
     },
     {
       "name": "Grand Theft Auto Online",
-      "cat": "General",
+      "cat": "Open World",
       "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cpu": 0.72,
+      "base": 170,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; CPU sensitivity increases in busy online sessions."
     },
     {
       "name": "Red Dead Online",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Open World",
+      "gpu": 0.72,
+      "cpu": 0.65,
+      "base": 105,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from Red Dead Redemption 2-derived PC performance data; GPU-heavy open-world workload."
     },
     {
       "name": "For Honor",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.45,
+      "cpu": 0.62,
+      "base": 240,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; relatively efficient renderer with moderate CPU demand."
     },
     {
       "name": "Chivalry 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Competitive",
+      "gpu": 0.58,
+      "cpu": 0.68,
+      "base": 170,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from current gameplay benchmarks; GPU-heavy melee battles with meaningful CPU load."
     },
     {
       "name": "Mordhau",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Competitive",
+      "gpu": 0.45,
+      "cpu": 0.72,
+      "base": 210,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance testing; CPU demand rises in large player battles."
     },
     {
       "name": "BattleBit Remastered",
       "cat": "Competitive",
-      "gpu": 0.35,
-      "cpu": 0.66,
-      "base": 280,
+      "gpu": 0.3,
+      "cpu": 0.72,
+      "base": 420,
       "vram": 4,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; unusually high frame rates with strong CPU sensitivity."
     },
     {
       "name": "Naraka: Bladepoint",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Competitive",
+      "gpu": 0.62,
+      "cpu": 0.65,
+      "base": 155,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from current PC performance testing; balanced GPU/CPU competitive workload."
     },
     {
       "name": "Brawlhalla",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.18,
+      "cpu": 0.52,
+      "base": 600,
+      "vram": 2,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance behavior; very light GPU workload and high achievable frame rates."
     },
     {
       "name": "Street Fighter 6",
-      "cat": "AAA",
-      "gpu": 0.57,
-      "cpu": 0.55,
-      "base": 170,
+      "cat": "Competitive",
+      "gpu": 0.58,
+      "cpu": 0.58,
+      "base": 180,
       "vram": 6,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; moderate GPU load with stable CPU requirements."
     },
     {
       "name": "Tekken 8",
-      "cat": "AAA",
-      "gpu": 0.68,
-      "cpu": 0.58,
-      "base": 135,
+      "cat": "Competitive",
+      "gpu": 0.72,
+      "cpu": 0.6,
+      "base": 120,
       "vram": 8,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark testing; GPU-heavy Unreal Engine 5 fighting-game workload."
     },
     {
       "name": "Mortal Kombat 1",
-      "cat": "AAA",
-      "gpu": 0.7,
+      "cat": "Competitive",
+      "gpu": 0.72,
       "cpu": 0.58,
-      "base": 130,
+      "base": 115,
       "vram": 8,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance coverage; demanding GPU workload at high settings."
     },
     {
       "name": "Mortal Kombat 11",
@@ -2922,13 +2961,14 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Dragon Ball FighterZ",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.3,
+      "cpu": 0.48,
+      "base": 420,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark behavior; light GPU workload and high frame-rate ceiling."
     },
     {
       "name": "The King of Fighters XV",
@@ -2942,23 +2982,25 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Street Fighter V",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.32,
+      "cpu": 0.52,
+      "base": 350,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; relatively light GPU demand with moderate CPU sensitivity."
     },
     {
       "name": "Tekken 7",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.38,
+      "cpu": 0.52,
+      "base": 300,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; moderate renderer with high-FPS behavior."
     },
     {
       "name": "Smite 2",
@@ -2972,149 +3014,168 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "SMITE",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.35,
+      "cpu": 0.62,
+      "base": 330,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance testing; CPU-sensitive MOBA workload with moderate GPU demand."
     },
     {
       "name": "Heroes of the Storm",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.25,
+      "cpu": 0.65,
+      "base": 420,
+      "vram": 3,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark behavior; CPU-sensitive at high FPS."
     },
     {
       "name": "StarCraft II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Strategy",
+      "gpu": 0.2,
+      "cpu": 0.82,
+      "base": 500,
+      "vram": 3,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from CPU benchmark coverage; simulation and late-game unit counts make it strongly CPU-sensitive."
     },
     {
       "name": "StarCraft Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Strategy",
+      "gpu": 0.15,
+      "cpu": 0.55,
+      "base": 600,
+      "vram": 2,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance behavior; very light GPU load and high frame-rate ceiling."
     },
     {
       "name": "Warcraft III: Reforged",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Strategy",
+      "gpu": 0.42,
+      "cpu": 0.62,
+      "base": 300,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; moderate GPU workload with simulation/CPU scaling."
     },
     {
       "name": "Age of Empires IV",
       "cat": "Strategy",
-      "gpu": 0.42,
-      "cpu": 0.7,
-      "base": 185,
-      "vram": 5,
-      "rt": 1
+      "gpu": 0.55,
+      "cpu": 0.78,
+      "base": 165,
+      "vram": 6,
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from CPU/GPU benchmark coverage; large armies create significant CPU pressure."
     },
     {
       "name": "Age of Empires II: Definitive Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Strategy",
+      "gpu": 0.28,
+      "cpu": 0.72,
+      "base": 380,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC performance testing; high-unit-count scenarios are CPU-sensitive."
     },
     {
       "name": "Age of Mythology: Retold",
       "cat": "Strategy",
-      "gpu": 0.43,
+      "gpu": 0.48,
       "cpu": 0.68,
-      "base": 185,
-      "vram": 5,
-      "rt": 1
+      "base": 220,
+      "vram": 6,
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from current PC benchmark coverage; moderate GPU load with simulation-heavy CPU demand."
     },
     {
       "name": "Company of Heroes 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Strategy",
+      "gpu": 0.68,
+      "cpu": 0.75,
+      "base": 115,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; demanding GPU and CPU strategy workload."
     },
     {
       "name": "Company of Heroes 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Strategy",
+      "gpu": 0.52,
+      "cpu": 0.72,
+      "base": 150,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; CPU pressure rises with larger battles."
     },
     {
       "name": "Total War: WARHAMMER III",
       "cat": "Strategy",
-      "gpu": 0.63,
-      "cpu": 0.86,
-      "base": 105,
+      "gpu": 0.7,
+      "cpu": 0.85,
+      "base": 85,
       "vram": 8,
-      "rt": 1
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from CPU/GPU benchmark coverage; exceptionally demanding large-battle simulation."
     },
     {
       "name": "Total War: WARHAMMER II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Strategy",
+      "gpu": 0.62,
+      "cpu": 0.82,
+      "base": 105,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; heavy CPU simulation and substantial GPU load."
     },
     {
       "name": "Total War: Three Kingdoms",
       "cat": "Strategy",
-      "gpu": 0.57,
-      "cpu": 0.83,
-      "base": 120,
-      "vram": 6,
-      "rt": 1
+      "gpu": 0.65,
+      "cpu": 0.82,
+      "base": 100,
+      "vram": 8,
+      "rt": 1,
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; large battles are strongly CPU-limited."
     },
     {
       "name": "Total War: Rome II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Strategy",
+      "gpu": 0.52,
+      "cpu": 0.78,
+      "base": 145,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; CPU-heavy large-scale battles."
     },
     {
       "name": "Total War: Shogun 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Strategy",
+      "gpu": 0.45,
+      "cpu": 0.75,
+      "base": 175,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC benchmark coverage; CPU-sensitive large battle simulation."
     },
     {
       "name": "Cyberpunk 2077",
