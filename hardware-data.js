@@ -2786,9 +2786,9 @@ const SFP_HARDWARE_DATA = {
       "length": 267,
       "tier": 1080,
       "discrete": true,
-      "score": 0,
-      "status": "not_applicable",
-      "scoreNote": "Generic integrated-graphics placeholder; no single GPU model or benchmark score.",
+      "score": 51.6,
+      "status": "estimated",
+      "scoreNote": "Uses the researched 16GB 2026 raster score; generic Build Planner label does not specify VRAM.",
       "comparisonId": "rtx-5060-ti",
       "group": "budget",
       "series": "Not listed",
@@ -2797,7 +2797,8 @@ const SFP_HARDWARE_DATA = {
       "year": null,
       "ray": "Low",
       "work": "Gaming",
-      "note": "Generic integrated-graphics placeholder; no single GPU model or benchmark score."
+      "note": "Generic integrated-graphics placeholder; no single GPU model or benchmark score.",
+      "vram": 16
     },
     {
       "id": "rtx-5070",
@@ -4622,7 +4623,7 @@ const SFP_HARDWARE_DATA = {
         "1440": 37.3,
         "2160": 26.8
       },
-      "vram": 16,
+      "vram": 8,
       "rt": 0.72,
       "brand": "AMD Radeon",
       "power": 160,
@@ -4868,7 +4869,7 @@ const SFP_HARDWARE_DATA = {
         "1440": 43.9,
         "2160": 36.3
       },
-      "vram": 8,
+      "vram": 16,
       "rt": 1,
       "brand": "NVIDIA GeForce",
       "power": 180,
