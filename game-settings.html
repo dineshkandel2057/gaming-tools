@@ -155,45 +155,32 @@
   <a href="/">Home</a> · <a href="/#tools">Tools</a> · <a href="guides.html">Guides</a> · <a href="about.html">About</a> · <a href="methodology.html">Methodology</a> · <a href="affiliate-disclosure.html">Affiliate Disclosure</a> · <a href="contact.html">Contact</a> · <a href="privacy-policy.html">Privacy Policy</a>
 </nav></footer>
 
+  <script src="hardware-data.js"></script>
+  <script src="game-data.js"></script>
   <script>
   (() => {
-    const games = {
-      "Cyberpunk 2077":{gpu:1.18,cpu:1.05,vram:1.15,heavy:1.18,fg:true},
-      "Red Dead Redemption 2":{gpu:1.10,cpu:1.02,vram:1.05,heavy:1.10,fg:false},
-      "Hogwarts Legacy":{gpu:1.12,cpu:1.04,vram:1.12,heavy:1.12,fg:true},
-      "Elden Ring":{gpu:.78,cpu:.92,vram:.88,heavy:.82,fg:false},
-      "Starfield":{gpu:1.15,cpu:1.15,vram:1.08,heavy:1.16,fg:true},
-      "Forza Horizon 5":{gpu:.92,cpu:.90,vram:.90,heavy:.88,fg:false},
-      "Call of Duty: Warzone":{gpu:1.02,cpu:1.10,vram:1.00,heavy:1.00,fg:true},
-      "Fortnite":{gpu:.78,cpu:1.04,vram:.76,heavy:.75,fg:true},
-      "Counter-Strike 2":{gpu:.52,cpu:.76,vram:.55,heavy:.48,fg:false},
-      "Valorant":{gpu:.40,cpu:.62,vram:.42,heavy:.35,fg:false},
-      "Minecraft Java":{gpu:.55,cpu:.78,vram:.55,heavy:.48,fg:false},
-      "The Last of Us Part I":{gpu:1.22,cpu:1.08,vram:1.20,heavy:1.22,fg:true}
-    };
-    const cpus = {
-      "Intel Core i3-12100F":.58,"Ryzen 5 3600":.62,"Ryzen 5 5600":.72,"Core i5-12400F":.76,
-      "Ryzen 5 7600":.86,"Core i5-13400F":.84,"Core i5-14600K":1.00,"Ryzen 7 7800X3D":1.08,
-      "Ryzen 7 9800X3D":1.15,"Core i7-13700K":1.03,"Core i7-14700K":1.08,"Ryzen 9 9950X3D":1.12
-    };
-    const gpus = {
-      "GTX 1650":.38,"RTX 2060":.55,"RTX 3060 12GB":.67,"RX 6600":.65,"RTX 4060":.72,"RX 7600":.73,
-      "RTX 4060 Ti 16GB":.84,"RTX 4070":1.00,"RX 7800 XT":1.04,"RTX 4070 Super":1.08,
-      "RTX 5070":1.18,"RTX 5070 Ti":1.34,"RTX 5080":1.60,"RX 7900 XTX":1.42
-    };
-    const gpuVram = {"GTX 1650":4,"RTX 2060":6,"RTX 3060 12GB":12,"RX 6600":8,"RTX 4060":8,"RX 7600":8,"RTX 4060 Ti 16GB":16,"RTX 4070":12,"RX 7800 XT":16,"RTX 4070 Super":12,"RTX 5070":12,"RTX 5070 Ti":16,"RTX 5080":16,"RX 7900 XTX":24};
+    // Canonical shared datasets: 792 games, 130 CPUs and 113 GPUs.
+    // Game Settings derives its rule-based estimates from these shared records
+    // instead of maintaining a separate hardware/game catalog.
+    const fpsProfiles = SFP_GAME_DATA.fpsProfiles;
+    const games = Object.fromEntries(fpsProfiles.map(profile => [profile.name, profile]));
+    const cpus = Object.fromEntries(SFP_HARDWARE_DATA.CPUs.map(cpu => [cpu.name, cpu]));
+    const gpus = Object.fromEntries(SFP_HARDWARE_DATA.GPUs.map(gpu => [gpu.name, gpu]));
+    const gpuVram = Object.fromEntries(SFP_HARDWARE_DATA.GPUs.map(gpu => [gpu.name, Number(gpu.vram) || 0]));
     const $=id=>document.getElementById(id);
     Object.keys(games).forEach(x=>$("game").add(new Option(x,x)));
     Object.keys(cpus).forEach(x=>$("cpu").add(new Option(x,x)));
     Object.keys(gpus).forEach(x=>$("gpu").add(new Option(x,x)));
-    $("game").value="Cyberpunk 2077"; $("cpu").value="Ryzen 5 5600"; $("gpu").value="RTX 4060";
+    $("game").value="Cyberpunk 2077"; $("cpu").value="AMD Ryzen 5 5600"; $("gpu").value="GeForce RTX 4060";
 
     function baseEstimate(g,cpu,gpu,res){
       const resFactor = res==="1080"?1.00:res==="1440"?.72:.46;
       const game=g;
-      const gpuScore=gpus[gpu], cpuScore=cpus[cpu];
-      const gpuFPS=112*gpuScore/(game.gpu)*resFactor;
-      const cpuFPS=168*cpuScore/(game.cpu)*(res==="1080"?1:.88);
+      const gpuScore=(gpus[gpu]?.score||0)/100;
+      const cpuScore=(cpus[cpu]?.score||0)/100;
+      const referenceBase=Number(game.base)||140;
+      const gpuFPS=referenceBase*gpuScore/(game.gpu||1)*resFactor;
+      const cpuFPS=referenceBase*1.18*cpuScore/(game.cpu||1)*(res==="1080"?1:.88);
       return Math.max(18,Math.round(Math.min(gpuFPS,cpuFPS)));
     }
     function run(){
@@ -208,12 +195,12 @@
       fps=Math.max(18,Math.round(fps));
       const range=Math.max(8,Math.round(fps*.11));
       const preset=fps>=target*1.12?"High / Ultra":fps>=target*.9?"High":fps>=target*.72?"Medium":"Low / Performance";
-      const limit=(gpus[gpu]/game.gpu* (res==="1080"?1:.9)) < (cpus[cpu]/game.cpu*.9)?"GPU":"CPU";
+      const limit=((gpus[gpu]?.score||0)/100/(game.gpu||1)* (res==="1080"?1:.9)) < ((cpus[cpu]?.score||0)/100/(game.cpu||1)*.9)?"GPU":"CPU";
       const vramNeed=res==="2160"?10:res==="1440"?7:5;
       const vramHead=gpuVram[gpu]-vramNeed-(rt?2:0);
       let up="Off / Native";
       if(fps<target){up=res==="1080"?"Quality or native":res==="1440"?"Quality": "Balanced";}
-      const fg=game.fg&&fps>=45?"Recommended if supported":"Off / unavailable";
+      const fg=(game.cat!=="Competitive"&&fps>=45&&((gpus[gpu]?.rt||0)>0.5))?"Recommended if supported":"Off / unavailable";
       $("fps").textContent=Math.max(1,Math.round(fps-range))+"–"+Math.round(fps+range)+" FPS";
       $("preset").textContent=preset;
       $("limit").textContent=limit+"-limited";
