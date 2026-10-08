@@ -399,11 +399,20 @@
 
   const markup = `
       <div class="sfp-scroll-progress" id="sfpScrollProgress" aria-hidden="true"></div>
+    <noscript>
+      <nav aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/#tools">Tools</a>
+        <a href="guides.html">Guides</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </noscript>
     <header class="sfp-site-header">
       <div class="sfp-nav">
 
         <a class="sfp-brand"
-           href="index.html#home"
+           href="/"
            aria-label="SystemFit PC home">
 
           <span class="sfp-monogram" aria-hidden="true">
@@ -421,7 +430,7 @@
 
         <nav class="sfp-main-nav" aria-label="Main navigation">
 
-          <a href="index.html#home"
+          <a href="/"
              class="${isHome ? "sfp-active" : ""}">
             Home
           </a>
@@ -500,7 +509,7 @@
             Guides
           </a>
 
-          <a href="index.html#about">
+          <a href="about.html">
             About
           </a>
 
