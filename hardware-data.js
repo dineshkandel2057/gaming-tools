@@ -1,5 +1,6 @@
 /* Shared SystemFit PC hardware score database.
  * Source values are preserved exactly from the Bottleneck Calculator database.
+ * FPS-specific VRAM/RT metadata is preserved from FPS Calculator.
  * Do not change scores here without explicit approval.
  */
 const SFP_HARDWARE_DATA = {
@@ -1258,7 +1259,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 4,
       "status": "estimated",
-      "scoreNote": "Database score; RX 500 Polaris · Low-End"
+      "scoreNote": "Database score; RX 500 Polaris · Low-End",
+      "vram": 4,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_460",
@@ -1269,7 +1272,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 5,
       "status": "estimated",
-      "scoreNote": "Database score; RX 400 Polaris · Low-End"
+      "scoreNote": "Database score; RX 400 Polaris · Low-End",
+      "vram": 8,
+      "rt": 0.5
     },
     {
       "id": "nv_gtx_950",
@@ -1280,7 +1285,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 6,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 900 Maxwell · Low-End"
+      "scoreNote": "Database score; GTX 900 Maxwell · Low-End",
+      "vram": 2,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_560",
@@ -1291,7 +1298,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 6,
       "status": "estimated",
-      "scoreNote": "Database score; RX 500 Polaris · Low-End"
+      "scoreNote": "Database score; RX 500 Polaris · Low-End",
+      "vram": 4,
+      "rt": 0.35
     },
     {
       "id": "nv_gtx_1050",
@@ -1302,7 +1311,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 9,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 10 Pascal · Low-End"
+      "scoreNote": "Database score; GTX 10 Pascal · Low-End",
+      "vram": 2,
+      "rt": 0.35
     },
     {
       "id": "nv_gtx_960",
@@ -1313,7 +1324,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 9,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 900 Maxwell · Low-End"
+      "scoreNote": "Database score; GTX 900 Maxwell · Low-End",
+      "vram": 2,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_6400",
@@ -1324,7 +1337,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 10,
       "status": "estimated",
-      "scoreNote": "Database score; RX 6000 RDNA 2 · Low-End"
+      "scoreNote": "Database score; RX 6000 RDNA 2 · Low-End",
+      "vram": 4,
+      "rt": 0.45
     },
     {
       "id": "nv_gtx_1050ti",
@@ -1335,7 +1350,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 11,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 10 Pascal · Low-End"
+      "scoreNote": "Database score; GTX 10 Pascal · Low-End",
+      "vram": 4,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_470",
@@ -1346,7 +1363,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 11,
       "status": "estimated",
-      "scoreNote": "Database score; RX 400 Polaris · Mid-Range"
+      "scoreNote": "Database score; RX 400 Polaris · Mid-Range",
+      "vram": 8,
+      "rt": 0.5
     },
     {
       "id": "intel_arc_a380",
@@ -1357,7 +1376,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 12,
       "status": "estimated",
-      "scoreNote": "Database score; Arc Alchemist · Low-End"
+      "scoreNote": "Database score; Arc Alchemist · Low-End",
+      "vram": 6,
+      "rt": 0.55
     },
     {
       "id": "amd_rx_570",
@@ -1368,7 +1389,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 12,
       "status": "estimated",
-      "scoreNote": "Database score; RX 500 Polaris · Mid-Range"
+      "scoreNote": "Database score; RX 500 Polaris · Mid-Range",
+      "vram": 8,
+      "rt": 0.35
     },
     {
       "id": "nv_gtx_1650",
@@ -1379,7 +1402,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 13,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 16 Turing · Low-End"
+      "scoreNote": "Database score; GTX 16 Turing · Low-End",
+      "vram": 4,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_480",
@@ -1390,7 +1415,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 13,
       "status": "estimated",
-      "scoreNote": "Database score; RX 400 Polaris · Mid-Range"
+      "scoreNote": "Database score; RX 400 Polaris · Mid-Range",
+      "vram": 8,
+      "rt": 0.5
     },
     {
       "id": "nv_gtx_970",
@@ -1401,7 +1428,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 14,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 900 Maxwell · Mid-Range"
+      "scoreNote": "Database score; GTX 900 Maxwell · Mid-Range",
+      "vram": 4,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_6500xt",
@@ -1412,7 +1441,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 14,
       "status": "estimated",
-      "scoreNote": "Database score; RX 6000 RDNA 2 · Low-End"
+      "scoreNote": "Database score; RX 6000 RDNA 2 · Low-End",
+      "vram": 4,
+      "rt": 0.45
     },
     {
       "id": "nv_gtx_1060_3b",
@@ -1423,7 +1454,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 15,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 10 Pascal · Mid-Range"
+      "scoreNote": "Database score; GTX 10 Pascal · Mid-Range",
+      "vram": 3,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_580",
@@ -1434,7 +1467,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 15,
       "status": "estimated",
-      "scoreNote": "Database score; RX 500 Polaris · Mid-Range"
+      "scoreNote": "Database score; RX 500 Polaris · Mid-Range",
+      "vram": 8,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_5500xt",
@@ -1445,7 +1480,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Low-End",
       "score": 16,
       "status": "estimated",
-      "scoreNote": "Database score; RX 5000 RDNA 1 · Low-End"
+      "scoreNote": "Database score; RX 5000 RDNA 1 · Low-End",
+      "vram": 8,
+      "rt": 0.35
     },
     {
       "id": "nv_gtx_980",
@@ -1456,7 +1493,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 17,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 900 Maxwell · Mid-Range"
+      "scoreNote": "Database score; GTX 900 Maxwell · Mid-Range",
+      "vram": 4,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_590",
@@ -1467,7 +1506,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 17,
       "status": "estimated",
-      "scoreNote": "Database score; RX 500 Polaris · Mid-Range"
+      "scoreNote": "Database score; RX 500 Polaris · Mid-Range",
+      "vram": 8,
+      "rt": 0.35
     },
     {
       "id": "nv_gtx_1060_6b",
@@ -1478,7 +1519,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 18,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 10 Pascal · Mid-Range"
+      "scoreNote": "Database score; GTX 10 Pascal · Mid-Range",
+      "vram": 6,
+      "rt": 0.35
     },
     {
       "id": "intel_arc_a580",
@@ -1489,7 +1532,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 21,
       "status": "estimated",
-      "scoreNote": "Database score; Arc Alchemist · Mid-Range"
+      "scoreNote": "Database score; Arc Alchemist · Mid-Range",
+      "vram": 8,
+      "rt": 0.55
     },
     {
       "id": "nv_gtx_980ti",
@@ -1500,7 +1545,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 21,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 900 Maxwell · High-End"
+      "scoreNote": "Database score; GTX 900 Maxwell · High-End",
+      "vram": 6,
+      "rt": 0.35
     },
     {
       "id": "nv_rtx_3050",
@@ -1516,7 +1563,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 21.9,
         "1440": 17.8,
         "2160": 11.4
-      }
+      },
+      "vram": 8,
+      "rt": 0.82
     },
     {
       "id": "nv_gtx_1660s",
@@ -1527,7 +1576,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 22,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 16 Turing · Mid-Range"
+      "scoreNote": "Database score; GTX 16 Turing · Mid-Range",
+      "vram": 6,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_vega_56",
@@ -1538,7 +1589,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 22,
       "status": "estimated",
-      "scoreNote": "Database score; RX Vega · Mid-Range"
+      "scoreNote": "Database score; RX Vega · Mid-Range",
+      "vram": 8,
+      "rt": 0.5
     },
     {
       "id": "nv_titan_x",
@@ -1549,7 +1602,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 23,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 900 HEDT · High-End"
+      "scoreNote": "Database score; GTX 900 HEDT · High-End",
+      "vram": 8,
+      "rt": 0.5
     },
     {
       "id": "nv_gtx_1070",
@@ -1560,7 +1615,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 24,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 10 Pascal · Mid-Range"
+      "scoreNote": "Database score; GTX 10 Pascal · Mid-Range",
+      "vram": 8,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_5600xt",
@@ -1571,7 +1628,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 25,
       "status": "estimated",
-      "scoreNote": "Database score; RX 5000 RDNA 1 · Mid-Range"
+      "scoreNote": "Database score; RX 5000 RDNA 1 · Mid-Range",
+      "vram": 6,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_vega_64",
@@ -1582,7 +1641,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 25,
       "status": "estimated",
-      "scoreNote": "Database score; RX Vega · High-End"
+      "scoreNote": "Database score; RX Vega · High-End",
+      "vram": 8,
+      "rt": 0.5
     },
     {
       "id": "amd_rx_6600",
@@ -1598,7 +1659,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 25.5,
         "1440": 14.9,
         "2160": 13.1
-      }
+      },
+      "vram": 8,
+      "rt": 0.35
     },
     {
       "id": "intel_arc_a750",
@@ -1609,7 +1672,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 27,
       "status": "estimated",
-      "scoreNote": "Database score; Arc Alchemist · Mid-Range"
+      "scoreNote": "Database score; Arc Alchemist · Mid-Range",
+      "vram": 8,
+      "rt": 0.55
     },
     {
       "id": "nv_gtx_1070ti",
@@ -1620,7 +1685,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 28,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 10 Pascal · Mid-Range"
+      "scoreNote": "Database score; GTX 10 Pascal · Mid-Range",
+      "vram": 8,
+      "rt": 0.35
     },
     {
       "id": "nv_rtx_2060",
@@ -1631,7 +1698,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 29,
       "status": "estimated",
-      "scoreNote": "Database score; RTX 20 Turing · Mid-Range"
+      "scoreNote": "Database score; RTX 20 Turing · Mid-Range",
+      "vram": 6,
+      "rt": 0.55
     },
     {
       "id": "nv_gtx_1080",
@@ -1642,7 +1711,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 30,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 10 Pascal · High-End"
+      "scoreNote": "Database score; GTX 10 Pascal · High-End",
+      "vram": 8,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_5700",
@@ -1653,7 +1724,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 30,
       "status": "estimated",
-      "scoreNote": "Database score; RX 5000 RDNA 1 · Mid-Range"
+      "scoreNote": "Database score; RX 5000 RDNA 1 · Mid-Range",
+      "vram": 8,
+      "rt": 0.35
     },
     {
       "id": "amd_rx_6600xt",
@@ -1669,7 +1742,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 30.8,
         "1440": 24.3,
         "2160": 15.6
-      }
+      },
+      "vram": 8,
+      "rt": 0.45
     },
     {
       "id": "intel_arc_b570",
@@ -1685,7 +1760,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 31.1,
         "1440": 26.5,
         "2160": 17.7
-      }
+      },
+      "vram": 8,
+      "rt": 0.68
     },
     {
       "id": "intel_arc_a770",
@@ -1696,7 +1773,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 32,
       "status": "estimated",
-      "scoreNote": "Database score; Arc Alchemist · High-End"
+      "scoreNote": "Database score; Arc Alchemist · High-End",
+      "vram": 16,
+      "rt": 0.55
     },
     {
       "id": "nv_rtx_2060s",
@@ -1707,7 +1786,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 32,
       "status": "estimated",
-      "scoreNote": "Database score; RTX 20 Turing · Mid-Range"
+      "scoreNote": "Database score; RTX 20 Turing · Mid-Range",
+      "vram": 8,
+      "rt": 0.65
     },
     {
       "id": "amd_rx_5700xt",
@@ -1718,7 +1799,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 33,
       "status": "estimated",
-      "scoreNote": "Database score; RX 5000 RDNA 1 · High-End"
+      "scoreNote": "Database score; RX 5000 RDNA 1 · High-End",
+      "vram": 8,
+      "rt": 0.35
     },
     {
       "id": "nv_gtx_1080ti",
@@ -1729,7 +1812,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 34,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 10 Pascal · High-End"
+      "scoreNote": "Database score; GTX 10 Pascal · High-End",
+      "vram": 11,
+      "rt": 0.35
     },
     {
       "id": "nv_rtx_5050",
@@ -1745,7 +1830,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 34,
         "1440": 27.1,
         "2160": 15.4
-      }
+      },
+      "vram": 8,
+      "rt": 1
     },
     {
       "id": "amd_rx_7600",
@@ -1761,7 +1848,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 34.3,
         "1440": 27.2,
         "2160": 16.6
-      }
+      },
+      "vram": 8,
+      "rt": 0.45
     },
     {
       "id": "nv_rtx_4060",
@@ -1777,7 +1866,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 35.1,
         "1440": 28.4,
         "2160": 15.7
-      }
+      },
+      "vram": 8,
+      "rt": 0.82
     },
     {
       "id": "nv_rtx_2070",
@@ -1788,7 +1879,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 36,
       "status": "estimated",
-      "scoreNote": "Database score; RTX 20 Turing · Mid-Range"
+      "scoreNote": "Database score; RTX 20 Turing · Mid-Range",
+      "vram": 8,
+      "rt": 0.65
     },
     {
       "id": "nv_rtx_3060",
@@ -1799,7 +1892,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 36,
       "status": "estimated",
-      "scoreNote": "Database score; RTX 30 Ampere · Mid-Range"
+      "scoreNote": "Database score; RTX 30 Ampere · Mid-Range",
+      "vram": 12,
+      "rt": 0.82
     },
     {
       "id": "nv_rtx_3060ti",
@@ -1815,7 +1910,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 36.4,
         "1440": 30.5,
         "2160": 17.5
-      }
+      },
+      "vram": 8,
+      "rt": 0.78
     },
     {
       "id": "nv_titan_xp",
@@ -1826,7 +1923,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 37,
       "status": "estimated",
-      "scoreNote": "Database score; GTX 10 HEDT · High-End"
+      "scoreNote": "Database score; GTX 10 HEDT · High-End",
+      "vram": 8,
+      "rt": 0.5
     },
     {
       "id": "amd_rx_6700_xt",
@@ -1842,7 +1941,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 38.9,
         "1440": 32.5,
         "2160": 25.3
-      }
+      },
+      "vram": 12,
+      "rt": 0.42
     },
     {
       "id": "nv_rtx_2070s",
@@ -1853,7 +1954,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 40,
       "status": "estimated",
-      "scoreNote": "Database score; RTX 20 Turing · Mid-Range"
+      "scoreNote": "Database score; RTX 20 Turing · Mid-Range",
+      "vram": 8,
+      "rt": 0.65
     },
     {
       "id": "nv_rtx_3070",
@@ -1869,7 +1972,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 42.8,
         "1440": 34.8,
         "2160": 23.6
-      }
+      },
+      "vram": 8,
+      "rt": 0.8
     },
     {
       "id": "nv_rtx_4060ti_8",
@@ -1885,7 +1990,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 43.2,
         "1440": 35.2,
         "2160": 21.5
-      }
+      },
+      "vram": 8,
+      "rt": 0.86
     },
     {
       "id": "nv_rtx_5060",
@@ -1901,7 +2008,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 43.4,
         "1440": 35.8,
         "2160": 19.6
-      }
+      },
+      "vram": 8,
+      "rt": 1
     },
     {
       "id": "nv_rtx_4060ti_16",
@@ -1917,7 +2026,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 43.8,
         "1440": 36.2,
         "2160": 28.2
-      }
+      },
+      "vram": 16,
+      "rt": 0.86
     },
     {
       "id": "intel_arc_b580",
@@ -1928,7 +2039,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 45,
       "status": "estimated",
-      "scoreNote": "Database score; Arc Battlemage · Mid-Range"
+      "scoreNote": "Database score; Arc Battlemage · Mid-Range",
+      "vram": 12,
+      "rt": 0.68
     },
     {
       "id": "nv_rtx_2080s",
@@ -1939,7 +2052,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 45,
       "status": "estimated",
-      "scoreNote": "Database score; RTX 20 Turing · High-End"
+      "scoreNote": "Database score; RTX 20 Turing · High-End",
+      "vram": 8,
+      "rt": 0.65
     },
     {
       "id": "amd_rx_9060xt_8",
@@ -1955,7 +2070,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 45.7,
         "1440": 37.3,
         "2160": 26.8
-      }
+      },
+      "vram": 16,
+      "rt": 0.72
     },
     {
       "id": "nv_rtx_3070ti",
@@ -1971,7 +2088,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 46.4,
         "1440": 40,
         "2160": 23.5
-      }
+      },
+      "vram": 8,
+      "rt": 0.82
     },
     {
       "id": "nv_rtx_2080ti",
@@ -1982,7 +2101,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 48,
       "status": "estimated",
-      "scoreNote": "Database score; RTX 20 Turing · High-End"
+      "scoreNote": "Database score; RTX 20 Turing · High-End",
+      "vram": 11,
+      "rt": 0.65
     },
     {
       "id": "amd_rx_9060xt_16",
@@ -1998,7 +2119,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 48.2,
         "1440": 40.2,
         "2160": 31.7
-      }
+      },
+      "vram": 16,
+      "rt": 0.64
     },
     {
       "id": "nv_rtx_5060ti_8",
@@ -2014,7 +2137,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 49.3,
         "1440": 41,
         "2160": 25.4
-      }
+      },
+      "vram": 8,
+      "rt": 1
     },
     {
       "id": "amd_rx_7600xt",
@@ -2030,7 +2155,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 50.1,
         "1440": 30,
         "2160": 23.1
-      }
+      },
+      "vram": 8,
+      "rt": 0.58
     },
     {
       "id": "amd_rx_7700xt",
@@ -2046,7 +2173,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 50.5,
         "1440": 43.4,
         "2160": 34.3
-      }
+      },
+      "vram": 12,
+      "rt": 0.52
     },
     {
       "id": "nv_rtx_4060ti",
@@ -2057,7 +2186,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 51,
       "status": "estimated",
-      "scoreNote": "Database score; RTX 40 Ada · Mid-Range"
+      "scoreNote": "Database score; RTX 40 Ada · Mid-Range",
+      "vram": 8,
+      "rt": 0.95
     },
     {
       "id": "nv_rtx_5060ti_16",
@@ -2073,7 +2204,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 51.6,
         "1440": 43.9,
         "2160": 36.3
-      }
+      },
+      "vram": 8,
+      "rt": 1
     },
     {
       "id": "nv_titan_rtx",
@@ -2084,7 +2217,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 53,
       "status": "estimated",
-      "scoreNote": "Database score; RTX 20 HEDT · High-End"
+      "scoreNote": "Database score; RTX 20 HEDT · High-End",
+      "vram": 8,
+      "rt": 0.5
     },
     {
       "id": "nv_rtx_4070",
@@ -2100,7 +2235,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 54.7,
         "1440": 46.5,
         "2160": 37.2
-      }
+      },
+      "vram": 12,
+      "rt": 0.91
     },
     {
       "id": "amd_rx_6800xt",
@@ -2116,7 +2253,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 54.9,
         "1440": 47.6,
         "2160": 38.1
-      }
+      },
+      "vram": 16,
+      "rt": 0.45
     },
     {
       "id": "amd_rx_6800",
@@ -2127,7 +2266,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 55,
       "status": "estimated",
-      "scoreNote": "Database score; RX 6000 RDNA 2 · High-End"
+      "scoreNote": "Database score; RX 6000 RDNA 2 · High-End",
+      "vram": 16,
+      "rt": 0.45
     },
     {
       "id": "amd_rx_6900xt",
@@ -2143,7 +2284,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 57.4,
         "1440": 50.2,
         "2160": 40.5
-      }
+      },
+      "vram": 16,
+      "rt": 0.45
     },
     {
       "id": "amd_rx_9060xt",
@@ -2154,7 +2297,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "Mid-Range",
       "score": 58,
       "status": "estimated",
-      "scoreNote": "Database score; RX 9000 RDNA 4 · Mid-Range"
+      "scoreNote": "Database score; RX 9000 RDNA 4 · Mid-Range",
+      "vram": 16,
+      "rt": 0.72
     },
     {
       "id": "amd_rx_7800xt",
@@ -2170,7 +2315,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 58.1,
         "1440": 50.7,
         "2160": 40.7
-      }
+      },
+      "vram": 16,
+      "rt": 0.55
     },
     {
       "id": "nv_rtx_3080ti",
@@ -2186,7 +2333,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 58.7,
         "1440": 53.3,
         "2160": 46
-      }
+      },
+      "vram": 8,
+      "rt": 0.82
     },
     {
       "id": "amd_rx_9070gre",
@@ -2202,7 +2351,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 59.2,
         "1440": 51.8,
         "2160": 41.8
-      }
+      },
+      "vram": 16,
+      "rt": 0.72
     },
     {
       "id": "nv_rtx_3090",
@@ -2218,7 +2369,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 60.3,
         "1440": 54.7,
         "2160": 47.9
-      }
+      },
+      "vram": 8,
+      "rt": 0.82
     },
     {
       "id": "amd_rx_6950xt",
@@ -2234,7 +2387,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 60.5,
         "1440": 53.5,
         "2160": 43.6
-      }
+      },
+      "vram": 16,
+      "rt": 0.45
     },
     {
       "id": "nv_rtx_3080",
@@ -2245,7 +2400,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 62,
       "status": "estimated",
-      "scoreNote": "Database score; RTX 30 Ampere · High-End"
+      "scoreNote": "Database score; RTX 30 Ampere · High-End",
+      "vram": 8,
+      "rt": 0.82
     },
     {
       "id": "nv_rtx_4070s",
@@ -2261,7 +2418,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 62.2,
         "1440": 54.5,
         "2160": 44.4
-      }
+      },
+      "vram": 12,
+      "rt": 0.95
     },
     {
       "id": "nv_rtx_3090ti",
@@ -2277,7 +2436,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 64.7,
         "1440": 59.7,
         "2160": 53.5
-      }
+      },
+      "vram": 8,
+      "rt": 0.82
     },
     {
       "id": "nv_rtx_5070",
@@ -2293,7 +2454,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 65.1,
         "1440": 57.6,
         "2160": 49
-      }
+      },
+      "vram": 12,
+      "rt": 1
     },
     {
       "id": "amd_rx_7900gre",
@@ -2304,7 +2467,9 @@ const SFP_HARDWARE_DATA = {
       "tier": "High-End",
       "score": 67,
       "status": "estimated",
-      "scoreNote": "Database score; RX 7000 RDNA 3 · High-End"
+      "scoreNote": "Database score; RX 7000 RDNA 3 · High-End",
+      "vram": 16,
+      "rt": 0.56
     },
     {
       "id": "nv_rtx_4070ti_s",
@@ -2320,7 +2485,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 69.3,
         "1440": 62.1,
         "2160": 52.8
-      }
+      },
+      "vram": 16,
+      "rt": 0.98
     },
     {
       "id": "amd_rx_7900xt",
@@ -2336,7 +2503,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 71.3,
         "1440": 64.6,
         "2160": 54
-      }
+      },
+      "vram": 20,
+      "rt": 0.58
     },
     {
       "id": "nv_rtx_5070ti",
@@ -2352,7 +2521,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 76.2,
         "1440": 69.8,
         "2160": 61.9
-      }
+      },
+      "vram": 16,
+      "rt": 1
     },
     {
       "id": "amd_rx_9070",
@@ -2368,7 +2539,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 69.1,
         "1440": 62.1,
         "2160": 52.1
-      }
+      },
+      "vram": 16,
+      "rt": 0.7
     },
     {
       "id": "amd_rx_9070xt",
@@ -2384,7 +2557,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 76.9,
         "1440": 69.7,
         "2160": 59.4
-      }
+      },
+      "vram": 16,
+      "rt": 0.73
     },
     {
       "id": "nv_rtx_4080s",
@@ -2400,7 +2575,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 78,
         "1440": 70.9,
         "2160": 62.6
-      }
+      },
+      "vram": 16,
+      "rt": 1
     },
     {
       "id": "amd_rx_7900xtx",
@@ -2416,7 +2593,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 79.3,
         "1440": 73.1,
         "2160": 63.7
-      }
+      },
+      "vram": 24,
+      "rt": 0.6
     },
     {
       "id": "nv_rtx_5080",
@@ -2432,7 +2611,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 81.9,
         "1440": 76.7,
         "2160": 69.8
-      }
+      },
+      "vram": 16,
+      "rt": 1
     },
     {
       "id": "nv_rtx_4090",
@@ -2448,7 +2629,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 90.1,
         "1440": 85.7,
         "2160": 80.4
-      }
+      },
+      "vram": 24,
+      "rt": 1
     },
     {
       "id": "nv_rtx_5090",
@@ -2464,7 +2647,9 @@ const SFP_HARDWARE_DATA = {
         "1080": 100,
         "1440": 100,
         "2160": 100
-      }
+      },
+      "vram": 32,
+      "rt": 1
     }
   ]
 };
