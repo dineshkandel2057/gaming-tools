@@ -1247,7 +1247,33 @@
         <div class="method-item"><b>Confidence</b><span>Broad estimates are safer than fake decimal-level benchmark precision.</span></div>
       </div>
     </section>
-  </main>
+  
+<section class="tool-explanation" data-sfp-reveal>
+  <h2>How this tool works</h2>
+  <p>The SystemFit PC FPS Calculator estimates a practical FPS range from your CPU, GPU, game, resolution and graphics settings. The model starts with relative hardware performance and a workload profile for the selected game, then adjusts the estimate for resolution, preset, ray tracing, upscaling and frame generation where those options apply. Because games do not produce one fixed FPS number in every scene, the result is presented as an estimate rather than a promise of a specific benchmark.</p>
+  <p>The best way to use the calculator is to test the setup you actually intend to play. Choose the resolution and graphics target you care about, then compare the result with your monitor's refresh rate and the FPS you want. You can also change one major setting at a time to understand which trade-off is most useful.</p>
+
+  <h2>How to read the result</h2>
+  <p>Look at the estimated FPS range first, then compare it with your target. If the range comfortably clears your target, the selected setup is likely to be a reasonable starting point. If it falls below the target, test a lower resolution or less demanding graphics configuration before assuming new hardware is required. Upscaling and frame generation can also change the result, but they do not remove every underlying CPU or GPU limitation.</p>
+  <p>A range is intentionally more useful than false precision. If your target is 60 FPS, an estimate around that level suggests a different decision from an estimate that is consistently far above it. For more context, see the <a href="1080p-vs-1440p-vs-4k-gaming.html">1080p vs 1440p vs 4K guide</a> and the <a href="graphics-settings-that-affect-fps.html">graphics settings guide</a>.</p>
+
+  <h2>Limits of this estimate</h2>
+  <p>The calculator does not run your game, measure your hardware, or reproduce every scene and patch. Actual FPS can vary because of game updates, drivers, CPU scheduling, RAM configuration, thermals, background applications, shader compilation, asset streaming and scene complexity. Frame-time spikes and 1% lows can also feel different from the average or estimated range. The model is therefore best used for planning and comparison. For a real-world check, test the game yourself with the same resolution, settings and workload you plan to use.</p>
+
+  <h2>Frequently asked questions</h2>
+  <h3>Is the FPS number guaranteed?</h3>
+  <p>No. It is a modeled estimate designed to help you compare configurations, not a measured benchmark for your exact PC.</p>
+  <h3>Why does changing resolution affect FPS?</h3>
+  <p>Higher resolutions require the GPU to render more pixels, so GPU-limited workloads generally lose more FPS as resolution increases.</p>
+  <h3>Does frame generation count as real FPS?</h3>
+  <p>Frame generation can increase displayed frame output, but it is different from increasing the number of traditionally rendered frames. Responsiveness and latency still matter.</p>
+  <h3>Why is my real FPS lower than the estimate?</h3>
+  <p>Thermals, drivers, background processes, game patches, RAM behavior and demanding scenes can all reduce real-world performance.</p>
+  <h3>What should I use if I am unsure which component limits me?</h3>
+  <p>Run the <a href="bottleneck.html">Bottleneck Calculator</a> alongside this tool, then use the <a href="gpu-comparison.html">GPU Comparison Tool</a> if a graphics upgrade is being considered.</p>
+  <p class="last-updated"><strong>Last updated:</strong> October 8, 2026</p>
+</section>
+</main>
 
   <footer class="sfp-site-footer">
     <p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
