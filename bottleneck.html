@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-<title>CPU & GPU Bottleneck Calculator | SystemFit PC</title>
+<title>Free PC Bottleneck Calculator &amp; FPS Matchup Check | SystemFit PC</title>
 <meta name="description" content="Estimate CPU and GPU bottlenecks for your PC build by game, resolution and settings.">
 <link rel="canonical" href="https://systemfitpc.vercel.app/bottleneck.html">
 <style>
@@ -530,15 +530,15 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       <div class="sb-action" id="sbAction">Run the calculator to see the recommended path.</div>
 
       <div class="sb-hardware">
-        <div class="sb-hardware-card cpu"><b>CPU</b><strong id="sbCpu">CPU</strong><span id="sbCpuIndex">0 INDEX</span></div>
+        <div class="sb-hardware-card cpu"><b>CPU</b><strong id="sbCpu">CPU</strong><span class="sb-index-label">CPU Index</span><strong class="sb-index-value" id="sbCpuIndex">0</strong></div>
         <div class="sb-vs">VS</div>
-        <div class="sb-hardware-card gpu"><b>GPU</b><strong id="sbGpu">GPU</strong><span id="sbGpuIndex">0 INDEX</span></div>
+        <div class="sb-hardware-card gpu"><b>GPU</b><strong id="sbGpu">GPU</strong><span class="sb-index-label">GPU Index</span><strong class="sb-index-value" id="sbGpuIndex">0</strong></div>
       </div>
     </section>
 
     <section class="sb-section sb-panel" aria-labelledby="sbMetricsTitle">
       <div class="sb-panel-head">
-        <h3 class="sb-title" id="sbMetricsTitle">PERFORMANCE METRICS</h3>
+        <h2 class="sb-title" id="sbMetricsTitle">PERFORMANCE METRICS</h2>
       </div>
       <div class="sb-tabs" role="tablist" aria-label="Resolution">
         <button class="sb-tab" type="button" role="tab" aria-selected="true" data-sb-resolution="1080">1080P</button>
@@ -564,13 +564,14 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       </div>
     </section>
 
-    <section class="sb-section sb-upgrade" aria-label="Upgrade performance impact">
+    <section class="sb-section sb-upgrade" aria-labelledby="sbUpgradeTitle">
       <div class="sb-upgrade-main">
+        <h2 class="sb-upgrade-title" id="sbUpgradeTitle">CALCULATION RESULTS</h2>
         <div class="sb-upgrade-gain"><strong id="sbUpgradeGain">+0 FPS</strong><span>EXPECTED ELEVATION</span></div>
       </div>
       <div class="sb-upgrade-grid">
-        <div class="sb-upgrade-option"><strong id="sbCpuUpgradeFps">0 FPS</strong><span id="sbCpuUpgradeGain">CPU NEXT TIER · +0 FPS</span></div>
-        <div class="sb-upgrade-option"><strong id="sbGpuUpgradeFps">0 FPS</strong><span id="sbGpuUpgradeGain">GPU NEXT TIER · +0 FPS</span></div>
+        <div class="sb-upgrade-option"><strong id="sbCpuUpgradeFps">0 FPS</strong><span id="sbCpuUpgradeGain">Recommended Upgrade: —</span></div>
+        <div class="sb-upgrade-option"><strong id="sbGpuUpgradeFps">0 FPS</strong><span id="sbGpuUpgradeGain">Recommended Upgrade: —</span></div>
       </div>
     </section>
 
@@ -3113,22 +3114,43 @@ function fillSelect(id,data){
 fillSelect("cpuSelect",CPUs);fillSelect("gpuSelect",GPUs);
 
 function setupHardwarePicker(kind,data){
- const root=document.querySelector(`[data-hardware-picker="${kind}"]`),select=document.getElementById(kind+"Select"),trigger=root.querySelector(".picker-trigger"),panel=root.querySelector(".picker-panel"),search=root.querySelector(".picker-search"),options=root.querySelector(".picker-options"),empty=root.querySelector(".picker-empty");
- function render(){
-   const q=search.value.trim().toLocaleLowerCase(),matches=[];
-   data.forEach((item,index)=>{const text=(item.name+" "+item.vendor+" "+item.generation+" "+item.tier).toLocaleLowerCase();if(!q||text.includes(q))matches.push({item,index});});
+ const root=document.querySelector(`[data-hardware-picker="${kind}"]`);
+ const select=document.getElementById(kind+"Select");
+ if(!root||!select||!Array.isArray(data)||!data.length)return;
+ const trigger=root.querySelector(".picker-trigger"),panel=root.querySelector(".picker-panel"),search=root.querySelector(".picker-search"),options=root.querySelector(".picker-options"),empty=root.querySelector(".picker-empty");
+ if(!trigger||!panel||!search||!options||!empty)return;
+ const render=(query="")=>{
+   const q=String(query).trim().toLocaleLowerCase();
+   const matches=data.map((item,index)=>({item,index})).filter(({item})=>{
+     const text=[item.name,item.vendor,item.generation,item.tier].filter(Boolean).join(" ").toLocaleLowerCase();
+     return !q||text.includes(q);
+   });
    options.replaceChildren();
-   matches.forEach(({item,index})=>{const option=document.createElement("button");option.type="button";option.className="picker-option";option.setAttribute("role","option");option.textContent=`${item.name} · ${item.generation} · ${item.tier}`;option.addEventListener("click",()=>{select.value=String(index);select.dispatchEvent(new Event("change",{bubbles:true}));trigger.firstChild.textContent=item.name+" ";close();});options.appendChild(option);});
-   empty.hidden=matches.length!==0;
- }
- function close(){panel.classList.remove("is-open");trigger.setAttribute("aria-expanded","false");}
- trigger.addEventListener("click",()=>{const open=!panel.classList.contains("is-open");document.querySelectorAll(".picker-panel").forEach(p=>p.classList.remove("is-open"));document.querySelectorAll(".picker-trigger").forEach(b=>b.setAttribute("aria-expanded","false"));if(open)panel.classList.add("is-open");trigger.setAttribute("aria-expanded",String(open));if(open){render();search.focus();}});
- search.addEventListener("input",render);
- search.addEventListener("keydown",event=>{if(event.key==="Escape"){close();trigger.focus();}else if(event.key==="ArrowDown"){event.preventDefault();options.querySelector("button")?.focus();}});
- options.addEventListener("keydown",event=>{if(event.key==="Escape"){close();trigger.focus();}});
+   const fragment=document.createDocumentFragment();
+   matches.forEach(({item,index})=>{
+     const option=document.createElement("button");
+     option.type="button";option.className="picker-option";option.setAttribute("role","option");
+     option.textContent=`${item.name}${item.generation?" · "+item.generation:""}${item.tier?" · "+item.tier:""}`;
+     option.addEventListener("click",()=>{select.value=String(index);select.dispatchEvent(new Event("change",{bubbles:true}));trigger.childNodes[0].nodeValue=item.name+" ";close();});
+     fragment.appendChild(option);
+   });
+   options.appendChild(fragment);empty.hidden=matches.length>0;
+ };
+ const close=()=>{panel.classList.remove("is-open");trigger.setAttribute("aria-expanded","false");};
+ render();
+ trigger.addEventListener("click",()=>{
+   const open=!panel.classList.contains("is-open");
+   document.querySelectorAll(".picker-panel").forEach(p=>p.classList.remove("is-open"));
+   document.querySelectorAll(".picker-trigger").forEach(b=>b.setAttribute("aria-expanded","false"));
+   if(open){panel.classList.add("is-open");trigger.setAttribute("aria-expanded","true");render(search.value);requestAnimationFrame(()=>search.focus());}else close();
+ });
+ search.addEventListener("input",()=>render(search.value));
+ search.addEventListener("keydown",event=>{if(event.key==="Escape"){event.preventDefault();close();trigger.focus();}else if(event.key==="ArrowDown"){event.preventDefault();options.querySelector("button")?.focus();}});
+ options.addEventListener("keydown",event=>{if(event.key==="Escape"){event.preventDefault();close();trigger.focus();}});
  document.addEventListener("click",event=>{if(!root.contains(event.target))close();});
 }
-setupHardwarePicker("cpu",CPUs);setupHardwarePicker("gpu",GPUs);
+setupHardwarePicker("cpu",CPUs);
+setupHardwarePicker("gpu",GPUs);
 
 
 const GPU_REFERENCE_FPS = {720:220,1080:203.8,1440:167.3,2160:110.8};
@@ -3444,8 +3466,8 @@ function calculate(){
   document.getElementById("sbAction").textContent=action;
   document.getElementById("sbCpu").textContent=c.name||"CPU";
   document.getElementById("sbGpu").textContent=g.name||"GPU";
-  document.getElementById("sbCpuIndex").textContent=safeFps(cpuScore)+" INDEX";
-  document.getElementById("sbGpuIndex").textContent=safeFps(gpuScore)+" INDEX";
+  document.getElementById("sbCpuIndex").textContent=String(safeFps(cpuScore));
+  document.getElementById("sbGpuIndex").textContent=String(safeFps(gpuScore));
 
   const active=modelScenario(cpuScore,gpuScore,r,gt,targetFps,g,context,gameProfile);
   const activeRawFps=Math.max(0,safeFinite(active.sustainableFps,0));
@@ -3488,11 +3510,19 @@ function calculate(){
     card.classList.add(fit>=85?"good":fit>=65?"warn":"bad");
   });
 
+  const nextHardware=(list,current)=>{
+    const nextScore=getNextTierScore(list,current);
+    return list.find(item=>safeFinite(item.score,0)===nextScore&&safeFinite(item.score,0)>safeFinite(current.score,0))||null;
+  };
+  const nextCpu=nextHardware(CPUs,c);
+  const nextGpu=nextHardware(GPUs,g);
+  const cpuRecommendation=upgradeSide==="CPU"&&nextCpu?("Recommended Upgrade: "+nextCpu.name+" • Check Price"):"No CPU upgrade recommended";
+  const gpuRecommendation=upgradeSide==="GPU"&&nextGpu?("Recommended Upgrade: "+nextGpu.name+" • Check Price"):"No GPU upgrade recommended";
   document.getElementById("sbUpgradeGain").textContent="+"+bestGainDisplay+" FPS";
   document.getElementById("sbCpuUpgradeFps").textContent=cpuUpgradeFps+" FPS";
   document.getElementById("sbGpuUpgradeFps").textContent=gpuUpgradeFps+" FPS";
-  document.getElementById("sbCpuUpgradeGain").textContent="CPU NEXT TIER · +"+cpuGainDisplay+" FPS";
-  document.getElementById("sbGpuUpgradeGain").textContent="GPU NEXT TIER · +"+gpuGainDisplay+" FPS";
+  document.getElementById("sbCpuUpgradeGain").textContent=cpuRecommendation;
+  document.getElementById("sbGpuUpgradeGain").textContent=gpuRecommendation;
 
   rootTabsInit(resultRoot);
   updateVisibleResolution(resultRoot,r);
