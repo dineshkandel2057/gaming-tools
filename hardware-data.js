@@ -2797,6 +2797,7 @@ const SFP_HARDWARE_DATA = {
     },
     {
       "id": "rtx-5060-ti",
+      "vendor": "NVIDIA",
       "name": "NVIDIA GeForce RTX 5060 Ti",
       "brand": "NVIDIA GeForce",
       "power": 180,
