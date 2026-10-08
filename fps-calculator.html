@@ -1803,8 +1803,11 @@ function showSetupReadyState(){
       $("score").textContent = e.score;
       $("scoreRing").style.setProperty("--score",e.score);
       $("scoreTitle").textContent = e.title;
+      const profileStatusText = e.game.profileStatus === "default-estimate"
+        ? "This game uses a generic workload estimate; it has not been individually benchmark-profiled yet."
+        : "This game has a dedicated workload profile.";
       $("scoreText").textContent =
-        `Model score based on base rendering performance, 1% low behaviour and VRAM headroom. Confidence: ${e.confidence}.`;
+        `Model score based on base rendering performance, 1% low behaviour and VRAM headroom. Confidence: ${e.confidence}. ${profileStatusText}`;
       $("performanceTag").textContent = e.tag;
 
       $("avg").textContent = fmtRange(e.avg,.11);
@@ -1876,7 +1879,8 @@ function showSetupReadyState(){
         const btn = document.createElement("button");
         btn.className = "game-card";
         btn.type = "button";
-        btn.innerHTML = `<b>${g.name}</b><small>${g.cat} · ${g.vram} GB profile</small>`;
+        const profileLabel = g.profileStatus === "default-estimate" ? "Generic estimate" : "Dedicated profile";
+         btn.innerHTML = `<b>${g.name}</b><small>${g.cat} · ${g.vram} GB · ${profileLabel}</small>`;
         btn.addEventListener("click",()=>{
           $("game").value = String(UNIQUE_GAMES.indexOf(g));
           $("selectedGameLabel").textContent = g.name;
