@@ -599,7 +599,7 @@
         document.head.appendChild(style);
       }
 
-      host.outerHTML = markup;
+      host.innerHTML = markup;
     } else {
       return;
     }
