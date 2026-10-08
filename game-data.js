@@ -1,7 +1,8 @@
 /* SystemFit PC canonical game database.
  * Master selection set: 792 games from the Bottleneck catalog.
- * Existing FPS workload profiles are preserved; games without a dedicated profile
- * use an explicitly marked generic estimate until researched individually.
+ * Existing FPS workload profiles are preserved. Games without a dedicated profile
+ * use an explicitly marked category estimate when category anchors are unambiguous;
+ * genuinely ambiguous games retain the generic estimate.
  */
 const SFP_GAME_DATA = {
   "games": [
@@ -2470,13 +2471,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Team Fortress 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "League of Legends",
@@ -2552,23 +2553,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Battlefield V",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Battlefield 1",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Battlefield 6",
@@ -2590,63 +2591,63 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "War Thunder",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "World of Tanks",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "World of Warships",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Enlisted",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Delta Force",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Arena Breakout: Infinite",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Escape from Tarkov",
@@ -2686,13 +2687,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Hell Let Loose",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Ready or Not",
@@ -2705,23 +2706,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Arma 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Arma Reforger",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "DayZ",
@@ -2743,13 +2744,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "SCUM",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "V Rising",
@@ -2771,73 +2772,73 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Garry's Mod",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "FiveM",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Grand Theft Auto Online",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Red Dead Online",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "For Honor",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Chivalry 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Mordhau",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "BattleBit Remastered",
@@ -2850,23 +2851,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Naraka: Bladepoint",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Brawlhalla",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Street Fighter 6",
@@ -2897,123 +2898,123 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Mortal Kombat 11",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Guilty Gear -Strive-",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dragon Ball FighterZ",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The King of Fighters XV",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Street Fighter V",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tekken 7",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Smite 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "SMITE",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Heroes of the Storm",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "StarCraft II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "StarCraft Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Warcraft III: Reforged",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Age of Empires IV",
@@ -3026,13 +3027,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Age of Empires II: Definitive Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Age of Mythology: Retold",
@@ -3045,23 +3046,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Company of Heroes 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Company of Heroes 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Total War: WARHAMMER III",
@@ -3074,13 +3075,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Total War: WARHAMMER II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Total War: Three Kingdoms",
@@ -3093,23 +3094,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Total War: Rome II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Total War: Shogun 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Cyberpunk 2077",
@@ -3203,13 +3204,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Grand Theft Auto IV",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Competitive",
+      "gpu": 0.42,
+      "cpu": 0.64,
+      "base": 280,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Red Dead Redemption 2",
@@ -3241,23 +3242,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "The Witcher 2: Assassins of Kings",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Witcher",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Kingdom Come: Deliverance II",
@@ -3270,13 +3271,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Kingdom Come: Deliverance",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Assassin's Creed Shadows",
@@ -3325,73 +3326,73 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Assassin's Creed Unity",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Assassin's Creed Syndicate",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Assassin's Creed IV Black Flag",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Assassin's Creed III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Assassin's Creed II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Assassin's Creed Brotherhood",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Assassin's Creed Revelations",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Far Cry 6",
@@ -3413,53 +3414,53 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Far Cry New Dawn",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Far Cry 4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Far Cry 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Far Cry 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Far Cry",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Watch Dogs: Legion",
@@ -3481,13 +3482,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Watch Dogs",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Avatar: Frontiers of Pandora",
@@ -3527,33 +3528,33 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Star Wars Battlefront II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Star Wars Battlefront",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Star Wars Squadrons",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Open World",
+      "gpu": 0.66,
+      "cpu": 0.65,
+      "base": 135,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Indiana Jones and the Great Circle",
@@ -3584,53 +3585,53 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "DOOM",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "DOOM 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wolfenstein: The New Order",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wolfenstein II: The New Colossus",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wolfenstein: Youngblood",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Prey",
@@ -3661,13 +3662,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Dishonored",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Death Stranding Director's Cut",
@@ -3680,13 +3681,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Death Stranding",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Control",
@@ -3708,33 +3709,33 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Quantum Break",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Alan Wake Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Alan Wake",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Resident Evil 4",
@@ -3783,43 +3784,43 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Resident Evil 6",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Resident Evil 5",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Resident Evil Revelations 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Resident Evil Revelations",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Devil May Cry 5",
@@ -3832,73 +3833,73 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Devil May Cry 4 Special Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Devil May Cry 3 Special Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Metal Gear Solid V: The Phantom Pain",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Metal Gear Solid V: Ground Zeroes",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Metal Gear Rising: Revengeance",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Nioh 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Nioh",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Lies of P",
@@ -3920,13 +3921,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Wo Long: Fallen Dynasty",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Sekiro: Shadows Die Twice",
@@ -3948,13 +3949,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Dark Souls II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dark Souls Remastered",
@@ -3967,23 +3968,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Dark Souls",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Armored Core VI: Fires of Rubicon",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Remnant II",
@@ -4005,93 +4006,93 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "The Outer Worlds",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Fallout 4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Fallout: New Vegas",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Fallout 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Fallout 76",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Elder Scrolls V: Skyrim Special Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Elder Scrolls V: Skyrim",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Elder Scrolls IV: Oblivion Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Elder Scrolls IV: Oblivion",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Elder Scrolls Online",
@@ -4113,33 +4114,33 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Mass Effect 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Mass Effect 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Mass Effect",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dragon Age: The Veilguard",
@@ -4161,383 +4162,383 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Dragon Age II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dragon Age: Origins",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "BioShock Infinite",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "BioShock 2 Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "BioShock Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "BioShock",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Borderlands 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Borderlands 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Borderlands",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tiny Tina's Wonderlands",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tom Clancy's Ghost Recon Breakpoint",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tom Clancy's Ghost Recon Wildlands",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tom Clancy's The Division 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tom Clancy's The Division",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Sleeping Dogs: Definitive Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Mafia: Definitive Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Mafia II Definitive Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Mafia III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Mafia",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "L.A. Noire",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Max Payne 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Max Payne 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Max Payne",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Just Cause 4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Just Cause 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Just Cause 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Just Cause",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Saints Row",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Saints Row IV",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Saints Row: The Third Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Saints Row 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Middle-earth: Shadow of War",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Middle-earth: Shadow of Mordor",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Mad Max",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Batman: Arkham Knight",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Batman: Arkham City",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Batman: Arkham Origins",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Batman: Arkham Asylum",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Marvel's Spider-Man Remastered",
@@ -4550,13 +4551,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Marvel's Spider-Man: Miles Morales",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Marvel's Spider-Man 2",
@@ -4578,33 +4579,33 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Horizon Forbidden West Complete Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Horizon Zero Dawn Complete Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Days Gone",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Ghost of Tsushima DIRECTOR'S CUT",
@@ -4653,13 +4654,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "The Last of Us Part II Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Returnal",
@@ -4672,13 +4673,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Sackboy: A Big Adventure",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Kena: Bridge of Spirits",
@@ -4718,173 +4719,173 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Metro Exodus",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Metro: Last Light Redux",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Metro 2033 Redux",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "S.T.A.L.K.E.R. 2: Heart of Chornobyl",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "S.T.A.L.K.E.R.: Call of Pripyat",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "S.T.A.L.K.E.R.: Shadow of Chernobyl",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "S.T.A.L.K.E.R.: Clear Sky",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Crysis Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Crysis 3 Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Crysis 2 Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Crysis 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Crysis",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Ryse: Son of Rome",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Darksiders III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Darksiders II Deathinitive Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Darksiders Warmastered Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy XIV Online",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy XVI",
@@ -4906,13 +4907,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Final Fantasy VII Remake Intergrade",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy XV",
@@ -4925,123 +4926,123 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Final Fantasy XIII",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy XII The Zodiac Age",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy X/X-2 HD Remaster",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy IX",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy VIII Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy VII",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy VI",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy V",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy IV",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Final Fantasy",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Path of Exile 2",
@@ -5072,43 +5073,43 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Diablo III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Diablo II: Resurrected",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Diablo II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Diablo",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "World of Warcraft",
@@ -5121,13 +5122,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "World of Warcraft Classic",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Guild Wars 2",
@@ -5140,13 +5141,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Guild Wars",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Lost Ark",
@@ -5177,13 +5178,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "New World",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Throne and Liberty",
@@ -5196,123 +5197,123 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "RuneScape",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Old School RuneScape",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "MapleStory",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Albion Online",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "EVE Online",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Star Wars: The Old Republic",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Lord of the Rings Online",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Neverwinter",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Blade & Soul",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Vindictus",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tree of Savior",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "MIR4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Torchlight II",
@@ -5325,13 +5326,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Torchlight III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Grim Dawn",
@@ -5353,33 +5354,33 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Titan Quest Anniversary Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wolcen: Lords of Mayhem",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Warhammer 40,000: Rogue Trader",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Warhammer 40,000: Space Marine 2",
@@ -5410,153 +5411,153 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Divinity: Original Sin",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Pillars of Eternity II: Deadfire",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Pillars of Eternity",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Pathfinder: Wrath of the Righteous",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Pathfinder: Kingmaker",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wasteland 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wasteland 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Baldur's Gate 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Baldur's Gate",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Planescape: Torment",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Icewind Dale",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Icewind Dale II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Neverwinter Nights",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Neverwinter Nights 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "GreedFall",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "GreedFall 2",
@@ -5569,113 +5570,113 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "ELEX",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "ELEX 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Risen 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Risen 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Risen",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Gothic 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Gothic II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Gothic",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Mount & Blade II: Bannerlord",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Mount & Blade: Warband",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Mount & Blade",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dragon's Dogma 2",
@@ -5688,23 +5689,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Dragon's Dogma: Dark Arisen",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dragon's Dogma",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Monster Hunter: World",
@@ -5717,53 +5718,53 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Monster Hunter Rise",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tales of Arise",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tales of Berseria",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tales of Vesperia: Definitive Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tales of Symphonia",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Persona 5 Royal",
@@ -5776,13 +5777,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Persona 4 Golden",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Persona 3 Reload",
@@ -5795,23 +5796,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Persona 5 Strikers",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Shin Megami Tensei V: Vengeance",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Yakuza: Like a Dragon",
@@ -5833,103 +5834,103 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Like a Dragon Gaiden: The Man Who Erased His Name",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Yakuza 0",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Yakuza Kiwami",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Yakuza Kiwami 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Yakuza 3 Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Yakuza 4 Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Yakuza 5 Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Yakuza 6: The Song of Life",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Judgment",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Lost Judgment",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "NieR:Automata",
@@ -5942,93 +5943,93 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "NieR Replicant ver.1.22474487139",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Octopath Traveler II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Octopath Traveler",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Triangle Strategy",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dragon Quest XI S",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Ni no Kuni II: Revenant Kingdom",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Ni no Kuni: Wrath of the White Witch",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Kingdom Hearts III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Kingdom Hearts HD 1.5+2.5 ReMIX",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Minecraft Java",
@@ -6041,13 +6042,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Minecraft Bedrock",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "AAA",
+      "gpu": 0.69,
+      "cpu": 0.58,
+      "base": 130,
+      "vram": 8,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Terraria",
@@ -6132,13 +6133,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Don't Starve",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Raft",
@@ -6169,13 +6170,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Green Hell",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Grounded",
@@ -6197,13 +6198,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Subnautica: Below Zero",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "No Man's Sky",
@@ -6225,23 +6226,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Core Keeper",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Starbound",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Factorio",
@@ -6272,93 +6273,93 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Oxygen Not Included",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Kenshi",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dwarf Fortress",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Astroneer",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Space Engineers",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Empyrion - Galactic Survival",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Conan Exiles",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Smalland: Survive the Wilds",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Icarus",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Long Dark",
@@ -6371,53 +6372,53 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "The Planet Crafter",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Stranded Deep",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Medieval Dynasty",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Bellwright",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Soulmask",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Nightingale",
@@ -6439,23 +6440,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Abiotic Factor",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Pacific Drive",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Lethal Company",
@@ -6486,123 +6487,123 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Demonologist",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Forewarned",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Devour",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "GTFO",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Barotrauma",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Project Winter",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Isle",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Path of Titans",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Beasts of Bermuda",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Marauders",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Voidtrain",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Sunkenland",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dune: Awakening",
@@ -6615,93 +6616,93 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "RuneScape: Dragonwilds",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Lightyear Frontier",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Forever Skies",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wildmender",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Necesse",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Vintage Story",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Eco",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wurm Unlimited",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Life is Feudal: MMO",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Cities: Skylines II",
@@ -6714,63 +6715,63 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Cities: Skylines",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "SimCity",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "SimCity 4 Deluxe",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Sims 4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Sims 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Sims 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Planet Zoo",
@@ -6792,43 +6793,43 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Planet Coaster",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Zoo Tycoon",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "RollerCoaster Tycoon 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Transport Fever 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Transport Fever 2",
@@ -6841,13 +6842,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Transport Fever",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "American Truck Simulator",
@@ -6878,23 +6879,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Farming Simulator 22",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Farming Simulator 19",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Microsoft Flight Simulator 2024",
@@ -6916,133 +6917,133 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "X-Plane 12",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "X-Plane 11",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "BeamNG.drive",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Car Mechanic Simulator 2021",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Car Mechanic Simulator 2018",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "PowerWash Simulator",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "House Flipper 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "House Flipper",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "PC Building Simulator 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "PC Building Simulator",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Two Point Hospital",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Two Point Campus",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Prison Architect",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Frostpunk 2",
@@ -7055,33 +7056,33 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Frostpunk",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Against the Storm",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Banished",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Anno 1800",
@@ -7094,133 +7095,133 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Anno 2205",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Anno 2070",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Anno 1404",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Age of Empires III: Definitive Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Age of Empires II HD",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Age of Mythology",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Rise of Nations",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Rise of Nations: Extended Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Stronghold Crusader HD",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Stronghold Crusader 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Stronghold",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Stronghold 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Stronghold Legends",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Civilization VI",
@@ -7233,103 +7234,103 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Civilization V",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Civilization IV",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Civilization III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Civilization II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Civilization: Beyond Earth",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Humankind",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Old World",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Endless Legend",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Endless Space 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Endless Space",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Stellaris",
@@ -7351,53 +7352,53 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Europa Universalis III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Hearts of Iron IV",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Hearts of Iron III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Victoria 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Victoria II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Crusader Kings III",
@@ -7410,243 +7411,243 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Crusader Kings II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Total War: Rome Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Total War: Attila",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Total War: Napoleon",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Total War: Empire",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Total War: Medieval II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Total War: Rome",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Total War: Troy",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Total War: Pharaoh",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Company of Heroes",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Warcraft III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Age of Wonders 4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Age of Wonders: Planetfall",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Age of Wonders III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "XCOM 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "XCOM: Enemy Unknown",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "XCOM: Enemy Within",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Phoenix Point",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Battletech",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "MechWarrior 5: Mercenaries",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "MechWarrior Online",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Surviving Mars",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Surviving the Aftermath",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Workers & Resources: Soviet Republic",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dyson Sphere Program",
@@ -7659,23 +7660,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Captain of Industry",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Timberborn",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Manor Lords",
@@ -7688,63 +7689,63 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Foundation",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Farthest Frontier",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Songs of Syx",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Terra Invicta",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Ixion",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "EA SPORTS FC 27",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "EA SPORTS FC 26",
@@ -7757,23 +7758,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "EA SPORTS FC 25",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "EA SPORTS FC 24",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "FIFA 23",
@@ -7786,203 +7787,203 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "FIFA 22",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "FIFA 21",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "FIFA 20",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "eFootball",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "eFootball 2025",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "eFootball 2026",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Football Manager 26",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Football Manager 25",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Football Manager 24",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Football Manager 23",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Football Manager 22",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Madden NFL 26",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Madden NFL 25",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "NBA 2K26",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "NBA 2K25",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "NBA 2K24",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "WWE 2K26",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "WWE 2K25",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "WWE 2K24",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "F1 26",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "F1 25",
@@ -8004,43 +8005,43 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "F1 23",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "F1 22",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "F1 2021",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "F1 2020",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Forza Horizon 5",
@@ -8053,23 +8054,23 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Forza Horizon 4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Forza Horizon 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Forza Motorsport",
@@ -8082,573 +8083,573 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Forza Motorsport 7",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Gran Turismo 7",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Assetto Corsa Competizione",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Assetto Corsa",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "iRacing",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Automobilista 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Automobilista",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Project CARS 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Project CARS 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Project CARS",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "DiRT Rally 2.0",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "DiRT Rally",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "DiRT 5",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "DiRT 4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "GRID Legends",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "GRID 2019",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "GRID Autosport",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "GRID 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "GRID",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Need for Speed Unbound",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Need for Speed Heat",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Need for Speed Payback",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Need for Speed Rivals",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Need for Speed Most Wanted",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Need for Speed Carbon",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Need for Speed Underground 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Need for Speed Underground",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Need for Speed Hot Pursuit Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Need for Speed Hot Pursuit",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Burnout Paradise Remastered",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wreckfest",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Crew Motorfest",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Crew 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Crew",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "SnowRunner",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "MudRunner",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "CarX Drift Racing Online",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "CarX Street",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Trackmania",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "TrackMania Nations Forever",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "TrackMania 2020",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Descenders",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Riders Republic",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Steep",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Tony Hawk's Pro Skater 1 + 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Session: Skate Sim",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Skater XL",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Hot Wheels Unleashed 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Hot Wheels Unleashed",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "MotoGP 25",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "MotoGP 24",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "MotoGP 23",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Ride 5",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Ride 4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "WRC 10",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "EA Sports WRC",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "WRC Generations",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Silent Hill 2",
@@ -8661,443 +8662,443 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Silent Hill 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Silent Hill 4: The Room",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Silent Hill: Homecoming",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Silent Hill: Downpour",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Amnesia: The Dark Descent",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Amnesia: Rebirth",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Amnesia: The Bunker",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Outlast",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Outlast 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Outlast Trials",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Alien: Isolation",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "SOMA",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Layers of Fear",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Layers of Fear 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Little Nightmares",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Little Nightmares II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Little Nightmares III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dead by Daylight",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Visage",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "MADiSON",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Mortuary Assistant",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Fobia - St. Dinfna Hotel",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Observer: System Redux",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Blair Witch",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Medium",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Martha Is Dead",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Scorn",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "SIGNALIS",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Darkwood",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dying Light",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dying Light 2 Stay Human",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dead Island 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dead Island Definitive Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dead Island Riptide",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dead Island",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Evil Within",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Evil Within 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Back 4 Blood",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "World War Z",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "World War Z: Aftermath",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Killing Floor 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Killing Floor",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Left 4 Dead 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Left 4 Dead",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Hades II",
@@ -9119,13 +9120,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Hollow Knight: Silksong",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Hollow Knight",
@@ -9138,13 +9139,13 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Celeste",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dead Cells",
@@ -9157,333 +9158,333 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Cuphead",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Ori and the Will of the Wisps",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Ori and the Blind Forest",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Blasphemous 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Blasphemous",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Nine Sols",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Sea of Stars",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Chained Echoes",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Undertale",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Deltarune",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Slay the Spire 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Slay the Spire",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Balatro",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Vampire Survivors",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Risk of Rain 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Risk of Rain Returns",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Enter the Gungeon",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Exit the Gungeon",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Rogue Legacy 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Rogue Legacy",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "FTL: Faster Than Light",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Into the Breach",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Papers, Please",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Return of the Obra Dinn",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Disco Elysium",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Outer Wilds",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "What Remains of Edith Finch",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Firewatch",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Inside",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Limbo",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Gris",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Journey",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Abzu",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Stray",
@@ -9496,253 +9497,253 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Dave the Diver",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Dredge",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Cult of the Lamb",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Animal Well",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "A Short Hike",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Stanley Parable: Ultra Deluxe",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "The Stanley Parable",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Portal 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Portal",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Half-Life: Alyx",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Half-Life 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Half-Life",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Black Mesa",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Unturned",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Among Us",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Fall Guys",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Human: Fall Flat",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Gang Beasts",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Goat Simulator 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Goat Simulator",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Totally Accurate Battle Simulator",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Totally Accurate Battlegrounds",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Teardown",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Besiege",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Poly Bridge 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Kerbal Space Program",
@@ -9764,363 +9765,363 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Universe Sandbox",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Supermarket Simulator",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Schedule I",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "VRChat",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Geometry Dash",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wallpaper Engine",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Half-Life 2: Episode One",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Half-Life 2: Episode Two",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Half-Life 2: Lost Coast",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Counter-Strike",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Counter-Strike: Condition Zero",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Counter-Strike: Source",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Counter-Strike: Global Offensive",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Quake",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Quake II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Quake III Arena",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "DOOM II",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wolfenstein 3D",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Return to Castle Wolfenstein",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Wolfenstein: Enemy Territory",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Unreal Tournament",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Unreal Tournament 2004",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Unreal Tournament 3",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Serious Sam Classic: The First Encounter",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Serious Sam Classic: The Second Encounter",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Serious Sam 4",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Bully: Scholarship Edition",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Grand Theft Auto III",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Grand Theft Auto: Vice City",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Grand Theft Auto: San Andreas",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Prototype",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Prototype 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Saints Row (2022)",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Shadow of Mordor",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "Shadow of War",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     },
     {
       "name": "BioShock 2",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "Survival",
+      "gpu": 0.48,
+      "cpu": 0.67,
+      "base": 160,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "category-estimate"
     }
   ]
 };
