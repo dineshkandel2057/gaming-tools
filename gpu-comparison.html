@@ -276,39 +276,6 @@ const gpus = SFP_HARDWARE_DATA.GPUs.map(g => ({
       comparisonImage:g.comparisonImage,
       popularityRank:g.popularityRank
     }));
-gpus.push(
-{id:"580",name:"Radeon RX 580 8GB",brand:"AMD",series:"RX 500 · Polaris",vram:8,type:"GDDR5",bus:256,power:185,psu:500,tier:20,group:"budget",year:2017,ray:"—",work:"Older 1080p gaming",note:"Budget · RX 580 baseline",image:"https://cdn.prod.website-files.com/5d1911406ad3cbdb9924a753/5e04f74c5e658b80fd012bb1_580-3_web_fixed.jpg"},
-{id:"5804",name:"Radeon RX 580 4GB",brand:"AMD",series:"RX 500 · Polaris",vram:4,type:"GDDR5",bus:256,power:185,psu:500,tier:20,group:"budget",year:2017,ray:"—",work:"Older 1080p gaming",note:"Budget · 4GB variant"},
-{id:"570",name:"Radeon RX 570 8GB",brand:"AMD",series:"RX 500 · Polaris",vram:8,type:"GDDR5",bus:256,power:150,psu:450,tier:18,group:"budget",year:2017,ray:"—",work:"Older 1080p gaming",note:"Budget"},
-{id:"480",name:"Radeon RX 480 8GB",brand:"AMD",series:"RX 400 · Polaris",vram:8,type:"GDDR5",bus:256,power:150,psu:450,tier:19,group:"budget",year:2016,ray:"—",work:"Older 1080p gaming",note:"Budget"},
-{id:"590",name:"Radeon RX 590 8GB",brand:"AMD",series:"RX 500 · Polaris",vram:8,type:"GDDR5",bus:256,power:225,psu:500,tier:21,group:"budget",year:2018,ray:"—",work:"Older 1080p gaming",note:"Budget"},
-{id:"1060",name:"GeForce GTX 1060 6GB",brand:"NVIDIA",series:"GTX 10 · Pascal",vram:6,type:"GDDR5",bus:192,power:120,psu:400,tier:19,group:"budget",year:2016,ray:"—",work:"Older 1080p gaming",note:"Budget"},
-{id:"1070",name:"GeForce GTX 1070",brand:"NVIDIA",series:"GTX 10 · Pascal",vram:8,type:"GDDR5",bus:256,power:150,psu:500,tier:26,group:"budget",year:2016,ray:"—",work:"Older 1080p gaming",note:"Older performance"},
-{id:"1050ti",name:"GeForce GTX 1050 Ti",brand:"NVIDIA",series:"GTX 10 · Pascal",vram:4,type:"GDDR5",bus:128,power:75,psu:300,tier:12,group:"budget",year:2016,ray:"—",work:"Basic / esports",note:"Very low power"},
-{id:"1050",name:"GeForce GTX 1050",brand:"NVIDIA",series:"GTX 10 · Pascal",vram:2,type:"GDDR5",bus:128,power:75,psu:300,tier:10,group:"budget",year:2016,ray:"—",work:"Basic / esports",note:"Very low power"},
-{id:"970",name:"GeForce GTX 970",brand:"NVIDIA",series:"GTX 900 · Maxwell",vram:4,type:"GDDR5",bus:256,power:145,psu:500,tier:17,group:"budget",year:2014,ray:"—",work:"Older 1080p gaming",note:"Used-market option"},
-{id:"1660ti",name:"GeForce GTX 1660 Ti",brand:"NVIDIA",series:"GTX 16 · Turing",vram:6,type:"GDDR6",bus:192,power:120,psu:450,tier:23,group:"budget",year:2019,ray:"—",work:"1080p gaming",note:"No hardware RT"},
-{id:"1650s",name:"GeForce GTX 1650 SUPER",brand:"NVIDIA",series:"GTX 16 · Turing",vram:4,type:"GDDR6",bus:128,power:100,psu:350,tier:16,group:"budget",year:2019,ray:"—",work:"Basic 1080p gaming",note:"Entry gaming"},
-{id:"6500xt",name:"Radeon RX 6500 XT",brand:"AMD",series:"RX 6000 · RDNA 2",vram:4,type:"GDDR6",bus:64,power:107,psu:400,tier:17,group:"budget",year:2022,ray:"Entry",work:"Basic 1080p gaming",note:"Budget · 4GB"},
-{id:"6400",name:"Radeon RX 6400",brand:"AMD",series:"RX 6000 · RDNA 2",vram:4,type:"GDDR6",bus:64,power:53,psu:350,tier:13,group:"budget",year:2022,ray:"Entry",work:"Basic gaming · display",note:"Low-profile / low power"},
-{id:"5700",name:"Radeon RX 5700",brand:"AMD",series:"RX 5000 · RDNA",vram:8,type:"GDDR6",bus:256,power:180,psu:550,tier:25,group:"budget",year:2019,ray:"—",work:"Older 1080p/1440p gaming",note:"Older performance"},
-{id:"1080",name:"GeForce GTX 1080",brand:"NVIDIA",series:"GTX 10 · Pascal",vram:8,type:"GDDR5X",bus:256,power:180,psu:500,tier:28,group:"budget",year:2016,ray:"—",work:"Older 1080p/1440p gaming",note:"Older performance"},
-{id:"3090ti",name:"GeForce RTX 3090 Ti",brand:"NVIDIA",series:"RTX 30 · Ampere",vram:24,type:"GDDR6X",bus:384,power:450,psu:850,tier:75,group:"enthusiast",year:2022,ray:"High",work:"AI · 3D · 4K",note:"Previous flagship"},
-{id:"3080ti",name:"GeForce RTX 3080 Ti",brand:"NVIDIA",series:"RTX 30 · Ampere",vram:12,type:"GDDR6X",bus:384,power:350,psu:750,tier:58,group:"performance",year:2021,ray:"High",work:"Gaming · 3D · 1440p/4K",note:"Older high-end"},
-{id:"4070ti",name:"GeForce RTX 4070 Ti",brand:"NVIDIA",series:"RTX 40 · Ada Lovelace",vram:12,type:"GDDR6X",bus:192,power:285,psu:700,tier:63,group:"performance",year:2023,ray:"Very high",work:"AI · Editing · 1440p",note:"Upper midrange"},
-{id:"2060s",name:"GeForce RTX 2060 SUPER",brand:"NVIDIA",series:"RTX 20 · Turing",vram:8,type:"GDDR6",bus:256,power:175,psu:550,tier:32,group:"budget",year:2019,ray:"Entry",work:"1080p gaming · editing",note:"Older entry gaming"},
-{id:"6650xt",name:"Radeon RX 6650 XT",brand:"AMD",series:"RX 6000 · RDNA 2",vram:8,type:"GDDR6",bus:128,power:176,psu:500,tier:36,group:"mainstream",year:2022,ray:"Entry",work:"Gaming · 1080p",note:"Value 1080p"},
-{id:"6750xt",name:"Radeon RX 6750 XT",brand:"AMD",series:"RX 6000 · RDNA 2",vram:12,type:"GDDR6",bus:192,power:250,psu:650,tier:46,group:"mainstream",year:2022,ray:"Entry",work:"Gaming · 1080p/1440p",note:"Older mainstream"},
-{id:"6800",name:"Radeon RX 6800",brand:"AMD",series:"RX 6000 · RDNA 2",vram:16,type:"GDDR6",bus:256,power:250,psu:650,tier:52,group:"performance",year:2020,ray:"Entry",work:"Gaming · 1440p",note:"Older performance"},
-{id:"2080ti",name:"GeForce RTX 2080 Ti",brand:"NVIDIA",series:"RTX 20 · Turing",vram:11,type:"GDDR6",bus:352,power:250,psu:650,tier:52,group:"performance",year:2018,ray:"Mid",work:"Older 1440p gaming · 3D",note:"Older high-end"},
-{id:"2080",name:"GeForce RTX 2080",brand:"NVIDIA",series:"RTX 20 · Turing",vram:8,type:"GDDR6",bus:256,power:215,psu:650,tier:39,group:"mainstream",year:2018,ray:"Mid",work:"Older 1080p/1440p gaming",note:"Older performance"},
-{id:"2070",name:"GeForce RTX 2070",brand:"NVIDIA",series:"RTX 20 · Turing",vram:8,type:"GDDR6",bus:256,power:175,psu:550,tier:33,group:"mainstream",year:2018,ray:"Entry",work:"Older 1080p gaming",note:"Older mainstream"},
-{id:"1660",name:"GeForce GTX 1660",brand:"NVIDIA",series:"GTX 16 · Turing",vram:6,type:"GDDR5",bus:192,power:120,psu:450,tier:21,group:"budget",year:2019,ray:"—",work:"1080p gaming",note:"No hardware RT"},
-{id:"980",name:"GeForce GTX 980",brand:"NVIDIA",series:"GTX 900 · Maxwell",vram:4,type:"GDDR5",bus:256,power:165,psu:500,tier:18,group:"budget",year:2014,ray:"—",work:"Older 1080p gaming",note:"Used-market option"},
-{id:"980ti",name:"GeForce GTX 980 Ti",brand:"NVIDIA",series:"GTX 900 · Maxwell",vram:6,type:"GDDR5",bus:384,power:250,psu:600,tier:25,group:"budget",year:2015,ray:"—",work:"Older 1080p gaming",note:"Used-market option"},
-{id:"vega64",name:"Radeon RX Vega 64",brand:"AMD",series:"Radeon Vega",vram:8,type:"HBM2",bus:2048,power:295,psu:750,tier:27,group:"budget",year:2017,ray:"—",work:"Older gaming · compute",note:"Older high power"},
-{id:"vega56",name:"Radeon RX Vega 56",brand:"AMD",series:"Radeon Vega",vram:8,type:"HBM2",bus:2048,power:210,psu:650,tier:24,group:"budget",year:2017,ray:"—",work:"Older gaming · compute",note:"Older high power"}
-);
 gpus.forEach(g=>{if(g.id==="5090")g.image="https://assets.nvidia.partners/images/5090_Front_.webp";});
 
 const $=s=>document.querySelector(s), selected=new Set();let familyFilter="all",lastCompared=[];
