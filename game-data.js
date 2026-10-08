@@ -2552,23 +2552,25 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "Battlefield V",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "AAA",
+      "gpu": 0.62,
+      "cpu": 0.68,
+      "base": 230,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from TechSpot Battlefield V GPU testing at 1080p/1440p/4K Ultra and its 60-FPS GPU thresholds; CPU/DX11 behavior also considered."
     },
     {
       "name": "Battlefield 1",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
+      "cat": "AAA",
+      "gpu": 0.58,
+      "cpu": 0.7,
+      "base": 260,
       "vram": 6,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from PC Gamer, GamersNexus and Notebookcheck Battlefield 1 testing; multiplayer shows materially higher CPU demand than single-player."
     },
     {
       "name": "Battlefield 6",
@@ -2590,33 +2592,36 @@ const SFP_GAME_DATA = {
     },
     {
       "name": "War Thunder",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.5,
+      "cpu": 0.65,
+      "base": 260,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from current War Thunder benchmark data plus 1080p gameplay testing; profile reflects moderate GPU demand with meaningful CPU influence."
     },
     {
       "name": "World of Tanks",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.42,
+      "cpu": 0.62,
+      "base": 330,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from ComputerBase and CheckFPS World of Tanks testing; 1080p is relatively CPU-sensitive while higher resolutions shift toward GPU limits."
     },
     {
       "name": "World of Warships",
-      "cat": "General",
-      "gpu": 0.55,
-      "cpu": 0.45,
-      "base": 140,
-      "vram": 6,
+      "cat": "Simulation",
+      "gpu": 0.35,
+      "cpu": 0.55,
+      "base": 560,
+      "vram": 4,
       "rt": 1,
-      "profileStatus": "default-estimate"
+      "profileStatus": "researched",
+      "profileNote": "Researched from Notebookcheck World of Warships desktop/notebook benchmarks; relatively light GPU workload with strong high-FPS scaling."
     },
     {
       "name": "Enlisted",
