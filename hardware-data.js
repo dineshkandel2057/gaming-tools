@@ -2488,7 +2488,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 16 Turing",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 16 Turing · Low-End"
@@ -2515,7 +2515,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 16 Turing",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 16 Turing · Mid-Range"
@@ -2542,7 +2542,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 20 Turing",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RTX 20 Turing · Mid-Range"
@@ -2553,6 +2553,7 @@ const SFP_HARDWARE_DATA = {
       "name": "NVIDIA GeForce RTX 3050 6GB",
       "brand": "NVIDIA GeForce",
       "vram": 6,
+      "rt": 0.82,
       "power": 70,
       "psu": 300,
       "length": 200,
@@ -2566,7 +2567,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Not listed",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2024,
       "ray": "Low",
       "work": "Gaming",
       "note": "Estimated from Tom's Hardware RTX 3050 8GB legacy hierarchy and TechSpot's 13-game RTX 3050 6GB result showing the 6GB model about 18% slower than the 8GB model."
@@ -2577,6 +2578,7 @@ const SFP_HARDWARE_DATA = {
       "name": "NVIDIA GeForce RTX 3060 12GB",
       "brand": "NVIDIA GeForce",
       "vram": 12,
+      "rt": 0.82,
       "power": 170,
       "psu": 550,
       "length": 242,
@@ -2590,7 +2592,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Not listed",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2021,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 GPU hierarchy, 1080p Ultra raster score; RTX 5090 = 100."
@@ -2601,6 +2603,7 @@ const SFP_HARDWARE_DATA = {
       "name": "AMD Radeon RX 580 8GB",
       "brand": "AMD Radeon",
       "vram": 8,
+      "rt": 0.35,
       "power": 185,
       "psu": 550,
       "length": 240,
@@ -2614,7 +2617,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Not listed",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2017,
       "ray": "Low",
       "work": "Gaming",
       "note": "Bridged from Tom's Hardware 2022–2024 RX 580 8GB score relative to RTX 4090, mapped to the site's RTX 5090 reference using the 2026 RTX 4090 result."
@@ -2625,6 +2628,7 @@ const SFP_HARDWARE_DATA = {
       "name": "AMD Radeon RX 6600 8GB",
       "brand": "AMD Radeon",
       "vram": 8,
+      "rt": 0.35,
       "power": 132,
       "psu": 450,
       "length": 193,
@@ -2638,7 +2642,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Not listed",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2021,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 GPU hierarchy, 1080p Ultra raster score; RTX 5090 = 100."
@@ -2649,6 +2653,7 @@ const SFP_HARDWARE_DATA = {
       "name": "AMD Radeon RX 7600 8GB",
       "brand": "AMD Radeon",
       "vram": 8,
+      "rt": 0.45,
       "power": 165,
       "psu": 550,
       "length": 240,
@@ -2662,7 +2667,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Not listed",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2023,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 GPU hierarchy, 1080p Ultra raster score; RTX 5090 = 100."
@@ -2673,6 +2678,7 @@ const SFP_HARDWARE_DATA = {
       "name": "Intel Arc A380 6GB",
       "brand": "Intel Arc",
       "vram": 6,
+      "rt": 0.55,
       "power": 75,
       "psu": 350,
       "length": 190,
@@ -2686,7 +2692,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Not listed",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "Low",
       "work": "Gaming",
       "note": "Bridged from Tom's Hardware 2022–2024 Arc A380 score relative to RTX 4090, mapped to the site's RTX 5090 reference using the 2026 RTX 4090 result."
@@ -2697,6 +2703,7 @@ const SFP_HARDWARE_DATA = {
       "name": "Intel Arc A580 8GB",
       "brand": "Intel Arc",
       "vram": 8,
+      "rt": 0.55,
       "power": 185,
       "psu": 600,
       "length": 270,
@@ -2710,7 +2717,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Not listed",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2023,
       "ray": "Low",
       "work": "Gaming",
       "note": "Bridged from Tom's Hardware 2022–2024 Arc A580 score relative to RTX 4090, mapped to the site's RTX 5090 reference using the 2026 RTX 4090 result."
@@ -2721,6 +2728,7 @@ const SFP_HARDWARE_DATA = {
       "name": "Intel Arc B570 10GB",
       "brand": "Intel Arc",
       "vram": 10,
+      "rt": 0.68,
       "power": 150,
       "psu": 550,
       "length": 270,
@@ -2734,7 +2742,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Not listed",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2024,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 GPU hierarchy, 1080p Ultra raster score; RTX 5090 = 100."
@@ -2745,6 +2753,7 @@ const SFP_HARDWARE_DATA = {
       "name": "Integrated graphics · no separate card",
       "brand": "Integrated graphics",
       "vram": 0,
+      "rt": 0,
       "power": 0,
       "psu": 0,
       "length": 0,
@@ -2790,7 +2799,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -2813,11 +2822,12 @@ const SFP_HARDWARE_DATA = {
       "series": "Not listed",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "Low",
       "work": "Gaming",
       "note": "Generic integrated-graphics placeholder; no single GPU model or benchmark score.",
-      "vram": 16
+      "vram": 16,
+      "rt": 1,
     },
     {
       "id": "rtx-5070",
@@ -2846,7 +2856,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -2868,6 +2878,7 @@ const SFP_HARDWARE_DATA = {
       },
       "vram": 16,
       "rt": 1,
+      "discrete": true,
       "brand": "NVIDIA GeForce",
       "power": 300,
       "psu": 750,
@@ -2877,7 +2888,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -2888,6 +2899,8 @@ const SFP_HARDWARE_DATA = {
       "name": "NVIDIA GeForce RTX 5080",
       "brand": "NVIDIA GeForce",
       "vram": 16,
+      "rt": 1,
+      "discrete": true,
       "power": 360,
       "psu": 850,
       "length": 304,
@@ -2900,7 +2913,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Not listed",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 GPU hierarchy, 1080p Ultra raster score; RTX 5090 = 100."
@@ -2922,6 +2935,7 @@ const SFP_HARDWARE_DATA = {
       },
       "vram": 32,
       "rt": 1,
+      "discrete": true,
       "brand": "NVIDIA GeForce",
       "power": 575,
       "psu": 1000,
@@ -2931,7 +2945,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -2958,7 +2972,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 9000 RDNA 4",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RX 9000 RDNA 4 · Mid-Range"
@@ -2980,6 +2994,7 @@ const SFP_HARDWARE_DATA = {
       },
       "vram": 16,
       "rt": 0.7,
+      "discrete": true,
       "brand": "AMD Radeon",
       "power": 220,
       "psu": 650,
@@ -2989,7 +3004,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 9000 RDNA 4",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -3011,6 +3026,7 @@ const SFP_HARDWARE_DATA = {
       },
       "vram": 16,
       "rt": 0.73,
+      "discrete": true,
       "brand": "AMD Radeon",
       "power": 304,
       "psu": 750,
@@ -3020,7 +3036,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 9000 RDNA 4",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -3047,7 +3063,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 500 Polaris",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2017,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 500 Polaris · Low-End"
@@ -3074,7 +3090,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 400 Polaris",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2016,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RX 400 Polaris · Low-End"
@@ -3101,7 +3117,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 900 Maxwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2015,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 900 Maxwell · Low-End"
@@ -3128,7 +3144,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 500 Polaris",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2017,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 500 Polaris · Low-End"
@@ -3155,7 +3171,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 10 Pascal",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2016,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 10 Pascal · Low-End"
@@ -3182,7 +3198,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 900 Maxwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2015,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 900 Maxwell · Low-End"
@@ -3209,7 +3225,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 6000 RDNA 2",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 6000 RDNA 2 · Low-End"
@@ -3236,7 +3252,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 10 Pascal",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2016,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 10 Pascal · Low-End"
@@ -3263,7 +3279,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 400 Polaris",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2016,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RX 400 Polaris · Mid-Range"
@@ -3290,7 +3306,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Arc Alchemist",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; Arc Alchemist · Low-End"
@@ -3317,7 +3333,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 500 Polaris",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2017,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 500 Polaris · Mid-Range"
@@ -3344,7 +3360,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 16 Turing",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 16 Turing · Low-End"
@@ -3371,7 +3387,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 400 Polaris",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2016,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RX 400 Polaris · Mid-Range"
@@ -3398,7 +3414,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 900 Maxwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2014,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 900 Maxwell · Mid-Range"
@@ -3425,7 +3441,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 6000 RDNA 2",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 6000 RDNA 2 · Low-End"
@@ -3452,7 +3468,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 10 Pascal",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2016,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 10 Pascal · Mid-Range"
@@ -3479,7 +3495,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 500 Polaris",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2017,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 500 Polaris · Mid-Range"
@@ -3506,7 +3522,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 5000 RDNA 1",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 5000 RDNA 1 · Low-End"
@@ -3533,7 +3549,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 900 Maxwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2014,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 900 Maxwell · Mid-Range"
@@ -3560,7 +3576,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 500 Polaris",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2018,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 500 Polaris · Mid-Range"
@@ -3587,7 +3603,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 10 Pascal",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2016,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 10 Pascal · Mid-Range"
@@ -3614,7 +3630,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Arc Alchemist",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2023,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; Arc Alchemist · Mid-Range"
@@ -3641,7 +3657,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 900 Maxwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2015,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 900 Maxwell · High-End"
@@ -3673,7 +3689,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 30 Ampere",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -3700,7 +3716,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 16 Turing",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 16 Turing · Mid-Range"
@@ -3727,7 +3743,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX Vega",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2017,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RX Vega · Mid-Range"
@@ -3754,7 +3770,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 900 HEDT",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2015,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; GTX 900 HEDT · High-End"
@@ -3781,7 +3797,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 10 Pascal",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2016,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 10 Pascal · Mid-Range"
@@ -3808,7 +3824,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 5000 RDNA 1",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2020,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 5000 RDNA 1 · Mid-Range"
@@ -3835,7 +3851,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX Vega",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2017,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RX Vega · High-End"
@@ -3867,7 +3883,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 6000 RDNA 2",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2021,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -3894,7 +3910,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Arc Alchemist",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; Arc Alchemist · Mid-Range"
@@ -3921,7 +3937,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 10 Pascal",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2017,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 10 Pascal · Mid-Range"
@@ -3948,7 +3964,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 20 Turing",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RTX 20 Turing · Mid-Range"
@@ -3975,7 +3991,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 10 Pascal",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2016,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 10 Pascal · High-End"
@@ -4002,7 +4018,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 5000 RDNA 1",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 5000 RDNA 1 · Mid-Range"
@@ -4034,7 +4050,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 6000 RDNA 2",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2021,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4066,7 +4082,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Arc Battlemage",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2024,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4093,7 +4109,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Arc Alchemist",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; Arc Alchemist · High-End"
@@ -4120,7 +4136,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 20 Turing",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RTX 20 Turing · Mid-Range"
@@ -4147,7 +4163,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 5000 RDNA 1",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 5000 RDNA 1 · High-End"
@@ -4174,7 +4190,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 10 Pascal",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2017,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; GTX 10 Pascal · High-End"
@@ -4206,7 +4222,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4238,7 +4254,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 7000 RDNA 3",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2023,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4270,7 +4286,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 40 Ada",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2023,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4297,7 +4313,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 20 Turing",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2018,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RTX 20 Turing · Mid-Range"
@@ -4324,7 +4340,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 30 Ampere",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2021,
       "ray": "High",
       "work": "Gaming",
       "note": "Database score; RTX 30 Ampere · Mid-Range"
@@ -4356,7 +4372,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 30 Ampere",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2020,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4383,7 +4399,7 @@ const SFP_HARDWARE_DATA = {
       "series": "GTX 10 HEDT",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2017,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; GTX 10 HEDT · High-End"
@@ -4415,7 +4431,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 6000 RDNA 2",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2021,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4442,7 +4458,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 20 Turing",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RTX 20 Turing · Mid-Range"
@@ -4474,7 +4490,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 30 Ampere",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2020,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4506,7 +4522,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 40 Ada",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2023,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4538,7 +4554,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4570,7 +4586,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 40 Ada",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2023,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4597,7 +4613,7 @@ const SFP_HARDWARE_DATA = {
       "series": "Arc Battlemage",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2024,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; Arc Battlemage · Mid-Range"
@@ -4624,7 +4640,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 20 Turing",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2019,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RTX 20 Turing · High-End"
@@ -4656,7 +4672,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 9000 RDNA 4",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4688,7 +4704,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 30 Ampere",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2021,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4715,7 +4731,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 20 Turing",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2018,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RTX 20 Turing · High-End"
@@ -4747,7 +4763,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 9000 RDNA 4",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4779,7 +4795,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4811,7 +4827,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 7000 RDNA 3",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2024,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4843,7 +4859,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 7000 RDNA 3",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2023,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4870,7 +4886,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 40 Ada",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2023,
       "ray": "High",
       "work": "Gaming",
       "note": "Database score; RTX 40 Ada · Mid-Range"
@@ -4902,7 +4918,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4929,7 +4945,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 20 HEDT",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2018,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RTX 20 HEDT · High-End"
@@ -4961,7 +4977,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 40 Ada",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2023,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -4993,7 +5009,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 6000 RDNA 2",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2020,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5020,7 +5036,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 6000 RDNA 2",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2020,
       "ray": "Low",
       "work": "Gaming",
       "note": "Database score; RX 6000 RDNA 2 · High-End"
@@ -5052,7 +5068,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 6000 RDNA 2",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2020,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5079,7 +5095,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 9000 RDNA 4",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RX 9000 RDNA 4 · Mid-Range"
@@ -5111,7 +5127,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 7000 RDNA 3",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2023,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5143,7 +5159,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 30 Ampere",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2021,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5175,7 +5191,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 9000 RDNA 4",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5207,7 +5223,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 30 Ampere",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2020,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5239,7 +5255,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 6000 RDNA 2",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "Low",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5266,7 +5282,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 30 Ampere",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2020,
       "ray": "High",
       "work": "Gaming",
       "note": "Database score; RTX 30 Ampere · High-End"
@@ -5298,7 +5314,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 40 Ada",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2024,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5330,7 +5346,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 30 Ampere",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5362,7 +5378,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5389,7 +5405,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 7000 RDNA 3",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2024,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Database score; RX 7000 RDNA 3 · High-End"
@@ -5421,7 +5437,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 40 Ada",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2024,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5453,7 +5469,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 7000 RDNA 3",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5485,7 +5501,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5517,7 +5533,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 9000 RDNA 4",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5549,7 +5565,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 9000 RDNA 4",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5581,7 +5597,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 40 Ada",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2024,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5613,7 +5629,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RX 7000 RDNA 3",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "Medium",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5645,7 +5661,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5677,7 +5693,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 40 Ada",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2022,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
@@ -5709,7 +5725,7 @@ const SFP_HARDWARE_DATA = {
       "series": "RTX 50 Blackwell",
       "type": "Not listed",
       "bus": "Not listed",
-      "year": null,
+      "year": 2025,
       "ray": "High",
       "work": "Gaming",
       "note": "Tom's Hardware 2026 raster hierarchy; RTX 5090 = 100"
