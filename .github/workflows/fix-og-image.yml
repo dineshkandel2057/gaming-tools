@@ -1,0 +1,35 @@
+name: Fix SystemFit OG image
+
+on:
+  push:
+    paths:
+      - ".github/workflows/fix-og-image.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild OG image
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq imagemagick
+          convert -size 1200x630 xc:"#070A18" \
+            -fill "#0A0F22" -draw "roundrectangle 54,54 1146,576 24,24" \
+            \( systemfit-favicon.png -resize 360x360 \) -geometry +105+135 -composite \
+            -font DejaVu-Sans-Bold -pointsize 64 -fill "#F5F7FF" -annotate +570+235 "SYSTEMFIT PC" \
+            -font DejaVu-Sans -pointsize 30 -fill "#5FDCFF" -annotate +570+305 "Practical PC Tools & Guides" \
+            -pointsize 22 -fill "#DCE1F0" -annotate +570+365 "PC Build Planner  •  FPS Calculator" \
+            -annotate +570+405 "GPU Comparison  •  Bottleneck Calculator" \
+            -strip og-default.png
+          rm -f .github/workflows/fix-og-image.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add og-default.png .github/workflows/fix-og-image.yml
+          git commit -m "Fix SystemFit OG image composition"
+          git push
