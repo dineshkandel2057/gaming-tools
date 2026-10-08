@@ -643,7 +643,7 @@ function validateHardwareDatabase(list,type){
     ids.add(x.id);
     if(!x.name||!x.vendor) throw new Error(`Incomplete ${type} record: ${x.id}`);
     if(typeof x.score!=="number"||!Number.isFinite(x.score)||x.score<SCORE_SCALE.min) throw new Error(`Invalid ${type} score: ${x.id}`);
-    if((x.status==="not_applicable" && x.id!=="integrated")||(!["direct","bridged","estimated","not_applicable"].includes(x.status))||!x.scoreNote) throw new Error(`Missing score provenance: ${x.id}`);
+    if((x.status==="not_applicable" && x.id!=="integrated")||(!["direct","bridged","estimated","researched","not_applicable"].includes(x.status))||!x.scoreNote) throw new Error(`Missing score provenance: ${x.id}`);
   });
   return true;
 }
