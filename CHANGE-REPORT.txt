@@ -1,9 +1,16 @@
-SystemFit PC SEO replacement files
+SystemFit PC — Historical SEO Change Report
 
-Source of truth: uploaded gaming-tools-main.zip.
+This file records an earlier SEO-focused update. It is historical documentation and is not a current description of the repository.
 
-Changed files: all 11 public HTML pages.
+Original scope:
+- Standardized Open Graph and Twitter metadata.
+- Added WebSite JSON-LD to the homepage.
+- Added SoftwareApplication JSON-LD to the active tool pages.
+- Added Article and BreadcrumbList JSON-LD to guide articles.
+- Added Guides breadcrumb/discovery links and contextual links.
 
-Changes: standardized Open Graph and Twitter metadata; added WebSite JSON-LD to the homepage, SoftwareApplication JSON-LD to the four active tools, Article plus BreadcrumbList JSON-LD to the three guide articles, and a Guides breadcrumb to guides.html; added a homepage Guides discovery card and contextual links between tools and guides.
+The repository has since received additional maintenance and refactoring work, including shared hardware/game datasets, tool data consolidation, GPU comparison cleanup, metadata/asset fixes, and legacy-code cleanup.
 
-No calculator logic, robots.txt, sitemap.xml, or GPU comparison behavior/data changed. Replace included files at the repository root.
+Therefore, the original statements about which files or behaviors were unchanged should not be treated as current repository state.
+
+For current implementation standards, see AGENTS.md.
