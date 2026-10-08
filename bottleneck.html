@@ -3453,7 +3453,7 @@ function calculate(){
   const findWorthwhileUpgrade=(list,current,buildScenario)=>{
     const currentScore=safeFinite(current?.score,0);
     const minScore=currentScore*1.15;
-    const minGain=Math.max(8,currentRawFps*0.10);
+    const minGain=8;
     const candidates=list
       .filter(item=>item&&safeFinite(item.score,0)>=minScore&&!isOlderInSameFamily(item,current))
       .map(item=>({item,score:safeFinite(item.score,0)}))
