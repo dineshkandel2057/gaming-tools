@@ -118,7 +118,30 @@
       <p>Start with the suggested preset, then change one setting at a time. If GPU usage is near full load, lower GPU-heavy options such as resolution, ray tracing, shadows and volumetrics. If GPU usage is low while one or more CPU threads are heavily loaded, the game may be CPU-limited and lowering graphics quality may not add much FPS.</p>
       <p style="margin-top:10px">For a more focused diagnosis, try the <a href="fps-calculator.html">FPS Calculator</a>, <a href="bottleneck.html">Bottleneck Calculator</a> or read the <a href="graphics-settings-that-affect-fps.html">graphics settings guide</a>.</p>
     </section>
-  </main>
+  
+<section class="tool-explanation" data-sfp-reveal>
+  <h2>How this tool works</h2>
+  <p>The SystemFit PC Game Settings Optimizer turns your game, hardware and target FPS into a practical starting preset. Instead of treating every graphics option as equally important, it focuses on the settings that commonly change GPU workload, visual quality and performance. The recommendation can include a broad preset plus guidance for resolution, upscaling, frame generation, shadows, effects and other demanding options where the selected workload supports them.</p>
+  <p>The goal is not to find one “perfect” preset. A good starting point depends on whether you value image quality, stable frame times, competitive responsiveness or simply reaching a specific FPS target. Use the recommendation as a baseline, launch the game, then make small changes based on your actual performance.</p>
+  <h2>How to read the result</h2>
+  <p>Start with the suggested preset and target FPS, then look at the individual settings underneath it. If GPU usage is near full load, lowering resolution or GPU-heavy effects is generally more useful than randomly changing CPU-related options. If GPU usage is low while a CPU thread is heavily loaded, lowering visual quality may have little effect because the workload may be CPU-limited.</p>
+  <p>Change one major option at a time so you can tell what actually helped. If you want a more numerical estimate, compare the setup in the <a href="fps-calculator.html">FPS Calculator</a>. For deeper explanations of individual settings, read <a href="graphics-settings-that-affect-fps.html">Which Graphics Settings Affect FPS Most?</a>.</p>
+  <h2>Limits of this estimate</h2>
+  <p>The optimizer does not run the game or measure your exact frame times. Actual performance can change with patches, drivers, background tasks, thermals, shader compilation, crowded scenes and settings that the model cannot fully observe. A preset that works well in one area of a game may be too demanding in another. Treat the output as a sensible starting point, then validate it in the game itself. The best final setting is the one that meets your visual preference and performance target consistently.</p>
+  <h2>Frequently asked questions</h2>
+  <h3>Should I use the recommended preset exactly?</h3>
+  <p>No. Use it as a starting point, then adjust individual settings to match your visual preference and real FPS.</p>
+  <h3>Which settings should I lower first when FPS is low?</h3>
+  <p>Start with demanding GPU options such as resolution, ray tracing, shadows and volumetric effects, depending on the game.</p>
+  <h3>Why does lowering graphics sometimes barely change FPS?</h3>
+  <p>If the game is CPU-limited, reducing GPU workload may not remove the actual performance limit.</p>
+  <h3>Is upscaling always worth using?</h3>
+  <p>Not always. It can improve performance by rendering at a lower internal resolution, but image quality and latency trade-offs depend on the game and mode.</p>
+  <h3>How can I check whether the recommended settings are realistic?</h3>
+  <p>Test them in a demanding scene and compare the result with the <a href="fps-calculator.html">FPS Calculator</a> and <a href="bottleneck.html">Bottleneck Calculator</a>.</p>
+  <p class="last-updated"><strong>Last updated:</strong> October 8, 2026</p>
+</section>
+</main>
   <footer class="sfp-site-footer">
     <p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
     <p><a href="privacy-policy.html">Privacy Policy</a></p>
