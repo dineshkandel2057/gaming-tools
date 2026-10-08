@@ -603,6 +603,32 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
   </div>
 </div>
 </section>
+
+<section class="tool-explanation" data-sfp-reveal>
+  <h2>How this tool works</h2>
+  <p>The SystemFit PC Bottleneck Calculator compares the CPU and GPU you select against the gaming conditions you choose. Resolution, target FPS and workload type matter because the same hardware can behave very differently across games and settings. A higher resolution usually shifts more work toward the GPU, while high-FPS gaming at lower resolutions can expose CPU limits sooner. The calculator combines those inputs with its hardware performance data to estimate which component is more likely to hold back the result.</p>
+  <p>Use the result as a starting point rather than a permanent label for your PC. A “CPU bottleneck” does not mean the CPU is bad, and a “GPU bottleneck” does not mean the GPU is a problem. In a healthy gaming system, one component is normally the limiting factor for a particular workload. The useful question is whether that limit matches your performance goal.</p>
+
+  <h2>How to read the result</h2>
+  <p>Start with the estimated bottleneck direction and then look at the FPS context. If the CPU is identified as the likely limit, lowering visual settings may not produce a large FPS increase, especially in CPU-heavy games. If the GPU is the likely limit, lowering resolution, demanding effects or other GPU-heavy settings can have a much larger effect. Compare the result with your target FPS before deciding that an upgrade is necessary.</p>
+  <p>For example, a system that reaches your target FPS with a moderate GPU limit may already be well balanced for your use. A result that shows a stronger CPU limit while you are targeting very high refresh rates is more useful as an upgrade clue. For a second opinion, compare the estimate with the <a href="fps-calculator.html">FPS Calculator</a> and read the <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU Bottleneck guide</a>.</p>
+
+  <h2>Limits of this estimate</h2>
+  <p>This is a modeled estimate, not a live benchmark of your exact PC. Real FPS changes with the game engine, patches, drivers, background applications, cooling, memory configuration, power limits, frame-time behavior and the exact scene being rendered. Two games using the same CPU and GPU can produce very different bottleneck patterns. The calculator also cannot observe your actual GPU utilization, CPU thread usage or frame times. Treat the result as directional guidance for choosing what to investigate next, not as proof that a particular component must be replaced.</p>
+
+  <h2>Frequently asked questions</h2>
+  <h3>Does a bottleneck percentage mean my PC is bad?</h3>
+  <p>No. Every gaming workload has a limiting component. The useful question is whether that limit prevents you from reaching your target FPS.</p>
+  <h3>Should I always upgrade the component shown as the bottleneck?</h3>
+  <p>No. Upgrade only when the limitation affects your actual games, settings or FPS target. Otherwise, the current balance may already be suitable.</p>
+  <h3>Does increasing resolution change the bottleneck?</h3>
+  <p>It can. Higher resolutions generally increase GPU workload, which can reduce the impact of a CPU limit in some games.</p>
+  <h3>Why can my real FPS differ from the calculator?</h3>
+  <p>Because real performance depends on game scenes, patches, drivers, thermals, background tasks and other conditions the model cannot directly measure.</p>
+  <h3>What should I check after seeing a GPU bottleneck?</h3>
+  <p>Use the <a href="fps-calculator.html">FPS Calculator</a> to test different settings, then compare the GPU options in the <a href="gpu-comparison.html">GPU Comparison Tool</a>.</p>
+  <p class="last-updated"><strong>Last updated:</strong> October 8, 2026</p>
+</section>
 </main>
 
 <script>
