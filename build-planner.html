@@ -167,7 +167,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
   <link rel="stylesheet" href="site-universal.css">
 </head>
 <body>
-<div id="site-header"></div>
+<div id="site-header"><noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/#tools">Tools</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></noscript></div>
 <main class="wrap">
   <section class="hero" data-sfp-reveal>
     <div>
@@ -312,7 +312,10 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
     <p>
         <a href="privacy-policy.html">Privacy Policy</a>
     </p>
-</footer>
+
+<nav aria-label="Footer navigation">
+  <a href="/">Home</a> · <a href="/#tools">Tools</a> · <a href="guides.html">Guides</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a> · <a href="privacy-policy.html">Privacy Policy</a>
+</nav></footer>
 <script>
 const CPU_DATA=[
 {id:"r3-4100",name:"AMD Ryzen 3 4100",brand:"AMD Ryzen",socket:"AM4",memory:["DDR4"],power:65,gaming:"entry",igpu:false},
