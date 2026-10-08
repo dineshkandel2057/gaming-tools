@@ -604,14 +604,17 @@
       return;
     }
 
-    // Use the selected high-resolution transparent favicon artwork.
+    // Keep the shared favicon set consistent with the static page <head> metadata.
     document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]').forEach((link) => link.remove());
-
-    const favicon = document.createElement("link");
-    favicon.rel = "icon";
-    favicon.type = "image/png";
-    favicon.href = "systemfit-favicon.png";
-    document.head.appendChild(favicon);
+    [
+      { rel: "icon", type: "image/png", sizes: "48x48", href: "systemfit-favicon-48.png" },
+      { rel: "icon", type: "image/png", sizes: "192x192", href: "favicon-192.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "apple-touch-icon.png" }
+    ].forEach((cfg) => {
+      const link = document.createElement("link");
+      Object.entries(cfg).forEach(([key, value]) => link.setAttribute(key, value));
+      document.head.appendChild(link);
+    });
 
     const progress = document.getElementById("sfpScrollProgress");
 
