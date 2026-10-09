@@ -33,9 +33,9 @@
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
-.site-header{height:72px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:#0c0e14;position:sticky;top:0;z-index:20}
-.logo{font-size:22px;font-weight:800}.logo span{color:#765cff}
-.nav{display:flex;gap:8px}.nav a{color:#aeb7c8;text-decoration:none;padding:10px 14px;border-radius:8px;font-size:14px}.nav a.active{background:#202431;color:#fff}
+
+
+
 .wrap{max-width:1180px;margin:0 auto;padding:26px 22px 60px}
 .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px}
 h1{font-size:30px;margin:0 0 8px}.subtitle{color:#9eabc0;font-size:14px;line-height:1.6;margin-bottom:26px}
@@ -142,11 +142,11 @@ input:focus,select:focus{border-color:#6370ff}
 :root{--bg:#090c14;--panel:rgba(20,26,40,.78);--panel2:rgba(13,18,29,.9);--border:rgba(157,174,204,.17);--text:#f5f7fc;--muted:#aab5c8;--purple:#765fff;--cpu:#a78bfa;--gpu:#63c7ff;--good:#5ce0a2;--warn:#ffc06b;--bad:#ff7d86}
 body{font-family:"DM Sans",Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 12% 0%,rgba(110,78,255,.19),transparent 34%),radial-gradient(ellipse at 90% 18%,rgba(28,157,218,.13),transparent 32%),var(--bg)}
 body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 65% 75%,rgba(59,105,180,.08),transparent 36%);filter:blur(35px)}
-h1,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
-.site-header{background:rgba(9,12,20,.74);border-color:var(--border);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.logo span{color:#a591ff}
-.nav a{border:1px solid transparent;transition:background .2s,border-color .2s,color .2s}
-.nav a:hover,.nav a.active{background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2)}
+h1,h3{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-.035em}
+
+
+
+
 .wrap{padding-top:38px}
 .card{background:linear-gradient(145deg,rgba(22,29,45,.88),rgba(13,18,29,.86));border-color:var(--border);border-radius:20px;padding:clamp(20px,3vw,34px);box-shadow:0 24px 80px rgba(0,0,0,.23);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 h1{font-size:clamp(29px,4vw,40px);line-height:1.12}
@@ -189,20 +189,20 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 .disclaimer{font-size:11px;color:#9aa8bf;line-height:1.75;padding:14px 15px;border:1px solid rgba(157,174,204,.12);border-radius:12px;background:rgba(255,255,255,.025)}
 :focus-visible{outline:2px solid #9b8aff;outline-offset:3px}
 @media(max-width:800px){.wrap{padding:22px 14px 42px}.pair{grid-template-columns:1fr;gap:10px}.pair-card{min-height:100px}.vs{display:none}.grid2,.stats,.scenario-grid,.info-grid{grid-template-columns:1fr}}
-@media(max-width:480px){.site-header{height:auto;min-height:68px;align-items:flex-start;flex-direction:column;gap:6px;padding:12px 16px}.nav{width:100%;justify-content:space-between;gap:2px}.nav a{font-size:12px;padding:8px 9px}.card{padding:18px}.pair-card{gap:11px;padding:13px}.hardware-icon{width:48px;height:48px;flex-basis:48px}.pair-card.gpu .hardware-icon{width:62px;flex-basis:62px}.hardware-icon svg{width:40px;height:40px}.pair-card.gpu .hardware-icon svg{width:54px;height:40px}.stat{padding:13px}}
+@media(max-width:480px){.card{padding:18px}.pair-card{gap:11px;padding:13px}.hardware-icon{width:48px;height:48px;flex-basis:48px}.pair-card.gpu .hardware-icon{width:62px;flex-basis:62px}.hardware-icon svg{width:40px;height:40px}.pair-card.gpu .hardware-icon svg{width:54px;height:40px}.stat{padding:13px}}
 
 
 
 @keyframes pcpilot-enter{from{opacity:0;transform:translateY(8px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}body{animation:pcpilot-enter .32s ease-out both}body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5px);transition:opacity .14s ease,filter .14s ease,transform .14s ease}@media(prefers-reduced-motion:reduce){body{animation:none}body.page-leave{transition:none}}
 /* SystemFit PC wordmark */
-#brand-logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap}
-#brand-logo .brand-monogram{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(159,142,255,.38);border-radius:12px;background:linear-gradient(145deg,rgba(119,94,255,.3),rgba(63,179,231,.15));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 18px rgba(73,62,170,.16);font:800 12px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.09em;color:#f8f7ff}
-#brand-logo .brand-monogram span{color:#86dcff}
-#brand-logo .brand-wordmark{display:inline-flex;align-items:center;font:700 21px/1 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.055em;color:#f5f7fc}
-#brand-logo .brand-system{color:#f5f7fc}
-#brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}
-#brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
-@media(max-width:800px){#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}}
+
+
+
+
+
+
+
+@media(max-width:800px){}
 
 /* Inline searchable hardware pickers */
 .hardware-picker{position:relative}.picker-trigger{height:48px;padding:0 12px;border:1px solid rgba(159,176,207,.2);border-radius:10px;background:rgba(7,11,19,.72);color:var(--text);font:inherit;transition:border-color .2s,box-shadow .2s,background .2s}.picker-trigger:hover{border-color:rgba(153,134,255,.46)}.picker-trigger:focus-visible{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,255,.15);outline:none}.picker-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;cursor:pointer}.picker-panel{display:none;position:absolute;z-index:30;top:calc(100% + 6px);left:0;right:0;padding:9px;border:1px solid var(--border);border-radius:12px;background:#111827;box-shadow:0 16px 40px rgba(0,0,0,.38)}.picker-panel.is-open{display:block}.picker-search{width:100%;margin-bottom:7px}.picker-options{max-height:250px;overflow-y:auto}.picker-option{display:block;width:100%;padding:9px 10px;border:0;border-radius:7px;background:transparent;color:var(--text);text-align:left;cursor:pointer;font:inherit;font-size:13px}.picker-option:hover,.picker-option:focus-visible{background:rgba(118,95,255,.18);outline:none}.picker-empty{padding:10px;color:var(--muted);font-size:12px}.native-hardware-select{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
@@ -223,14 +223,14 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 </style>
 <style id="homepage-header-system">
 /* Shared SystemFit PC homepage header */
-header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bottom:1px solid rgba(157,174,204,.16);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}header .nav{max-width:1180px;min-height:76px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;flex-direction:row;gap:0}header .logo{display:inline-flex;align-items:center;gap:9px;color:#f5f7fc;text-decoration:none;line-height:1;white-space:nowrap;font:700 25px/1 "Space Grotesk","DM Sans",sans-serif}header .logo span{color:#a591ff}header nav{display:flex;align-items:center;gap:8px}header nav>a{color:#aab5c8;padding:9px 13px;border:1px solid transparent;border-radius:9px;font-size:14px;text-decoration:none;transition:background .2s,border-color .2s,color .2s}header nav>a:hover,header nav>a.active{background:rgba(126,105,255,.14);border-color:rgba(157,139,255,.2);color:#fff}
+
 </style>
 
 <style id="bottleneck-footer-blend">
-  html {
+  html{
     background: var(--bg) !important;
   }
-  body {
+  body{
     min-height: 100vh;
   }
 </style>
