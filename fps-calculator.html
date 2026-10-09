@@ -1581,7 +1581,7 @@ setupHardwarePicker("gpu","gpuSearch",GPUS,"Select a GPU");
       let avg = Math.min(cpuPart,gpuPart) * rFactor * pFactor;
 
       if (state.rt){
-        avg *= (0.74 + 0.18 * gpu.rt) / game.rt;
+        avg *= Math.max(.45,.74/(Number(game.rt)||1));
         avg = Math.max(avg,8);
       }
 
@@ -1672,9 +1672,7 @@ setupHardwarePicker("gpu","gpuSearch",GPUS,"Select a GPU");
       else if(score >= 65){title="Solid gaming performance";tag="PLAYABLE";}
       else if(score >= 48){title="Playable with some tuning";tag="TUNE SETTINGS";}
 
-      let confidence = "Moderate";
-      if (game.base >= 120 && game.gpu < .78 && game.cpu < .78) confidence = "Moderate-high";
-      if (game.rt > 1.35 || game.cpu > .84 || game.gpu > .86) confidence = "Moderate";
+      let confidence = game.profileStatus === "default-estimate" ? "Low" : "Medium";
 
       return {
         game,cpu,gpu,avg,low,limit,vramPct,vramStatus,score,title,tag,confidence,
