@@ -297,6 +297,13 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 #brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
 @media(max-width:800px){#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}}
 
+
+.guides-static-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px auto 0;max-width:1120px}
+.guides-static-links a{display:block;padding:13px 15px;border:1px solid rgba(157,174,204,.16);border-radius:12px;background:rgba(255,255,255,.025);color:#cbd5e1;text-decoration:none;font-size:13px;line-height:1.5;transition:border-color .2s,background .2s,color .2s}
+.guides-static-links a:hover,.guides-static-links a:focus-visible{border-color:rgba(151,132,255,.42);background:rgba(118,95,255,.09);color:#fff}
+@media(max-width:760px){.guides-static-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.guides-static-links{grid-template-columns:1fr}}
+
 /* ================= GUIDES CAROUSEL ================= */
 .guides-showcase{max-width:1180px;margin:92px auto 20px;padding:0 22px 10px}
 .guides-showcase .section-title{margin-bottom:30px}
@@ -624,6 +631,17 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
     <button class="guide-arrow guide-arrow-next" type="button" aria-label="Next article">›</button>
     <div class="guide-dots" aria-label="Choose an article"></div>
   </div>
+  <nav class="guides-static-links" aria-label="All PC guides">
+    <a href="how-much-ram-for-gaming-2026.html">How Much RAM Do You Need for Gaming in 2026?</a>
+    <a href="how-much-vram-for-gaming-2026.html">How Much VRAM Do You Need for Gaming in 2026?</a>
+    <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU Bottleneck: What It Means and How to Fix It</a>
+    <a href="1080p-vs-1440p-vs-4k-gaming.html">1080p vs 1440p vs 4K Gaming in 2026</a>
+    <a href="how-to-fix-fps-drops-and-stuttering.html">How to Fix FPS Drops and Stuttering on PC</a>
+    <a href="which-pc-component-to-upgrade-first.html">Which PC Component Should You Upgrade First?</a>
+    <a href="ssd-vs-hdd-for-gaming.html">SSD vs HDD for Gaming: What Actually Changes?</a>
+    <a href="graphics-settings-that-affect-fps.html">Which Graphics Settings Affect FPS the Most?</a>
+    <a href="dlss-vs-fsr-vs-xess.html">DLSS vs FSR vs XeSS: Which Should You Use?</a>
+  </nav>
 </section><section class="homepage-guide" aria-labelledby="systemfit-decisions-title">
   <div class="homepage-guide-card">
     <div class="homepage-guide-head">
@@ -667,27 +685,27 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
   
   <div style="text-align: center; margin-bottom: 40px;">
     <h2 style="font-size: 2rem; color: #ffffff; font-weight: 700; margin-bottom: 10px;">Your All-in-One PC Hardware Performance Hub</h2>
-    <p style="color: #94a3b8; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Optimize your gaming setup, calculate hardware limits, and eliminate system bottlenecks with practical, data-driven tools.</p>
+    <p style="color: #94a3b8; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Optimize your gaming setup, calculate hardware limits, and eliminate system bottlenecks with practical, model-based tools.</p>
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; color: #cbd5e1; font-size: 0.9rem; line-height: 1.6;">
     
     <!-- Column 1: Bottleneck Focus -->
     <div>
-      <h3 style="color: #a855f7; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;"><a href="bottleneck.html">Accurate PC Bottleneck Calculator</a></h3>
-      <p>SystemFit PC helps you identify hidden performance limits between your processor and graphics card. Using our refined computing alignment engine, you can determine if you are facing a severe <strong><a href="bottleneck.html">CPU bottleneck</a></strong> or a <strong>GPU bottleneck</strong>. Discover exact frame rate capacities, analyze your target gaming thresholds, and view realistic upgrade paths without sorting through confusing metrics.</p>
+      <h3 style="color: #a855f7; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;"><a href="bottleneck.html">PC Bottleneck Calculator</a></h3>
+      <p>SystemFit PC helps you identify hidden performance limits between your processor and graphics card. Using our our rule-based model, you can determine if you are facing a severe <strong><a href="bottleneck.html">CPU bottleneck</a></strong> or a <strong>GPU bottleneck</strong>. Discover estimated FPS capacity, analyze your target gaming thresholds, and view realistic upgrade paths without sorting through confusing metrics.</p>
     </div>
 
     <!-- Column 2: FPS & Tools Focus -->
     <div>
       <h3 style="color: #3b82f6; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;">FPS Calculator & Hardware Comparison</h3>
-      <p>Planning a system upgrade or checking game system requirements? Use our integrated <strong><a href="fps-calculator.html">FPS Calculator</a></strong> and <strong><a href="gpu-comparison.html">GPU Comparison Tool</a></strong> to measure how different components scale across 1080p, 1440p, and 4K gaming resolutions. Get highly reliable performance estimations for competitive titles and heavy creator workflows so you know exactly what your frame rates will look like.</p>
+      <p>Planning a system upgrade or checking game system requirements? Use our integrated <strong><a href="fps-calculator.html">FPS Calculator</a></strong> and <strong><a href="gpu-comparison.html">GPU Comparison Tool</a></strong> to measure how different components scale across 1080p, 1440p, and 4K gaming resolutions. Use performance estimates that help you compare setups for competitive titles and creator workloads.</p>
     </div>
 
     <!-- Column 3: Build Planning Focus -->
     <div>
       <h3 style="color: #10b981; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;">Strategic PC Build Planner & Guides</h3>
-      <p>Building a new computer from scratch doesn't have to rely on expensive guesswork. Our <strong><a href="build-planner.html">PC Build Planner</a></strong> and expert hardware guides provide sequential, practical advice on matching components safely. Learn how much RAM you actually need for modern games, optimize your in-game settings for maximum hardware efficiency, and configure balanced setups built for value.</p>
+      <p>Building a new computer from scratch doesn't have to rely on expensive guesswork. Our <strong><a href="build-planner.html">PC Build Planner</a></strong> and practical hardware guides provide sequential, practical advice on matching components safely. Learn how much RAM you actually need for modern games, optimize your in-game settings for maximum hardware efficiency, and configure balanced setups built for value.</p>
     </div>
 
   </div>
