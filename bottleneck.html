@@ -994,7 +994,6 @@ function calculate(){
   const gpuUpgrade=gpuUpgradeChoice?.scenario||scenario;
   const cpuUpgradeRawFps=Math.max(0,safeFinite(cpuUpgrade.sustainableFps,0));
   const gpuUpgradeRawFps=Math.max(0,safeFinite(gpuUpgrade.sustainableFps,0));
-  const currentRawFps=Math.max(0,safeFinite(scenario.sustainableFps,0));
   const cpuUpgradeFps=safeFps(cpuUpgradeRawFps);
   const gpuUpgradeFps=safeFps(gpuUpgradeRawFps);
   const cpuGain=Math.max(0,cpuUpgradeRawFps-currentRawFps);
