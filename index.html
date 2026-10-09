@@ -507,67 +507,6 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 }
 
 
-
-/* Homepage content refresh — scoped to index.html */
-.hero-proof{margin:17px 0 0!important;color:#aab5c8!important;font-size:12px!important;line-height:1.6!important}
-.bento-index .bento-label{font-size:12px!important;color:#aab5c8!important}
-.bento-calculation{grid-column:1/-1;gap:0}
-.bento-score{position:relative;z-index:1;display:block;margin-top:8px;color:#ffc06b;font-size:clamp(42px,5vw,58px);font-weight:900;line-height:1.02;letter-spacing:-.055em;text-shadow:0 0 22px rgba(255,192,107,.13)}
-.bento-calculation-detail{font-size:12px!important;color:#aab5c8!important;line-height:1.5}
-.bento-result-context{margin-top:8px;white-space:normal;overflow-wrap:anywhere}
-.bento-pressure-line{white-space:nowrap;letter-spacing:0;margin-top:8px}
-.bento-calculation-link{position:relative;z-index:1;display:inline-block;align-self:flex-start;margin-top:12px;color:#c5b9ff;font-size:12px;font-weight:800}
-.bento-calculation-link:hover{color:#fff}
-.bento-calculation .bento-label{font-size:12px!important;color:#aab5c8!important}
-.bento-full-build-button{font-size:12px}
-.bento-index .bento-metric{font-size:clamp(22px,2.25vw,31px)}
-.coming-soon-line{grid-column:1/-1;margin:4px 0 0;padding:13px 16px;border:1px solid rgba(157,174,204,.14);border-radius:12px;background:rgba(13,18,29,.55);color:#aab5c8;font-size:12px;line-height:1.5}
-.guides-showcase{max-width:1180px;margin:78px auto 20px;padding:0 22px 10px}
-.guides-static-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.guide-static-card{min-width:0;display:flex;flex-direction:column;padding:22px;border:1px solid rgba(157,174,204,.15);border-radius:17px;background:linear-gradient(145deg,rgba(27,34,54,.82),rgba(12,17,28,.9));box-shadow:0 14px 34px rgba(0,0,0,.14);transition:transform .2s ease,border-color .2s ease,background .2s ease}
-.guide-static-card:hover{transform:translateY(-3px);border-color:rgba(151,132,255,.4);background:linear-gradient(145deg,rgba(37,40,69,.88),rgba(14,19,30,.94))}
-.guide-static-card h3{font-size:18px;line-height:1.35;margin-bottom:10px}
-.guide-static-card p{color:#aab5c8;font-size:13px;line-height:1.65;margin-bottom:18px}
-.guide-static-card a,.guides-all-link a{margin-top:auto;color:#c2b5ff;font-size:12px;font-weight:800}
-.guide-static-card a:hover,.guides-all-link a:hover{color:#fff}
-.guides-all-link{text-align:center;margin-top:24px;font-size:12px}
-.how-it-works,.homepage-faq{max-width:1120px;margin:70px auto 0;padding:0 22px}
-.how-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.how-step{padding:24px;border:1px solid var(--border);border-radius:17px;background:linear-gradient(145deg,rgba(27,34,54,.7),rgba(12,17,28,.82))}
-.how-step-number{display:block;margin-bottom:12px;color:#a18bff;font-size:12px;font-weight:800;letter-spacing:.12em}
-.how-step h3{font-size:19px;margin-bottom:8px}
-.how-step p,.faq-list p{color:#aab5c8;font-size:13px;line-height:1.7}
-.faq-list{max-width:850px;margin:0 auto;display:grid;gap:12px}
-.faq-list details{padding:18px 20px;border:1px solid var(--border);border-radius:13px;background:rgba(19,25,39,.68)}
-.faq-list summary{cursor:pointer;color:#f4f6fb;font-size:14px;font-weight:700}
-.faq-list details p{margin-top:12px}
-.faq-list a{color:#c2b5ff;text-decoration:underline;text-underline-offset:3px}
-.sfp-site-footer{color:#aab5c8}
-.sfp-site-footer p,.sfp-site-footer nav,.sfp-site-footer nav a{font-size:12px!important;color:#aab5c8}
-/* Keep all compact homepage labels readable */
-.tool-status,.tool-meta,.tools-group-heading small,.homepage-guide-kicker,
-.bento-submetrics,.bento-snapshot-badge,.bento-status,.visual-top,
-.brand-chip,.bento-label,.bento-calculation-detail,.bento-full-build-button,
-.bento-calculation-link,.homepage-guide-action,.guides-all-link,
-.guide-static-card a,.coming-soon-line{font-size:12px!important;color:#aab5c8}
-.tool-status{letter-spacing:.04em}
-@media(max-width:800px){
-  .guides-static-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .how-steps{grid-template-columns:1fr}
-}
-@media(max-width:520px){
-  .hero-proof{text-align:center;margin-top:16px!important}
-  .bento-index{padding:20px 18px;transform:none}
-  .bento-index .bento-metric{font-size:clamp(21px,6vw,28px);overflow-wrap:anywhere}
-  .bento-calculation{padding:18px}
-  .bento-score{font-size:48px}
-  .bento-pressure-line{font-size:12px!important;white-space:nowrap;letter-spacing:-.02em}
-  .guides-static-grid{grid-template-columns:1fr}
-  .guide-static-card{padding:20px}
-  .how-it-works,.homepage-faq{margin-top:56px}
-  .coming-soon-line{font-size:12px}
-}
-
 </style>
 
 <meta property="og:url" content="https://systemfitpc.vercel.app/">
@@ -614,26 +553,24 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 <div class="hero">
   <div class="hero-copy">
     <h1>Plan a Better<br><span>PC Setup</span></h1>
-    <p>Free tools to check CPU and GPU bottlenecks, estimate gaming FPS, compare graphics cards and plan a compatible build. No sign-up needed.</p>
+    <p>Make confident choices for building, upgrading or tuning a PC for gaming, creative work and everyday use.</p>
     <div class="hero-buttons">
-      <a href="bottleneck.html" class="primary-button">Check My Bottleneck →</a>
-      <a href="#tools" class="secondary-button">Explore All Tools</a>
-    </div>
-    <p class="hero-proof">6 free tools · 130 CPUs · 113 GPUs · Updated October 2026</p>
+      <a href="#tools" class="primary-button">Explore Tools <span aria-hidden="true">→</span></a>
+      <a href="guides.html" class="secondary-button">Read PC Guides <span aria-hidden="true">→</span></a>
     </div>
   </div>
   <div class="hero-visual hero-bento" aria-label="SystemFit PC hardware snapshot">
     <div class="bento-card bento-index">
-      <span class="bento-label">EXAMPLE SETUP</span>
+      <span class="bento-label">🔥 TRENDING MATCHUP CHECK</span>
       <span class="bento-metric">Ryzen 7 7800X3D + RTX 4080 Super</span>
       <a class="bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy03ODAweDNkIiwiZ3B1IjoiZ3B1LWdlZm9yY2UtcnR4LTQwODAtc3VwZXIiLCJnb2FsIjoiMTQ0MCIsIm1vZGUiOiJnYW1pbmciLCJidWRnZXQiOiJiYWxhbmNlZCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="See full Ryzen 7 7800X3D and RTX 4080 Super build"><span>See Full Build</span><span aria-hidden="true">→</span></a>
     </div>
     <div class="bento-card bento-guide bento-calculation">
-      <span class="bento-label">EXAMPLE RESULT</span>
-      <strong class="bento-score" id="bottleneck-status">58/100</strong>
-      <span class="bento-calculation-detail bento-result-context" id="bottleneck-settings">GPU-leaning · 1440p · 144 FPS target</span>
-      <span class="bento-calculation-detail bento-pressure-line" id="bottleneck-flow">CPU Pressure 55% · GPU Pressure 78%</span>
-      <a class="bento-calculation-link" href="bottleneck.html">Check your setup →</a>
+      <span class="bento-label">📊 EXAMPLE RESULT</span>
+      <strong class="bento-bottleneck" id="bottleneck-status">GPU BOTTLENECK</strong>
+      <span class="bento-calculation-detail" id="bottleneck-settings">Balance 58/100 • Capacity 106 FPS</span>
+      <span class="bento-calculation-detail" id="bottleneck-flow">CPU Pressure 55% • GPU Pressure 78%</span>
+      <a class="bento-calculation-link" href="bottleneck.html">Run your own setup</a>
     </div>
     <a class="bento-card bento-engine bento-action" href="bottleneck.html" aria-label="Test your setup with the Bottleneck Calculator">
       <span class="bento-label">OPEN THE CALCULATOR</span>
@@ -671,47 +608,110 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
   <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M17 23h30c7 0 11 6 11 14l-3 13c-1 5-7 6-10 2l-7-8H26l-7 8c-3 4-9 3-10-2L6 37c0-8 4-14 11-14z"/><path d="M18 31v10M13 36h10M42 33h.5M48 39h.5"/></svg></div><span class="tool-status">Optimize</span></div>
   <h3>Game Settings Optimizer</h3><p>Get a practical graphics preset and settings priorities for your hardware and target.</p><div class="tool-card-footer"><span class="tool-meta">Game settings</span><span class="tool-button">Open Optimizer <span aria-hidden="true">→</span></span></div>
 </a>
-<p class="coming-soon-line">Coming soon: PSU &amp; Power Calculator · CPU Comparison Tool</p>
+<div class="tools-group-heading soon"><span>Coming soon</span><small>More tools are on the way</small></div>
+<div class="tool-card coming-card power-tool-card" data-sfp-reveal>
+  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="14" y="9" width="36" height="46" rx="7"/><path d="M32 18v10M26 23h12M22 37h20M25 44h14"/></svg></div><span class="tool-status">Planned</span></div>
+  <h3>PSU &amp; Power Calculator</h3><p>Estimate system power requirements and explore an appropriate PSU capacity.</p><div class="tool-card-footer"><span class="tool-meta">System wattage</span><span class="tool-button">Coming Soon</span></div>
+</div>
+<div class="tool-card coming-card cpu-tool-card" data-sfp-reveal>
+  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="14" y="14" width="36" height="36" rx="7"/><rect x="23" y="23" width="18" height="18" rx="3"/><path d="M23 6v8M32 6v8M41 6v8M23 50v8M32 50v8M41 50v8M6 23h8M6 32h8M6 41h8M50 23h8M50 32h8M50 41h8"/></svg></div><span class="tool-status">Planned</span></div>
+  <h3>CPU Comparison Tool</h3><p>Compare processors and understand their relative gaming performance.</p><div class="tool-card-footer"><span class="tool-meta">CPU lineup</span><span class="tool-button">Coming Soon</span></div>
+</div>
 </div>
 </section>
 
 <section class="guides-showcase" data-sfp-reveal id="guides" aria-labelledby="guides-title">
   <div class="section-title">
     <h2 id="guides-title">PC Guides</h2>
-    <p>Short, practical reads to help you understand PC hardware and gaming performance.</p>
+    <p>Understand your hardware and make more confident upgrade decisions.</p>
   </div>
-  <div class="guides-static-grid">
-    <article class="guide-static-card"><h3>How Much RAM Do You Need for Gaming in 2026?</h3><p>Compare RAM capacities for gaming, streaming and everyday multitasking.</p><a href="how-much-ram-for-gaming-2026.html">Read guide →</a></article>
-    <article class="guide-static-card"><h3>How Much VRAM Do You Need for Gaming in 2026?</h3><p>Learn how graphics memory needs vary by resolution and game.</p><a href="how-much-vram-for-gaming-2026.html">Read guide →</a></article>
-    <article class="guide-static-card"><h3>CPU vs GPU Bottleneck: What It Means and How to Fix It</h3><p>Understand what can limit performance in different gaming scenarios.</p><a href="cpu-vs-gpu-bottleneck.html">Read guide →</a></article>
-    <article class="guide-static-card"><h3>1080p vs 1440p vs 4K Gaming in 2026</h3><p>Compare resolution, visual detail and the GPU load each can bring.</p><a href="1080p-vs-1440p-vs-4k-gaming.html">Read guide →</a></article>
-    <article class="guide-static-card"><h3>How to Fix FPS Drops and Stuttering on PC</h3><p>Work through common causes of sudden frame-rate drops and stutter.</p><a href="how-to-fix-fps-drops-and-stuttering.html">Read guide →</a></article>
-    <article class="guide-static-card"><h3>Which PC Component Should You Upgrade First?</h3><p>Use your needs and current hardware to prioritize a possible upgrade.</p><a href="which-pc-component-to-upgrade-first.html">Read guide →</a></article>
-    <article class="guide-static-card"><h3>SSD vs HDD for Gaming: What Actually Changes?</h3><p>See how storage type can affect loading and general responsiveness.</p><a href="ssd-vs-hdd-for-gaming.html">Read guide →</a></article>
-    <article class="guide-static-card"><h3>Which Graphics Settings Affect FPS the Most?</h3><p>Explore settings that often trade visual quality for frame rate.</p><a href="graphics-settings-that-affect-fps.html">Read guide →</a></article>
-    <article class="guide-static-card"><h3>DLSS vs FSR vs XeSS: Which Should You Use?</h3><p>Compare popular upscaling options and their hardware support.</p><a href="dlss-vs-fsr-vs-xess.html">Read guide →</a></article>
+  <div class="guides-carousel" data-guides-carousel>
+    <button class="guide-arrow guide-arrow-prev" type="button" aria-label="Previous article">‹</button>
+    <div class="guides-stage" aria-live="polite"></div>
+    <button class="guide-arrow guide-arrow-next" type="button" aria-label="Next article">›</button>
+    <div class="guide-dots" aria-label="Choose an article"></div>
   </div>
-  <p class="guides-all-link"><a href="guides.html">View all guides →</a></p>
+  <nav class="guides-static-links" aria-label="All PC guides">
+    <a href="how-much-ram-for-gaming-2026.html">How Much RAM Do You Need for Gaming in 2026?</a>
+    <a href="how-much-vram-for-gaming-2026.html">How Much VRAM Do You Need for Gaming in 2026?</a>
+    <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU Bottleneck: What It Means and How to Fix It</a>
+    <a href="1080p-vs-1440p-vs-4k-gaming.html">1080p vs 1440p vs 4K Gaming in 2026</a>
+    <a href="how-to-fix-fps-drops-and-stuttering.html">How to Fix FPS Drops and Stuttering on PC</a>
+    <a href="which-pc-component-to-upgrade-first.html">Which PC Component Should You Upgrade First?</a>
+    <a href="ssd-vs-hdd-for-gaming.html">SSD vs HDD for Gaming: What Actually Changes?</a>
+    <a href="graphics-settings-that-affect-fps.html">Which Graphics Settings Affect FPS the Most?</a>
+    <a href="dlss-vs-fsr-vs-xess.html">DLSS vs FSR vs XeSS: Which Should You Use?</a>
+  </nav>
+</section><section class="homepage-guide" aria-labelledby="systemfit-decisions-title">
+  <div class="homepage-guide-card">
+    <div class="homepage-guide-head">
+      <h2 id="systemfit-decisions-title">Make Better PC Decisions</h2>
+      <p>SystemFit PC is built around the questions that matter before you buy, build or upgrade. Start with your goal, check the hardware that affects it, then use the tools and guides to make a more informed decision.</p>
+    </div>
+    <div class="homepage-guide-grid">
+      <a class="homepage-guide-item" href="fps-calculator.html">
+        <span class="homepage-guide-kicker">PERFORMANCE</span>
+        <h3>Check gaming performance</h3>
+        <p>Estimate FPS for a specific game, resolution and target before changing hardware.</p>
+        <span class="homepage-guide-action">Use the FPS Calculator <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="homepage-guide-item" href="bottleneck.html">
+        <span class="homepage-guide-kicker">DIAGNOSIS</span>
+        <h3>Find the limiting component</h3>
+        <p>Understand whether your CPU or GPU is more likely to limit performance in your scenario.</p>
+        <span class="homepage-guide-action">Check the Bottleneck Calculator <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="homepage-guide-item" href="which-pc-component-to-upgrade-first.html">
+        <span class="homepage-guide-kicker">UPGRADE PATH</span>
+        <h3>Choose your next upgrade</h3>
+        <p>Use practical guides to decide which component deserves attention instead of upgrading blindly.</p>
+        <span class="homepage-guide-action">Read the Upgrade Guide <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </div>
 </section>
 
-<section class="how-it-works" aria-labelledby="how-it-works-title">
-  <div class="section-title"><h2 id="how-it-works-title">How it works</h2><p>Use the tools as a starting point for comparing options, not as a guarantee of real-world results.</p></div>
-  <div class="how-steps">
-    <article class="how-step"><span class="how-step-number">01</span><h3>Enter your setup</h3><p>Choose the hardware, game or settings relevant to the question you want to explore.</p></article>
-    <article class="how-step"><span class="how-step-number">02</span><h3>Review the estimate</h3><p>Read the model-based result and compare how changing an input may affect the outcome.</p></article>
-    <article class="how-step"><span class="how-step-number">03</span><h3>Check the context</h3><p>Use guides and methodology notes to understand assumptions and limitations before deciding.</p></article>
-  </div>
+<section class="about-section" data-sfp-reveal id="about">
+    <div class="section-title"><h2>About SystemFit PC</h2><p class="about-intro">SystemFit PC makes computer decisions easier to understand. Our tools turn technical details into practical guidance for first-time builders and experienced PC users alike.</p></div>
+    <div class="about-grid">
+        <div class="about-item" data-sfp-reveal><h3>⚡ Simple &amp; Practical</h3><p>Clear results and explanations without forcing you to understand complicated hardware terminology first.</p></div>
+        <div class="about-item" data-sfp-reveal><h3>🛠️ Useful for Every PC</h3><p>Tools support practical decisions about performance, component fit, upgrades, power requirements and more.</p></div>
+        <div class="about-item" data-sfp-reveal><h3>📊 Estimates, Not Guesswork</h3><p>Where a result is an estimate, SystemFit PC clearly explains the limitations so you can understand what the number actually means.</p></div>
+    </div>
 </section>
-<section class="homepage-faq" aria-labelledby="faq-title">
-  <div class="section-title"><h2 id="faq-title">Frequently asked questions</h2><p>A few things to know before using the tools.</p></div>
-  <div class="faq-list">
-    <details><summary>Are the results guaranteed?</summary><p>No. Bottleneck scores and FPS figures are estimates based on models and available inputs. Real performance can vary with game updates, drivers, settings, cooling and other system factors.</p></details>
-    <details><summary>Do I need to create an account?</summary><p>No account or sign-up is required to use the free tools on this site.</p></details>
-    <details><summary>How are estimates calculated?</summary><p>Each tool uses its own inputs and assumptions. Read the <a href="methodology.html">methodology page</a> for more about the approach and its limitations.</p></details>
+
+<!-- SEO Optimization Hub Section -->
+<section class="seo-hub-container" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.05);">
+  
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="font-size: 2rem; color: #ffffff; font-weight: 700; margin-bottom: 10px;">Your All-in-One PC Hardware Performance Hub</h2>
+    <p style="color: #94a3b8; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Optimize your gaming setup, calculate hardware limits, and eliminate system bottlenecks with practical, model-based tools.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; color: #cbd5e1; font-size: 0.9rem; line-height: 1.6;">
+    
+    <!-- Column 1: Bottleneck Focus -->
+    <div>
+      <h3 style="color: #a855f7; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;"><a href="bottleneck.html">PC Bottleneck Calculator</a></h3>
+      <p>SystemFit PC helps you identify hidden performance limits between your processor and graphics card. Using our our rule-based model, you can determine if you are facing a severe <strong><a href="bottleneck.html">CPU bottleneck</a></strong> or a <strong>GPU bottleneck</strong>. Discover estimated FPS capacity, analyze your target gaming thresholds, and view realistic upgrade paths without sorting through confusing metrics.</p>
+    </div>
+
+    <!-- Column 2: FPS & Tools Focus -->
+    <div>
+      <h3 style="color: #3b82f6; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;">FPS Calculator & Hardware Comparison</h3>
+      <p>Planning a system upgrade or checking game system requirements? Use our integrated <strong><a href="fps-calculator.html">FPS Calculator</a></strong> and <strong><a href="gpu-comparison.html">GPU Comparison Tool</a></strong> to measure how different components scale across 1080p, 1440p, and 4K gaming resolutions. Use performance estimates that help you compare setups for competitive titles and creator workloads.</p>
+    </div>
+
+    <!-- Column 3: Build Planning Focus -->
+    <div>
+      <h3 style="color: #10b981; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;">Strategic PC Build Planner & Guides</h3>
+      <p>Building a new computer from scratch doesn't have to rely on expensive guesswork. Our <strong><a href="build-planner.html">PC Build Planner</a></strong> and practical hardware guides provide sequential, practical advice on matching components safely. Learn how much RAM you actually need for modern games, optimize your in-game settings for maximum hardware efficiency, and configure balanced setups built for value.</p>
+    </div>
+
   </div>
 </section>
 
-<footer class="sfp-site-footer"><p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p>
+<footer class="sfp-site-footer"><p>© 2026 SystemFit PC. Practical tools for better PC decisions.</p><p><a href="privacy-policy.html">Privacy Policy</a></p>
   <nav aria-label="Footer navigation">
   <a href="/">Home</a> ·
   <a href="/#tools">Tools</a> ·
@@ -727,7 +727,73 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 (()=>{const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduce)return;document.addEventListener("click",event=>{const link=event.target.closest("a[href]");if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target||link.hasAttribute("download"))return;const url=new URL(link.href,location.href);if(url.origin!==location.origin||url.pathname===location.pathname||!["/index.html","/bottleneck.html","/build-planner.html","/gpu-comparison.html"].some(path=>url.pathname.endsWith(path)))return;event.preventDefault();document.body.classList.add("page-leave");setTimeout(()=>location.assign(url.href),145)});window.addEventListener("pageshow",function(){document.body.classList.remove("page-leave")})})();
 </script>
 
+<script>
+(()=>{
+  const root=document.querySelector("[data-guides-carousel]");
+  if(!root)return;
 
+  // Add future articles here. The carousel layout and controls update automatically.
+  const articles=[
+    {title:"How Much RAM Do You Need for Gaming in 2026?",category:"Gaming Hardware · 2026",description:"Find the right amount of RAM for gaming, streaming and multitasking.",url:"how-much-ram-for-gaming-2026.html"},
+    {title:"How Much VRAM Do You Need for Gaming in 2026?",category:"Gaming Hardware · 2026",description:"Understand VRAM needs for 1080p, 1440p, 4K and demanding games.",url:"how-much-vram-for-gaming-2026.html"},
+    {title:"CPU vs GPU Bottleneck: What It Means and How to Fix It",category:"PC Performance",description:"Learn what limits gaming performance and when a CPU or GPU upgrade makes sense.",url:"cpu-vs-gpu-bottleneck.html"},
+    {title:"1080p vs 1440p vs 4K Gaming in 2026",category:"Gaming Resolution · 2026",description:"Compare gaming resolutions, GPU demand, image quality and FPS targets to choose the right resolution for your PC and monitor.",url:"1080p-vs-1440p-vs-4k-gaming.html"},
+    {title:"How to Fix FPS Drops and Stuttering on PC",category:"PC Performance",description:"Diagnose FPS drops, stutter and poor 1% lows without blindly lowering every setting.",url:"how-to-fix-fps-drops-and-stuttering.html"},
+    {title:"Which PC Component Should You Upgrade First?",category:"PC Upgrades",description:"Work out whether your CPU, GPU, RAM or storage deserves the next upgrade.",url:"which-pc-component-to-upgrade-first.html"},
+    {title:"SSD vs HDD for Gaming: What Actually Changes?",category:"Storage · Gaming",description:"See how SSDs change loading, streaming and everyday game responsiveness.",url:"ssd-vs-hdd-for-gaming.html"},
+    {title:"Which Graphics Settings Affect FPS the Most?",category:"Graphics Settings",description:"Learn what to lower first when you need more FPS without wrecking image quality.",url:"graphics-settings-that-affect-fps.html"},
+    {title:"DLSS vs FSR vs XeSS: Which Should You Use?",category:"Upscaling · Gaming",description:"Compare upscaling options by image quality, compatibility and performance.",url:"dlss-vs-fsr-vs-xess.html"}
+  ];
+
+  const stage=root.querySelector(".guides-stage"),dots=root.querySelector(".guide-dots");
+  let current=0;
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  articles.forEach((article,index)=>{
+    const card=document.createElement("article");
+    card.className="guide-slide";
+    card.dataset.index=index;
+    card.innerHTML='<span class="guide-number">'+String(index+1).padStart(2,"0")+' · '+article.category+'</span><h3>'+article.title+'</h3><p>'+article.description+'</p><a class="guide-read" href="'+article.url+'">Read Article →</a>';
+    stage.appendChild(card);
+    const dot=document.createElement("button");
+    dot.type="button";dot.className="guide-dot";dot.dataset.index=index;dot.setAttribute("aria-label","Show "+article.title);
+    dots.appendChild(dot);
+  });
+
+  const cards=[...stage.children],dotButtons=[...dots.children];
+  const normalize=n=>(n+articles.length)%articles.length;
+  function render(){
+    cards.forEach((card,index)=>{
+      card.className="guide-slide";
+      const prev=normalize(current-1),next=normalize(current+1);
+      if(index===current)card.classList.add("is-current");
+      else if(index===prev)card.classList.add("is-prev");
+      else if(index===next)card.classList.add("is-next");
+      else card.classList.add("is-hidden");
+      card.setAttribute("aria-hidden",index===current?"false":"true");
+      card.tabIndex=index===current?0:-1;
+    });
+    dotButtons.forEach((dot,index)=>{
+      dot.classList.toggle("is-active",index===current);
+      dot.setAttribute("aria-current",index===current?"true":"false");
+    });
+  }
+  function move(step){current=normalize(current+step);render()}
+  root.querySelector(".guide-arrow-prev").addEventListener("click",()=>move(-1));
+  root.querySelector(".guide-arrow-next").addEventListener("click",()=>move(1));
+  dotButtons.forEach(dot=>dot.addEventListener("click",()=>{current=Number(dot.dataset.index);render()}));
+  stage.addEventListener("click",event=>{
+    const card=event.target.closest(".guide-slide");
+    if(!card||event.target.closest("a")||Number(card.dataset.index)===current)return;
+    const index=Number(card.dataset.index);current=normalize(index-current===1?current+1:current-1);render();
+  });
+  root.addEventListener("keydown",event=>{
+    if(event.key==="ArrowLeft"){event.preventDefault();move(-1)}
+    if(event.key==="ArrowRight"){event.preventDefault();move(1)}
+  });
+  render();
+})();
+</script>
 
 <script>
 /* SystemFit PC — stronger ambient background scroll parallax */
