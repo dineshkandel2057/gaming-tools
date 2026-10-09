@@ -578,6 +578,36 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 @media(max-width:800px){.hero-visual{width:100%;box-sizing:border-box}.hero-bento{grid-template-rows:auto auto;align-content:start}.bento-matchup{gap:8px}.bento-part{padding:12px;gap:9px}.bento-part-icon{flex-basis:40px;width:40px;height:40px}}
 @media(max-width:560px){.hero-bento{grid-template-columns:minmax(0,1fr)}.bento-index{grid-column:1}.bento-calculation,.bento-action{min-height:0}}
 @media(max-width:480px){.hero-visual{padding:10px;border-radius:22px}.hero-bento{padding:10px;gap:12px;border-radius:22px}.bento-card{padding:18px}.bento-index{padding:22px 18px}.bento-trend-label{font-size:13px;letter-spacing:.1em;gap:8px;flex-wrap:wrap}.bento-matchup{flex-direction:column;gap:10px}.bento-part{width:100%;box-sizing:border-box;padding:14px}.bento-plus{flex-basis:36px}.bento-part-text strong{font-size:clamp(18px,5.4vw,22px)}.bento-action-cta{white-space:normal}}
+
+/* Compact hero dashboard fixes */
+.hero-bento{width:100%;max-width:500px;margin:0 auto;gap:12px;padding:12px;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+.bento-card{padding:18px;gap:12px}
+.bento-index{padding:20px 18px;gap:14px}
+.bento-matchup{flex-direction:row;gap:8px}
+.bento-part{padding:12px;gap:10px}
+.bento-part-icon,.bento-action-icon{overflow:hidden}
+.bento-part-icon svg,.bento-action-icon svg{display:block;width:26px!important;height:26px!important;min-width:26px;min-height:26px;fill:none!important;stroke:currentColor!important;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.bento-part-text strong{font-size:clamp(16px,1.45vw,21px);overflow-wrap:normal;word-break:normal}
+.bento-full-build-button{padding:10px 22px;font-size:13px}
+.bento-calculation{min-height:0}
+.bento-bottleneck{font-size:clamp(18px,1.5vw,23px)}
+.bento-stats-row{margin-top:8px;gap:8px}
+.bento-calculation-link{padding-top:10px}
+.bento-action{gap:10px}
+.bento-action-icon{width:44px;height:44px;flex-basis:44px}
+.bento-action-link{font-size:clamp(19px,1.7vw,23px)}
+.bento-action-text{font-size:12.5px;line-height:1.5}
+.bento-action-cta{margin-top:auto;padding:10px 14px;border-radius:11px;background:linear-gradient(90deg,#7c5cff,#3b82f6);border:1px solid rgba(147,197,253,.5);box-shadow:0 0 16px rgba(99,102,241,.25);font-size:12.5px}
+.bento-card:hover,.bento-card:focus-visible{transform:translateY(-3px);box-shadow:0 0 30px rgba(99,102,241,.35);outline:none}
+.bento-part,.bento-full-build-button,.bento-action-cta{transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.bento-part:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(139,92,246,.28)}
+.bento-part-gpu:hover{box-shadow:0 0 24px rgba(56,189,248,.28)}
+.bento-calculation-link{cursor:pointer}
+.bento-action-cta{white-space:nowrap}
+@media(max-width:800px){.hero-bento{max-width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}.bento-index{grid-column:1/-1}.bento-matchup{flex-direction:row}.bento-part{padding:12px;gap:8px}.bento-part-icon{flex-basis:36px;width:36px;height:36px}.bento-part-text strong{font-size:clamp(16px,2.5vw,20px)}}
+@media(max-width:560px){.hero-bento{grid-template-columns:minmax(0,1fr);max-width:100%}.bento-index{grid-column:1}.bento-matchup{flex-direction:column}.bento-part{width:100%}.bento-plus{flex-basis:32px;width:32px;height:32px}.bento-calculation,.bento-action{min-height:0}}
+@media(max-width:480px){.hero-bento{padding:9px;gap:10px}.bento-card{padding:16px}.bento-index{padding:18px 14px}.bento-trend-label{font-size:12px;letter-spacing:.08em;flex-wrap:wrap}.bento-part-text strong{font-size:18px}.bento-action-cta{white-space:nowrap}}
+
 </style>
 
 <meta property="og:url" content="https://systemfitpc.vercel.app/">
