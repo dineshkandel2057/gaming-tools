@@ -30,10 +30,6 @@ html{scroll-behavior:smooth}
 :root{--bg:#0d0f15;--panel:#171a23;--panel2:#11141c;--border:#2d3240;--text:#f4f6fb;--muted:#a9b0c0;--purple:#6c5cff;--purple2:#806fff;--blue:#35a7ff;--green:#3ed47a;--red:#ff5f6d}
 body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
 a{text-decoration:none;color:inherit}
-.nav{max-width:1180px;min-height:72px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:23px;font-weight:800}.logo span{color:var(--purple2)}
-nav{display:flex;gap:8px}nav a{color:var(--muted);padding:9px 13px;border-radius:8px;font-size:14px}
-nav a:hover,nav a.active{color:white;background:#1d202b}
 
 /* ================= HOMEPAGE ================= */
 .home{max-width:1180px;margin:auto;padding:90px 22px 70px}
@@ -194,16 +190,8 @@ footer{border-top:1px solid var(--border);padding:30px 20px;text-align:center;co
 
 /* ================= MOBILE ================= */
 
-/* ================= ABOUT ================= */
-.about-section{max-width:1000px;margin:20px auto 80px;padding:34px;background:var(--panel);border:1px solid var(--border);border-radius:16px}
-.about-section .section-title{margin-bottom:24px}
-.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.about-item{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:20px}
-.about-item h3{font-size:16px;margin-bottom:7px}.about-item p{color:var(--muted);font-size:13px;line-height:1.7}
-.about-intro{color:var(--muted);max-width:760px;margin:-10px auto 0;text-align:center;line-height:1.7}
-@media(max-width:800px){.about-grid{grid-template-columns:1fr}}
+/* ================= ABOUT HUB ================= */
 @media(max-width:800px){
-.nav{min-height:auto;padding:15px;flex-direction:column;gap:10px}nav{flex-wrap:wrap;justify-content:center}
 .home{padding-top:60px}.hero h1{font-size:36px}.tools-grid{grid-template-columns:1fr}
 .hardware-grid{grid-template-columns:1fr}.full{grid-column:auto}.score-grid{grid-template-columns:1fr}.details-grid{grid-template-columns:1fr}
 .result-header{flex-direction:column;align-items:flex-start}.calculator-card{padding:18px}
@@ -273,8 +261,6 @@ h1,h2,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-
 .tool-card:first-child{background:linear-gradient(145deg,rgba(42,35,78,.7),rgba(16,23,38,.9));border-color:rgba(145,123,255,.31)}
 .tool-icon{width:48px;height:48px;background:rgba(126,105,255,.14);border:1px solid rgba(151,132,255,.2);border-radius:14px}
 .tool-card h3{font-size:20px;letter-spacing:-.025em}.tool-card p{line-height:1.75}.coming-card{opacity:.82}
-.about-section{margin-top:20px;background:rgba(18,24,37,.72);border-color:var(--border);border-radius:22px;backdrop-filter:blur(14px)}
-.about-item{background:rgba(10,15,25,.58);border-color:rgba(157,174,204,.12);border-radius:14px}.about-item h3{color:#e9e5ff}.about-item p{line-height:1.75}
 footer{border-color:var(--border);color:#8895aa}:focus-visible{outline:2px solid #9b8aff;outline-offset:3px}
 @media(max-width:800px){.home{padding-top:48px}.hero{grid-template-columns:1fr;gap:32px;text-align:center}.hero-copy{margin:0 auto}.hero p{font-size:16px}.hero-buttons{justify-content:center}.hero-visual{min-height:320px}.visual-components{gap:10px}.component-illustration{min-height:180px}.tools{margin-top:66px}}
 @media(max-width:480px){.hero h1{font-size:41px}.hero-visual{padding:15px;min-height:294px;border-radius:20px}.visual-components{grid-template-columns:.9fr 1.1fr;margin-top:18px}.component-illustration{min-height:160px}.brand-strip{gap:6px}.brand-chip{font-size:9px;padding:6px 8px}.tool-card{padding:20px}}
@@ -297,12 +283,6 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 #brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
 @media(max-width:800px){#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}}
 
-
-.guides-static-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px auto 0;max-width:1120px}
-.guides-static-links a{display:block;padding:13px 15px;border:1px solid rgba(157,174,204,.16);border-radius:12px;background:rgba(255,255,255,.025);color:#cbd5e1;text-decoration:none;font-size:13px;line-height:1.5;transition:border-color .2s,background .2s,color .2s}
-.guides-static-links a:hover,.guides-static-links a:focus-visible{border-color:rgba(151,132,255,.42);background:rgba(118,95,255,.09);color:#fff}
-@media(max-width:760px){.guides-static-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:480px){.guides-static-links{grid-template-columns:1fr}}
 
 /* ================= GUIDES CAROUSEL ================= */
 .guides-showcase{max-width:1180px;margin:92px auto 20px;padding:0 22px 10px}
@@ -507,6 +487,126 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
 }
 
 
+
+/* ================= REQUESTED HOMEPAGE POLISH ================= */
+.hero-bento .bento-card{padding:24px;text-align:left}
+.hero-bento .bento-label{display:block;color:#929eb3;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;line-height:1.35;text-align:left;overflow-wrap:normal;word-break:normal}
+.hero-bento .bento-metric{margin-top:0;font-family:"Space Grotesk",sans-serif;font-size:clamp(22px,2.3vw,30px);font-weight:600;line-height:1.15;letter-spacing:-.035em;text-align:left;overflow-wrap:normal;word-break:normal}
+.bento-index{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;grid-template-areas:"label button" "metric button";align-items:center;column-gap:24px;row-gap:10px;justify-content:initial;transform:none}
+.bento-index .bento-label{grid-area:label;text-align:left}
+.bento-index .bento-metric{grid-area:metric;min-width:0}
+.bento-index .bento-full-build-button{grid-area:button;align-self:center;justify-self:end;margin-top:0;white-space:nowrap;overflow-wrap:normal;word-break:normal}
+.bento-calculation{gap:0}
+.bento-calculation .bento-bottleneck{margin-top:8px;font-family:"Space Grotesk",sans-serif;font-size:clamp(20px,1.9vw,26px);font-weight:700;line-height:1.1;letter-spacing:-.025em;text-transform:uppercase;white-space:normal;overflow-wrap:normal;word-break:normal;color:#62e4a3}
+.bento-stats-row{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0;margin-top:12px}
+.bento-stat{display:flex;flex-direction:column;gap:2px;min-width:0}
+.bento-stat-label{color:#8996aa;font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;line-height:1.35;letter-spacing:.04em;text-transform:uppercase;overflow-wrap:normal;word-break:normal}
+.bento-stat-value{color:#f1f4f9;font-family:"DM Sans",sans-serif;font-size:15px;font-weight:700;line-height:1.35;letter-spacing:0;overflow-wrap:normal;word-break:normal}
+.bento-calculation-link{position:relative;z-index:1;display:inline-block;align-self:flex-start;margin-top:auto;padding-top:12px;color:#b9aaff;font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;line-height:1.4;text-decoration:none}
+.bento-calculation-link:hover,.bento-calculation-link:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.bento-action-link{font-family:"Space Grotesk",sans-serif;font-size:clamp(18px,1.8vw,23px);font-weight:700;line-height:1.15;letter-spacing:-.025em}
+.bento-action-last{white-space:nowrap}
+.bento-action .bento-label{color:#929eb3}
+@media(max-width:800px){
+  .bento-index{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px;grid-column:1/-1;transform:none}
+  .bento-index .bento-full-build-button{align-self:flex-start;justify-self:auto;margin-top:4px}
+}
+@media(max-width:520px){
+  .hero-bento{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;min-height:0;align-content:start}
+  .hero-bento .bento-card{min-width:0;max-width:100%;overflow:hidden}
+  .bento-index{grid-column:1;min-height:0}
+  .bento-calculation{min-height:0}
+  .bento-calculation .bento-bottleneck{font-size:clamp(20px,5.6vw,26px)}
+  .bento-stats-row{gap:12px}
+  .bento-action{min-height:118px}
+  .bento-action-link{font-size:clamp(18px,5vw,23px)}
+}
+
+/* Decision-card icons */
+.homepage-guide-item:hover{transform:translateY(-1px)}
+.homepage-guide-icon{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;margin-bottom:14px;border:1px solid rgba(157,139,255,.25);border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.10);transition:transform .22s ease}
+.homepage-guide-icon svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.homepage-guide-icon-fps{color:#b09aff;background:linear-gradient(145deg,rgba(159,118,255,.18),rgba(255,255,255,.04))}
+.homepage-guide-icon-bottleneck{color:#b8aaff;background:linear-gradient(145deg,rgba(126,105,255,.18),rgba(255,255,255,.04))}
+.homepage-guide-icon-upgrade{color:#ffc27d;background:linear-gradient(145deg,rgba(255,194,125,.16),rgba(255,255,255,.04))}
+.homepage-guide-item:hover .homepage-guide-icon{transform:translateY(-1px)}
+
+/* About hub */
+.about-hub{max-width:1120px;margin:72px auto 0;padding:0 22px}
+.about-hub-panel{padding:clamp(22px,3.6vw,38px);border:1px solid rgba(157,174,204,.16);border-radius:22px;background:linear-gradient(145deg,rgba(24,31,47,.72),rgba(13,18,29,.82));backdrop-filter:blur(14px)}
+.about-hub-head{max-width:850px;margin:0 auto 28px;text-align:center}
+.about-hub-head h2{margin-bottom:12px;font-family:"Space Grotesk",sans-serif;font-size:clamp(27px,3.2vw,36px);line-height:1.15}
+.about-hub-head p{color:#aab5c8;font-size:14px;line-height:1.8}
+.about-hub-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:0 0 28px;padding:16px;border:1px solid rgba(157,174,204,.13);border-radius:16px;background:rgba(10,15,25,.45)}
+.about-hub-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:0;text-align:center}
+.about-hub-stat strong{font-family:"Space Grotesk",sans-serif;font-size:clamp(24px,3vw,34px);font-weight:700;line-height:1.1;letter-spacing:-.04em;color:#f5f7fc}
+.about-hub-stat span{color:#929eb3;font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.about-hub-pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.about-hub-pillar{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:22px;border:1px solid rgba(157,174,204,.14);border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018))}
+.about-hub-icon{width:42px;height:42px;display:grid;place-items:center;margin-bottom:14px;border:1px solid rgba(157,139,255,.25);border-radius:12px;background:rgba(126,105,255,.1);color:#b8aaff;box-shadow:inset 0 1px 0 rgba(255,255,255,.10)}
+.about-hub-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.about-hub-pillar h3{margin-bottom:8px;font-family:"Space Grotesk",sans-serif;font-size:17px;line-height:1.3;letter-spacing:-.02em}
+.about-hub-pillar p{color:#aab5c8;font-size:13px;line-height:1.75}
+.about-hub-link{display:inline-block;margin-top:auto;padding-top:12px;color:#b9aaff;font-size:12px;font-weight:700;text-decoration:none}
+.about-hub-link:hover,.about-hub-link:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.about-hub-process{margin-top:28px}
+.about-hub-process>h3{margin-bottom:14px;font-family:"Space Grotesk",sans-serif;font-size:20px;letter-spacing:-.025em}
+.about-hub-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.about-hub-step{min-width:0;padding:20px;border:1px solid rgba(157,174,204,.13);border-radius:14px;background:rgba(10,15,25,.42)}
+.about-hub-step-number{display:grid;place-items:center;width:30px;height:30px;margin-bottom:12px;border:1px solid rgba(157,139,255,.32);border-radius:9px;background:rgba(126,105,255,.13);color:#c4b7ff;font-family:"Space Grotesk",sans-serif;font-size:14px;font-weight:700}
+.about-hub-step h4{margin-bottom:7px;font-family:"Space Grotesk",sans-serif;font-size:15px;line-height:1.35;letter-spacing:-.02em}
+.about-hub-step p{color:#aab5c8;font-size:12px;line-height:1.7}
+.about-hub-transparency{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;margin-top:24px;padding-top:18px;border-top:1px solid rgba(157,174,204,.13)}
+.about-hub-transparency nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:7px;color:#aab5c8;font-size:12px}
+.about-hub-transparency a{color:#b9aaff;text-decoration:none}
+.about-hub-transparency a:hover,.about-hub-transparency a:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.about-hub-transparency p{color:#8996aa;font-size:11px;line-height:1.6}
+
+/* SEO hub */
+.seo-hub{max-width:1200px;margin:0 auto;padding:60px 20px;border-top:1px solid rgba(255,255,255,.05)}
+.seo-hub-head{text-align:center;margin-bottom:40px}
+.seo-hub-head h2{margin-bottom:10px;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:2rem;font-weight:700;line-height:1.2}
+.seo-hub-head p{max-width:600px;margin:0 auto;color:#94a3b8;font-size:.95rem;line-height:1.6}
+.seo-hub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;color:#cbd5e1;font-size:.9rem;line-height:1.6}
+.seo-hub-col{min-width:0}
+.seo-hub-col h3{margin-bottom:12px;font-size:1.1rem;font-weight:600;line-height:1.45;letter-spacing:-.02em}
+.seo-hub-col-bottleneck h3{color:#a855f7}
+.seo-hub-col-fps h3{color:#3b82f6}
+.seo-hub-col-build h3{color:#10b981}
+.seo-hub-col h3 a{color:inherit;cursor:pointer;text-decoration:none}
+.seo-hub-col h3 a span{display:inline-block;font-size:.8em;transition:transform .2s ease}
+.seo-hub-col h3 a:hover,.seo-hub-col h3 a:focus-visible{text-decoration:underline;text-underline-offset:3px}
+.seo-hub-col h3 a:hover span{transform:translateX(2px)}
+.seo-hub-col p a{color:inherit;text-decoration:none;cursor:pointer}
+.seo-hub-col p a:hover,.seo-hub-col p a:focus-visible{text-decoration:underline;text-underline-offset:3px}
+
+/* Footer alignment: scoped to the real shared footer */
+footer.sfp-site-footer{max-width:1180px;margin:70px auto 0;padding:26px 22px 40px;text-align:center}
+footer.sfp-site-footer nav{display:block;text-align:center;margin-top:12px}
+footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
+
+@media(max-width:800px){
+  .about-hub{margin-top:58px}
+  .about-hub-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .about-hub-stat-last{grid-column:1/-1}
+  .about-hub-pillars,.about-hub-steps{grid-template-columns:1fr}
+  .about-hub-transparency{align-items:flex-start;flex-direction:column}
+  .about-hub-transparency nav{gap:6px}
+  .seo-hub{padding:46px 20px}
+  .seo-hub-head h2{font-size:clamp(25px,6vw,32px)}
+}
+@media(max-width:480px){
+  .about-hub{padding:0 16px}
+  .about-hub-panel{padding:22px 18px}
+  .about-hub-stats{padding:13px 10px;gap:15px 8px}
+  .about-hub-stat strong{font-size:28px}
+  .about-hub-stat span{font-size:9px;letter-spacing:.06em}
+  .about-hub-pillar,.about-hub-step{padding:18px}
+  .about-hub-transparency p{font-size:10px}
+  .seo-hub{padding:42px 16px}
+  .seo-hub-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+}
+
 </style>
 
 <meta property="og:url" content="https://systemfitpc.vercel.app/">
@@ -568,13 +668,19 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
     <div class="bento-card bento-guide bento-calculation">
       <span class="bento-label">📊 EXAMPLE RESULT</span>
       <strong class="bento-bottleneck" id="bottleneck-status">GPU BOTTLENECK</strong>
-      <span class="bento-calculation-detail" id="bottleneck-settings">Balance 58/100 • Capacity 106 FPS</span>
-      <span class="bento-calculation-detail" id="bottleneck-flow">CPU Pressure 55% • GPU Pressure 78%</span>
-      <a class="bento-calculation-link" href="bottleneck.html">Run your own setup</a>
+      <div class="bento-stats-row" id="bottleneck-settings">
+        <div class="bento-stat"><span class="bento-stat-label">Balance</span><strong class="bento-stat-value">58/100</strong></div>
+        <div class="bento-stat"><span class="bento-stat-label">Capacity</span><strong class="bento-stat-value">106 FPS</strong></div>
+      </div>
+      <div class="bento-stats-row" id="bottleneck-flow">
+        <div class="bento-stat"><span class="bento-stat-label">CPU pressure</span><strong class="bento-stat-value">55%</strong></div>
+        <div class="bento-stat"><span class="bento-stat-label">GPU pressure</span><strong class="bento-stat-value">78%</strong></div>
+      </div>
+      <a class="bento-calculation-link" href="bottleneck.html">Run your own setup →</a>
     </div>
     <a class="bento-card bento-engine bento-action" href="bottleneck.html" aria-label="Test your setup with the Bottleneck Calculator">
       <span class="bento-label">OPEN THE CALCULATOR</span>
-      <span class="bento-action-link">Test Your Setup <span aria-hidden="true">→</span></span>
+      <span class="bento-action-link">Test Your <span class="bento-action-last">Setup&nbsp;<span aria-hidden="true">→</span></span></span>
     </a>
   </div>
 
@@ -631,16 +737,6 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
     <button class="guide-arrow guide-arrow-next" type="button" aria-label="Next article">›</button>
     <div class="guide-dots" aria-label="Choose an article"></div>
   </div>
-  <nav class="guides-static-links" aria-label="All PC guides">
-    <a href="how-much-ram-for-gaming-2026.html">How Much RAM Do You Need for Gaming in 2026?</a>
-    <a href="how-much-vram-for-gaming-2026.html">How Much VRAM Do You Need for Gaming in 2026?</a>
-    <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU Bottleneck: What It Means and How to Fix It</a>
-    <a href="1080p-vs-1440p-vs-4k-gaming.html">1080p vs 1440p vs 4K Gaming in 2026</a>
-    <a href="how-to-fix-fps-drops-and-stuttering.html">How to Fix FPS Drops and Stuttering on PC</a>
-    <a href="which-pc-component-to-upgrade-first.html">Which PC Component Should You Upgrade First?</a>
-    <a href="ssd-vs-hdd-for-gaming.html">SSD vs HDD for Gaming: What Actually Changes?</a>
-    <a href="graphics-settings-that-affect-fps.html">Which Graphics Settings Affect FPS the Most?</a>
-    <a href="dlss-vs-fsr-vs-xess.html">DLSS vs FSR vs XeSS: Which Should You Use?</a>
   </nav>
 </section><section class="homepage-guide" aria-labelledby="systemfit-decisions-title">
   <div class="homepage-guide-card">
@@ -650,18 +746,21 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
     </div>
     <div class="homepage-guide-grid">
       <a class="homepage-guide-item" href="fps-calculator.html">
+        <span class="homepage-guide-icon homepage-guide-icon-fps" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 50V14M10 50h44"/><path d="M17 42l9-11 8 5 13-19"/><path d="M44 17h4v4"/></svg></span>
         <span class="homepage-guide-kicker">PERFORMANCE</span>
         <h3>Check gaming performance</h3>
         <p>Estimate FPS for a specific game, resolution and target before changing hardware.</p>
         <span class="homepage-guide-action">Use the FPS Calculator <span aria-hidden="true">→</span></span>
       </a>
       <a class="homepage-guide-item" href="bottleneck.html">
+        <span class="homepage-guide-icon homepage-guide-icon-bottleneck" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="13" y="13" width="38" height="38" rx="8"/><rect x="21" y="21" width="22" height="22" rx="4"/><path d="M25 5v8M32 5v8M39 5v8M25 51v8M32 51v8M39 51v8M5 25h8M5 32h8M5 39h8M51 25h8M51 32h8M51 39h8"/><path d="M27 28h10M27 34h7"/></svg></span>
         <span class="homepage-guide-kicker">DIAGNOSIS</span>
         <h3>Find the limiting component</h3>
         <p>Understand whether your CPU or GPU is more likely to limit performance in your scenario.</p>
         <span class="homepage-guide-action">Check the Bottleneck Calculator <span aria-hidden="true">→</span></span>
       </a>
       <a class="homepage-guide-item" href="which-pc-component-to-upgrade-first.html">
+        <span class="homepage-guide-icon homepage-guide-icon-upgrade" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="13" y="18" width="38" height="30" rx="6"/><path d="M25 18v-7h14v7M32 29v15M25 37l7 7 7-7"/><path d="M20 54h24"/></svg></span>
         <span class="homepage-guide-kicker">UPGRADE PATH</span>
         <h3>Choose your next upgrade</h3>
         <p>Use practical guides to decide which component deserves attention instead of upgrading blindly.</p>
@@ -671,43 +770,76 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
   </div>
 </section>
 
-<section class="about-section" data-sfp-reveal id="about">
-    <div class="section-title"><h2>About SystemFit PC</h2><p class="about-intro">SystemFit PC makes computer decisions easier to understand. Our tools turn technical details into practical guidance for first-time builders and experienced PC users alike.</p></div>
-    <div class="about-grid">
-        <div class="about-item" data-sfp-reveal><h3>⚡ Simple &amp; Practical</h3><p>Clear results and explanations without forcing you to understand complicated hardware terminology first.</p></div>
-        <div class="about-item" data-sfp-reveal><h3>🛠️ Useful for Every PC</h3><p>Tools support practical decisions about performance, component fit, upgrades, power requirements and more.</p></div>
-        <div class="about-item" data-sfp-reveal><h3>📊 Estimates, Not Guesswork</h3><p>Where a result is an estimate, SystemFit PC clearly explains the limitations so you can understand what the number actually means.</p></div>
+<section class="about-hub" id="about" aria-labelledby="about-hub-title">
+  <div class="about-hub-panel">
+    <header class="about-hub-head">
+      <h2 id="about-hub-title">About SystemFit PC</h2>
+      <p>SystemFit PC is an independent set of free PC tools and guides. We turn everyday hardware questions - what limits my FPS, which part should I upgrade first, will these parts work together - into quick, practical checks you can use before you spend money.</p>
+    </header>
+    <div class="about-hub-stats" aria-label="SystemFit PC at a glance">
+      <div class="about-hub-stat"><strong>6</strong><span>Free tools</span></div>
+      <div class="about-hub-stat"><strong>130</strong><span>CPUs</span></div>
+      <div class="about-hub-stat"><strong>113</strong><span>GPUs</span></div>
+      <div class="about-hub-stat"><strong>792</strong><span>Games</span></div>
+      <div class="about-hub-stat about-hub-stat-last"><strong>9</strong><span>Guides</span></div>
     </div>
+    <div class="about-hub-pillars">
+      <article class="about-hub-pillar">
+        <span class="about-hub-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M12 14h40v36H12z"/><path d="M20 23h24M20 32h16M20 41h20"/><path d="M8 9l4 5-4 5M56 45l-4 5 4 5"/></svg></span>
+        <h3>Built around real decisions</h3>
+        <p>Every tool starts from a question people ask before buying: what limits my FPS, what should I upgrade first, and will these parts work together.</p>
+      </article>
+      <article class="about-hub-pillar">
+        <span class="about-hub-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 7l21 8v15c0 13-8 22-21 27C19 52 11 43 11 30V15z"/><path d="M21 32l7 7 15-16"/></svg></span>
+        <h3>Honest estimates</h3>
+        <p>Results are modelled estimates, not benchmarks of your exact PC. Each tool explains its limits, and the Methodology page shows how hardware scores are handled.</p>
+        <a class="about-hub-link" href="methodology.html">Read the methodology -&gt;</a>
+      </article>
+      <article class="about-hub-pillar">
+        <span class="about-hub-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="23"/><path d="M21 32l7 7 15-15"/><path d="M32 9v6M55 32h-6M32 55v-6M9 32h6"/></svg></span>
+        <h3>Free and simple</h3>
+        <p>No account and no sign-up. Pick your parts, read the result, then compare tools and guides before you buy.</p>
+      </article>
+    </div>
+    <div class="about-hub-process">
+      <h3>How a typical check works</h3>
+      <div class="about-hub-steps">
+        <article class="about-hub-step"><span class="about-hub-step-number">1</span><h4>Pick your hardware and goal</h4><p>Choose your CPU, GPU, resolution and target FPS.</p></article>
+        <article class="about-hub-step"><span class="about-hub-step-number">2</span><h4>Read the estimate and its limits</h4><p>Look at the result, the limiting side and the confidence note.</p></article>
+        <article class="about-hub-step"><span class="about-hub-step-number">3</span><h4>Verify before you buy</h4><p>Compare GPUs, check fit in the Build Planner and read the matching guide.</p></article>
+      </div>
+    </div>
+    <div class="about-hub-transparency">
+      <nav aria-label="About and transparency links">
+        <a href="about.html">About page</a><span aria-hidden="true">·</span>
+        <a href="methodology.html">Methodology</a><span aria-hidden="true">·</span>
+        <a href="affiliate-disclosure.html">Affiliate Disclosure</a><span aria-hidden="true">·</span>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <p>Independent project - not affiliated with any hardware brand. Last updated October 2026.</p>
+    </div>
+  </div>
 </section>
 
 <!-- SEO Optimization Hub Section -->
-<section class="seo-hub-container" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.05);">
-  
-  <div style="text-align: center; margin-bottom: 40px;">
-    <h2 style="font-size: 2rem; color: #ffffff; font-weight: 700; margin-bottom: 10px;">Your All-in-One PC Hardware Performance Hub</h2>
-    <p style="color: #94a3b8; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Optimize your gaming setup, calculate hardware limits, and eliminate system bottlenecks with practical, model-based tools.</p>
+<section class="seo-hub">
+  <div class="seo-hub-head">
+    <h2>Your All-in-One PC Hardware Performance Hub</h2>
+    <p>Optimize your gaming setup, calculate hardware limits, and eliminate system bottlenecks with practical, model-based tools.</p>
   </div>
-
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; color: #cbd5e1; font-size: 0.9rem; line-height: 1.6;">
-    
-    <!-- Column 1: Bottleneck Focus -->
-    <div>
-      <h3 style="color: #a855f7; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;"><a href="bottleneck.html">PC Bottleneck Calculator</a></h3>
-      <p>SystemFit PC helps you identify hidden performance limits between your processor and graphics card. Using our our rule-based model, you can determine if you are facing a severe <strong><a href="bottleneck.html">CPU bottleneck</a></strong> or a <strong>GPU bottleneck</strong>. Discover estimated FPS capacity, analyze your target gaming thresholds, and view realistic upgrade paths without sorting through confusing metrics.</p>
+  <div class="seo-hub-grid">
+    <div class="seo-hub-col seo-hub-col-bottleneck">
+      <h3><a href="bottleneck.html">PC Bottleneck Calculator <span aria-hidden="true">→</span></a></h3>
+      <p>SystemFit PC helps you identify hidden performance limits between your processor and graphics card. Using our our rule-based model, you can determine if you are facing a severe <strong><a href="bottleneck.html">CPU bottleneck</a></strong> or a <strong><a href="bottleneck.html">GPU bottleneck</a></strong>. Discover estimated FPS capacity, analyze your target gaming thresholds, and view realistic upgrade paths without sorting through confusing metrics.</p>
     </div>
-
-    <!-- Column 2: FPS & Tools Focus -->
-    <div>
-      <h3 style="color: #3b82f6; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;">FPS Calculator & Hardware Comparison</h3>
+    <div class="seo-hub-col seo-hub-col-fps">
+      <h3><a href="fps-calculator.html">FPS Calculator <span aria-hidden="true">→</span></a> &amp; <a href="gpu-comparison.html">GPU Comparison <span aria-hidden="true">→</span></a></h3>
       <p>Planning a system upgrade or checking game system requirements? Use our integrated <strong><a href="fps-calculator.html">FPS Calculator</a></strong> and <strong><a href="gpu-comparison.html">GPU Comparison Tool</a></strong> to measure how different components scale across 1080p, 1440p, and 4K gaming resolutions. Use performance estimates that help you compare setups for competitive titles and creator workloads.</p>
     </div>
-
-    <!-- Column 3: Build Planning Focus -->
-    <div>
-      <h3 style="color: #10b981; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;">Strategic PC Build Planner & Guides</h3>
-      <p>Building a new computer from scratch doesn't have to rely on expensive guesswork. Our <strong><a href="build-planner.html">PC Build Planner</a></strong> and practical hardware guides provide sequential, practical advice on matching components safely. Learn how much RAM you actually need for modern games, optimize your in-game settings for maximum hardware efficiency, and configure balanced setups built for value.</p>
+    <div class="seo-hub-col seo-hub-col-build">
+      <h3><a href="build-planner.html">PC Build Planner <span aria-hidden="true">→</span></a> &amp; <a href="guides.html">Guides <span aria-hidden="true">→</span></a></h3>
+      <p>Building a new computer from scratch doesn't have to rely on expensive guesswork. Our <strong><a href="build-planner.html">PC Build Planner</a></strong> and practical hardware guides provide sequential, practical advice on matching components safely. Learn <a href="how-much-ram-for-gaming-2026.html">how much RAM you actually need</a> for modern games, optimize your <a href="game-settings.html">in-game settings</a> for maximum hardware efficiency, and configure balanced setups built for value.</p>
     </div>
-
   </div>
 </section>
 
