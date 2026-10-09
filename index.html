@@ -613,12 +613,12 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 @keyframes sfpRgbFlow{to{background-position:300% 0}}
 @media(prefers-reduced-motion:reduce){.bento-rgb-text{animation:none}}
 .bento-hardware-pair{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;min-width:0}
-.bento-hardware-tile{flex:1 1 0;min-width:0;display:grid;grid-template-columns:40px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:12px;row-gap:4px;padding:14px 18px;border:1px solid rgba(167,139,250,.28);border-radius:16px;background:linear-gradient(145deg,rgba(84,61,150,.22),rgba(15,21,34,.9));text-align:left}
+.bento-hardware-tile{flex:1 1 0;min-width:0;box-sizing:border-box;display:grid;grid-template-columns:40px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:12px;row-gap:4px;padding:14px 18px;border:1px solid rgba(167,139,250,.28);border-radius:16px;background:linear-gradient(145deg,rgba(84,61,150,.22),rgba(15,21,34,.9));text-align:left}
 .bento-hardware-icon,.bento-action-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:rgba(255,255,255,.045)}
 .bento-hardware-icon{grid-column:1;grid-row:1/3;color:#b7a2ff}
 .bento-hardware-icon svg,.bento-action-icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.bento-hardware-caption{grid-column:2;color:#c9bbff;font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;line-height:1.3;text-transform:uppercase;white-space:nowrap}
-.bento-hardware-name{grid-column:2;min-width:0;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:clamp(20px,2.1vw,26px);font-weight:700;line-height:1.15;overflow-wrap:normal;word-break:normal}
+.bento-hardware-caption{grid-column:2;min-width:0;color:#c9bbff;font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;line-height:1.3;text-transform:uppercase;white-space:normal;overflow-wrap:anywhere}
+.bento-hardware-name{grid-column:2;min-width:0;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:clamp(20px,2.1vw,26px);font-weight:700;line-height:1.15;letter-spacing:-.025em;overflow-wrap:anywhere;word-break:normal}
 .bento-gpu-tile{border-color:rgba(99,199,255,.28);background:linear-gradient(145deg,rgba(37,104,145,.24),rgba(15,21,34,.9))}
 .bento-gpu-tile .bento-hardware-caption{color:#9fe0ff}
 .bento-gpu-tile .bento-hardware-icon{color:#7bd5ff}
@@ -640,8 +640,8 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   .hero-bento{grid-template-rows:auto auto;min-height:0;align-content:start}
   .hero-bento .bento-index{padding:26px 20px;gap:18px}
   .bento-trend-label{font-size:13px;letter-spacing:.1em;gap:7px;flex-wrap:wrap}
-  .bento-hardware-tile{padding:14px 12px;column-gap:10px}
-  .bento-hardware-name{font-size:clamp(20px,5.4vw,24px)}
+  .bento-hardware-tile{padding:14px 12px;column-gap:10px;grid-template-columns:34px minmax(0,1fr)}
+  .bento-hardware-name{font-size:clamp(20px,5.4vw,24px);overflow-wrap:anywhere}
   .hero-bento .bento-action{padding:24px}
 }
 
