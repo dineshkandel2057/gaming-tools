@@ -116,6 +116,8 @@
       gap: 8px;
     }
 
+    .sfp-compare{background:rgba(255,126,145,.12);color:#ff9baa}
+
     .sfp-main-nav > a,
     .sfp-tools-summary {
       color: #aab5c8;
