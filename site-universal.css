@@ -236,3 +236,11 @@ html body .sfp-reveal-target.sfp-reveal-visible {
 .sfp-legacy-picker-host > .sfp-special-slot > .sfp-select-trigger{
   width:100%!important;
 }
+
+.tool-explanation{max-width:900px;margin:48px auto 0;padding:0 22px 40px;color:#aab5c8;font:15px/1.8 "DM Sans",Inter,system-ui,sans-serif}
+.tool-explanation h2{margin:32px 0 10px;color:#f5f7fc;font:700 24px/1.2 "Space Grotesk","DM Sans",sans-serif;letter-spacing:-.03em}
+.tool-explanation h3{margin:22px 0 6px;color:#e6ebf4;font:700 17px/1.3 "Space Grotesk","DM Sans",sans-serif}
+.tool-explanation p{margin:0 0 14px}
+.tool-explanation a{color:#b8a9ff;text-decoration:underline;text-underline-offset:3px}
+.tool-explanation a:hover{color:#fff}
+.tool-explanation .last-updated{color:#8895aa;font-size:13px}
