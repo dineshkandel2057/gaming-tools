@@ -1238,24 +1238,12 @@
       </div>
     </section>
 
-    <section class="method" data-sfp-reveal>
-      <h2>How this calculator works</h2>
-      <p>
-        SystemFit currently uses a transparent performance model rather than pretending every result is a measured benchmark.
-        Each game has a workload profile, while CPUs and GPUs are placed into relative performance tiers. Resolution, preset,
-        ray tracing, upscaling and frame generation then adjust the estimate. Results are deliberately shown as ranges because
-        real-world FPS can move significantly between patches, scenes and settings.
-      </p>
-      <div class="method-grid">
-        <div class="method-item"><b>Game workload</b><span>CPU/GPU demand, VRAM tendency and rendering sensitivity are profiled per title.</span></div>
-        <div class="method-item"><b>Hardware tiers</b><span>CPU and GPU relative scores determine the likely limiting component.</span></div>
-        <div class="method-item"><b>Confidence</b><span>Broad estimates are safer than fake decimal-level benchmark precision.</span></div>
-      </div>
-    </section>
+    
   
 <section class="tool-explanation" data-sfp-reveal>
   <h2>How this tool works</h2>
   <p>The SystemFit PC FPS Calculator estimates a practical FPS range from your CPU, GPU, game, resolution and graphics settings. The model starts with relative hardware performance and a workload profile for the selected game, then adjusts the estimate for resolution, preset, ray tracing, upscaling and frame generation where those options apply. Because games do not produce one fixed FPS number in every scene, the result is presented as an estimate rather than a promise of a specific benchmark.</p>
+  <p>The model combines three key considerations: game workload profiles describe CPU/GPU demand, VRAM tendency and rendering sensitivity; relative CPU and GPU hardware tiers help estimate which component may limit performance; and results are shown as ranges to avoid implying benchmark-level precision when actual FPS varies by scene, patch and settings.</p>
   <p>The best way to use the calculator is to test the setup you actually intend to play. Choose the resolution and graphics target you care about, then compare the result with your monitor's refresh rate and the FPS you want. You can also change one major setting at a time to understand which trade-off is most useful.</p>
 
   <h2>How to read the result</h2>
