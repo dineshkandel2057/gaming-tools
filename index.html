@@ -679,6 +679,17 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   box-shadow:0 0 0 1px rgba(167,139,250,.48),0 0 13px 1px rgba(167,139,250,.34),0 0 22px 2px rgba(96,165,250,.22);
 }
 
+
+/* Polished product rows for the Ultra Max Pro feature card only */
+.hero-bento .bento-build-feature .bento-build-pair{align-items:stretch;gap:12px}
+.hero-bento .bento-build-feature .bento-build-part{display:flex;flex-direction:column;justify-content:space-between;gap:10px;padding:13px 14px;min-height:126px;border-color:rgba(167,139,250,.34);background:linear-gradient(145deg,rgba(31,39,65,.86),rgba(10,15,30,.94))}
+.hero-bento .bento-build-feature .bento-build-part small{font-size:9px;letter-spacing:.15em;color:#aeb9d0}
+.hero-bento .bento-build-feature .bento-build-product{display:flex;align-items:center;gap:12px;min-width:0;flex:1}
+.hero-bento .bento-build-feature .bento-build-product img{display:block;flex:0 0 76px;width:76px;height:76px;object-fit:contain;border-radius:10px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.32))}
+.hero-bento .bento-build-feature .bento-build-product strong{display:block;min-width:0;color:#f7f8ff;font:700 clamp(15px,1.5vw,20px)/1.18 "Space Grotesk",sans-serif;overflow-wrap:anywhere}
+.hero-bento .bento-build-feature .bento-build-plus{flex:0 0 30px;width:30px;height:30px;align-self:center}
+@media(max-width:560px){.hero-bento .bento-build-feature .bento-build-product{gap:8px}.hero-bento .bento-build-feature .bento-build-product img{flex-basis:58px;width:58px;height:58px}.hero-bento .bento-build-feature .bento-build-part{min-height:112px;padding:10px}}
+
 </style>
 
 <meta property="og:url" content="https://systemfitpc.vercel.app/">
@@ -734,7 +745,17 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   <div class="hero-visual hero-bento" aria-label="Three recommended PC builds">
   <section class="bento-card bento-index bento-build-feature">
     <span class="bento-label bento-trend-label"><span class="bento-fire" aria-hidden="true">🔥</span><span class="bento-rgb-text">ULTRA MAX PRO BUILD</span></span>
-    <div class="bento-build-pair"><div class="bento-build-part"><small>CPU</small><strong>AMD Ryzen 7 9800X3D</strong></div><span class="bento-build-plus" aria-hidden="true">+</span><div class="bento-build-part"><small>GPU</small><strong>NVIDIA GeForce RTX 5090</strong></div></div>
+    <div class="bento-build-pair">
+      <div class="bento-build-part bento-build-part-cpu">
+        <small>AMD · CPU</small>
+        <div class="bento-build-product"><img src="https://www.amd.com/content/dam/amd/en/images/pr-feed/1301653.png" alt="AMD Ryzen 7 9800X3D processor" loading="lazy"><strong>AMD Ryzen 7 9800X3D</strong></div>
+      </div>
+      <span class="bento-build-plus" aria-hidden="true">+</span>
+      <div class="bento-build-part bento-build-part-gpu">
+        <small>NVIDIA · GPU</small>
+        <div class="bento-build-product"><img src="https://iprsoftwaremedia.com/219/files/20250/202501271934/geforce-rtx-5090.jpg" alt="NVIDIA GeForce RTX 5090 graphics card" loading="lazy"><strong>NVIDIA GeForce RTX 5090</strong></div>
+      </div>
+    </div>
     <a class="bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy05ODAweDNkIiwibW90aGVyYm9hcmQiOiJ4ODcwZS1hdHgiLCJtZW1vcnkiOiJkNS0zMi02MDAwIiwiZ3B1IjoicnR4LTUwOTAiLCJjb29sZXIiOiJhaW8tMzYwIiwiY2FzZSI6Im1lc2gtZnVsbCIsInBzdSI6InBzdS0xMjAwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMi1nZW41IiwiZ29hbCI6IjIxNjAiLCJtb2RlIjoiZ2FtaW5nIiwiYnVkZ2V0IjoiaGlnaCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="Open the Ultra Max Pro PC build"><span>See Full Build</span><span aria-hidden="true">→</span></a>
   </section>
   <section class="bento-card bento-guide bento-calculation bento-build-card">
