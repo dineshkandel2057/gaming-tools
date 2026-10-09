@@ -665,10 +665,18 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 
 
 /* Swap highlight colors between each build's component values and performance score */
-.hero-bento .bento-build-card:not(.bento-budget-card) .bento-stats-row .bento-stat-value{color:#70e4ac}
+.hero-bento .bento-build-card:not(.bento-budget-card) .bento-stats-row .bento-stat-value{color:#ffffff}
 .hero-bento .bento-build-card:not(.bento-budget-card) .bento-performance-score strong{color:#f5f7ff}
-.hero-bento .bento-budget-card .bento-stats-row .bento-stat-value{color:#ffd54a}
+.hero-bento .bento-budget-card .bento-stats-row .bento-stat-value{color:#ffffff}
 .hero-bento .bento-budget-card .bento-performance-score strong{color:#f5f7ff}
+
+
+/* Subtle neon gradient halo outside each PC build card border */
+.hero-bento .bento-card{position:relative;isolation:isolate;overflow:visible}
+.hero-bento .bento-card::before{content:"";position:absolute;z-index:-1;inset:-2px;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,rgba(167,139,250,.75),rgba(96,165,250,.55),rgba(129,140,248,.65));filter:blur(13px);opacity:.3}
+.hero-bento .bento-build-feature::before{opacity:.48;filter:blur(18px)}
+.hero-bento .bento-build-card::before{opacity:.34;filter:blur(12px)}
+@media(prefers-reduced-motion:reduce){.hero-bento .bento-card::before{filter:blur(8px)}}
 
 </style>
 
