@@ -210,41 +210,6 @@ h1,h2,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-
 .primary-button,.tool-button{background:linear-gradient(135deg,#765dff,#604be8);box-shadow:0 10px 30px rgba(91,71,225,.22);transition:transform .2s,filter .2s}
 .primary-button:hover,.tool-button:hover{background:linear-gradient(135deg,#8c75ff,#735eff);transform:translateY(-2px)}
 .secondary-button{border-color:var(--border);background:rgba(255,255,255,.025)}
-.hero-visual{position:relative;min-height:360px;border:1px solid rgba(157,174,204,.17);border-radius:28px;overflow:hidden;padding:22px;background:linear-gradient(145deg,rgba(27,34,54,.86),rgba(12,17,28,.78));box-shadow:0 24px 90px rgba(0,0,0,.28);backdrop-filter:blur(18px)}
-.hero-visual:before{content:"";position:absolute;width:260px;height:260px;right:7%;top:0;border-radius:50%;background:rgba(112,83,255,.2);filter:blur(80px)}
-.hero-bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(150px,1fr) minmax(132px,1fr);gap:14px;min-height:390px;padding:18px;overflow:visible;align-content:stretch}
-.hero-bento:before{pointer-events:none}
-.bento-card{position:relative;min-width:0;min-height:0;padding:22px;border:1px solid rgba(157,174,204,.15);border-radius:20px;background:linear-gradient(145deg,rgba(29,35,50,.88),rgba(14,19,30,.92));box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 16px 40px rgba(0,0,0,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;transition:border-color .22s ease,transform .22s ease,box-shadow .22s ease,background .22s ease}
-.bento-card:after{content:"";position:absolute;width:150px;height:150px;right:-70px;top:-75px;border-radius:50%;background:rgba(112,83,255,.13);filter:blur(48px);pointer-events:none}
-.bento-index{grid-column:1/-1;justify-content:space-between;padding:30px 32px;transform:scale(1.015);border-color:rgba(168,85,247,.42);box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);}.bento-guide,.bento-engine{text-decoration:none}
-.bento-guide:hover,.bento-guide:focus-visible{transform:translateY(-2px);border-color:rgba(161,139,255,.42);background:linear-gradient(145deg,rgba(37,40,69,.9),rgba(14,19,30,.94));box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 18px 44px rgba(0,0,0,.22),0 0 28px rgba(115,93,255,.08);outline:none}
-.bento-engine{border-color:rgba(77,220,155,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 16px 40px rgba(0,0,0,.18),0 0 28px rgba(63,214,150,.08)}
-.bento-engine:after{background:rgba(63,214,150,.13)}
-.bento-label{position:relative;z-index:1;color:#929eb3;font-size:9px;font-weight:800;letter-spacing:.14em;line-height:1.35;text-transform:uppercase}
-.bento-metric{position:relative;z-index:1;display:block;margin-top:12px;color:#fff;font-size:clamp(22px,2.25vw,31px);line-height:1.12;letter-spacing:-.035em}
-.bento-index .bento-label{text-align:center;font-size:11px}
-.bento-index .bento-metric{text-align:center}
-.bento-hardware-link{cursor:pointer;text-decoration:none;transition:color .22s ease,text-shadow .22s ease,transform .22s ease}
-.bento-hardware-link:hover,.bento-hardware-link:focus-visible{color:#b8a4ff;text-shadow:0 0 22px rgba(168,85,247,.45);transform:translateY(-1px);outline:none}
-.bento-full-build-button{position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;align-self:flex-end;margin-top:auto;min-width:0;max-width:100%;padding:10px 16px;border:1px solid rgba(168,85,247,.42);border-radius:10px;background:linear-gradient(135deg,rgba(115,93,255,.9),rgba(63,132,255,.82));color:#fff;font-size:11px;font-weight:800;line-height:1;text-decoration:none;letter-spacing:.025em;box-shadow:0 8px 22px rgba(91,71,225,.2);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;overflow:hidden;overflow-wrap:anywhere;word-break:break-word}
-.bento-full-build-button:hover,.bento-full-build-button:focus-visible{transform:translateY(-2px);box-shadow:0 12px 28px rgba(91,71,225,.3),0 0 22px rgba(168,85,247,.2);filter:brightness(1.08);outline:none}
-.bento-submetrics{position:relative;z-index:1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:12px;border-top:1px solid rgba(157,174,204,.12);color:#aeb8c9;font-size:10px;font-weight:700;letter-spacing:.035em}
-.bento-snapshot-badge{position:relative;z-index:1;display:inline-flex;align-self:flex-start;margin-top:auto;padding:8px 11px;border:1px solid rgba(161,139,255,.24);border-radius:9px;background:rgba(115,93,255,.12);color:#cfc5ff;font-size:10px;font-weight:700;line-height:1.35;letter-spacing:.025em}
-.bento-bottleneck{position:relative;z-index:1;margin-top:auto;color:#62e4a3;font-size:clamp(23px,2.5vw,34px);font-weight:900;line-height:1.05;letter-spacing:-.045em;text-shadow:0 0 24px rgba(76,222,155,.14)}
-.bento-calculation-detail{position:relative;z-index:1;margin-top:8px;color:#f1f4f9;font-size:10px;font-weight:400;line-height:1.45;letter-spacing:.025em}
-.bento-action{color:inherit}
-.bento-action:after{background:linear-gradient(135deg,rgba(123,91,255,.32),rgba(56,173,255,.22));filter:blur(34px)}
-.bento-action:hover,.bento-action:focus-visible{transform:translateY(-3px);border-color:rgba(151,188,255,.58);background:linear-gradient(135deg,rgba(113,78,236,.94),rgba(39,143,224,.9));box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 22px 50px rgba(0,0,0,.3),0 0 38px rgba(103,119,255,.22);outline:none}
-.bento-action-link{position:relative;z-index:1;display:block;margin-top:auto;color:#fff;font-size:clamp(19px,2vw,25px);font-weight:900;line-height:1.15;letter-spacing:-.03em;text-shadow:0 3px 16px rgba(0,0,0,.25)}
-.bento-action-link span{display:inline-block;color:#e7f5ff;transition:transform .2s ease}.bento-action:hover .bento-action-link span{transform:translateX(4px)}
-.bento-action .bento-label{color:rgba(255,255,255,.72)}
-
-.bento-guide-title{position:relative;z-index:1;margin-top:auto;color:#f4f6fb;font-size:clamp(15px,1.55vw,19px);font-weight:800;line-height:1.35;letter-spacing:-.02em}
-.bento-guide-title span{color:#a18bff;transition:transform .2s ease,color .2s ease;display:inline-block}.bento-guide:hover .bento-guide-title span{color:#70c9ff;transform:translateX(3px)}
-.bento-status{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;margin-top:auto;width:max-content;max-width:100%;padding:9px 11px;border:1px solid rgba(77,220,155,.28);border-radius:10px;background:rgba(20,53,42,.3);color:#dffcef;font-size:12px;font-weight:800;line-height:1.3;box-shadow:0 0 20px rgba(63,214,150,.08)}
-.bento-status span{color:#70e2ac}
-@media(max-width:800px){.hero-bento{min-height:350px;grid-template-rows:minmax(140px,1fr) minmax(120px,1fr);padding:15px;gap:12px}.bento-card{padding:18px;border-radius:17px}.bento-metric{font-size:24px}}
-@media(max-width:480px){.hero-bento{min-height:326px;grid-template-rows:minmax(128px,1fr) minmax(112px,1fr);gap:10px;padding:12px}.bento-card{padding:15px;border-radius:15px;min-width:0;max-width:100%;overflow:hidden;word-break:break-word;overflow-wrap:anywhere}.bento-label{font-size:8px;max-width:100%}.bento-metric{font-size:20px;min-width:0;max-width:100%}.bento-submetrics{font-size:9px;gap:6px;margin-top:12px;padding-top:10px}.bento-guide-title{font-size:14px}.bento-status{font-size:11px;padding:8px 9px}.bento-full-build-button{min-width:0;max-width:100%;overflow:hidden;word-break:break-word;overflow-wrap:anywhere}}
 .visual-top{position:relative;display:flex;justify-content:space-between;align-items:center;color:#9baac2;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 .live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#50e0a0;margin-right:7px;box-shadow:0 0 14px #50e0a0}
 .visual-components{position:relative;display:grid;grid-template-columns:.8fr 1.2fr;gap:16px;align-items:center;margin-top:26px}
@@ -262,8 +227,8 @@ h1,h2,h3,.logo{font-family:"Space Grotesk","DM Sans",sans-serif;letter-spacing:-
 .tool-icon{width:48px;height:48px;background:rgba(126,105,255,.14);border:1px solid rgba(151,132,255,.2);border-radius:14px}
 .tool-card h3{font-size:20px;letter-spacing:-.025em}.tool-card p{line-height:1.75}.coming-card{opacity:.82}
 footer{border-color:var(--border);color:#8895aa}:focus-visible{outline:2px solid #9b8aff;outline-offset:3px}
-@media(max-width:800px){.home{padding-top:48px}.hero{grid-template-columns:1fr;gap:32px;text-align:center}.hero-copy{margin:0 auto}.hero p{font-size:16px}.hero-buttons{justify-content:center}.hero-visual{min-height:320px}.visual-components{gap:10px}.component-illustration{min-height:180px}.tools{margin-top:66px}}
-@media(max-width:480px){.hero h1{font-size:41px}.hero-visual{padding:15px;min-height:294px;border-radius:20px}.visual-components{grid-template-columns:.9fr 1.1fr;margin-top:18px}.component-illustration{min-height:160px}.brand-strip{gap:6px}.brand-chip{font-size:9px;padding:6px 8px}.tool-card{padding:20px}}
+@media(max-width:800px){.home{padding-top:48px}.hero{grid-template-columns:1fr;gap:32px;text-align:center}.hero-copy{margin:0 auto}.hero p{font-size:16px}.hero-buttons{justify-content:center}.visual-components{gap:10px}.component-illustration{min-height:180px}.tools{margin-top:66px}}
+@media(max-width:480px){.hero h1{font-size:41px}.visual-components{grid-template-columns:.9fr 1.1fr;margin-top:18px}.component-illustration{min-height:160px}.brand-strip{gap:6px}.brand-chip{font-size:9px;padding:6px 8px}.tool-card{padding:20px}}
 
 .tools-group-heading{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:7px 0 -5px;padding:11px 14px;border:1px solid rgba(157,174,204,.14);border-radius:12px;background:rgba(13,18,29,.6);color:#f2f5fd;font-weight:800}.tools-group-heading small{color:#96a3b9;font-size:11px;font-weight:500}.tools-group-heading.soon{margin-top:20px}
 
@@ -486,42 +451,6 @@ body.page-leave{animation:none;opacity:0;filter:blur(2px);transform:translateY(5
   .sfp-ambient-bg .sfp-streak{animation:none}
 }
 
-
-
-/* ================= REQUESTED HOMEPAGE POLISH ================= */
-.hero-bento .bento-card{padding:24px;text-align:left}
-.hero-bento .bento-label{display:block;color:#929eb3;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;line-height:1.35;text-align:left;overflow-wrap:normal;word-break:normal}
-.hero-bento .bento-metric{margin-top:0;font-family:"Space Grotesk",sans-serif;font-size:clamp(22px,2.3vw,30px);font-weight:600;line-height:1.15;letter-spacing:-.035em;text-align:left;overflow-wrap:normal;word-break:normal}
-.bento-index{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;grid-template-areas:"label button" "metric button";align-items:center;column-gap:24px;row-gap:10px;justify-content:initial;transform:none}
-.bento-index .bento-label{grid-area:label;text-align:left}
-.bento-index .bento-metric{grid-area:metric;min-width:0}
-.bento-index .bento-full-build-button{grid-area:button;align-self:center;justify-self:end;margin-top:0;white-space:nowrap;overflow-wrap:normal;word-break:normal}
-.bento-calculation{gap:0}
-.bento-calculation .bento-bottleneck{margin-top:8px;font-family:"Space Grotesk",sans-serif;font-size:clamp(20px,1.9vw,26px);font-weight:700;line-height:1.1;letter-spacing:-.025em;text-transform:uppercase;white-space:normal;overflow-wrap:normal;word-break:normal;color:#62e4a3}
-.bento-stats-row{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0;margin-top:12px}
-.bento-stat{display:flex;flex-direction:column;gap:2px;min-width:0}
-.bento-stat-label{color:#8996aa;font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;line-height:1.35;letter-spacing:.04em;text-transform:uppercase;overflow-wrap:normal;word-break:normal}
-.bento-stat-value{color:#f1f4f9;font-family:"DM Sans",sans-serif;font-size:15px;font-weight:700;line-height:1.35;letter-spacing:0;overflow-wrap:normal;word-break:normal}
-.bento-calculation-link{position:relative;z-index:1;display:inline-block;align-self:flex-start;margin-top:auto;padding-top:12px;color:#b9aaff;font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;line-height:1.4;text-decoration:none}
-.bento-calculation-link:hover,.bento-calculation-link:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.bento-action-link{font-family:"Space Grotesk",sans-serif;font-size:clamp(18px,1.8vw,23px);font-weight:700;line-height:1.15;letter-spacing:-.025em}
-.bento-action-last{white-space:nowrap}
-.bento-action .bento-label{color:#929eb3}
-@media(max-width:800px){
-  .bento-index{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px;grid-column:1/-1;transform:none}
-  .bento-index .bento-full-build-button{align-self:flex-start;justify-self:auto;margin-top:4px}
-}
-@media(max-width:520px){
-  .hero-bento{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;min-height:0;align-content:start}
-  .hero-bento .bento-card{min-width:0;max-width:100%;overflow:hidden}
-  .bento-index{grid-column:1;min-height:0}
-  .bento-calculation{min-height:0}
-  .bento-calculation .bento-bottleneck{font-size:clamp(20px,5.6vw,26px)}
-  .bento-stats-row{gap:12px}
-  .bento-action{min-height:118px}
-  .bento-action-link{font-size:clamp(18px,5vw,23px)}
-}
-
 /* Decision-card icons */
 .homepage-guide-item:hover{transform:translateY(-1px)}
 .homepage-guide-icon{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;margin-bottom:14px;border:1px solid rgba(157,139,255,.25);border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.10);transition:transform .22s ease}
@@ -601,50 +530,54 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   .seo-hub{padding:42px 16px}
   .seo-hub-grid{grid-template-columns:minmax(0,1fr);gap:24px}
 }
+@keyframes sfpRgbFlow{to{background-position:300% 0}}
 
 
-/* User-requested hero card layout: only top/action cards and shared grid sizing */
-.hero-bento{grid-template-rows:auto auto;min-height:0;align-content:start}
-.hero-bento .bento-index,.hero-bento .bento-action{min-height:0;margin-top:0;justify-content:initial}
-.hero-bento .bento-index{padding:26px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px}
-.bento-trend-label{display:flex;align-items:center;justify-content:center;gap:9px;max-width:100%;font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:800;letter-spacing:.14em;line-height:1.35;text-align:center;text-transform:uppercase}
-.bento-trend-emoji{flex:0 0 auto;color:initial;background:none;filter:none;-webkit-text-fill-color:initial}
-.bento-rgb-text{background:linear-gradient(90deg,#ff4d6d,#ffb84d,#5cff9d,#4dc3ff,#9d6bff,#ff4d6d);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:sfpRgbFlow 6s linear infinite;filter:drop-shadow(0 0 6px rgba(157,107,255,.55)) drop-shadow(0 0 14px rgba(77,195,255,.35))}
+/* Neon hardware snapshot dashboard */
+.hero-visual{position:relative;min-width:0;min-height:0;padding:16px;border:1.5px solid transparent;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,#0e1430,#070b1a) padding-box,linear-gradient(135deg,#8b5cf6,#3b82f6,#8b5cf6) border-box;box-shadow:0 0 40px rgba(99,102,241,.28)}
+.hero-visual:before{pointer-events:none}
+.hero-bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto;gap:16px;padding:16px;border-radius:28px;min-height:0;align-content:start;align-items:stretch;background:linear-gradient(160deg,#0e1430,#070b1a) padding-box,linear-gradient(135deg,#8b5cf6,#3b82f6,#8b5cf6) border-box;box-shadow:0 0 40px rgba(99,102,241,.28)}
+.bento-card{position:relative;min-width:0;overflow:hidden;padding:24px;border:1.5px solid transparent;border-radius:22px;background:linear-gradient(160deg,#0e1430,#070b1a) padding-box,linear-gradient(135deg,rgba(139,92,246,.45),rgba(59,130,246,.38)) border-box;box-shadow:0 0 22px rgba(99,102,241,.16);display:flex;flex-direction:column;gap:14px;transition:transform .22s ease,box-shadow .22s ease}
+.bento-index{grid-column:1/-1;align-items:center;gap:18px;text-align:center;padding:26px 24px;background:linear-gradient(160deg,#0e1430,#070b1a) padding-box,linear-gradient(90deg,#a855f7,#6366f1,#38bdf8) border-box;box-shadow:0 0 28px rgba(139,92,246,.35)}
+.bento-trend-label{display:flex;align-items:center;justify-content:center;gap:10px;max-width:100%;font-family:"Space Grotesk",sans-serif;font-size:16px;font-weight:700;letter-spacing:.14em;line-height:1.35;text-transform:uppercase}
+.bento-trend-emoji{flex:none;background:none;filter:none;color:initial;-webkit-text-fill-color:initial}
+.bento-rgb-text{background:linear-gradient(90deg,#ff4d6d,#ffb84d,#5cff9d,#4dc3ff,#9d6bff,#ff4d6d);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:sfpRgbFlow 6s linear infinite;filter:drop-shadow(0 0 6px rgba(157,107,255,.55)) drop-shadow(0 0 14px rgba(77,195,255,.35)}
 @keyframes sfpRgbFlow{to{background-position:300% 0}}
 @media(prefers-reduced-motion:reduce){.bento-rgb-text{animation:none}}
-.bento-hardware-pair{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;min-width:0}
-.bento-hardware-tile{flex:1 1 0;min-width:0;box-sizing:border-box;display:grid;grid-template-columns:40px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:12px;row-gap:4px;padding:14px 18px;border:1px solid rgba(167,139,250,.28);border-radius:16px;background:linear-gradient(145deg,rgba(84,61,150,.22),rgba(15,21,34,.9));text-align:left}
-.bento-hardware-icon,.bento-action-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:rgba(255,255,255,.045)}
-.bento-hardware-icon{grid-column:1;grid-row:1/3;color:#b7a2ff}
-.bento-hardware-icon svg,.bento-action-icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.bento-hardware-caption{grid-column:2;min-width:0;color:#c9bbff;font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;line-height:1.3;text-transform:uppercase;white-space:normal;overflow-wrap:anywhere}
-.bento-hardware-name{grid-column:2;min-width:0;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:clamp(20px,2.1vw,26px);font-weight:700;line-height:1.15;letter-spacing:-.025em;overflow-wrap:anywhere;word-break:normal}
-.bento-gpu-tile{border-color:rgba(99,199,255,.28);background:linear-gradient(145deg,rgba(37,104,145,.24),rgba(15,21,34,.9))}
-.bento-gpu-tile .bento-hardware-caption{color:#9fe0ff}
-.bento-gpu-tile .bento-hardware-icon{color:#7bd5ff}
-.bento-plus-badge{flex:0 0 34px;width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(157,139,255,.4);border-radius:50%;background:linear-gradient(135deg,rgba(115,93,255,.5),rgba(63,132,255,.4));box-shadow:0 0 18px rgba(115,93,255,.35);color:#fff;font-family:"Space Grotesk",sans-serif;font-size:18px;font-weight:700}
-.bento-index .bento-full-build-button{align-self:center;margin-top:0;padding:11px 20px;font-size:12.5px;white-space:nowrap}
-.hero-bento .bento-action{padding:24px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;text-align:left}
-.hero-bento .bento-action .bento-label{margin:0}
-.bento-action-icon{flex:0 0 40px;color:#b8aaff}
-.bento-action-link{display:block;margin:0;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:clamp(19px,1.9vw,24px);font-weight:700;line-height:1.15;letter-spacing:-.025em}
-.bento-action-help{color:#aab5c8;font-family:"DM Sans",sans-serif;font-size:12.5px;font-weight:500;line-height:1.55}
-.bento-action-button{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;margin-top:auto;padding:10px 16px;border:1px solid rgba(255,255,255,.22);border-radius:10px;background:rgba(255,255,255,.14);color:#fff;font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;line-height:1.3;white-space:nowrap}
-@media(max-width:800px){
-  .hero-bento{grid-template-rows:auto auto;min-height:0;align-content:start}
-  .bento-hardware-pair{flex-direction:column;gap:8px}
-  .bento-hardware-tile{width:100%;flex:0 0 auto}
-  .bento-plus-badge{flex-basis:34px}
-}
-@media(max-width:480px){
-  .hero-bento{grid-template-rows:auto auto;min-height:0;align-content:start}
-  .hero-bento .bento-index{padding:26px 20px;gap:18px}
-  .bento-trend-label{font-size:13px;letter-spacing:.1em;gap:7px;flex-wrap:wrap}
-  .bento-hardware-tile{padding:14px 12px;column-gap:10px;grid-template-columns:34px minmax(0,1fr)}
-  .bento-hardware-name{font-size:clamp(20px,5.4vw,24px);overflow-wrap:anywhere}
-  .hero-bento .bento-action{padding:24px}
-}
-
+.bento-matchup{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-width:0}
+.bento-part{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:12px;padding:16px;border:1.5px solid transparent;border-radius:18px;background:linear-gradient(145deg,rgba(84,61,150,.28),rgba(10,14,32,.95)) padding-box,linear-gradient(135deg,#a78bfa,#6d5dfc) border-box;box-shadow:0 0 20px rgba(139,92,246,.14);text-align:left}
+.bento-part-gpu{background:linear-gradient(145deg,rgba(37,104,145,.3),rgba(10,14,32,.95)) padding-box,linear-gradient(135deg,#38bdf8,#3b82f6) border-box;box-shadow:0 0 20px rgba(56,189,248,.14)}
+.bento-part-icon{flex:0 0 46px;width:46px;height:46px;border:1px solid rgba(255,255,255,.14);border-radius:13px;display:grid;place-items:center;background:rgba(255,255,255,.05);color:#b7a2ff}
+.bento-part-gpu .bento-part-icon{color:#7bd5ff}
+.bento-part-icon svg,.bento-action-icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.bento-part-text{display:block;min-width:0;text-align:left}
+.bento-part-text small{display:block;color:#c9bbff;font-family:"DM Sans",sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.1em;line-height:1.35;text-transform:uppercase}
+.bento-part-gpu .bento-part-text small{color:#9fe0ff}
+.bento-part-text strong{display:block;margin-top:4px;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:clamp(18px,1.9vw,24px);font-weight:700;line-height:1.12;text-wrap:balance;overflow-wrap:anywhere}
+.bento-plus{flex:0 0 36px;width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(157,139,255,.45);border-radius:50%;background:linear-gradient(135deg,rgba(115,93,255,.6),rgba(63,132,255,.45));box-shadow:0 0 18px rgba(115,93,255,.4);color:#fff;font-family:"Space Grotesk",sans-serif;font-size:18px;font-weight:700}
+.bento-full-build-button{align-self:center;display:inline-flex;align-items:center;justify-content:center;gap:8px;max-width:100%;padding:12px 28px;border:1px solid rgba(147,197,253,.5);border-radius:999px;background:linear-gradient(90deg,#7c5cff,#3b82f6);box-shadow:0 0 22px rgba(99,102,241,.55);color:#fff;font-family:"DM Sans",sans-serif;font-size:14px;font-weight:700;line-height:1.25;text-decoration:none;white-space:nowrap;transition:transform .2s ease,box-shadow .2s ease}
+.bento-full-build-button:hover,.bento-full-build-button:focus-visible{transform:translateY(-2px);box-shadow:0 0 28px rgba(99,102,241,.7);outline:none}
+.bento-guide,.bento-engine{text-decoration:none}
+.bento-calculation{gap:0;border-color:transparent;background:linear-gradient(160deg,#0e1430,#070b1a) padding-box,linear-gradient(160deg,#34d399,#8b5cf6) border-box;box-shadow:0 0 22px rgba(52,211,153,.18)}
+.bento-calculation .bento-label{display:flex;align-items:center;gap:8px}
+.bento-bottleneck{position:relative;z-index:1;margin-top:8px;color:#62e4a3;font-size:clamp(20px,1.9vw,26px);font-weight:700;line-height:1.1;letter-spacing:-.025em;text-transform:uppercase}
+.bento-stats-row{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0;margin-top:12px}
+.bento-stat{display:flex;flex-direction:column;gap:2px;min-width:0}
+.bento-stat-label{color:#8996aa;font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;line-height:1.35;letter-spacing:.04em;text-transform:uppercase}
+.bento-stat-value{color:#f1f4f9;font-family:"DM Sans",sans-serif;font-size:15px;font-weight:700;line-height:1.35}
+.bento-calculation-link{position:relative;z-index:1;display:inline-block;align-self:flex-start;margin-top:auto;padding-top:16px;border-top:1px solid rgba(157,174,204,.16);color:#b9aaff;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;line-height:1.4;text-decoration:none}
+.bento-calculation-link:hover,.bento-calculation-link:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.bento-action{color:inherit;align-items:flex-start;gap:14px;border-color:transparent;background:linear-gradient(160deg,#0e1430,#070b1a) padding-box,linear-gradient(200deg,#3b82f6,#8b5cf6) border-box;box-shadow:0 0 22px rgba(99,102,241,.3)}
+.bento-action:hover,.bento-action:focus-visible{transform:translateY(-3px);box-shadow:0 0 32px rgba(99,102,241,.48);outline:none}
+.bento-action .bento-label{color:#93a9d6;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.bento-action-icon{width:52px;height:52px;flex:0 0 52px;border:1px solid rgba(255,255,255,.14);border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.05);color:#b8aaff}
+.bento-action-link{display:block;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:clamp(22px,2.2vw,28px);font-weight:700;line-height:1.15}
+.bento-action-text{color:#aab5c8;font-family:"DM Sans",sans-serif;font-size:13.5px;font-weight:500;line-height:1.6}
+.bento-action-cta{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;padding:13px 18px;border:1px solid rgba(139,92,246,.5);border-radius:14px;background:rgba(255,255,255,.08);color:#fff;font-family:"DM Sans",sans-serif;font-size:14px;font-weight:700;line-height:1.3;white-space:nowrap}
+.bento-action-cta span{white-space:nowrap}
+@media(max-width:800px){.hero-visual{width:100%;box-sizing:border-box}.hero-bento{grid-template-rows:auto auto;align-content:start}.bento-matchup{gap:8px}.bento-part{padding:12px;gap:9px}.bento-part-icon{flex-basis:40px;width:40px;height:40px}}
+@media(max-width:560px){.hero-bento{grid-template-columns:minmax(0,1fr)}.bento-index{grid-column:1}.bento-calculation,.bento-action{min-height:0}}
+@media(max-width:480px){.hero-visual{padding:10px;border-radius:22px}.hero-bento{padding:10px;gap:12px;border-radius:22px}.bento-card{padding:18px}.bento-index{padding:22px 18px}.bento-trend-label{font-size:13px;letter-spacing:.1em;gap:8px;flex-wrap:wrap}.bento-matchup{flex-direction:column;gap:10px}.bento-part{width:100%;box-sizing:border-box;padding:14px}.bento-plus{flex-basis:36px}.bento-part-text strong{font-size:clamp(18px,5.4vw,22px)}.bento-action-cta{white-space:normal}}
 </style>
 
 <meta property="og:url" content="https://systemfitpc.vercel.app/">
@@ -760,42 +693,31 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   <h3>FPS Calculator</h3><p>Estimate gaming FPS based on your hardware, resolution and target settings.</p><div class="tool-card-footer"><span class="tool-meta">FPS estimate</span><span class="tool-button">Open FPS Calculator <span aria-hidden="true">→</span></span></div>
 </a>
 <a href="upgrade-advisor.html" class="tool-card upgrade-tool-card" data-sfp-reveal>
-  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="13" y="18" width="38" height="30" rx="6"/><path d="M25 18v-7h14v7M32 29v15M25 37l7 7 7-7"/><path d="M20 54h24"/></svg></div><span class="tool-status">Upgrade</span></div>
-  <h3>PC Upgrade Advisor</h3><p>Find the component most worth upgrading for your current gaming setup.</p><div class="tool-card-footer"><span class="tool-meta">Upgrade path</span><span class="tool-button">Open Upgrade Advisor <span aria-hidden="true">→</span></span></div>
-</a>
-<a href="game-settings.html" class="tool-card game-tool-card" data-sfp-reveal>
-  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M17 23h30c7 0 11 6 11 14l-3 13c-1 5-7 6-10 2l-7-8H26l-7 8c-3 4-9 3-10-2L6 37c0-8 4-14 11-14z"/><path d="M18 31v10M13 36h10M42 33h.5M48 39h.5"/></svg></div><span class="tool-status">Optimize</span></div>
-  <h3>Game Settings Optimizer</h3><p>Get a practical graphics preset and settings priorities for your hardware and target.</p><div class="tool-card-footer"><span class="tool-meta">Game settings</span><span class="tool-button">Open Optimizer <span aria-hidden="true">→</span></span></div>
-</a>
-<div class="tools-group-heading soon"><span>Coming soon</span><small>More tools are on the way</small></div>
-<div class="tool-card coming-card power-tool-card" data-sfp-reveal>
-  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="14" y="9" width="36" height="46" rx="7"/><path d="M32 18v10M26 23h12M22 37h20M25 44h14"/></svg></div><span class="tool-status">Planned</span></div>
-  <h3>PSU &amp; Power Calculator</h3><p>Estimate system power requirements and explore an appropriate PSU capacity.</p><div class="tool-card-footer"><span class="tool-meta">System wattage</span><span class="tool-button">Coming Soon</span></div>
-</div>
-<div class="tool-card coming-card cpu-tool-card" data-sfp-reveal>
-  <div class="tool-card-top"><div class="tool-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="14" y="14" width="36" height="36" rx="7"/><rect x="23" y="23" width="18" height="18" rx="3"/><path d="M23 6v8M32 6v8M41 6v8M23 50v8M32 50v8M41 50v8M6 23h8M6 32h8M6 41h8M50 23h8M50 32h8M50 41h8"/></svg></div><span class="tool-status">Planned</span></div>
-  <h3>CPU Comparison Tool</h3><p>Compare processors and understand their relative gaming performance.</p><div class="tool-card-footer"><span class="tool-meta">CPU lineup</span><span class="tool-button">Coming Soon</span></div>
-</div>
-</div>
-</section>
-
-<section class="guides-showcase" data-sfp-reveal id="guides" aria-labelledby="guides-title">
-  <div class="section-title">
-    <h2 id="guides-title">PC Guides</h2>
-    <p>Understand your hardware and make more confident upgrade decisions.</p>
+  <div<div class="hero-visual hero-bento" aria-label="SystemFit PC hardware snapshot">
+  <div class="bento-card bento-index">
+    <div class="bento-trend-label"><span class="bento-trend-emoji" aria-hidden="true">🔥</span><span class="bento-rgb-text">TRENDING MATCHUP CHECK</span></div>
+    <div class="bento-matchup" role="group" aria-label="Ryzen 7 7800X3D plus RTX 4080 Super">
+      <div class="bento-part bento-part-cpu"><span class="bento-part-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="13" y="13" width="38" height="38" rx="8"/><rect x="21" y="21" width="22" height="22" rx="4"/><path d="M25 5v8M32 5v8M39 5v8M25 51v8M32 51v8M39 51v8M5 25h8M5 32h8M5 39h8M51 25h8M51 32h8M51 39h8"/><path d="M27 28h10M27 34h7"/></svg></span><span class="bento-part-text"><small>AMD · CPU</small><strong>Ryzen 7 7800X3D</strong></span></div>
+      <span class="bento-plus" aria-hidden="true">+</span>
+      <div class="bento-part bento-part-gpu"><span class="bento-part-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="9" y="16" width="46" height="32" rx="6"/><circle cx="25" cy="32" r="9"/><path d="M25 25l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M39 24h9M39 31h9M39 38h6M55 25h4v14h-4M15 48v7h34v-7"/></svg></span><span class="bento-part-text"><small>NVIDIA · GPU</small><strong>RTX 4080 Super</strong></span></div>
+    </div>
+    <a class="bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy03ODAweDNkIiwiZ3B1IjoiZ3B1LWdlZm9yY2UtcnR4LTQwODAtc3VwZXIiLCJnb2FsIjoiMTQ0MCIsIm1vZGUiOiJnYW1pbmciLCJidWRnZXQiOiJiYWxhbmNlZCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="See full Ryzen 7 7800X3D and RTX 4080 Super build"><span>See Full Build</span><span aria-hidden="true">→</span></a>
   </div>
-  <div class="guides-carousel" data-guides-carousel>
-    <button class="guide-arrow guide-arrow-prev" type="button" aria-label="Previous article">‹</button>
-    <div class="guides-stage" aria-live="polite"></div>
-    <button class="guide-arrow guide-arrow-next" type="button" aria-label="Next article">›</button>
-    <div class="guide-dots" aria-label="Choose an article"></div>
-  </div>
-  </nav>
-</section><section class="homepage-guide" aria-labelledby="systemfit-decisions-title">
-  <div class="homepage-guide-card">
-    <div class="homepage-guide-head">
-      <h2 id="systemfit-decisions-title">Make Better PC Decisions</h2>
-      <p>SystemFit PC is built around the questions that matter before you buy, build or upgrade. Start with your goal, check the hardware that affects it, then use the tools and guides to make a more informed decision.</p>
+  <div class="bento-card bento-guide bento-calculation">
+      <span class="bento-label"><svg width="18" height="16" viewBox="0 0 18 16" aria-hidden="true"><rect x="1" y="8" width="4" height="7" rx="1" fill="#fb923c"/><rect x="7" y="4" width="4" height="11" rx="1" fill="#34d399"/><rect x="13" y="1" width="4" height="14" rx="1" fill="#60a5fa"/></svg> EXAMPLE RESULT</span>
+      <strong class="bento-bottleneck" id="bottleneck-status">GPU BOTTLENECK</strong>
+      <div class="bento-stats-row" id="bottleneck-settings">
+        <div class="bento-stat"><span class="bento-stat-label">Balance</span><strong class="bento-stat-value">58/100</strong></div>
+        <div class="bento-stat"><span class="bento-stat-label">Capacity</span><strong class="bento-stat-value">106 FPS</strong></div>
+      </div>
+      <div class="bento-stats-row" id="bottleneck-flow">
+        <div class="bento-stat"><span class="bento-stat-label">CPU pressure</span><strong class="bento-stat-value">55%</strong></div>
+        <div class="bento-stat"><span class="bento-stat-label">GPU pressure</span><strong class="bento-stat-value">78%</strong></div>
+      </div>
+      <a class="bento-calculation-link" href="bottleneck.html">Run your own setup →</a>
+    </div>
+  <a class="bento-card bento-engine bento-action" href="bottleneck.html" aria-label="Test your setup with the Bottleneck Calculator"><span class="bento-label">OPEN THE CALCULATOR</span><span class="bento-action-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="13" y="13" width="38" height="38" rx="8"/><rect x="21" y="21" width="22" height="22" rx="4"/><path d="M25 5v8M32 5v8M39 5v8M25 51v8M32 51v8M39 51v8M5 25h8M5 32h8M5 39h8M51 25h8M51 32h8M51 39h8"/><path d="M27 28h10M27 34h7"/></svg></span><span class="bento-action-link">Test Your Setup</span><span class="bento-action-text">Pick your CPU, GPU and target FPS to see what limits your PC.</span><span class="bento-action-cta">Open Calculator <span aria-hidden="true">→</span></span></a>
+</div>e tools and guides to make a more informed decision.</p>
     </div>
     <div class="homepage-guide-grid">
       <a class="homepage-guide-item" href="fps-calculator.html">
