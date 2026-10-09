@@ -642,6 +642,13 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 @media(max-width:800px){.hero-bento{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-bento .bento-build-feature{grid-column:1/-1}.hero-bento .bento-build-part{padding:12px}.hero-bento .bento-build-part strong{font-size:clamp(16px,2.2vw,20px)}}
 @media(max-width:560px){.hero-bento{grid-template-columns:minmax(0,1fr)}.hero-bento .bento-build-feature{grid-column:1}.hero-bento .bento-build-pair{flex-direction:column}.hero-bento .bento-build-plus{align-self:center}.hero-bento .bento-build-card{min-height:0}}
 
+
+/* Replace build component summaries with practical gaming-performance estimates */
+.hero-bento .bento-performance-score{display:flex;flex-direction:column;gap:4px;color:#aab5c8;font:500 11px/1.4 "DM Sans",sans-serif}
+.hero-bento .bento-performance-label{color:#929eb3;font-size:9px;font-weight:800;letter-spacing:.1em}
+.hero-bento .bento-performance-score strong{color:#70e4ac;font:700 12px/1.35 "Space Grotesk",sans-serif}
+.hero-bento .bento-performance-score span:last-child{color:#aab5c8}
+
 </style>
 
 <meta property="og:url" content="https://systemfitpc.vercel.app/">
@@ -703,7 +710,7 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   <section class="bento-card bento-guide bento-calculation bento-build-card">
     <span class="bento-label">MID-RANGE BUILD</span><strong class="bento-bottleneck" id="bottleneck-status">Ryzen 5 7600 + RTX 5070</strong>
     <div class="bento-stats-row" id="bottleneck-settings"><div class="bento-stat"><span class="bento-stat-label">CPU</span><strong class="bento-stat-value">Ryzen 5 7600</strong></div><div class="bento-stat"><span class="bento-stat-label">GPU</span><strong class="bento-stat-value">RTX 5070 · 12GB</strong></div></div>
-    <div class="bento-build-detail" id="bottleneck-flow">32GB DDR5 · 2TB NVMe SSD · B650 motherboard</div>
+    <div class="bento-build-detail bento-performance-score" id="bottleneck-flow"><span class="bento-performance-label">EXPECTED GAMING PERFORMANCE</span><strong>1440p High · ~70 FPS AAA</strong><span>250+ FPS in esports titles</span></div>
     <a class="bento-calculation-link bento-build-button" href="build-planner.html?build=eyJjcHUiOiJyNS03NjAwIiwibW90aGVyYm9hcmQiOiJiNjUwLWF0eCIsIm1lbW9yeSI6ImQ1LTMyLTYwMDAiLCJncHUiOiJydHgtNTA3MCIsImNvb2xlciI6ImFpci0xODAiLCJjYXNlIjoiYWlyZmxvdy1taWQiLCJwc3UiOiJwc3UtODUwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMiIsImdvYWwiOiIxNDQwIiwibW9kZSI6ImdhbWluZyIsImJ1ZGdldCI6ImJhbGFuY2VkIiwid29ya2xvYWQiOiJHYW1pbmcifQ==" aria-label="Open the mid-range PC build">See Full Build →</a>
   </section>
   <section class="bento-card bento-guide bento-calculation bento-build-card bento-budget-card">
@@ -712,7 +719,7 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
       <div class="bento-stat"><span class="bento-stat-label">CPU</span><strong class="bento-stat-value">Ryzen 5 5600</strong></div>
       <div class="bento-stat"><span class="bento-stat-label">GPU</span><strong class="bento-stat-value">RX 7600 · 8GB</strong></div>
     </div>
-    <div class="bento-build-detail">16GB DDR4 · 1TB NVMe SSD · B550 motherboard</div>
+    <div class="bento-build-detail bento-performance-score"><span class="bento-performance-label">EXPECTED GAMING PERFORMANCE</span><strong>1080p High · ~70–110 FPS AAA</strong><span>180+ FPS in esports titles</span></div>
     <a class="bento-calculation-link bento-build-button" href="build-planner.html?build=eyJjcHUiOiJyNS01NjAwIiwibW90aGVyYm9hcmQiOiJiNTUwLW1hdHgiLCJtZW1vcnkiOiJkNC0xNiIsImdwdSI6InJ4LTc2MDAiLCJjb29sZXIiOiJhaXItMTIwIiwiY2FzZSI6ImJ1ZGdldC1hdHgiLCJwc3UiOiJwc3UtNjUwIiwic3RvcmFnZSI6Im52bWUtMSIsImdvYWwiOiIxMDgwIiwibW9kZSI6ImdhbWluZyIsImJ1ZGdldCI6InZhbHVlIiwid29ya2xvYWQiOiJHYW1pbmcifQ==" aria-label="Open the low-budget PC build">See Full Build →</a>
   </section>
 </div>
