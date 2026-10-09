@@ -611,6 +611,11 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 @keyframes sfpFireFlicker{0%{transform:rotate(-5deg) scale(1);filter:drop-shadow(0 0 3px rgba(255,117,24,.65)) drop-shadow(0 0 7px rgba(255,61,0,.35))}50%{transform:rotate(3deg) scale(1.08)}100%{transform:rotate(-2deg) scale(1.04);filter:drop-shadow(0 0 6px rgba(255,168,24,.9)) drop-shadow(0 0 12px rgba(255,61,0,.55))}}
 @media(prefers-reduced-motion:reduce){.hero-bento .bento-index .bento-rgb-text,.hero-bento .bento-index .bento-fire{animation:none}}
 
+
+/* Center and enlarge the trending title across the full top card */
+.hero-bento .bento-index{grid-template-areas:"label label" "metric button"}
+.hero-bento .bento-index .bento-trend-label{grid-column:1/-1;justify-self:stretch;width:100%;font-size:clamp(17px,1.45vw,19px);letter-spacing:.13em;text-align:center}
+
 </style>
 
 <meta property="og:url" content="https://systemfitpc.vercel.app/">
