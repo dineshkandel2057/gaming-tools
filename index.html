@@ -684,14 +684,14 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 .hero-bento .bento-build-feature .bento-build-pair{align-items:stretch;gap:12px}
 .hero-bento .bento-build-feature .bento-build-part{display:flex;flex-direction:column;justify-content:space-between;gap:10px;padding:13px 14px;min-height:126px;border-color:rgba(167,139,250,.34);background:linear-gradient(145deg,rgba(31,39,65,.86),rgba(10,15,30,.94))}
 .hero-bento .bento-build-feature .bento-build-part small{font-size:9px;letter-spacing:.15em;color:#aeb9d0}
-/* Reference-inspired layout: component names on the left, prominent hardware imagery on the right */
-.hero-bento .bento-build-feature .bento-build-product{display:flex;align-items:center;justify-content:space-between;gap:7px;min-width:0;flex:1}
-.hero-bento .bento-build-feature .bento-build-product img{display:block;flex:0 0 clamp(64px,9vw,112px);width:clamp(64px,9vw,112px);height:clamp(76px,10vw,112px);object-fit:contain;object-position:center;border-radius:10px;filter:drop-shadow(0 5px 12px rgba(0,0,0,.42))}
-.hero-bento .bento-build-feature .bento-build-product strong{display:block;flex:1;min-width:0;max-width:62%;color:#f7f8ff;font:700 clamp(14px,1.45vw,20px)/1.16 "Space Grotesk",sans-serif;overflow-wrap:anywhere}
+/* Reference-matched hardware rows: compact product image beside readable model name */
+.hero-bento .bento-build-feature .bento-build-product{display:flex;align-items:center;justify-content:flex-start;gap:8px;min-width:0;flex:1}
+.hero-bento .bento-build-feature .bento-build-product img{display:block;flex:0 0 clamp(48px,7vw,76px);width:clamp(48px,7vw,76px);height:clamp(48px,7vw,68px);object-fit:contain;object-position:center;border-radius:7px;filter:drop-shadow(0 4px 9px rgba(0,0,0,.38))}
+.hero-bento .bento-build-feature .bento-build-product strong{display:block;flex:1 1 0;min-width:0;max-width:none;color:#f7f8ff;font:700 clamp(13px,1.25vw,17px)/1.18 "Space Grotesk",sans-serif;overflow-wrap:normal;word-break:normal;hyphens:none}
 .hero-bento .bento-build-feature .bento-build-part-cpu{border-color:rgba(139,92,246,.55);background:linear-gradient(135deg,rgba(42,26,78,.76),rgba(10,15,30,.96))}
 .hero-bento .bento-build-feature .bento-build-part-gpu{border-color:rgba(56,189,248,.45);background:linear-gradient(135deg,rgba(11,39,59,.76),rgba(10,15,30,.96))}
 .hero-bento .bento-build-feature .bento-build-plus{flex:0 0 30px;width:30px;height:30px;align-self:center}
-@media(max-width:560px){.hero-bento .bento-build-feature .bento-build-product{gap:5px}.hero-bento .bento-build-feature .bento-build-product img{flex-basis:58px;width:58px;height:72px}.hero-bento .bento-build-feature .bento-build-product strong{font-size:clamp(12px,3vw,15px);max-width:65%}.hero-bento .bento-build-feature .bento-build-part{min-height:112px;padding:10px}}
+@media(max-width:560px){.hero-bento .bento-build-feature .bento-build-product{gap:6px}.hero-bento .bento-build-feature .bento-build-product img{flex-basis:48px;width:48px;height:56px}.hero-bento .bento-build-feature .bento-build-product strong{font-size:13px;line-height:1.18}.hero-bento .bento-build-feature .bento-build-part{min-height:112px;padding:10px}}
 
 </style>
 
@@ -751,12 +751,12 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
     <div class="bento-build-pair">
       <div class="bento-build-part bento-build-part-cpu">
         <small>AMD · CPU</small>
-        <div class="bento-build-product"><strong>AMD Ryzen 7 9800X3D</strong><img src="https://www.amd.com/content/dam/amd/en/images/pr-feed/1301653.png" alt="AMD Ryzen 7 9800X3D processor" loading="lazy"></div>
+        <div class="bento-build-product"><img src="https://www.amd.com/content/dam/amd/en/images/pr-feed/1301653.png" alt="AMD Ryzen 7 9800X3D processor" loading="lazy"><strong>AMD Ryzen 7 9800X3D</strong></div>
       </div>
       <span class="bento-build-plus" aria-hidden="true">+</span>
       <div class="bento-build-part bento-build-part-gpu">
         <small>NVIDIA · GPU</small>
-        <div class="bento-build-product"><strong>NVIDIA GeForce RTX 5090</strong><img src="https://iprsoftwaremedia.com/219/files/20250/202501271934/geforce-rtx-5090.jpg?download=true" alt="NVIDIA GeForce RTX 5090 graphics card" loading="lazy"></div>
+        <div class="bento-build-product"><img src="https://iprsoftwaremedia.com/219/files/20250/202501271934/geforce-rtx-5090.jpg?download=true" alt="NVIDIA GeForce RTX 5090 graphics card" loading="lazy"><strong>NVIDIA GeForce RTX 5090</strong></div>
       </div>
     </div>
     <a class="bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy05ODAweDNkIiwibW90aGVyYm9hcmQiOiJ4ODcwZS1hdHgiLCJtZW1vcnkiOiJkNS0zMi02MDAwIiwiZ3B1IjoicnR4LTUwOTAiLCJjb29sZXIiOiJhaW8tMzYwIiwiY2FzZSI6Im1lc2gtZnVsbCIsInBzdSI6InBzdS0xMjAwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMi1nZW41IiwiZ29hbCI6IjIxNjAiLCJtb2RlIjoiZ2FtaW5nIiwiYnVkZ2V0IjoiaGlnaCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="Open the Ultra Max Pro PC build"><span>See Full Build</span><span aria-hidden="true">→</span></a>
