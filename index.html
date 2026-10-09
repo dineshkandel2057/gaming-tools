@@ -602,6 +602,15 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   .seo-hub-grid{grid-template-columns:minmax(0,1fr);gap:24px}
 }
 
+
+/* Trending matchup label polish only */
+.hero-bento .bento-index .bento-trend-label{grid-area:label;display:flex;align-items:center;justify-content:center;gap:9px;width:100%;text-align:center;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:clamp(14px,1.2vw,16px);font-weight:700;letter-spacing:.12em;line-height:1.35;text-transform:uppercase}
+.hero-bento .bento-index .bento-rgb-text{display:inline-block;background:linear-gradient(90deg,#ff4d6d,#ffb84d,#5cff9d,#4dc3ff,#9d6bff,#ff4d6d);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 5px rgba(157,107,255,.45)) drop-shadow(0 0 10px rgba(77,195,255,.28));animation:sfpTrendRgbFlow 5s linear infinite}
+.hero-bento .bento-index .bento-fire{display:inline-block;flex:0 0 auto;font-size:1.15em;line-height:1;filter:drop-shadow(0 0 4px rgba(255,117,24,.8)) drop-shadow(0 0 9px rgba(255,61,0,.45));transform-origin:50% 85%;animation:sfpFireFlicker 1.15s ease-in-out infinite alternate}
+@keyframes sfpTrendRgbFlow{to{background-position:300% 0}}
+@keyframes sfpFireFlicker{0%{transform:rotate(-5deg) scale(1);filter:drop-shadow(0 0 3px rgba(255,117,24,.65)) drop-shadow(0 0 7px rgba(255,61,0,.35))}50%{transform:rotate(3deg) scale(1.08)}100%{transform:rotate(-2deg) scale(1.04);filter:drop-shadow(0 0 6px rgba(255,168,24,.9)) drop-shadow(0 0 12px rgba(255,61,0,.55))}}
+@media(prefers-reduced-motion:reduce){.hero-bento .bento-index .bento-rgb-text,.hero-bento .bento-index .bento-fire{animation:none}}
+
 </style>
 
 <meta property="og:url" content="https://systemfitpc.vercel.app/">
@@ -656,7 +665,7 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   </div>
   <div class="hero-visual hero-bento" aria-label="SystemFit PC hardware snapshot">
     <div class="bento-card bento-index">
-      <span class="bento-label">🔥 TRENDING MATCHUP CHECK</span>
+      <span class="bento-label bento-trend-label"><span class="bento-fire" aria-hidden="true">🔥</span><span class="bento-rgb-text">TRENDING MATCHUP CHECK</span></span>
       <span class="bento-metric">Ryzen 7 7800X3D + RTX 4080 Super</span>
       <a class="bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy03ODAweDNkIiwiZ3B1IjoiZ3B1LWdlZm9yY2UtcnR4LTQwODAtc3VwZXIiLCJnb2FsIjoiMTQ0MCIsIm1vZGUiOiJnYW1pbmciLCJidWRnZXQiOiJiYWxhbmNlZCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="See full Ryzen 7 7800X3D and RTX 4080 Super build"><span>See Full Build</span><span aria-hidden="true">→</span></a>
     </div>
