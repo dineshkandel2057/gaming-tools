@@ -616,6 +616,32 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 .hero-bento .bento-index{grid-template-areas:"label label" "metric button"}
 .hero-bento .bento-index .bento-trend-label{grid-column:1/-1;justify-self:stretch;width:100%;font-size:clamp(17px,1.45vw,19px);letter-spacing:.13em;text-align:center}
 
+
+/* Three curated builds: compact cards with complete planner presets */
+.hero-bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto;align-items:stretch;gap:12px;min-height:0;align-content:start}
+.hero-bento .bento-card{min-width:0;min-height:0;box-sizing:border-box;gap:12px;overflow:hidden}
+.hero-bento .bento-build-feature{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:22px 24px}
+.hero-bento .bento-build-feature .bento-trend-label{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;text-align:center;font-size:clamp(16px,1.35vw,19px);font-weight:700}
+.hero-bento .bento-build-pair{display:flex;align-items:stretch;justify-content:center;gap:10px;width:100%;min-width:0}
+.hero-bento .bento-build-part{flex:1 1 0;min-width:0;padding:14px 16px;border:1px solid rgba(157,139,255,.3);border-radius:15px;background:linear-gradient(145deg,rgba(84,61,150,.2),rgba(10,14,32,.72));text-align:left}
+.hero-bento .bento-build-part small{display:block;color:#aab5c8;font:700 10px "DM Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+.hero-bento .bento-build-part strong{display:block;color:#fff;font:700 clamp(17px,1.7vw,23px)/1.18 "Space Grotesk",sans-serif;overflow-wrap:anywhere}
+.hero-bento .bento-build-plus{align-self:center;display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border:1px solid rgba(157,139,255,.4);border-radius:50%;background:linear-gradient(135deg,rgba(115,93,255,.5),rgba(63,132,255,.4));color:#fff;font:700 18px "Space Grotesk",sans-serif}
+.hero-bento .bento-build-feature .bento-full-build-button{align-self:center;margin:0;justify-self:auto}
+.hero-bento .bento-build-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.hero-bento .bento-build-card .bento-bottleneck{font-size:clamp(17px,1.55vw,22px);line-height:1.16;overflow-wrap:anywhere}
+.hero-bento .bento-build-card .bento-stats-row{margin-top:2px;gap:8px}
+.hero-bento .bento-build-card .bento-stat-value{font-size:12px;overflow-wrap:anywhere}
+.hero-bento .bento-build-detail,.hero-bento .bento-build-specs{color:#aab5c8;font:500 12px/1.5 "DM Sans",sans-serif}
+.hero-bento .bento-build-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;margin-top:auto;padding:10px 14px;border:1px solid rgba(147,197,253,.4);border-radius:10px;background:linear-gradient(90deg,#7c5cff,#3b82f6);box-shadow:0 0 15px rgba(99,102,241,.2);color:#fff;font:700 12px "DM Sans",sans-serif;text-decoration:none;white-space:nowrap;transition:transform .2s ease,box-shadow .2s ease}
+.hero-bento .bento-build-button:hover,.hero-bento .bento-build-button:focus-visible{transform:translateY(-2px);box-shadow:0 0 22px rgba(99,102,241,.42);outline:2px solid rgba(167,139,250,.55);outline-offset:2px}
+.hero-bento .bento-budget-card{gap:12px}
+.hero-bento .bento-budget-card .bento-action-link{font-size:clamp(17px,1.55vw,22px);line-height:1.18;overflow-wrap:anywhere}
+.hero-bento .bento-budget-card .bento-action-cta{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;padding:10px 14px;border:1px solid rgba(147,197,253,.4);border-radius:10px;background:linear-gradient(90deg,#7c5cff,#3b82f6);box-shadow:0 0 15px rgba(99,102,241,.2);color:#fff;font:700 12px "DM Sans",sans-serif;text-decoration:none;white-space:nowrap}
+.hero-bento .bento-card:hover{transform:translateY(-2px);box-shadow:0 0 26px rgba(99,102,241,.25)}
+@media(max-width:800px){.hero-bento{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-bento .bento-build-feature{grid-column:1/-1}.hero-bento .bento-build-part{padding:12px}.hero-bento .bento-build-part strong{font-size:clamp(16px,2.2vw,20px)}}
+@media(max-width:560px){.hero-bento{grid-template-columns:minmax(0,1fr)}.hero-bento .bento-build-feature{grid-column:1}.hero-bento .bento-build-pair{flex-direction:column}.hero-bento .bento-build-plus{align-self:center}.hero-bento .bento-build-card{min-height:0}}
+
 </style>
 
 <meta property="og:url" content="https://systemfitpc.vercel.app/">
@@ -668,30 +694,24 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
       <a href="guides.html" class="secondary-button">Read PC Guides <span aria-hidden="true">→</span></a>
     </div>
   </div>
-  <div class="hero-visual hero-bento" aria-label="SystemFit PC hardware snapshot">
-    <div class="bento-card bento-index">
-      <span class="bento-label bento-trend-label"><span class="bento-fire" aria-hidden="true">🔥</span><span class="bento-rgb-text">TRENDING MATCHUP CHECK</span></span>
-      <span class="bento-metric">Ryzen 7 7800X3D + RTX 4080 Super</span>
-      <a class="bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy03ODAweDNkIiwiZ3B1IjoiZ3B1LWdlZm9yY2UtcnR4LTQwODAtc3VwZXIiLCJnb2FsIjoiMTQ0MCIsIm1vZGUiOiJnYW1pbmciLCJidWRnZXQiOiJiYWxhbmNlZCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="See full Ryzen 7 7800X3D and RTX 4080 Super build"><span>See Full Build</span><span aria-hidden="true">→</span></a>
-    </div>
-    <div class="bento-card bento-guide bento-calculation">
-      <span class="bento-label">📊 EXAMPLE RESULT</span>
-      <strong class="bento-bottleneck" id="bottleneck-status">GPU BOTTLENECK</strong>
-      <div class="bento-stats-row" id="bottleneck-settings">
-        <div class="bento-stat"><span class="bento-stat-label">Balance</span><strong class="bento-stat-value">58/100</strong></div>
-        <div class="bento-stat"><span class="bento-stat-label">Capacity</span><strong class="bento-stat-value">106 FPS</strong></div>
-      </div>
-      <div class="bento-stats-row" id="bottleneck-flow">
-        <div class="bento-stat"><span class="bento-stat-label">CPU pressure</span><strong class="bento-stat-value">55%</strong></div>
-        <div class="bento-stat"><span class="bento-stat-label">GPU pressure</span><strong class="bento-stat-value">78%</strong></div>
-      </div>
-      <a class="bento-calculation-link" href="bottleneck.html">Run your own setup →</a>
-    </div>
-    <a class="bento-card bento-engine bento-action" href="bottleneck.html" aria-label="Test your setup with the Bottleneck Calculator">
-      <span class="bento-label">OPEN THE CALCULATOR</span>
-      <span class="bento-action-link">Test Your <span class="bento-action-last">Setup&nbsp;<span aria-hidden="true">→</span></span></span>
-    </a>
-  </div>
+  <div class="hero-visual hero-bento" aria-label="Three recommended PC builds">
+  <section class="bento-card bento-index bento-build-feature">
+    <span class="bento-label bento-trend-label"><span class="bento-fire" aria-hidden="true">🔥</span><span class="bento-rgb-text">ULTRA MAX PRO BUILD</span></span>
+    <div class="bento-build-pair"><div class="bento-build-part"><small>CPU</small><strong>AMD Ryzen 7 9800X3D</strong></div><span class="bento-build-plus" aria-hidden="true">+</span><div class="bento-build-part"><small>GPU</small><strong>NVIDIA GeForce RTX 5090</strong></div></div>
+    <a class="bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy05ODAweDNkIiwibW90aGVyYm9hcmQiOiJ4ODcwZS1hdHgiLCJtZW1vcnkiOiJkNS0zMi02MDAwIiwiZ3B1IjoicnR4LTUwOTAiLCJjb29sZXIiOiJhaW8tMzYwIiwiY2FzZSI6Im1lc2gtZnVsbCIsInBzdSI6InBzdS0xMjAwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMi1nZW41IiwiZ29hbCI6IjIxNjAiLCJtb2RlIjoiZ2FtaW5nIiwiYnVkZ2V0IjoiaGlnaCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="Open the Ultra Max Pro PC build"><span>See Full Build</span><span aria-hidden="true">→</span></a>
+  </section>
+  <section class="bento-card bento-guide bento-calculation bento-build-card">
+    <span class="bento-label">MID-RANGE BUILD</span><strong class="bento-bottleneck" id="bottleneck-status">Ryzen 5 7600 + RTX 5070</strong>
+    <div class="bento-stats-row" id="bottleneck-settings"><div class="bento-stat"><span class="bento-stat-label">CPU</span><strong class="bento-stat-value">Ryzen 5 7600</strong></div><div class="bento-stat"><span class="bento-stat-label">GPU</span><strong class="bento-stat-value">RTX 5070 · 12GB</strong></div></div>
+    <div class="bento-build-detail" id="bottleneck-flow">32GB DDR5 · 2TB NVMe SSD · B650 motherboard</div>
+    <a class="bento-calculation-link bento-build-button" href="build-planner.html?build=eyJjcHUiOiJyNS03NjAwIiwibW90aGVyYm9hcmQiOiJiNjUwLWF0eCIsIm1lbW9yeSI6ImQ1LTMyLTYwMDAiLCJncHUiOiJydHgtNTA3MCIsImNvb2xlciI6ImFpci0xODAiLCJjYXNlIjoiYWlyZmxvdy1taWQiLCJwc3UiOiJwc3UtODUwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMiIsImdvYWwiOiIxNDQwIiwibW9kZSI6ImdhbWluZyIsImJ1ZGdldCI6ImJhbGFuY2VkIiwid29ya2xvYWQiOiJHYW1pbmcifQ==" aria-label="Open the mid-range PC build">See Full Build →</a>
+  </section>
+  <section class="bento-card bento-engine bento-action bento-build-card bento-budget-card">
+    <span class="bento-label">LOW-BUDGET BUILD</span><strong class="bento-action-link">Ryzen 5 5600 + RX 7600</strong>
+    <div class="bento-build-specs">16GB DDR4 · 1TB NVMe SSD · B550 motherboard</div>
+    <a class="bento-action-cta bento-build-button" href="build-planner.html?build=eyJjcHUiOiJyNS01NjAwIiwibW90aGVyYm9hcmQiOiJiNTUwLW1hdHgiLCJtZW1vcnkiOiJkNC0xNiIsImdwdSI6InJ4LTc2MDAiLCJjb29sZXIiOiJhaXItMTIwIiwiY2FzZSI6ImJ1ZGdldC1hdHgiLCJwc3UiOiJwc3UtNjUwIiwic3RvcmFnZSI6Im52bWUtMSIsImdvYWwiOiIxMDgwIiwibW9kZSI6ImdhbWluZyIsImJ1ZGdldCI6InZhbHVlIiwid29ya2xvYWQiOiJHYW1pbmcifQ==" aria-label="Open the low-budget PC build">See Full Build <span aria-hidden="true">→</span></a>
+  </section>
+</div>
 
 </div>
 
