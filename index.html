@@ -602,6 +602,49 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   .seo-hub-grid{grid-template-columns:minmax(0,1fr);gap:24px}
 }
 
+
+/* User-requested hero card layout: only top/action cards and shared grid sizing */
+.hero-bento{grid-template-rows:auto auto;min-height:0;align-content:start}
+.hero-bento .bento-index,.hero-bento .bento-action{min-height:0;margin-top:0;justify-content:initial}
+.hero-bento .bento-index{padding:26px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px}
+.bento-trend-label{display:flex;align-items:center;justify-content:center;gap:9px;max-width:100%;font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:800;letter-spacing:.14em;line-height:1.35;text-align:center;text-transform:uppercase}
+.bento-trend-emoji{flex:0 0 auto;color:initial;background:none;filter:none;-webkit-text-fill-color:initial}
+.bento-rgb-text{background:linear-gradient(90deg,#ff4d6d,#ffb84d,#5cff9d,#4dc3ff,#9d6bff,#ff4d6d);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:sfpRgbFlow 6s linear infinite;filter:drop-shadow(0 0 6px rgba(157,107,255,.55)) drop-shadow(0 0 14px rgba(77,195,255,.35))}
+@keyframes sfpRgbFlow{to{background-position:300% 0}}
+@media(prefers-reduced-motion:reduce){.bento-rgb-text{animation:none}}
+.bento-hardware-pair{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;min-width:0}
+.bento-hardware-tile{flex:1 1 0;min-width:0;display:grid;grid-template-columns:40px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:12px;row-gap:4px;padding:14px 18px;border:1px solid rgba(167,139,250,.28);border-radius:16px;background:linear-gradient(145deg,rgba(84,61,150,.22),rgba(15,21,34,.9));text-align:left}
+.bento-hardware-icon,.bento-action-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:rgba(255,255,255,.045)}
+.bento-hardware-icon{grid-column:1;grid-row:1/3;color:#b7a2ff}
+.bento-hardware-icon svg,.bento-action-icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.bento-hardware-caption{grid-column:2;color:#c9bbff;font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;line-height:1.3;text-transform:uppercase;white-space:nowrap}
+.bento-hardware-name{grid-column:2;min-width:0;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:clamp(20px,2.1vw,26px);font-weight:700;line-height:1.15;overflow-wrap:normal;word-break:normal}
+.bento-gpu-tile{border-color:rgba(99,199,255,.28);background:linear-gradient(145deg,rgba(37,104,145,.24),rgba(15,21,34,.9))}
+.bento-gpu-tile .bento-hardware-caption{color:#9fe0ff}
+.bento-gpu-tile .bento-hardware-icon{color:#7bd5ff}
+.bento-plus-badge{flex:0 0 34px;width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(157,139,255,.4);border-radius:50%;background:linear-gradient(135deg,rgba(115,93,255,.5),rgba(63,132,255,.4));box-shadow:0 0 18px rgba(115,93,255,.35);color:#fff;font-family:"Space Grotesk",sans-serif;font-size:18px;font-weight:700}
+.bento-index .bento-full-build-button{align-self:center;margin-top:0;padding:11px 20px;font-size:12.5px;white-space:nowrap}
+.hero-bento .bento-action{padding:24px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;text-align:left}
+.hero-bento .bento-action .bento-label{margin:0}
+.bento-action-icon{flex:0 0 40px;color:#b8aaff}
+.bento-action-link{display:block;margin:0;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:clamp(19px,1.9vw,24px);font-weight:700;line-height:1.15;letter-spacing:-.025em}
+.bento-action-help{color:#aab5c8;font-family:"DM Sans",sans-serif;font-size:12.5px;font-weight:500;line-height:1.55}
+.bento-action-button{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;margin-top:auto;padding:10px 16px;border:1px solid rgba(255,255,255,.22);border-radius:10px;background:rgba(255,255,255,.14);color:#fff;font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;line-height:1.3;white-space:nowrap}
+@media(max-width:800px){
+  .hero-bento{grid-template-rows:auto auto;min-height:0;align-content:start}
+  .bento-hardware-pair{flex-direction:column;gap:8px}
+  .bento-hardware-tile{width:100%;flex:0 0 auto}
+  .bento-plus-badge{flex-basis:34px}
+}
+@media(max-width:480px){
+  .hero-bento{grid-template-rows:auto auto;min-height:0;align-content:start}
+  .hero-bento .bento-index{padding:26px 20px;gap:18px}
+  .bento-trend-label{font-size:13px;letter-spacing:.1em;gap:7px;flex-wrap:wrap}
+  .bento-hardware-tile{padding:14px 12px;column-gap:10px}
+  .bento-hardware-name{font-size:clamp(20px,5.4vw,24px)}
+  .hero-bento .bento-action{padding:24px}
+}
+
 </style>
 
 <meta property="og:url" content="https://systemfitpc.vercel.app/">
@@ -656,8 +699,20 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   </div>
   <div class="hero-visual hero-bento" aria-label="SystemFit PC hardware snapshot">
     <div class="bento-card bento-index">
-      <span class="bento-label">🔥 TRENDING MATCHUP CHECK</span>
-      <span class="bento-metric">Ryzen 7 7800X3D + RTX 4080 Super</span>
+      <div class="bento-trend-label"><span class="bento-trend-emoji" aria-hidden="true">🔥</span><span class="bento-rgb-text">TRENDING MATCHUP CHECK</span></div>
+      <div class="bento-hardware-pair" aria-label="Ryzen 7 7800X3D plus RTX 4080 Super">
+        <div class="bento-hardware-tile bento-cpu-tile">
+          <span class="bento-hardware-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="13" y="13" width="38" height="38" rx="8"/><rect x="21" y="21" width="22" height="22" rx="4"/><path d="M25 5v8M32 5v8M39 5v8M25 51v8M32 51v8M39 51v8M5 25h8M5 32h8M5 39h8M51 25h8M51 32h8M51 39h8"/><path d="M27 28h10M27 34h7"/></svg></span>
+          <span class="bento-hardware-caption">AMD · CPU</span>
+          <span class="bento-hardware-name">Ryzen 7 7800X3D</span>
+        </div>
+        <span class="bento-plus-badge" aria-hidden="true">+</span>
+        <div class="bento-hardware-tile bento-gpu-tile">
+          <span class="bento-hardware-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="9" y="16" width="46" height="32" rx="6"/><circle cx="25" cy="32" r="9"/><path d="M25 25l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M39 24h9M39 31h9M39 38h6M55 25h4v14h-4M15 48v7h34v-7"/></svg></span>
+          <span class="bento-hardware-caption">NVIDIA · GPU</span>
+          <span class="bento-hardware-name">RTX 4080 Super</span>
+        </div>
+      </div>
       <a class="bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy03ODAweDNkIiwiZ3B1IjoiZ3B1LWdlZm9yY2UtcnR4LTQwODAtc3VwZXIiLCJnb2FsIjoiMTQ0MCIsIm1vZGUiOiJnYW1pbmciLCJidWRnZXQiOiJiYWxhbmNlZCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="See full Ryzen 7 7800X3D and RTX 4080 Super build"><span>See Full Build</span><span aria-hidden="true">→</span></a>
     </div>
     <div class="bento-card bento-guide bento-calculation">
@@ -675,7 +730,10 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
     </div>
     <a class="bento-card bento-engine bento-action" href="bottleneck.html" aria-label="Test your setup with the Bottleneck Calculator">
       <span class="bento-label">OPEN THE CALCULATOR</span>
-      <span class="bento-action-link">Test Your <span class="bento-action-last">Setup&nbsp;<span aria-hidden="true">→</span></span></span>
+      <span class="bento-action-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="13" y="13" width="38" height="38" rx="8"/><rect x="21" y="21" width="22" height="22" rx="4"/><path d="M25 5v8M32 5v8M39 5v8M25 51v8M32 51v8M39 51v8M5 25h8M5 32h8M5 39h8M51 25h8M51 32h8M51 39h8"/><path d="M27 28h10M27 34h7"/></svg></span>
+      <span class="bento-action-link">Test Your Setup</span>
+      <span class="bento-action-help">Pick your CPU, GPU and target FPS to see what limits your PC.</span>
+      <span class="bento-action-button">Open Calculator&nbsp;→</span>
     </a>
   </div>
 
