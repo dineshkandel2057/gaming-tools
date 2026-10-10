@@ -796,6 +796,19 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 }
 @media(prefers-reduced-motion:reduce){.hero-bento .bento-build-feature *{scroll-behavior:auto!important}}
 </style>
+<style id="beast-build-no-crop">
+/* Keep full component artwork visible; never crop product images */
+.hero-bento .bento-build-feature .bento-build-product{min-height:0!important}
+.hero-bento .bento-build-feature .bento-build-product img{
+  width:100%!important;height:clamp(68px,7.8vw,92px)!important;max-width:100%!important;
+  object-fit:contain!important;object-position:center!important;transform:none!important;
+  overflow:visible!important;mix-blend-mode:normal!important;mask-image:none!important;-webkit-mask-image:none!important;
+  background:transparent!important;border-radius:0!important;
+}
+@media(max-width:560px){
+ .hero-bento .bento-build-feature .bento-build-product img{height:clamp(58px,17vw,76px)!important;max-width:100%!important;object-fit:contain!important}
+}
+</style>
 </head>
 <body>
 
