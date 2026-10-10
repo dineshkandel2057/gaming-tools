@@ -809,6 +809,78 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
  .hero-bento .bento-build-feature .bento-build-product img{height:clamp(58px,17vw,76px)!important;max-width:100%!important;object-fit:contain!important}
 }
 </style>
+<style id="beast-build-blended-panel-layout">
+/* Preview-only: integrate component artwork into the neon-framed Beast Build panels */
+.hero-bento .bento-build-feature .bento-build-pair{
+  display:grid!important;grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr)!important;
+  align-items:stretch!important;gap:10px!important;
+}
+.hero-bento .bento-build-feature .bento-build-part{
+  position:relative!important;isolation:isolate!important;display:flex!important;flex-direction:column!important;
+  justify-content:flex-start!important;gap:8px!important;min-width:0!important;min-height:174px!important;
+  box-sizing:border-box!important;padding:12px 12px 11px!important;border-radius:17px!important;
+  overflow:hidden!important;text-align:center!important;backdrop-filter:blur(8px)!important;
+}
+.hero-bento .bento-build-feature .bento-build-part:after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu{
+  border-color:rgba(168,85,247,.82)!important;
+  background:radial-gradient(ellipse at 50% 46%,rgba(124,58,237,.2),transparent 66%),linear-gradient(145deg,rgba(29,21,51,.72),rgba(9,14,28,.78))!important;
+  box-shadow:inset 0 0 26px rgba(139,92,246,.13),0 0 16px rgba(139,92,246,.12)!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-gpu{
+  border-color:rgba(56,189,248,.78)!important;
+  background:radial-gradient(ellipse at 50% 46%,rgba(14,165,233,.17),transparent 66%),linear-gradient(145deg,rgba(12,32,46,.72),rgba(8,15,28,.8))!important;
+  box-shadow:inset 0 0 26px rgba(56,189,248,.11),0 0 16px rgba(56,189,248,.1)!important;
+}
+.hero-bento .bento-build-feature .bento-build-part:before{
+  content:"";position:absolute;top:0;left:14%;right:14%;height:2px;z-index:3;border-radius:0 0 4px 4px;pointer-events:none;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu:before{background:linear-gradient(90deg,transparent,#c084fc,#f0abfc,transparent);box-shadow:0 0 12px rgba(192,132,252,.5)}
+.hero-bento .bento-build-feature .bento-build-part-gpu:before{background:linear-gradient(90deg,transparent,#22d3ee,#86efac,transparent);box-shadow:0 0 12px rgba(34,211,238,.42)}
+.hero-bento .bento-build-feature .bento-build-part small{
+  position:relative!important;z-index:2!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  min-height:12px!important;margin:0!important;color:#b9c5dc!important;
+  font:800 9px/1.2 "DM Sans",sans-serif!important;letter-spacing:.14em!important;
+}
+.hero-bento .bento-build-feature .bento-build-product{
+  position:relative!important;z-index:1!important;display:flex!important;flex:1 1 auto!important;flex-direction:column!important;
+  align-items:center!important;justify-content:center!important;gap:5px!important;width:100%!important;min-width:0!important;margin:0!important;
+}
+.hero-bento .bento-build-feature .bento-build-product img{
+  position:relative!important;z-index:1!important;display:block!important;flex:0 1 auto!important;
+  width:100%!important;height:clamp(78px,8vw,102px)!important;max-width:100%!important;min-width:0!important;
+  object-fit:contain!important;object-position:center!important;border:0!important;border-radius:0!important;
+  background:transparent!important;mix-blend-mode:screen!important;
+  filter:drop-shadow(0 0 8px rgba(120,150,255,.12))!important;
+  mask-image:radial-gradient(ellipse at center,#000 40%,rgba(0,0,0,.92) 60%,rgba(0,0,0,.48) 82%,transparent 100%)!important;
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 40%,rgba(0,0,0,.92) 60%,rgba(0,0,0,.48) 82%,transparent 100%)!important;
+}
+.hero-bento .bento-build-feature .bento-build-product strong{
+  position:relative!important;z-index:2!important;display:block!important;flex:0 0 auto!important;width:100%!important;
+  min-width:0!important;max-width:none!important;margin:0!important;padding:0 2px!important;
+  color:#f5f7ff!important;font:800 clamp(12px,1.02vw,14px)/1.16 "Space Grotesk",sans-serif!important;
+  text-align:center!important;letter-spacing:-.015em!important;overflow-wrap:normal!important;word-break:normal!important;hyphens:auto!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu .bento-build-product strong{color:#ead7ff!important;text-shadow:0 0 12px rgba(168,85,247,.2)!important}
+.hero-bento .bento-build-feature .bento-build-part-gpu .bento-build-product strong{color:#c8f5ff!important;text-shadow:0 0 12px rgba(34,211,238,.2)!important}
+.hero-bento .bento-build-feature .bento-build-plus{
+  position:relative!important;z-index:4!important;align-self:center!important;justify-self:center!important;
+  display:grid!important;place-items:center!important;flex:none!important;width:34px!important;height:34px!important;
+  border:1px solid rgba(167,139,250,.78)!important;border-radius:50%!important;
+  background:linear-gradient(135deg,#7547ef,#2563eb)!important;color:white!important;
+  box-shadow:0 0 18px rgba(99,102,241,.36)!important;font:800 20px/1 "Space Grotesk",sans-serif!important;
+}
+@media(max-width:560px){
+ .hero-bento .bento-build-feature .bento-build-pair{grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr)!important;gap:6px!important}
+ .hero-bento .bento-build-feature .bento-build-part{min-height:156px!important;padding:10px 7px 9px!important;gap:7px!important;border-radius:14px!important}
+ .hero-bento .bento-build-feature .bento-build-part small{font-size:8px!important;letter-spacing:.09em!important}
+ .hero-bento .bento-build-feature .bento-build-product img{height:clamp(64px,17vw,82px)!important}
+ .hero-bento .bento-build-feature .bento-build-product strong{font-size:clamp(11px,2.9vw,13px)!important}
+ .hero-bento .bento-build-feature .bento-build-plus{width:28px!important;height:28px!important;font-size:17px!important}
+}
+</style>
 </head>
 <body>
 
