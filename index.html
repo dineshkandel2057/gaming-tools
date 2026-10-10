@@ -704,6 +704,52 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/","description":"Explore practical PC tools for estimating gaming performance, comparing GPUs, planning a build and understanding PC hardware."}</script>
   <link rel="stylesheet" href="site-universal.css">
+<style id="beast-build-production-style">
+/* Beast PC Build: neutral text-first component cards */
+.hero-bento .bento-build-feature .bento-build-part{
+ position:relative!important;display:flex!important;flex-direction:column!important;align-self:stretch!important;
+ height:100%!important;min-height:0!important;min-width:0!important;overflow:hidden!important;box-sizing:border-box!important;
+ padding:14px 12px 12px!important;gap:12px!important;border-radius:18px!important;
+ border-color:rgba(139,92,246,.48)!important;
+ background:linear-gradient(150deg,rgba(27,25,44,.97),rgba(13,16,29,.98))!important;
+ box-shadow:inset 0 0 18px rgba(139,92,246,.045),0 0 10px rgba(139,92,246,.04)!important;
+ animation:none!important;
+}
+.hero-bento .bento-build-feature .bento-build-part:before{
+ background:linear-gradient(90deg,transparent,rgba(167,139,250,.55),transparent)!important;box-shadow:none!important;animation:none!important;
+}
+.hero-bento .bento-build-feature .bento-build-part:after{content:none!important;display:none!important;animation:none!important}
+.hero-bento .bento-build-feature .bento-build-product.bento-build-text-only{
+ display:flex!important;flex:1 1 auto!important;flex-direction:column!important;justify-content:flex-start!important;
+ align-items:stretch!important;gap:13px!important;min-width:0!important;width:100%!important;
+}
+.hero-bento .bento-build-feature .bento-build-text-only>strong{
+ display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-start!important;
+ justify-content:flex-start!important;gap:2px!important;width:100%!important;max-width:100%!important;min-width:0!important;
+ white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;
+ font:800 clamp(13px,1.12vw,16px)/1.12 "Space Grotesk",sans-serif!important;letter-spacing:-.025em!important;text-align:left!important;color:#f1f3fb!important;text-shadow:none!important;
+}
+.hero-bento .bento-build-feature .bento-build-text-only>strong span{display:block!important;font-size:.9em!important;line-height:1.12!important;white-space:normal!important;letter-spacing:0!important;color:#f1f3fb!important}
+.hero-bento .bento-build-feature .bento-build-text-only>strong em{display:block!important;font-size:1.18em!important;line-height:1.05!important;white-space:normal!important;letter-spacing:-.025em!important;font-style:normal!important}
+.hero-bento .bento-build-feature .bento-build-part-cpu .bento-build-text-only>strong em{color:#f87171!important;text-shadow:0 0 10px rgba(248,113,113,.15)!important}
+.hero-bento .bento-build-feature .bento-build-part-gpu .bento-build-text-only>strong em{color:#4ade80!important;text-shadow:0 0 10px rgba(74,222,128,.15)!important}
+.hero-bento .bento-build-feature .bento-build-specs{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;align-content:start!important;gap:6px!important;
+ width:100%!important;min-width:0!important;margin-top:auto!important;
+}
+.hero-bento .bento-build-feature .bento-build-specs span{
+ display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;
+ min-width:0!important;min-height:25px!important;padding:5px 4px!important;text-align:center!important;
+ font:700 clamp(7px,.66vw,9px)/1.15 "DM Sans",sans-serif!important;letter-spacing:.015em!important;white-space:normal!important;
+ border:1px solid rgba(148,163,184,.2)!important;border-radius:5px!important;background:rgba(148,163,184,.045)!important;color:#d1d5db!important;
+}
+@media(max-width:560px){
+ .hero-bento .bento-build-feature .bento-build-part{padding:12px 8px 10px!important;gap:11px!important}
+ .hero-bento .bento-build-feature .bento-build-text-only>strong{font-size:clamp(11px,3vw,13px)!important}
+ .hero-bento .bento-build-feature .bento-build-specs{gap:5px!important}
+ .hero-bento .bento-build-feature .bento-build-specs span{font-size:7px!important;min-height:24px!important;padding:4px 3px!important}
+}
+</style>
 </head>
 <body>
 
@@ -747,16 +793,16 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   </div>
   <div class="hero-visual hero-bento" aria-label="Three recommended PC builds">
   <section class="bento-card bento-index bento-build-feature">
-    <span class="bento-label bento-trend-label"><span class="bento-fire" aria-hidden="true">🔥</span><span class="bento-rgb-text">ULTRA MAX PRO BUILD</span></span>
+    <span class="bento-label bento-trend-label"><span class="bento-rgb-text">THE BEAST PC BUILD</span></span>
     <div class="bento-build-pair">
       <div class="bento-build-part bento-build-part-cpu">
         <small>AMD · CPU</small>
-        <div class="bento-build-product"><img src="https://www.amd.com/content/dam/amd/en/images/pr-feed/1301653.png" alt="AMD Ryzen 7 9800X3D processor" loading="lazy"><strong>AMD Ryzen 7 9800X3D</strong></div>
+        <div class="bento-build-product bento-build-text-only"><strong>AMD <span>RYZEN 7</span> <em>9800X3D</em></strong><div class="bento-build-specs"><span>8 CORES</span><span>16 THREADS</span><span>UP TO 5.2 GHz</span><span>3D V-CACHE</span></div></div>
       </div>
       <span class="bento-build-plus" aria-hidden="true">+</span>
       <div class="bento-build-part bento-build-part-gpu">
         <small>NVIDIA · GPU</small>
-        <div class="bento-build-product"><img src="https://iprsoftwaremedia.com/219/files/20250/202501271934/geforce-rtx-5090.jpg?download=true" alt="NVIDIA GeForce RTX 5090 graphics card" loading="lazy"><strong>NVIDIA GeForce RTX 5090</strong></div>
+        <div class="bento-build-product bento-build-text-only"><strong>NVIDIA <span>GEFORCE RTX</span> <em>5090</em></strong><div class="bento-build-specs"><span>32 GB GDDR7</span><span>21,760 CUDA CORES</span><span>DLSS 4</span><span>RAY TRACING</span></div></div>
       </div>
     </div>
     <a class="bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy05ODAweDNkIiwibW90aGVyYm9hcmQiOiJ4ODcwZS1hdHgiLCJtZW1vcnkiOiJkNS0zMi02MDAwIiwiZ3B1IjoicnR4LTUwOTAiLCJjb29sZXIiOiJhaW8tMzYwIiwiY2FzZSI6Im1lc2gtZnVsbCIsInBzdSI6InBzdS0xMjAwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMi1nZW41IiwiZ29hbCI6IjIxNjAiLCJtb2RlIjoiZ2FtaW5nIiwiYnVkZ2V0IjoiaGlnaCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="Open the Ultra Max Pro PC build"><span>See Full Build</span><span aria-hidden="true">→</span></a>
