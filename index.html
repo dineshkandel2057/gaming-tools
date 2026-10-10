@@ -704,6 +704,29 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/","description":"Explore practical PC tools for estimating gaming performance, comparing GPUs, planning a build and understanding PC hardware."}</script>
   <link rel="stylesheet" href="site-universal.css">
+<style id="build-label-color-animation">
+/* Preview-only: slow animated colors for the two secondary build labels */
+.hero-bento .bento-build-card .bento-midrange-title{
+  display:inline-block;
+  background:linear-gradient(100deg,#34d399,#a3e635,#22c55e,#6ee7b7,#34d399);
+  background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  animation:sfpBuildLabelFlow 9s ease-in-out infinite;
+  filter:drop-shadow(0 0 5px rgba(52,211,153,.2));
+}
+.hero-bento .bento-build-card .bento-budget-title{
+  display:inline-block;
+  background:linear-gradient(100deg,#facc15,#fde68a,#fb923c,#fef08a,#facc15);
+  background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  animation:sfpBuildLabelFlow 10s ease-in-out infinite;
+  filter:drop-shadow(0 0 5px rgba(250,204,21,.2));
+}
+@keyframes sfpBuildLabelFlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@media(prefers-reduced-motion:reduce){.hero-bento .bento-build-card .bento-midrange-title,.hero-bento .bento-build-card .bento-budget-title{animation:none;background-position:50% 50%}}
+</style>
 </head>
 <body>
 
@@ -762,13 +785,13 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
     <a class="bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy05ODAweDNkIiwibW90aGVyYm9hcmQiOiJ4ODcwZS1hdHgiLCJtZW1vcnkiOiJkNS0zMi02MDAwIiwiZ3B1IjoicnR4LTUwOTAiLCJjb29sZXIiOiJhaW8tMzYwIiwiY2FzZSI6Im1lc2gtZnVsbCIsInBzdSI6InBzdS0xMjAwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMi1nZW41IiwiZ29hbCI6IjIxNjAiLCJtb2RlIjoiZ2FtaW5nIiwiYnVkZ2V0IjoiaGlnaCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="Open the Ultra Max Pro PC build"><span>See Full Build</span><span aria-hidden="true">→</span></a>
   </section>
   <section class="bento-card bento-guide bento-calculation bento-build-card">
-    <span class="bento-label">MID-RANGE BUILD</span><strong class="bento-bottleneck" id="bottleneck-status">Ryzen 5 7600 + RTX 5070</strong>
+    <span class="bento-label bento-midrange-title">MID-RANGE BUILD</span><strong class="bento-bottleneck" id="bottleneck-status">Ryzen 5 7600 + RTX 5070</strong>
     
     <div class="bento-build-detail bento-performance-score" id="bottleneck-flow"><span class="bento-performance-label">EXPECTED GAMING PERFORMANCE</span><strong>1440p High · ~70 FPS AAA</strong><span>250+ FPS in esports titles</span></div>
     <a class="bento-calculation-link bento-build-button" href="build-planner.html?build=eyJjcHUiOiJyNS03NjAwIiwibW90aGVyYm9hcmQiOiJiNjUwLWF0eCIsIm1lbW9yeSI6ImQ1LTMyLTYwMDAiLCJncHUiOiJydHgtNTA3MCIsImNvb2xlciI6ImFpci0xODAiLCJjYXNlIjoiYWlyZmxvdy1taWQiLCJwc3UiOiJwc3UtODUwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMiIsImdvYWwiOiIxNDQwIiwibW9kZSI6ImdhbWluZyIsImJ1ZGdldCI6ImJhbGFuY2VkIiwid29ya2xvYWQiOiJHYW1pbmcifQ==" aria-label="Open the mid-range PC build">See Full Build →</a>
   </section>
   <section class="bento-card bento-guide bento-calculation bento-build-card bento-budget-card">
-    <span class="bento-label">LOW-BUDGET BUILD</span><strong class="bento-bottleneck">Ryzen 5 5600 + RX 7600</strong>
+    <span class="bento-label bento-budget-title">LOW-BUDGET BUILD</span><strong class="bento-bottleneck">Ryzen 5 5600 + RX 7600</strong>
     
     <div class="bento-build-detail bento-performance-score"><span class="bento-performance-label">EXPECTED GAMING PERFORMANCE</span><strong>1080p High · ~70–110 FPS AAA</strong><span>180+ FPS in esports titles</span></div>
     <a class="bento-calculation-link bento-build-button" href="build-planner.html?build=eyJjcHUiOiJyNS01NjAwIiwibW90aGVyYm9hcmQiOiJiNTUwLW1hdHgiLCJtZW1vcnkiOiJkNC0xNiIsImdwdSI6InJ4LTc2MDAiLCJjb29sZXIiOiJhaXItMTIwIiwiY2FzZSI6ImJ1ZGdldC1hdHgiLCJwc3UiOiJwc3UtNjUwIiwic3RvcmFnZSI6Im52bWUtMSIsImdvYWwiOiIxMDgwIiwibW9kZSI6ImdhbWluZyIsImJ1ZGdldCI6InZhbHVlIiwid29ya2xvYWQiOiJHYW1pbmcifQ==" aria-label="Open the low-budget PC build">See Full Build →</a>
