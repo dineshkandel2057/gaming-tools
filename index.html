@@ -881,6 +881,84 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
  .hero-bento .bento-build-feature .bento-build-plus{width:28px!important;height:28px!important;font-size:17px!important}
 }
 </style>
+<style id="beast-build-reference-layout">
+/* Reference-inspired compact CPU/GPU composition — preserve current component names */
+.hero-bento .bento-build-feature .bento-build-pair{
+ display:grid!important;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr)!important;align-items:center!important;gap:0!important;
+ position:relative!important;isolation:isolate!important;
+}
+.hero-bento .bento-build-feature .bento-build-pair:before{
+ content:"";position:absolute;z-index:0;left:8%;right:8%;top:50%;height:2px;transform:translateY(-50%);
+ background:linear-gradient(90deg,rgba(168,85,247,0),#a855f7 18%,#c084fc 37%,#a78bfa 45%,#22d3ee 58%,#06b6d4 78%,rgba(34,211,238,0));
+ box-shadow:0 0 10px rgba(139,92,246,.45),0 0 16px rgba(34,211,238,.28);pointer-events:none;
+}
+.hero-bento .bento-build-feature .bento-build-part{
+ position:relative!important;isolation:isolate!important;display:grid!important;
+ grid-template-rows:auto 1fr!important;align-content:stretch!important;justify-content:stretch!important;
+ gap:5px!important;min-width:0!important;min-height:154px!important;box-sizing:border-box!important;
+ padding:14px 13px 10px!important;border-radius:20px!important;overflow:hidden!important;text-align:left!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu{
+ border:1px solid rgba(139,92,246,.62)!important;
+ background:radial-gradient(ellipse at 30% 72%,rgba(168,85,247,.24),transparent 58%),linear-gradient(140deg,rgba(31,24,67,.96),rgba(7,13,32,.97))!important;
+ box-shadow:inset 0 0 22px rgba(124,58,237,.12),0 0 15px rgba(124,58,237,.1)!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-gpu{
+ border:1px solid rgba(6,182,212,.62)!important;
+ background:radial-gradient(ellipse at 70% 72%,rgba(34,211,238,.2),transparent 58%),linear-gradient(220deg,rgba(6,29,48,.96),rgba(5,12,28,.98))!important;
+ box-shadow:inset 0 0 22px rgba(6,182,212,.1),0 0 15px rgba(6,182,212,.08)!important;
+}
+.hero-bento .bento-build-feature .bento-build-part:before{
+ content:"";position:absolute;top:0;left:12%;right:12%;height:2px;border-radius:0 0 4px 4px;z-index:4;pointer-events:none;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu:before{background:linear-gradient(90deg,transparent,#a855f7,#e9d5ff,transparent);box-shadow:0 0 10px #8b5cf6}
+.hero-bento .bento-build-feature .bento-build-part-gpu:before{background:linear-gradient(90deg,transparent,#22d3ee,#a5f3fc,transparent);box-shadow:0 0 10px #06b6d4}
+.hero-bento .bento-build-feature .bento-build-part small{
+ position:relative!important;z-index:3!important;display:block!important;align-self:start!important;
+ margin:0!important;color:#b7c2db!important;font:800 9px/1.2 "DM Sans",sans-serif!important;letter-spacing:.14em!important;
+}
+.hero-bento .bento-build-feature .bento-build-product{
+ position:static!important;z-index:2!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)!important;
+ align-items:center!important;justify-items:stretch!important;gap:3px!important;width:100%!important;min-width:0!important;
+ min-height:0!important;margin:0!important;
+}
+.hero-bento .bento-build-feature .bento-build-product img{
+ position:relative!important;inset:auto!important;z-index:1!important;display:block!important;
+ grid-column:1!important;grid-row:1!important;width:100%!important;max-width:100%!important;height:clamp(68px,7vw,86px)!important;
+ min-width:0!important;object-fit:contain!important;object-position:center!important;flex:none!important;
+ border:0!important;border-radius:0!important;background:transparent!important;mix-blend-mode:screen!important;
+ filter:drop-shadow(0 0 9px rgba(139,92,246,.22))!important;mask-image:none!important;-webkit-mask-image:none!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-gpu .bento-build-product img{filter:drop-shadow(0 0 9px rgba(34,211,238,.2))!important}
+.hero-bento .bento-build-feature .bento-build-product strong{
+ position:relative!important;z-index:3!important;grid-column:1/-1!important;grid-row:1!important;
+ align-self:start!important;justify-self:stretch!important;display:block!important;width:100%!important;min-width:0!important;
+ max-width:none!important;margin:0!important;padding:0!important;color:#f6f7ff!important;
+ font:800 clamp(12px,1.05vw,15px)/1.16 "Space Grotesk",sans-serif!important;letter-spacing:-.02em!important;
+ text-align:left!important;overflow-wrap:normal!important;word-break:normal!important;hyphens:auto!important;
+ text-shadow:0 1px 8px rgba(0,0,0,.8)!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu .bento-build-product strong{padding-right:38%!important;color:#e9d5ff!important}
+.hero-bento .bento-build-feature .bento-build-part-gpu .bento-build-product strong{text-align:right!important;padding-left:38%!important;color:#cffafe!important}
+.hero-bento .bento-build-feature .bento-build-plus{
+ position:relative!important;z-index:6!important;align-self:center!important;justify-self:center!important;
+ display:grid!important;place-items:center!important;width:38px!important;height:38px!important;flex:none!important;
+ border:1px solid rgba(103,232,249,.7)!important;border-radius:50%!important;
+ background:radial-gradient(circle at 35% 30%,#293c7d,#09162b 75%)!important;color:#67e8f9!important;
+ box-shadow:0 0 0 5px rgba(6,15,34,.85),0 0 18px rgba(34,211,238,.42),0 0 22px rgba(139,92,246,.3)!important;
+ font:800 21px/1 "Space Grotesk",sans-serif!important;
+}
+@media(max-width:560px){
+ .hero-bento .bento-build-feature .bento-build-pair{grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr)!important}
+ .hero-bento .bento-build-feature .bento-build-part{min-height:142px!important;padding:11px 8px 8px!important;border-radius:16px!important}
+ .hero-bento .bento-build-feature .bento-build-product{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)!important}
+ .hero-bento .bento-build-feature .bento-build-product img{height:clamp(55px,16vw,70px)!important}
+ .hero-bento .bento-build-feature .bento-build-product strong{font-size:clamp(10px,2.8vw,12px)!important}
+ .hero-bento .bento-build-feature .bento-build-part-cpu .bento-build-product strong{padding-right:32%!important}
+ .hero-bento .bento-build-feature .bento-build-part-gpu .bento-build-product strong{padding-left:32%!important}
+ .hero-bento .bento-build-feature .bento-build-plus{width:30px!important;height:30px!important;font-size:18px!important}
+}
+</style>
 </head>
 <body>
 
