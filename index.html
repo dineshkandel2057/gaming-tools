@@ -1131,6 +1131,54 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
  .hero-bento .bento-build-feature .bento-build-part,.hero-bento .bento-build-feature .bento-build-part:before{animation:none!important}
 }
 </style>
+<style id="beast-build-subtle-colors-edge-light">
+/* Refine Beast Build card accents: neutral typography, restrained tint, animated edge light */
+.hero-bento .bento-build-feature .bento-build-part-cpu{
+ border-color:rgba(239,68,68,.52)!important;
+ background:radial-gradient(ellipse at 50% 0%,rgba(185,58,67,.10),transparent 68%),linear-gradient(150deg,rgba(34,24,36,.97),rgba(13,16,29,.98))!important;
+ box-shadow:inset 0 0 20px rgba(239,68,68,.045),0 0 9px rgba(239,68,68,.045)!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-gpu{
+ border-color:rgba(34,197,94,.48)!important;
+ background:radial-gradient(ellipse at 50% 0%,rgba(34,139,84,.10),transparent 68%),linear-gradient(150deg,rgba(17,35,31,.97),rgba(10,18,27,.98))!important;
+ box-shadow:inset 0 0 20px rgba(34,197,94,.04),0 0 9px rgba(34,197,94,.04)!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu .bento-build-text-only>strong,
+.hero-bento .bento-build-feature .bento-build-part-gpu .bento-build-text-only>strong{
+ color:#f1f3fb!important;text-shadow:0 1px 5px rgba(0,0,0,.45)!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu .bento-build-text-only>strong em,
+.hero-bento .bento-build-feature .bento-build-part-gpu .bento-build-text-only>strong em{
+ color:#f1f3fb!important;text-shadow:none!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu .bento-build-specs span{
+ border-color:rgba(239,100,100,.24)!important;background:rgba(127,29,29,.10)!important;color:#e5e7eb!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-gpu .bento-build-specs span{
+ border-color:rgba(74,222,128,.22)!important;background:rgba(20,83,45,.10)!important;color:#e5e7eb!important;
+}
+/* Moving electric highlight runs around each card edge */
+.hero-bento .bento-build-feature .bento-build-part{isolation:isolate!important;position:relative!important}
+.hero-bento .bento-build-feature .bento-build-part:after{
+ content:""!important;position:absolute!important;inset:-1px!important;z-index:5!important;
+ border-radius:inherit!important;padding:1px!important;pointer-events:none!important;
+ background:conic-gradient(from var(--beast-edge-angle,0deg),transparent 0deg,transparent 235deg,#ff7777 272deg,#ffd0d0 286deg,transparent 307deg,transparent 360deg)!important;
+ opacity:.86!important;
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0)!important;
+ -webkit-mask-composite:xor!important;mask-composite:exclude!important;
+ animation:beastCpuEdgeTravel 6s linear infinite!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-gpu:after{
+ background:conic-gradient(from var(--beast-edge-angle,0deg),transparent 0deg,transparent 235deg,#5ee99b 272deg,#d0ffe3 286deg,transparent 307deg,transparent 360deg)!important;
+ animation:beastGpuEdgeTravel 7s linear infinite!important;
+}
+@keyframes beastCpuEdgeTravel{from{--beast-edge-angle:0deg}to{--beast-edge-angle:360deg}}
+@keyframes beastGpuEdgeTravel{from{--beast-edge-angle:0deg}to{--beast-edge-angle:360deg}}
+@property --beast-edge-angle{syntax:"<angle>";inherits:false;initial-value:0deg}
+@media(prefers-reduced-motion:reduce){
+ .hero-bento .bento-build-feature .bento-build-part:after{animation:none!important;opacity:.35!important}
+}
+</style>
 </head>
 <body>
 
