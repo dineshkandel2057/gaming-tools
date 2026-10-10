@@ -1179,6 +1179,39 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
  .hero-bento .bento-build-feature .bento-build-part:after{animation:none!important;opacity:.35!important}
 }
 </style>
+<style id="beast-build-neutral-cards">
+/* Remove colored card treatments and animated edge effects; accent only the model numbers */
+.hero-bento .bento-build-feature .bento-build-part-cpu,
+.hero-bento .bento-build-feature .bento-build-part-gpu{
+ border-color:rgba(139,92,246,.48)!important;
+ background:linear-gradient(150deg,rgba(27,25,44,.97),rgba(13,16,29,.98))!important;
+ box-shadow:inset 0 0 18px rgba(139,92,246,.045),0 0 10px rgba(139,92,246,.04)!important;
+ animation:none!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu:before,
+.hero-bento .bento-build-feature .bento-build-part-gpu:before{
+ background:linear-gradient(90deg,transparent,rgba(167,139,250,.55),transparent)!important;
+ box-shadow:none!important;animation:none!important;
+}
+.hero-bento .bento-build-feature .bento-build-part:after{
+ content:none!important;display:none!important;animation:none!important;box-shadow:none!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu .bento-build-text-only>strong,
+.hero-bento .bento-build-feature .bento-build-part-gpu .bento-build-text-only>strong,
+.hero-bento .bento-build-feature .bento-build-text-only>strong span{
+ color:#f1f3fb!important;text-shadow:none!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu .bento-build-text-only>strong em{
+ color:#f87171!important;text-shadow:0 0 10px rgba(248,113,113,.15)!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-gpu .bento-build-text-only>strong em{
+ color:#4ade80!important;text-shadow:0 0 10px rgba(74,222,128,.15)!important;
+}
+.hero-bento .bento-build-feature .bento-build-part-cpu .bento-build-specs span,
+.hero-bento .bento-build-feature .bento-build-part-gpu .bento-build-specs span{
+ border-color:rgba(148,163,184,.2)!important;background:rgba(148,163,184,.045)!important;color:#d1d5db!important;
+}
+</style>
 </head>
 <body>
 
