@@ -446,6 +446,9 @@ const STORAGE_DATA=[
 {id:"hdd-8",name:"8 TB HDD",type:"sata",capacity:8}
 ]
 const $=id=>document.getElementById(id);
+function escapeHtml(value){
+ return String(value??"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+}
 let wizardMode="",wizardBudget="",wizardWorkload="",wizardStage=1;
 function addOptions(selectId,list,label,selected){
  const el=$(selectId),old=selected||el.value;
@@ -522,8 +525,8 @@ function renderBuild(){
   ["Power supply",b.psu,b.psu?b.psu.watts+" W capacity":""],
   ["Storage",b.storage,b.storage?b.storage.capacity+" TB · "+b.storage.type.toUpperCase():""]
  ].filter(x=>x[1]);
- $("selectedBuild").innerHTML=chosen.length?'<div class="selected-build-title">Selected components</div><div class="selected-parts-grid">'+chosen.map(x=>'<div class="selected-part"><span>'+x[0]+'</span><b>'+x[1].name+'</b><small>'+x[2]+'</small></div>').join("")+'</div>':'<p>Choose parts to start your build.</p>';
- $("buildContext").innerHTML='<div class="context-chip"><span>Build purpose</span><b>'+modeLabel+'</b></div><div class="context-chip"><span>Main use</span><b>'+(wizardWorkload||"Not selected")+'</b></div><div class="context-chip"><span>Budget guide</span><b>'+budgetLabel+'</b></div>';
+ $("selectedBuild").innerHTML=chosen.length?'<div class="selected-build-title">Selected components</div><div class="selected-parts-grid">'+chosen.map(x=>'<div class="selected-part"><span>'+escapeHtml(x[0])+'</span><b>'+escapeHtml(x[1].name)+'</b><small>'+escapeHtml(x[2])+'</small></div>').join("")+'</div>':'<p>Choose parts to start your build.</p>';
+ $("buildContext").innerHTML='<div class="context-chip"><span>Build purpose</span><b>'+escapeHtml(modeLabel)+'</b></div><div class="context-chip"><span>Main use</span><b>'+escapeHtml(wizardWorkload||"Not selected")+'</b></div><div class="context-chip"><span>Budget guide</span><b>'+escapeHtml(budgetLabel)+'</b></div>';
  const failures=b.checks.filter(x=>x.status==="bad").length,warnings=b.checks.filter(x=>x.status==="warn").length;
  const allSelected=!!(b.cpu&&b.board&&b.memory&&b.gpu&&b.cooler&&b.pcCase&&b.psu&&b.storage);
  const ready=allSelected&&failures===0&&warnings===0;
@@ -533,7 +536,7 @@ function renderBuild(){
  $("reviewCheckCount").textContent=complete+" of "+b.checks.length+" checks reviewed";
  $("checks").innerHTML=b.checks.map(x=>{
   const state=x.status==="good"?"Looks good":x.status==="warn"?"Review":x.status==="bad"?"Needs a change":"Choose parts";
-  return '<div class="part-line '+x.status+'"><span class="mark">'+(x.status==="good"?"✓":x.status==="bad"?"!":x.status==="warn"?"△":"·")+'</span><div class="check-copy"><strong>'+x.label+'</strong><small>'+x.value+'</small></div><b class="check-state">'+state+'</b></div>';
+  return '<div class="part-line '+(["good","warn","bad","pending"].includes(x.status)?x.status:"pending")+'"><span class="mark">'+(x.status==="good"?"✓":x.status==="bad"?"!":x.status==="warn"?"△":"·")+'</span><div class="check-copy"><strong>'+escapeHtml(x.label)+'</strong><small>'+escapeHtml(x.value)+'</small></div><b class="check-state">'+escapeHtml(state)+'</b></div>';
  }).join("");
  $("resultBanner").className="result-banner "+(failures?"bad":warnings||!allSelected?"warn":"good");
  $("resultSymbol").textContent=failures?"!":warnings||!allSelected?"△":"✓";
@@ -541,9 +544,9 @@ function renderBuild(){
  $("verdictCopy").textContent=failures?"The red items below identify mismatches to fix. The other checks are shown separately so you can see what already works.":warnings?"The parts fit the listed checks, but one or more recommendations need your attention before you buy.":allSelected?"The selected platform, memory, fit and power checks look good using our planning data. Verify exact product models and manufacturer specifications before ordering.":"Complete the remaining choices to see what fits and what needs attention.";
  const gpu=b.gpu,goal=Number(goalValue()),focus=goal===1080?"1080p":goal===1440?"1440p":"4K";
  let rec;
- if(failures>0)rec="<strong>Start here</strong>Change these items first: "+b.checks.filter(x=>x.status==="bad").map(x=>x.label).join("; ")+".";
- else if(wizardMode==="productivity")rec="<strong>What this build is suited for</strong>"+wizardWorkload+". Everyday office and study use can work well with integrated graphics; demanding creative, 3D or engineering applications may need a stronger GPU or more memory. Check the requirements for your exact apps.";
- else rec="<strong>What this build is suited for</strong>"+(wizardMode==="mixed"?"Gaming plus "+wizardWorkload.toLowerCase():wizardWorkload)+". "+(gpu&&gpu.discrete===false?"Integrated graphics is intended for basic display and everyday work, not demanding gaming.":gpu&&gpu.tier>=goal?gpu.name+" is in our broad "+focus+" planning tier.":gpu?"The selected graphics card is below our broad "+focus+" tier; consider a lower resolution or a stronger card.":"Choose a graphics card to see a goal guide.")+" This is a planning guide, not an FPS prediction.";
+ if(failures>0)rec="<strong>Start here</strong>Change these items first: "+b.checks.filter(x=>x.status==="bad").map(x=>escapeHtml(x.label)).join("; ")+".";
+ else if(wizardMode==="productivity")rec="<strong>What this build is suited for</strong>"+escapeHtml(wizardWorkload)+". Everyday office and study use can work well with integrated graphics; demanding creative, 3D or engineering applications may need a stronger GPU or more memory. Check the requirements for your exact apps.";
+ else rec="<strong>What this build is suited for</strong>"+(wizardMode==="mixed"?"Gaming plus "+escapeHtml(wizardWorkload.toLowerCase()):escapeHtml(wizardWorkload))+". "+(gpu&&gpu.discrete===false?"Integrated graphics is intended for basic display and everyday work, not demanding gaming.":gpu&&gpu.tier>=goal?escapeHtml(gpu.name)+" is in our broad "+focus+" planning tier.":gpu?"The selected graphics card is below our broad "+focus+" tier; consider a lower resolution or a stronger card.":"Choose a graphics card to see a goal guide.")+" This is a planning guide, not an FPS prediction.";
  $("recommendation").innerHTML=rec;
  $("savedNote").textContent="";
 }
@@ -631,8 +634,23 @@ $("shareBuild").addEventListener("click",async()=>{try{await navigator.clipboard
 $("printBuild").addEventListener("click",()=>window.print());
 function decodeShared(){
  const encoded=new URLSearchParams(location.search).get("build");
- if(!encoded)return null;
- try{return JSON.parse(decodeURIComponent(escape(atob(encoded))))}catch(e){return null}
+ if(!encoded||encoded.length>12000||!/^[A-Za-z0-9+/]*={0,2}$/.test(encoded))return null;
+ try{
+  const parsed=JSON.parse(decodeURIComponent(escape(atob(encoded))));
+  if(!parsed||typeof parsed!=="object"||Array.isArray(parsed))return null;
+  const allowedKeys=new Set(["cpu","motherboard","memory","gpu","cooler","case","psu","storage","goal","mode","budget","workload"]);
+  if(Object.keys(parsed).some(key=>!allowedKeys.has(key)))return null;
+  const validId=(value,list)=>typeof value==="string"&&(value===""||list.some(item=>item.id===value));
+  if(!validId(parsed.cpu,CPU_DATA)||!validId(parsed.motherboard,BOARD_DATA)||!validId(parsed.memory,MEMORY_DATA)||
+     !validId(parsed.gpu,GPU_DATA)||!validId(parsed.cooler,COOLER_DATA)||!validId(parsed.case,CASE_DATA)||
+     !validId(parsed.psu,PSU_DATA)||!validId(parsed.storage,STORAGE_DATA))return null;
+  if(parsed.goal!==undefined&&!["1080","1440","2160"].includes(String(parsed.goal)))return null;
+  if(parsed.mode!==undefined&&!["gaming","productivity","mixed"].includes(parsed.mode))return null;
+  if(parsed.budget!==undefined&&!["starter","value","balanced","high"].includes(parsed.budget))return null;
+  const workloadLabels=["1080p value","1440p all-rounder","4K detail","School & everyday","Photo & video creation","3D, CAD & engineering","Coding & virtual machines","Streaming & content creation","Gaming + school","Gaming + creative apps","Gaming + streaming","Gaming"];
+  if(parsed.workload!==undefined&&(typeof parsed.workload!=="string"||!workloadLabels.includes(parsed.workload)))return null;
+  return parsed;
+ }catch(e){return null}
 }
 
 function setupComponentPicker(pickerId, selectId){
