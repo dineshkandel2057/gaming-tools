@@ -770,6 +770,14 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 .hero-bento .bento-beast-layout .bento-workload-grid small{font-size:clamp(10px,.78vw,11px)!important;line-height:1.25!important;color:#aeb9d0!important;letter-spacing:0!important}
 @media(prefers-reduced-motion:reduce){.hero-bento .bento-beast-layout>.bento-label:after{animation:none!important}}
 @media(max-width:560px){.hero-bento .bento-beast-layout>.bento-label{font-size:clamp(17px,4.5vw,21px)!important}.hero-bento .bento-beast-layout .bento-workload-grid{gap:6px!important}.hero-bento .bento-beast-layout .bento-workload-grid>span{padding:7px!important}}
+
+/* Consistent work-use blocks across all three featured builds */
+.hero-bento .bento-build-card .bento-workloads{margin-top:0!important;display:flex!important;flex-direction:column!important;gap:8px!important}
+.hero-bento .bento-build-card .bento-workload-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}
+.hero-bento .bento-build-card .bento-workload-grid>span{display:flex!important;flex-direction:column!important;gap:2px!important;min-width:0!important;padding:6px 7px!important;border:1px solid rgba(148,163,184,.18)!important;border-radius:7px!important;background:rgba(148,163,184,.045)!important}
+.hero-bento .bento-build-card .bento-workload-grid strong{font-size:clamp(11px,.9vw,13px)!important;line-height:1.2!important;color:#f3f4f6!important}
+.hero-bento .bento-build-card .bento-workload-grid small{font-size:clamp(9px,.7vw,10px)!important;line-height:1.25!important;color:#aeb9d0!important;letter-spacing:0!important}
+@media(max-width:560px){.hero-bento .bento-build-card .bento-workload-grid{gap:5px!important}.hero-bento .bento-build-card .bento-workload-grid>span{padding:6px!important}}
 </style>
 </head>
 <body>
@@ -830,17 +838,12 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
   </section>
   <section class="bento-card bento-guide bento-calculation bento-build-card">
     <span class="bento-label">MID-RANGE BUILD</span><strong class="bento-bottleneck" id="bottleneck-status">Ryzen 5 7600 + RTX 5070</strong>
-    <div class="bento-stats-row" id="bottleneck-settings"><div class="bento-stat"><span class="bento-stat-label">CPU</span><strong class="bento-stat-value">Ryzen 5 7600</strong></div><div class="bento-stat"><span class="bento-stat-label">GPU</span><strong class="bento-stat-value">RTX 5070 · 12GB</strong></div></div>
-    <div class="bento-build-detail bento-performance-score" id="bottleneck-flow"><span class="bento-performance-label">EXPECTED GAMING PERFORMANCE</span><strong>1440p High · ~70 FPS AAA</strong><span>250+ FPS in esports titles</span></div>
+    <div class="bento-build-detail bento-performance-score bento-workloads" id="bottleneck-flow"><span class="bento-performance-label">GREAT FOR</span><div class="bento-workload-grid"><span><strong>Gaming</strong><small>1440p · High settings</small></span><span><strong>Productivity</strong><small>Everyday multitasking</small></span><span><strong>Coding</strong><small>Development · Builds</small></span><span><strong>Creative work</strong><small>Editing · Design</small></span></div></div>
     <a class="bento-calculation-link bento-build-button" href="build-planner.html?build=eyJjcHUiOiJyNS03NjAwIiwibW90aGVyYm9hcmQiOiJiNjUwLWF0eCIsIm1lbW9yeSI6ImQ1LTMyLTYwMDAiLCJncHUiOiJydHgtNTA3MCIsImNvb2xlciI6ImFpci0xODAiLCJjYXNlIjoiYWlyZmxvdy1taWQiLCJwc3UiOiJwc3UtODUwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMiIsImdvYWwiOiIxNDQwIiwibW9kZSI6ImdhbWluZyIsImJ1ZGdldCI6ImJhbGFuY2VkIiwid29ya2xvYWQiOiJHYW1pbmcifQ==" aria-label="Open the mid-range PC build">See Full Build →</a>
   </section>
   <section class="bento-card bento-guide bento-calculation bento-build-card bento-budget-card">
     <span class="bento-label">LOW-BUDGET BUILD</span><strong class="bento-bottleneck">Ryzen 5 5600 + RX 7600</strong>
-    <div class="bento-stats-row">
-      <div class="bento-stat"><span class="bento-stat-label">CPU</span><strong class="bento-stat-value">Ryzen 5 5600</strong></div>
-      <div class="bento-stat"><span class="bento-stat-label">GPU</span><strong class="bento-stat-value">RX 7600 · 8GB</strong></div>
-    </div>
-    <div class="bento-build-detail bento-performance-score"><span class="bento-performance-label">EXPECTED GAMING PERFORMANCE</span><strong>1080p High · ~70–110 FPS AAA</strong><span>180+ FPS in esports titles</span></div>
+    <div class="bento-build-detail bento-performance-score bento-workloads"><span class="bento-performance-label">GREAT FOR</span><div class="bento-workload-grid"><span><strong>Gaming</strong><small>1080p · High settings</small></span><span><strong>Productivity</strong><small>Daily tasks · Multitasking</small></span><span><strong>Coding</strong><small>Learning · Development</small></span><span><strong>Creative work</strong><small>Light editing · Design</small></span></div></div>
     <a class="bento-calculation-link bento-build-button" href="build-planner.html?build=eyJjcHUiOiJyNS01NjAwIiwibW90aGVyYm9hcmQiOiJiNTUwLW1hdHgiLCJtZW1vcnkiOiJkNC0xNiIsImdwdSI6InJ4LTc2MDAiLCJjb29sZXIiOiJhaXItMTIwIiwiY2FzZSI6ImJ1ZGdldC1hdHgiLCJwc3UiOiJwc3UtNjUwIiwic3RvcmFnZSI6Im52bWUtMSIsImdvYWwiOiIxMDgwIiwibW9kZSI6ImdhbWluZyIsImJ1ZGdldCI6InZhbHVlIiwid29ya2xvYWQiOiJHYW1pbmcifQ==" aria-label="Open the low-budget PC build">See Full Build →</a>
   </section>
 </div>
