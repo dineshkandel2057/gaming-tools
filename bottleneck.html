@@ -487,6 +487,14 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
         #bottleneck-results-container .sb-upgrade-gain{width:100%}
         #bottleneck-results-container .sb-panel-body{padding:12px}
         #bottleneck-results-container .sb-tabs{margin-left:12px;margin-right:12px}
+        /* Keep result cards readable on narrow phones without changing desktop styles. */
+        #bottleneck-results-container .sb-pair{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.45}
+        #bottleneck-results-container .sb-grid,#bottleneck-results-container .sb-metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+        #bottleneck-results-container .sb-cell,#bottleneck-results-container .sb-metric{min-width:0;padding:13px 7px}
+        #bottleneck-results-container .sb-metric strong{font-size:clamp(18px,6vw,24px);white-space:normal;overflow-wrap:anywhere;line-height:1.1}
+        #bottleneck-results-container .sb-metric span{white-space:normal;overflow-wrap:anywhere;line-height:1.35}
+        #bottleneck-results-container .sb-upgrade-gain{min-width:0;box-sizing:border-box}
+        #bottleneck-results-container .sb-upgrade-gain strong{font-size:clamp(22px,7vw,30px);white-space:normal;overflow-wrap:anywhere}
       }
     </style>
 
