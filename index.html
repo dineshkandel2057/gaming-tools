@@ -828,9 +828,9 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 /* Subtle dual neon runners along the outside edge of the complete build panel. */
 @property --build-edge-angle{syntax:"<angle>";inherits:false;initial-value:0deg}
 .hero-bento{isolation:isolate}
-.hero-bento:after{content:"";position:absolute;inset:0;padding:1.5px;border-radius:28px;pointer-events:none;z-index:5;background:conic-gradient(from var(--build-edge-angle),transparent 0deg,transparent 48deg,rgba(112,130,255,.04) 54deg,rgba(112,130,255,.52) 59deg,rgba(174,151,255,.78) 62deg,rgba(112,130,255,.16) 66deg,transparent 73deg,transparent 205deg,rgba(73,177,255,.05) 212deg,rgba(73,177,255,.42) 218deg,rgba(174,151,255,.7) 221deg,rgba(73,177,255,.12) 225deg,transparent 233deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.9;animation:buildEdgeRunners 18s linear infinite}
+.hero-bento:after{content:"";position:absolute;inset:0;padding:1.5px;border-radius:28px;pointer-events:none;z-index:5;background:conic-gradient(from var(--build-edge-angle),transparent 0deg,transparent 43deg,rgba(112,130,255,.18) 50deg,rgba(112,130,255,.82) 57deg,rgba(196,181,253,1) 62deg,rgba(112,130,255,.55) 67deg,rgba(112,130,255,.08) 75deg,transparent 82deg,transparent 200deg,rgba(73,177,255,.16) 207deg,rgba(73,177,255,.72) 215deg,rgba(196,181,253,.96) 221deg,rgba(73,177,255,.48) 227deg,rgba(73,177,255,.08) 236deg,transparent 244deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:1;filter:drop-shadow(0 0 3px rgba(129,140,248,.65)) drop-shadow(0 0 7px rgba(96,165,250,.3));animation:buildEdgeRunners 18s linear infinite}
 @keyframes buildEdgeRunners{to{--build-edge-angle:360deg}}
-@media(prefers-reduced-motion:reduce){.hero-bento:after{animation:none!important;opacity:.58}}
+@media(prefers-reduced-motion:reduce){.hero-bento:after{animation:none!important;opacity:.78;filter:drop-shadow(0 0 4px rgba(129,140,248,.7)) drop-shadow(0 0 8px rgba(96,165,250,.35))}}
 </style>
 </head>
 <body>
