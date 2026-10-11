@@ -590,6 +590,16 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
   <h2>Limits of this estimate</h2>
   <p>This is a modeled estimate, not a live benchmark of your exact PC. Real FPS changes with the game engine, patches, drivers, background applications, cooling, memory configuration, power limits, frame-time behavior and the exact scene being rendered. Two games using the same CPU and GPU can produce very different bottleneck patterns. The calculator also cannot observe your actual GPU utilization, CPU thread usage or frame times. Treat the result as directional guidance for choosing what to investigate next, not as proof that a particular component must be replaced.</p>
 
+  <h2>How to verify a bottleneck on your PC</h2>
+  <p>A calculator can narrow down what to investigate, but you can cross-check the estimate with a repeatable in-game test before spending money:</p>
+  <ol>
+    <li><strong>Choose one repeatable scene.</strong> Use the same game area, resolution, graphics preset and frame cap for each test. Record average FPS and frame-time consistency rather than relying on one brief peak.</li>
+    <li><strong>Watch GPU and CPU activity together.</strong> Sustained high GPU utilization can point to a GPU limit. If GPU utilization stays lower while one or more CPU threads are heavily loaded, the game may be CPU-limited. Total CPU usage alone can hide a busy game thread.</li>
+    <li><strong>Change one setting at a time.</strong> Lowering resolution or GPU-heavy effects can help identify a graphics limit; if FPS barely changes, investigate CPU-side limits, frame caps, thermals and background tasks. Treat this as a clue, not proof by itself.</li>
+    <li><strong>Compare the result with your goal.</strong> If performance already meets your target, an upgrade may not be worthwhile. If it does not, use the <a href="fps-calculator.html">gaming FPS estimator</a> to compare settings, then use the <a href="upgrade-advisor.html">PC Upgrade Advisor to prioritize your next component upgrade</a>.</li>
+  </ol>
+  <p>If you are planning a larger rebuild rather than replacing one part, the <a href="build-planner.html">PC Build Planner can help check component compatibility</a> before you buy.</p>
+
   <h2>Frequently asked questions</h2>
   <h3>Does a bottleneck percentage mean my PC is bad?</h3>
   <p>No. Every gaming workload has a limiting component. The useful question is whether that limit prevents you from reaching your target FPS.</p>
