@@ -176,18 +176,20 @@
     .sfp-tool-menu {
       position: absolute;
       z-index: 1001;
-      top: calc(100% + 12px);
+      top: calc(100% + 8px);
       right: 0;
-      width: min(410px,calc(100vw - 28px));
-      max-height: min(70vh,620px);
-      overflow: auto;
-      padding: 12px;
-      border: 1px solid rgba(157,174,204,.22);
-      border-radius: 18px;
-      background: linear-gradient(145deg,rgba(24,31,49,.98),rgba(10,15,26,.98));
-      box-shadow: 0 28px 80px rgba(0,0,0,.52),inset 0 1px 0 rgba(255,255,255,.045);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
+      width: min(330px,calc(100vw - 28px));
+      max-height: min(70vh,520px);
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 8px;
+      border: 1px solid rgba(173,190,225,.24);
+      border-radius: 16px;
+      background: linear-gradient(145deg,rgba(24,31,49,.96),rgba(10,15,26,.94));
+      box-shadow: 0 24px 64px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.10),0 0 24px rgba(117,101,255,.06);
+      backdrop-filter: blur(90px) saturate(145%);
+      -webkit-backdrop-filter: blur(90px) saturate(145%);
       transform-origin: top right;
       animation: sfp-tools-expand 190ms cubic-bezier(.2,.75,.2,1) both;
     }
@@ -226,19 +228,17 @@
       text-transform: uppercase;
     }
 
-        .sfp-tool-item {
+    .sfp-tool-item {
       display: flex;
       align-items: center;
-      gap: 13px;
-      padding: 12px;
-      min-height: 70px;
+      gap: 10px;
+      padding: 8px 9px;
+      min-height: 0;
       border: 1px solid transparent;
-      border-radius: 14px;
+      border-radius: 10px;
       color: #edf1f9;
       text-decoration: none;
-      transition:
-        background .18s,
-        border-color .18s;
+      transition: background .18s,border-color .18s;
     }
 
     .sfp-tool-item:hover,
@@ -286,25 +286,16 @@
 
     .sfp-tool-item b {
       display: block;
-      font-size: 14px;
-      line-height: 1.35;
+      font-size: 13px;
+      line-height: 1.3;
       font-weight: 750;
       letter-spacing: -.01em;
       color: #f5f7fc;
     }
 
-    .sfp-tool-item small {
-      display: block;
-      margin-top: 4px;
-      color: #9eabc0;
-      font-size: 11px;
-      line-height: 1.4;
-    }
+    .sfp-tool-item small { display: none !important; }
 
-    .sfp-arrow {
-      color: #9d8cff;
-      font-size: 15px;
-    }
+    .sfp-arrow { display: none !important; }
 
         .sfp-cpu {
       background: rgba(137,111,255,.16);
@@ -360,11 +351,41 @@
 
       .sfp-tools {
         width: max-content;
+        position: static;
       }
 
       .sfp-tool-menu {
-        right: 0;
-        width: min(410px,calc(100vw - 20px));
+        position: fixed;
+        top: var(--sfp-mobile-menu-top, 118px);
+        left: 10px;
+        right: 10px;
+        width: auto;
+        max-width: 460px;
+        max-height: calc(100dvh - var(--sfp-mobile-menu-top, 118px) - 16px);
+        margin-inline: auto;
+        border-radius: 15px;
+        transform-origin: top center;
+      }
+
+      .sfp-menu-label {
+        padding: 5px 8px 6px;
+      }
+
+      .sfp-tool-item {
+        gap: 10px;
+        padding: 9px;
+      }
+
+      .sfp-tool-icon {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+        border-radius: 10px;
+      }
+
+      .sfp-tool-icon svg {
+        width: 21px;
+        height: 21px;
       }
     }
 
@@ -391,11 +412,7 @@
          href="${href}">
         <span class="sfp-tool-icon ${iconClass}"
               aria-hidden="true">${icon}</span>
-        <span>
-          <b>${title}</b>
-          <small>${desc}</small>
-        </span>
-        <span class="sfp-arrow" aria-hidden="true">↗</span>
+        <span class="sfp-tool-name"><b>${title}</b></span>
       </a>`;
   }
 
