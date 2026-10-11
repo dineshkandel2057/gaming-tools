@@ -790,6 +790,20 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 .hero-bento .bento-beast-layout>.bento-label .bento-rgb-text:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 0%,rgba(96,165,250,.05) 30%,rgba(167,139,250,.5) 50%,rgba(96,165,250,.08) 70%,transparent 100%);transform:translateX(-110%);animation:beastTextShimmer 8s ease-in-out infinite}
 @keyframes beastTextShimmer{0%,18%{transform:translateX(-110%)}72%,100%{transform:translateX(110%)}}
 @media(prefers-reduced-motion:reduce){.hero-bento .bento-beast-layout>.bento-label .bento-rgb-text:after{animation:none!important;display:none!important}}
+
+/* Beast card: fill the open right side with a compact GPU capability summary. */
+.hero-bento .bento-beast-workloads{display:grid!important;grid-template-columns:minmax(0,1.5fr) minmax(118px,.8fr)!important;align-items:stretch!important;gap:18px!important}
+.hero-bento .bento-beast-workload-main{min-width:0!important}
+.hero-bento .bento-beast-side{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:flex-start!important;gap:8px!important;min-width:0!important;padding:8px 0 8px 16px!important;border-left:1px solid rgba(139,92,246,.32)!important;color:#c7d2e5!important}
+.hero-bento .bento-beast-side>strong{font-size:clamp(18px,1.7vw,25px)!important;line-height:1.1!important;letter-spacing:-.03em!important;color:#a99aff!important;text-shadow:0 0 16px rgba(139,92,246,.35)!important}
+.hero-bento .bento-beast-side>span:not(.bento-performance-label){font-size:clamp(10px,.82vw,12px)!important;line-height:1.35!important;color:#c0c9dc!important}
+.hero-bento .bento-beast-side .bento-beast-side-note{margin-top:5px!important;color:#8f9bb2!important;font-size:10px!important}
+.hero-bento .bento-beast-workloads .bento-workload-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:10px!important}
+.hero-bento .bento-build-card .bento-workload-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:12px!important;row-gap:10px!important}
+.hero-bento .bento-build-card .bento-workload-grid>span{padding:5px 2px!important}
+.hero-bento .bento-build-card .bento-workload-grid strong{font-size:clamp(12px,1vw,13px)!important;line-height:1.25!important}
+.hero-bento .bento-build-card .bento-workload-grid small{font-size:clamp(10px,.75vw,11px)!important;line-height:1.35!important}
+@media(max-width:600px){.hero-bento .bento-beast-workloads{grid-template-columns:minmax(0,1fr)!important;gap:12px!important}.hero-bento .bento-beast-side{display:grid!important;grid-template-columns:auto 1fr!important;align-items:center!important;column-gap:12px!important;row-gap:5px!important;padding:10px 0 0!important;border-left:0!important;border-top:1px solid rgba(139,92,246,.32)!important}.hero-bento .bento-beast-side .bento-performance-label{grid-column:1/-1!important}.hero-bento .bento-beast-side .bento-beast-side-note{grid-column:1/-1!important}}
 </style>
 </head>
 <body>
@@ -837,25 +851,34 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
     <span class="bento-label bento-trend-label"><span class="bento-rgb-text">THE BEAST PC BUILD</span></span>
     <strong class="bento-bottleneck">Ryzen 7 9800X3D + RTX 5090</strong>
 
-    <div class="bento-build-detail bento-performance-score bento-workloads">
-      <span class="bento-performance-label">BUILT FOR EVERY WORKLOAD</span>
-      <div class="bento-workload-grid">
-        <span><strong>Gaming</strong><small>4K · High refresh</small></span>
-        <span><strong>Productivity</strong><small>Multitasking · Rendering</small></span>
-        <span><strong>Coding &amp; AI</strong><small>Builds · Local workloads</small></span>
-        <span><strong>3D Creation</strong><small>Modeling · Animation</small></span>
+    <div class="bento-build-detail bento-performance-score bento-workloads bento-beast-workloads">
+      <div class="bento-beast-workload-main">
+        <span class="bento-performance-label">BUILT FOR EVERY WORKLOAD</span>
+        <div class="bento-workload-grid">
+          <span><strong>Gaming</strong><small>4K · High refresh</small></span>
+          <span><strong>Productivity</strong><small>Multitasking · Rendering</small></span>
+          <span><strong>Coding &amp; AI</strong><small>Builds · Local workloads</small></span>
+          <span><strong>3D Creation</strong><small>Modeling · Animation</small></span>
+        </div>
       </div>
+      <aside class="bento-beast-side" aria-label="GeForce RTX 5090 highlights">
+        <span class="bento-performance-label">CREATOR POWER</span>
+        <strong>RTX 5090</strong>
+        <span>32 GB GDDR7</span>
+        <span>AI · 3D · Rendering</span>
+        <span class="bento-beast-side-note">Built for demanding workloads</span>
+      </aside>
     </div>
     <a class="bento-calculation-link bento-build-button bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy05ODAweDNkIiwibW90aGVyYm9hcmQiOiJ4ODcwZS1hdHgiLCJtZW1vcnkiOiJkNS0zMi02MDAwIiwiZ3B1IjoicnR4LTUwOTAiLCJjb29sZXIiOiJhaW8tMzYwIiwiY2FzZSI6Im1lc2gtZnVsbCIsInBzdSI6InBzdS0xMjAwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMi1nZW41IiwiZ29hbCI6IjIxNjAiLCJtb2RlIjoiZ2FtaW5nIiwiYnVkZ2V0IjoiaGlnaCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="Open the Ultra Max Pro PC build">See Full Build →</a>
   </section>
   <section class="bento-card bento-guide bento-calculation bento-build-card">
     <span class="bento-label">MID-RANGE BUILD</span><strong class="bento-bottleneck" id="bottleneck-status">Ryzen 5 7600 + RTX 5070</strong>
-    <div class="bento-build-detail bento-performance-score bento-workloads" id="bottleneck-flow"><span class="bento-performance-label">GREAT FOR</span><div class="bento-workload-grid"><span><strong>Gaming</strong><small>1440p · High settings</small></span><span><strong>Productivity</strong><small>Everyday multitasking</small></span><span><strong>Coding</strong><small>Development · Builds</small></span><span><strong>Creative work</strong><small>Editing · Design</small></span></div></div>
+    <div class="bento-build-detail bento-performance-score bento-workloads" id="bottleneck-flow"><span class="bento-performance-label">GREAT FOR</span><div class="bento-workload-grid"><span><strong>Gaming</strong><small>1440p · High settings</small></span><span><strong>Productivity &amp; creation</strong><small>Multitasking · Editing</small></span></div></div>
     <a class="bento-calculation-link bento-build-button" href="build-planner.html?build=eyJjcHUiOiJyNS03NjAwIiwibW90aGVyYm9hcmQiOiJiNjUwLWF0eCIsIm1lbW9yeSI6ImQ1LTMyLTYwMDAiLCJncHUiOiJydHgtNTA3MCIsImNvb2xlciI6ImFpci0xODAiLCJjYXNlIjoiYWlyZmxvdy1taWQiLCJwc3UiOiJwc3UtODUwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMiIsImdvYWwiOiIxNDQwIiwibW9kZSI6ImdhbWluZyIsImJ1ZGdldCI6ImJhbGFuY2VkIiwid29ya2xvYWQiOiJHYW1pbmcifQ==" aria-label="Open the mid-range PC build">See Full Build →</a>
   </section>
   <section class="bento-card bento-guide bento-calculation bento-build-card bento-budget-card">
     <span class="bento-label">LOW-BUDGET BUILD</span><strong class="bento-bottleneck">Ryzen 5 5600 + RX 7600</strong>
-    <div class="bento-build-detail bento-performance-score bento-workloads"><span class="bento-performance-label">GREAT FOR</span><div class="bento-workload-grid"><span><strong>Gaming</strong><small>1080p · High settings</small></span><span><strong>Productivity</strong><small>Daily tasks · Multitasking</small></span><span><strong>Coding</strong><small>Learning · Development</small></span><span><strong>Creative work</strong><small>Light editing · Design</small></span></div></div>
+    <div class="bento-build-detail bento-performance-score bento-workloads"><span class="bento-performance-label">GREAT FOR</span><div class="bento-workload-grid"><span><strong>Gaming</strong><small>1080p · High settings</small></span><span><strong>Everyday &amp; coding</strong><small>Study · Development · Daily tasks</small></span></div></div>
     <a class="bento-calculation-link bento-build-button" href="build-planner.html?build=eyJjcHUiOiJyNS01NjAwIiwibW90aGVyYm9hcmQiOiJiNTUwLW1hdHgiLCJtZW1vcnkiOiJkNC0xNiIsImdwdSI6InJ4LTc2MDAiLCJjb29sZXIiOiJhaXItMTIwIiwiY2FzZSI6ImJ1ZGdldC1hdHgiLCJwc3UiOiJwc3UtNjUwIiwic3RvcmFnZSI6Im52bWUtMSIsImdvYWwiOiIxMDgwIiwibW9kZSI6ImdhbWluZyIsImJ1ZGdldCI6InZhbHVlIiwid29ya2xvYWQiOiJHYW1pbmcifQ==" aria-label="Open the low-budget PC build">See Full Build →</a>
   </section>
 </div>
