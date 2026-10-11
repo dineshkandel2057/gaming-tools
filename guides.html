@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Practical PC gaming and hardware guides covering bottlenecks, FPS, graphics settings, upgrades, storage, VRAM and more.">
+  <meta name="description" content="Find practical PC gaming guides for fixing FPS drops, understanding CPU and GPU bottlenecks, choosing upgrades, graphics settings, RAM, VRAM and storage.">
   <meta property="og:title" content="PC Gaming & Hardware Guides | SystemFit PC">
 <meta property="og:description" content="Practical PC gaming and hardware guides covering bottlenecks, FPS, graphics settings, upgrades, storage, VRAM and more.">
 <meta name="twitter:title" content="PC Gaming & Hardware Guides | SystemFit PC">
@@ -170,6 +170,14 @@
       border-color:rgba(151,132,255,.28);color:#fff;
     }
     .guide-tool span{color:#a99aff}
+    .start-here{margin:0 0 34px;padding:22px;border:1px solid rgba(157,174,204,.16);border-radius:16px;background:linear-gradient(145deg,rgba(19,25,39,.72),rgba(13,18,29,.82))}
+    .start-here h2{font-size:22px;margin-bottom:7px}
+    .start-here>p{color:var(--muted);font-size:14px;margin-bottom:16px}
+    .start-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .start-path{display:block;padding:15px;border:1px solid rgba(157,174,204,.14);border-radius:12px;background:rgba(255,255,255,.025);transition:border-color .2s,background .2s}
+    .start-path:hover{border-color:rgba(151,132,255,.35);background:rgba(118,95,255,.08)}
+    .start-path strong{display:block;color:#f5f7fc;font-size:14px;margin-bottom:5px}
+    .start-path span{display:block;color:#aeb9cc;font-size:12px;line-height:1.6}
     .guides-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
     .guide-card{
       display:block;
@@ -210,6 +218,7 @@
       nav{flex-wrap:wrap;justify-content:center}
       main{padding-top:50px}
       .guides-grid{grid-template-columns:1fr}
+      .start-paths{grid-template-columns:1fr}
     }
     @media(max-width:480px){
       #brand-logo{gap:7px}
@@ -251,6 +260,16 @@
     <a class="guide-tool" href="gpu-comparison.html"><span>→</span> GPU Comparison</a>
     <a class="guide-tool" href="bottleneck.html"><span>→</span> Bottleneck Calculator</a>
   </div>
+
+  <section class="start-here" data-sfp-reveal aria-labelledby="start-here-title">
+    <h2 id="start-here-title">Not sure where to start?</h2>
+    <p>Pick the goal closest to your current problem and follow the most relevant guide before changing settings or buying hardware.</p>
+    <div class="start-paths">
+      <a class="start-path" href="how-to-fix-fps-drops-and-stuttering.html"><strong>Fix low FPS or stutter</strong><span>Work through repeatable checks for frame drops, temperatures, memory pressure and system limits.</span></a>
+      <a class="start-path" href="cpu-vs-gpu-bottleneck.html"><strong>Understand performance limits</strong><span>Learn how to tell whether the CPU, GPU or another part is holding a game back.</span></a>
+      <a class="start-path" href="which-pc-component-to-upgrade-first.html"><strong>Plan an upgrade or build</strong><span>Choose what to upgrade first and check whether a larger platform change makes sense.</span></a>
+    </div>
+  </section>
 
   <section class="guides-grid" data-sfp-reveal aria-label="PC gaming guides">
     <a class="guide-card" href="how-much-ram-for-gaming-2026.html">
