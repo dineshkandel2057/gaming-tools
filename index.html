@@ -759,6 +759,17 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 .hero-bento .bento-beast-layout .bento-build-detail>span:last-child{font-size:clamp(11px,.9vw,13px)!important;line-height:1.4!important}
 .hero-bento .bento-beast-layout .bento-full-build-button{align-self:flex-start!important;margin-top:0!important}
 @media(max-width:560px){.hero-bento .bento-beast-layout{padding:16px!important;gap:12px!important}.hero-bento .bento-beast-layout>.bento-bottleneck{font-size:clamp(21px,5.5vw,27px)!important}.hero-bento .bento-beast-layout .bento-stat-value{font-size:13px!important}}
+
+.hero-bento .bento-beast-layout>.bento-label{font-size:clamp(18px,1.8vw,24px)!important;letter-spacing:.13em!important;line-height:1.2!important;text-align:center!important;padding:4px 0 7px!important;position:relative!important;overflow:hidden!important}
+.hero-bento .bento-beast-layout>.bento-label:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,rgba(96,165,250,.22),rgba(167,139,250,.2),transparent);transform:translateX(-100%);animation:beastTitleGlow 9s ease-in-out infinite;pointer-events:none}
+@keyframes beastTitleGlow{0%,20%{transform:translateX(-100%)}80%,100%{transform:translateX(100%)}}
+.hero-bento .bento-beast-layout .bento-workloads{margin-top:0!important;display:flex!important;flex-direction:column!important;gap:9px!important}
+.hero-bento .bento-beast-layout .bento-workload-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+.hero-bento .bento-beast-layout .bento-workload-grid>span{display:flex!important;flex-direction:column!important;gap:3px!important;min-width:0!important;padding:8px 9px!important;border:1px solid rgba(148,163,184,.18)!important;border-radius:8px!important;background:rgba(148,163,184,.045)!important}
+.hero-bento .bento-beast-layout .bento-workload-grid strong{font-size:clamp(12px,1vw,14px)!important;line-height:1.2!important;color:#f3f4f6!important}
+.hero-bento .bento-beast-layout .bento-workload-grid small{font-size:clamp(10px,.78vw,11px)!important;line-height:1.25!important;color:#aeb9d0!important;letter-spacing:0!important}
+@media(prefers-reduced-motion:reduce){.hero-bento .bento-beast-layout>.bento-label:after{animation:none!important}}
+@media(max-width:560px){.hero-bento .bento-beast-layout>.bento-label{font-size:clamp(17px,4.5vw,21px)!important}.hero-bento .bento-beast-layout .bento-workload-grid{gap:6px!important}.hero-bento .bento-beast-layout .bento-workload-grid>span{padding:7px!important}}
 </style>
 </head>
 <body>
@@ -809,10 +820,14 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
       <div class="bento-stat"><span class="bento-stat-label">CPU</span><strong class="bento-stat-value">Ryzen 7 9800X3D</strong></div>
       <div class="bento-stat"><span class="bento-stat-label">GPU</span><strong class="bento-stat-value">RTX 5090 · 32GB</strong></div>
     </div>
-    <div class="bento-build-detail bento-performance-score">
-      <span class="bento-performance-label">HARDWARE HIGHLIGHTS</span>
-      <strong>8 cores · 16 threads · Up to 5.2 GHz</strong>
-      <span>32 GB GDDR7 · 21,760 CUDA cores · DLSS 4 · Ray tracing</span>
+    <div class="bento-build-detail bento-performance-score bento-workloads">
+      <span class="bento-performance-label">BUILT FOR EVERY WORKLOAD</span>
+      <div class="bento-workload-grid">
+        <span><strong>Gaming</strong><small>4K · High refresh</small></span>
+        <span><strong>Productivity</strong><small>Multitasking · Rendering</small></span>
+        <span><strong>Coding &amp; AI</strong><small>Builds · Local workloads</small></span>
+        <span><strong>3D Creation</strong><small>Modeling · Animation</small></span>
+      </div>
     </div>
     <a class="bento-calculation-link bento-build-button bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy05ODAweDNkIiwibW90aGVyYm9hcmQiOiJ4ODcwZS1hdHgiLCJtZW1vcnkiOiJkNS0zMi02MDAwIiwiZ3B1IjoicnR4LTUwOTAiLCJjb29sZXIiOiJhaW8tMzYwIiwiY2FzZSI6Im1lc2gtZnVsbCIsInBzdSI6InBzdS0xMjAwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMi1nZW41IiwiZ29hbCI6IjIxNjAiLCJtb2RlIjoiZ2FtaW5nIiwiYnVkZ2V0IjoiaGlnaCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="Open the Ultra Max Pro PC build">See Full Build →</a>
   </section>
