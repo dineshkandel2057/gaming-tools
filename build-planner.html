@@ -211,7 +211,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
               <div class="component-picker-options"></div>
             </div>
           </div>
-          <select id="cpu" required hidden></select><div class="select-note" id="cpuNote"></div><small>Choose a CPU to reveal the graphics step.</small></div>
+          <select id="cpu" data-sfp-native-picker="true" required hidden></select><div class="select-note" id="cpuNote"></div><small>Choose a CPU to reveal the graphics step.</small></div>
         <button type="button" class="step-back" data-back="3">← Change your goal</button>
       </section>
       <section class="step wizard-step" id="gpuStep" data-stage="5" hidden>
@@ -224,7 +224,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
               <div class="component-picker-options"></div>
             </div>
           </div>
-          <select id="gpu" required hidden></select><div class="select-note" id="gpuNote"></div><small>Integrated graphics requires a CPU that includes it; the checklist flags mismatches.</small></div>
+          <select id="gpu" data-sfp-native-picker="true" required hidden></select><div class="select-note" id="gpuNote"></div><small>Integrated graphics requires a CPU that includes it; the checklist flags mismatches.</small></div>
         <button type="button" class="step-back" data-back="4">← Change processor</button>
       </section>
       <section class="step wizard-step" id="boardStep" data-stage="6" hidden>
