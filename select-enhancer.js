@@ -3,7 +3,7 @@
 const SPECIAL='.component-picker,.hardware-picker,.game-picker,.game-profile-picker,[data-hardware-picker]';
 function legacyHost(s){const direct=s.closest(SPECIAL);if(direct)return direct;const previous=s.previousElementSibling;return previous?.matches(SPECIAL)?previous:null}
 const isSpecial=s=>!!legacyHost(s);
-const canEnhance=s=>{if(!(s instanceof HTMLSelectElement)||s.dataset.sfpc||s.multiple||s.size>1||!s.options.length)return false;if(s.matches('[hidden],[aria-hidden="true"]')&&!legacyHost(s))return false;return true};
+const canEnhance=s=>{if(!(s instanceof HTMLSelectElement)||s.dataset.sfpc||s.hasAttribute('data-sfp-native-picker')||s.multiple||s.size>1||!s.options.length)return false;if(s.matches('[hidden],[aria-hidden="true"]')&&!legacyHost(s))return false;return true};
 const esc=s=>CSS.escape(s);
 const label=s=>{const l=s.id&&document.querySelector('label[for="'+esc(s.id)+'"]');return(l||s.closest('label'))?.textContent.trim()||s.getAttribute('aria-label')||'Select an option'};
 const opts=s=>[...s.options].map((o,i)=>({i,t:o.textContent.trim(),v:o.value,d:o.disabled}));
