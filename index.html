@@ -778,6 +778,18 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 .hero-bento .bento-build-card .bento-workload-grid strong{font-size:clamp(11px,.9vw,13px)!important;line-height:1.2!important;color:#f3f4f6!important}
 .hero-bento .bento-build-card .bento-workload-grid small{font-size:clamp(9px,.7vw,10px)!important;line-height:1.25!important;color:#aeb9d0!important;letter-spacing:0!important}
 @media(max-width:560px){.hero-bento .bento-build-card .bento-workload-grid{gap:5px!important}.hero-bento .bento-build-card .bento-workload-grid>span{padding:6px!important}}
+
+/* Refinement: keep workload details unboxed and constrain the title shimmer to the text line. */
+.hero-bento .bento-workload-grid>span{padding:4px 2px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+.hero-bento .bento-workload-grid{column-gap:14px!important;row-gap:8px!important}
+.hero-bento .bento-workload-grid>span strong{font-size:clamp(12px,1vw,14px)!important;line-height:1.25!important}
+.hero-bento .bento-workload-grid>span small{font-size:clamp(10px,.78vw,11px)!important;line-height:1.35!important}
+.hero-bento .bento-beast-layout>.bento-label{overflow:visible!important;isolation:isolate!important}
+.hero-bento .bento-beast-layout>.bento-label .bento-rgb-text{position:relative!important;display:inline-block!important;isolation:isolate!important;overflow:hidden!important;border-radius:2px!important}
+.hero-bento .bento-beast-layout>.bento-label:after{content:none!important;display:none!important;animation:none!important}
+.hero-bento .bento-beast-layout>.bento-label .bento-rgb-text:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 0%,rgba(96,165,250,.05) 30%,rgba(167,139,250,.5) 50%,rgba(96,165,250,.08) 70%,transparent 100%);transform:translateX(-110%);animation:beastTextShimmer 8s ease-in-out infinite}
+@keyframes beastTextShimmer{0%,18%{transform:translateX(-110%)}72%,100%{transform:translateX(110%)}}
+@media(prefers-reduced-motion:reduce){.hero-bento .bento-beast-layout>.bento-label .bento-rgb-text:after{animation:none!important;display:none!important}}
 </style>
 </head>
 <body>
