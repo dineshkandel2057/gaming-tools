@@ -185,8 +185,17 @@
     }
     function run(){
       const game=games[$("game").value], cpu=$("cpu").value, gpu=$("gpu").value, res=$("resolution").value;
-      if(!res){$("fps").textContent="—";$("preset").textContent="Select resolution";$("explanation").textContent="Choose a gaming resolution and target FPS, then run the optimizer.";return}
-      const ram=+$("ram").value, target=+$("target").value||60, priority=$("priority").value, rt=$("rt").value==="on";
+      const targetValue=$("target").value;
+      if(!res||!targetValue){
+        $("fps").textContent="—";
+        $("preset").textContent=!res?"Select resolution":"Select target FPS";
+        ["limit","vram","ramOut","confidence","textures","shadows","rtOut","upscale","fg","effects"].forEach(id=>$(id).textContent="—");
+        $("explanation").textContent=!res
+          ?"Choose a gaming resolution and target FPS, then run the optimizer."
+          :"Choose a target FPS, then run the optimizer.";
+        return;
+      }
+      const ram=+$("ram").value, target=+targetValue, priority=$("priority").value, rt=$("rt").value==="on";
       let fps=baseEstimate(game,cpu,gpu,res);
       if(ram<16)fps*=.88;
       if(rt)fps*=.70*game.heavy;
