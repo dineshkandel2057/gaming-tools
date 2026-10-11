@@ -190,7 +190,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
   <summary><span><strong>NVIDIA GeForce</strong><small>RTX &amp; GTX graphics cards</small></span><b class="brand-count" data-count="NVIDIA"></b></summary>
   <div class="brand-dropdown-body">
     <div class="brand-search-row"><label class="searchbox brand-search"><span aria-hidden="true">⌕</span><input class="brand-search-input" data-brand="NVIDIA" type="search" placeholder="Search NVIDIA models…" aria-label="Search NVIDIA graphics cards"></label>
-    <label class="selectbox brand-sort"><span aria-hidden="true">↕</span><select class="brand-sort-select" data-brand="NVIDIA" aria-label="Sort NVIDIA graphics cards"><option value="low-high">Low to high</option><option value="high-low">High to low</option><option value="newest">Newest</option><option value="popular">Popular</option><option value="most-vram">Most VRAM</option></select></label>
+    <label class="selectbox brand-sort"><span aria-hidden="true">↕</span><select class="brand-sort-select" data-brand="NVIDIA" aria-label="Sort NVIDIA graphics cards"><option value="low-high">Low to high</option><option value="high-low">High to low</option><option value="newest">Newest</option><option value="most-vram">Most VRAM</option></select></label>
     </div>
     <div class="brand-gpu-grid" id="brandGridNVIDIA"></div>
   </div>
@@ -252,7 +252,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
   <p>It matters for PSU capacity, connectors, heat and system design. Always verify the exact model's requirements before buying.</p>
   <h3>What should I check after choosing a GPU?</h3>
   <p>Use the <a href="build-planner.html">PC Build Planner</a> for compatibility and the <a href="how-much-vram-for-gaming-2026.html">VRAM guide</a> for memory capacity context.</p>
-  <p class="last-updated"><strong>Last updated:</strong> October 8, 2026</p>
+  <p class="last-updated"><strong>Last updated:</strong> October 11, 2026</p>
 </section>
 </main>
 <script src="hardware-data.js"></script>
@@ -274,7 +274,7 @@ const gpus = SFP_HARDWARE_DATA.GPUs.map(g => ({
       note:g.note || g.scoreNote || "",
       comparisonId:g.comparisonId || g.id,
       comparisonImage:g.comparisonImage,
-      popularityRank:g.popularityRank
+      score:Number(g.score)||0
     }));
 gpus.forEach(g=>{if(g.id==="5090")g.image="https://assets.nvidia.partners/images/5090_Front_.webp";});
 
@@ -286,10 +286,10 @@ function filteredBrand(brand){
   let list=gpus.filter(g=>(g.brand===brand||g.brand.startsWith(brand+" "))&&(!q||(g.name+" "+g.brand+" "+g.series+" "+g.work).toLowerCase().includes(q)));
   list.sort((a,b)=>{
     if(sort==="newest") return b.year-a.year||a.name.localeCompare(b.name);
-    if(sort==="high-low") return (b.tier??0)-(a.tier??0)||b.year-a.year||a.name.localeCompare(b.name);
-    if(sort==="popular") return (b.popularityRank??0)-(a.popularityRank??0)||b.year-a.year||a.name.localeCompare(b.name);
-    if(sort==="most-vram") return (b.vram??0)-(a.vram??0)||(b.tier??0)-(a.tier??0)||a.name.localeCompare(b.name);
-    return (a.tier??0)-(b.tier??0)||a.year-b.year||a.name.localeCompare(b.name);
+    if(sort==="high-low") return b.score-a.score||(b.year??0)-(a.year??0)||a.name.localeCompare(b.name);
+
+    if(sort==="most-vram") return (b.vram??0)-(a.vram??0)||b.score-a.score||a.name.localeCompare(b.name);
+    return a.score-b.score||(a.year??0)-(b.year??0)||a.name.localeCompare(b.name);
   });
   return list;
 }
