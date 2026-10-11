@@ -828,9 +828,9 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 /* Subtle dual neon runners along the outside edge of the complete build panel. */
 @property --build-edge-angle{syntax:"<angle>";inherits:false;initial-value:0deg}
 .hero-bento{isolation:isolate}
-.hero-bento:after{content:"";position:absolute;inset:0;padding:1.5px;border-radius:28px;pointer-events:none;z-index:5;background:conic-gradient(from var(--build-edge-angle),transparent 0deg,transparent 48deg,rgba(112,130,255,.04) 54deg,rgba(112,130,255,.52) 59deg,rgba(174,151,255,.78) 62deg,rgba(112,130,255,.16) 66deg,transparent 73deg,transparent 205deg,rgba(73,177,255,.05) 212deg,rgba(73,177,255,.42) 218deg,rgba(174,151,255,.7) 221deg,rgba(73,177,255,.12) 225deg,transparent 233deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.62;animation:buildEdgeRunners 18s linear infinite}
+.hero-bento:after{content:"";position:absolute;inset:0;padding:1.5px;border-radius:28px;pointer-events:none;z-index:5;background:conic-gradient(from var(--build-edge-angle),transparent 0deg,transparent 48deg,rgba(112,130,255,.04) 54deg,rgba(112,130,255,.52) 59deg,rgba(174,151,255,.78) 62deg,rgba(112,130,255,.16) 66deg,transparent 73deg,transparent 205deg,rgba(73,177,255,.05) 212deg,rgba(73,177,255,.42) 218deg,rgba(174,151,255,.7) 221deg,rgba(73,177,255,.12) 225deg,transparent 233deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.9;animation:buildEdgeRunners 18s linear infinite}
 @keyframes buildEdgeRunners{to{--build-edge-angle:360deg}}
-@media(prefers-reduced-motion:reduce){.hero-bento:after{animation:none!important;opacity:.28}}
+@media(prefers-reduced-motion:reduce){.hero-bento:after{animation:none!important;opacity:.42}}
 </style>
 </head>
 <body>
