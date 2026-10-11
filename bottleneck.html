@@ -661,6 +661,8 @@ function setupHardwarePicker(kind,data){
  if(!root||!select||!Array.isArray(data)||!data.length)return;
  const trigger=root.querySelector(".picker-trigger"),panel=root.querySelector(".picker-panel"),search=root.querySelector(".picker-search"),options=root.querySelector(".picker-options"),empty=root.querySelector(".picker-empty");
  if(!trigger||!panel||!search||!options||!empty)return;
+ options.id=kind+"PickerOptions";
+ trigger.setAttribute("aria-controls",options.id);
  const render=(query="")=>{
    const q=String(query).trim().toLocaleLowerCase();
    const matches=data.map((item,index)=>({item,index})).filter(({item})=>{
@@ -671,7 +673,8 @@ function setupHardwarePicker(kind,data){
    const fragment=document.createDocumentFragment();
    matches.forEach(({item,index})=>{
      const option=document.createElement("button");
-     option.type="button";option.className="picker-option";option.setAttribute("role","option");
+     option.type="button";option.className="picker-option";option.id=kind+"PickerOption-"+index;option.setAttribute("role","option");
+     option.setAttribute("aria-selected",String(select.value===String(index)));
      option.textContent=`${item.name}${item.generation?" · "+item.generation:""}${item.tier?" · "+item.tier:""}`;
      option.addEventListener("click",()=>{select.value=String(index);select.dispatchEvent(new Event("change",{bubbles:true}));trigger.childNodes[0].nodeValue=item.name+" ";close();});
      fragment.appendChild(option);
@@ -679,6 +682,11 @@ function setupHardwarePicker(kind,data){
    options.appendChild(fragment);empty.hidden=matches.length>0;
  };
  const close=()=>{panel.classList.remove("is-open");trigger.setAttribute("aria-expanded","false");};
+ const focusOption=(index)=>{
+   const items=[...options.querySelectorAll("button.picker-option")];
+   if(!items.length)return;
+   items[Math.max(0,Math.min(index,items.length-1))].focus();
+ };
  render();
  trigger.addEventListener("click",()=>{
    const open=!panel.classList.contains("is-open");
@@ -687,8 +695,16 @@ function setupHardwarePicker(kind,data){
    if(open){panel.classList.add("is-open");trigger.setAttribute("aria-expanded","true");render(search.value);requestAnimationFrame(()=>search.focus());}else close();
  });
  search.addEventListener("input",()=>render(search.value));
- search.addEventListener("keydown",event=>{if(event.key==="Escape"){event.preventDefault();close();trigger.focus();}else if(event.key==="ArrowDown"){event.preventDefault();options.querySelector("button")?.focus();}});
- options.addEventListener("keydown",event=>{if(event.key==="Escape"){event.preventDefault();close();trigger.focus();}});
+ search.addEventListener("keydown",event=>{if(event.key==="Escape"){event.preventDefault();close();trigger.focus();}else if(event.key==="ArrowDown"){event.preventDefault();focusOption(0);}});
+ options.addEventListener("keydown",event=>{
+   const items=[...options.querySelectorAll("button.picker-option")];
+   const current=items.indexOf(document.activeElement);
+   if(event.key==="Escape"){event.preventDefault();close();trigger.focus();}
+   else if(event.key==="ArrowDown"){event.preventDefault();focusOption(current+1);}
+   else if(event.key==="ArrowUp"){event.preventDefault();focusOption(current<=0?0:current-1);}
+   else if(event.key==="Home"){event.preventDefault();focusOption(0);}
+   else if(event.key==="End"){event.preventDefault();focusOption(items.length-1);}
+ });
  document.addEventListener("click",event=>{if(!root.contains(event.target))close();});
 }
 setupHardwarePicker("cpu",CPUs);
