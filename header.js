@@ -186,10 +186,10 @@
       padding: 8px;
       border: 1px solid rgba(173,190,225,.24);
       border-radius: 16px;
-      background: linear-gradient(145deg,rgba(24,31,49,.78),rgba(10,15,26,.76));
+      background: linear-gradient(145deg,rgba(24,31,49,.96),rgba(10,15,26,.94));
       box-shadow: 0 24px 64px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.10),0 0 24px rgba(117,101,255,.06);
-      backdrop-filter: blur(28px) saturate(145%);
-      -webkit-backdrop-filter: blur(28px) saturate(145%);
+      backdrop-filter: blur(90px) saturate(145%);
+      -webkit-backdrop-filter: blur(90px) saturate(145%);
       transform-origin: top right;
       animation: sfp-tools-expand 190ms cubic-bezier(.2,.75,.2,1) both;
     }
