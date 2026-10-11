@@ -749,6 +749,16 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
  .hero-bento .bento-build-feature .bento-build-specs{gap:5px!important}
  .hero-bento .bento-build-feature .bento-build-specs span{font-size:7px!important;min-height:24px!important;padding:4px 3px!important}
 }
+
+/* Beast card matches the other build cards; larger headline and component names. */
+.hero-bento .bento-beast-layout{display:flex!important;flex-direction:column!important;justify-content:flex-start!important;gap:clamp(10px,1.4vw,16px)!important;padding:clamp(18px,2vw,26px)!important}
+.hero-bento .bento-beast-layout>.bento-bottleneck{font-size:clamp(22px,2.25vw,31px)!important;line-height:1.14!important;letter-spacing:-.035em!important}
+.hero-bento .bento-beast-layout .bento-stat-value{font-size:clamp(14px,1.2vw,17px)!important;line-height:1.25!important}
+.hero-bento .bento-beast-layout .bento-build-detail{margin-top:auto!important}
+.hero-bento .bento-beast-layout .bento-build-detail strong{font-size:clamp(12px,1vw,14px)!important;line-height:1.35!important}
+.hero-bento .bento-beast-layout .bento-build-detail>span:last-child{font-size:clamp(11px,.9vw,13px)!important;line-height:1.4!important}
+.hero-bento .bento-beast-layout .bento-full-build-button{align-self:flex-start!important;margin-top:0!important}
+@media(max-width:560px){.hero-bento .bento-beast-layout{padding:16px!important;gap:12px!important}.hero-bento .bento-beast-layout>.bento-bottleneck{font-size:clamp(21px,5.5vw,27px)!important}.hero-bento .bento-beast-layout .bento-stat-value{font-size:13px!important}}
 </style>
 </head>
 <body>
@@ -792,20 +802,19 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
     </div>
   </div>
   <div class="hero-visual hero-bento" aria-label="Three recommended PC builds">
-  <section class="bento-card bento-index bento-build-feature">
+  <section class="bento-card bento-guide bento-calculation bento-build-card bento-build-feature bento-beast-layout">
     <span class="bento-label bento-trend-label"><span class="bento-rgb-text">THE BEAST PC BUILD</span></span>
-    <div class="bento-build-pair">
-      <div class="bento-build-part bento-build-part-cpu">
-        <small>AMD · CPU</small>
-        <div class="bento-build-product bento-build-text-only"><strong>AMD <span>RYZEN 7</span> <em>9800X3D</em></strong><div class="bento-build-specs"><span>8 CORES</span><span>16 THREADS</span><span>UP TO 5.2 GHz</span><span>3D V-CACHE</span></div></div>
-      </div>
-      <span class="bento-build-plus" aria-hidden="true">+</span>
-      <div class="bento-build-part bento-build-part-gpu">
-        <small>NVIDIA · GPU</small>
-        <div class="bento-build-product bento-build-text-only"><strong>NVIDIA <span>GEFORCE RTX</span> <em>5090</em></strong><div class="bento-build-specs"><span>32 GB GDDR7</span><span>21,760 CUDA CORES</span><span>DLSS 4</span><span>RAY TRACING</span></div></div>
-      </div>
+    <strong class="bento-bottleneck">Ryzen 7 9800X3D + RTX 5090</strong>
+    <div class="bento-stats-row">
+      <div class="bento-stat"><span class="bento-stat-label">CPU</span><strong class="bento-stat-value">Ryzen 7 9800X3D</strong></div>
+      <div class="bento-stat"><span class="bento-stat-label">GPU</span><strong class="bento-stat-value">RTX 5090 · 32GB</strong></div>
     </div>
-    <a class="bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy05ODAweDNkIiwibW90aGVyYm9hcmQiOiJ4ODcwZS1hdHgiLCJtZW1vcnkiOiJkNS0zMi02MDAwIiwiZ3B1IjoicnR4LTUwOTAiLCJjb29sZXIiOiJhaW8tMzYwIiwiY2FzZSI6Im1lc2gtZnVsbCIsInBzdSI6InBzdS0xMjAwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMi1nZW41IiwiZ29hbCI6IjIxNjAiLCJtb2RlIjoiZ2FtaW5nIiwiYnVkZ2V0IjoiaGlnaCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="Open the Ultra Max Pro PC build"><span>See Full Build</span><span aria-hidden="true">→</span></a>
+    <div class="bento-build-detail bento-performance-score">
+      <span class="bento-performance-label">HARDWARE HIGHLIGHTS</span>
+      <strong>8 cores · 16 threads · Up to 5.2 GHz</strong>
+      <span>32 GB GDDR7 · 21,760 CUDA cores · DLSS 4 · Ray tracing</span>
+    </div>
+    <a class="bento-calculation-link bento-build-button bento-full-build-button" href="build-planner.html?build=eyJjcHUiOiJyNy05ODAweDNkIiwibW90aGVyYm9hcmQiOiJ4ODcwZS1hdHgiLCJtZW1vcnkiOiJkNS0zMi02MDAwIiwiZ3B1IjoicnR4LTUwOTAiLCJjb29sZXIiOiJhaW8tMzYwIiwiY2FzZSI6Im1lc2gtZnVsbCIsInBzdSI6InBzdS0xMjAwLXBjaWU1Iiwic3RvcmFnZSI6Im52bWUtMi1nZW41IiwiZ29hbCI6IjIxNjAiLCJtb2RlIjoiZ2FtaW5nIiwiYnVkZ2V0IjoiaGlnaCIsIndvcmtsb2FkIjoiR2FtaW5nIn0=" aria-label="Open the Ultra Max Pro PC build">See Full Build →</a>
   </section>
   <section class="bento-card bento-guide bento-calculation bento-build-card">
     <span class="bento-label">MID-RANGE BUILD</span><strong class="bento-bottleneck" id="bottleneck-status">Ryzen 5 7600 + RTX 5070</strong>
