@@ -229,21 +229,21 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
       </section>
       <section class="step wizard-step" id="boardStep" data-stage="6" hidden>
         <div class="step-heading"><span class="step-number">06</span><div><h2>Choose a motherboard</h2><p>Only the selected processor’s socket family is shown.</p></div></div>
-        <div class="field"><label for="motherboard">Motherboard family</label><select id="motherboard" data-sfp-native-picker="true" required></select><div class="select-note" id="boardNote">Choose a CPU first.</div><small>Confirm exact board model, BIOS support and revision before buying.</small></div>
+        <div class="field"><label for="motherboard">Motherboard family</label><select id="motherboard" required></select><div class="select-note" id="boardNote">Choose a CPU first.</div><small>Confirm exact board model, BIOS support and revision before buying.</small></div>
         <button type="button" class="step-back" data-back="5">← Change graphics</button>
       </section>
       <section class="step wizard-step" id="memoryStep" data-stage="7" hidden>
         <div class="step-heading"><span class="step-number">07</span><div><h2>Match your memory</h2><p>Memory generation follows your motherboard.</p></div></div>
-        <div class="field"><label for="memory">Memory kit</label><select id="memory" data-sfp-native-picker="true" required></select><div class="select-note" id="memoryNote">Choose a motherboard first.</div></div>
+        <div class="field"><label for="memory">Memory kit</label><select id="memory" required></select><div class="select-note" id="memoryNote">Choose a motherboard first.</div></div>
         <button type="button" class="step-back" data-back="6">← Change motherboard</button>
       </section>
       <section class="step wizard-step" id="detailsStep" data-stage="8" hidden>
         <div class="step-heading"><span class="step-number">08</span><div><h2>Finish your build</h2><p>Select storage, cooling, case and power. Then review the compatibility checklist.</p></div></div>
         <div class="fields two">
-          <div class="field"><label for="storage">Storage</label><div class="part-select"><span class="part-icon" aria-hidden="true">▤</span><select id="storage" data-sfp-native-picker="true" required></select></div><small>NVMe drives use the motherboard’s M.2 slot.</small></div>
-          <div class="field"><label for="cooler">CPU cooler</label><select id="cooler" data-sfp-native-picker="true" required></select><div class="select-note" id="coolerNote"></div></div>
-          <div class="field"><label for="case">Case size</label><div class="part-select"><span class="part-icon case" aria-hidden="true">▣</span><select id="case" data-sfp-native-picker="true" required></select><div class="select-note" id="caseNote"></div></div></div>
-          <div class="field"><label for="psu">Power supply</label><div class="part-select"><span class="part-icon power" aria-hidden="true">ϟ</span><select id="psu" data-sfp-native-picker="true" required></select><div class="select-note" id="psuNote"></div></div></div>
+          <div class="field"><label for="storage">Storage</label><div class="part-select"><span class="part-icon" aria-hidden="true">▤</span><select id="storage" required></select></div><small>NVMe drives use the motherboard’s M.2 slot.</small></div>
+          <div class="field"><label for="cooler">CPU cooler</label><select id="cooler" required></select><div class="select-note" id="coolerNote"></div></div>
+          <div class="field"><label for="case">Case size</label><div class="part-select"><span class="part-icon case" aria-hidden="true">▣</span><select id="case" required></select><div class="select-note" id="caseNote"></div></div></div>
+          <div class="field"><label for="psu">Power supply</label><div class="part-select"><span class="part-icon power" aria-hidden="true">ϟ</span><select id="psu" required></select><div class="select-note" id="psuNote"></div></div></div>
         </div>
         <div class="finish-row"><span id="finishHint">Choose all four to see your compatibility summary.</span><button type="button" class="step-back" data-back="7">← Change memory</button></div>
       </section>
