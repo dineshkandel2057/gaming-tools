@@ -824,6 +824,13 @@ footer.sfp-site-footer nav a{padding:0;background:none;border-radius:0}
 .hero-bento .bento-build-card .bento-workload-grid strong{font-size:clamp(12px,.95vw,13px)!important;line-height:1.25!important}
 .hero-bento .bento-build-card .bento-workload-grid small{font-size:clamp(10px,.75vw,11px)!important;line-height:1.35!important}
 @media(max-width:600px){.hero-bento .bento-beast-layout .bento-beast-workloads{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}.hero-bento .bento-beast-layout .bento-beast-side{display:grid!important;grid-template-columns:auto 1fr!important;align-items:center!important;column-gap:12px!important;row-gap:5px!important;padding:10px 0 0!important;border-left:0!important;border-top:1px solid rgba(139,92,246,.32)!important}.hero-bento .bento-beast-layout .bento-beast-side .bento-performance-label,.hero-bento .bento-beast-layout .bento-beast-side .bento-beast-side-note{grid-column:1/-1!important}}
+
+/* Subtle dual neon runners along the outside edge of the complete build panel. */
+@property --build-edge-angle{syntax:"<angle>";inherits:false;initial-value:0deg}
+.hero-bento{isolation:isolate}
+.hero-bento:after{content:"";position:absolute;inset:0;padding:1.5px;border-radius:28px;pointer-events:none;z-index:5;background:conic-gradient(from var(--build-edge-angle),transparent 0deg,transparent 48deg,rgba(112,130,255,.04) 54deg,rgba(112,130,255,.52) 59deg,rgba(174,151,255,.78) 62deg,rgba(112,130,255,.16) 66deg,transparent 73deg,transparent 205deg,rgba(73,177,255,.05) 212deg,rgba(73,177,255,.42) 218deg,rgba(174,151,255,.7) 221deg,rgba(73,177,255,.12) 225deg,transparent 233deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.62;animation:buildEdgeRunners 18s linear infinite}
+@keyframes buildEdgeRunners{to{--build-edge-angle:360deg}}
+@media(prefers-reduced-motion:reduce){.hero-bento:after{animation:none!important;opacity:.28}}
 </style>
 </head>
 <body>
