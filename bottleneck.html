@@ -1331,6 +1331,16 @@ function calculate(){
       :"A strong component limit is predicted for this workload.";
   document.getElementById("sbBottleneckPercent").textContent=bottleneckIndex+"%";
   document.getElementById("sbBuildHealthScore").textContent=buildScore+"%";
+  const ramAmount=Math.max(0,safeFinite(ram,16));
+  const ramAdequacy=Math.round(safeClamp(ramAmount>=64?100:ramAmount>=32?96:ramAmount>=16?88:ramAmount>=8?64:35,0,100,0));
+  [["sbOverviewCpuRing",cpuScore],["sbOverviewGpuRing",gpuScore],["sbOverviewRamRing",ramAdequacy],["sbOverviewBalanceRing",balance]].forEach(([id,value])=>{
+    document.getElementById(id).style.setProperty("--score",String(Math.round(safeClamp(value,0,100,0))));
+  });
+  document.getElementById("sbOverviewCpuScore").textContent=Math.round(cpuScore)+"%";
+  document.getElementById("sbOverviewGpuScore").textContent=Math.round(gpuScore)+"%";
+  document.getElementById("sbOverviewRamScore").textContent=ramAdequacy+"%";
+  document.getElementById("sbOverviewBalanceScore").textContent=balance+"%";
+  document.getElementById("sbOverviewSummary").textContent=c.name+" paired with "+g.name+" and "+ramAmount+" GB RAM at "+resolutionLabel(r)+" for "+(gt==="esports"?"esports gaming":gt==="productivity"?"productivity workloads":gt==="cpu"?"CPU-heavy gaming":gt==="gpu"?"GPU-heavy gaming":"general gaming")+". The model predicts "+(scenario.limiting==="Balanced"?"no significant CPU/GPU imbalance":scenario.limiting+"-limited performance")+" in this scenario.";
   document.getElementById("sbPair").textContent=c.name+" + "+g.name;
   document.getElementById("sbCpuBalanceName").textContent=c.name||"—";
   document.getElementById("sbGpuBalanceName").textContent=g.name||"—";
@@ -1416,7 +1426,24 @@ function calculate(){
 }
 
 function rootTabsInit(root){
-  if(!root||root.dataset.sbReady)return;
+  if(!root)return;
+  if(!root.dataset.resultTabsReady){
+    root.dataset.resultTabsReady="1";
+    root.querySelectorAll("[data-result-tab]").forEach(tab=>{
+      tab.addEventListener("click",()=>{
+        const key=tab.dataset.resultTab;
+        root.querySelectorAll("[data-result-tab]").forEach(button=>{
+          const active=button===tab;
+          button.classList.toggle("is-active",active);
+          button.setAttribute("aria-selected",active?"true":"false");
+        });
+        root.querySelectorAll("[data-result-panel]").forEach(panel=>{
+          panel.hidden=panel.dataset.resultPanel!==key;
+        });
+      });
+    });
+  }
+  if(root.dataset.sbReady)return;
   root.dataset.sbReady="1";
   root.querySelectorAll("[data-sb-resolution]").forEach(tab=>{
     tab.addEventListener("click",()=>{
