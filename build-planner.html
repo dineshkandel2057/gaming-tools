@@ -135,6 +135,21 @@ footer{max-width:1180px;margin:auto;padding:0 22px 30px;color:#7e8da5;font-size:
 #brand-logo .brand-fit{margin-left:4px;background:linear-gradient(100deg,#a892ff,#69caff);-webkit-background-clip:text;background-clip:text;color:transparent!important}
 #brand-logo .brand-pc{padding:4px 6px;border:1px solid rgba(157,174,204,.2);border-radius:6px;background:rgba(255,255,255,.045);color:#b9c7e1;font:800 9px/1 "DM Sans",sans-serif;letter-spacing:.12em;transform:translateY(1px)}
 @media(max-width:800px){#brand-logo{gap:7px}#brand-logo .brand-monogram{width:32px;height:32px;border-radius:10px}#brand-logo .brand-wordmark{font-size:19px}}
+
+/* Shared compact, tool-first layout: keep the calculator visible and learning optional. */
+.tool-details{margin:18px 0 0;border:1px solid rgba(157,174,204,.16);border-radius:16px;background:rgba(13,18,29,.62);overflow:hidden}
+.tool-details>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:58px;padding:17px 20px;cursor:pointer;list-style:none;color:#dfe6f3;font:700 14px "DM Sans",sans-serif}
+.tool-details>summary::-webkit-details-marker{display:none}
+.tool-details>summary:after{content:"+";display:grid;place-items:center;width:27px;height:27px;flex:0 0 27px;border:1px solid rgba(157,174,204,.2);border-radius:8px;color:#b7a8ff;font-size:20px;font-weight:500}
+.tool-details[open]>summary:after{content:"−"}
+.tool-details>summary:hover{background:rgba(126,105,255,.06)}
+.tool-details .tool-explanation{margin:0;border:0;border-top:1px solid rgba(157,174,204,.12);border-radius:0;background:transparent;box-shadow:none}
+.tool-details .tool-explanation>h2:first-child{margin-top:0}
+.tool-details .tool-explanation p{max-width:78ch;line-height:1.7}
+.tool-details .tool-explanation h2{margin-top:25px}
+.tool-details .tool-explanation h3{margin-top:18px}
+@media(max-width:640px){.tool-details>summary{padding:14px 15px;font-size:13px}.tool-details .tool-explanation{padding:18px 15px}}
+
 </style>
 <style id="homepage-header-system">
 /* Shared SystemFit PC homepage header */
@@ -290,6 +305,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
     <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU Bottleneck guide</a>.
   </section>
 
+<details class="tool-details" data-sfp-reveal><summary>How it works, result guidance &amp; FAQs</summary>
 <section class="tool-explanation" data-sfp-reveal>
   <h2>How this tool works</h2>
   <p>The SystemFit PC Build Planner guides you through selecting major PC components and checks the combination against practical compatibility rules. The planner considers relationships such as CPU socket and motherboard platform, memory generation, case fit, GPU clearance, cooler support, power-supply capacity and storage compatibility. Its purpose is to catch common mismatches before you buy parts, while keeping the build process easier to follow than checking every specification manually.</p>
@@ -312,6 +328,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
   <p>Confirm the exact motherboard BIOS support, RAM type, cooler mount, GPU dimensions, PSU connectors and case clearance for your chosen products.</p>
   <p class="last-updated"><strong>Last updated:</strong> October 8, 2026</p>
 </section>
+</details>
 </main>
 <footer class="sfp-site-footer">
     <p>
