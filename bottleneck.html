@@ -799,7 +799,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
         </div>
         <div class="sb-upgrade-arrow" aria-hidden="true">→</div>
         <div class="sb-upgrade-feature-copy">
-          <span class="sb-upgrade-current-label">WITH SUGGESTED UPGRADE</span>
+          <span class="sb-upgrade-current-label" id="sbUpgradeProjectedLabel">WITH SUGGESTED UPGRADE</span>
           <strong class="sb-upgrade-projected"><span id="sbUpgradeProjectedFps">—</span> FPS</strong>
         </div>
       </div>
@@ -1406,7 +1406,7 @@ function calculate(){
   document.getElementById("sbUpgradeDirection").textContent=scenario.limiting==="Balanced"
     ?"SUGGESTED UPGRADE FOR YOUR BUILD"
     :"SUGGESTED "+recommendedSide+" OPTION · "+scenario.limiting+" IS THE CURRENT LIMIT";
-  document.getElementById("sbUpgradeGain").textContent="+"+recommendedGainDisplay+" FPS ("+recommendedGainPercent+"%)";
+  document.getElementById("sbUpgradeGain").textContent=recommendedUpgrade?"+"+recommendedGainDisplay+" FPS ("+recommendedGainPercent+"%)":"No worthwhile upgrade";
   document.getElementById("sbUpgradeCurrentFps").textContent=capacity;
   document.getElementById("sbUpgradeProjectedFps").textContent=recommendedFps;
   document.getElementById("sbUpgradeProduct").textContent=recommendedUpgrade
@@ -1418,6 +1418,7 @@ function calculate(){
   document.getElementById("sbUpgradePercent").textContent=recommendedUpgrade
     ?"+"+recommendedGainPercent+"%"
     :"—";
+  document.getElementById("sbUpgradeProjectedLabel").textContent=recommendedUpgrade?"WITH SUGGESTED UPGRADE":"NO CHANGE MODELED";
   document.getElementById("sbUpgradeFootnote").textContent=recommendedUpgrade
     ?(recommendedGain>0
       ?"Estimated improvement for this scenario only. Verify motherboard/platform, power supply, case clearance and game-specific benchmarks before buying."
