@@ -1390,6 +1390,10 @@ function calculate(){
   const recommendedCandidates=recommendedList
     .filter(item=>item&&item.id!==currentRecommendedPart.id&&safeFinite(item.score,0)>=safeFinite(currentRecommendedPart.score,0)*1.15)
     .map(item=>({item,scenario:recommendedUpgradeScenario(item.score)}))
+    .filter(candidate=>{
+      const gain=Math.max(0,safeFinite(candidate.scenario.sustainableFps,0)-currentRawFps);
+      return gain>=8||gain>=currentRawFps*.10;
+    })
     .sort((a,b)=>safeFinite(b.scenario.sustainableFps,0)-safeFinite(a.scenario.sustainableFps,0));
   const recommendedUpgrade=recommendedCandidates[0]||null;
   const recommendedRawFps=recommendedUpgrade?Math.max(0,safeFinite(recommendedUpgrade.scenario.sustainableFps,0)):currentRawFps;
