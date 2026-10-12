@@ -562,21 +562,66 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
         #bottleneck-results-container .sb-fps-hero{margin-top:18px}
         #bottleneck-results-container .sb-balance-note{font-size:10px}
       }
-    </style>
+    
+    #bottleneck-results-container .sb-status-card{position:relative;padding:26px 24px 22px;text-align:center;border-top:4px solid #22c55e}
+    #bottleneck-results-container .sb-status-card[data-status="good"]{background:linear-gradient(120deg,rgba(16,185,129,.13),rgba(7,16,29,.96));border-color:#10b981}
+    #bottleneck-results-container .sb-status-card[data-status="warn"]{background:linear-gradient(120deg,rgba(245,158,11,.14),rgba(7,16,29,.96));border-color:#f59e0b}
+    #bottleneck-results-container .sb-status-card[data-status="bad"]{background:linear-gradient(120deg,rgba(239,68,68,.15),rgba(7,16,29,.96));border-color:#ef4444}
+    #bottleneck-results-container .sb-status-icon{display:inline-grid;place-items:center;width:44px;height:44px;margin:12px auto 8px;border-radius:12px;font-size:30px;font-weight:900;color:#fff;background:#10b981}
+    #bottleneck-results-container .sb-status-card[data-status="warn"] .sb-status-icon{background:#d97706}
+    #bottleneck-results-container .sb-status-card[data-status="bad"] .sb-status-icon{background:#dc2626}
+    #bottleneck-results-container .sb-status-card[data-status="good"] .sb-diagnosis{color:#34d399}
+    #bottleneck-results-container .sb-status-card[data-status="warn"] .sb-diagnosis{color:#fbbf24}
+    #bottleneck-results-container .sb-status-card[data-status="bad"] .sb-diagnosis{color:#f87171}
+    #bottleneck-results-container .sb-status-summary{margin:8px auto 14px;color:#b7c3d5;font-size:13px;line-height:1.5}
+    #bottleneck-results-container .sb-status-card .sb-pair{margin-bottom:16px}
+    #bottleneck-results-container .sb-balance-panel .sb-panel-body,#bottleneck-results-container .sb-fps-presets .sb-panel-body{padding-top:16px}
+    #bottleneck-results-container .sb-component-score{margin:0 0 18px}
+    #bottleneck-results-container .sb-component-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:8px;color:#dbe5f4;font-size:13px}
+    #bottleneck-results-container .sb-component-head>span{color:#9aabc2;white-space:nowrap}
+    #bottleneck-results-container .sb-component-head b{color:#dbe5f4}
+    #bottleneck-results-container .sb-balance-track{height:12px;border-radius:999px;background:#03060d;overflow:hidden}
+    #bottleneck-results-container .sb-balance-fill{height:100%;width:0;border-radius:inherit;transition:width .25s ease}
+    #bottleneck-results-container .sb-balance-fill.cpu,#bottleneck-results-container .sb-balance-fill.gpu{background:#7167f2}
+    #bottleneck-results-container .sb-balance-weights{display:flex;justify-content:space-between;gap:10px;color:#9aabc2;font-size:11px}
+    #bottleneck-results-container .sb-balance-divider{height:1px;background:var(--sb-line);margin:18px 0}
+    #bottleneck-results-container .sb-subtitle{margin:0 0 10px;color:#9aabc2;font-size:11px;letter-spacing:.06em}
+    #bottleneck-results-container .sb-balance-resolutions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    #bottleneck-results-container .sb-balance-resolution{display:grid;gap:7px;justify-items:center;padding:14px 8px;border:1px solid var(--sb-line);border-radius:10px;background:#0a111b;text-align:center}
+    #bottleneck-results-container .sb-balance-resolution strong{color:#e5edf8;font-size:14px}
+    #bottleneck-results-container .sb-balance-resolution span{font-size:12px;font-weight:800;color:#34d399}
+    #bottleneck-results-container .sb-balance-resolution[data-status="warn"]{border-color:#a16207;background:rgba(161,98,7,.13)}
+    #bottleneck-results-container .sb-balance-resolution[data-status="warn"] span{color:#fbbf24}
+    #bottleneck-results-container .sb-balance-resolution[data-status="bad"]{border-color:#b91c1c;background:rgba(185,28,28,.13)}
+    #bottleneck-results-container .sb-balance-resolution[data-status="bad"] span{color:#f87171}
+    #bottleneck-results-container .sb-fps-subtitle{margin:0 0 14px;color:#9aabc2;font-size:12px;line-height:1.5}
+    #bottleneck-results-container .sb-preset-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    #bottleneck-results-container .sb-preset{display:flex;flex-direction:column;align-items:center;gap:6px;padding:20px 10px;border:1px solid var(--sb-line);border-radius:12px;background:#070b13}
+    #bottleneck-results-container .sb-preset>span{color:#a8b5c9;font-size:11px;font-weight:800;letter-spacing:.04em}
+    #bottleneck-results-container .sb-preset strong{color:#34d399;font-size:clamp(24px,4vw,32px);line-height:1.1}
+    #bottleneck-results-container .sb-preset:nth-child(3) strong{color:#f59e0b}
+    #bottleneck-results-container .sb-preset small{color:#9aabc2;font-size:11px}
+    #bottleneck-results-container .sb-fps-presets .sb-advanced{margin-top:14px}
+    @media(max-width:620px){
+      #bottleneck-results-container .sb-status-card{padding:22px 12px 18px}
+      #bottleneck-results-container .sb-component-head{align-items:flex-start;flex-direction:column;gap:5px}
+      #bottleneck-results-container .sb-balance-resolutions,#bottleneck-results-container .sb-preset-grid{gap:6px}
+      #bottleneck-results-container .sb-balance-resolution{padding:12px 4px}
+      #bottleneck-results-container .sb-balance-resolution strong{font-size:12px}
+      #bottleneck-results-container .sb-balance-resolution span{font-size:10px}
+      #bottleneck-results-container .sb-preset{padding:15px 5px}
+      #bottleneck-results-container .sb-preset>span{font-size:9px}
+    }
+
+</style>
 
 
-      <section class="sb-hero" aria-labelledby="sbDiagnosis">
-      <span class="sb-label">YOUR BUILD RESULT</span>
-      <h2 class="sb-diagnosis" id="sbDiagnosis">OPTIMAL BALANCE</h2>
+      <section class="sb-hero sb-status-card" id="sbStatusCard" aria-labelledby="sbDiagnosis" data-status="good">
+      <span class="sb-label">YOUR BUILD STATUS</span>
+      <div class="sb-status-icon" id="sbStatusIcon" aria-hidden="true">✓</div>
+      <h2 class="sb-diagnosis" id="sbDiagnosis">NO SIGNIFICANT BOTTLENECK</h2>
+      <p class="sb-status-summary" id="sbStatusSummary">Your CPU and GPU look reasonably matched for this scenario.</p>
       <div class="sb-pair" id="sbPair">Select hardware to calculate</div>
-      <div class="sb-fps-hero"><strong id="sbCapacity">0 FPS</strong><span>ESTIMATED FPS AT SELECTED RESOLUTION</span></div>
-      <div class="sb-grid">
-        <div class="sb-cell"><strong id="sbTarget">0 FPS</strong><span>YOUR FPS TARGET</span></div>
-        <div class="sb-cell"><strong id="sbShortfall">—</strong><span id="sbShortfallLabel">TARGET GAP</span></div>
-      </div>
-      <div class="sb-balance-row"><span>BUILD BALANCE</span><strong id="sbScore">0/100</strong></div>
-      <p class="sb-balance-note">A component-balance indicator, not a performance score or a percentage of FPS lost.</p>
-      <div class="sb-action" id="sbAction">Run the calculator to see the recommended path.</div>
       <div class="sb-hardware">
         <div class="sb-hardware-card cpu"><b>CPU</b><strong id="sbCpu">CPU</strong></div>
         <div class="sb-vs">VS</div>
@@ -584,21 +629,36 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       </div>
     </section>
 
-    <section class="sb-section sb-panel" aria-labelledby="sbMetricsTitle">
-      <div class="sb-panel-head">
-        <h2 class="sb-title" id="sbMetricsTitle">PERFORMANCE METRICS</h2>
-      </div>
-      <div class="sb-tabs" role="tablist" aria-label="Resolution">
-        <button class="sb-tab" type="button" role="tab" aria-selected="true" data-sb-resolution="1080">1080P</button>
-        <button class="sb-tab" type="button" role="tab" aria-selected="false" data-sb-resolution="1440">1440P</button>
-        <button class="sb-tab" type="button" role="tab" aria-selected="false" data-sb-resolution="2160">4K</button>
-      </div>
+    <section class="sb-section sb-panel sb-balance-panel" aria-labelledby="sbBalanceTitle">
+      <div class="sb-panel-head"><h2 class="sb-title" id="sbBalanceTitle">PERFORMANCE BALANCE</h2></div>
       <div class="sb-panel-body">
-        <div class="sb-metric-grid">
-          <div class="sb-metric"><strong id="sbMetricFps">0 FPS</strong><span>CAPACITY</span></div>
-          <div class="sb-metric"><strong id="sbMetricTarget">0 FPS</strong><span>TARGET</span></div>
-          <div class="sb-metric"><strong id="sbMetricGap">+0 FPS</strong><span>HEADROOM</span></div>
-          <div class="sb-metric"><strong id="sbMetricLimit">OPTIMAL</strong><span>LIMITER</span></div>
+        <div class="sb-component-score">
+          <div class="sb-component-head"><strong>CPU: <span id="sbCpuBalanceName">—</span></strong><span>Score: <b id="sbCpuBalanceScore">0/100</b></span></div>
+          <div class="sb-balance-track"><div id="sbCpuBalanceBar" class="sb-balance-fill cpu"></div></div>
+        </div>
+        <div class="sb-component-score">
+          <div class="sb-component-head"><strong>GPU: <span id="sbGpuBalanceName">—</span></strong><span>Score: <b id="sbGpuBalanceScore">0/100</b></span></div>
+          <div class="sb-balance-track"><div id="sbGpuBalanceBar" class="sb-balance-fill gpu"></div></div>
+        </div>
+        <div class="sb-balance-weights"><span>CPU WEIGHT: 60%</span><span>GPU WEIGHT: 40%</span></div>
+        <div class="sb-balance-divider"></div>
+        <h3 class="sb-subtitle">BALANCE ACROSS RESOLUTIONS</h3>
+        <div class="sb-balance-resolutions">
+          <div class="sb-balance-resolution" id="sbBalance1080"><strong>1080P</strong><span>—</span></div>
+          <div class="sb-balance-resolution" id="sbBalance1440"><strong>1440P</strong><span>—</span></div>
+          <div class="sb-balance-resolution" id="sbBalance2160"><strong>4K</strong><span>—</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sb-section sb-panel sb-fps-presets" aria-labelledby="sbFpsPresetsTitle">
+      <div class="sb-panel-head"><h2 class="sb-title" id="sbFpsPresetsTitle">ESTIMATED FPS AT <span id="sbFpsPresetResolution">1080P</span></h2></div>
+      <div class="sb-panel-body">
+        <p class="sb-fps-subtitle">Directional estimates for different graphics presets. Actual results depend on the game and settings.</p>
+        <div class="sb-preset-grid">
+          <div class="sb-preset"><span>PERFORMANCE</span><strong id="sbFpsPerformance">—</strong><small>FPS</small></div>
+          <div class="sb-preset"><span>BALANCED</span><strong id="sbFpsBalanced">—</strong><small>FPS</small></div>
+          <div class="sb-preset"><span>ULTRA</span><strong id="sbFpsUltra">—</strong><small>FPS</small></div>
         </div>
         <details class="sb-advanced">
           <summary>Advanced model indicators (estimates)</summary>
@@ -608,16 +668,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
             <div class="sb-gauge"><div class="sb-gauge-head"><span>MODELED GPU PRESSURE</span><strong id="sbGpuPressure">0%</strong></div><div class="sb-track"><div class="sb-fill gpu" id="sbGpuBar"></div></div></div>
           </div>
         </details>
-        <div class="sb-resolution-grid">
-          <div class="sb-resolution" data-sb-res-card="1080"><strong>1080P</strong><span id="sbRes1080Fps">0 FPS</span><b id="sbRes1080Fit">OPTIMAL</b></div>
-          <div class="sb-resolution" data-sb-res-card="1440"><strong>1440P</strong><span id="sbRes1440Fps">0 FPS</span><b id="sbRes1440Fit">OPTIMAL</b></div>
-          <div class="sb-resolution" data-sb-res-card="2160"><strong>4K</strong><span id="sbRes2160Fps">0 FPS</span><b id="sbRes2160Fit">OPTIMAL</b></div>
-        </div>
-        <p class="sb-result-note">FPS figures are model estimates for the selected hardware and scenario, not live measurements or guaranteed results. Actual FPS varies by game, settings, drivers, thermals and background tasks.</p>
-        <div class="sb-interpretation" aria-live="polite">
-          <h3>How to use this result</h3>
-          <p id="sbResultAdvice">Run the calculator to get guidance for your selected hardware, resolution and target FPS.</p>
-        </div>
+        <p class="sb-result-note">FPS figures are model estimates, not live measurements or guaranteed results. Performance and Ultra scenarios use simplified workload assumptions, not game-specific benchmark data.</p>
       </div>
     </section>
 
@@ -1094,7 +1145,13 @@ function calculate(){
   const balance=Math.round(safeClamp(scenario.balance,0,100,0));
   const gap=Math.max(0,capacity-target);
   const limiter=scenario.limiting==="Balanced"?"OPTIMAL":scenario.limiting.toUpperCase()+" BOTTLENECK";
-  const diagnosis=scenario.limiting==="Balanced"?"OPTIMAL BALANCE":limiter;
+  const diagnosis=scenario.limiting==="Balanced"?"NO SIGNIFICANT BOTTLENECK":limiter;
+  const severity=scenario.limiting==="Balanced"?"good":balance>=65?"warn":"bad";
+  const statusSummary=scenario.limiting==="Balanced"
+    ?"Your CPU and GPU look reasonably matched for this workload and resolution."
+    :balance>=65
+      ?"The model shows a moderate "+scenario.limiting.toLowerCase()+" limit. Test game settings before considering an upgrade."
+      :"The model shows a strong "+scenario.limiting.toLowerCase()+" limit for this scenario. Verify in-game performance before spending money.";
 
   const findGenerationRank=value=>{
     const text=String(value||"");
@@ -1149,25 +1206,20 @@ function calculate(){
   const action=upgradeSide==="CPU"?"UPGRADE CPU FIRST":upgradeSide==="GPU"?"UPGRADE GPU FIRST":"NO WORTHWHILE UPGRADE FOUND";
 
   document.getElementById("result").classList.remove("hidden");
-  document.getElementById("sbScore").textContent=balance+"/100";
+  const statusCard=document.getElementById("sbStatusCard");
+  statusCard.dataset.status=severity;
+  document.getElementById("sbStatusIcon").textContent=severity==="good"?"✓":severity==="warn"?"!":"×";
   document.getElementById("sbDiagnosis").textContent=diagnosis;
+  document.getElementById("sbStatusSummary").textContent=statusSummary;
   document.getElementById("sbPair").textContent=c.name+" + "+g.name;
-  document.getElementById("sbTarget").textContent=target+" FPS";
-  document.getElementById("sbCapacity").textContent=capacity+" FPS";
-  const heroGap=document.getElementById("sbShortfall");
-  const heroGapLabel=document.getElementById("sbShortfallLabel");
-  if(currentRawFps>=targetFps){
-    heroGap.textContent="+"+formatPositiveFpsDelta(currentRawFps-targetFps)+" FPS";
-    heroGapLabel.textContent="ABOVE TARGET";
-    heroGap.classList.remove("shortfall");
-  }else{
-    heroGap.textContent="-"+formatPositiveFpsDelta(targetFps-currentRawFps)+" FPS";
-    heroGapLabel.textContent="BELOW TARGET";
-    heroGap.classList.add("shortfall");
-  }
-  document.getElementById("sbAction").textContent="MODEL SUGGESTS: "+action+" — verify in-game performance before buying.";
   document.getElementById("sbCpu").textContent=c.name||"CPU";
   document.getElementById("sbGpu").textContent=g.name||"GPU";
+  document.getElementById("sbCpuBalanceName").textContent=c.name||"—";
+  document.getElementById("sbGpuBalanceName").textContent=g.name||"—";
+  document.getElementById("sbCpuBalanceScore").textContent=safeFps(cpuScore)+"/100";
+  document.getElementById("sbGpuBalanceScore").textContent=safeFps(gpuScore)+"/100";
+  document.getElementById("sbCpuBalanceBar").style.width=safeClamp(cpuScore,0,100,0)+"%";
+  document.getElementById("sbGpuBalanceBar").style.width=safeClamp(gpuScore,0,100,0)+"%";
 
   const active=modelScenario(cpuScore,gpuScore,r,gt,targetFps,g,context,gameProfile);
   const activeRawFps=Math.max(0,safeFinite(active.sustainableFps,0));
@@ -1184,6 +1236,15 @@ function calculate(){
     if(metricGapLabel)metricGapLabel.textContent="SHORTFALL";
     metricGap.classList.add("shortfall");
   }
+  document.getElementById("sbFpsPresetResolution").textContent=resolutionLabel(r);
+  const presetProfile=gameProfile||{cpu:1,gpu:1};
+  const presetFps=(cpuMultiplier,gpuMultiplier)=>{
+    const profile={...presetProfile,cpu:safeFinite(presetProfile.cpu,1)*cpuMultiplier,gpu:safeFinite(presetProfile.gpu,1)*gpuMultiplier};
+    return safeFps(modelScenario(cpuScore,gpuScore,r,gt,targetFps,g,context,profile).sustainableFps);
+  };
+  document.getElementById("sbFpsPerformance").textContent="~"+presetFps(.94,.72);
+  document.getElementById("sbFpsBalanced").textContent="~"+activeFps;
+  document.getElementById("sbFpsUltra").textContent="~"+presetFps(1.06,1.42);
   document.getElementById("sbMetricFps").textContent=activeFps+" FPS";
   document.getElementById("sbMetricTarget").textContent=target+" FPS";
   document.getElementById("sbMetricLimit").textContent=active.limiting==="Balanced"?"OPTIMAL":active.limiting.toUpperCase();
@@ -1208,18 +1269,16 @@ function calculate(){
   document.getElementById("sbGpuBar").style.width=gpuPressure+"%";
 
   [
-    ["1080",document.getElementById("sbRes1080Fps"),document.getElementById("sbRes1080Fit")],
-    ["1440",document.getElementById("sbRes1440Fps"),document.getElementById("sbRes1440Fit")],
-    ["2160",document.getElementById("sbRes2160Fps"),document.getElementById("sbRes2160Fit")]
-  ].forEach(([key,fpsEl,fitEl])=>{
+    ["1080","sbBalance1080"],
+    ["1440","sbBalance1440"],
+    ["2160","sbBalance2160"]
+  ].forEach(([key,id])=>{
     const check=modelScenario(cpuScore,gpuScore,key,gt,targetFps,g,context,gameProfile);
-    const fps=safeFps(check.sustainableFps);
     const fit=Math.round(safeClamp(check.targetFit,0,100,0));
-    fpsEl.textContent=fps+" FPS";
-    fitEl.textContent=check.limiting==="Balanced"?"OPTIMAL":check.limiting.toUpperCase()+" · "+fit+"/100";
-    const card=fitEl.closest(".sb-resolution");
-    card.classList.remove("good","warn","bad");
-    card.classList.add(fit>=85?"good":fit>=65?"warn":"bad");
+    const label=check.limiting==="Balanced"?"Balanced":check.limiting+" "+(fit>=85?"9–12%":fit>=65?"13–25%":"26%+");
+    const card=document.getElementById(id);
+    card.querySelector("span").textContent=label;
+    card.dataset.status=check.limiting==="Balanced"?"good":fit>=65?"warn":"bad";
   });
 
   const cpuRecommendation=cpuUpgradeChoice
