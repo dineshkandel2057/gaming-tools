@@ -667,7 +667,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       #bottleneck-results-container .sb-result-panel>.sb-title{margin:0 0 24px;font-size:13px;letter-spacing:.12em;color:#91a4bf}
       #bottleneck-results-container .sb-score-rings{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:start}
       #bottleneck-results-container .sb-score-ring-item{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0}
-      #bottleneck-results-container .sb-score-ring{--ring-color:#367df0;display:grid;place-items:center;width:88px;height:88px;border-radius:50%;background:conic-gradient(var(--ring-color) calc(var(--score)*1%),#1b2638 0);position:relative;box-shadow:0 0 12px color-mix(in srgb,var(--ring-color) 22%,transparent)}
+      #bottleneck-results-container .sb-score-ring{--ring-color:#367df0;display:grid;place-items:center;width:88px;height:88px;border-radius:50%;background:conic-gradient(var(--ring-color) var(--score),#1b2638 0);position:relative;box-shadow:0 0 12px color-mix(in srgb,var(--ring-color) 22%,transparent)}
       #bottleneck-results-container .sb-score-ring:before{content:"";position:absolute;inset:7px;border-radius:50%;background:#0b1424;border:1px solid rgba(255,255,255,.05)}
       #bottleneck-results-container .sb-score-ring strong{position:relative;color:var(--ring-color);font-size:15px}
       #bottleneck-results-container .sb-score-ring.cpu{--ring-color:#367df0}
@@ -1334,7 +1334,7 @@ function calculate(){
   const ramAmount=Math.max(0,safeFinite(ram,16));
   const ramAdequacy=Math.round(safeClamp(ramAmount>=64?100:ramAmount>=32?96:ramAmount>=16?88:ramAmount>=8?64:35,0,100,0));
   [["sbOverviewCpuRing",cpuScore],["sbOverviewGpuRing",gpuScore],["sbOverviewRamRing",ramAdequacy],["sbOverviewBalanceRing",balance]].forEach(([id,value])=>{
-    document.getElementById(id).style.setProperty("--score",String(Math.round(safeClamp(value,0,100,0))));
+    document.getElementById(id).style.setProperty("--score",Math.round(safeClamp(value,0,100,0))+"%");
   });
   document.getElementById("sbOverviewCpuScore").textContent=Math.round(cpuScore)+"%";
   document.getElementById("sbOverviewGpuScore").textContent=Math.round(gpuScore)+"%";
