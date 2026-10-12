@@ -687,24 +687,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
     <script>
       (() => {
         const root=document.getElementById("bottleneck-results-container");
-        if(!root||root.dataset.sbReady)return;
-        root.dataset.sbReady="1";
-        root.querySelectorAll("[data-sb-resolution]").forEach(tab=>{
-          tab.addEventListener("click",()=>{
-            const key=tab.dataset.sbResolution;
-            root.querySelectorAll("[data-sb-resolution]").forEach(t=>t.setAttribute("aria-selected",t===tab?"true":"false"));
-            root.dataset.activeResolution=key;
-            updateVisibleResolution(root,key);
-          });
-          tab.addEventListener("keydown",event=>{
-            if(event.key!=="ArrowRight"&&event.key!=="ArrowLeft")return;
-            event.preventDefault();
-            const tabs=[...root.querySelectorAll("[data-sb-resolution]")];
-            const index=tabs.indexOf(tab);
-            const next=tabs[(index+(event.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length];
-            next.click();next.focus();
-          });
-        });
+        if(root)root.dataset.sbReady="1";
       })();
     </script>
   </div>
@@ -1224,18 +1207,6 @@ function calculate(){
   const active=modelScenario(cpuScore,gpuScore,r,gt,targetFps,g,context,gameProfile);
   const activeRawFps=Math.max(0,safeFinite(active.sustainableFps,0));
   const activeFps=safeFps(activeRawFps);
-  const activeGap=activeRawFps-targetFps;
-  const metricGap=document.getElementById("sbMetricGap");
-  const metricGapLabel=metricGap.parentElement?.querySelector("span");
-  metricGap.classList.remove("shortfall");
-  if(activeGap>=0){
-    metricGap.textContent="+"+formatPositiveFpsDelta(activeGap)+" FPS";
-    if(metricGapLabel)metricGapLabel.textContent="HEADROOM";
-  }else{
-    metricGap.textContent="-"+formatPositiveFpsDelta(Math.abs(activeGap))+" FPS";
-    if(metricGapLabel)metricGapLabel.textContent="SHORTFALL";
-    metricGap.classList.add("shortfall");
-  }
   document.getElementById("sbFpsPresetResolution").textContent=resolutionLabel(r);
   const presetProfile=gameProfile||{cpu:1,gpu:1};
   const presetFps=(cpuMultiplier,gpuMultiplier)=>{
@@ -1245,22 +1216,6 @@ function calculate(){
   document.getElementById("sbFpsPerformance").textContent="~"+presetFps(.94,.72);
   document.getElementById("sbFpsBalanced").textContent="~"+activeFps;
   document.getElementById("sbFpsUltra").textContent="~"+presetFps(1.06,1.42);
-  document.getElementById("sbMetricFps").textContent=activeFps+" FPS";
-  document.getElementById("sbMetricTarget").textContent=target+" FPS";
-  document.getElementById("sbMetricLimit").textContent=active.limiting==="Balanced"?"OPTIMAL":active.limiting.toUpperCase();
-  const resultAdvice=document.getElementById("sbResultAdvice");
-  if(resultAdvice){
-    const limiterAdvice=active.limiting==="CPU"
-      ?"The model points to the CPU as the likely limit for this workload. Check per-core CPU activity and frame times in a repeatable game scene, and try reducing CPU-heavy settings or background load before considering an upgrade."
-      :active.limiting==="GPU"
-      ?"The model points to the GPU as the likely limit. Test a lower resolution or GPU-heavy settings such as ray tracing, shadows and volumetrics; compare upscaling in the game before deciding whether a GPU upgrade is worthwhile."
-      :"The model does not show a strong CPU-versus-GPU imbalance for this scenario. If performance still feels poor, check frame caps, frame times, thermals, memory pressure and background tasks rather than buying a part based on this result alone.";
-    const targetAdvice=activeRawFps<targetFps
-      ? " The estimate is below your target, so test changes in-game and confirm the shortfall before spending money."
-      : " The estimate meets your target, so an upgrade may not be necessary if real gameplay is smooth.";
-    resultAdvice.textContent=limiterAdvice+targetAdvice;
-  }
-
   const cpuPressure=Math.round(safeClamp(active.cpuLoad,0,100,0));
   const gpuPressure=Math.round(safeClamp(active.gpuLoad,0,100,0));
   document.getElementById("sbCpuPressure").textContent=cpuPressure+"%";
@@ -1275,7 +1230,7 @@ function calculate(){
   ].forEach(([key,id])=>{
     const check=modelScenario(cpuScore,gpuScore,key,gt,targetFps,g,context,gameProfile);
     const fit=Math.round(safeClamp(check.targetFit,0,100,0));
-    const label=check.limiting==="Balanced"?"Balanced":check.limiting+" "+(fit>=85?"9–12%":fit>=65?"13–25%":"26%+");
+    const label=check.limiting==="Balanced"?"Balanced":check.limiting+"-limited";
     const card=document.getElementById(id);
     card.querySelector("span").textContent=label;
     card.dataset.status=check.limiting==="Balanced"?"good":fit>=65?"warn":"bad";
