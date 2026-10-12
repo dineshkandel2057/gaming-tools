@@ -544,7 +544,7 @@
 
   function initScrollReveal() {
     const targets = Array.from(document.querySelectorAll(
-      "[data-sfp-reveal], .reveal"
+      "[data-sfp-reveal], .reveal, main section, main article, .tool-card, .homepage-guide-item, .about-hub-pillar, .about-hub-step, .seo-hub-col"
     ));
 
     if (
