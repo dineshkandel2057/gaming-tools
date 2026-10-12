@@ -717,14 +717,14 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       </div>
     </section>
 
-    <nav class="sb-result-tabs" aria-label="Result sections">
-      <button type="button" class="sb-result-tab is-active" data-result-tab="overview" aria-selected="true">📊 OVERVIEW</button>
-      <button type="button" class="sb-result-tab" data-result-tab="utilization" aria-selected="false">📈 UTILIZATION</button>
-      <button type="button" class="sb-result-tab" data-result-tab="comparison" aria-selected="false">⚖️ COMPARISON</button>
-      <button type="button" class="sb-result-tab" data-result-tab="recommendations" aria-selected="false">💡 RECOMMENDATIONS</button>
+    <nav class="sb-result-tabs" role="tablist" aria-label="Result sections">
+      <button type="button" role="tab" class="sb-result-tab is-active" data-result-tab="overview" aria-controls="sbPanelOverview" aria-selected="true">📊 OVERVIEW</button>
+      <button type="button" role="tab" class="sb-result-tab" data-result-tab="utilization" aria-controls="sbPanelUtilization" aria-selected="false">📈 UTILIZATION</button>
+      <button type="button" role="tab" class="sb-result-tab" data-result-tab="comparison" aria-controls="sbPanelComparison" aria-selected="false">⚖️ COMPARISON</button>
+      <button type="button" role="tab" class="sb-result-tab" data-result-tab="recommendations" aria-controls="sbPanelRecommendations" aria-selected="false">💡 RECOMMENDATIONS</button>
     </nav>
 
-    <section class="sb-result-panel sb-overview-panel" data-result-panel="overview" aria-labelledby="sbOverviewTitle">
+    <section class="sb-result-panel sb-overview-panel" id="sbPanelOverview" data-result-panel="overview" aria-labelledby="sbOverviewTitle">
       <h2 class="sb-title" id="sbOverviewTitle">PERFORMANCE SCORE OVERVIEW</h2>
       <div class="sb-score-rings">
         <div class="sb-score-ring-item"><div class="sb-score-ring cpu" id="sbOverviewCpuRing" style="--score:0"><strong id="sbOverviewCpuScore">—</strong></div><span>CPU SCORE</span></div>
@@ -735,7 +735,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       <div class="sb-system-summary"><strong>System Summary:</strong> <span id="sbOverviewSummary">Choose your hardware and calculate to see a concise summary.</span></div>
     </section>
 
-    <section class="sb-result-panel sb-utilization-panel" data-result-panel="utilization" aria-labelledby="sbUtilizationTitle" hidden>
+    <section class="sb-result-panel sb-utilization-panel" id="sbPanelUtilization" data-result-panel="utilization" aria-labelledby="sbUtilizationTitle" hidden>
       <h2 class="sb-title" id="sbUtilizationTitle">MODELED COMPONENT UTILIZATION</h2>
       <p class="sb-fps-subtitle">Estimated workload pressure for this scenario — not live monitoring readings or actual measured utilization.</p>
       <div class="sb-utilization-grid">
@@ -745,7 +745,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       <p class="sb-result-note">Actual usage varies by game, graphics settings, frame cap and background tasks. Confirm with an in-game monitoring tool.</p>
     </section>
 
-    <section class="sb-result-panel sb-comparison-panel" data-result-panel="comparison" aria-labelledby="sbComparisonTitle" hidden>
+    <section class="sb-result-panel sb-comparison-panel" id="sbPanelComparison" data-result-panel="comparison" aria-labelledby="sbComparisonTitle" hidden>
       <h2 class="sb-title" id="sbComparisonTitle">COMPONENT &amp; RESOLUTION COMPARISON</h2>
       <section class="sb-section sb-panel sb-balance-panel" aria-labelledby="sbBalanceTitle">
       <div class="sb-panel-head"><h2 class="sb-title" id="sbBalanceTitle">PERFORMANCE BALANCE</h2></div>
@@ -783,7 +783,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
     </section>
     </section>
 
-    <section class="sb-result-panel sb-recommendations-panel" data-result-panel="recommendations" aria-labelledby="sbRecommendationsTitle" hidden>
+    <section class="sb-result-panel sb-recommendations-panel" id="sbPanelRecommendations" data-result-panel="recommendations" aria-labelledby="sbRecommendationsTitle" hidden>
       <section class="sb-section sb-upgrade sb-upgrade-recommendation" aria-labelledby="sbUpgradeTitle">
       <div class="sb-upgrade-main">
         <div>
