@@ -543,27 +543,74 @@
   `;
 
   function initScrollReveal() {
-    const targets = Array.from(document.querySelectorAll(
-      "[data-sfp-reveal], .reveal, section, article, .tool-card, .homepage-guide-item, .about-hub-pillar, .about-hub-step, .seo-hub-col"
-    ));
+    // Include semantic sections plus stable content blocks that use divs instead.
+    // Exclude carousel slides: their own transform is required for carousel navigation.
+    const selector = [
+      "[data-sfp-reveal]",
+      ".reveal",
+      "section",
+      "article:not(.guide-slide)",
+      ".tool-card",
+      ".homepage-guide-item",
+      ".about-hub-pillar",
+      ".about-hub-step",
+      ".seo-hub-col",
+      ".hero",
+      ".hero-copy",
+      ".hero-visual",
+      ".homepage-guide-card",
+      ".about-hub-panel",
+      ".about-hub-stat",
+      ".about-hub-process",
+      ".seo-hub-grid",
+      ".decision-card",
+      ".faq",
+      ".related-guides",
+      ".sources"
+    ].join(", ");
 
-    if (
-      !targets.length ||
-      !("IntersectionObserver" in window) ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 
+    if (!("IntersectionObserver" in window)) {
+      return;
+    }
+
+    const targets = new Set();
     let observer;
+    let mutationObserver;
 
     const showAll = () => {
-      if (observer) observer.disconnect();
+      try {
+        if (observer) observer.disconnect();
+        if (mutationObserver) mutationObserver.disconnect();
+      } catch (_) {
+        // Visibility recovery must continue even if an observer cannot disconnect.
+      }
+
       document.documentElement.classList.remove("sfp-motion-ready");
+      document.querySelectorAll(selector).forEach((target) => {
+        target.classList.remove("sfp-reveal-pending");
+        target.classList.add("sfp-reveal-visible");
+      });
       targets.forEach((target) => {
         target.classList.remove("sfp-reveal-pending");
         target.classList.add("sfp-reveal-visible");
       });
+    };
+
+    const registerTarget = (target) => {
+      if (targets.has(target)) return;
+      targets.add(target);
+      target.classList.add("sfp-reveal-target");
+      observer.observe(target);
+    };
+
+    const registerTree = (node) => {
+      if (!node || node.nodeType !== 1) return;
+      if (node.matches(selector)) registerTarget(node);
+      node.querySelectorAll(selector).forEach(registerTarget);
     };
 
     try {
@@ -587,10 +634,30 @@
         }
       }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
 
-      targets.forEach((target) => {
-        target.classList.add("sfp-reveal-target");
-        observer.observe(target);
-      });
+      // Register the current page, then catch matching sections/cards added later.
+      document.querySelectorAll(selector).forEach(registerTarget);
+
+      if ("MutationObserver" in window) {
+        try {
+          mutationObserver = new MutationObserver((records) => {
+            try {
+              records.forEach((record) => {
+                record.addedNodes.forEach(registerTree);
+              });
+            } catch (_) {
+              showAll();
+            }
+          });
+          mutationObserver.observe(document.documentElement, {
+            childList: true,
+            subtree: true
+          });
+        } catch (_) {
+          // Existing targets still animate if dynamic observation is unavailable.
+          mutationObserver = null;
+        }
+      }
+
       document.documentElement.classList.add("sfp-motion-ready");
     } catch (_) {
       showAll();
