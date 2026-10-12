@@ -799,7 +799,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
         </div>
         <div class="sb-upgrade-arrow" aria-hidden="true">→</div>
         <div class="sb-upgrade-feature-copy">
-          <span class="sb-upgrade-current-label">WITH SUGGESTED UPGRADE</span>
+          <span class="sb-upgrade-current-label" id="sbUpgradeProjectedLabel">WITH SUGGESTED UPGRADE</span>
           <strong class="sb-upgrade-projected"><span id="sbUpgradeProjectedFps">—</span> FPS</strong>
         </div>
       </div>
@@ -1381,7 +1381,7 @@ function calculate(){
     card.dataset.status=check.limiting==="Balanced"?"good":fit>=65?"warn":"bad";
   });
 
-  const recommendedSide=scenario.limiting==="CPU"?"GPU":scenario.limiting==="GPU"?"CPU":(gpuGain>=cpuGain?"GPU":"CPU");
+  const recommendedSide=scenario.limiting==="CPU"?"CPU":scenario.limiting==="GPU"?"GPU":(gpuGain>cpuGain?"GPU":"CPU");
   const recommendedList=recommendedSide==="GPU"?GPUs:CPUs;
   const currentRecommendedPart=recommendedSide==="GPU"?g:c;
   const recommendedUpgradeScenario=score=>recommendedSide==="GPU"
@@ -1390,6 +1390,10 @@ function calculate(){
   const recommendedCandidates=recommendedList
     .filter(item=>item&&item.id!==currentRecommendedPart.id&&safeFinite(item.score,0)>=safeFinite(currentRecommendedPart.score,0)*1.15)
     .map(item=>({item,scenario:recommendedUpgradeScenario(item.score)}))
+    .filter(candidate=>{
+      const gain=Math.max(0,safeFinite(candidate.scenario.sustainableFps,0)-currentRawFps);
+      return gain>=8||gain>=currentRawFps*.10;
+    })
     .sort((a,b)=>safeFinite(b.scenario.sustainableFps,0)-safeFinite(a.scenario.sustainableFps,0));
   const recommendedUpgrade=recommendedCandidates[0]||null;
   const recommendedRawFps=recommendedUpgrade?Math.max(0,safeFinite(recommendedUpgrade.scenario.sustainableFps,0)):currentRawFps;
@@ -1402,7 +1406,7 @@ function calculate(){
   document.getElementById("sbUpgradeDirection").textContent=scenario.limiting==="Balanced"
     ?"SUGGESTED UPGRADE FOR YOUR BUILD"
     :"SUGGESTED "+recommendedSide+" OPTION · "+scenario.limiting+" IS THE CURRENT LIMIT";
-  document.getElementById("sbUpgradeGain").textContent="+"+recommendedGainDisplay+" FPS ("+recommendedGainPercent+"%)";
+  document.getElementById("sbUpgradeGain").textContent=recommendedUpgrade?"+"+recommendedGainDisplay+" FPS ("+recommendedGainPercent+"%)":"No worthwhile upgrade";
   document.getElementById("sbUpgradeCurrentFps").textContent=capacity;
   document.getElementById("sbUpgradeProjectedFps").textContent=recommendedFps;
   document.getElementById("sbUpgradeProduct").textContent=recommendedUpgrade
@@ -1414,6 +1418,7 @@ function calculate(){
   document.getElementById("sbUpgradePercent").textContent=recommendedUpgrade
     ?"+"+recommendedGainPercent+"%"
     :"—";
+  document.getElementById("sbUpgradeProjectedLabel").textContent=recommendedUpgrade?"WITH SUGGESTED UPGRADE":"NO CHANGE MODELED";
   document.getElementById("sbUpgradeFootnote").textContent=recommendedUpgrade
     ?(recommendedGain>0
       ?"Estimated improvement for this scenario only. Verify motherboard/platform, power supply, case clearance and game-specific benchmarks before buying."
@@ -1421,7 +1426,6 @@ function calculate(){
     :"No higher-scoring candidate passed the catalog filter. Focus on the current result and verify real gameplay before buying.";
 
   rootTabsInit(resultRoot);
-  updateVisibleResolution(resultRoot,r);
   resultRoot.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
@@ -1443,24 +1447,6 @@ function rootTabsInit(root){
       });
     });
   }
-  if(root.dataset.sbReady)return;
-  root.dataset.sbReady="1";
-  root.querySelectorAll("[data-sb-resolution]").forEach(tab=>{
-    tab.addEventListener("click",()=>{
-      const key=tab.dataset.sbResolution;
-      root.querySelectorAll("[data-sb-resolution]").forEach(t=>t.setAttribute("aria-selected",t===tab?"true":"false"));
-      root.dataset.activeResolution=key;
-      updateVisibleResolution(root,key);
-    });
-    tab.addEventListener("keydown",event=>{
-      if(event.key!=="ArrowRight"&&event.key!=="ArrowLeft")return;
-      event.preventDefault();
-      const tabs=[...root.querySelectorAll("[data-sb-resolution]")];
-      const index=tabs.indexOf(tab);
-      const next=tabs[(index+(event.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length];
-      next.click();next.focus();
-    });
-  });
 }
 /* Keep the tools menu easy to dismiss by mouse and keyboard. */
 </script>
