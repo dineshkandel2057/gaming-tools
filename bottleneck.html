@@ -1381,7 +1381,7 @@ function calculate(){
     card.dataset.status=check.limiting==="Balanced"?"good":fit>=65?"warn":"bad";
   });
 
-  const recommendedSide=scenario.limiting==="CPU"?"GPU":scenario.limiting==="GPU"?"CPU":(gpuGain>=cpuGain?"GPU":"CPU");
+  const recommendedSide=scenario.limiting==="CPU"?"CPU":scenario.limiting==="GPU"?"GPU":(gpuGain>cpuGain?"GPU":"CPU");
   const recommendedList=recommendedSide==="GPU"?GPUs:CPUs;
   const currentRecommendedPart=recommendedSide==="GPU"?g:c;
   const recommendedUpgradeScenario=score=>recommendedSide==="GPU"
