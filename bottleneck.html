@@ -1231,8 +1231,6 @@ function calculate(){
   document.getElementById("sbBottleneckPercent").textContent=bottleneckIndex+"%";
   document.getElementById("sbBuildHealthScore").textContent=buildScore+"%";
   document.getElementById("sbPair").textContent=c.name+" + "+g.name;
-  document.getElementById("sbCpu").textContent=c.name||"CPU";
-  document.getElementById("sbGpu").textContent=g.name||"GPU";
   document.getElementById("sbCpuBalanceName").textContent=c.name||"—";
   document.getElementById("sbGpuBalanceName").textContent=g.name||"—";
   document.getElementById("sbCpuBalanceScore").textContent=safeFps(cpuScore)+"/100";
