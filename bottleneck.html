@@ -641,6 +641,23 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       #bottleneck-results-container .sb-status-compact .sb-hardware{grid-column:1/-1}
     }
 
+
+      #bottleneck-results-container .sb-upgrade-eyebrow{display:block;color:#9ba8bf;font-size:10px;font-weight:800;letter-spacing:.1em;margin-bottom:7px}
+      #bottleneck-results-container .sb-upgrade-feature{display:grid;grid-template-columns:1fr 36px 1fr;align-items:center;gap:12px;margin-top:14px;padding:16px;border:1px solid var(--sb-line);border-radius:13px;background:#070c13}
+      #bottleneck-results-container .sb-upgrade-feature-copy{min-width:0}
+      #bottleneck-results-container .sb-upgrade-current-label{display:block;color:#8e9caf;font-size:10px;font-weight:800;letter-spacing:.06em}
+      #bottleneck-results-container .sb-upgrade-current,#bottleneck-results-container .sb-upgrade-projected{display:block;margin-top:7px;font:700 clamp(24px,3vw,34px)/1.1 "Space Grotesk",sans-serif;color:#fff}
+      #bottleneck-results-container .sb-upgrade-projected{color:var(--sb-good)}
+      #bottleneck-results-container .sb-upgrade-arrow{text-align:center;color:#8e9caf;font-size:23px}
+      #bottleneck-results-container .sb-upgrade-product{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;padding:15px 16px;border:1px solid rgba(92,224,162,.2);border-radius:12px;background:rgba(19,91,65,.12)}
+      #bottleneck-results-container .sb-upgrade-product-label{display:block;color:#91a4ba;font-size:10px;font-weight:800;letter-spacing:.07em}
+      #bottleneck-results-container .sb-upgrade-product strong{display:block;margin-top:5px;color:#f5f7fc;font-size:16px;line-height:1.4}
+      #bottleneck-results-container .sb-upgrade-percent{flex-shrink:0;color:var(--sb-good);font:700 23px/1 "Space Grotesk",sans-serif}
+      #bottleneck-results-container .sb-upgrade-footnote{margin:10px 0 0;color:#8996aa;font-size:10px;line-height:1.5}
+      #bottleneck-results-container .sb-upgrade-recommendation[data-recommendation="none"] .sb-upgrade-product{border-color:var(--sb-line);background:#0b121e}
+      #bottleneck-results-container .sb-upgrade-recommendation[data-recommendation="none"] .sb-upgrade-percent{color:#a0acc0}
+      @media(max-width:520px){#bottleneck-results-container .sb-upgrade-feature{grid-template-columns:1fr;gap:8px}#bottleneck-results-container .sb-upgrade-arrow{transform:rotate(90deg);text-align:left}#bottleneck-results-container .sb-upgrade-product{align-items:flex-start;flex-direction:column}}
+
 </style>
 
 
@@ -655,6 +672,32 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
         <div class="sb-status-stat"><strong id="sbBottleneckPercent">0%</strong><span>BOTTLENECK</span></div>
         <div class="sb-status-stat"><strong id="sbBuildHealthScore">97%</strong><span>BUILD SCORE</span></div>
       </div>
+    </section>
+
+    <section class="sb-section sb-upgrade sb-upgrade-recommendation" aria-labelledby="sbUpgradeTitle">
+      <div class="sb-upgrade-main">
+        <div>
+          <span class="sb-upgrade-eyebrow" id="sbUpgradeDirection">SUGGESTED COMPLEMENTARY UPGRADE</span>
+          <h2 class="sb-upgrade-title" id="sbUpgradeTitle">UPGRADE RECOMMENDATION</h2>
+        </div>
+        <div class="sb-upgrade-gain"><strong id="sbUpgradeGain">+0 FPS</strong><span>MODELED FPS GAIN</span></div>
+      </div>
+      <div class="sb-upgrade-feature">
+        <div class="sb-upgrade-feature-copy">
+          <span class="sb-upgrade-current-label">CURRENT ESTIMATE</span>
+          <strong class="sb-upgrade-current"><span id="sbUpgradeCurrentFps">—</span> FPS</strong>
+        </div>
+        <div class="sb-upgrade-arrow" aria-hidden="true">→</div>
+        <div class="sb-upgrade-feature-copy">
+          <span class="sb-upgrade-current-label">WITH SUGGESTED UPGRADE</span>
+          <strong class="sb-upgrade-projected"><span id="sbUpgradeProjectedFps">—</span> FPS</strong>
+        </div>
+      </div>
+      <div class="sb-upgrade-product">
+        <div><span class="sb-upgrade-product-label" id="sbUpgradeComponentLabel">RECOMMENDED COMPONENT</span><strong id="sbUpgradeProduct">Calculating recommendation…</strong></div>
+        <span class="sb-upgrade-percent" id="sbUpgradePercent">+0%</span>
+      </div>
+      <p class="sb-upgrade-footnote" id="sbUpgradeFootnote">FPS gain is a model estimate, not a benchmark guarantee. Verify motherboard, power supply, case clearance and game-specific performance before buying.</p>
     </section>
 
     <section class="sb-section sb-panel sb-balance-panel" aria-labelledby="sbBalanceTitle">
@@ -700,17 +743,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       </div>
     </section>
 
-    <section class="sb-section sb-upgrade" aria-labelledby="sbUpgradeTitle">
-      <div class="sb-upgrade-main">
-        <h2 class="sb-upgrade-title" id="sbUpgradeTitle">UPGRADE SCENARIOS</h2>
-        <div class="sb-upgrade-gain"><strong id="sbUpgradeGain">+0 FPS</strong><span>MODELED FPS GAIN</span></div>
-      </div>
-      <p class="sb-result-note">These are modeled FPS comparisons, not price-to-performance rankings. Check current prices, compatibility and real-game benchmarks before buying.</p>
-      <div class="sb-upgrade-grid">
-        <div class="sb-upgrade-option"><strong id="sbCpuUpgradeFps">0 FPS</strong><span id="sbCpuUpgradeGain">Recommended Upgrade: —</span></div>
-        <div class="sb-upgrade-option"><strong id="sbGpuUpgradeFps">0 FPS</strong><span id="sbGpuUpgradeGain">Recommended Upgrade: —</span></div>
-      </div>
-    </section>
+    
 
     <script>
       (() => {
@@ -1270,17 +1303,44 @@ function calculate(){
     card.dataset.status=check.limiting==="Balanced"?"good":fit>=65?"warn":"bad";
   });
 
-  const cpuRecommendation=cpuUpgradeChoice
-    ? ("Recommended Upgrade: "+cpuUpgradeChoice.item.name+" • +"+cpuGainDisplay+" FPS ("+Math.round((cpuGain/Math.max(currentRawFps,.01))*100)+"%) • Check Price • May need a new motherboard or RAM")
-    : "No worthwhile upgrade found";
-  const gpuRecommendation=gpuUpgradeChoice
-    ? ("Recommended Upgrade: "+gpuUpgradeChoice.item.name+" • +"+gpuGainDisplay+" FPS ("+Math.round((gpuGain/Math.max(currentRawFps,.01))*100)+"%) • Check Price")
-    : "No worthwhile upgrade found";
-  document.getElementById("sbUpgradeGain").textContent="+"+bestGainDisplay+" FPS ("+bestGainPercent+"%)";
-  document.getElementById("sbCpuUpgradeFps").textContent=cpuUpgradeFps+" FPS";
-  document.getElementById("sbGpuUpgradeFps").textContent=gpuUpgradeFps+" FPS";
-  document.getElementById("sbCpuUpgradeGain").textContent=cpuRecommendation;
-  document.getElementById("sbGpuUpgradeGain").textContent=gpuRecommendation;
+  const recommendedSide=scenario.limiting==="CPU"?"GPU":scenario.limiting==="GPU"?"CPU":(gpuGain>=cpuGain?"GPU":"CPU");
+  const recommendedList=recommendedSide==="GPU"?GPUs:CPUs;
+  const currentRecommendedPart=recommendedSide==="GPU"?g:c;
+  const recommendedUpgradeScenario=score=>recommendedSide==="GPU"
+    ?modelScenario(cpuScore,score,r,gt,targetFps,g,context,gameProfile)
+    :modelScenario(score,gpuScore,r,gt,targetFps,g,context,gameProfile);
+  const recommendedCandidates=recommendedList
+    .filter(item=>item&&safeFinite(item.score,0)>=safeFinite(currentRecommendedPart.score,0)*1.15&&!isOlderInSameFamily(item,currentRecommendedPart))
+    .map(item=>({item,scenario:recommendedUpgradeScenario(item.score)}))
+    .sort((a,b)=>safeFinite(b.scenario.sustainableFps,0)-safeFinite(a.scenario.sustainableFps,0));
+  const recommendedUpgrade=recommendedCandidates[0]||null;
+  const recommendedRawFps=recommendedUpgrade?Math.max(0,safeFinite(recommendedUpgrade.scenario.sustainableFps,0)):currentRawFps;
+  const recommendedFps=safeFps(recommendedRawFps);
+  const recommendedGain=Math.max(0,recommendedRawFps-currentRawFps);
+  const recommendedGainDisplay=formatPositiveFpsDelta(recommendedGain);
+  const recommendedGainPercent=Math.round((recommendedGain/Math.max(currentRawFps,.01))*100);
+  const upgradeCard=document.querySelector("#bottleneck-results-container .sb-upgrade-recommendation");
+  if(upgradeCard)upgradeCard.dataset.recommendation=recommendedUpgrade?"found":"none";
+  document.getElementById("sbUpgradeDirection").textContent=scenario.limiting==="Balanced"
+    ?"SUGGESTED UPGRADE FOR YOUR BUILD"
+    :"SUGGESTED "+recommendedSide+" OPTION · "+scenario.limiting+" IS THE CURRENT LIMIT";
+  document.getElementById("sbUpgradeGain").textContent="+"+recommendedGainDisplay+" FPS ("+recommendedGainPercent+"%)";
+  document.getElementById("sbUpgradeCurrentFps").textContent=capacity;
+  document.getElementById("sbUpgradeProjectedFps").textContent=recommendedFps;
+  document.getElementById("sbUpgradeProduct").textContent=recommendedUpgrade
+    ?recommendedUpgrade.item.name
+    :"No suitable higher-scoring "+recommendedSide+" candidate found in the catalog";
+  document.getElementById("sbUpgradeComponentLabel").textContent=recommendedUpgrade
+    ?"SUGGESTED "+recommendedSide+" CANDIDATE"
+    :"NO CATALOG MATCH";
+  document.getElementById("sbUpgradePercent").textContent=recommendedUpgrade
+    ?"+"+recommendedGainPercent+"%"
+    :"—";
+  document.getElementById("sbUpgradeFootnote").textContent=recommendedUpgrade
+    ?(recommendedGain>0
+      ?"Estimated improvement for this scenario only. Verify motherboard/platform, power supply, case clearance and game-specific benchmarks before buying."
+      ?"The model predicts little or no FPS improvement from this "+recommendedSide.toLowerCase()+" change because the "+scenario.limiting.toLowerCase()+" is limiting performance. Prioritize the current limit before spending.")
+    :"No higher-scoring candidate passed the catalog filter. Focus on the current result and verify real gameplay before buying.";
 
   rootTabsInit(resultRoot);
   updateVisibleResolution(resultRoot,r);
