@@ -1303,17 +1303,44 @@ function calculate(){
     card.dataset.status=check.limiting==="Balanced"?"good":fit>=65?"warn":"bad";
   });
 
-  const cpuRecommendation=cpuUpgradeChoice
-    ? ("Recommended Upgrade: "+cpuUpgradeChoice.item.name+" • +"+cpuGainDisplay+" FPS ("+Math.round((cpuGain/Math.max(currentRawFps,.01))*100)+"%) • Check Price • May need a new motherboard or RAM")
-    : "No worthwhile upgrade found";
-  const gpuRecommendation=gpuUpgradeChoice
-    ? ("Recommended Upgrade: "+gpuUpgradeChoice.item.name+" • +"+gpuGainDisplay+" FPS ("+Math.round((gpuGain/Math.max(currentRawFps,.01))*100)+"%) • Check Price")
-    : "No worthwhile upgrade found";
-  document.getElementById("sbUpgradeGain").textContent="+"+bestGainDisplay+" FPS ("+bestGainPercent+"%)";
-  document.getElementById("sbCpuUpgradeFps").textContent=cpuUpgradeFps+" FPS";
-  document.getElementById("sbGpuUpgradeFps").textContent=gpuUpgradeFps+" FPS";
-  document.getElementById("sbCpuUpgradeGain").textContent=cpuRecommendation;
-  document.getElementById("sbGpuUpgradeGain").textContent=gpuRecommendation;
+  const recommendedSide=scenario.limiting==="CPU"?"GPU":scenario.limiting==="GPU"?"CPU":(gpuGain>=cpuGain?"GPU":"CPU");
+  const recommendedList=recommendedSide==="GPU"?GPUs:CPUs;
+  const currentRecommendedPart=recommendedSide==="GPU"?g:c;
+  const recommendedUpgradeScenario=score=>recommendedSide==="GPU"
+    ?modelScenario(cpuScore,score,r,gt,targetFps,g,context,gameProfile)
+    :modelScenario(score,gpuScore,r,gt,targetFps,g,context,gameProfile);
+  const recommendedCandidates=recommendedList
+    .filter(item=>item&&safeFinite(item.score,0)>=safeFinite(currentRecommendedPart.score,0)*1.15&&!isOlderInSameFamily(item,currentRecommendedPart))
+    .map(item=>({item,scenario:recommendedUpgradeScenario(item.score)}))
+    .sort((a,b)=>safeFinite(b.scenario.sustainableFps,0)-safeFinite(a.scenario.sustainableFps,0));
+  const recommendedUpgrade=recommendedCandidates[0]||null;
+  const recommendedRawFps=recommendedUpgrade?Math.max(0,safeFinite(recommendedUpgrade.scenario.sustainableFps,0)):currentRawFps;
+  const recommendedFps=safeFps(recommendedRawFps);
+  const recommendedGain=Math.max(0,recommendedRawFps-currentRawFps);
+  const recommendedGainDisplay=formatPositiveFpsDelta(recommendedGain);
+  const recommendedGainPercent=Math.round((recommendedGain/Math.max(currentRawFps,.01))*100);
+  const upgradeCard=document.querySelector("#bottleneck-results-container .sb-upgrade-recommendation");
+  if(upgradeCard)upgradeCard.dataset.recommendation=recommendedUpgrade?"found":"none";
+  document.getElementById("sbUpgradeDirection").textContent=scenario.limiting==="Balanced"
+    ?"SUGGESTED UPGRADE FOR YOUR BUILD"
+    :"SUGGESTED "+recommendedSide+" OPTION · "+scenario.limiting+" IS THE CURRENT LIMIT";
+  document.getElementById("sbUpgradeGain").textContent="+"+recommendedGainDisplay+" FPS ("+recommendedGainPercent+"%)";
+  document.getElementById("sbUpgradeCurrentFps").textContent=capacity;
+  document.getElementById("sbUpgradeProjectedFps").textContent=recommendedFps;
+  document.getElementById("sbUpgradeProduct").textContent=recommendedUpgrade
+    ?recommendedUpgrade.item.name
+    :"No suitable higher-scoring "+recommendedSide+" candidate found in the catalog";
+  document.getElementById("sbUpgradeComponentLabel").textContent=recommendedUpgrade
+    ?"SUGGESTED "+recommendedSide+" CANDIDATE"
+    :"NO CATALOG MATCH";
+  document.getElementById("sbUpgradePercent").textContent=recommendedUpgrade
+    ?"+"+recommendedGainPercent+"%"
+    :"—";
+  document.getElementById("sbUpgradeFootnote").textContent=recommendedUpgrade
+    ?(recommendedGain>0
+      ?"Estimated improvement for this scenario only. Verify motherboard/platform, power supply, case clearance and game-specific benchmarks before buying."
+      ?"The model predicts little or no FPS improvement from this "+recommendedSide.toLowerCase()+" change because the "+scenario.limiting.toLowerCase()+" is limiting performance. Prioritize the current limit before spending.")
+    :"No higher-scoring candidate passed the catalog filter. Focus on the current result and verify real gameplay before buying.";
 
   rootTabsInit(resultRoot);
   updateVisibleResolution(resultRoot,r);
