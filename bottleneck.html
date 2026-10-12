@@ -245,6 +245,12 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CPU & GPU Bottleneck Calculator","url":"https://systemfitpc.vercel.app/bottleneck.html","description":"A calculator that estimates CPU and GPU workload balance for a selected gaming scenario.","applicationCategory":"UtilitiesApplication","operatingSystem":"Web browser","publisher":{"@type":"Organization","name":"SystemFit PC","url":"https://systemfitpc.vercel.app/","logo":"https://systemfitpc.vercel.app/systemfit-favicon.png"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
   <link rel="stylesheet" href="site-universal.css">
+<style>
+.sb-result-note{margin:13px 0 0;color:#a3b0c6;font-size:11px;line-height:1.65;padding:12px 14px;border:1px solid rgba(157,174,204,.13);border-radius:10px;background:rgba(255,255,255,.025)}
+.sb-interpretation{margin-top:12px;padding:16px;border:1px solid rgba(118,95,255,.2);border-radius:12px;background:linear-gradient(145deg,rgba(118,95,255,.09),rgba(12,18,30,.5))}
+.sb-interpretation h3{margin:0 0 7px;font-size:15px;color:#f2f4fb}
+.sb-interpretation p{margin:0;color:#b4c0d4;font-size:12px;line-height:1.7}
+</style>
 </head>
 <body>
 <div id="site-header"><noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/#tools">Tools</a><a href="guides.html">Guides</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></noscript></div>
@@ -529,13 +535,18 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
           <div class="sb-metric"><strong id="sbMetricLimit">OPTIMAL</strong><span>LIMITER</span></div>
         </div>
         <div class="sb-gauges">
-          <div class="sb-gauge"><div class="sb-gauge-head"><span>CPU PRESSURE</span><strong id="sbCpuPressure">0%</strong></div><div class="sb-track"><div class="sb-fill cpu" id="sbCpuBar"></div></div></div>
-          <div class="sb-gauge"><div class="sb-gauge-head"><span>GPU PRESSURE</span><strong id="sbGpuPressure">0%</strong></div><div class="sb-track"><div class="sb-fill gpu" id="sbGpuBar"></div></div></div>
+          <div class="sb-gauge"><div class="sb-gauge-head"><span>EST. CPU PRESSURE</span><strong id="sbCpuPressure">0%</strong></div><div class="sb-track"><div class="sb-fill cpu" id="sbCpuBar"></div></div></div>
+          <div class="sb-gauge"><div class="sb-gauge-head"><span>EST. GPU PRESSURE</span><strong id="sbGpuPressure">0%</strong></div><div class="sb-track"><div class="sb-fill gpu" id="sbGpuBar"></div></div></div>
         </div>
         <div class="sb-resolution-grid">
           <div class="sb-resolution" data-sb-res-card="1080"><strong>1080P</strong><span id="sbRes1080Fps">0 FPS</span><b id="sbRes1080Fit">OPTIMAL</b></div>
           <div class="sb-resolution" data-sb-res-card="1440"><strong>1440P</strong><span id="sbRes1440Fps">0 FPS</span><b id="sbRes1440Fit">OPTIMAL</b></div>
           <div class="sb-resolution" data-sb-res-card="2160"><strong>4K</strong><span id="sbRes2160Fps">0 FPS</span><b id="sbRes2160Fit">OPTIMAL</b></div>
+        </div>
+        <p class="sb-result-note">These FPS figures and pressure bars are model estimates, not live measurements from your PC. The pressure percentages are not the same as GPU utilization or total CPU usage in a monitoring app.</p>
+        <div class="sb-interpretation" aria-live="polite">
+          <h3>How to use this result</h3>
+          <p id="sbResultAdvice">Run the calculator to get guidance for your selected hardware, resolution and target FPS.</p>
         </div>
       </div>
     </section>
@@ -543,7 +554,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
     <section class="sb-section sb-upgrade" aria-labelledby="sbUpgradeTitle">
       <div class="sb-upgrade-main">
         <h2 class="sb-upgrade-title" id="sbUpgradeTitle">CALCULATION RESULTS</h2>
-        <div class="sb-upgrade-gain"><strong id="sbUpgradeGain">+0 FPS</strong><span>EXPECTED ELEVATION</span></div>
+        <div class="sb-upgrade-gain"><strong id="sbUpgradeGain">+0 FPS</strong><span>ESTIMATED FPS GAIN</span></div>
       </div>
       <div class="sb-upgrade-grid">
         <div class="sb-upgrade-option"><strong id="sbCpuUpgradeFps">0 FPS</strong><span id="sbCpuUpgradeGain">Recommended Upgrade: —</span></div>
@@ -611,7 +622,9 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
   <p>Because real performance depends on game scenes, patches, drivers, thermals, background tasks and other conditions the model cannot directly measure.</p>
   <h3>What should I check after seeing a GPU bottleneck?</h3>
   <p>Use the <a href="fps-calculator.html">FPS Calculator</a> to test different settings, then compare the GPU options in the <a href="gpu-comparison.html">GPU Comparison Tool</a>.</p>
-  <p class="last-updated"><strong>Last updated:</strong> October 11, 2026</p>
+  <h2>Related tools and guides</h2>
+  <p>To validate the estimate, compare your setup in the <a href="fps-calculator.html">FPS Calculator</a> and read our <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU bottleneck guide</a>. If the GPU appears to be limiting performance, try the <a href="game-settings.html">Game Settings Optimizer</a> and <a href="graphics-settings-that-affect-fps.html">graphics settings guide</a>. Resolution also changes the balance, so see <a href="1080p-vs-1440p-vs-4k-gaming.html">1080p vs 1440p vs 4K gaming</a>. If an upgrade still looks justified, compare priorities with the <a href="upgrade-advisor.html">PC Upgrade Advisor</a> or check a full configuration in the <a href="build-planner.html">PC Build Planner</a>.</p>
+  <p class="last-updated"><strong>Last updated:</strong> October 12, 2026</p>
 </section>
 </main>
 
@@ -1071,6 +1084,18 @@ function calculate(){
   document.getElementById("sbMetricFps").textContent=activeFps+" FPS";
   document.getElementById("sbMetricTarget").textContent=target+" FPS";
   document.getElementById("sbMetricLimit").textContent=active.limiting==="Balanced"?"OPTIMAL":active.limiting.toUpperCase();
+  const resultAdvice=document.getElementById("sbResultAdvice");
+  if(resultAdvice){
+    const limiterAdvice=active.limiting==="CPU"
+      ?"The model points to the CPU as the likely limit for this workload. Check per-core CPU activity and frame times in a repeatable game scene, and try reducing CPU-heavy settings or background load before considering an upgrade."
+      :active.limiting==="GPU"
+      ?"The model points to the GPU as the likely limit. Test a lower resolution or GPU-heavy settings such as ray tracing, shadows and volumetrics; compare upscaling in the game before deciding whether a GPU upgrade is worthwhile."
+      :"The model does not show a strong CPU-versus-GPU imbalance for this scenario. If performance still feels poor, check frame caps, frame times, thermals, memory pressure and background tasks rather than buying a part based on this result alone.";
+    const targetAdvice=activeRawFps<targetFps
+      ? " The estimate is below your target, so test changes in-game and confirm the shortfall before spending money."
+      : " The estimate meets your target, so an upgrade may not be necessary if real gameplay is smooth.";
+    resultAdvice.textContent=limiterAdvice+targetAdvice;
+  }
 
   const cpuPressure=Math.round(safeClamp(active.cpuLoad,0,100,0));
   const gpuPressure=Math.round(safeClamp(active.gpuLoad,0,100,0));

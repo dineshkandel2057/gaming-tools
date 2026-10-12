@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/affiliate-disclosure",
+      "destination": "/affiliate-disclosure.html",
+      "permanent": true
+    },
+    {
+      "source": "/affiliate-disclosure/",
+      "destination": "/affiliate-disclosure.html",
+      "permanent": true
+    }
+  ]
+}
