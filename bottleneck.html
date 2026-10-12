@@ -1310,7 +1310,7 @@ function calculate(){
     ?modelScenario(cpuScore,score,r,gt,targetFps,g,context,gameProfile)
     :modelScenario(score,gpuScore,r,gt,targetFps,g,context,gameProfile);
   const recommendedCandidates=recommendedList
-    .filter(item=>item&&safeFinite(item.score,0)>=safeFinite(currentRecommendedPart.score,0)*1.15&&!isOlderInSameFamily(item,currentRecommendedPart))
+    .filter(item=>item&&item.id!==currentRecommendedPart.id&&safeFinite(item.score,0)>=safeFinite(currentRecommendedPart.score,0)*1.15)
     .map(item=>({item,scenario:recommendedUpgradeScenario(item.score)}))
     .sort((a,b)=>safeFinite(b.scenario.sustainableFps,0)-safeFinite(a.scenario.sustainableFps,0));
   const recommendedUpgrade=recommendedCandidates[0]||null;
@@ -1339,7 +1339,7 @@ function calculate(){
   document.getElementById("sbUpgradeFootnote").textContent=recommendedUpgrade
     ?(recommendedGain>0
       ?"Estimated improvement for this scenario only. Verify motherboard/platform, power supply, case clearance and game-specific benchmarks before buying."
-      ?"The model predicts little or no FPS improvement from this "+recommendedSide.toLowerCase()+" change because the "+scenario.limiting.toLowerCase()+" is limiting performance. Prioritize the current limit before spending.")
+      :"The model predicts little or no FPS improvement from this "+recommendedSide.toLowerCase()+" change because the "+scenario.limiting.toLowerCase()+" is limiting performance. Prioritize the current limit before spending.")
     :"No higher-scoring candidate passed the catalog filter. Focus on the current result and verify real gameplay before buying.";
 
   rootTabsInit(resultRoot);
