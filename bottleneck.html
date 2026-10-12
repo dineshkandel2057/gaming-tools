@@ -541,25 +541,47 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       }
     </style>
 
+
+      #bottleneck-results-container .sb-fps-hero{margin:22px auto 0;padding:18px 12px 14px;max-width:640px;border:1px solid var(--sb-line);border-radius:16px;background:rgba(3,7,13,.56)}
+      #bottleneck-results-container .sb-fps-hero strong{display:block;color:#fff;font:700 clamp(48px,10vw,76px)/.95 "Space Grotesk",sans-serif;letter-spacing:-.06em}
+      #bottleneck-results-container .sb-fps-hero span{display:block;margin-top:10px;color:#a6b2c5;font-size:11px;font-weight:800;letter-spacing:.06em}
+      #bottleneck-results-container .sb-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}
+      #bottleneck-results-container .sb-cell{border-bottom:0}
+      #bottleneck-results-container .sb-cell:first-child{border-right:1px solid var(--sb-line)}
+      #bottleneck-results-container .sb-cell strong{font-size:clamp(24px,4vw,34px)}
+      #bottleneck-results-container .sb-cell .shortfall{color:#ff8b94}
+      #bottleneck-results-container .sb-balance-row{display:flex;justify-content:center;align-items:center;gap:10px;margin:16px auto 0;color:#a6b2c5;font-size:11px;font-weight:800;letter-spacing:.06em}
+      #bottleneck-results-container .sb-balance-row strong{padding:7px 10px;border:1px solid var(--sb-line);border-radius:9px;color:#dbe3f0;font:700 15px "Space Grotesk",sans-serif}
+      #bottleneck-results-container .sb-balance-note{margin:7px 0 0;color:#8290a5;font-size:11px}
+      #bottleneck-results-container .sb-advanced{margin-top:12px;padding:13px 15px;border:1px solid var(--sb-line);border-radius:13px;background:#0a111c}
+      #bottleneck-results-container .sb-advanced summary{color:#c2cddd;font-size:12px;font-weight:800;cursor:pointer}
+      #bottleneck-results-container .sb-advanced p{margin:10px 0;color:#95a4b9;font-size:12px;line-height:1.5}
+      #bottleneck-results-container .sb-advanced .sb-gauges{margin-top:10px}
+      #bottleneck-results-container .sb-upgrade>.sb-result-note{margin:12px 0 0;color:#95a4b9;font-size:12px;line-height:1.5}
+      @media(max-width:620px){
+        #bottleneck-results-container .sb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+        #bottleneck-results-container .sb-cell{padding:14px 6px}
+        #bottleneck-results-container .sb-cell span{font-size:10px}
+        #bottleneck-results-container .sb-fps-hero{margin-top:18px}
+        #bottleneck-results-container .sb-balance-note{font-size:10px}
+      }
+
     <section class="sb-hero" aria-labelledby="sbDiagnosis">
-      <span class="sb-label">SYSTEM PERFORMANCE SCORE</span>
-      <div class="sb-score" id="sbScore">0/100</div>
+      <span class="sb-label">YOUR BUILD RESULT</span>
       <h2 class="sb-diagnosis" id="sbDiagnosis">OPTIMAL BALANCE</h2>
       <div class="sb-pair" id="sbPair">Select hardware to calculate</div>
-
+      <div class="sb-fps-hero"><strong id="sbCapacity">0 FPS</strong><span>ESTIMATED FPS AT SELECTED RESOLUTION</span></div>
       <div class="sb-grid">
-        <div class="sb-cell"><strong id="sbTarget">0 FPS</strong><span>FPS TARGET</span></div>
-        <div class="sb-cell"><strong id="sbCapacity">0 FPS</strong><span>FPS CAPACITY</span></div>
-        <div class="sb-cell"><strong id="sbBalance">0/100</strong><span>SYSTEM BALANCE</span></div>
-        <div class="sb-cell"><strong id="sbImpact">0%</strong><span>IMPACT</span></div>
+        <div class="sb-cell"><strong id="sbTarget">0 FPS</strong><span>YOUR FPS TARGET</span></div>
+        <div class="sb-cell"><strong id="sbShortfall">—</strong><span id="sbShortfallLabel">TARGET GAP</span></div>
       </div>
-
+      <div class="sb-balance-row"><span>BUILD BALANCE</span><strong id="sbScore">0/100</strong></div>
+      <p class="sb-balance-note">A component-balance indicator, not a performance score or a percentage of FPS lost.</p>
       <div class="sb-action" id="sbAction">Run the calculator to see the recommended path.</div>
-
       <div class="sb-hardware">
-        <div class="sb-hardware-card cpu"><b>CPU</b><strong id="sbCpu">CPU</strong><span class="sb-index-label">CPU Index</span><strong class="sb-index-value" id="sbCpuIndex">0</strong></div>
+        <div class="sb-hardware-card cpu"><b>CPU</b><strong id="sbCpu">CPU</strong></div>
         <div class="sb-vs">VS</div>
-        <div class="sb-hardware-card gpu"><b>GPU</b><strong id="sbGpu">GPU</strong><span class="sb-index-label">GPU Index</span><strong class="sb-index-value" id="sbGpuIndex">0</strong></div>
+        <div class="sb-hardware-card gpu"><b>GPU</b><strong id="sbGpu">GPU</strong></div>
       </div>
     </section>
 
@@ -579,16 +601,20 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
           <div class="sb-metric"><strong id="sbMetricGap">+0 FPS</strong><span>HEADROOM</span></div>
           <div class="sb-metric"><strong id="sbMetricLimit">OPTIMAL</strong><span>LIMITER</span></div>
         </div>
-        <div class="sb-gauges">
-          <div class="sb-gauge"><div class="sb-gauge-head"><span>EST. CPU PRESSURE</span><strong id="sbCpuPressure">0%</strong></div><div class="sb-track"><div class="sb-fill cpu" id="sbCpuBar"></div></div></div>
-          <div class="sb-gauge"><div class="sb-gauge-head"><span>EST. GPU PRESSURE</span><strong id="sbGpuPressure">0%</strong></div><div class="sb-track"><div class="sb-fill gpu" id="sbGpuBar"></div></div></div>
-        </div>
+        <details class="sb-advanced">
+          <summary>Advanced model indicators (estimates)</summary>
+          <p>These pressure values are model indicators, not live CPU/GPU utilization readings. Use a monitoring app during gameplay to check actual component usage.</p>
+          <div class="sb-gauges">
+            <div class="sb-gauge"><div class="sb-gauge-head"><span>MODELED CPU PRESSURE</span><strong id="sbCpuPressure">0%</strong></div><div class="sb-track"><div class="sb-fill cpu" id="sbCpuBar"></div></div></div>
+            <div class="sb-gauge"><div class="sb-gauge-head"><span>MODELED GPU PRESSURE</span><strong id="sbGpuPressure">0%</strong></div><div class="sb-track"><div class="sb-fill gpu" id="sbGpuBar"></div></div></div>
+          </div>
+        </details>
         <div class="sb-resolution-grid">
           <div class="sb-resolution" data-sb-res-card="1080"><strong>1080P</strong><span id="sbRes1080Fps">0 FPS</span><b id="sbRes1080Fit">OPTIMAL</b></div>
           <div class="sb-resolution" data-sb-res-card="1440"><strong>1440P</strong><span id="sbRes1440Fps">0 FPS</span><b id="sbRes1440Fit">OPTIMAL</b></div>
           <div class="sb-resolution" data-sb-res-card="2160"><strong>4K</strong><span id="sbRes2160Fps">0 FPS</span><b id="sbRes2160Fit">OPTIMAL</b></div>
         </div>
-        <p class="sb-result-note">These FPS figures and pressure bars are model estimates, not live measurements from your PC. The pressure percentages are not the same as GPU utilization or total CPU usage in a monitoring app.</p>
+        <p class="sb-result-note">FPS figures are model estimates for the selected hardware and scenario, not live measurements or guaranteed results. Actual FPS varies by game, settings, drivers, thermals and background tasks.</p>
         <div class="sb-interpretation" aria-live="polite">
           <h3>How to use this result</h3>
           <p id="sbResultAdvice">Run the calculator to get guidance for your selected hardware, resolution and target FPS.</p>
@@ -598,9 +624,10 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 
     <section class="sb-section sb-upgrade" aria-labelledby="sbUpgradeTitle">
       <div class="sb-upgrade-main">
-        <h2 class="sb-upgrade-title" id="sbUpgradeTitle">CALCULATION RESULTS</h2>
-        <div class="sb-upgrade-gain"><strong id="sbUpgradeGain">+0 FPS</strong><span>ESTIMATED FPS GAIN</span></div>
+        <h2 class="sb-upgrade-title" id="sbUpgradeTitle">UPGRADE SCENARIOS</h2>
+        <div class="sb-upgrade-gain"><strong id="sbUpgradeGain">+0 FPS</strong><span>MODELED FPS GAIN</span></div>
       </div>
+      <p class="sb-result-note">These are modeled FPS comparisons, not price-to-performance rankings. Check current prices, compatibility and real-game benchmarks before buying.</p>
       <div class="sb-upgrade-grid">
         <div class="sb-upgrade-option"><strong id="sbCpuUpgradeFps">0 FPS</strong><span id="sbCpuUpgradeGain">Recommended Upgrade: —</span></div>
         <div class="sb-upgrade-option"><strong id="sbGpuUpgradeFps">0 FPS</strong><span id="sbGpuUpgradeGain">Recommended Upgrade: —</span></div>
@@ -1066,7 +1093,6 @@ function calculate(){
   const capacity=safeFps(scenario.sustainableFps);
   const target=safeFps(targetFps);
   const balance=Math.round(safeClamp(scenario.balance,0,100,0));
-  const impact=Math.max(0,100-balance);
   const gap=Math.max(0,capacity-target);
   const limiter=scenario.limiting==="Balanced"?"OPTIMAL":scenario.limiting.toUpperCase()+" BOTTLENECK";
   const diagnosis=scenario.limiting==="Balanced"?"OPTIMAL BALANCE":limiter;
@@ -1129,13 +1155,20 @@ function calculate(){
   document.getElementById("sbPair").textContent=c.name+" + "+g.name;
   document.getElementById("sbTarget").textContent=target+" FPS";
   document.getElementById("sbCapacity").textContent=capacity+" FPS";
-  document.getElementById("sbBalance").textContent=balance+"/100";
-  document.getElementById("sbImpact").textContent=impact+"%";
-  document.getElementById("sbAction").textContent=action;
+  const heroGap=document.getElementById("sbShortfall");
+  const heroGapLabel=document.getElementById("sbShortfallLabel");
+  if(currentRawFps>=targetFps){
+    heroGap.textContent="+"+formatPositiveFpsDelta(currentRawFps-targetFps)+" FPS";
+    heroGapLabel.textContent="ABOVE TARGET";
+    heroGap.classList.remove("shortfall");
+  }else{
+    heroGap.textContent="-"+formatPositiveFpsDelta(targetFps-currentRawFps)+" FPS";
+    heroGapLabel.textContent="BELOW TARGET";
+    heroGap.classList.add("shortfall");
+  }
+  document.getElementById("sbAction").textContent="MODEL SUGGESTS: "+action+" — verify in-game performance before buying.";
   document.getElementById("sbCpu").textContent=c.name||"CPU";
   document.getElementById("sbGpu").textContent=g.name||"GPU";
-  document.getElementById("sbCpuIndex").textContent=String(safeFps(cpuScore));
-  document.getElementById("sbGpuIndex").textContent=String(safeFps(gpuScore));
 
   const active=modelScenario(cpuScore,gpuScore,r,gt,targetFps,g,context,gameProfile);
   const activeRawFps=Math.max(0,safeFinite(active.sustainableFps,0));
