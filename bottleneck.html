@@ -1229,7 +1229,7 @@ function calculate(){
     ["2160","sbBalance2160"]
   ].forEach(([key,id])=>{
     const check=modelScenario(cpuScore,gpuScore,key,gt,targetFps,g,context,gameProfile);
-    const fit=Math.round(safeClamp(check.targetFit,0,100,0));
+    const fit=Math.round(safeClamp(check.balance,0,100,0));
     const label=check.limiting==="Balanced"?"Balanced":check.limiting+"-limited";
     const card=document.getElementById(id);
     card.querySelector("span").textContent=label;
@@ -1273,13 +1273,6 @@ function rootTabsInit(root){
     });
   });
 }
-function updateVisibleResolution(root,key){
-  if(!root)return;
-  root.dataset.activeResolution=String(key);
-  root.querySelectorAll("[data-sb-resolution]").forEach(tab=>tab.setAttribute("aria-selected",tab.dataset.sbResolution===String(key)?"true":"false"));
-  root.querySelectorAll("[data-sb-res-card]").forEach(card=>card.style.opacity=card.dataset.sbResCard===String(key)?"1":".78");
-}
- 
 /* Keep the tools menu easy to dismiss by mouse and keyboard. */
 </script>
 <script>
