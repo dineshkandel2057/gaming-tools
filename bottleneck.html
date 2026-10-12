@@ -235,6 +235,23 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 .tool-details .tool-explanation h3{margin-top:18px}
 @media(max-width:640px){.tool-details>summary{padding:14px 15px;font-size:13px}.tool-details .tool-explanation{padding:18px 15px}}
 
+
+/* Compact, side-by-side required and optional input cards */
+.input-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start;margin:22px 0}
+.input-card{min-width:0;padding:20px;border:1px solid rgba(148,163,184,.18);border-radius:16px;background:rgba(15,23,38,.72)}
+.required-card{border-color:rgba(94,215,255,.3);box-shadow:inset 0 2px 0 rgba(94,215,255,.55)}
+.optional-card{background:rgba(12,19,31,.58)}
+.input-card-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 18px;padding-bottom:13px;border-bottom:1px solid rgba(148,163,184,.15)}
+.input-card-heading h2{margin:0;color:#f4f7ff;font-size:17px;font-weight:750}
+.input-card-heading span{color:#94a3b8;font-size:11px;font-weight:700}
+.required-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.required-fields>div:nth-child(3){grid-column:1/-1}
+.optional-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.optional-fields>div{min-width:0}
+.input-card .field-help{font-size:11px;line-height:1.45}
+@media(max-width:760px){.input-layout{grid-template-columns:1fr}.required-fields,.optional-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.required-fields>div:nth-child(3){grid-column:1/-1}}
+@media(max-width:440px){.input-card{padding:15px}.required-fields,.optional-fields{grid-template-columns:1fr}.required-fields>div:nth-child(3){grid-column:auto}.input-card-heading{align-items:flex-start;flex-direction:column;gap:5px}}
+
 </style>
 <style id="homepage-header-system">
 /* Shared SystemFit PC homepage header */
@@ -276,6 +293,13 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
   <h1>CPU &amp; GPU Bottleneck Calculator</h1>
   <div class="subtitle">Get a benchmark-informed diagnosis of your CPU/GPU balance, target-FPS fit, resolution behavior, and common system-side limits. Choose your hardware and gaming scenario to see what is most likely holding you back.</div>
 
+  <div class="input-layout">
+    <section class="input-card required-card" aria-labelledby="requiredInputsTitle">
+      <div class="input-card-heading">
+        <h2 id="requiredInputsTitle">Required</h2>
+        <span>3 selections</span>
+      </div>
+      <div class="required-fields">
   <div class="grid2">
     <div>
       <label for="cpuPickerButton">Select your CPU</label>
@@ -302,8 +326,6 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       </div>
       <select id="gpuSelect" class="native-hardware-select" aria-hidden="true" tabindex="-1"><option value="">— Select a GPU —</option></select>
     </div>
-
-    <div class="scenario-grid">
       <div>
         <label for="resolution">Gaming Resolution</label>
         <select id="resolution">
@@ -314,7 +336,14 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
           <option value="2160">3840 × 2160 (4K)</option>
         </select>
       </div>
-
+      </div>
+    </section>
+    <section class="input-card optional-card" aria-labelledby="optionalInputsTitle">
+      <div class="input-card-heading">
+        <h2 id="optionalInputsTitle">Optional</h2>
+        <span>Refine your estimate</span>
+      </div>
+      <div class="optional-fields">
       <div>
         <label for="gameType">Game Type</label>
         <select id="gameType">
@@ -386,7 +415,8 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
           <option value="heavy">Heavy — Streaming / Recording</option>
         </select>
       </div>
-    </div>
+      </div>
+    </section>
   </div>
 
   <button class="btn" onclick="calculate()">Calculate Bottleneck</button>
@@ -977,15 +1007,15 @@ function calculate(){
   const ci=document.getElementById("cpuSelect").value;
   const gi=document.getElementById("gpuSelect").value;
   const r=document.getElementById("resolution").value;
-  const targetRaw=parseInt(document.getElementById("targetFps").value,10);
-  const gt=document.getElementById("gameType").value;
+  const targetRaw=parseInt(document.getElementById("targetFps").value||"60",10);
+  const gt=document.getElementById("gameType").value||"balanced";
   const gameProfile=getGameProfile(document.getElementById("gameProfile").value);
-  const ram=document.getElementById("ram").value;
-  const storage=document.getElementById("storage").value;
-  const background=document.getElementById("backgroundLoad").value;
+  const ram=document.getElementById("ram").value||"16";
+  const storage=document.getElementById("storage").value||"nvme";
+  const background=document.getElementById("backgroundLoad").value||"typical";
 
-  if(ci===""||gi===""||r===""||gt===""||ram===""||storage===""||background===""||!Number.isFinite(targetRaw)){
-    showCalculateError("Please select CPU, GPU, resolution, game type, target FPS, RAM, storage, and background load first.");
+  if(ci===""||gi===""||r===""||!Number.isFinite(targetRaw)){
+    showCalculateError("Select your CPU, GPU, and gaming resolution to calculate.");
     return;
   }
 
