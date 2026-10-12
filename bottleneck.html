@@ -613,15 +613,48 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       #bottleneck-results-container .sb-preset>span{font-size:9px}
     }
 
+
+    #bottleneck-results-container .sb-status-compact{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:16px;padding:20px 24px;text-align:left;border:1px solid #075f50;border-top-width:1px;border-radius:16px;background:rgba(7,37,40,.82)}
+    #bottleneck-results-container .sb-status-compact[data-status="good"]{border-color:#075f50;background:rgba(8,38,42,.82)}
+    #bottleneck-results-container .sb-status-compact[data-status="warn"]{border-color:#854d0e;background:rgba(49,34,8,.78)}
+    #bottleneck-results-container .sb-status-compact[data-status="bad"]{border-color:#991b1b;background:rgba(55,19,25,.82)}
+    #bottleneck-results-container .sb-status-check{display:grid;place-items:center;width:44px;height:44px;border:3px solid #050b0b;background:#16c51c;color:#fff;font-size:34px;font-weight:900;line-height:1}
+    #bottleneck-results-container .sb-status-compact[data-status="warn"] .sb-status-check{background:#d97706}
+    #bottleneck-results-container .sb-status-compact[data-status="bad"] .sb-status-check{background:#dc2626}
+    #bottleneck-results-container .sb-status-copy{min-width:0}
+    #bottleneck-results-container .sb-status-copy .sb-diagnosis{margin:0;color:#34d399;font-size:clamp(18px,2.3vw,25px);line-height:1.2;text-align:left}
+    #bottleneck-results-container .sb-status-compact[data-status="warn"] .sb-diagnosis{color:#fbbf24}
+    #bottleneck-results-container .sb-status-compact[data-status="bad"] .sb-diagnosis{color:#f87171}
+    #bottleneck-results-container .sb-status-copy .sb-status-summary{margin:5px 0 0;color:#9aabc2;font-size:13px;line-height:1.4}
+    #bottleneck-results-container .sb-status-copy .sb-pair{margin:5px 0 0;color:#9aabc2;font-size:11px}
+    #bottleneck-results-container .sb-status-stats{display:grid;grid-template-columns:repeat(2,minmax(100px,124px));gap:10px}
+    #bottleneck-results-container .sb-status-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:78px;padding:8px;border:1px solid rgba(20,184,166,.14);border-radius:12px;background:#071a22}
+    #bottleneck-results-container .sb-status-stat:first-child{background:rgba(13,148,136,.14)}
+    #bottleneck-results-container .sb-status-stat strong{color:#34d399;font-size:clamp(24px,3vw,31px);line-height:1.15}
+    #bottleneck-results-container .sb-status-stat span{margin-top:5px;color:#91a4ba;font-size:10px;font-weight:800;letter-spacing:.07em;text-align:center}
+    #bottleneck-results-container .sb-status-compact .sb-hardware{grid-column:1/-1;margin-top:2px}
+    @media(max-width:700px){
+      #bottleneck-results-container .sb-status-compact{grid-template-columns:40px minmax(0,1fr);gap:12px;padding:16px}
+      #bottleneck-results-container .sb-status-check{width:40px;height:40px;font-size:30px}
+      #bottleneck-results-container .sb-status-stats{grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+      #bottleneck-results-container .sb-status-stat{min-height:70px}
+      #bottleneck-results-container .sb-status-compact .sb-hardware{grid-column:1/-1}
+    }
+
 </style>
 
 
-      <section class="sb-hero sb-status-card" id="sbStatusCard" aria-labelledby="sbDiagnosis" data-status="good">
-      <span class="sb-label">YOUR BUILD STATUS</span>
-      <div class="sb-status-icon" id="sbStatusIcon" aria-hidden="true">✓</div>
-      <h2 class="sb-diagnosis" id="sbDiagnosis">NO SIGNIFICANT BOTTLENECK</h2>
-      <p class="sb-status-summary" id="sbStatusSummary">Your CPU and GPU look reasonably matched for this scenario.</p>
-      <div class="sb-pair" id="sbPair">Select hardware to calculate</div>
+      <section class="sb-hero sb-status-card sb-status-compact" id="sbStatusCard" aria-labelledby="sbDiagnosis" data-status="good">
+      <div class="sb-status-check" id="sbStatusIcon" aria-hidden="true">✓</div>
+      <div class="sb-status-copy">
+        <h2 class="sb-diagnosis" id="sbDiagnosis">NO BOTTLENECK DETECTED</h2>
+        <p class="sb-status-summary" id="sbStatusSummary">Your components are well-matched — great build!</p>
+        <p class="sb-pair" id="sbPair">Select hardware to calculate</p>
+      </div>
+      <div class="sb-status-stats">
+        <div class="sb-status-stat"><strong id="sbBottleneckPercent">0%</strong><span>BOTTLENECK</span></div>
+        <div class="sb-status-stat"><strong id="sbBuildHealthScore">97%</strong><span>BUILD SCORE</span></div>
+      </div>
       <div class="sb-hardware">
         <div class="sb-hardware-card cpu"><b>CPU</b><strong id="sbCpu">CPU</strong></div>
         <div class="sb-vs">VS</div>
@@ -1126,6 +1159,8 @@ function calculate(){
   const capacity=safeFps(scenario.sustainableFps);
   const target=safeFps(targetFps);
   const balance=Math.round(safeClamp(scenario.balance,0,100,0));
+  const bottleneckIndex=Math.round(100-balance);
+  const buildScore=Math.round(safeClamp(cpuScore*.6+gpuScore*.4,0,100,0));
   const gap=Math.max(0,capacity-target);
   const limiter=scenario.limiting==="Balanced"?"OPTIMAL":scenario.limiting.toUpperCase()+" BOTTLENECK";
   const diagnosis=scenario.limiting==="Balanced"?"NO SIGNIFICANT BOTTLENECK":limiter;
@@ -1193,7 +1228,13 @@ function calculate(){
   statusCard.dataset.status=severity;
   document.getElementById("sbStatusIcon").textContent=severity==="good"?"✓":severity==="warn"?"!":"×";
   document.getElementById("sbDiagnosis").textContent=diagnosis;
-  document.getElementById("sbStatusSummary").textContent=statusSummary;
+  document.getElementById("sbStatusSummary").textContent=severity==="good"
+    ?"Your components are well-matched — great build!"
+    :severity==="warn"
+      ?"A moderate component limit is predicted for this workload."
+      :"A strong component limit is predicted for this workload.";
+  document.getElementById("sbBottleneckPercent").textContent=bottleneckIndex+"%";
+  document.getElementById("sbBuildHealthScore").textContent=buildScore+"%";
   document.getElementById("sbPair").textContent=c.name+" + "+g.name;
   document.getElementById("sbCpu").textContent=c.name||"CPU";
   document.getElementById("sbGpu").textContent=g.name||"GPU";
