@@ -658,6 +658,49 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       #bottleneck-results-container .sb-upgrade-recommendation[data-recommendation="none"] .sb-upgrade-percent{color:#a0acc0}
       @media(max-width:520px){#bottleneck-results-container .sb-upgrade-feature{grid-template-columns:1fr;gap:8px}#bottleneck-results-container .sb-upgrade-arrow{transform:rotate(90deg);text-align:left}#bottleneck-results-container .sb-upgrade-product{align-items:flex-start;flex-direction:column}}
 
+
+      #bottleneck-results-container .sb-result-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;margin:16px 0;background:#070d16;border:1px solid var(--sb-line);border-radius:12px}
+      #bottleneck-results-container .sb-result-tab{min-width:0;border:0;border-radius:8px;padding:12px 8px;background:transparent;color:#91a0b8;font-size:12px;font-weight:800;cursor:pointer;transition:background .15s,color .15s}
+      #bottleneck-results-container .sb-result-tab.is-active{background:linear-gradient(110deg,#2453db,#347ff0);color:#fff;box-shadow:0 4px 14px rgba(37,99,235,.18)}
+      #bottleneck-results-container .sb-result-panel{padding:24px;border:1px solid var(--sb-line);border-radius:16px;background:#0b1424}
+      #bottleneck-results-container .sb-result-panel[hidden]{display:none!important}
+      #bottleneck-results-container .sb-result-panel>.sb-title{margin:0 0 24px;font-size:13px;letter-spacing:.12em;color:#91a4bf}
+      #bottleneck-results-container .sb-score-rings{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:start}
+      #bottleneck-results-container .sb-score-ring-item{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0}
+      #bottleneck-results-container .sb-score-ring{--ring-color:#367df0;display:grid;place-items:center;width:88px;height:88px;border-radius:50%;background:conic-gradient(var(--ring-color) var(--score),#1b2638 0);position:relative;box-shadow:0 0 12px color-mix(in srgb,var(--ring-color) 22%,transparent)}
+      #bottleneck-results-container .sb-score-ring:before{content:"";position:absolute;inset:7px;border-radius:50%;background:#0b1424;border:1px solid rgba(255,255,255,.05)}
+      #bottleneck-results-container .sb-score-ring strong{position:relative;color:var(--ring-color);font-size:15px}
+      #bottleneck-results-container .sb-score-ring.cpu{--ring-color:#367df0}
+      #bottleneck-results-container .sb-score-ring.gpu{--ring-color:#8b5cf6}
+      #bottleneck-results-container .sb-score-ring.ram{--ring-color:#06b6d4}
+      #bottleneck-results-container .sb-score-ring.balance{--ring-color:#10b981}
+      #bottleneck-results-container .sb-score-ring-item>span{color:#91a0b8;font-size:10px;font-weight:800;letter-spacing:.08em;text-align:center}
+      #bottleneck-results-container .sb-system-summary{margin-top:28px;padding:18px 20px;background:#070e1b;border:1px solid rgba(255,255,255,.07);border-radius:12px;color:#91a0b8;font-size:14px;line-height:1.75}
+      #bottleneck-results-container .sb-system-summary strong{color:#e6edf7}
+      #bottleneck-results-container .sb-system-summary [data-tone="cpu"]{color:#65a6ff;font-weight:800}
+      #bottleneck-results-container .sb-system-summary [data-tone="gpu"]{color:#b18cff;font-weight:800}
+      #bottleneck-results-container .sb-utilization-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+      #bottleneck-results-container .sb-utilization-card{padding:20px;border:1px solid var(--sb-line);border-radius:12px;background:#070e1b}
+      #bottleneck-results-container .sb-utilization-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+      #bottleneck-results-container .sb-utilization-head strong{font-size:17px}
+      #bottleneck-results-container .sb-utilization-head b{font-size:27px;color:#f0f5ff}
+      #bottleneck-results-container .sb-utilization-card>span{display:block;margin-top:9px;color:#91a0b8;font-size:11px}
+      #bottleneck-results-container .sb-utilization-panel .sb-result-note{margin-top:16px}
+      #bottleneck-results-container .sb-comparison-panel>.sb-balance-panel{margin-top:16px}
+      #bottleneck-results-container .sb-comparison-panel>.sb-fps-presets{margin-top:16px}
+      #bottleneck-results-container .sb-comparison-panel .sb-panel-head .sb-title{margin:0}
+      #bottleneck-results-container .sb-comparison-panel .sb-panel-body{padding-top:16px}
+      #bottleneck-results-container .sb-recommendations-panel{padding:0;border:0;background:transparent}
+      #bottleneck-results-container .sb-recommendations-panel .sb-upgrade-recommendation{margin:0}
+      @media(max-width:620px){
+        #bottleneck-results-container .sb-result-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+        #bottleneck-results-container .sb-result-tab{padding:11px 5px;font-size:11px}
+        #bottleneck-results-container .sb-result-panel{padding:16px}
+        #bottleneck-results-container .sb-score-rings{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:22px}
+        #bottleneck-results-container .sb-utilization-grid{grid-template-columns:1fr}
+        #bottleneck-results-container .sb-system-summary{margin-top:22px;padding:14px}
+      }
+
 </style>
 
 
@@ -674,7 +717,74 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       </div>
     </section>
 
-    <section class="sb-section sb-upgrade sb-upgrade-recommendation" aria-labelledby="sbUpgradeTitle">
+    <nav class="sb-result-tabs" role="tablist" aria-label="Result sections">
+      <button type="button" role="tab" class="sb-result-tab is-active" data-result-tab="overview" aria-controls="sbPanelOverview" aria-selected="true">📊 OVERVIEW</button>
+      <button type="button" role="tab" class="sb-result-tab" data-result-tab="utilization" aria-controls="sbPanelUtilization" aria-selected="false">📈 UTILIZATION</button>
+      <button type="button" role="tab" class="sb-result-tab" data-result-tab="comparison" aria-controls="sbPanelComparison" aria-selected="false">⚖️ COMPARISON</button>
+      <button type="button" role="tab" class="sb-result-tab" data-result-tab="recommendations" aria-controls="sbPanelRecommendations" aria-selected="false">💡 RECOMMENDATIONS</button>
+    </nav>
+
+    <section class="sb-result-panel sb-overview-panel" id="sbPanelOverview" data-result-panel="overview" aria-labelledby="sbOverviewTitle">
+      <h2 class="sb-title" id="sbOverviewTitle">PERFORMANCE SCORE OVERVIEW</h2>
+      <div class="sb-score-rings">
+        <div class="sb-score-ring-item"><div class="sb-score-ring cpu" id="sbOverviewCpuRing" style="--score:0"><strong id="sbOverviewCpuScore">—</strong></div><span>CPU SCORE</span></div>
+        <div class="sb-score-ring-item"><div class="sb-score-ring gpu" id="sbOverviewGpuRing" style="--score:0"><strong id="sbOverviewGpuScore">—</strong></div><span>GPU SCORE</span></div>
+        <div class="sb-score-ring-item"><div class="sb-score-ring ram" id="sbOverviewRamRing" style="--score:0"><strong id="sbOverviewRamScore">—</strong></div><span>RAM ADEQUACY</span></div>
+        <div class="sb-score-ring-item"><div class="sb-score-ring balance" id="sbOverviewBalanceRing" style="--score:0"><strong id="sbOverviewBalanceScore">—</strong></div><span>BUILD BALANCE</span></div>
+      </div>
+      <div class="sb-system-summary"><strong>System Summary:</strong> <span id="sbOverviewSummary">Choose your hardware and calculate to see a concise summary.</span></div>
+    </section>
+
+    <section class="sb-result-panel sb-utilization-panel" id="sbPanelUtilization" data-result-panel="utilization" aria-labelledby="sbUtilizationTitle" hidden>
+      <h2 class="sb-title" id="sbUtilizationTitle">MODELED COMPONENT UTILIZATION</h2>
+      <p class="sb-fps-subtitle">Estimated workload pressure for this scenario — not live monitoring readings or actual measured utilization.</p>
+      <div class="sb-utilization-grid">
+        <div class="sb-utilization-card"><div class="sb-utilization-head"><strong>CPU</strong><b id="sbCpuPressure">0%</b></div><div class="sb-track"><div class="sb-fill cpu" id="sbCpuBar"></div></div><span>Estimated CPU pressure</span></div>
+        <div class="sb-utilization-card"><div class="sb-utilization-head"><strong>GPU</strong><b id="sbGpuPressure">0%</b></div><div class="sb-track"><div class="sb-fill gpu" id="sbGpuBar"></div></div><span>Estimated GPU pressure</span></div>
+      </div>
+      <p class="sb-result-note">Actual usage varies by game, graphics settings, frame cap and background tasks. Confirm with an in-game monitoring tool.</p>
+    </section>
+
+    <section class="sb-result-panel sb-comparison-panel" id="sbPanelComparison" data-result-panel="comparison" aria-labelledby="sbComparisonTitle" hidden>
+      <h2 class="sb-title" id="sbComparisonTitle">COMPONENT &amp; RESOLUTION COMPARISON</h2>
+      <section class="sb-section sb-panel sb-balance-panel" aria-labelledby="sbBalanceTitle">
+      <div class="sb-panel-head"><h2 class="sb-title" id="sbBalanceTitle">PERFORMANCE BALANCE</h2></div>
+      <div class="sb-panel-body">
+        <div class="sb-component-score">
+          <div class="sb-component-head"><strong>CPU: <span id="sbCpuBalanceName">—</span></strong><span>Score: <b id="sbCpuBalanceScore">0/100</b></span></div>
+          <div class="sb-balance-track"><div id="sbCpuBalanceBar" class="sb-balance-fill cpu"></div></div>
+        </div>
+        <div class="sb-component-score">
+          <div class="sb-component-head"><strong>GPU: <span id="sbGpuBalanceName">—</span></strong><span>Score: <b id="sbGpuBalanceScore">0/100</b></span></div>
+          <div class="sb-balance-track"><div id="sbGpuBalanceBar" class="sb-balance-fill gpu"></div></div>
+        </div>
+        <div class="sb-balance-weights"><span>CPU WEIGHT: 60%</span><span>GPU WEIGHT: 40%</span></div>
+        <div class="sb-balance-divider"></div>
+        <h3 class="sb-subtitle">BALANCE ACROSS RESOLUTIONS</h3>
+        <div class="sb-balance-resolutions">
+          <div class="sb-balance-resolution" id="sbBalance1080"><strong>1080P</strong><span>—</span></div>
+          <div class="sb-balance-resolution" id="sbBalance1440"><strong>1440P</strong><span>—</span></div>
+          <div class="sb-balance-resolution" id="sbBalance2160"><strong>4K</strong><span>—</span></div>
+        </div>
+      </div>
+    </section>
+      <section class="sb-section sb-panel sb-fps-presets" aria-labelledby="sbFpsPresetsTitle">
+      <div class="sb-panel-head"><h2 class="sb-title" id="sbFpsPresetsTitle">ESTIMATED FPS AT <span id="sbFpsPresetResolution">1080P</span></h2></div>
+      <div class="sb-panel-body">
+        <p class="sb-fps-subtitle">Directional estimates for different graphics presets. Actual results depend on the game and settings.</p>
+        <div class="sb-preset-grid">
+          <div class="sb-preset"><span>PERFORMANCE</span><strong id="sbFpsPerformance">—</strong><small>FPS</small></div>
+          <div class="sb-preset"><span>BALANCED</span><strong id="sbFpsBalanced">—</strong><small>FPS</small></div>
+          <div class="sb-preset"><span>ULTRA</span><strong id="sbFpsUltra">—</strong><small>FPS</small></div>
+        </div>
+
+        <p class="sb-result-note">FPS figures are model estimates, not live measurements or guaranteed results. Performance and Ultra scenarios use simplified workload assumptions, not game-specific benchmark data.</p>
+      </div>
+    </section>
+    </section>
+
+    <section class="sb-result-panel sb-recommendations-panel" id="sbPanelRecommendations" data-result-panel="recommendations" aria-labelledby="sbRecommendationsTitle" hidden>
+      <section class="sb-section sb-upgrade sb-upgrade-recommendation" aria-labelledby="sbUpgradeTitle">
       <div class="sb-upgrade-main">
         <div>
           <span class="sb-upgrade-eyebrow" id="sbUpgradeDirection">SUGGESTED COMPLEMENTARY UPGRADE</span>
@@ -699,48 +809,6 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
       </div>
       <p class="sb-upgrade-footnote" id="sbUpgradeFootnote">FPS gain is a model estimate, not a benchmark guarantee. Verify motherboard, power supply, case clearance and game-specific performance before buying.</p>
     </section>
-
-    <section class="sb-section sb-panel sb-balance-panel" aria-labelledby="sbBalanceTitle">
-      <div class="sb-panel-head"><h2 class="sb-title" id="sbBalanceTitle">PERFORMANCE BALANCE</h2></div>
-      <div class="sb-panel-body">
-        <div class="sb-component-score">
-          <div class="sb-component-head"><strong>CPU: <span id="sbCpuBalanceName">—</span></strong><span>Score: <b id="sbCpuBalanceScore">0/100</b></span></div>
-          <div class="sb-balance-track"><div id="sbCpuBalanceBar" class="sb-balance-fill cpu"></div></div>
-        </div>
-        <div class="sb-component-score">
-          <div class="sb-component-head"><strong>GPU: <span id="sbGpuBalanceName">—</span></strong><span>Score: <b id="sbGpuBalanceScore">0/100</b></span></div>
-          <div class="sb-balance-track"><div id="sbGpuBalanceBar" class="sb-balance-fill gpu"></div></div>
-        </div>
-        <div class="sb-balance-weights"><span>CPU WEIGHT: 60%</span><span>GPU WEIGHT: 40%</span></div>
-        <div class="sb-balance-divider"></div>
-        <h3 class="sb-subtitle">BALANCE ACROSS RESOLUTIONS</h3>
-        <div class="sb-balance-resolutions">
-          <div class="sb-balance-resolution" id="sbBalance1080"><strong>1080P</strong><span>—</span></div>
-          <div class="sb-balance-resolution" id="sbBalance1440"><strong>1440P</strong><span>—</span></div>
-          <div class="sb-balance-resolution" id="sbBalance2160"><strong>4K</strong><span>—</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sb-section sb-panel sb-fps-presets" aria-labelledby="sbFpsPresetsTitle">
-      <div class="sb-panel-head"><h2 class="sb-title" id="sbFpsPresetsTitle">ESTIMATED FPS AT <span id="sbFpsPresetResolution">1080P</span></h2></div>
-      <div class="sb-panel-body">
-        <p class="sb-fps-subtitle">Directional estimates for different graphics presets. Actual results depend on the game and settings.</p>
-        <div class="sb-preset-grid">
-          <div class="sb-preset"><span>PERFORMANCE</span><strong id="sbFpsPerformance">—</strong><small>FPS</small></div>
-          <div class="sb-preset"><span>BALANCED</span><strong id="sbFpsBalanced">—</strong><small>FPS</small></div>
-          <div class="sb-preset"><span>ULTRA</span><strong id="sbFpsUltra">—</strong><small>FPS</small></div>
-        </div>
-        <details class="sb-advanced">
-          <summary>Advanced model indicators (estimates)</summary>
-          <p>These pressure values are model indicators, not live CPU/GPU utilization readings. Use a monitoring app during gameplay to check actual component usage.</p>
-          <div class="sb-gauges">
-            <div class="sb-gauge"><div class="sb-gauge-head"><span>MODELED CPU PRESSURE</span><strong id="sbCpuPressure">0%</strong></div><div class="sb-track"><div class="sb-fill cpu" id="sbCpuBar"></div></div></div>
-            <div class="sb-gauge"><div class="sb-gauge-head"><span>MODELED GPU PRESSURE</span><strong id="sbGpuPressure">0%</strong></div><div class="sb-track"><div class="sb-fill gpu" id="sbGpuBar"></div></div></div>
-          </div>
-        </details>
-        <p class="sb-result-note">FPS figures are model estimates, not live measurements or guaranteed results. Performance and Ultra scenarios use simplified workload assumptions, not game-specific benchmark data.</p>
-      </div>
     </section>
 
     
@@ -1263,6 +1331,16 @@ function calculate(){
       :"A strong component limit is predicted for this workload.";
   document.getElementById("sbBottleneckPercent").textContent=bottleneckIndex+"%";
   document.getElementById("sbBuildHealthScore").textContent=buildScore+"%";
+  const ramAmount=Math.max(0,safeFinite(ram,16));
+  const ramAdequacy=Math.round(safeClamp(ramAmount>=64?100:ramAmount>=32?96:ramAmount>=16?88:ramAmount>=8?64:35,0,100,0));
+  [["sbOverviewCpuRing",cpuScore],["sbOverviewGpuRing",gpuScore],["sbOverviewRamRing",ramAdequacy],["sbOverviewBalanceRing",balance]].forEach(([id,value])=>{
+    document.getElementById(id).style.setProperty("--score",Math.round(safeClamp(value,0,100,0))+"%");
+  });
+  document.getElementById("sbOverviewCpuScore").textContent=Math.round(cpuScore)+"%";
+  document.getElementById("sbOverviewGpuScore").textContent=Math.round(gpuScore)+"%";
+  document.getElementById("sbOverviewRamScore").textContent=ramAdequacy+"%";
+  document.getElementById("sbOverviewBalanceScore").textContent=balance+"%";
+  document.getElementById("sbOverviewSummary").textContent=c.name+" paired with "+g.name+" and "+ramAmount+" GB RAM at "+resolutionLabel(r)+" for "+(gt==="esports"?"esports gaming":gt==="productivity"?"productivity workloads":gt==="cpu"?"CPU-heavy gaming":gt==="gpu"?"GPU-heavy gaming":"general gaming")+". The model predicts "+(scenario.limiting==="Balanced"?"no significant CPU/GPU imbalance":scenario.limiting+"-limited performance")+" in this scenario.";
   document.getElementById("sbPair").textContent=c.name+" + "+g.name;
   document.getElementById("sbCpuBalanceName").textContent=c.name||"—";
   document.getElementById("sbGpuBalanceName").textContent=g.name||"—";
@@ -1348,7 +1426,24 @@ function calculate(){
 }
 
 function rootTabsInit(root){
-  if(!root||root.dataset.sbReady)return;
+  if(!root)return;
+  if(!root.dataset.resultTabsReady){
+    root.dataset.resultTabsReady="1";
+    root.querySelectorAll("[data-result-tab]").forEach(tab=>{
+      tab.addEventListener("click",()=>{
+        const key=tab.dataset.resultTab;
+        root.querySelectorAll("[data-result-tab]").forEach(button=>{
+          const active=button===tab;
+          button.classList.toggle("is-active",active);
+          button.setAttribute("aria-selected",active?"true":"false");
+        });
+        root.querySelectorAll("[data-result-panel]").forEach(panel=>{
+          panel.hidden=panel.dataset.resultPanel!==key;
+        });
+      });
+    });
+  }
+  if(root.dataset.sbReady)return;
   root.dataset.sbReady="1";
   root.querySelectorAll("[data-sb-resolution]").forEach(tab=>{
     tab.addEventListener("click",()=>{
