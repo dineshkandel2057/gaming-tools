@@ -239,7 +239,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 /* Compact, side-by-side required and optional input cards */
 .input-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start;margin:22px 0}
 .input-card{min-width:0;padding:20px;border:1px solid rgba(148,163,184,.18);border-radius:16px;background:rgba(15,23,38,.72)}
-.required-card{border-color:rgba(94,215,255,.3);box-shadow:inset 0 2px 0 rgba(94,215,255,.55)}
+.required-card{border-color:rgba(148,163,184,.18);box-shadow:none}
 .optional-card{background:rgba(12,19,31,.58)}
 .input-card-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 18px;padding-bottom:13px;border-bottom:1px solid rgba(148,163,184,.15)}
 .input-card-heading h2{margin:0;color:#f4f7ff;font-size:17px;font-weight:750}
@@ -251,6 +251,11 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 .input-card .field-help{font-size:11px;line-height:1.45}
 @media(max-width:760px){.input-layout{grid-template-columns:1fr}.required-fields,.optional-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.required-fields>div:nth-child(3){grid-column:1/-1}}
 @media(max-width:440px){.input-card{padding:15px}.required-fields,.optional-fields{grid-template-columns:1fr}.required-fields>div:nth-child(3){grid-column:auto}.input-card-heading{align-items:flex-start;flex-direction:column;gap:5px}}
+
+
+/* Neutral required card and clear disabled action state */
+#calculateButton:disabled{opacity:.42;cursor:not-allowed;filter:saturate(.35);box-shadow:none}
+#calculateButton:not(:disabled){opacity:1;cursor:pointer;filter:none}
 
 </style>
 <style id="homepage-header-system">
@@ -291,8 +296,6 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 <main class="wrap">
 <section class="card" data-sfp-reveal>
   <h1>CPU &amp; GPU Bottleneck Calculator</h1>
-  <div class="subtitle">Get a benchmark-informed diagnosis of your CPU/GPU balance, target-FPS fit, resolution behavior, and common system-side limits. Choose your hardware and gaming scenario to see what is most likely holding you back.</div>
-
   <div class="input-layout">
     <section class="input-card required-card" aria-labelledby="requiredInputsTitle">
       <div class="input-card-heading">
@@ -416,7 +419,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
     </section>
   </div>
 
-  <button class="btn" onclick="calculate()">Calculate Bottleneck</button>
+  <button class="btn" id="calculateButton" onclick="calculate()" disabled>Calculate Bottleneck</button>
   <div class="calculate-error" id="calculateError" role="alert" aria-live="polite" hidden></div>
 
   
@@ -993,6 +996,24 @@ function modelScenario(cpuScore,gpuScore,resolution,gameType,target,gpuRecord,co
   };
 }
 
+
+function updateCalculateButton(){
+  const button=document.getElementById("calculateButton");
+  if(!button)return;
+  const ready=["cpuSelect","gpuSelect","resolution"].every(id=>{
+    const field=document.getElementById(id);
+    return field&&field.value!=="";
+  });
+  button.disabled=!ready;
+}
+["cpuSelect","gpuSelect","resolution"].forEach(id=>{
+  const field=document.getElementById(id);
+  if(field){
+    field.addEventListener("change",updateCalculateButton);
+    field.addEventListener("input",updateCalculateButton);
+  }
+});
+updateCalculateButton();
 function showCalculateError(message){
   const error=document.getElementById("calculateError");
   if(!error)return;
@@ -1000,6 +1021,11 @@ function showCalculateError(message){
   error.hidden=!message;
 }
 function calculate(){
+  updateCalculateButton();
+  if(document.getElementById("calculateButton")?.disabled){
+    showCalculateError("Select your CPU, GPU, and gaming resolution to calculate.");
+    return;
+  }
   showCalculateError("");
   const ci=document.getElementById("cpuSelect").value;
   const gi=document.getElementById("gpuSelect").value;
@@ -1010,6 +1036,7 @@ function calculate(){
   const ram=document.getElementById("ram").value||"16";
   const storage=document.getElementById("storage").value||"nvme";
   const background=document.getElementById("backgroundLoad").value||"typical";
+
 
   if(ci===""||gi===""||r===""||!Number.isFinite(targetRaw)){
     showCalculateError("Select your CPU, GPU, and gaming resolution to calculate.");
