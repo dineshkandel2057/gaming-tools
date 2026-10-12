@@ -220,6 +220,21 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 .game-profile-empty{padding:10px;color:var(--muted);font-size:12px}
 .native-game-profile-select{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media(max-width:800px){.game-profile-panel{max-height:60vh}.game-profile-options{max-height:calc(60vh - 68px)}}
+
+/* Shared compact, tool-first layout: keep the calculator visible and learning optional. */
+.tool-details{margin:18px 0 0;border:1px solid rgba(157,174,204,.16);border-radius:16px;background:rgba(13,18,29,.62);overflow:hidden}
+.tool-details>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:58px;padding:17px 20px;cursor:pointer;list-style:none;color:#dfe6f3;font:700 14px "DM Sans",sans-serif}
+.tool-details>summary::-webkit-details-marker{display:none}
+.tool-details>summary:after{content:"+";display:grid;place-items:center;width:27px;height:27px;flex:0 0 27px;border:1px solid rgba(157,174,204,.2);border-radius:8px;color:#b7a8ff;font-size:20px;font-weight:500}
+.tool-details[open]>summary:after{content:"−"}
+.tool-details>summary:hover{background:rgba(126,105,255,.06)}
+.tool-details .tool-explanation{margin:0;border:0;border-top:1px solid rgba(157,174,204,.12);border-radius:0;background:transparent;box-shadow:none}
+.tool-details .tool-explanation>h2:first-child{margin-top:0}
+.tool-details .tool-explanation p{max-width:78ch;line-height:1.7}
+.tool-details .tool-explanation h2{margin-top:25px}
+.tool-details .tool-explanation h3{margin-top:18px}
+@media(max-width:640px){.tool-details>summary{padding:14px 15px;font-size:13px}.tool-details .tool-explanation{padding:18px 15px}}
+
 </style>
 <style id="homepage-header-system">
 /* Shared SystemFit PC homepage header */
@@ -589,6 +604,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 </div>
 </section>
 
+<details class="tool-details" data-sfp-reveal><summary>How it works, result guidance &amp; FAQs</summary>
 <section class="tool-explanation" data-sfp-reveal>
   <h2>How this tool works</h2>
   <p>The SystemFit PC Bottleneck Calculator compares the CPU and GPU you select against the gaming conditions you choose. Resolution, target FPS and workload type matter because the same hardware can behave very differently across games and settings. A higher resolution usually shifts more work toward the GPU, while high-FPS gaming at lower resolutions can expose CPU limits sooner. The calculator combines those inputs with its hardware performance data to estimate which component is more likely to hold back the result.</p>
@@ -626,6 +642,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
   <p>To validate the estimate, compare your setup in the <a href="fps-calculator.html">FPS Calculator</a> and read our <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU bottleneck guide</a>. If the GPU appears to be limiting performance, try the <a href="game-settings.html">Game Settings Optimizer</a> and <a href="graphics-settings-that-affect-fps.html">graphics settings guide</a>. Resolution also changes the balance, so see <a href="1080p-vs-1440p-vs-4k-gaming.html">1080p vs 1440p vs 4K gaming</a>. If an upgrade still looks justified, compare priorities with the <a href="upgrade-advisor.html">PC Upgrade Advisor</a> or check a full configuration in the <a href="build-planner.html">PC Build Planner</a>.</p>
   <p class="last-updated"><strong>Last updated:</strong> October 12, 2026</p>
 </section>
+</details>
 </main>
 
 <script src="hardware-data.js"></script>
