@@ -906,8 +906,8 @@ const BENCHMARK_SOURCES = {
  gpuReference:"GeForce RTX 5090 = 100"
 };
 
-const CPUs = SFP_HARDWARE_DATA.CPUs;
-const GPUs = SFP_HARDWARE_DATA.GPUs;
+const CPU_RECORDS = SFP_HARDWARE_DATA.CPUs;
+const GPU_RECORDS = SFP_HARDWARE_DATA.GPUs;
 
 function getHardwareScore(record){
   // Scores are already normalized to the benchmark reference for their hardware class.
@@ -926,8 +926,31 @@ function validateHardwareDatabase(list,type){
   });
   return true;
 }
-validateHardwareDatabase(CPUs,"CPU");
-validateHardwareDatabase(GPUs,"GPU");
+validateHardwareDatabase(CPU_RECORDS,"CPU");
+validateHardwareDatabase(GPU_RECORDS,"GPU");
+
+function hardwarePickerKey(item,type){
+ const model=String(item.name||"").trim().toLocaleLowerCase()
+   .replace(/^(amd|intel|nvidia)\s+/,"")
+   .replace(/^(ryzen|radeon|geforce|core|arc)\s+/,"")
+   .replace(/\s+\d+\s*gb$/i,"")
+   .replace(/\s+/g," ");
+ return type==="GPU"?`${model}|${Number(item.vram)||0}gb`:model;
+}
+function uniqueHardwarePickerRecords(records,type){
+ const seen=new Set();
+ return records.filter(item=>{
+   const key=hardwarePickerKey(item,type);
+   if(!key||seen.has(key))return false;
+   seen.add(key);
+   return true;
+ });
+}
+const CPUs=uniqueHardwarePickerRecords(CPU_RECORDS,"CPU");
+const GPUs=uniqueHardwarePickerRecords(GPU_RECORDS,"GPU").map(item=>{
+ const hasVramLabel=/\b\d+\s*gb\b/i.test(item.name);
+ return item.vram&&!hasVramLabel?{...item,name:`${item.name} ${item.vram}GB`}:item;
+});
 
 function fillSelect(id,data){
  const s=document.getElementById(id);
@@ -946,7 +969,7 @@ function setupHardwarePicker(kind,data){
  const render=(query="")=>{
    const q=String(query).trim().toLocaleLowerCase();
    const matches=data.map((item,index)=>({item,index})).filter(({item})=>{
-     const text=[item.name,item.vendor,item.generation,item.tier].filter(Boolean).join(" ").toLocaleLowerCase();
+     const text=[item.name,item.vendor,item.generation,item.tier,item.vram?`${item.vram}GB`:""].filter(Boolean).join(" ").toLocaleLowerCase();
      return !q||text.includes(q);
    });
    options.replaceChildren();
