@@ -1334,7 +1334,7 @@
 
     const CPUs = uniqueHardwarePickerRecords(SFP_HARDWARE_DATA.CPUs,"cpu");
     const GPUS = uniqueHardwarePickerRecords(SFP_HARDWARE_DATA.GPUs,"gpu")
-      .map(g => ({name: /\b\d+\s*gb\b/i.test(g.name) ? g.name : `${g.name} ${g.vram}GB`, score: g.score, vram: g.vram, rt: g.rt}));
+      .map(g => ({name: /\b\d+\s*gb\b/i.test(g.name) || !(Number(g.vram) > 0) ? g.name : `${g.name} ${g.vram}GB`, score: g.score, vram: g.vram, rt: g.rt}));
 
     const state = {
       resolution:null,
