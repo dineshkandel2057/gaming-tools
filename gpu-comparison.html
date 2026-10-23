@@ -263,9 +263,9 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 const comparisonModelKeys = new Set();
 const gpus = SFP_HARDWARE_DATA.GPUs.filter(g => {
       const key = String(g.name || "").trim().toLowerCase()
-        .replace(/^(nvidia|amd|intel)\\s+/, "")
-        .replace(/^(geforce|radeon|arc)\\s+/, "")
-        .replace(/\\s+/g, " ");
+        .replace(/^(nvidia|amd|intel)\s+/, "")
+        .replace(/^(geforce|radeon|arc)\s+/, "")
+        .replace(/\s+/g, " ");
       if (!key || comparisonModelKeys.has(key)) return false;
       comparisonModelKeys.add(key);
       return true;
