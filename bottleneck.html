@@ -287,6 +287,17 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 .sb-interpretation{margin-top:12px;padding:16px;border:1px solid rgba(118,95,255,.2);border-radius:12px;background:linear-gradient(145deg,rgba(118,95,255,.09),rgba(12,18,30,.5))}
 .sb-interpretation h3{margin:0 0 7px;font-size:15px;color:#f2f4fb}
 .sb-interpretation p{margin:0;color:#b4c0d4;font-size:12px;line-height:1.7}
+.calculator-quickstart{margin:18px 0 22px;padding:17px 18px;border:1px solid rgba(157,174,204,.15);border-radius:15px;background:linear-gradient(145deg,rgba(20,28,44,.72),rgba(11,17,28,.66))}
+.quickstart-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px;color:#eef2fb;font-size:14px}
+.quickstart-heading span{color:#9ba9c0;font-size:11px;font-weight:600}
+.quickstart-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.quickstart-step{display:flex;align-items:flex-start;gap:10px;min-width:0;padding:12px;border:1px solid rgba(157,174,204,.1);border-radius:11px;background:rgba(5,10,18,.28)}
+.quickstart-number{display:grid;place-items:center;flex:0 0 25px;height:25px;border-radius:8px;background:rgba(118,95,255,.16);color:#c5baff;font-size:12px;font-weight:800}
+.quickstart-step strong{display:block;color:#f1f4fb;font-size:12px;line-height:1.4}
+.quickstart-step p{margin:5px 0 0;color:#a4b1c6;font-size:11px;line-height:1.55}
+.quickstart-caveat{margin:12px 0 0;padding-top:11px;border-top:1px solid rgba(157,174,204,.1);color:#a4b1c6;font-size:11px;line-height:1.6}
+.quickstart-caveat strong{color:#d6dff0}
+@media(max-width:760px){.quickstart-grid{grid-template-columns:1fr}.quickstart-heading{align-items:flex-start;flex-direction:column;gap:4px}}
 </style>
 </head>
 <body>
@@ -296,7 +307,16 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
 <main class="wrap">
 <section class="card" data-sfp-reveal>
   <h1>CPU &amp; GPU Bottleneck Calculator</h1>
-  <p class="subtitle">Estimate which component is more likely to limit gaming performance for your selected CPU, GPU and resolution. Use the result to decide what to test next—not as a live benchmark or a guarantee that you need an upgrade.</p>
+  <p class="subtitle">Estimate whether your CPU or GPU is more likely to limit gaming performance for your selected hardware and resolution. Start with the three required choices; optional settings can make the scenario more specific. Use the result to decide what to test next—not as a live benchmark or an automatic reason to upgrade.</p>
+  <div class="calculator-quickstart" data-sfp-reveal aria-label="How to use the bottleneck calculator">
+    <div class="quickstart-heading"><strong>Get a useful estimate in 3 steps</strong><span>About a minute</span></div>
+    <div class="quickstart-grid">
+      <div class="quickstart-step"><span class="quickstart-number">1</span><div><strong>Choose your hardware</strong><p>Select the exact CPU and GPU models in your PC.</p></div></div>
+      <div class="quickstart-step"><span class="quickstart-number">2</span><div><strong>Set your resolution</strong><p>Pick the resolution you actually play at. Add a game type or target FPS if you know it.</p></div></div>
+      <div class="quickstart-step"><span class="quickstart-number">3</span><div><strong>Read the direction, not just %</strong><p>Check which part may limit performance, then compare it with your FPS goal and real gameplay.</p></div></div>
+    </div>
+    <p class="quickstart-caveat"><strong>Important:</strong> There is no universal “bad” bottleneck percentage. Game, settings, cooling, drivers and background tasks all affect real performance. Confirm a suspected limit before buying parts.</p>
+  </div>
   <div class="input-layout">
     <section class="input-card required-card" aria-labelledby="requiredInputsTitle">
       <div class="input-card-heading">
@@ -860,7 +880,7 @@ input:focus,select:focus{border-color:#8b79ff;box-shadow:0 0 0 3px rgba(118,95,2
   <p>Use the <a href="fps-calculator.html">FPS Calculator</a> to test different settings, then compare the GPU options in the <a href="gpu-comparison.html">GPU Comparison Tool</a>.</p>
   <h2>Related tools and guides</h2>
   <p>To validate the estimate, compare your setup in the <a href="fps-calculator.html">FPS Calculator</a> and read our <a href="cpu-vs-gpu-bottleneck.html">CPU vs GPU bottleneck guide</a>. If the GPU appears to be limiting performance, try the <a href="game-settings.html">Game Settings Optimizer</a> and <a href="graphics-settings-that-affect-fps.html">graphics settings guide</a>. Resolution also changes the balance, so see <a href="1080p-vs-1440p-vs-4k-gaming.html">1080p vs 1440p vs 4K gaming</a>. If an upgrade still looks justified, compare priorities with the <a href="upgrade-advisor.html">PC Upgrade Advisor</a> or check a full configuration in the <a href="build-planner.html">PC Build Planner</a>.</p>
-  <p class="last-updated"><strong>Last updated:</strong> October 12, 2026</p>
+  <p class="last-updated"><strong>Last updated:</strong> October 23, 2026</p>
 </section>
 </details>
 </main>
