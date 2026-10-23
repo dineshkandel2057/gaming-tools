@@ -549,6 +549,8 @@
       "[data-sfp-reveal]",
       ".reveal",
       "section",
+      ".section",
+      "footer.sfp-site-footer",
       "article:not(.guide-slide)",
       ".tool-card",
       ".homepage-guide-item",
