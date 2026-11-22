@@ -257,7 +257,19 @@ header{position:sticky;top:0;z-index:1000;background:rgba(9,12,20,.76);border-bo
 </main>
 <script src="hardware-data.js"></script>
 <script>
-const gpus = SFP_HARDWARE_DATA.GPUs.map(g => ({
+// Keep the comparison picker to one entry per GPU model. The shared hardware
+// database also contains legacy aliases used by other tools (for example,
+// "NVIDIA GeForce RTX 5090" and "GeForce RTX 5090").
+const comparisonModelKeys = new Set();
+const gpus = SFP_HARDWARE_DATA.GPUs.filter(g => {
+      const key = String(g.name || "").trim().toLowerCase()
+        .replace(/^(nvidia|amd|intel)\s+/, "")
+        .replace(/^(geforce|radeon|arc)\s+/, "")
+        .replace(/\s+/g, " ");
+      if (!key || comparisonModelKeys.has(key)) return false;
+      comparisonModelKeys.add(key);
+      return true;
+    }).map(g => ({
       id:g.id,
       name:g.name,
       brand:g.brand || g.vendor || "Unknown",
